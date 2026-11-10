@@ -7,7 +7,7 @@ export const dynamic = 'force-dynamic';
 
 export default async function AdminArchiveVaultPage() {
   await requireAdmin();
-  const store = getCMSStore();
+  const store = await getCMSStore();
 
   const archivedNews = (store.news || []).filter((n) => n.status === 'archived');
   const archivedTeam = (store.teamMembers || []).filter((m) => m.status === 'archived');

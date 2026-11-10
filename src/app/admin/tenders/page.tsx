@@ -7,6 +7,6 @@ export const dynamic = 'force-dynamic';
 
 export default async function AdminTendersPage() {
   await requireAdmin();
-  const store = getCMSStore();
+  const store = await getCMSStore();
   return <TendersClient initialTenders={store.tenders || []} />;
 }

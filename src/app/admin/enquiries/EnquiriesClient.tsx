@@ -357,7 +357,7 @@ export default function EnquiriesClient({ initialEnquiries }: EnquiriesClientPro
               </div>
 
               {/* Optional Archive Remark Banner */}
-              {selectedEnquiry.archiveRemark && (
+              {selectedEnquiry.archiveRemark && ['archived', 'Archive'].includes(selectedEnquiry.status ?? '') && (
                 <div className="p-3.5 rounded-xl bg-amber-50 border border-amber-200 text-xs text-amber-900">
                   <div className="font-bold flex items-center gap-1.5 uppercase text-[10px] tracking-wider text-amber-800">
                     <Archive className="w-3.5 h-3.5" />

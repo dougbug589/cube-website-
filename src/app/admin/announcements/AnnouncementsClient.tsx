@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import Image from 'next/image';
+import ImageUploadField from '@/components/admin/ImageUploadField';
 import { Bell, Briefcase, CheckCircle2, Save, Loader2, Sparkles, AlertCircle } from 'lucide-react';
 import { updateAnnouncementAction } from '@/app/admin/actions/cms';
 import { useRouter } from 'next/navigation';
@@ -23,6 +24,10 @@ export default function AnnouncementsManagerClient({ initialAnnouncement }: { in
 
   const [loading, setLoading] = useState(false);
   const [saved, setSaved] = useState(false);
+  const [uploadingBanner, setUploadingBanner] = useState(false);
+  const [bannerImage, setBannerImage] = useState<string>(
+    ann.imageUrl || '/images/hero/slides_building-training-team.jpg'
+  );
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -207,21 +212,21 @@ export default function AnnouncementsManagerClient({ initialAnnouncement }: { in
             </div>
 
             <div>
-              <label className="block text-xs font-bold text-slate-700 uppercase mb-1">
-                Banner Image Path / URL
-              </label>
-              <input
-                type="text"
-                name="imageUrl"
-                defaultValue={ann.imageUrl || '/images/hero/slides_building-training-team.jpg'}
-                className="w-full p-2.5 text-xs rounded-xl border border-slate-300 focus:outline-none focus:border-teal-500"
+              <ImageUploadField
+                label="Banner Image"
+                value={bannerImage}
+                onChange={setBannerImage}
+                onUploadingChange={setUploadingBanner}
+                labelClassName="block text-xs font-bold text-slate-700 uppercase mb-1"
               />
+              {/* Submitted with the form exactly like the old text field. */}
+              <input type="hidden" name="imageUrl" value={bannerImage} />
             </div>
 
             <div className="pt-4 border-t border-slate-100 flex justify-end">
               <button
                 type="submit"
-                disabled={loading}
+                disabled={loading || uploadingBanner}
                 className="px-6 py-3 rounded-xl bg-[#EAF2F8] hover:bg-[#D99A42] text-[#070E5C] hover:text-white border border-[#BBD6EA] font-bold text-xs flex items-center space-x-2 shadow-sm transition disabled:opacity-50"
               >
                 {loading ? <Loader2 className="w-4 h-4 animate-spin" /> : <Save className="w-4 h-4" />}

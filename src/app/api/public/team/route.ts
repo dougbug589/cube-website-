@@ -5,7 +5,7 @@ export const dynamic = 'force-dynamic';
 
 export async function GET() {
   try {
-    const store = getCMSStore();
+    const store = await getCMSStore();
 
     // Only published members, and only fields that are safe to expose publicly.
     const activeStaff = (store.teamMembers || [])

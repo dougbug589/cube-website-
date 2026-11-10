@@ -6,7 +6,7 @@ const ALL_ROLES: UserRole[] = ['super_admin', 'admin', 'editor', 'viewer'];
 
 export async function requireAdmin(allowedRoles: UserRole[] = ALL_ROLES): Promise<AdminSession> {
   const token = (await cookies()).get('cube_admin_session')?.value;
-  const session = resolveAdminSession(token);
+  const session = await resolveAdminSession(token);
 
   if (!session) {
     redirect('/admin/login?expired=true');

@@ -1,4 +1,5 @@
 import { getStoreVersion } from '@/lib/db/store';
+import { getCMSBackend } from '@/lib/db/backend';
 
 export const dynamic = 'force-dynamic';
 export const runtime = 'nodejs';
@@ -13,28 +14,41 @@ export const runtime = 'nodejs';
 type Listener = (version: number) => void;
 
 const g = globalThis as unknown as {
-  __cubeLive?: { listeners: Set<Listener>; version: number; timer: NodeJS.Timeout | null };
+  __cubeLive?: { listeners: Set<Listener>; version: number; timer: NodeJS.Timeout | null; checking: boolean };
 };
-const live = (g.__cubeLive ??= { listeners: new Set(), version: getStoreVersion(), timer: null });
+const live = (g.__cubeLive ??= { listeners: new Set(), version: 0, timer: null, checking: false });
+
+// The JSON file is a cheap fs.stat; the database check is a network query.
+const CHECK_INTERVAL_MS = getCMSBackend() === 'supabase' ? 3000 : 1000;
 
 function ensureWatcher() {
   if (live.timer) return;
-  live.timer = setInterval(() => {
-    const v = getStoreVersion();
-    if (v !== live.version) {
-      live.version = v;
-      live.listeners.forEach((fn) => fn(v));
-    }
-    if (live.listeners.size === 0 && live.timer) {
-      clearInterval(live.timer);
+  live.timer = setInterval(async () => {
+    if (live.listeners.size === 0) {
+      if (live.timer) clearInterval(live.timer);
       live.timer = null;
+      return;
     }
-  }, 1000);
+    if (live.checking) return;
+    live.checking = true;
+    try {
+      const v = await getStoreVersion();
+      if (v && v !== live.version) {
+        live.version = v;
+        live.listeners.forEach((fn) => fn(v));
+      }
+    } finally {
+      live.checking = false;
+    }
+  }, CHECK_INTERVAL_MS);
 }
 
 export async function GET(request: Request) {
   const encoder = new TextEncoder();
   let cleanup = () => {};
+
+  const initialVersion = await getStoreVersion();
+  if (initialVersion && !live.version) live.version = initialVersion;
 
   const stream = new ReadableStream({
     start(controller) {
@@ -55,7 +69,7 @@ export async function GET(request: Request) {
       };
 
       // Tell the client to reconnect quickly if the connection drops.
-      send(`retry: 3000\nevent: version\ndata: ${getStoreVersion()}\n\n`);
+      send(`retry: 3000\nevent: version\ndata: ${initialVersion}\n\n`);
       live.listeners.add(listener);
       ensureWatcher();
 

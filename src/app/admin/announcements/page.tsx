@@ -7,7 +7,7 @@ export const dynamic = 'force-dynamic';
 
 export default async function AdminAnnouncementsPage() {
   await requireAdmin();
-  const store = getCMSStore();
+  const store = await getCMSStore();
   const currentAnnouncement = store.announcements[0] || null;
 
   return <AnnouncementsManagerClient initialAnnouncement={currentAnnouncement} />;

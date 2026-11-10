@@ -5,7 +5,7 @@ export const dynamic = 'force-dynamic';
 
 export async function GET() {
   try {
-    const store = getCMSStore();
+    const store = await getCMSStore();
     const activeProjects = (store.projects || []).filter(
       (p) => p.status === 'published'
     );

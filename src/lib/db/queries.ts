@@ -4,14 +4,14 @@ import { resolveCareersPage } from '@/lib/careers-page';
 
 // Dynamic Published News
 export async function getPublishedNews() {
-  const store = getCMSStore();
+  const store = await getCMSStore();
   return store.news
     .filter((n) => n.status === 'published')
     .map((n) => normalizeNewsItem(n));
 }
 
 export async function getNewsBySlug(slug: string) {
-  const store = getCMSStore();
+  const store = await getCMSStore();
   const item = store.news.find(
     (n) => (n.slug === slug || n.id === slug) && n.status === 'published'
   );
@@ -20,18 +20,18 @@ export async function getNewsBySlug(slug: string) {
 
 // Dynamic Published Projects
 export async function getPublishedProjects() {
-  const store = getCMSStore();
+  const store = await getCMSStore();
   return store.projects.filter((p) => p.status === 'published');
 }
 
 export async function getProjectBySlug(slug: string) {
-  const store = getCMSStore();
+  const store = await getCMSStore();
   return store.projects.find((p) => p.slug === slug && p.status === 'published') || null;
 }
 
 // Dynamic Active Announcements & Hiring Popups
 export async function getActiveAnnouncements(targetPage: string = '/') {
-  const store = getCMSStore();
+  const store = await getCMSStore();
   const now = new Date().getTime();
 
   return store.announcements.filter((a) => {
@@ -46,49 +46,49 @@ export async function getActiveAnnouncements(targetPage: string = '/') {
 
 // Dynamic Active Careers
 export async function getPublishedCareers() {
-  const store = getCMSStore();
+  const store = await getCMSStore();
   return store.careers.filter((c) => c.status === 'published' && c.isActive);
 }
 
 // Admin-editable careers page content (merged over defaults)
 export async function getCareersPageContent() {
-  const store = getCMSStore();
+  const store = await getCMSStore();
   return resolveCareersPage(store.careersPage);
 }
 
 // Dynamic Published Team Members
 export async function getPublishedTeamMembers() {
-  const store = getCMSStore();
+  const store = await getCMSStore();
   return store.teamMembers.filter((m) => m.status === 'published');
 }
 
 // Dynamic Published Tenders
 export async function getPublishedTenders() {
-  const store = getCMSStore();
+  const store = await getCMSStore();
   return store.tenders.filter((t) => t.status !== 'Archive' && t.status !== 'archived');
 }
 
 // Dynamic CEL Services
 export async function getPublishedCELServices() {
-  const store = getCMSStore();
+  const store = await getCMSStore();
   return store.celServices.filter((s) => s.status === 'published');
 }
 
 // Dynamic Published Gallery
 export async function getPublishedGallery() {
-  const store = getCMSStore();
+  const store = await getCMSStore();
   return store.gallery.filter((g) => g.status === 'published');
 }
 
 // Dynamic Verticals
 export async function getPublishedVerticals() {
-  const store = getCMSStore();
+  const store = await getCMSStore();
   return store.verticals.filter((v) => v.status === 'published');
 }
 
 // Dynamic Hero Slides
 export async function getPublishedHeroSlides() {
-  const store = getCMSStore();
+  const store = await getCMSStore();
   return store.heroSlides.filter((s) => s.status === 'published');
 }
 

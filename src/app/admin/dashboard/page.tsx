@@ -12,7 +12,7 @@ export const dynamic = 'force-dynamic';
 
 export default async function AdminDashboardOverviewPage() {
   await requireAdmin();
-  const store = getCMSStore();
+  const store = await getCMSStore();
 
   const totalProjects = store.projects.length;
   const publishedProjects = store.projects.filter((p) => p.status === 'published').length;

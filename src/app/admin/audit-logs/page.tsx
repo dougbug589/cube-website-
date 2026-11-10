@@ -7,7 +7,7 @@ export const dynamic = 'force-dynamic';
 
 export default async function AdminAuditLogsPage() {
   await requireAdmin();
-  const store = getCMSStore();
+  const store = await getCMSStore();
 
   return (
     <div className="space-y-6 max-w-7xl mx-auto">

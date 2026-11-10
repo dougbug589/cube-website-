@@ -1,9 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
-import fs from 'fs';
-import path from 'path';
 import crypto from 'crypto';
 import { getCMSStore, saveCMSStore } from '@/lib/db/store';
-import { RESUME_DIR, detectResumeType } from '@/lib/resumes';
+import { RESUME_MIME, detectResumeType } from '@/lib/resumes';
+import { putFile } from '@/lib/file-storage';
 
 const MAX_FILE_SIZE_BYTES = 10 * 1024 * 1024;
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -86,13 +85,13 @@ export async function POST(req: NextRequest) {
 
       // Stored OUTSIDE /public so resumes are never publicly downloadable and
       // can never be served as HTML/SVG from the site's origin.
-      fs.mkdirSync(RESUME_DIR, { recursive: true });
+      // (Private Supabase bucket when hosted, data-store/resumes locally.)
       const fileName = `${Date.now()}_${crypto.randomBytes(12).toString('hex')}${detected.ext}`;
-      fs.writeFileSync(path.join(RESUME_DIR, fileName), buffer);
+      await putFile('resumes', fileName, buffer, RESUME_MIME[detected.ext] || 'application/octet-stream');
       resumeUrl = `/api/admin/resumes/${fileName}`;
     }
 
-    const store = getCMSStore();
+    const store = await getCMSStore();
     if (!store.jobApplications) store.jobApplications = [];
 
     const newApplication = {
@@ -110,7 +109,7 @@ export async function POST(req: NextRequest) {
     };
 
     store.jobApplications.unshift(newApplication);
-    saveCMSStore(store);
+    await saveCMSStore(store);
 
     return NextResponse.json({
       success: true,

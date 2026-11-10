@@ -54,7 +54,7 @@ async function assertAdmin(
   allowedRoles: UserRole[] = ['super_admin', 'admin']
 ): Promise<{ ok: true; session: AdminSession } | { ok: false; error: string }> {
   const token = (await cookies()).get('cube_admin_session')?.value;
-  const session = resolveAdminSession(token);
+  const session = await resolveAdminSession(token);
   if (!session) return { ok: false, error: 'Unauthorized: Session expired or signed out' };
   if (!allowedRoles.includes(session.role)) {
     return { ok: false, error: 'Forbidden: Insufficient privileges' };
@@ -94,7 +94,7 @@ export async function submitEnquiryAction(payload: SubmitEnquiryPayload) {
     };
   }
 
-  const store = getCMSStore();
+  const store = await getCMSStore();
 
   const newEnquiry = {
     id: `enq_${Date.now()}`,
@@ -127,7 +127,7 @@ export async function submitEnquiryAction(payload: SubmitEnquiryPayload) {
     timestamp: new Date().toISOString(),
   });
 
-  saveCMSStore(store);
+  await saveCMSStore(store);
 
   // Real-time server revalidation for admin dashboard
   revalidatePath('/admin/dashboard');
@@ -140,7 +140,7 @@ export async function markEnquiryAsReadAction(id: string) {
   const auth = await assertAdmin(['super_admin', 'admin', 'editor']);
   if (!auth.ok) return { success: false, error: auth.error };
 
-  const store = getCMSStore();
+  const store = await getCMSStore();
   const item = store.enquiries.find((e) => e.id === id);
   if (!item) return { success: false, error: 'Enquiry not found' };
 
@@ -155,7 +155,7 @@ export async function markEnquiryAsReadAction(id: string) {
     timestamp: new Date().toISOString(),
   });
 
-  saveCMSStore(store);
+  await saveCMSStore(store);
   revalidatePath('/admin/enquiries');
   revalidatePath('/admin/dashboard');
   return { success: true };
@@ -165,14 +165,20 @@ export async function deleteEnquiryAction(id: string, archiveRemark?: string) {
   const auth = await assertAdmin(['super_admin', 'admin']);
   if (!auth.ok) return { success: false, error: auth.error };
 
-  const store = getCMSStore();
+  const store = await getCMSStore();
   const item = store.enquiries.find((e) => e.id === id);
   if (!item) return { success: false, error: 'Enquiry not found' };
 
   item.status = item.status === 'archived' ? 'active' : 'archived';
-  if (archiveRemark) {
-    item.archiveRemark = archiveRemark.slice(0, 1000);
-    item.archivedAt = new Date().toISOString();
+  if (item.status === 'archived') {
+    if (archiveRemark) {
+      item.archiveRemark = archiveRemark.slice(0, 1000);
+      item.archivedAt = new Date().toISOString();
+    }
+  } else {
+    // Restored: back to its normal state, so the old archive remark goes away.
+    delete item.archiveRemark;
+    delete item.archivedAt;
   }
 
   store.auditLogs.unshift({
@@ -185,7 +191,7 @@ export async function deleteEnquiryAction(id: string, archiveRemark?: string) {
     timestamp: new Date().toISOString(),
   });
 
-  saveCMSStore(store);
+  await saveCMSStore(store);
   revalidatePath('/admin/enquiries');
   revalidatePath('/admin/dashboard');
   return { success: true };

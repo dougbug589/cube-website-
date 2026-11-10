@@ -14,6 +14,12 @@ const nextConfig = {
     deviceSizes: [640, 750, 828, 1080, 1200],
     imageSizes: [32, 48, 64, 96, 128, 256, 384],
   },
+  // Uploaded media keeps its /uploads/<name> URL. Files that exist in public/
+  // at build time are served statically first; anything uploaded after
+  // deployment (Supabase Storage or runtime disk) is served by /api/uploads.
+  async rewrites() {
+    return [{ source: '/uploads/:name', destination: '/api/uploads/:name' }];
+  },
   async headers() {
     return [
       {

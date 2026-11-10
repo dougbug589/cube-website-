@@ -6,7 +6,7 @@ export const dynamic = 'force-dynamic';
 
 export async function GET() {
   try {
-    const store = getCMSStore();
+    const store = await getCMSStore();
     const activeNews = (store.news || [])
       .filter((n) => n.status === 'published')
       .map((n) => normalizeNewsItem(n));

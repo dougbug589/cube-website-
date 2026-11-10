@@ -89,7 +89,7 @@ export async function loginAdminAction(formData: FormData) {
     };
   }
 
-  const store = getCMSStore();
+  const store = await getCMSStore();
   const user = store.users.find(
     (u) => u.email.toLowerCase() === email.toLowerCase()
   );
@@ -129,7 +129,7 @@ export async function loginAdminAction(formData: FormData) {
 
   // Log Audit. Re-read the store: the copy loaded before the awaits above may
   // be stale, and saving it would overwrite changes made in the meantime.
-  const freshStore = getCMSStore();
+  const freshStore = await getCMSStore();
   freshStore.auditLogs.unshift({
     id: `log_${Date.now()}`,
     userId: user.id,
@@ -139,7 +139,7 @@ export async function loginAdminAction(formData: FormData) {
     resourceId: user.id,
     timestamp: new Date().toISOString(),
   });
-  saveCMSStore(freshStore);
+  await saveCMSStore(freshStore);
 
   return { success: true };
 }
@@ -151,8 +151,8 @@ export async function logoutAdminAction() {
     const session = verifyAdminToken(cookie);
     if (session) {
       // Revoke the token server-side so a copied cookie stops working too.
-      revokeAdminSessions(session.userId);
-      const store = getCMSStore();
+      await revokeAdminSessions(session.userId);
+      const store = await getCMSStore();
       store.auditLogs.unshift({
         id: `log_${Date.now()}`,
         userId: session.userId,
@@ -162,7 +162,7 @@ export async function logoutAdminAction() {
         resourceId: session.userId,
         timestamp: new Date().toISOString(),
       });
-      saveCMSStore(store);
+      await saveCMSStore(store);
     }
   }
 
@@ -172,5 +172,5 @@ export async function logoutAdminAction() {
 
 export async function getCurrentAdmin(): Promise<AdminSession | null> {
   const cookie = (await cookies()).get('cube_admin_session')?.value;
-  return resolveAdminSession(cookie);
+  return await resolveAdminSession(cookie);
 }

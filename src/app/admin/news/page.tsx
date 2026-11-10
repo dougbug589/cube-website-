@@ -7,7 +7,7 @@ export const dynamic = 'force-dynamic';
 
 export default async function AdminNewsPage() {
   await requireAdmin();
-  const store = getCMSStore();
+  const store = await getCMSStore();
   return <AdminNewsManager initialNews={store.news} />;
 }
 

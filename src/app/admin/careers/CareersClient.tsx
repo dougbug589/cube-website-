@@ -1,13 +1,14 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import {
   Briefcase, Plus, Search, CheckCircle2, Loader2, MapPin,
   Edit3, Archive, ArchiveRestore, X, Clock, Calendar,
-  FileText, Download, User, Mail, Phone, ExternalLink
+  FileText, Download, User, Mail, Phone, ExternalLink, Eye
 } from 'lucide-react';
 import { createCareerAction, updateCareerAction, archiveCareerAction } from '@/app/admin/actions/cms';
 import CareersPageEditor from './CareersPageEditor';
+import ApplicationViewer from './ApplicationViewer';
 import { DEFAULT_EMPLOYMENT_TYPES, EXTRA_CAREER_DEPARTMENTS } from '@/lib/careers-page';
 import type { CareersPageContent } from '@/lib/careers-page';
 import ComboSelect from '@/components/admin/ComboSelect';
@@ -33,6 +34,8 @@ export default function CareersManagerClient({
   useEffect(() => { setApplicationsList(initialApplications); }, [initialApplications]);
 
   const [activeAdminTab, setActiveAdminTab] = useState<'positions' | 'applications' | 'page'>('positions');
+  const [viewingApp, setViewingApp] = useState<any | null>(null);
+  const closeViewer = useCallback(() => setViewingApp(null), []);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editingJob, setEditingJob] = useState<any | null>(null);
   const [loading, setLoading] = useState(false);
@@ -257,11 +260,17 @@ export default function CareersManagerClient({
                     </div>
 
                     <div className="shrink-0 flex items-center gap-2">
+                      <button
+                        type="button"
+                        onClick={() => setViewingApp(app)}
+                        className="px-3.5 py-1.5 rounded-lg bg-[#070E5C] text-white hover:bg-[#D99A42] text-xs font-bold transition flex items-center gap-1.5 shadow-xs"
+                      >
+                        <Eye className="w-3.5 h-3.5" />
+                        <span>View</span>
+                      </button>
                       {app.resumeUrl ? (
                         <a
                           href={app.resumeUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
                           className="px-3.5 py-1.5 rounded-lg bg-[#EAF2F8] text-[#070E5C] hover:bg-[#D99A42] hover:text-white border border-[#BDD7E8] text-xs font-bold transition flex items-center gap-1.5 shadow-xs"
                         >
                           <Download className="w-3.5 h-3.5" />
@@ -501,6 +510,9 @@ export default function CareersManagerClient({
           </div>
         </div>
       )}
+
+      {/* Application detail + CV preview */}
+      <ApplicationViewer app={viewingApp} onClose={closeViewer} />
 
       {/* Archive Remark Modal */}
       {archiveModalTarget && (

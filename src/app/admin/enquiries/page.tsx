@@ -7,7 +7,7 @@ export const dynamic = 'force-dynamic';
 
 export default async function AdminEnquiriesPage() {
   await requireAdmin();
-  const store = getCMSStore();
+  const store = await getCMSStore();
   const enquiries = store.enquiries || [];
 
   return <EnquiriesClient initialEnquiries={enquiries} />;

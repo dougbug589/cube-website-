@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import ImageUploadField from '@/components/admin/ImageUploadField';
 import { 
   FolderKanban, Plus, Search, Filter, CheckCircle2, 
   Archive, ArchiveRestore, Eye, Edit3, ArrowRight, ExternalLink, Loader2, X 
@@ -355,18 +356,12 @@ export default function ProjectsManagerClient({ initialProjects }: { initialProj
                 />
               </div>
 
-              <div>
-                <label className="block text-xs font-bold text-slate-700 uppercase mb-1">
-                  Hero Image Path / URL
-                </label>
-                <input
-                  type="text"
-                  value={heroImage}
-                  onChange={(e) => setHeroImage(e.target.value)}
-                  placeholder="/images/hero/... or /uploads/..."
-                  className="w-full p-2.5 text-xs rounded-xl border border-slate-300 font-mono text-[11px]"
-                />
-              </div>
+              <ImageUploadField
+                label="Hero Image"
+                value={heroImage}
+                onChange={setHeroImage}
+                labelClassName="block text-xs font-bold text-slate-700 uppercase mb-1"
+              />
 
               <div className="flex items-center space-x-2 pt-2">
                 <input

@@ -7,6 +7,6 @@ export const dynamic = 'force-dynamic';
 
 export default async function AdminMediaPage() {
   await requireAdmin();
-  const store = getCMSStore();
+  const store = await getCMSStore();
   return <MediaManagerClient initialGallery={store.gallery || []} />;
 }
