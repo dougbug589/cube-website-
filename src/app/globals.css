@@ -272,21 +272,35 @@ input, textarea, select, button {
   border: 1px solid rgba(215, 160, 15, 0.25);
 }
 
-/* Custom Scrollbar */
+/* Utilities: Hide Scrollbars cleanly across all browsers */
+.no-scrollbar::-webkit-scrollbar,
+.scrollbar-none::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+
+.no-scrollbar,
+.scrollbar-none {
+  -ms-overflow-style: none !important;
+  scrollbar-width: none !important;
+}
+
+/* Modern Minimal Light Horizontal/Vertical Scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 6px;
+  height: 4px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #070E5C;
+  background: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #D7A00F;
-  border-radius: 4px;
+  background: rgba(7, 14, 92, 0.2);
+  border-radius: 9999px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #BF8C0B;
+  background: rgba(7, 14, 92, 0.4);
 }

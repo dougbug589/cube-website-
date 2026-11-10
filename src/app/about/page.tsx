@@ -48,17 +48,17 @@ export default function CompleteAboutExperience() {
       />
 
       {/* Sticky Apple Glass Anchor Navigation Bar */}
-      <section className="sticky top-20 z-40 bg-white/80 backdrop-blur-2xl border-y border-[#BDD7E8]/70 py-3 px-4 shadow-xs">
-        <div className="max-w-7xl mx-auto flex items-center justify-between gap-4 overflow-x-auto scrollbar-none">
-          <div className="flex items-center space-x-1 sm:space-x-2 shrink-0">
+      <section className="sticky top-20 z-40 bg-white/85 backdrop-blur-2xl border-y border-[#BDD7E8]/70 py-3.5 px-4 sm:px-6 shadow-xs">
+        <div className="max-w-7xl mx-auto flex items-center justify-start gap-2 overflow-x-auto scrollbar-none no-scrollbar py-1">
+          <div className="flex items-center space-x-1.5 sm:space-x-2 shrink-0">
             {navAnchors.map((item) => (
               <button
                 key={item.id}
                 onClick={() => scrollTo(item.id)}
-                className={`px-3.5 py-1.5 rounded-full text-xs font-semibold tracking-wider transition-all duration-300 whitespace-nowrap ${
+                className={`px-4 py-2 rounded-full text-xs font-semibold tracking-wider transition-all duration-300 whitespace-nowrap cursor-pointer active:scale-95 ${
                   activeSection === item.id
-                    ? 'bg-[#070E5C] text-white shadow-xs'
-                    : 'bg-white/60 text-[#24272B] hover:bg-[#EAF2F8] hover:text-[#070E5C] border border-[#BDD7E8]/60'
+                    ? 'bg-[#070E5C] text-white shadow-sm'
+                    : 'bg-white/80 text-[#24272B] hover:bg-[#EAF2F8] hover:text-[#070E5C] border border-[#BDD7E8]'
                 }`}
               >
                 {item.label}

@@ -39,9 +39,9 @@ export default function CompleteVerticalsExperience() {
       />
 
       {/* Sticky Apple Glass Anchor Navigation Bar */}
-      <section className="sticky top-20 z-40 bg-white/80 backdrop-blur-2xl border-y border-[#BDD7E8]/70 py-3 px-4 shadow-xs">
-        <div className="max-w-7xl mx-auto flex items-center justify-between gap-4 overflow-x-auto scrollbar-none">
-          <div className="flex items-center space-x-2 shrink-0">
+      <section className="sticky top-20 z-40 bg-white/85 backdrop-blur-2xl border-y border-[#BDD7E8]/70 py-3.5 px-4 sm:px-6 shadow-xs">
+        <div className="max-w-7xl mx-auto flex items-center justify-start gap-2 overflow-x-auto scrollbar-none no-scrollbar py-1">
+          <div className="flex items-center space-x-1.5 sm:space-x-2 shrink-0">
             {navAnchors.map((item) => (
               <button
                 key={item.id}
