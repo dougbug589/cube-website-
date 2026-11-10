@@ -80,20 +80,20 @@ export default function UniversalAnnouncementPopup() {
                 dismiss(ann.id, ann.frequency);
               }
             }}
-            className="pointer-events-auto rounded-3xl bg-white/92 backdrop-blur-2xl border border-[#BDD7E8] shadow-[0_16px_40px_rgba(7,14,92,0.1),inset_0_1px_1px_rgba(255,255,255,0.95)] p-4 sm:p-5 relative select-none"
+            className="pointer-events-auto rounded-3xl bg-white backdrop-blur-2xl border border-[#BDD7E8] shadow-[0_20px_50px_rgba(7,14,92,0.18),0_4px_16px_rgba(36,39,43,0.08)] p-5 relative select-none"
           >
             {/* Specular highlight line */}
-            <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-white to-transparent opacity-90" />
+            <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#BDD7E8] to-transparent opacity-90" />
 
             {ann.imageUrl && (
-              <div className="relative h-32 w-full rounded-2xl overflow-hidden mb-3 border border-[#BDD7E8]/60 shadow-xs">
+              <div className="relative h-36 w-full rounded-2xl overflow-hidden mb-3.5 border border-[#BDD7E8]/80 shadow-xs">
                 <Image
                   src={ann.imageUrl}
                   alt={ann.title}
                   fill
                   className="object-cover"
                 />
-                <div className="absolute top-2 left-2 px-2.5 py-0.5 rounded-full bg-[#D99A42] text-white text-[9px] font-bold tracking-wider shadow-xs flex items-center gap-1">
+                <div className="absolute top-2.5 left-2.5 px-3 py-1 rounded-full bg-[#D99A42] text-white text-[10px] font-bold tracking-wider shadow-sm flex items-center gap-1.5">
                   <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
                   <span>{ann.badge || 'WE ARE HIRING'}</span>
                 </div>
@@ -103,42 +103,45 @@ export default function UniversalAnnouncementPopup() {
             <div className="flex items-start justify-between gap-3">
               <div className="flex items-center gap-2">
                 <span className="w-2 h-2 rounded-full bg-[#D99A42] animate-pulse" />
-                <span className="text-[10px] font-bold uppercase tracking-wider text-[#070E5C] bg-[#EAF2F8] px-2.5 py-0.5 rounded-full border border-[#BDD7E8]">
+                <span className="text-[10px] font-bold uppercase tracking-wider text-[#070E5C] bg-[#EAF2F8] px-3 py-1 rounded-full border border-[#BDD7E8]">
                   {ann.badge || ann.type || 'Announcement'}
                 </span>
               </div>
 
               <button
                 onClick={() => dismiss(ann.id, ann.frequency)}
-                className="text-[#747B83] hover:text-[#24272B] p-1 rounded-full hover:bg-slate-100 transition-colors"
+                className="text-[#747B83] hover:text-[#070E5C] p-1.5 rounded-full hover:bg-[#EAF2F8] transition-colors cursor-pointer"
                 aria-label="Dismiss announcement"
               >
-                <X className="w-3.5 h-3.5" />
+                <X className="w-4 h-4" />
               </button>
             </div>
 
-            <div className="mt-2.5 space-y-1">
-              <h4 className="text-xs sm:text-sm font-bold font-serif text-[#24272B] tracking-tight line-clamp-1">
+            <div className="mt-3 space-y-1.5">
+              <h4 className="text-sm sm:text-base font-bold font-serif text-[#070E5C] tracking-tight line-clamp-2">
                 {ann.title}
               </h4>
-              <p className="text-[11px] text-[#747B83] leading-relaxed line-clamp-2">
+              <p className="text-xs text-[#24272B] font-medium leading-relaxed line-clamp-3">
                 {ann.description}
               </p>
             </div>
 
             {ann.ctaUrl && (
-              <div className="mt-3 pt-2.5 border-t border-[#E5E7EB] flex items-center justify-between">
+              <div className="mt-4 pt-3 border-t border-[#E5E7EB] flex items-center justify-between">
                 <Link
                   href={ann.ctaUrl}
                   onClick={() => dismiss(ann.id, ann.frequency)}
-                  className="inline-flex items-center gap-1 text-[11px] font-semibold text-[#070E5C] hover:text-[#D99A42] transition-colors"
+                  className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-[#EAF2F8] hover:bg-[#070E5C] text-[#070E5C] hover:text-white font-bold text-xs border border-[#BDD7E8] transition-all shadow-2xs hover:shadow-xs active:scale-95"
                 >
                   <span>{ann.ctaText || 'Learn More'}</span>
-                  <ArrowUpRight className="w-3 h-3 text-[#D99A42]" />
+                  <ArrowUpRight className="w-3.5 h-3.5 text-[#D99A42]" />
                 </Link>
-                <span className="text-[9px] text-[#747B83] uppercase tracking-wider">
-                  Swipe to dismiss
-                </span>
+                <button
+                  onClick={() => dismiss(ann.id, ann.frequency)}
+                  className="text-[10px] font-semibold text-[#747B83] hover:text-[#070E5C] uppercase tracking-wider cursor-pointer"
+                >
+                  Dismiss
+                </button>
               </div>
             )}
           </motion.div>
