@@ -16,7 +16,7 @@ export default function ContactPage() {
     email: '',
     phone: '',
     organization: '',
-    enquiryCategory: 'General Technical Enquiry',
+    enquiryCategory: '',
     message: '',
   });
 
@@ -245,21 +245,16 @@ export default function ContactPage() {
 
                     <div>
                       <label className="block text-xs font-semibold text-[#24272B] mb-1.5">
-                        Technical Discipline Category
+                        Technical Discipline Category *
                       </label>
-                      <select
+                      <input
+                        type="text"
+                        required
                         value={formData.enquiryCategory}
                         onChange={(e) => setFormData({ ...formData, enquiryCategory: e.target.value })}
                         className="w-full px-4 py-2.5 rounded-2xl bg-white border border-[#BDD7E8] text-xs text-[#24272B] focus:outline-none focus:border-[#070E5C] shadow-2xs"
-                      >
-                        <option value="General Technical Enquiry">General Technical Enquiry</option>
-                        <option value="Building & Construction (TPQA/PMC)">Building &amp; Construction (TPQA / PMC)</option>
-                        <option value="Environment & Sustainability">Environment &amp; Sustainability</option>
-                        <option value="CEL Analytical Laboratory Testing">CEL Analytical Laboratory Testing</option>
-                        <option value="Smart Cities & IoT Telemetry">Smart Cities &amp; IoT Telemetry</option>
-                        <option value="Urban Planning & Transportation">Urban Planning &amp; Transportation</option>
-                        <option value="Academic Collaboration (IIT Madras)">Academic Collaboration (IIT Madras)</option>
-                      </select>
+                        placeholder="Type discipline manually (e.g. Building & Construction, Environment, Smart Cities, Testing...)"
+                      />
                     </div>
 
                     <div>

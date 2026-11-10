@@ -47,8 +47,8 @@ export default function CELPage() {
     email: '',
     phone: '',
     organization: '',
-    matrix: 'Water Quality Testing',
-    sampleCount: '1-5',
+    matrix: '',
+    sampleCount: '',
     parametersNeeded: '',
   });
 
@@ -274,33 +274,28 @@ Parameters / Notes: ${formData.parametersNeeded || 'Standard Matrix Parameters'}
                     <label className="text-xs font-bold text-[#070E5C] block mb-1">
                       Sample Matrix / Category *
                     </label>
-                    <select
+                    <input
+                      type="text"
+                      required
                       value={formData.matrix}
                       onChange={(e) => setFormData({ ...formData, matrix: e.target.value })}
+                      placeholder="Type sample category manually (e.g. Water Quality, Wastewater, Soil, Concrete...)"
                       className="w-full px-4 py-2.5 rounded-xl bg-white border border-[#C4CAD8] text-xs focus:outline-none focus:border-[#D7A00F] transition shadow-sm"
-                    >
-                      <option value="Water Quality Testing (IS 10500)">Water Quality Testing (IS 10500)</option>
-                      <option value="Wastewater / STP Effluent (CPCB Norms)">Wastewater / STP Effluent (CPCB Norms)</option>
-                      <option value="Solid Waste & Sludge Characterization">Solid Waste &amp; Sludge Characterization</option>
-                      <option value="Heavy Metals / Trace Analysis (ICP-MS)">Heavy Metals / Trace Analysis (ICP-MS)</option>
-                      <option value="Environmental Impact / Baseline Audit">Environmental Impact / Baseline Audit</option>
-                    </select>
+                    />
                   </div>
 
                   <div>
                     <label className="text-xs font-bold text-[#070E5C] block mb-1">
-                      Estimated Sample Volume
+                      Estimated Sample Volume *
                     </label>
-                    <select
+                    <input
+                      type="text"
+                      required
                       value={formData.sampleCount}
                       onChange={(e) => setFormData({ ...formData, sampleCount: e.target.value })}
+                      placeholder="Type volume manually (e.g. 5 Samples, 20 Samples, 50 Litres...)"
                       className="w-full px-4 py-2.5 rounded-xl bg-white border border-[#C4CAD8] text-xs focus:outline-none focus:border-[#D7A00F] transition shadow-sm"
-                    >
-                      <option value="1-5 Samples">1 - 5 Samples</option>
-                      <option value="6-20 Samples">6 - 20 Samples</option>
-                      <option value="20+ Samples">20+ Samples</option>
-                      <option value="Recurring Monthly Retainer">Recurring Monthly Retainer</option>
-                    </select>
+                    />
                   </div>
                 </div>
 
