@@ -5,16 +5,20 @@ import PageHeader from '@/components/common/PageHeader';
 import ProjectCard from '@/components/cards/ProjectCard';
 import { Leaf, Droplets, CheckCircle2, ArrowRight, FlaskConical, Waves, ShieldCheck } from 'lucide-react';
 import { verticals } from '@/data/verticals';
-import { projects } from '@/data/projects';
+import { getPublishedProjects } from '@/lib/db/queries';
+
+// Always render with live CMS data (archived projects disappear instantly).
+export const dynamic = 'force-dynamic';
 
 export const metadata = {
   title: 'Environment & Sustainability Vertical | CUBE IIT Madras',
   description: 'Water resources, STP/ETP design, 2D flood hydrodynamic modeling, lake rejuvenation, and sustainability advisory by CUBE.',
 };
 
-export default function EnvironmentSustainabilityPage() {
+export default async function EnvironmentSustainabilityPage() {
+  const projects = await getPublishedProjects();
   const vertical = verticals.find((v) => v.id === 'environment-sustainability')!;
-  const verticalProjects = projects.filter((p) => p.category === 'Environment & Sustainability');
+  const verticalProjects = projects.filter((p: any) => p.category === 'Environment & Sustainability');
 
   return (
     <div className="bg-slate-50 min-h-screen">

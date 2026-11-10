@@ -1,6 +1,8 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
+import { usePathname } from 'next/navigation';
+import { useCmsUpdates } from '@/lib/live';
 import Link from 'next/link';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -27,28 +29,40 @@ export default function UniversalAnnouncementPopup() {
   const [announcements, setAnnouncements] = useState<Announcement[]>([]);
   const [dismissedIds, setDismissedIds] = useState<string[]>([]);
 
-  useEffect(() => {
-    async function loadAnnouncements() {
-      try {
-        const res = await fetch('/api/public/announcements');
-        if (!res.ok) return;
-        const data = await res.json();
-        if (Array.isArray(data) && data.length > 0) {
-          // Filter out frequency === 'once_per_session' if already seen
-          const visible = data.filter((ann: Announcement) => {
-            if (ann.frequency === 'once_per_session') {
-              return !sessionStorage.getItem(`cube_ann_seen_${ann.id}`);
-            }
+  const pathname = usePathname();
+
+  // Load announcements targeted at THIS page (previously the page was never
+  // sent, so home-only popups appeared on every page). Reloads on navigation
+  // and instantly when an admin changes announcements.
+  const loadAnnouncements = useCallback(async () => {
+    try {
+      const res = await fetch(`/api/public/announcements?page=${encodeURIComponent(pathname || '/')}`, {
+        cache: 'no-store',
+      });
+      if (!res.ok) return;
+      const data = await res.json();
+      if (!Array.isArray(data)) return;
+      const visible = data.filter((ann: Announcement) => {
+        if (ann.frequency === 'once_per_session') {
+          try {
+            return !sessionStorage.getItem(`cube_ann_seen_${ann.id}`);
+          } catch {
             return true;
-          });
-          setAnnouncements(visible.slice(0, 3)); // Stack up to 3 announcements
+          }
         }
-      } catch (e) {
-        // Fallback or offline resilience
-      }
+        return true;
+      });
+      setAnnouncements(visible.slice(0, 3)); // Stack up to 3 announcements
+    } catch {
+      // Offline: keep current state.
     }
+  }, [pathname]);
+
+  useEffect(() => {
     loadAnnouncements();
-  }, []);
+  }, [loadAnnouncements]);
+
+  useCmsUpdates(loadAnnouncements);
 
   const dismiss = (id: string, frequency: string) => {
     if (frequency === 'once_per_session') {
@@ -64,7 +78,7 @@ export default function UniversalAnnouncementPopup() {
   if (activeAnnouncements.length === 0) return null;
 
   return (
-    <div className="fixed top-24 right-4 sm:right-8 z-50 flex flex-col gap-3 pointer-events-none max-w-sm w-full">
+    <div className="fixed z-50 flex flex-col gap-3 pointer-events-none left-3 right-3 bottom-[max(0.75rem,env(safe-area-inset-bottom))] sm:left-auto sm:bottom-auto sm:top-24 sm:right-8 sm:w-full sm:max-w-sm">
       <AnimatePresence>
         {activeAnnouncements.map((ann, idx) => (
           <motion.div
@@ -74,19 +88,20 @@ export default function UniversalAnnouncementPopup() {
             exit={{ opacity: 0, y: -20, scale: 0.92, transition: { duration: 0.2 } }}
             transition={{ type: 'spring', stiffness: 350, damping: 28, delay: idx * 0.1 }}
             drag="x"
-            dragConstraints={{ left: 0, right: 200 }}
+            dragConstraints={{ left: 0, right: 0 }}
+            dragElastic={0.6}
             onDragEnd={(_, info) => {
               if (Math.abs(info.offset.x) > 60) {
                 dismiss(ann.id, ann.frequency);
               }
             }}
-            className="pointer-events-auto rounded-3xl bg-white backdrop-blur-2xl border border-[#BDD7E8] shadow-[0_20px_50px_rgba(7,14,92,0.18),0_4px_16px_rgba(36,39,43,0.08)] p-5 relative select-none"
+            className="pointer-events-auto rounded-3xl bg-white backdrop-blur-2xl border border-[#BDD7E8] shadow-[0_20px_50px_rgba(7,14,92,0.18),0_4px_16px_rgba(36,39,43,0.08)] p-4 sm:p-5 relative select-none max-h-[70vh] overflow-y-auto"
           >
             {/* Specular highlight line */}
             <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#BDD7E8] to-transparent opacity-90" />
 
             {ann.imageUrl && (
-              <div className="relative h-36 w-full rounded-2xl overflow-hidden mb-3.5 border border-[#BDD7E8]/80 shadow-xs">
+              <div className="relative hidden sm:block h-36 w-full rounded-2xl overflow-hidden mb-3.5 border border-[#BDD7E8]/80 shadow-xs">
                 <Image
                   src={ann.imageUrl}
                   alt={ann.title}
@@ -110,7 +125,7 @@ export default function UniversalAnnouncementPopup() {
 
               <button
                 onClick={() => dismiss(ann.id, ann.frequency)}
-                className="text-[#747B83] hover:text-[#070E5C] p-1.5 rounded-full hover:bg-[#EAF2F8] transition-colors cursor-pointer"
+                className="text-[#747B83] hover:text-[#070E5C] p-2.5 -m-1 rounded-full hover:bg-[#EAF2F8] transition-colors cursor-pointer"
                 aria-label="Dismiss announcement"
               >
                 <X className="w-4 h-4" />
@@ -121,7 +136,7 @@ export default function UniversalAnnouncementPopup() {
               <h4 className="text-sm sm:text-base font-bold font-serif text-[#070E5C] tracking-tight line-clamp-2">
                 {ann.title}
               </h4>
-              <p className="text-xs text-[#24272B] font-medium leading-relaxed line-clamp-3">
+              <p className="text-xs text-[#24272B] font-medium leading-relaxed line-clamp-2 sm:line-clamp-3">
                 {ann.description}
               </p>
             </div>
@@ -131,14 +146,14 @@ export default function UniversalAnnouncementPopup() {
                 <Link
                   href={ann.ctaUrl}
                   onClick={() => dismiss(ann.id, ann.frequency)}
-                  className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-[#EAF2F8] hover:bg-[#070E5C] text-[#070E5C] hover:text-white font-bold text-xs border border-[#BDD7E8] transition-all shadow-2xs hover:shadow-xs active:scale-95"
+                  className="inline-flex items-center gap-1.5 px-4 py-2 sm:py-1.5 rounded-full bg-[#EAF2F8] hover:bg-[#070E5C] text-[#070E5C] hover:text-white font-bold text-xs border border-[#BDD7E8] transition-all shadow-2xs hover:shadow-xs active:scale-95"
                 >
                   <span>{ann.ctaText || 'Learn More'}</span>
                   <ArrowUpRight className="w-3.5 h-3.5 text-[#D99A42]" />
                 </Link>
                 <button
                   onClick={() => dismiss(ann.id, ann.frequency)}
-                  className="text-[10px] font-semibold text-[#747B83] hover:text-[#070E5C] uppercase tracking-wider cursor-pointer"
+                  className="text-[10px] font-semibold text-[#747B83] hover:text-[#070E5C] uppercase tracking-wider cursor-pointer px-2 py-2.5 -my-2"
                 >
                   Dismiss
                 </button>

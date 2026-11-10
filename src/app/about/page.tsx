@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import PageHeader from '@/components/common/PageHeader';
@@ -10,11 +10,29 @@ import {
   Briefcase, Phone, Mail, ExternalLink, ChevronRight
 } from 'lucide-react';
 import { aboutContent } from '@/data/about';
-import { boardMembers, advisoryPanel } from '@/data/leadership';
-import { teamMembers } from '@/data/team';
-import { clients } from '@/data/clients';
+import { boardMembers as fallbackBoard, advisoryPanel as fallbackAdvisory } from '@/data/leadership';
+import { teamMembers as fallbackTeam } from '@/data/team';
+import { clients as fallbackClients } from '@/data/clients';
+import { useLiveList } from '@/lib/live';
+
+const LEADER_CATEGORIES = new Set(['leadership', 'board', 'advisory']);
+const FALLBACK_PEOPLE: any[] = [
+  ...fallbackBoard.map((m) => ({ ...m, category: 'board' })),
+  ...fallbackAdvisory.map((m) => ({ ...m, category: 'advisory' })),
+  ...fallbackTeam.map((m) => ({ ...m, category: m.department })),
+];
+const withRole = (list: any[]) =>
+  list.map((m) => ({ ...m, role: m.role || m.designation || '' }));
 
 export default function CompleteAboutExperience() {
+  // Live CMS data: archived/edited members and clients update instantly.
+  const people = useLiveList<any>('/api/public/team', FALLBACK_PEOPLE, withRole);
+  const clients = useLiveList<any>('/api/public/clients', fallbackClients as any[]);
+  const { boardMembers, advisoryPanel, teamMembers } = useMemo(() => ({
+    boardMembers: people.filter((m) => m.category === 'board'),
+    advisoryPanel: people.filter((m) => m.category === 'advisory'),
+    teamMembers: people.filter((m) => !LEADER_CATEGORIES.has(m.category)),
+  }), [people]);
   const [activeSection, setActiveSection] = useState('overview');
   const [showAllTeam, setShowAllTeam] = useState(false);
 
@@ -448,7 +466,7 @@ export default function CompleteAboutExperience() {
               onClick={() => setShowAllTeam(!showAllTeam)}
               className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full text-xs font-bold uppercase tracking-wider text-white bg-[#070E5C] hover:bg-[#D99A42] shadow-[0_8px_24px_rgba(7,14,92,0.15)] hover:shadow-lg transition-all duration-300 active:scale-95 cursor-pointer"
             >
-              <span>{showAllTeam ? 'Show Less (12 Members)' : `View All 80 Members (+${teamMembers.length - 12} More)`}</span>
+              <span>{showAllTeam ? 'Show Less (12 Members)' : `View All ${teamMembers.length} Members (+${Math.max(teamMembers.length - 12, 0)} More)`}</span>
               <ChevronRight className={`w-4 h-4 transition-transform duration-300 ${showAllTeam ? '-rotate-90' : 'rotate-90'}`} />
             </button>
           </div>

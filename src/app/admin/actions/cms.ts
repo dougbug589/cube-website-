@@ -2,7 +2,7 @@
 
 import { cookies } from 'next/headers';
 import { revalidatePath } from 'next/cache';
-import { getCMSStore, saveCMSStore, verifyAdminToken, UserRole } from '@/lib/db/store';
+import { getCMSStore, saveCMSStore, resolveAdminSession, UserRole } from '@/lib/db/store';
 
 // Keys that must never be supplied by client payloads (mass-assignment guard).
 const PROTECTED_KEYS = new Set([
@@ -24,28 +24,30 @@ function sanitizeData<T extends Record<string, any>>(data: T): Record<string, an
   return clean;
 }
 
+// On UPDATE, a blank image/link field means "keep the current one": never
+// silently wipe an existing image path because a form field was left empty.
+const URL_FIELD = /(url|link|href|src|image|images|logo|photo|thumbnail|banner|file|document)$/i;
+function dropBlankUrlFields(data: Record<string, any>): Record<string, any> {
+  const out: Record<string, any> = {};
+  for (const [key, value] of Object.entries(data)) {
+    const blank =
+      value === '' || value === null || value === undefined ||
+      (Array.isArray(value) && value.length === 0);
+    if (URL_FIELD.test(key) && blank) continue;
+    out[key] = value;
+  }
+  return out;
+}
+
 // Helper to assert admin privileges
 async function assertPermission(allowedRoles: UserRole[] = ['super_admin', 'admin', 'editor']) {
   const token = (await cookies()).get('cube_admin_session')?.value;
-  if (!token) throw new Error('Unauthorized: Authentication required');
-  const session = verifyAdminToken(token);
-  if (!session) throw new Error('Unauthorized: Session expired');
-
-  const store = getCMSStore();
-  const user = store.users.find((u) => u.id === session.userId);
-  if (!user || !user.isActive) {
-    throw new Error('Unauthorized: Account is inactive or no longer exists');
-  }
-  if (!allowedRoles.includes(user.role)) {
+  const session = resolveAdminSession(token);
+  if (!session) throw new Error('Unauthorized: Session expired or signed out');
+  if (!allowedRoles.includes(session.role)) {
     throw new Error(`Forbidden: Insufficient privileges. Required: ${allowedRoles.join(', ')}`);
   }
-
-  return {
-    userId: user.id,
-    email: user.email,
-    fullName: user.fullName,
-    role: user.role,
-  };
+  return session;
 }
 
 // -------------------------------------------------------------
@@ -326,7 +328,7 @@ export async function updateProjectAction(idOrSlug: string, data: any) {
 
   store.projects[idx] = {
     ...store.projects[idx],
-    ...sanitizeData(data),
+    ...dropBlankUrlFields(sanitizeData(data)),
     updatedAt: new Date().toISOString(),
   };
 
@@ -425,7 +427,7 @@ export async function updateCareerAction(id: string, data: any) {
 
   store.careers[idx] = {
     ...store.careers[idx],
-    ...sanitizeData(data),
+    ...dropBlankUrlFields(sanitizeData(data)),
     updatedAt: new Date().toISOString(),
   };
 

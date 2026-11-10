@@ -65,6 +65,7 @@ import SustainabilityStorytelling from '@/components/home/SustainabilityStorytel
 import ResearchInnovation from '@/components/home/ResearchInnovation';
 
 import { verticals as fallbackVerticals } from '@/data/verticals';
+import { CMS_UPDATED_EVENT } from '@/lib/live';
 
 
 
@@ -133,16 +134,16 @@ export default function HomePage() {
 
       if (!active) return;
 
-      if (Array.isArray(projectsData) && projectsData.length > 0) {
+      if (Array.isArray(projectsData)) {
         setProjectList(projectsData);
       }
-      if (Array.isArray(verticalsData) && verticalsData.length > 0) {
+      if (Array.isArray(verticalsData)) {
         setVerticalList(verticalsData);
       }
-      if (Array.isArray(celData) && celData.length > 0) {
+      if (Array.isArray(celData)) {
         setCelServiceList(celData);
       }
-      if (Array.isArray(teamData) && teamData.length > 0) {
+      if (Array.isArray(teamData)) {
         const board = teamData
           .filter((member: any) => member.category === 'board')
           .map((member: any) => ({
@@ -158,9 +159,9 @@ export default function HomePage() {
             organization: member.organization || member.department || 'IIT Madras',
           }));
         const leaders = board.length > 0 ? board : leadership;
-        if (leaders.length > 0) setBoardList(leaders);
+        setBoardList(leaders);
       }
-      if (Array.isArray(clientsData) && clientsData.length > 0) {
+      if (Array.isArray(clientsData)) {
         setClientList(
           clientsData.map((client: any) => ({
             ...client,
@@ -169,7 +170,7 @@ export default function HomePage() {
           }))
         );
       }
-      if (Array.isArray(newsData) && newsData.length > 0) {
+      if (Array.isArray(newsData)) {
         setNewsList(
           newsData.map((item: any) => ({
             ...item,
@@ -180,14 +181,14 @@ export default function HomePage() {
     };
 
     load();
-    const interval = setInterval(load, 30000);
-    const onFocus = () => load();
-    window.addEventListener('focus', onFocus);
+    // Refetch instantly whenever an admin saves content (see LiveSync).
+    window.addEventListener(CMS_UPDATED_EVENT, load);
+    window.addEventListener('focus', load);
 
     return () => {
       active = false;
-      clearInterval(interval);
-      window.removeEventListener('focus', onFocus);
+      window.removeEventListener(CMS_UPDATED_EVENT, load);
+      window.removeEventListener('focus', load);
     };
   }, []);
 

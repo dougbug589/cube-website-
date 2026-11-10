@@ -9,9 +9,11 @@ import {
   FlaskConical, Cpu, Compass, Waves, Trees, MapPin
 } from 'lucide-react';
 import { verticals } from '@/data/verticals';
-import { projects } from '@/data/projects';
+import { projects as fallbackProjects } from '@/data/projects';
+import { useLiveList } from '@/lib/live';
 
 export default function CompleteVerticalsExperience() {
+  const projects = useLiveList<any>('/api/public/projects', fallbackProjects as any[]);
   const [activeVertical, setActiveVertical] = useState('building-construction');
 
   const navAnchors = [

@@ -23,6 +23,8 @@ export interface UserProfile {
   role: UserRole;
   isActive: boolean;
   createdAt: string;
+  /** Incremented on logout / password change to revoke every issued token. */
+  sessionVersion?: number;
 }
 
 export interface CMSStore {
@@ -42,6 +44,8 @@ export interface CMSStore {
   enquiries: any[];
   jobApplications?: any[];
 }
+
+const MAX_AUDIT_LOGS = 5000;
 
 let cachedStore: CMSStore | null = null;
 let lastMtime: number = 0;
@@ -306,6 +310,12 @@ export const saveCMSStore = (store: CMSStore) => {
   // admin input can never alter the public site's typography or inject markup.
   sanitizeStoreContent(store);
 
+  // Keep the audit trail bounded so every save (which rewrites the whole file)
+  // stays fast as the site ages.
+  if (Array.isArray(store.auditLogs) && store.auditLogs.length > MAX_AUDIT_LOGS) {
+    store.auditLogs = store.auditLogs.slice(0, MAX_AUDIT_LOGS);
+  }
+
   if (!fs.existsSync(DATA_DIR)) {
     fs.mkdirSync(DATA_DIR, { recursive: true });
   }
@@ -337,15 +347,64 @@ export interface AdminSession {
   role: UserRole;
 }
 
-export function signAdminToken(session: AdminSession): string {
-  return jwt.sign(session, getJwtSecret(), { expiresIn: '7d' });
+interface AdminTokenPayload extends AdminSession {
+  sv?: number;
 }
 
-export function verifyAdminToken(token: string): AdminSession | null {
+// Short-lived token; the cookie itself is a browser-session cookie.
+export const ADMIN_SESSION_TTL = '8h';
+
+export function signAdminToken(session: AdminSession, sessionVersion = 0): string {
+  const payload: AdminTokenPayload = { ...session, sv: sessionVersion };
+  return jwt.sign(payload, getJwtSecret(), { expiresIn: ADMIN_SESSION_TTL });
+}
+
+export function verifyAdminToken(token: string): (AdminSession & { sv: number }) | null {
   try {
-    return jwt.verify(token, getJwtSecret()) as AdminSession;
+    const decoded = jwt.verify(token, getJwtSecret()) as AdminTokenPayload;
+    return { ...decoded, sv: decoded.sv ?? 0 };
   } catch (e) {
     return null;
   }
 }
 
+/**
+ * Single source of truth for "is this token a live admin session?".
+ * Verifies the signature, then re-checks the live store so deactivated users,
+ * role changes, and logged-out (revoked) tokens lose access immediately.
+ */
+export function resolveAdminSession(token: string | undefined | null): AdminSession | null {
+  if (!token) return null;
+  const session = verifyAdminToken(token);
+  if (!session) return null;
+
+  const store = getCMSStore();
+  const user = store.users.find((u) => u.id === session.userId);
+  if (!user || !user.isActive) return null;
+  if ((user.sessionVersion ?? 0) !== session.sv) return null;
+
+  return {
+    userId: user.id,
+    email: user.email,
+    fullName: user.fullName,
+    role: user.role,
+  };
+}
+
+/** Revoke every token issued to this user (used by logout). */
+export function revokeAdminSessions(userId: string) {
+  const store = getCMSStore();
+  const user = store.users.find((u) => u.id === userId);
+  if (!user) return;
+  user.sessionVersion = (user.sessionVersion ?? 0) + 1;
+  saveCMSStore(store);
+}
+
+/** Version stamp of the CMS store; changes whenever any content is saved. */
+export function getStoreVersion(): number {
+  try {
+    return fs.statSync(DB_FILE).mtimeMs;
+  } catch {
+    return 0;
+  }
+}

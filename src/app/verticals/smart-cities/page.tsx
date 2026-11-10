@@ -5,16 +5,20 @@ import PageHeader from '@/components/common/PageHeader';
 import ProjectCard from '@/components/cards/ProjectCard';
 import { Cpu, Wifi, CheckCircle2, ArrowRight, ShieldCheck, Activity } from 'lucide-react';
 import { verticals } from '@/data/verticals';
-import { projects } from '@/data/projects';
+import { getPublishedProjects } from '@/lib/db/queries';
+
+// Always render with live CMS data (archived projects disappear instantly).
+export const dynamic = 'force-dynamic';
 
 export const metadata = {
   title: 'Smart Cities & Urban Tech | CUBE IIT Madras',
   description: 'Smart urban infrastructure, IoT telemetry, SCADA systems, digital twins, and intelligent city solutions by CUBE.',
 };
 
-export default function SmartCitiesPage() {
+export default async function SmartCitiesPage() {
+  const projects = await getPublishedProjects();
   const vertical = verticals.find((v) => v.id === 'smart-cities')!;
-  const verticalProjects = projects.filter((p) => p.category === 'Smart Cities');
+  const verticalProjects = projects.filter((p: any) => p.category === 'Smart Cities');
 
   return (
     <div>

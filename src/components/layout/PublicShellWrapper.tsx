@@ -6,6 +6,7 @@ import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import UniversalAnnouncementPopup from '@/components/common/UniversalAnnouncementPopup';
 import ScrollProgressBar from '@/components/common/ScrollProgressBar';
+import LiveSync from '@/components/common/LiveSync';
 
 export default function PublicShellWrapper({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
@@ -13,11 +14,17 @@ export default function PublicShellWrapper({ children }: { children: React.React
 
   if (isAdmin) {
     // Admin interface must be completely separate from public website header/footer
-    return <main className="min-h-screen bg-slate-100">{children}</main>;
+    return (
+      <main className="min-h-screen bg-slate-100">
+        {pathname !== '/admin/login' && <LiveSync />}
+        {children}
+      </main>
+    );
   }
 
   return (
     <div className="relative min-h-screen bg-[#F0F4F8] p-2 sm:p-4 md:p-6 lg:p-8 flex flex-col items-center">
+      <LiveSync />
       <ScrollProgressBar />
       <UniversalAnnouncementPopup />
       

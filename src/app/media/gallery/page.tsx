@@ -1,4 +1,5 @@
 'use client';
+import { useCmsUpdates } from '@/lib/live';
 
 import React, { useCallback, useEffect, useState } from 'react';
 import Image from 'next/image';
@@ -46,7 +47,8 @@ export default function GalleryPage() {
       const res = await fetch('/api/public/gallery', { cache: 'no-store' });
       if (!res.ok) return;
       const data = await res.json();
-      if (!Array.isArray(data) || data.length === 0) return;
+      // Respect an empty list (everything archived) instead of showing stale fallback.
+      if (!Array.isArray(data)) return;
       setItems(
         data.map((item: any, index: number) => ({
           id: index + 1,
@@ -63,14 +65,10 @@ export default function GalleryPage() {
 
   useEffect(() => {
     loadGallery();
-    const interval = setInterval(loadGallery, 30000);
-    const onFocus = () => loadGallery();
-    window.addEventListener('focus', onFocus);
-    return () => {
-      clearInterval(interval);
-      window.removeEventListener('focus', onFocus);
-    };
   }, [loadGallery]);
+
+  // Refetch instantly whenever an admin changes the gallery.
+  useCmsUpdates(loadGallery);
 
   const categories = ['All', ...Array.from(new Set(items.map((item) => item.category)))];
 

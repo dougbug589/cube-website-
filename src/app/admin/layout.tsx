@@ -80,10 +80,15 @@ export default function AdminDashboardLayout({ children }: AdminLayoutProps) {
 
   const handleLogout = async () => {
     setLoggingOut(true);
-    // Instant client-side redirect for zero delay
-    window.location.href = '/admin/login';
-    // Clean up server session in background
-    logoutAdminAction().catch(() => {});
+    // The server action must finish (and clear the cookie / revoke the token)
+    // BEFORE navigating away. Navigating first aborted the request, leaving the
+    // session alive so /admin kept opening without a login.
+    try {
+      await logoutAdminAction();
+    } catch {
+      // Fall through: still leave the admin area.
+    }
+    window.location.replace('/admin/login');
   };
 
   const navItems = [

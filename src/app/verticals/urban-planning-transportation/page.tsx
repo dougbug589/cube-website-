@@ -5,16 +5,20 @@ import PageHeader from '@/components/common/PageHeader';
 import ProjectCard from '@/components/cards/ProjectCard';
 import { Compass, Navigation, CheckCircle2, ArrowRight, Bus, MapPin } from 'lucide-react';
 import { verticals } from '@/data/verticals';
-import { projects } from '@/data/projects';
+import { getPublishedProjects } from '@/lib/db/queries';
+
+// Always render with live CMS data (archived projects disappear instantly).
+export const dynamic = 'force-dynamic';
 
 export const metadata = {
   title: 'Urban Planning & Transportation | CUBE IIT Madras',
   description: 'Multimodal transit terminals, comprehensive mobility plans, bus terminus advisory, and sustainable transport planning by CUBE.',
 };
 
-export default function UrbanPlanningTransportationPage() {
+export default async function UrbanPlanningTransportationPage() {
+  const projects = await getPublishedProjects();
   const vertical = verticals.find((v) => v.id === 'urban-planning-transportation')!;
-  const verticalProjects = projects.filter((p) => p.category === 'Urban Planning & Transportation');
+  const verticalProjects = projects.filter((p: any) => p.category === 'Urban Planning & Transportation');
 
   return (
     <div>

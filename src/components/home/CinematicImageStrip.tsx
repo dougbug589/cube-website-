@@ -86,7 +86,7 @@ export default function CinematicImageStrip() {
             </h2>
           </div>
           <p className="text-xs sm:text-sm text-[#747B83] max-w-md">
-            Continuously advancing civil engineering research into enduring public infrastructure across Tamil Nadu and South India. Hover over any case study to inspect.
+            Continuously advancing civil engineering research into enduring public infrastructure across Tamil Nadu and South India. Hover or tap any case study to inspect.
           </p>
         </div>
       </div>

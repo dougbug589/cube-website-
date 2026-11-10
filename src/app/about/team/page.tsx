@@ -5,6 +5,7 @@ import Image from 'next/image';
 import PageHeader from '@/components/common/PageHeader';
 import { Search, Plus, Minus, Users, Briefcase, Building2, Trees, Navigation as NavigationIcon, ChevronDown, ChevronUp } from 'lucide-react';
 import { teamMembers as fallbackTeamMembers } from '@/data/team';
+import { useLiveList } from '@/lib/live';
 
 interface DepartmentSection {
   id: string;
@@ -46,7 +47,8 @@ const DEPARTMENTS: DepartmentSection[] = [
 ];
 
 export default function TeamPage() {
-  const [teamList, setTeamList] = useState<any[]>(fallbackTeamMembers);
+  // Live CMS data (published members only); updates instantly on admin changes.
+  const teamList = useLiveList<any>('/api/public/team', fallbackTeamMembers);
   const [searchQuery, setSearchQuery] = useState('');
   const [openSections, setOpenSections] = useState<Record<string, boolean>>({
     'Building & Construction': true,
@@ -54,31 +56,6 @@ export default function TeamPage() {
     'Urban Planning & Transportation': false,
     'Admin': false,
   });
-
-  // Fetch real-time active team members from dynamic CMS store (excluding archived members)
-  useEffect(() => {
-    async function loadRealtimeTeam() {
-      try {
-        const res = await fetch('/api/public/team', { cache: 'no-store' });
-        if (res.ok) {
-          const data = await res.json();
-          if (Array.isArray(data) && data.length > 0) {
-            setTeamList(data);
-          }
-        }
-      } catch (e) {
-        console.error('Error fetching realtime team members:', e);
-      }
-    }
-    loadRealtimeTeam();
-    const interval = setInterval(loadRealtimeTeam, 30000);
-    const onFocus = () => loadRealtimeTeam();
-    window.addEventListener('focus', onFocus);
-    return () => {
-      clearInterval(interval);
-      window.removeEventListener('focus', onFocus);
-    };
-  }, []);
 
   const toggleSection = (id: string) => {
     setOpenSections((prev) => ({

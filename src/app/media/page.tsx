@@ -8,10 +8,13 @@ import {
   Newspaper, Calendar, Image as ImageIcon, BookOpen, 
   ArrowRight, Sparkles, MapPin, ExternalLink, Download
 } from 'lucide-react';
-import { newsItems } from '@/data/news';
+import { newsItems as fallbackNewsItems } from '@/data/news';
+import { useLiveList } from '@/lib/live';
 
 export default function CompleteMediaExperience() {
   const [activeMediaTab, setActiveMediaTab] = useState('news');
+  // Live CMS news: published items only, updates instantly on admin changes.
+  const newsItems = useLiveList<any>('/api/public/news', fallbackNewsItems as any[]);
 
   const navAnchors = [
     { id: 'news', label: 'News & Announcements' },

@@ -28,6 +28,20 @@ const nextConfig = {
         ],
       },
       {
+        // Never let the browser/back button show a cached admin page after logout.
+        source: '/admin/:path*',
+        headers: [
+          { key: 'Cache-Control', value: 'no-store, no-cache, must-revalidate, max-age=0' },
+          { key: 'X-Robots-Tag', value: 'noindex, nofollow, noarchive' },
+        ],
+      },
+      {
+        source: '/admin',
+        headers: [
+          { key: 'Cache-Control', value: 'no-store, no-cache, must-revalidate, max-age=0' },
+        ],
+      },
+      {
         source: '/images/:path*',
         headers: [
           {

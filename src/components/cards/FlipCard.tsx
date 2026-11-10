@@ -39,8 +39,10 @@ export default function FlipCard({
     <div
       className="w-full h-[470px] select-none group relative cursor-pointer"
       style={{ perspective: '1200px' }}
-      onMouseEnter={() => setIsFlipped(true)}
-      onMouseLeave={() => setIsFlipped(false)}
+      // Hover only for real mice: on touch screens a tap fires mouseenter AND
+      // click together, which flipped the card and immediately flipped it back.
+      onPointerEnter={(e) => e.pointerType === 'mouse' && setIsFlipped(true)}
+      onPointerLeave={(e) => e.pointerType === 'mouse' && setIsFlipped(false)}
       onClick={() => setIsFlipped(!isFlipped)}
       tabIndex={0}
       onKeyDown={(e) => {
@@ -99,7 +101,7 @@ export default function FlipCard({
             {/* Flip Hint */}
             <div className="absolute bottom-3 right-3 z-10 flex items-center space-x-1.5 px-3 py-1 rounded-full bg-white/95 text-[#070E5C] text-[11px] shadow-sm backdrop-blur-sm border border-[#BBD6EA]">
               <RotateCw className="w-3 h-3 text-[#D99A42]" />
-              <span className="text-[10px] font-semibold">Hover to Flip</span>
+              <span className="text-[10px] font-semibold"><span className="hidden [@media(hover:hover)]:inline">Hover to Flip</span><span className="[@media(hover:hover)]:hidden">Tap to Flip</span></span>
             </div>
           </div>
 

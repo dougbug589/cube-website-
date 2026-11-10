@@ -1,39 +1,17 @@
 'use client';
 
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useMemo } from 'react';
+import { useLiveList } from '@/lib/live';
 import PageHeader from '@/components/common/PageHeader';
 import ProjectCard from '@/components/cards/ProjectCard';
 import { Search, Filter, Sparkles } from 'lucide-react';
 import { projects as fallbackProjects } from '@/data/projects';
 
 export default function ProjectsPage() {
-  const [projectList, setProjectList] = useState<any[]>(fallbackProjects);
+  // Live CMS data: updates instantly when an admin edits/archives a project.
+  const projectList = useLiveList<any>('/api/public/projects', fallbackProjects);
   const [selectedCategory, setSelectedCategory] = useState<string>('All');
   const [searchQuery, setSearchQuery] = useState<string>('');
-
-  useEffect(() => {
-    async function loadRealtimeProjects() {
-      try {
-        const res = await fetch('/api/public/projects', { cache: 'no-store' });
-        if (res.ok) {
-          const data = await res.json();
-          if (Array.isArray(data) && data.length > 0) {
-            setProjectList(data);
-          }
-        }
-      } catch (e) {
-        console.error('Error fetching realtime projects:', e);
-      }
-    }
-    loadRealtimeProjects();
-    const interval = setInterval(loadRealtimeProjects, 30000);
-    const onFocus = () => loadRealtimeProjects();
-    window.addEventListener('focus', onFocus);
-    return () => {
-      clearInterval(interval);
-      window.removeEventListener('focus', onFocus);
-    };
-  }, []);
 
   const categories = [
     'All',

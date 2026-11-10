@@ -5,16 +5,20 @@ import PageHeader from '@/components/common/PageHeader';
 import ProjectCard from '@/components/cards/ProjectCard';
 import { Building2, ShieldCheck, CheckCircle2, ArrowRight, Wrench, HardHat } from 'lucide-react';
 import { verticals } from '@/data/verticals';
-import { projects } from '@/data/projects';
+import { getPublishedProjects } from '@/lib/db/queries';
+
+// Always render with live CMS data (archived projects disappear instantly).
+export const dynamic = 'force-dynamic';
 
 export const metadata = {
   title: 'Building & Construction Vertical | CUBE IIT Madras',
   description: 'Structural design, PMC, third-party quality assurance (TPQA), precast technology and engineering consultancy by CUBE.',
 };
 
-export default function BuildingConstructionPage() {
+export default async function BuildingConstructionPage() {
+  const projects = await getPublishedProjects();
   const vertical = verticals.find((v) => v.id === 'building-construction')!;
-  const verticalProjects = projects.filter((p) => p.category === 'Building & Construction');
+  const verticalProjects = projects.filter((p: any) => p.category === 'Building & Construction');
 
   return (
     <div>

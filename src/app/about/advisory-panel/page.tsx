@@ -2,7 +2,6 @@ import React from 'react';
 import Image from 'next/image';
 import PageHeader from '@/components/common/PageHeader';
 import { Award, BookOpen } from 'lucide-react';
-import { advisoryPanel as fallbackAdvisoryPanel } from '@/data/leadership';
 import { getPublishedTeamMembers } from '@/lib/db/queries';
 
 export const dynamic = 'force-dynamic';
@@ -21,7 +20,8 @@ export default async function AdvisoryPanelPage() {
       role: m.designation || m.role || '',
       organization: m.organization || m.department || 'IIT Madras',
     }));
-  const advisoryPanel = advisory.length ? advisory : fallbackAdvisoryPanel;
+  // CMS is the source of truth: archived members must not reappear via a fallback.
+  const advisoryPanel = advisory;
 
   return (
     <div>

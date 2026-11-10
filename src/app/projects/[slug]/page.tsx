@@ -59,7 +59,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
               {/* Hero Image with Apple Frosted Frame */}
               <div className="relative h-96 sm:h-[480px] w-full rounded-3xl overflow-hidden shadow-[0_20px_50px_rgba(7,14,92,0.08)] border-2 border-white ring-1 ring-[#BDD7E8] bg-slate-100">
                 <Image
-                  src={project.heroImage || '/assets/projects/slides_iit-tirupathi.jpg'}
+                  src={project.heroImage || '/images/hero/slides_iit-tirupathi.jpg'}
                   alt={project.title}
                   fill
                   className="object-cover"

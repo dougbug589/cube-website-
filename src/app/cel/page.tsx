@@ -12,35 +12,11 @@ import {
 import { celOverview } from '@/data/cel';
 import { contactInfo } from '@/data/contact';
 import { submitEnquiryAction } from '@/app/actions/enquiries';
+import { useLiveList } from '@/lib/live';
 
 export default function CELPage() {
-  const [testingServices, setTestingServices] = useState<any[]>(celOverview.testingServices);
-
-  useEffect(() => {
-    let active = true;
-
-    const loadServices = () => {
-      fetch('/api/public/cel', { cache: 'no-store' })
-        .then((res) => res.json())
-        .then((data) => {
-          if (active && Array.isArray(data) && data.length > 0) {
-            setTestingServices(data);
-          }
-        })
-        .catch((err) => console.error('Failed to load CEL services', err));
-    };
-
-    loadServices();
-    const interval = setInterval(loadServices, 30000);
-    const onFocus = () => loadServices();
-    window.addEventListener('focus', onFocus);
-
-    return () => {
-      active = false;
-      clearInterval(interval);
-      window.removeEventListener('focus', onFocus);
-    };
-  }, []);
+  // Live CMS data: updates instantly when an admin edits/archives a service.
+  const testingServices = useLiveList<any>('/api/public/cel', celOverview.testingServices);
 
   const [formData, setFormData] = useState({
     name: '',

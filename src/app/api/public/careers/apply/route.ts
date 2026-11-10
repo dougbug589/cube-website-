@@ -1,22 +1,60 @@
 import { NextRequest, NextResponse } from 'next/server';
 import fs from 'fs';
 import path from 'path';
+import crypto from 'crypto';
 import { getCMSStore, saveCMSStore } from '@/lib/db/store';
+import { RESUME_DIR, detectResumeType } from '@/lib/resumes';
 
-// Max file size: 10MB
 const MAX_FILE_SIZE_BYTES = 10 * 1024 * 1024;
+const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+const WINDOW_MS = 10 * 60 * 1000;
+const MAX_PER_WINDOW = 5;
+const attempts = new Map<string, { count: number; windowStart: number }>();
+
+function clientIp(req: NextRequest): string {
+  return (
+    req.headers.get('x-forwarded-for')?.split(',')[0]?.trim() ||
+    req.headers.get('x-real-ip') ||
+    'unknown'
+  );
+}
+
+function isRateLimited(ip: string): boolean {
+  const now = Date.now();
+  const record = attempts.get(ip);
+  if (!record || now - record.windowStart > WINDOW_MS) {
+    attempts.set(ip, { count: 1, windowStart: now });
+    return false;
+  }
+  if (record.count >= MAX_PER_WINDOW) return true;
+  record.count += 1;
+  return false;
+}
+
+function field(formData: FormData, key: string, max: number, fallback = ''): string {
+  const value = formData.get(key);
+  return (typeof value === 'string' ? value : fallback).trim().slice(0, max);
+}
 
 export async function POST(req: NextRequest) {
   try {
+    if (isRateLimited(clientIp(req))) {
+      return NextResponse.json(
+        { error: 'Too many applications from this network. Please try again later.' },
+        { status: 429 }
+      );
+    }
+
     const formData = await req.formData();
-    const fullName = (formData.get('fullName') as string || '').trim();
-    const email = (formData.get('email') as string || '').trim();
-    const phone = (formData.get('phone') as string || '').trim();
-    const experience = (formData.get('experience') as string || '').trim();
-    const domain = (formData.get('domain') as string || '').trim();
-    const jobTitle = (formData.get('jobTitle') as string || 'General Talent Network').trim();
-    const coverLetter = (formData.get('coverLetter') as string || '').trim();
-    const resumeFile = formData.get('resume') as File | null;
+    const fullName = field(formData, 'fullName', 200);
+    const email = field(formData, 'email', 320);
+    const phone = field(formData, 'phone', 50);
+    const experience = field(formData, 'experience', 200);
+    const domain = field(formData, 'domain', 200);
+    const jobTitle = field(formData, 'jobTitle', 300) || 'General Talent Network';
+    const coverLetter = field(formData, 'coverLetter', 5000);
+    const resumeFile = formData.get('resume');
 
     if (!fullName || !email) {
       return NextResponse.json(
@@ -24,40 +62,41 @@ export async function POST(req: NextRequest) {
         { status: 400 }
       );
     }
+    if (!EMAIL_PATTERN.test(email)) {
+      return NextResponse.json({ error: 'Please provide a valid email address.' }, { status: 400 });
+    }
 
     let resumeUrl = '';
 
-    if (resumeFile && resumeFile.size > 0) {
+    if (resumeFile instanceof File && resumeFile.size > 0) {
       if (resumeFile.size > MAX_FILE_SIZE_BYTES) {
+        return NextResponse.json({ error: 'File size exceeds 10MB limit.' }, { status: 400 });
+      }
+
+      const buffer = Buffer.from(await resumeFile.arrayBuffer());
+
+      // Validate real file content; never trust the client-supplied name/MIME.
+      const detected = detectResumeType(buffer);
+      if (!detected) {
         return NextResponse.json(
-          { error: 'File size exceeds 10MB limit.' },
-          { status: 400 }
+          { error: 'Resume must be a PDF, DOC or DOCX file.' },
+          { status: 415 }
         );
       }
 
-      const bytes = await resumeFile.arrayBuffer();
-      const buffer = Buffer.from(bytes);
-
-      const uploadsDir = path.join(process.cwd(), 'public', 'uploads', 'resumes');
-      if (!fs.existsSync(uploadsDir)) {
-        fs.mkdirSync(uploadsDir, { recursive: true });
-      }
-
-      const cleanFileName = resumeFile.name.replace(/[^a-zA-Z0-9.-]/g, '_');
-      const uniqueFileName = `${Date.now()}_${cleanFileName}`;
-      const destPath = path.join(uploadsDir, uniqueFileName);
-
-      fs.writeFileSync(destPath, buffer);
-      resumeUrl = `/uploads/resumes/${uniqueFileName}`;
+      // Stored OUTSIDE /public so resumes are never publicly downloadable and
+      // can never be served as HTML/SVG from the site's origin.
+      fs.mkdirSync(RESUME_DIR, { recursive: true });
+      const fileName = `${Date.now()}_${crypto.randomBytes(12).toString('hex')}${detected.ext}`;
+      fs.writeFileSync(path.join(RESUME_DIR, fileName), buffer);
+      resumeUrl = `/api/admin/resumes/${fileName}`;
     }
 
     const store = getCMSStore();
-    if (!store.jobApplications) {
-      store.jobApplications = [];
-    }
+    if (!store.jobApplications) store.jobApplications = [];
 
     const newApplication = {
-      id: `app_${Date.now()}_${Math.random().toString(36).substr(2, 6)}`,
+      id: `app_${Date.now()}_${crypto.randomBytes(4).toString('hex')}`,
       fullName,
       email,
       phone,
@@ -76,7 +115,6 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({
       success: true,
       message: 'Your application and profile have been successfully submitted to CUBE Talent Network.',
-      application: newApplication,
     });
   } catch (error: any) {
     console.error('Career application submission error:', error);
@@ -86,4 +124,3 @@ export async function POST(req: NextRequest) {
     );
   }
 }
-

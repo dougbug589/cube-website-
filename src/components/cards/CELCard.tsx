@@ -58,7 +58,7 @@ export default function CELCard({ service }: CELCardProps) {
       ref={cardRef}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      onMouseEnter={() => setIsExpanded(true)}
+      onPointerEnter={(e) => e.pointerType === 'mouse' && setIsExpanded(true)}
       onClick={() => setIsExpanded(!isExpanded)}
       style={{ perspective: 1000 }}
       className="w-full h-[470px] select-none group relative cursor-pointer"
@@ -108,7 +108,7 @@ export default function CELCard({ service }: CELCardProps) {
           <div className="absolute bottom-3 right-3 z-10 flex items-center space-x-1.5 px-3 py-1 rounded-full bg-white/95 text-[#070E5C] text-[11px] shadow-sm backdrop-blur-sm border border-[#BBD6EA]">
             <Sparkles className="w-3 h-3 text-[#D99A42]" />
             <span className="text-[10px] font-semibold">
-              {isExpanded ? 'Testing Parameters' : 'Hover to Expand'}
+              {isExpanded ? 'Testing Parameters' : (<><span className="hidden [@media(hover:hover)]:inline">Hover to Expand</span><span className="[@media(hover:hover)]:hidden">Tap to Expand</span></>)}
             </span>
             {isExpanded ? (
               <ChevronDown className="w-3 h-3 text-[#D99A42]" />

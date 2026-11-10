@@ -3,10 +3,12 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import Link from 'next/link';
 import { Search, X, ArrowRight, Building, Leaf, Cpu, Compass, FileText, FlaskConical } from 'lucide-react';
-import { projects } from '@/data/projects';
+import { projects as fallbackProjects } from '@/data/projects';
 import { verticals } from '@/data/verticals';
 import { celOverview } from '@/data/cel';
-import { newsItems } from '@/data/news';
+import { newsItems as fallbackNews } from '@/data/news';
+
+const txt = (v: unknown) => (typeof v === 'string' ? v : '').toLowerCase();
 
 interface GlobalSearchModalProps {
   isOpen: boolean;
@@ -15,6 +17,22 @@ interface GlobalSearchModalProps {
 
 export default function GlobalSearchModal({ isOpen, onClose }: GlobalSearchModalProps) {
   const [query, setQuery] = useState('');
+  const [projects, setProjects] = useState<any[]>(fallbackProjects);
+  const [newsItems, setNewsItems] = useState<any[]>(fallbackNews);
+  const [celServices, setCelServices] = useState<any[]>(celOverview.testingServices);
+
+  // Load live CMS data only when the search opens (no cost on normal page loads).
+  useEffect(() => {
+    if (!isOpen) return;
+    const get = (url: string, set: (v: any[]) => void) =>
+      fetch(url, { cache: 'no-store' })
+        .then((r) => (r.ok ? r.json() : null))
+        .then((d) => Array.isArray(d) && set(d))
+        .catch(() => {});
+    get('/api/public/projects', setProjects);
+    get('/api/public/news', setNewsItems);
+    get('/api/public/cel', setCelServices);
+  }, [isOpen]);
 
   // Close on Escape key
   useEffect(() => {
@@ -66,7 +84,7 @@ export default function GlobalSearchModal({ isOpen, onClose }: GlobalSearchModal
 
     // Search Projects
     projects.forEach((p) => {
-      if (p.title.toLowerCase().includes(q) || p.description.toLowerCase().includes(q) || p.category.toLowerCase().includes(q)) {
+      if (txt(p.title).includes(q) || txt(p.description).includes(q) || txt(p.category).includes(q)) {
         results.push({
           title: p.title,
           category: `Project (${p.category})`,
@@ -78,8 +96,8 @@ export default function GlobalSearchModal({ isOpen, onClose }: GlobalSearchModal
     });
 
     // Search CEL
-    celOverview.testingServices.forEach((s) => {
-      if (s.title.toLowerCase().includes(q) || s.description.toLowerCase().includes(q) || s.parameters.some(param => param.toLowerCase().includes(q))) {
+    celServices.forEach((s) => {
+      if (txt(s.title).includes(q) || txt(s.description).includes(q) || (s.parameters || []).some((param: string) => txt(param).includes(q))) {
         results.push({
           title: s.title,
           category: 'CEL Laboratory Service',
@@ -92,19 +110,19 @@ export default function GlobalSearchModal({ isOpen, onClose }: GlobalSearchModal
 
     // Search News
     newsItems.forEach((n) => {
-      if (n.title.toLowerCase().includes(q) || n.summary.toLowerCase().includes(q)) {
+      if (txt(n.title).includes(q) || txt(n.summary || n.excerpt).includes(q)) {
         results.push({
           title: n.title,
           category: 'Media & News',
-          description: n.summary,
-          href: `/media/news/${n.id}`,
+          description: n.summary || n.excerpt || '',
+          href: `/media/news/${n.slug || n.id}`,
           icon: FileText
         });
       }
     });
 
     return results.slice(0, 10);
-  }, [query]);
+  }, [query, projects, newsItems, celServices]);
 
   if (!isOpen) return null;
 

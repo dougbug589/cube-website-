@@ -7,6 +7,8 @@ import {
   saveCMSStore,
   signAdminToken,
   verifyAdminToken,
+  resolveAdminSession,
+  revokeAdminSessions,
   AdminSession,
 } from '@/lib/db/store';
 
@@ -114,19 +116,21 @@ export async function loginAdminAction(formData: FormData) {
     role: user.role,
   };
 
-  const token = signAdminToken(session);
+  const token = signAdminToken(session, user.sessionVersion ?? 0);
 
-  // Set secure HTTP-only cookie
+  // Secure HTTP-only *browser-session* cookie (no maxAge): it is discarded when
+  // the browser closes, and the token inside expires after 8 hours regardless.
   (await cookies()).set('cube_admin_session', token, {
     httpOnly: true,
     secure: process.env.NODE_ENV === 'production',
     sameSite: 'lax',
-    maxAge: 7 * 24 * 60 * 60, // 7 days
     path: '/',
   });
 
-  // Log Audit
-  store.auditLogs.unshift({
+  // Log Audit. Re-read the store: the copy loaded before the awaits above may
+  // be stale, and saving it would overwrite changes made in the meantime.
+  const freshStore = getCMSStore();
+  freshStore.auditLogs.unshift({
     id: `log_${Date.now()}`,
     userId: user.id,
     userEmail: user.email,
@@ -135,7 +139,7 @@ export async function loginAdminAction(formData: FormData) {
     resourceId: user.id,
     timestamp: new Date().toISOString(),
   });
-  saveCMSStore(store);
+  saveCMSStore(freshStore);
 
   return { success: true };
 }
@@ -146,6 +150,8 @@ export async function logoutAdminAction() {
   if (cookie) {
     const session = verifyAdminToken(cookie);
     if (session) {
+      // Revoke the token server-side so a copied cookie stops working too.
+      revokeAdminSessions(session.userId);
       const store = getCMSStore();
       store.auditLogs.unshift({
         id: `log_${Date.now()}`,
@@ -166,21 +172,5 @@ export async function logoutAdminAction() {
 
 export async function getCurrentAdmin(): Promise<AdminSession | null> {
   const cookie = (await cookies()).get('cube_admin_session')?.value;
-  if (!cookie) return null;
-  const session = verifyAdminToken(cookie);
-  if (!session) return null;
-
-  // Re-check the live store so deactivated or role-changed users lose access
-  // immediately instead of keeping a valid 7-day token.
-  const store = getCMSStore();
-  const user = store.users.find((u) => u.id === session.userId);
-  if (!user || !user.isActive) return null;
-
-  return {
-    userId: user.id,
-    email: user.email,
-    fullName: user.fullName,
-    role: user.role,
-  };
+  return resolveAdminSession(cookie);
 }
-

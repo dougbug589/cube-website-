@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import fs from 'fs';
 import path from 'path';
-import { getCMSStore, verifyAdminToken, UserRole } from '@/lib/db/store';
+import { resolveAdminSession, UserRole } from '@/lib/db/store';
 
 // Max file size: 10MB
 const MAX_FILE_SIZE_BYTES = 10 * 1024 * 1024; // 10,485,760 bytes
@@ -55,16 +55,9 @@ function detectImageType(buffer: Buffer): DetectedImage | null {
 
 export async function POST(req: NextRequest) {
   try {
-    const token = req.cookies.get('cube_admin_session')?.value;
-    const session = token ? verifyAdminToken(token) : null;
-    if (!session) {
+    const user = resolveAdminSession(req.cookies.get('cube_admin_session')?.value);
+    if (!user) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
-    }
-
-    const store = getCMSStore();
-    const user = store.users.find((u) => u.id === session.userId);
-    if (!user || !user.isActive) {
-      return NextResponse.json({ error: 'Unauthorized: inactive account' }, { status: 401 });
     }
     if (!ALLOWED_ROLES.includes(user.role)) {
       return NextResponse.json(

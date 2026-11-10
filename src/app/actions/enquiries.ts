@@ -1,7 +1,7 @@
 'use server';
 
 import { cookies, headers } from 'next/headers';
-import { getCMSStore, saveCMSStore, verifyAdminToken, UserRole } from '@/lib/db/store';
+import { getCMSStore, saveCMSStore, resolveAdminSession, UserRole, AdminSession } from '@/lib/db/store';
 import { revalidatePath } from 'next/cache';
 
 export interface SubmitEnquiryPayload {
@@ -52,31 +52,14 @@ function isRateLimited(ip: string): boolean {
 
 async function assertAdmin(
   allowedRoles: UserRole[] = ['super_admin', 'admin']
-): Promise<{ ok: true; session: NonNullable<ReturnType<typeof verifyAdminToken>> } | { ok: false; error: string }> {
+): Promise<{ ok: true; session: AdminSession } | { ok: false; error: string }> {
   const token = (await cookies()).get('cube_admin_session')?.value;
-  if (!token) return { ok: false, error: 'Unauthorized: Authentication required' };
-
-  const session = verifyAdminToken(token);
-  if (!session) return { ok: false, error: 'Unauthorized: Session expired' };
-
-  const store = getCMSStore();
-  const user = store.users.find((u) => u.id === session.userId);
-  if (!user || !user.isActive) {
-    return { ok: false, error: 'Unauthorized: Account is inactive or no longer exists' };
-  }
-  if (!allowedRoles.includes(user.role)) {
+  const session = resolveAdminSession(token);
+  if (!session) return { ok: false, error: 'Unauthorized: Session expired or signed out' };
+  if (!allowedRoles.includes(session.role)) {
     return { ok: false, error: 'Forbidden: Insufficient privileges' };
   }
-
-  return {
-    ok: true,
-    session: {
-      userId: user.id,
-      email: user.email,
-      fullName: user.fullName,
-      role: user.role,
-    },
-  };
+  return { ok: true, session };
 }
 
 export async function submitEnquiryAction(payload: SubmitEnquiryPayload) {

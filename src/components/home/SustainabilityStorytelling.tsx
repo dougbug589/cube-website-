@@ -15,7 +15,7 @@ const SUSTAINABILITY_PILLARS = [
     metricLabel: 'Testing & Treatment Compliance',
     description: 'Analytical testing, effluent characterization, tertiary water reuse validation, and CETP/STP process optimization for municipal bodies and industrial clusters across South India.',
     icon: Droplets,
-    image: '/assets/cel/cel_water.jpg',
+    image: '/images/projects/environment-sustainability/cmwssb_01.jpg',
     href: '/cel',
   },
   {
@@ -26,7 +26,7 @@ const SUSTAINABILITY_PILLARS = [
     metricLabel: 'Mandate & Recycled Aggregates',
     description: 'Characterization of Construction and Demolition (C&D) waste, fly ash, slag, and quarry dust as structural raw materials, validating sustainable precast concrete alternatives.',
     icon: Recycle,
-    image: '/assets/verticals/environment-waste.jpg',
+    image: '/images/projects/environment-sustainability/about_environment.jpg',
     href: '/verticals/environment-sustainability',
   },
   {
@@ -37,7 +37,7 @@ const SUSTAINABILITY_PILLARS = [
     metricLabel: 'Embodied Carbon per Square Metre',
     description: 'Independent engineering proof checking for mass affordable housing schemes (PMAY/ARHC) evaluating precast EPS sandwich panels, monolithic concrete, and light-gauge steel.',
     icon: Leaf,
-    image: '/assets/projects/project-housing-tn.jpg',
+    image: '/images/projects/building-construction/hfapmay_01.jpg',
     href: '/projects',
   },
   {
@@ -48,7 +48,7 @@ const SUSTAINABILITY_PILLARS = [
     metricLabel: 'Integrated Interdisciplinary Audits',
     description: 'Urban microclimate mitigation, storm drainage flow modeling, and multi-modal transit planning guiding municipal authorities toward resilient zero-emission infrastructure.',
     icon: Wind,
-    image: '/assets/verticals/transport-network.jpg',
+    image: '/images/projects/urban-planning/images_upt.jpg',
     href: '/verticals/urban-planning-transportation',
   },
 ];
