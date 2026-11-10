@@ -73,7 +73,10 @@ export default function CELCard({ service }: CELCardProps) {
           scale: isExpanded ? 1.03 : 1,
         }}
         transition={{ type: 'spring', stiffness: 350, damping: 25 }}
-        style={{ transformStyle: 'preserve-3d' }}
+        // No `transform-style: preserve-3d` here: nothing inside this card needs
+        // real 3D. With it, the tilt made the GPU depth-sort the white text panel
+        // against the card's own background, and on desktop the body could vanish
+        // (blank cards). Flattened, the card tilts as one image (same look).
         className="relative w-full h-full rounded-3xl overflow-hidden cube-gradient-card transition-shadow duration-300 flex flex-col justify-between"
       >
         {/* TOP CINEMATIC IMAGE WITH 3D ZOOM DEPTH */}

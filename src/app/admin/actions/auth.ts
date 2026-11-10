@@ -71,6 +71,30 @@ function recordFailure(key: string) {
   loginAttempts.set(key, record);
 }
 
+/**
+ * Cookie options for the admin session: a browser-session cookie (no maxAge),
+ * HTTP-only, SameSite=Lax. The token inside expires after 8h regardless.
+ *
+ * `secure` follows the connection the browser actually used. Browsers refuse
+ * to store Secure cookies over plain http (except on localhost), so forcing it
+ * whenever NODE_ENV=production made sign-in fail silently when the site was
+ * opened from another device on the network (http://<ip>:<port>). On any real
+ * deployment the site is served over HTTPS, so the cookie is Secure there.
+ * Set ADMIN_COOKIE_SECURE=true to force it regardless.
+ */
+async function sessionCookieOptions() {
+  const h = await headers();
+  const forwardedProto = h.get('x-forwarded-proto')?.split(',')[0]?.trim().toLowerCase();
+  const origin = (h.get('origin') || '').toLowerCase();
+  const viaHttps = forwardedProto === 'https' || origin.startsWith('https://');
+  return {
+    httpOnly: true,
+    secure: process.env.ADMIN_COOKIE_SECURE === 'true' || viaHttps,
+    sameSite: 'lax' as const,
+    path: '/',
+  };
+}
+
 export async function loginAdminAction(formData: FormData) {
   const email = (formData.get('email') as string | null)?.trim() || '';
   const password = (formData.get('password') as string | null) || '';
@@ -120,12 +144,7 @@ export async function loginAdminAction(formData: FormData) {
 
   // Secure HTTP-only *browser-session* cookie (no maxAge): it is discarded when
   // the browser closes, and the token inside expires after 8 hours regardless.
-  (await cookies()).set('cube_admin_session', token, {
-    httpOnly: true,
-    secure: process.env.NODE_ENV === 'production',
-    sameSite: 'lax',
-    path: '/',
-  });
+  (await cookies()).set('cube_admin_session', token, await sessionCookieOptions());
 
   // Log Audit. Re-read the store: the copy loaded before the awaits above may
   // be stale, and saving it would overwrite changes made in the meantime.
@@ -173,4 +192,84 @@ export async function logoutAdminAction() {
 export async function getCurrentAdmin(): Promise<AdminSession | null> {
   const cookie = (await cookies()).get('cube_admin_session')?.value;
   return await resolveAdminSession(cookie);
+}
+
+const MIN_PASSWORD_LENGTH = 12;
+
+/**
+ * Change the signed-in administrator's password.
+ * - Requires the current password (rate limited like sign-in).
+ * - Signs out every OTHER device by bumping sessionVersion, then re-issues this
+ *   browser's cookie so the person making the change stays signed in.
+ */
+export async function changePasswordAction(formData: FormData) {
+  const cookieStore = await cookies();
+  const session = await resolveAdminSession(cookieStore.get('cube_admin_session')?.value);
+  if (!session) {
+    return { success: false, error: 'Your session has expired. Please sign in again.' };
+  }
+
+  const current = String(formData.get('currentPassword') || '');
+  const next = String(formData.get('newPassword') || '');
+  const confirm = String(formData.get('confirmPassword') || '');
+
+  if (!current || !next || !confirm) {
+    return { success: false, error: 'Please fill in all three password fields.' };
+  }
+  if (next.length < MIN_PASSWORD_LENGTH) {
+    return { success: false, error: `The new password must be at least ${MIN_PASSWORD_LENGTH} characters.` };
+  }
+  if (next.length > 200) {
+    return { success: false, error: 'The new password is too long.' };
+  }
+  if (next !== confirm) {
+    return { success: false, error: 'The new password and its confirmation do not match.' };
+  }
+  if (next === current) {
+    return { success: false, error: 'The new password must be different from the current one.' };
+  }
+
+  const rateKey = `password-change:${session.userId}`;
+  const { allowed, retryAfterMs } = checkRateLimit(rateKey);
+  if (!allowed) {
+    return {
+      success: false,
+      error: `Too many incorrect attempts. Try again in ${Math.ceil(retryAfterMs / 60000)} minute(s).`,
+    };
+  }
+
+  const user = (await getCMSStore()).users.find((u) => u.id === session.userId);
+  if (!user || !(await bcrypt.compare(current, user.passwordHash))) {
+    recordFailure(rateKey);
+    return { success: false, error: 'The current password is incorrect.' };
+  }
+  loginAttempts.delete(rateKey);
+
+  const newHash = await bcrypt.hash(next, 12);
+
+  // Re-read the store after hashing so changes made meanwhile are not
+  // overwritten (the Supabase backend also merges concurrent saves).
+  const store = await getCMSStore();
+  const target = store.users.find((u) => u.id === session.userId);
+  if (!target) return { success: false, error: 'Account not found.' };
+  target.passwordHash = newHash;
+  target.sessionVersion = (target.sessionVersion ?? 0) + 1;
+  store.auditLogs.unshift({
+    id: `log_${Date.now()}`,
+    userId: target.id,
+    userEmail: target.email,
+    action: 'ADMIN_PASSWORD_CHANGED',
+    resourceType: 'auth',
+    resourceId: target.id,
+    timestamp: new Date().toISOString(),
+  });
+  await saveCMSStore(store);
+
+  const token = signAdminToken(
+    { userId: target.id, email: target.email, fullName: target.fullName, role: target.role },
+    target.sessionVersion
+  );
+  cookieStore.set('cube_admin_session', token, await sessionCookieOptions());
+
+  return { success: true };
 }

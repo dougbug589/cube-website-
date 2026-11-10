@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { ShieldCheck, Lock, Mail, ArrowRight, AlertCircle, Loader2 } from 'lucide-react';
@@ -11,6 +11,13 @@ export default function AdminLoginPage() {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  // Opened over plain http from another device (not localhost): warn instead
+  // of letting a failed sign-in look like nothing happened.
+  const [insecureConnection, setInsecureConnection] = useState(false);
+  useEffect(() => {
+    const local = ['localhost', '127.0.0.1', '[::1]'].includes(window.location.hostname);
+    setInsecureConnection(window.location.protocol === 'http:' && !local);
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -67,9 +74,19 @@ export default function AdminLoginPage() {
           <div className="mb-6">
             <h2 className="text-lg font-serif text-[#24272B]">Administrator Sign In</h2>
             <p className="text-xs text-[#6B7280] mt-1">
-              Authorized personnel only. Sessions and operations are cryptographically audited.
+              Authorized personnel only. Sign-ins and content changes are recorded in the audit log.
             </p>
           </div>
+
+          {insecureConnection && (
+            <div className="mb-6 p-4 rounded-xl bg-amber-50 border border-amber-200 text-amber-800 text-xs flex items-start space-x-2">
+              <AlertCircle className="w-4 h-4 text-amber-600 shrink-0 mt-0.5" />
+              <span>
+                This connection is not secure (http). That is fine for testing on your local
+                network, but the live website must be served over HTTPS.
+              </span>
+            </div>
+          )}
 
           {error && (
             <div className="mb-6 p-4 rounded-xl bg-red-50 border border-red-200 text-red-700 text-xs flex items-start space-x-2">
@@ -135,7 +152,7 @@ export default function AdminLoginPage() {
           </form>
 
           <div className="mt-6 pt-5 border-t border-[#E5E7EB] text-center text-[11px] text-[#6B7280]">
-            Protected by Row Level Security, HMAC JWT &amp; Immutable Audit Trail
+            Protected by signed sessions, rate-limited sign-in &amp; audit logging
           </div>
         </div>
 

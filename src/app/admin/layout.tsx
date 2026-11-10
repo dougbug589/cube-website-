@@ -1,13 +1,13 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import {
   LayoutDashboard, Newspaper, Briefcase, Bell, FolderKanban,
   FileSpreadsheet, FlaskConical, Users, Image as ImageIcon,
-  ShieldAlert, Settings, LogOut, ExternalLink, Menu, X, Inbox, Archive
+  ShieldAlert, Settings, LogOut, ExternalLink, Menu, X, Inbox, Archive, ArrowLeft
 } from 'lucide-react';
 import { getCurrentAdmin, logoutAdminAction } from '@/app/admin/actions/auth';
 import FloatingCubeBackground from '@/components/admin/FloatingCubeBackground';
@@ -22,6 +22,23 @@ export default function AdminDashboardLayout({ children }: AdminLayoutProps) {
   const router = useRouter();
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [loggingOut, setLoggingOut] = useState(false);
+
+  // Back button: count in-app admin navigations ourselves (document.referrer
+  // does not change on client-side navigation). If this tab has moved between
+  // admin pages, go back; otherwise (opened directly) go to the dashboard.
+  const [inAppNavigations, setInAppNavigations] = useState(0);
+  const lastPathRef = useRef<string | null>(null);
+  useEffect(() => {
+    if (lastPathRef.current !== null && lastPathRef.current !== pathname) {
+      setInAppNavigations((n) => n + 1);
+    }
+    lastPathRef.current = pathname;
+  }, [pathname]);
+  const showBack = pathname !== '/admin/dashboard' && pathname !== '/admin';
+  const handleBack = () => {
+    if (inAppNavigations > 0) router.back();
+    else router.push('/admin/dashboard');
+  };
   const [isVerifying, setIsVerifying] = useState(pathname !== '/admin/login');
   const [adminUser, setAdminUser] = useState<{
     fullName: string;
@@ -121,6 +138,16 @@ export default function AdminDashboardLayout({ children }: AdminLayoutProps) {
           >
             {sidebarOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </button>
+          {showBack && (
+            <button
+              type="button"
+              onClick={handleBack}
+              className="p-2 rounded-xl bg-white border border-[#BBD6EA] text-[#070E5C]"
+              aria-label="Go back"
+            >
+              <ArrowLeft className="w-5 h-5" />
+            </button>
+          )}
           <div className="relative h-8 w-36">
             <Image
               src="/images/branding/cube-admin-logo.png"
@@ -278,6 +305,17 @@ export default function AdminDashboardLayout({ children }: AdminLayoutProps) {
         {/* Top Desktop Bar */}
         <header className="hidden md:flex h-16 bg-white border-b border-[#E5E7EB] px-8 items-center justify-between sticky top-0 z-20 shadow-2xs">
           <div className="flex items-center space-x-3">
+            {showBack && (
+              <button
+                type="button"
+                onClick={handleBack}
+                className="px-3 py-1.5 rounded-full bg-white hover:bg-[#EAF2F8] text-[#070E5C] border border-[#BBD6EA] text-xs font-semibold flex items-center gap-1.5 shadow-2xs transition"
+                aria-label="Go back"
+              >
+                <ArrowLeft className="w-3.5 h-3.5" />
+                <span>Back</span>
+              </button>
+            )}
             <span className="text-xs font-bold uppercase tracking-wider text-[#070E5C] bg-[#EAF2F8] px-2.5 py-1 rounded-md border border-[#BBD6EA]">
               CUBE CMS Realtime
             </span>

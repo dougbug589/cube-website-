@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -87,6 +87,47 @@ const HERO_SLIDES: HeroSlide[] = [
 export default function ArchitecturalHero() {
   const [currentIdx, setCurrentIdx] = useState(0);
   const slide = HERO_SLIDES[currentIdx];
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  // Keep the background video looping forever. `loop` alone is not enough in
+  // practice: browsers pause muted autoplay video in background tabs, in
+  // power-saving mode, or block the first autoplay; some ignore `loop` on large
+  // non-streaming files. Restart on end, resume when visible, and retry on the
+  // first user interaction if autoplay was blocked.
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+    const play = () => video.play().catch(() => {});
+    const onEnded = () => {
+      video.currentTime = 0;
+      play();
+    };
+    const onVisible = () => {
+      if (document.visibilityState === 'visible' && video.paused) play();
+    };
+    // Only needed until playback has started once (autoplay blocked).
+    const retryOnInteraction = () => {
+      if (video.paused) play();
+    };
+    const stopRetrying = () => {
+      window.removeEventListener('pointerdown', retryOnInteraction);
+      window.removeEventListener('touchstart', retryOnInteraction);
+      window.removeEventListener('scroll', retryOnInteraction);
+    };
+    video.addEventListener('ended', onEnded);
+    video.addEventListener('playing', stopRetrying, { once: true });
+    document.addEventListener('visibilitychange', onVisible);
+    window.addEventListener('pointerdown', retryOnInteraction, { passive: true });
+    window.addEventListener('touchstart', retryOnInteraction, { passive: true });
+    window.addEventListener('scroll', retryOnInteraction, { passive: true });
+    play();
+    return () => {
+      video.removeEventListener('ended', onEnded);
+      video.removeEventListener('playing', stopRetrying);
+      document.removeEventListener('visibilitychange', onVisible);
+      stopRetrying();
+    };
+  }, []);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -102,23 +143,27 @@ export default function ArchitecturalHero() {
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
         {/* Looping Ambient Video */}
         <video
+          ref={videoRef}
           autoPlay
           loop
           muted
           playsInline
+          preload="auto"
+          disablePictureInPicture
+          aria-hidden="true"
           className="absolute inset-0 w-full h-full object-cover object-center filter contrast-[1.08] brightness-[0.96]"
         >
           <source src="/video.mp4" type="video/mp4" />
         </video>
 
         {/* Apple VisionOS-style Frosted Glass Vignette: Darkens & tints smoothly so light blue & pure white fonts glow with 4K clarity */}
-        <div className="absolute inset-0 z-10 bg-gradient-to-r from-slate-950/80 via-slate-900/60 to-slate-950/40 backdrop-blur-[2px]" />
+        <div className="absolute inset-0 z-10 bg-gradient-to-r from-slate-950/80 via-slate-900/60 to-slate-950/40" />
         
         {/* Soft top blend */}
         <div className="absolute top-0 left-0 right-0 h-32 z-20 bg-gradient-to-b from-slate-950/85 via-slate-900/40 to-transparent" />
         
-        {/* Deep bottom fade out into page white */}
-        <div className="absolute bottom-0 left-0 right-0 h-48 z-20 bg-gradient-to-t from-white via-white/80 to-transparent" />
+        {/* Short, subtle blend into the next section (was a 192px white fade) */}
+        <div className="absolute bottom-0 left-0 right-0 h-14 z-20 bg-gradient-to-t from-[#F7F7F4] to-transparent" />
 
         {/* Ambient Cyan/Ice-Blue Refractive Glow for Apple Cinematic Look */}
         <div className="absolute top-1/4 left-1/4 w-[600px] h-[600px] z-10 bg-[#38bdf8]/15 rounded-full blur-[120px] pointer-events-none" />
@@ -200,13 +245,6 @@ export default function ArchitecturalHero() {
               <ArrowUpRight className="w-4 h-4 text-[#0284c7]" />
             </Link>
 
-            <Link
-              href={slide.projectHref}
-              className="px-6 py-3 rounded-full bg-white/15 hover:bg-white/25 text-white border border-white/35 font-semibold text-xs tracking-wider transition-all shadow-sm backdrop-blur-xl active:scale-95 flex items-center gap-1.5"
-            >
-              <span>{slide.projectName}</span>
-              <ArrowUpRight className="w-3.5 h-3.5 text-[#7dd3fc]" />
-            </Link>
           </div>
 
           {/* Slide Navigation Controls & Indicators */}
