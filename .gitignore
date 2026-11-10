@@ -1,0 +1,38 @@
+# dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# next.js
+.next/
+out/
+build/
+
+# environment files (never commit real secrets)
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+!.env.example
+
+# local CMS data (contains user records and password hashes)
+data-store/
+
+# runtime uploads
+public/uploads/
+
+# build/cache artifacts
+*.tsbuildinfo
+.next/cache/
+
+# generated scraping artifacts
+scraped_pages/
+
+# python
+__pycache__/
+*.pyc
+
+# OS
+.DS_Store
+Thumbs.db

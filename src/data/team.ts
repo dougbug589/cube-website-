@@ -1,0 +1,484 @@
+import { TeamMember } from '@/types';
+
+export const teamMembers: TeamMember[] = [
+  {
+    "name": "John Joseph",
+    "designation": "Senior Manager",
+    "department": "Building & Construction",
+    "image": "/images/team/team_john-Joseph.jpg"
+  },
+  {
+    "name": "Unmesh Dhanushkodi",
+    "designation": "Manager",
+    "department": "Building & Construction",
+    "image": "/images/team/team_unmesh-dhanushkodi.jpg"
+  },
+  {
+    "name": "Ramkumar K S",
+    "designation": "Manager",
+    "department": "Building & Construction",
+    "image": "/images/team/team_unknown.png"
+  },
+  {
+    "name": "Srikanth A",
+    "designation": "Manager",
+    "department": "Building & Construction",
+    "image": "/images/team/team_unknown.png"
+  },
+  {
+    "name": "M.A.Jesu Raja Rajan",
+    "designation": "Deputy General Manager",
+    "department": "Building & Construction",
+    "image": "/images/team/team_unknown.png"
+  },
+  {
+    "name": "Baskar Das A",
+    "designation": "Deputy Manager",
+    "department": "Building & Construction",
+    "image": "/images/team/team_unknown.png"
+  },
+  {
+    "name": "K Jyothi Raju",
+    "designation": "Regional Head",
+    "department": "Building & Construction",
+    "image": "/images/team/team_unknown.png"
+  },
+  {
+    "name": "R. Ravi Chandran",
+    "designation": "Regional Head",
+    "department": "Building & Construction",
+    "image": "/images/team/team_unknown.png"
+  },
+  {
+    "name": "R Pal Pandi",
+    "designation": "Senior Executive",
+    "department": "Building & Construction",
+    "image": "/images/team/team_pal-pandi.jpg"
+  },
+  {
+    "name": "Patel Dinesh Kumar",
+    "designation": "Senior Executive",
+    "department": "Building & Construction",
+    "image": "/images/team/team_unknown.png"
+  },
+  {
+    "name": "Kanwal Jeet Singh",
+    "designation": "Senior Executive",
+    "department": "Building & Construction",
+    "image": "/images/team/team_unknown.png"
+  },
+  {
+    "name": "K Kakendar Singh",
+    "designation": "Senior Executive",
+    "department": "Building & Construction",
+    "image": "/images/team/team_unknown.png"
+  },
+  {
+    "name": "T Prakash",
+    "designation": "Senior Executive",
+    "department": "Building & Construction",
+    "image": "/images/team/team_unknown.png"
+  },
+  {
+    "name": "H Karthikeyan",
+    "designation": "Senior Executive",
+    "department": "Building & Construction",
+    "image": "/images/team/team_unknown.png"
+  },
+  {
+    "name": "Kiran Prasad",
+    "designation": "Senior Executive",
+    "department": "Building & Construction",
+    "image": "/images/team/team_unknown.png"
+  },
+  {
+    "name": "Karthick Inbasekaran",
+    "designation": "Senior Executive",
+    "department": "Building & Construction",
+    "image": "/images/team/team_unknown.png"
+  },
+  {
+    "name": "Sonaimuthu M",
+    "designation": "Senior Executive",
+    "department": "Building & Construction",
+    "image": "/images/team/team_unknown.png"
+  },
+  {
+    "name": "Kaliraj T",
+    "designation": "Senior Executive",
+    "department": "Building & Construction",
+    "image": "/images/team/team_unknown.png"
+  },
+  {
+    "name": "Pavithresh Kumar M",
+    "designation": "Senior Executive",
+    "department": "Building & Construction",
+    "image": "/images/team/team_unknown.png"
+  },
+  {
+    "name": "S Ravichandran",
+    "designation": "Senior Executive",
+    "department": "Building & Construction",
+    "image": "/images/team/team_unknown.png"
+  },
+  {
+    "name": "Niraj Kumar Mishra",
+    "designation": "Senior Executive",
+    "department": "Building & Construction",
+    "image": "/images/team/team_unknown.png"
+  },
+  {
+    "name": "Nayeem Ahmad Malik",
+    "designation": "Senior Executive",
+    "department": "Building & Construction",
+    "image": "/images/team/team_unknown.png"
+  },
+  {
+    "name": "Balakrishnan N",
+    "designation": "Senior Executive",
+    "department": "Building & Construction",
+    "image": "/images/team/team_unknown.png"
+  },
+  {
+    "name": "Sundarrajan S",
+    "designation": "Senior Executive",
+    "department": "Building & Construction",
+    "image": "/images/team/team_unknown.png"
+  },
+  {
+    "name": "M Suresh",
+    "designation": "Senior Executive",
+    "department": "Building & Construction",
+    "image": "/images/team/team_unknown.png"
+  },
+  {
+    "name": "Abishek S",
+    "designation": "Executive",
+    "department": "Building & Construction",
+    "image": "/images/team/team_unknown.png"
+  },
+  {
+    "name": "Sathish Kumar S",
+    "designation": "Executive",
+    "department": "Building & Construction",
+    "image": "/images/team/team_unknown.png"
+  },
+  {
+    "name": "Anjaly M",
+    "designation": "Executive",
+    "department": "Building & Construction",
+    "image": "/images/team/team_unknown.png"
+  },
+  {
+    "name": "Anbu Arasu M",
+    "designation": "Executive",
+    "department": "Building & Construction",
+    "image": "/images/team/team_unknown.png"
+  },
+  {
+    "name": "Vijay Singh Manhas",
+    "designation": "Executive",
+    "department": "Building & Construction",
+    "image": "/images/team/team_unknown.png"
+  },
+  {
+    "name": "K.Gurumoorthy",
+    "designation": "Executive",
+    "department": "Building & Construction",
+    "image": "/images/team/team_unknown.png"
+  },
+  {
+    "name": "T Sathiyaseelan",
+    "designation": "Executive",
+    "department": "Building & Construction",
+    "image": "/images/team/team_unknown.png"
+  },
+  {
+    "name": "Kaviarasan V",
+    "designation": "Executive",
+    "department": "Building & Construction",
+    "image": "/images/team/team_unknown.png"
+  },
+  {
+    "name": "P Ragunathan",
+    "designation": "Executive",
+    "department": "Building & Construction",
+    "image": "/images/team/team_unknown.png"
+  },
+  {
+    "name": "Dafni",
+    "designation": "Executive",
+    "department": "Building & Construction",
+    "image": "/images/team/team_unknown.png"
+  },
+  {
+    "name": "Gurjeet Singh",
+    "designation": "Executive",
+    "department": "Building & Construction",
+    "image": "/images/team/team_unknown.png"
+  },
+  {
+    "name": "M Bharathmangalam",
+    "designation": "Executive",
+    "department": "Building & Construction",
+    "image": "/images/team/team_unknown.png"
+  },
+  {
+    "name": "C Anbarasan",
+    "designation": "Executive",
+    "department": "Building & Construction",
+    "image": "/images/team/team_unknown.png"
+  },
+  {
+    "name": "Pradeep Singh",
+    "designation": "Executive",
+    "department": "Building & Construction",
+    "image": "/images/team/team_unknown.png"
+  },
+  {
+    "name": "Thanveer Ahmed",
+    "designation": "Executive",
+    "department": "Building & Construction",
+    "image": "/images/team/team_unknown.png"
+  },
+  {
+    "name": "P Kumarasamy",
+    "designation": "Executive",
+    "department": "Building & Construction",
+    "image": "/images/team/team_unknown.png"
+  },
+  {
+    "name": "Aman Chargotra",
+    "designation": "Executive",
+    "department": "Building & Construction",
+    "image": "/images/team/team_unknown.png"
+  },
+  {
+    "name": "Amit Singh",
+    "designation": "Executive",
+    "department": "Building & Construction",
+    "image": "/images/team/team_unknown.png"
+  },
+  {
+    "name": "Abishek I",
+    "designation": "Executive",
+    "department": "Building & Construction",
+    "image": "/images/team/team_unknown.png"
+  },
+  {
+    "name": "Rieffel George V Padayatty",
+    "designation": "Executive",
+    "department": "Building & Construction",
+    "image": "/images/team/team_unknown.png"
+  },
+  {
+    "name": "Akkshy T A",
+    "designation": "Executive",
+    "department": "Building & Construction",
+    "image": "/images/team/team_unknown.png"
+  },
+  {
+    "name": "Praveen V",
+    "designation": "Executive",
+    "department": "Building & Construction",
+    "image": "/images/team/team_unknown.png"
+  },
+  {
+    "name": "Sasikumar S",
+    "designation": "Executive",
+    "department": "Building & Construction",
+    "image": "/images/team/team_unknown.png"
+  },
+  {
+    "name": "Keerthiharan",
+    "designation": "Executive",
+    "department": "Building & Construction",
+    "image": "/images/team/team_unknown.png"
+  },
+  {
+    "name": "Palanivel A",
+    "designation": "Executive",
+    "department": "Building & Construction",
+    "image": "/images/team/team_unknown.png"
+  },
+  {
+    "name": "Aravind R",
+    "designation": "Executive",
+    "department": "Building & Construction",
+    "image": "/images/team/team_unknown.png"
+  },
+  {
+    "name": "B Suriya Prakash",
+    "designation": "Executive",
+    "department": "Building & Construction",
+    "image": "/images/team/team_unknown.png"
+  },
+  {
+    "name": "Sudip Kumar Sarkar",
+    "designation": "Executive",
+    "department": "Building & Construction",
+    "image": "/images/team/team_unknown.png"
+  },
+  {
+    "name": "Gajendiran R",
+    "designation": "Executive",
+    "department": "Building & Construction",
+    "image": "/images/team/team_unknown.png"
+  },
+  {
+    "name": "E Naveena",
+    "designation": "Executive",
+    "department": "Building & Construction",
+    "image": "/images/team/team_unknown.png"
+  },
+  {
+    "name": "N Gokul Prasadh",
+    "designation": "Executive",
+    "department": "Building & Construction",
+    "image": "/images/team/team_unknown.png"
+  },
+  {
+    "name": "M Ruckshana",
+    "designation": "Executive",
+    "department": "Building & Construction",
+    "image": "/images/team/team_unknown.png"
+  },
+  {
+    "name": "Suriyakumar M",
+    "designation": "Executive",
+    "department": "Building & Construction",
+    "image": "/images/team/team_unknown.png"
+  },
+  {
+    "name": "Bala Murugan A",
+    "designation": "Junior Executive",
+    "department": "Building & Construction",
+    "image": "/images/team/team_unknown.png"
+  },
+  {
+    "name": "Hariprasath M",
+    "designation": "Junior Executive",
+    "department": "Building & Construction",
+    "image": "/images/team/team_unknown.png"
+  },
+  {
+    "name": "Anushka G P",
+    "designation": "Junior Executive",
+    "department": "Building & Construction",
+    "image": "/images/team/team_unknown.png"
+  },
+  {
+    "name": "Atish Kumar",
+    "designation": "Junior Executive",
+    "department": "Building & Construction",
+    "image": "/images/team/team_unknown.png"
+  },
+  {
+    "name": "Gopika V",
+    "designation": "Junior Executive",
+    "department": "Building & Construction",
+    "image": "/images/team/team_unknown.png"
+  },
+  {
+    "name": "Aravind Mani S",
+    "designation": "Junior Executive",
+    "department": "Building & Construction",
+    "image": "/images/team/team_unknown.png"
+  },
+  {
+    "name": "Amita Gupta",
+    "designation": "Senior Consultant (E&S, UPT & CEL)",
+    "department": "Environment & Sustainability",
+    "image": "/images/team/team_amitha.jpg"
+  },
+  {
+    "name": "Vivekanandan",
+    "designation": "Senior Consultant",
+    "department": "Environment & Sustainability",
+    "image": "/images/team/team_vivekanandan.jpg"
+  },
+  {
+    "name": "Dr. M. Madhan Kumar",
+    "designation": "Senior Executive",
+    "department": "Environment & Sustainability",
+    "image": "/images/team/team_madhankumar.png"
+  },
+  {
+    "name": "Anis Rathnam M",
+    "designation": "Senior Executive",
+    "department": "Urban Planning & Transportation",
+    "image": "/images/team/team_anis.jpg"
+  },
+  {
+    "name": "Bhanumathi V.V",
+    "designation": "Executive",
+    "department": "Urban Planning & Transportation",
+    "image": "/images/team/team_unknown.png"
+  },
+  {
+    "name": "B G Soundhariya Lakshmi",
+    "designation": "Executive",
+    "department": "Urban Planning & Transportation",
+    "image": "/images/team/team_unknown.png"
+  },
+  {
+    "name": "Kavya K",
+    "designation": "Executive",
+    "department": "Urban Planning & Transportation",
+    "image": "/images/team/team_unknown.png"
+  },
+  {
+    "name": "Dhinesh K S",
+    "designation": "Executive",
+    "department": "Urban Planning & Transportation",
+    "image": "/images/team/team_unknown.png"
+  },
+  {
+    "name": "M. Gayathri Hasitha",
+    "designation": "Junior Executive",
+    "department": "Urban Planning & Transportation",
+    "image": "/images/team/team_unknown.png"
+  },
+  {
+    "name": "Barath S",
+    "designation": "Junior Executive",
+    "department": "Urban Planning & Transportation",
+    "image": "/images/team/team_unknown.png"
+  },
+  {
+    "name": "Elakkiya Sakthivel",
+    "designation": "Senior Executive - Admin",
+    "department": "Admin",
+    "image": "/images/team/team_elakkiya-sakthivel.jpg"
+  },
+  {
+    "name": "Thanesh Raja L",
+    "designation": "Senior Executive - IT & Operations",
+    "department": "Admin",
+    "image": "/images/leadership/about_leader.jpg"
+  },
+  {
+    "name": "Yashwanthi Devadoss",
+    "designation": "Executive",
+    "department": "Admin",
+    "image": "/images/team/team_unknown.png"
+  },
+  {
+    "name": "Parvathavalli.R",
+    "designation": "Senior Assistant",
+    "department": "Admin",
+    "image": "/images/team/team_unknown.png"
+  },
+  {
+    "name": "Gothandaraman",
+    "designation": "Admin\u00a0Assistant",
+    "department": "Admin",
+    "image": "/images/team/team_gothandaramam.jpg"
+  },
+  {
+    "name": "Marudhu",
+    "designation": "Admin\u00a0Assistant",
+    "department": "Admin",
+    "image": "/images/team/team_marudhu.jpg"
+  },
+];

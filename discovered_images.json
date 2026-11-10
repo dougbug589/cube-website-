@@ -1,0 +1,4221 @@
+{
+  "https://cubeiitm.org/assets/images/logo.png": {
+    "rel_src": "assets/images/logo.png",
+    "ext": ".png",
+    "sources": [
+      "kmrl.html",
+      "rajapalayam.html",
+      "hyundai.html",
+      "mahindara.html",
+      "cmwssb.html",
+      "index.html",
+      "santhanam.html",
+      "lhp.html",
+      "upt2.html",
+      "ashiana.html",
+      "smart-cities.html",
+      "upt13.html",
+      "royal.html",
+      "upt7.html",
+      "career.html",
+      "vision.html",
+      "upt3.html",
+      "iit-jammu.html",
+      "hfapmay.html",
+      "tender.html",
+      "lhp-rajkot.html",
+      "upt.html",
+      "our-clients.html",
+      "cpcl-arhc.html",
+      "iiser-tirupathi.html",
+      "upt9.html",
+      "keerapakkam.html",
+      "jipmer.html",
+      "cpcl-nagapattinam.html",
+      "jammu.html",
+      "upt12.html",
+      "our-team.html",
+      "lhp-ranchi.html",
+      "upt11.html",
+      "structual-design.html",
+      "iit-tirupathi.html",
+      "upt4.html",
+      "capacity-building-training-program.html",
+      "Kuthambakkam.html",
+      "upt1.html",
+      "cauvery.html",
+      "chairman-message.html",
+      "sidco-amb.html",
+      "objectives.html",
+      "caterpillar.html",
+      "KLIPSTP.html",
+      "kmrl-es.html",
+      "Madhavaram.html",
+      "upt10.html",
+      "ceo-message.html",
+      "upt14.html",
+      "indumathi.html",
+      "lhp-indore.html",
+      "Kilambakkam.html",
+      "rangaswami.html",
+      "koratur.html",
+      "vellore.html",
+      "sidco.html",
+      "lhp-chennai.html",
+      "ashwin-mahalingam.html",
+      "saf.html",
+      "lhp-luknow.html",
+      "environment-sustainability.html",
+      "venkatachari.html",
+      "contact-us.html",
+      "sivaraman-krishnamurthy.html",
+      "tpqas-jammu.html",
+      "tidel-park.html",
+      "upt8.html",
+      "shiv-das.html",
+      "core-values.html",
+      "board-member.html",
+      "arungulam.html",
+      "kp-park.html",
+      "kalanivasal.html",
+      "namakkal.html",
+      "upt6.html",
+      "advisory-panel.html",
+      "reevaluation-scheme.html",
+      "upt5.html",
+      "projects.html",
+      "building-construction.html",
+      "about.html",
+      "news.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/home-menu.jpg": {
+    "rel_src": "assets/images/home-menu.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "kmrl.html",
+      "rajapalayam.html",
+      "hyundai.html",
+      "mahindara.html",
+      "cmwssb.html",
+      "index.html",
+      "santhanam.html",
+      "lhp.html",
+      "upt2.html",
+      "ashiana.html",
+      "smart-cities.html",
+      "upt13.html",
+      "royal.html",
+      "upt7.html",
+      "career.html",
+      "vision.html",
+      "upt3.html",
+      "iit-jammu.html",
+      "hfapmay.html",
+      "tender.html",
+      "lhp-rajkot.html",
+      "upt.html",
+      "our-clients.html",
+      "cpcl-arhc.html",
+      "iiser-tirupathi.html",
+      "upt9.html",
+      "keerapakkam.html",
+      "jipmer.html",
+      "cpcl-nagapattinam.html",
+      "jammu.html",
+      "upt12.html",
+      "our-team.html",
+      "lhp-ranchi.html",
+      "upt11.html",
+      "structual-design.html",
+      "iit-tirupathi.html",
+      "upt4.html",
+      "capacity-building-training-program.html",
+      "Kuthambakkam.html",
+      "upt1.html",
+      "cauvery.html",
+      "chairman-message.html",
+      "sidco-amb.html",
+      "objectives.html",
+      "caterpillar.html",
+      "KLIPSTP.html",
+      "kmrl-es.html",
+      "Madhavaram.html",
+      "upt10.html",
+      "ceo-message.html",
+      "upt14.html",
+      "indumathi.html",
+      "lhp-indore.html",
+      "Kilambakkam.html",
+      "rangaswami.html",
+      "koratur.html",
+      "vellore.html",
+      "sidco.html",
+      "lhp-chennai.html",
+      "ashwin-mahalingam.html",
+      "saf.html",
+      "lhp-luknow.html",
+      "environment-sustainability.html",
+      "venkatachari.html",
+      "contact-us.html",
+      "sivaraman-krishnamurthy.html",
+      "tpqas-jammu.html",
+      "tidel-park.html",
+      "upt8.html",
+      "shiv-das.html",
+      "core-values.html",
+      "board-member.html",
+      "arungulam.html",
+      "kp-park.html",
+      "kalanivasal.html",
+      "namakkal.html",
+      "upt6.html",
+      "advisory-panel.html",
+      "reevaluation-scheme.html",
+      "upt5.html",
+      "projects.html",
+      "building-construction.html",
+      "about.html",
+      "news.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/icon/cross-out.png": {
+    "rel_src": "assets/images/icon/cross-out.png",
+    "ext": ".png",
+    "sources": [
+      "kmrl.html",
+      "rajapalayam.html",
+      "hyundai.html",
+      "mahindara.html",
+      "cmwssb.html",
+      "index.html",
+      "santhanam.html",
+      "lhp.html",
+      "upt2.html",
+      "ashiana.html",
+      "smart-cities.html",
+      "upt13.html",
+      "royal.html",
+      "upt7.html",
+      "career.html",
+      "vision.html",
+      "upt3.html",
+      "iit-jammu.html",
+      "hfapmay.html",
+      "tender.html",
+      "lhp-rajkot.html",
+      "upt.html",
+      "our-clients.html",
+      "cpcl-arhc.html",
+      "iiser-tirupathi.html",
+      "upt9.html",
+      "keerapakkam.html",
+      "jipmer.html",
+      "cpcl-nagapattinam.html",
+      "jammu.html",
+      "upt12.html",
+      "our-team.html",
+      "lhp-ranchi.html",
+      "upt11.html",
+      "structual-design.html",
+      "iit-tirupathi.html",
+      "upt4.html",
+      "capacity-building-training-program.html",
+      "Kuthambakkam.html",
+      "upt1.html",
+      "cauvery.html",
+      "chairman-message.html",
+      "sidco-amb.html",
+      "objectives.html",
+      "caterpillar.html",
+      "KLIPSTP.html",
+      "kmrl-es.html",
+      "Madhavaram.html",
+      "upt10.html",
+      "ceo-message.html",
+      "upt14.html",
+      "indumathi.html",
+      "lhp-indore.html",
+      "Kilambakkam.html",
+      "rangaswami.html",
+      "koratur.html",
+      "vellore.html",
+      "sidco.html",
+      "lhp-chennai.html",
+      "ashwin-mahalingam.html",
+      "saf.html",
+      "lhp-luknow.html",
+      "environment-sustainability.html",
+      "venkatachari.html",
+      "contact-us.html",
+      "sivaraman-krishnamurthy.html",
+      "tpqas-jammu.html",
+      "tidel-park.html",
+      "upt8.html",
+      "shiv-das.html",
+      "core-values.html",
+      "board-member.html",
+      "arungulam.html",
+      "kp-park.html",
+      "kalanivasal.html",
+      "namakkal.html",
+      "upt6.html",
+      "advisory-panel.html",
+      "reevaluation-scheme.html",
+      "upt5.html",
+      "projects.html",
+      "building-construction.html",
+      "about.html",
+      "news.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/minin-policy.jpg": {
+    "rel_src": "assets/images/minin-policy.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "index.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/news.jpg": {
+    "rel_src": "assets/images/news.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "index.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/news1.jpg": {
+    "rel_src": "assets/images/news1.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "index.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/news2.jpg": {
+    "rel_src": "assets/images/news2.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "index.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/news3.jpg": {
+    "rel_src": "assets/images/news3.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "index.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/defaultnews.jpg": {
+    "rel_src": "assets/images/defaultnews.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "index.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/news7.jpg": {
+    "rel_src": "assets/images/news7.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "index.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/about/about.jpg": {
+    "rel_src": "assets/images/about/about.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "core-values.html",
+      "about.html",
+      "objectives.html",
+      "vision.html",
+      "index.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/project.jpg": {
+    "rel_src": "assets/images/project.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "index.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/project1.jpg": {
+    "rel_src": "assets/images/project1.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "index.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/project2.jpg": {
+    "rel_src": "assets/images/project2.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "index.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/project3.jpg": {
+    "rel_src": "assets/images/project3.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "index.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/project4.jpg": {
+    "rel_src": "assets/images/project4.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "index.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/about/building.jpg": {
+    "rel_src": "assets/images/about/building.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "index.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/about/building-pro1.jpg": {
+    "rel_src": "assets/images/about/building-pro1.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "index.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/about/building-pro2.jpg": {
+    "rel_src": "assets/images/about/building-pro2.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "index.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/about/building-pro3.jpg": {
+    "rel_src": "assets/images/about/building-pro3.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "index.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/about/environment.jpg": {
+    "rel_src": "assets/images/about/environment.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "index.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/about/en-pro2.jpg": {
+    "rel_src": "assets/images/about/en-pro2.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "index.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/about/en-pro3.jpg": {
+    "rel_src": "assets/images/about/en-pro3.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "index.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/about/smart-city.jpg": {
+    "rel_src": "assets/images/about/smart-city.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "index.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/about/upt-pro1.jpg": {
+    "rel_src": "assets/images/about/upt-pro1.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "index.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/about/upt-pro2.jpg": {
+    "rel_src": "assets/images/about/upt-pro2.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "index.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/about/upt-pro3.jpg": {
+    "rel_src": "assets/images/about/upt-pro3.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "index.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/about/cel.jpg": {
+    "rel_src": "assets/images/about/cel.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "index.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/about/cel1.jpg": {
+    "rel_src": "assets/images/about/cel1.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "index.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/about/cel2.jpg": {
+    "rel_src": "assets/images/about/cel2.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "index.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/about/life.jpg": {
+    "rel_src": "assets/images/about/life.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "index.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/about/life1.jpg": {
+    "rel_src": "assets/images/about/life1.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "index.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/about/life2.jpg": {
+    "rel_src": "assets/images/about/life2.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "index.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/about/leader.jpg": {
+    "rel_src": "assets/images/about/leader.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "index.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/news/news1.jpg": {
+    "rel_src": "assets/images/news/news1.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "index.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/news/news2.jpg": {
+    "rel_src": "assets/images/news/news2.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "index.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/news/news3.jpg": {
+    "rel_src": "assets/images/news/news3.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "index.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/news/news4.jpg": {
+    "rel_src": "assets/images/news/news4.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "index.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/news/news5.jpg": {
+    "rel_src": "assets/images/news/news5.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "index.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/news/news6.jpg": {
+    "rel_src": "assets/images/news/news6.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "index.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/news/news7.jpg": {
+    "rel_src": "assets/images/news/news7.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "index.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/news/news8.jpg": {
+    "rel_src": "assets/images/news/news8.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "index.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/news/news9.jpg": {
+    "rel_src": "assets/images/news/news9.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "index.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/news/news10.jpg": {
+    "rel_src": "assets/images/news/news10.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "index.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/Clients1/1.jpg": {
+    "rel_src": "assets/images/Clients1/1.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "index.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/Clients1/2.jpg": {
+    "rel_src": "assets/images/Clients1/2.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "index.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/Clients1/3.jpg": {
+    "rel_src": "assets/images/Clients1/3.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "index.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/Clients1/4.jpg": {
+    "rel_src": "assets/images/Clients1/4.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "index.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/Clients1/5.jpg": {
+    "rel_src": "assets/images/Clients1/5.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "index.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/Clients1/6.jpg": {
+    "rel_src": "assets/images/Clients1/6.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "index.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/Clients1/7.jpg": {
+    "rel_src": "assets/images/Clients1/7.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "index.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/Clients1/8.jpg": {
+    "rel_src": "assets/images/Clients1/8.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "index.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/partners/1.jpg": {
+    "rel_src": "assets/images/partners/1.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "index.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/partners/2.jpg": {
+    "rel_src": "assets/images/partners/2.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "index.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/partners/3.jpg": {
+    "rel_src": "assets/images/partners/3.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "index.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/partners/4.jpg": {
+    "rel_src": "assets/images/partners/4.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "index.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/partners/5.jpg": {
+    "rel_src": "assets/images/partners/5.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "index.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/partners/6.jpg": {
+    "rel_src": "assets/images/partners/6.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "index.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/partners/7.jpg": {
+    "rel_src": "assets/images/partners/7.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "index.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/footer-logo1.png": {
+    "rel_src": "assets/images/footer-logo1.png",
+    "ext": ".png",
+    "sources": [
+      "kmrl.html",
+      "rajapalayam.html",
+      "hyundai.html",
+      "mahindara.html",
+      "cmwssb.html",
+      "index.html",
+      "santhanam.html",
+      "lhp.html",
+      "upt2.html",
+      "ashiana.html",
+      "smart-cities.html",
+      "upt13.html",
+      "royal.html",
+      "upt7.html",
+      "career.html",
+      "vision.html",
+      "upt3.html",
+      "iit-jammu.html",
+      "hfapmay.html",
+      "tender.html",
+      "lhp-rajkot.html",
+      "upt.html",
+      "our-clients.html",
+      "cpcl-arhc.html",
+      "iiser-tirupathi.html",
+      "upt9.html",
+      "keerapakkam.html",
+      "jipmer.html",
+      "cpcl-nagapattinam.html",
+      "jammu.html",
+      "upt12.html",
+      "our-team.html",
+      "lhp-ranchi.html",
+      "upt11.html",
+      "structual-design.html",
+      "iit-tirupathi.html",
+      "upt4.html",
+      "capacity-building-training-program.html",
+      "Kuthambakkam.html",
+      "upt1.html",
+      "cauvery.html",
+      "chairman-message.html",
+      "sidco-amb.html",
+      "objectives.html",
+      "caterpillar.html",
+      "KLIPSTP.html",
+      "kmrl-es.html",
+      "Madhavaram.html",
+      "upt10.html",
+      "ceo-message.html",
+      "upt14.html",
+      "indumathi.html",
+      "lhp-indore.html",
+      "Kilambakkam.html",
+      "rangaswami.html",
+      "koratur.html",
+      "vellore.html",
+      "sidco.html",
+      "lhp-chennai.html",
+      "ashwin-mahalingam.html",
+      "saf.html",
+      "lhp-luknow.html",
+      "environment-sustainability.html",
+      "venkatachari.html",
+      "contact-us.html",
+      "sivaraman-krishnamurthy.html",
+      "tpqas-jammu.html",
+      "tidel-park.html",
+      "upt8.html",
+      "shiv-das.html",
+      "core-values.html",
+      "board-member.html",
+      "arungulam.html",
+      "kp-park.html",
+      "kalanivasal.html",
+      "namakkal.html",
+      "upt6.html",
+      "advisory-panel.html",
+      "reevaluation-scheme.html",
+      "upt5.html",
+      "projects.html",
+      "building-construction.html",
+      "about.html",
+      "news.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/delete.png": {
+    "rel_src": "assets/images/delete.png",
+    "ext": ".png",
+    "sources": [
+      "index.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/slides/cpcl-arc.jpg": {
+    "rel_src": "assets/images/slides/cpcl-arc.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "index.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/slides/iit-tirupathi.jpg": {
+    "rel_src": "assets/images/slides/iit-tirupathi.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "index.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/slides/design-engineering-consultancy.jpg": {
+    "rel_src": "assets/images/slides/design-engineering-consultancy.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "index.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/slides/revaluation.jpg": {
+    "rel_src": "assets/images/slides/revaluation.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "index.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/slides/building-training-team.jpg": {
+    "rel_src": "assets/images/slides/building-training-team.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "index.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/slides/ashiana.jpg": {
+    "rel_src": "assets/images/slides/ashiana.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "index.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/slides/07-cat.jpg": {
+    "rel_src": "assets/images/slides/07-cat.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "index.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/slides/mahindra.jpg": {
+    "rel_src": "assets/images/slides/mahindra.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "index.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/slides/slide2.jpg": {
+    "rel_src": "assets/images/slides/slide2.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "index.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/slides/niche.jpg": {
+    "rel_src": "assets/images/slides/niche.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "index.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/slides/slide3.jpg": {
+    "rel_src": "assets/images/slides/slide3.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "index.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/leadership.jpg": {
+    "rel_src": "assets/images/leadership.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "core-values.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/excellence.jpg": {
+    "rel_src": "assets/images/excellence.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "core-values.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/harmony.jpg": {
+    "rel_src": "assets/images/harmony.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "core-values.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/intrepid.jpg": {
+    "rel_src": "assets/images/intrepid.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "core-values.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/innovation.jpg": {
+    "rel_src": "assets/images/innovation.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "core-values.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/decisive.jpg": {
+    "rel_src": "assets/images/decisive.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "core-values.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/board-member/kamakoti.jpg": {
+    "rel_src": "assets/images/board-member/kamakoti.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "chairman-message.html",
+      "board-member.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/2.jpg": {
+    "rel_src": "assets/images/2.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "ceo-message.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/board-member/Saravanan.jpg": {
+    "rel_src": "assets/images/board-member/Saravanan.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "board-member.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/board-member/Thiru R. Kirlosh Kumar, IAS.jpg": {
+    "rel_src": "assets/images/board-member/Thiru R. Kirlosh Kumar, IAS.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "board-member.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/board-member/Thiru. M.A. Siddique IAS.jpg": {
+    "rel_src": "assets/images/board-member/Thiru. M.A. Siddique IAS.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "board-member.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/board-member/Thiru Gagandeep Singh Bedi.jpg": {
+    "rel_src": "assets/images/board-member/Thiru Gagandeep Singh Bedi.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "board-member.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/board-member/Dr. P Alarmelmangai IAS.jpg": {
+    "rel_src": "assets/images/board-member/Dr. P Alarmelmangai IAS.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "board-member.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/board-member/ashwin.jpg": {
+    "rel_src": "assets/images/board-member/ashwin.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "advisory-panel.html",
+      "ashwin-mahalingam.html",
+      "board-member.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/board-member/indumathi.jpg": {
+    "rel_src": "assets/images/board-member/indumathi.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "advisory-panel.html",
+      "indumathi.html",
+      "board-member.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/board-member/rangaswami.jpg": {
+    "rel_src": "assets/images/board-member/rangaswami.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "rangaswami.html",
+      "board-member.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/board-member/santhanam.jpg": {
+    "rel_src": "assets/images/board-member/santhanam.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "santhanam.html",
+      "board-member.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/board-member/sivaraman-krishnamurthi.jpg": {
+    "rel_src": "assets/images/board-member/sivaraman-krishnamurthi.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "sivaraman-krishnamurthy.html",
+      "board-member.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/board-member/srinivasa-raghavan.jpg": {
+    "rel_src": "assets/images/board-member/srinivasa-raghavan.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "venkatachari.html",
+      "board-member.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/board-member/benny.jpg": {
+    "rel_src": "assets/images/board-member/benny.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "board-member.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/board-member/sathyamoorthy.jpg": {
+    "rel_src": "assets/images/board-member/sathyamoorthy.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "board-member.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/board-member/kakarla.jpg": {
+    "rel_src": "assets/images/board-member/kakarla.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "board-member.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/board-member/udaya.jpg": {
+    "rel_src": "assets/images/board-member/udaya.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "board-member.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/board-member/kartikeyan.jpg": {
+    "rel_src": "assets/images/board-member/kartikeyan.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "board-member.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/board-member/M_Saravanakumar_MS.webp": {
+    "rel_src": "assets/images/board-member/M_Saravanakumar_MS.webp",
+    "ext": ".webp",
+    "sources": [
+      "board-member.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/board-member/muruganandam.jpg": {
+    "rel_src": "assets/images/board-member/muruganandam.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "board-member.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/board-member/shiv-das.jpg": {
+    "rel_src": "assets/images/board-member/shiv-das.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "shiv-das.html",
+      "board-member.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/advisory-panel/meher-prasad.jpg": {
+    "rel_src": "assets/images/advisory-panel/meher-prasad.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "advisory-panel.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/advisory-panel/amlan-kumar.jpg": {
+    "rel_src": "assets/images/advisory-panel/amlan-kumar.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "advisory-panel.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/advisory-panel/arun-menon.jpg": {
+    "rel_src": "assets/images/advisory-panel/arun-menon.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "advisory-panel.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/advisory-panel/arul-narayanan.jpg": {
+    "rel_src": "assets/images/advisory-panel/arul-narayanan.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "advisory-panel.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/advisory-panel/balaji-narasiman.jpg": {
+    "rel_src": "assets/images/advisory-panel/balaji-narasiman.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "advisory-panel.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/advisory-panel/boominathan.jpg": {
+    "rel_src": "assets/images/advisory-panel/boominathan.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "advisory-panel.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/advisory-panel/devdas-menon.jpg": {
+    "rel_src": "assets/images/advisory-panel/devdas-menon.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "advisory-panel.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/advisory-panel/gitakrishnan.jpg": {
+    "rel_src": "assets/images/advisory-panel/gitakrishnan.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "advisory-panel.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/advisory-panel/ligy-philip.jpg": {
+    "rel_src": "assets/images/advisory-panel/ligy-philip.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "advisory-panel.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/advisory-panel/murali-krishnan.jpg": {
+    "rel_src": "assets/images/advisory-panel/murali-krishnan.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "advisory-panel.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/advisory-panel/murty-bs.jpg": {
+    "rel_src": "assets/images/advisory-panel/murty-bs.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "advisory-panel.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/advisory-panel/radhakrishnan-pillai.jpg": {
+    "rel_src": "assets/images/advisory-panel/radhakrishnan-pillai.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "advisory-panel.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/advisory-panel/ramamurthy-k.jpg": {
+    "rel_src": "assets/images/advisory-panel/ramamurthy-k.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "advisory-panel.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/advisory-panel/rupen-goswami.jpg": {
+    "rel_src": "assets/images/advisory-panel/rupen-goswami.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "advisory-panel.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/advisory-panel/s-mohan.jpg": {
+    "rel_src": "assets/images/advisory-panel/s-mohan.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "advisory-panel.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/advisory-panel/shiva-nagendra.jpg": {
+    "rel_src": "assets/images/advisory-panel/shiva-nagendra.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "advisory-panel.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/advisory-panel/sarvanan.jpg": {
+    "rel_src": "assets/images/advisory-panel/sarvanan.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "advisory-panel.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/advisory-panel/sivakumar-palaniappan.jpg": {
+    "rel_src": "assets/images/advisory-panel/sivakumar-palaniappan.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "advisory-panel.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/advisory-panel/subhadeep.jpg": {
+    "rel_src": "assets/images/advisory-panel/subhadeep.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "advisory-panel.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/advisory-panel/a-mani.jpg": {
+    "rel_src": "assets/images/advisory-panel/a-mani.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "advisory-panel.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/advisory-panel/chakravarthy.jpg": {
+    "rel_src": "assets/images/advisory-panel/chakravarthy.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "advisory-panel.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/advisory-panel/ragunathan.jpg": {
+    "rel_src": "assets/images/advisory-panel/ragunathan.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "advisory-panel.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/advisory-panel/ravikrishna.jpg": {
+    "rel_src": "assets/images/advisory-panel/ravikrishna.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "advisory-panel.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/team/john-Joseph.jpg": {
+    "rel_src": "assets/images/team/john-Joseph.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "our-team.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/team/unmesh-dhanushkodi.jpg": {
+    "rel_src": "assets/images/team/unmesh-dhanushkodi.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "our-team.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/team/unknown.png": {
+    "rel_src": "assets/images/team/unknown.png",
+    "ext": ".png",
+    "sources": [
+      "our-team.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/team/pal-pandi.jpg": {
+    "rel_src": "assets/images/team/pal-pandi.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "our-team.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/team/amitha.jpg": {
+    "rel_src": "assets/images/team/amitha.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "our-team.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/team/vivekanandan.jpg": {
+    "rel_src": "assets/images/team/vivekanandan.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "our-team.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/team/madhankumar.png": {
+    "rel_src": "assets/images/team/madhankumar.png",
+    "ext": ".png",
+    "sources": [
+      "our-team.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/team/aravindan.jpg": {
+    "rel_src": "assets/images/team/aravindan.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "our-team.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/team/divya.jpg": {
+    "rel_src": "assets/images/team/divya.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "our-team.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/team/p-divakar.jpg": {
+    "rel_src": "assets/images/team/p-divakar.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "our-team.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/team/llakkiya.s.jpg": {
+    "rel_src": "assets/images/team/llakkiya.s.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "our-team.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/team/kishore-kumar.jpg": {
+    "rel_src": "assets/images/team/kishore-kumar.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "our-team.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/team/dr.manivannan-v.jpg": {
+    "rel_src": "assets/images/team/dr.manivannan-v.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "our-team.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/team/pushparaj.jpg": {
+    "rel_src": "assets/images/team/pushparaj.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "our-team.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/team/vigneshrathinam.jpg": {
+    "rel_src": "assets/images/team/vigneshrathinam.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "our-team.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/team/b.s-hari-saravan.jpg": {
+    "rel_src": "assets/images/team/b.s-hari-saravan.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "our-team.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/team/pratiksha-baruah.jpg": {
+    "rel_src": "assets/images/team/pratiksha-baruah.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "our-team.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/team/sruthi-rao.jpg": {
+    "rel_src": "assets/images/team/sruthi-rao.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "our-team.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/team/sudharsanan.jpg": {
+    "rel_src": "assets/images/team/sudharsanan.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "our-team.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/team/Santhanakrishnan.jpg": {
+    "rel_src": "assets/images/team/Santhanakrishnan.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "our-team.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/team/nivedhitha.jpg": {
+    "rel_src": "assets/images/team/nivedhitha.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "our-team.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/team/anis.jpg": {
+    "rel_src": "assets/images/team/anis.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "our-team.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/team/supraja-ravi.jpg": {
+    "rel_src": "assets/images/team/supraja-ravi.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "our-team.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/team/elakkiya-sakthivel.jpg": {
+    "rel_src": "assets/images/team/elakkiya-sakthivel.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "our-team.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/team/lakshminarasimhal.jpg": {
+    "rel_src": "assets/images/team/lakshminarasimhal.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "our-team.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/team/Thanesh Raja.png": {
+    "rel_src": "assets/images/team/Thanesh Raja.png",
+    "ext": ".png",
+    "sources": [
+      "our-team.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/team/gothandaramam.jpg": {
+    "rel_src": "assets/images/team/gothandaramam.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "our-team.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/team/marudhu.jpg": {
+    "rel_src": "assets/images/team/marudhu.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "our-team.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/team/thilagavathy.jpg": {
+    "rel_src": "assets/images/team/thilagavathy.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "our-team.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/team/r.yuvaraj.jpg": {
+    "rel_src": "assets/images/team/r.yuvaraj.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "our-team.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/client/1.png": {
+    "rel_src": "assets/images/client/1.png",
+    "ext": ".png",
+    "sources": [
+      "our-clients.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/client/2.png": {
+    "rel_src": "assets/images/client/2.png",
+    "ext": ".png",
+    "sources": [
+      "our-clients.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/client/3.png": {
+    "rel_src": "assets/images/client/3.png",
+    "ext": ".png",
+    "sources": [
+      "our-clients.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/client/4.png": {
+    "rel_src": "assets/images/client/4.png",
+    "ext": ".png",
+    "sources": [
+      "our-clients.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/client/5.png": {
+    "rel_src": "assets/images/client/5.png",
+    "ext": ".png",
+    "sources": [
+      "our-clients.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/client/6.png": {
+    "rel_src": "assets/images/client/6.png",
+    "ext": ".png",
+    "sources": [
+      "our-clients.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/client/7.png": {
+    "rel_src": "assets/images/client/7.png",
+    "ext": ".png",
+    "sources": [
+      "our-clients.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/client/8.png": {
+    "rel_src": "assets/images/client/8.png",
+    "ext": ".png",
+    "sources": [
+      "our-clients.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/client/9.png": {
+    "rel_src": "assets/images/client/9.png",
+    "ext": ".png",
+    "sources": [
+      "our-clients.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/client/10.png": {
+    "rel_src": "assets/images/client/10.png",
+    "ext": ".png",
+    "sources": [
+      "our-clients.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/client/11.png": {
+    "rel_src": "assets/images/client/11.png",
+    "ext": ".png",
+    "sources": [
+      "our-clients.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/client/12.png": {
+    "rel_src": "assets/images/client/12.png",
+    "ext": ".png",
+    "sources": [
+      "our-clients.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/client/13.png": {
+    "rel_src": "assets/images/client/13.png",
+    "ext": ".png",
+    "sources": [
+      "our-clients.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/client/14.png": {
+    "rel_src": "assets/images/client/14.png",
+    "ext": ".png",
+    "sources": [
+      "our-clients.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/client/15.png": {
+    "rel_src": "assets/images/client/15.png",
+    "ext": ".png",
+    "sources": [
+      "our-clients.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/client/16.png": {
+    "rel_src": "assets/images/client/16.png",
+    "ext": ".png",
+    "sources": [
+      "our-clients.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/client/17.png": {
+    "rel_src": "assets/images/client/17.png",
+    "ext": ".png",
+    "sources": [
+      "our-clients.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/client/18.png": {
+    "rel_src": "assets/images/client/18.png",
+    "ext": ".png",
+    "sources": [
+      "our-clients.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/client/19.png": {
+    "rel_src": "assets/images/client/19.png",
+    "ext": ".png",
+    "sources": [
+      "our-clients.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/client/20.png": {
+    "rel_src": "assets/images/client/20.png",
+    "ext": ".png",
+    "sources": [
+      "our-clients.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/client/21.png": {
+    "rel_src": "assets/images/client/21.png",
+    "ext": ".png",
+    "sources": [
+      "our-clients.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/client/22.png": {
+    "rel_src": "assets/images/client/22.png",
+    "ext": ".png",
+    "sources": [
+      "our-clients.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/client/23.png": {
+    "rel_src": "assets/images/client/23.png",
+    "ext": ".png",
+    "sources": [
+      "our-clients.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/client/24.png": {
+    "rel_src": "assets/images/client/24.png",
+    "ext": ".png",
+    "sources": [
+      "our-clients.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/client/25.png": {
+    "rel_src": "assets/images/client/25.png",
+    "ext": ".png",
+    "sources": [
+      "our-clients.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/client/26.png": {
+    "rel_src": "assets/images/client/26.png",
+    "ext": ".png",
+    "sources": [
+      "our-clients.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/client/27.png": {
+    "rel_src": "assets/images/client/27.png",
+    "ext": ".png",
+    "sources": [
+      "our-clients.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/client/28.png": {
+    "rel_src": "assets/images/client/28.png",
+    "ext": ".png",
+    "sources": [
+      "our-clients.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/client/29.png": {
+    "rel_src": "assets/images/client/29.png",
+    "ext": ".png",
+    "sources": [
+      "our-clients.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/client/30.png": {
+    "rel_src": "assets/images/client/30.png",
+    "ext": ".png",
+    "sources": [
+      "our-clients.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/client/31.png": {
+    "rel_src": "assets/images/client/31.png",
+    "ext": ".png",
+    "sources": [
+      "our-clients.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/client/33.png": {
+    "rel_src": "assets/images/client/33.png",
+    "ext": ".png",
+    "sources": [
+      "our-clients.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/client/34.png": {
+    "rel_src": "assets/images/client/34.png",
+    "ext": ".png",
+    "sources": [
+      "our-clients.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/client/35.png": {
+    "rel_src": "assets/images/client/35.png",
+    "ext": ".png",
+    "sources": [
+      "our-clients.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/client/36.png": {
+    "rel_src": "assets/images/client/36.png",
+    "ext": ".png",
+    "sources": [
+      "our-clients.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/client/37.png": {
+    "rel_src": "assets/images/client/37.png",
+    "ext": ".png",
+    "sources": [
+      "our-clients.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/client/38.png": {
+    "rel_src": "assets/images/client/38.png",
+    "ext": ".png",
+    "sources": [
+      "our-clients.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/client/39.png": {
+    "rel_src": "assets/images/client/39.png",
+    "ext": ".png",
+    "sources": [
+      "our-clients.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/client/40.png": {
+    "rel_src": "assets/images/client/40.png",
+    "ext": ".png",
+    "sources": [
+      "our-clients.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/client/41.png": {
+    "rel_src": "assets/images/client/41.png",
+    "ext": ".png",
+    "sources": [
+      "our-clients.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/client/42.png": {
+    "rel_src": "assets/images/client/42.png",
+    "ext": ".png",
+    "sources": [
+      "our-clients.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/client/43.png": {
+    "rel_src": "assets/images/client/43.png",
+    "ext": ".png",
+    "sources": [
+      "our-clients.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/client/44.png": {
+    "rel_src": "assets/images/client/44.png",
+    "ext": ".png",
+    "sources": [
+      "our-clients.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/client/45.png": {
+    "rel_src": "assets/images/client/45.png",
+    "ext": ".png",
+    "sources": [
+      "our-clients.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/client/46.png": {
+    "rel_src": "assets/images/client/46.png",
+    "ext": ".png",
+    "sources": [
+      "our-clients.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/client/48.png": {
+    "rel_src": "assets/images/client/48.png",
+    "ext": ".png",
+    "sources": [
+      "our-clients.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/client/49.png": {
+    "rel_src": "assets/images/client/49.png",
+    "ext": ".png",
+    "sources": [
+      "our-clients.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/client/50.png": {
+    "rel_src": "assets/images/client/50.png",
+    "ext": ".png",
+    "sources": [
+      "our-clients.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/client/51.png": {
+    "rel_src": "assets/images/client/51.png",
+    "ext": ".png",
+    "sources": [
+      "our-clients.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/client/52.png": {
+    "rel_src": "assets/images/client/52.png",
+    "ext": ".png",
+    "sources": [
+      "our-clients.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/client/53.png": {
+    "rel_src": "assets/images/client/53.png",
+    "ext": ".png",
+    "sources": [
+      "our-clients.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/client/54.png": {
+    "rel_src": "assets/images/client/54.png",
+    "ext": ".png",
+    "sources": [
+      "our-clients.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/client/55.png": {
+    "rel_src": "assets/images/client/55.png",
+    "ext": ".png",
+    "sources": [
+      "our-clients.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/client/56.png": {
+    "rel_src": "assets/images/client/56.png",
+    "ext": ".png",
+    "sources": [
+      "our-clients.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/client/57.png": {
+    "rel_src": "assets/images/client/57.png",
+    "ext": ".png",
+    "sources": [
+      "our-clients.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/client/58.png": {
+    "rel_src": "assets/images/client/58.png",
+    "ext": ".png",
+    "sources": [
+      "our-clients.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/pro1.jpg": {
+    "rel_src": "assets/images/pro1.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "lhp-chennai.html",
+      "projects.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/iiser1.jpg": {
+    "rel_src": "assets/images/iiser1.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "projects.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/pro2.jpg": {
+    "rel_src": "assets/images/pro2.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "lhp-luknow.html",
+      "projects.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/lhp.jpg": {
+    "rel_src": "assets/images/lhp.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "lhp-chennai.html",
+      "projects.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/lhp-ranchi.jpg": {
+    "rel_src": "assets/images/lhp-ranchi.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "lhp-rajkot.html",
+      "projects.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/lhp-indore.jpg": {
+    "rel_src": "assets/images/lhp-indore.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "Kuthambakkam.html",
+      "upt1.html",
+      "saf.html",
+      "rajapalayam.html",
+      "cpcl-arhc.html",
+      "upt9.html",
+      "cauvery.html",
+      "keerapakkam.html",
+      "hyundai.html",
+      "tpqas-jammu.html",
+      "mahindara.html",
+      "tidel-park.html",
+      "upt8.html",
+      "cmwssb.html",
+      "ashiana.html",
+      "sidco-amb.html",
+      "upt2.html",
+      "jipmer.html",
+      "upt12.html",
+      "caterpillar.html",
+      "KLIPSTP.html",
+      "kmrl-es.html",
+      "arungulam.html",
+      "Madhavaram.html",
+      "upt13.html",
+      "upt10.html",
+      "royal.html",
+      "upt14.html",
+      "kalanivasal.html",
+      "upt7.html",
+      "namakkal.html",
+      "Kilambakkam.html",
+      "upt6.html",
+      "upt11.html",
+      "koratur.html",
+      "vellore.html",
+      "upt3.html",
+      "sidco.html",
+      "upt5.html",
+      "iit-jammu.html",
+      "projects.html",
+      "upt4.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/lhp-luknow.jpg": {
+    "rel_src": "assets/images/lhp-luknow.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "cpcl-arhc.html",
+      "reevaluation-scheme.html",
+      "projects.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/lhp-rajkot.jpg": {
+    "rel_src": "assets/images/lhp-rajkot.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "projects.html",
+      "lhp-ranchi.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/lhp-chennai.jpg": {
+    "rel_src": "assets/images/lhp-chennai.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "capacity-building-training-program.html",
+      "lhp.html",
+      "projects.html",
+      "kp-park.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/cpcl-nagapattinam.jpg": {
+    "rel_src": "assets/images/cpcl-nagapattinam.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "lhp-luknow.html",
+      "lhp.html",
+      "projects.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/hfapmay.jpg": {
+    "rel_src": "assets/images/hfapmay.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "capacity-building-training-program.html",
+      "Kuthambakkam.html",
+      "lhp-rajkot.html",
+      "saf.html",
+      "upt1.html",
+      "rajapalayam.html",
+      "upt9.html",
+      "cauvery.html",
+      "keerapakkam.html",
+      "hyundai.html",
+      "tpqas-jammu.html",
+      "mahindara.html",
+      "tidel-park.html",
+      "upt8.html",
+      "cmwssb.html",
+      "ashiana.html",
+      "sidco-amb.html",
+      "upt2.html",
+      "jipmer.html",
+      "upt12.html",
+      "caterpillar.html",
+      "KLIPSTP.html",
+      "kmrl-es.html",
+      "arungulam.html",
+      "Madhavaram.html",
+      "upt13.html",
+      "upt10.html",
+      "kp-park.html",
+      "royal.html",
+      "upt14.html",
+      "kalanivasal.html",
+      "upt7.html",
+      "namakkal.html",
+      "Kilambakkam.html",
+      "upt6.html",
+      "upt11.html",
+      "koratur.html",
+      "vellore.html",
+      "upt3.html",
+      "reevaluation-scheme.html",
+      "sidco.html",
+      "upt5.html",
+      "iit-jammu.html",
+      "projects.html",
+      "upt4.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/pro4.jpg": {
+    "rel_src": "assets/images/pro4.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "lhp-indore.html",
+      "kmrl.html",
+      "iit-tirupathi.html",
+      "projects.html",
+      "cpcl-nagapattinam.html",
+      "jammu.html",
+      "iiser-tirupathi.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/pro5.jpg": {
+    "rel_src": "assets/images/pro5.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "lhp-indore.html",
+      "kmrl.html",
+      "iit-tirupathi.html",
+      "projects.html",
+      "cpcl-nagapattinam.html",
+      "jammu.html",
+      "iiser-tirupathi.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/kppark.jpg": {
+    "rel_src": "assets/images/kppark.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "projects.html",
+      "hfapmay.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/kmrl.jpg": {
+    "rel_src": "assets/images/kmrl.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "projects.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/jammu.jpg": {
+    "rel_src": "assets/images/jammu.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "projects.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/tidel-park.jpg": {
+    "rel_src": "assets/images/tidel-park.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "hfapmay.html",
+      "projects.html",
+      "lhp-ranchi.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/jipmer.jpg": {
+    "rel_src": "assets/images/jipmer.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "projects.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/koratur.jpg": {
+    "rel_src": "assets/images/koratur.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "projects.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/arungulam.jpg": {
+    "rel_src": "assets/images/arungulam.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "projects.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/kalanivasal.jpg": {
+    "rel_src": "assets/images/kalanivasal.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "projects.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/saf.jpg": {
+    "rel_src": "assets/images/saf.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "projects.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/sidco.jpg": {
+    "rel_src": "assets/images/sidco.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "projects.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/sidco-amb.jpg": {
+    "rel_src": "assets/images/sidco-amb.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "projects.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/keerapakkam.jpg": {
+    "rel_src": "assets/images/keerapakkam.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "projects.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/tpqas-jammu.jpg": {
+    "rel_src": "assets/images/tpqas-jammu.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "projects.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/upt1.jpg": {
+    "rel_src": "assets/images/upt1.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "projects.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/upt2.jpg": {
+    "rel_src": "assets/images/upt2.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "projects.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/upt3.jpg": {
+    "rel_src": "assets/images/upt3.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "projects.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/upt4.jpg": {
+    "rel_src": "assets/images/upt4.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "projects.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/upt5.jpg": {
+    "rel_src": "assets/images/upt5.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "projects.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/upt6.jpg": {
+    "rel_src": "assets/images/upt6.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "projects.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/upt7.jpg": {
+    "rel_src": "assets/images/upt7.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "projects.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/upt8.jpg": {
+    "rel_src": "assets/images/upt8.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "projects.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/upt9.jpg": {
+    "rel_src": "assets/images/upt9.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "projects.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/upt10.jpg": {
+    "rel_src": "assets/images/upt10.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "projects.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/upt11.jpg": {
+    "rel_src": "assets/images/upt11.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "projects.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/upt12.jpg": {
+    "rel_src": "assets/images/upt12.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "projects.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/upt13.jpg": {
+    "rel_src": "assets/images/upt13.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "projects.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/upt14.jpg": {
+    "rel_src": "assets/images/upt14.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "projects.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/ashiana.jpg": {
+    "rel_src": "assets/images/ashiana.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "projects.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/caterpillar.jpg": {
+    "rel_src": "assets/images/caterpillar.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "projects.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/cauvery.jpg": {
+    "rel_src": "assets/images/cauvery.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "projects.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/cmwssb.jpg": {
+    "rel_src": "assets/images/cmwssb.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "projects.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/hyundai.jpg": {
+    "rel_src": "assets/images/hyundai.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "projects.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/iit-jammu.jpg": {
+    "rel_src": "assets/images/iit-jammu.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "projects.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/Kilambakkam.jpg": {
+    "rel_src": "assets/images/Kilambakkam.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "projects.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/KLIPSTP.jpg": {
+    "rel_src": "assets/images/KLIPSTP.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "projects.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/kmrl-es.jpg": {
+    "rel_src": "assets/images/kmrl-es.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "projects.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/Kuthambakkam.jpg": {
+    "rel_src": "assets/images/Kuthambakkam.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "projects.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/Madhavaram.jpg": {
+    "rel_src": "assets/images/Madhavaram.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "projects.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/mahindara.jpg": {
+    "rel_src": "assets/images/mahindara.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "namakkal.html",
+      "mahindara.html",
+      "projects.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/namakkal.jpg": {
+    "rel_src": "assets/images/namakkal.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "projects.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/rajapalayam.jpg": {
+    "rel_src": "assets/images/rajapalayam.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "projects.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/royal.jpg": {
+    "rel_src": "assets/images/royal.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "projects.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/vellore.jpg": {
+    "rel_src": "assets/images/vellore.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "projects.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/vertical1/design-engineering.jpg": {
+    "rel_src": "assets/images/vertical1/design-engineering.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "environment-sustainability.html",
+      "building-construction.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/vertical1/project-management.jpg": {
+    "rel_src": "assets/images/vertical1/project-management.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "upt.html",
+      "environment-sustainability.html",
+      "building-construction.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/vertical1/quality-services.jpg": {
+    "rel_src": "assets/images/vertical1/quality-services.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "environment-sustainability.html",
+      "building-construction.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/vertical1/construction-tech.jpg": {
+    "rel_src": "assets/images/vertical1/construction-tech.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "building-construction.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/vertical1/training-research.jpg": {
+    "rel_src": "assets/images/vertical1/training-research.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "upt.html",
+      "environment-sustainability.html",
+      "building-construction.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/vertical1.jpg": {
+    "rel_src": "assets/images/vertical1.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "building-construction.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/vertical2/lab.jpg": {
+    "rel_src": "assets/images/vertical2/lab.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "environment-sustainability.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/vertical2/environment-management.jpg": {
+    "rel_src": "assets/images/vertical2/environment-management.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "environment-sustainability.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/vertical2/sustaianble-tech.jpg": {
+    "rel_src": "assets/images/vertical2/sustaianble-tech.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "environment-sustainability.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/environment-bg.jpg": {
+    "rel_src": "assets/images/environment-bg.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "environment-sustainability.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/smartcity.jpg": {
+    "rel_src": "assets/images/smartcity.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "smart-cities.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/vertical4/plan.jpg": {
+    "rel_src": "assets/images/vertical4/plan.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "upt.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/vertical4/infrastructure.jpg": {
+    "rel_src": "assets/images/vertical4/infrastructure.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "upt.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/vertical4/survey.jpg": {
+    "rel_src": "assets/images/vertical4/survey.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "upt.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/vertical4/urban-design.jpg": {
+    "rel_src": "assets/images/vertical4/urban-design.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "upt.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/upt.jpg": {
+    "rel_src": "assets/images/upt.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "upt.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/newsnew4.jpg": {
+    "rel_src": "assets/images/newsnew4.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "news.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/newsnew4-2.jpg": {
+    "rel_src": "assets/images/newsnew4-2.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "news.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/newsnew3.jpg": {
+    "rel_src": "assets/images/newsnew3.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "news.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/newsnew3-2.jpg": {
+    "rel_src": "assets/images/newsnew3-2.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "news.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/newsnew3-3.jpg": {
+    "rel_src": "assets/images/newsnew3-3.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "news.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/newsnew3-4.jpg": {
+    "rel_src": "assets/images/newsnew3-4.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "news.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/newsnew2.jpg": {
+    "rel_src": "assets/images/newsnew2.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "news.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/newsnew2-2.jpg": {
+    "rel_src": "assets/images/newsnew2-2.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "news.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/newsnew2-3.jpg": {
+    "rel_src": "assets/images/newsnew2-3.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "news.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/newsnew2-4.jpg": {
+    "rel_src": "assets/images/newsnew2-4.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "news.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/newsnew.jpg": {
+    "rel_src": "assets/images/newsnew.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "news.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/1.jpg": {
+    "rel_src": "assets/images/1.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "news.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/2-.jpg": {
+    "rel_src": "assets/images/2-.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "news.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/3.jpg": {
+    "rel_src": "assets/images/3.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "news.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/news-1.jpg": {
+    "rel_src": "assets/images/news-1.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "news.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/about-bg.jpg": {
+    "rel_src": "assets/images/about-bg.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "career.html",
+      "tender.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/iit/img/1.jpg": {
+    "rel_src": "assets/images/iit/img/1.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "iit-tirupathi.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/iit/img/2.jpg": {
+    "rel_src": "assets/images/iit/img/2.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "iit-tirupathi.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/iit/img/3.jpg": {
+    "rel_src": "assets/images/iit/img/3.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "iit-tirupathi.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/iit/img/4.jpg": {
+    "rel_src": "assets/images/iit/img/4.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "iit-tirupathi.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/iit/img/5.jpg": {
+    "rel_src": "assets/images/iit/img/5.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "iit-tirupathi.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/iit/img/6.jpg": {
+    "rel_src": "assets/images/iit/img/6.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "iit-tirupathi.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/iit/img/7.jpg": {
+    "rel_src": "assets/images/iit/img/7.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "iit-tirupathi.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/iit/img/8.jpg": {
+    "rel_src": "assets/images/iit/img/8.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "iit-tirupathi.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/iit/img/9.jpg": {
+    "rel_src": "assets/images/iit/img/9.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "iit-tirupathi.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/iit/img/10.jpg": {
+    "rel_src": "assets/images/iit/img/10.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "iit-tirupathi.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/iit/img/11.jpg": {
+    "rel_src": "assets/images/iit/img/11.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "iit-tirupathi.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/iiser/2.jpg": {
+    "rel_src": "assets/images/iiser/2.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "iiser-tirupathi.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/iiser/1.jpg": {
+    "rel_src": "assets/images/iiser/1.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "iiser-tirupathi.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/iiser/3.jpg": {
+    "rel_src": "assets/images/iiser/3.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "iiser-tirupathi.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/iiser/5.jpg": {
+    "rel_src": "assets/images/iiser/5.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "iiser-tirupathi.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/iiser/6.jpg": {
+    "rel_src": "assets/images/iiser/6.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "iiser-tirupathi.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/iiser/7.jpg": {
+    "rel_src": "assets/images/iiser/7.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "iiser-tirupathi.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/iiser/8.jpg": {
+    "rel_src": "assets/images/iiser/8.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "iiser-tirupathi.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/iiser/9.jpg": {
+    "rel_src": "assets/images/iiser/9.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "iiser-tirupathi.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/iiser/10.jpg": {
+    "rel_src": "assets/images/iiser/10.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "iiser-tirupathi.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/iiser/11.jpg": {
+    "rel_src": "assets/images/iiser/11.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "iiser-tirupathi.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/iiser/12.jpg": {
+    "rel_src": "assets/images/iiser/12.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "iiser-tirupathi.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/iiser/13.jpg": {
+    "rel_src": "assets/images/iiser/13.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "iiser-tirupathi.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/iiser/14.jpg": {
+    "rel_src": "assets/images/iiser/14.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "iiser-tirupathi.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/iiser/15.jpg": {
+    "rel_src": "assets/images/iiser/15.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "iiser-tirupathi.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/iiser/16.jpg": {
+    "rel_src": "assets/images/iiser/16.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "iiser-tirupathi.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/iiser/17.jpg": {
+    "rel_src": "assets/images/iiser/17.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "iiser-tirupathi.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/iiser/18.jpg": {
+    "rel_src": "assets/images/iiser/18.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "iiser-tirupathi.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/iiser/4.jpg": {
+    "rel_src": "assets/images/iiser/4.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "iiser-tirupathi.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/cpcl/01.jpg": {
+    "rel_src": "assets/images/cpcl/01.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "cpcl-arhc.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/cpcl/02.jpg": {
+    "rel_src": "assets/images/cpcl/02.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "cpcl-arhc.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/cpcl/03.jpg": {
+    "rel_src": "assets/images/cpcl/03.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "cpcl-arhc.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/lhp-agartala/01.jpg": {
+    "rel_src": "assets/images/lhp-agartala/01.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "lhp.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/lhp-agartala/02.jpg": {
+    "rel_src": "assets/images/lhp-agartala/02.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "lhp.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/lhp-agartala/03.jpg": {
+    "rel_src": "assets/images/lhp-agartala/03.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "lhp.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/lhp-agartala/04.jpg": {
+    "rel_src": "assets/images/lhp-agartala/04.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "lhp.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/lhp-agartala/05.jpg": {
+    "rel_src": "assets/images/lhp-agartala/05.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "lhp.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/lhp-agartala/06.jpg": {
+    "rel_src": "assets/images/lhp-agartala/06.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "lhp.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/lhp-agartala/07.jpg": {
+    "rel_src": "assets/images/lhp-agartala/07.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "lhp.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/lhp-agartala/08.jpg": {
+    "rel_src": "assets/images/lhp-agartala/08.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "lhp.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/lhp-agartala/09.jpg": {
+    "rel_src": "assets/images/lhp-agartala/09.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "lhp.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/lhp-agartala/10.jpg": {
+    "rel_src": "assets/images/lhp-agartala/10.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "lhp.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/lhp-agartala/11.jpg": {
+    "rel_src": "assets/images/lhp-agartala/11.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "lhp.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/lhp-agartala/12.jpg": {
+    "rel_src": "assets/images/lhp-agartala/12.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "lhp.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/lhp-agartala/13.jpg": {
+    "rel_src": "assets/images/lhp-agartala/13.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "lhp.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/lhp-agartala/14.jpg": {
+    "rel_src": "assets/images/lhp-agartala/14.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "lhp.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/lhp-agartala/15.jpg": {
+    "rel_src": "assets/images/lhp-agartala/15.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "lhp.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/lhp-agartala/16.jpg": {
+    "rel_src": "assets/images/lhp-agartala/16.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "lhp.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/lhp-agartala/17.jpg": {
+    "rel_src": "assets/images/lhp-agartala/17.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "lhp.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/lhp-agartala/18.jpg": {
+    "rel_src": "assets/images/lhp-agartala/18.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "lhp.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/lhp-agartala/19.jpg": {
+    "rel_src": "assets/images/lhp-agartala/19.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "lhp.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/lhp-agartala/20.jpg": {
+    "rel_src": "assets/images/lhp-agartala/20.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "lhp.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/lhp-agartala/21.jpg": {
+    "rel_src": "assets/images/lhp-agartala/21.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "lhp.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/lhp-agartala/22.jpg": {
+    "rel_src": "assets/images/lhp-agartala/22.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "lhp.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/lhp-agartala/23.jpg": {
+    "rel_src": "assets/images/lhp-agartala/23.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "lhp.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/lhp-ranchi/01.jpg": {
+    "rel_src": "assets/images/lhp-ranchi/01.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "lhp-ranchi.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/lhp-ranchi/02.jpg": {
+    "rel_src": "assets/images/lhp-ranchi/02.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "lhp-ranchi.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/lhp-ranchi/03.jpg": {
+    "rel_src": "assets/images/lhp-ranchi/03.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "lhp-ranchi.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/lhp-ranchi/04.jpg": {
+    "rel_src": "assets/images/lhp-ranchi/04.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "lhp-ranchi.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/lhp-indore/01.jpg": {
+    "rel_src": "assets/images/lhp-indore/01.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "lhp-indore.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/lhp-indore/02.jpg": {
+    "rel_src": "assets/images/lhp-indore/02.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "lhp-indore.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/lhp-indore/03.jpg": {
+    "rel_src": "assets/images/lhp-indore/03.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "lhp-indore.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/lhp-indore/04.jpg": {
+    "rel_src": "assets/images/lhp-indore/04.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "lhp-indore.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/lhp-luknow/01.jpg": {
+    "rel_src": "assets/images/lhp-luknow/01.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "lhp-luknow.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/lhp-luknow/02.jpg": {
+    "rel_src": "assets/images/lhp-luknow/02.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "lhp-luknow.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/lhp-luknow/03.jpg": {
+    "rel_src": "assets/images/lhp-luknow/03.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "lhp-luknow.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/lhp-luknow/04.jpg": {
+    "rel_src": "assets/images/lhp-luknow/04.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "lhp-luknow.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/lhp-luknow/05.jpg": {
+    "rel_src": "assets/images/lhp-luknow/05.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "lhp-luknow.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/lhp-rajkot/01.jpg": {
+    "rel_src": "assets/images/lhp-rajkot/01.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "lhp-rajkot.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/lhp-rajkot/02.jpg": {
+    "rel_src": "assets/images/lhp-rajkot/02.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "lhp-rajkot.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/lhp-rajkot/03.jpg": {
+    "rel_src": "assets/images/lhp-rajkot/03.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "lhp-rajkot.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/lhp-rajkot/04.jpg": {
+    "rel_src": "assets/images/lhp-rajkot/04.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "lhp-rajkot.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/lhp-chennai/01.jpg": {
+    "rel_src": "assets/images/lhp-chennai/01.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "lhp-chennai.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/lhp-chennai/02.jpg": {
+    "rel_src": "assets/images/lhp-chennai/02.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "lhp-chennai.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/lhp-chennai/03.jpg": {
+    "rel_src": "assets/images/lhp-chennai/03.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "lhp-chennai.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/lhp-chennai/04.jpg": {
+    "rel_src": "assets/images/lhp-chennai/04.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "lhp-chennai.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/lhp-chennai/05.jpg": {
+    "rel_src": "assets/images/lhp-chennai/05.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "lhp-chennai.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/lhp-chennai/06.jpg": {
+    "rel_src": "assets/images/lhp-chennai/06.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "lhp-chennai.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/cpcl-nagapatinam/01.jpg": {
+    "rel_src": "assets/images/cpcl-nagapatinam/01.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "cpcl-nagapattinam.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/cpcl-nagapatinam/02.jpg": {
+    "rel_src": "assets/images/cpcl-nagapatinam/02.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "cpcl-nagapattinam.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/cpcl-nagapatinam/03.jpg": {
+    "rel_src": "assets/images/cpcl-nagapatinam/03.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "cpcl-nagapattinam.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/cpcl-nagapatinam/04.jpg": {
+    "rel_src": "assets/images/cpcl-nagapatinam/04.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "cpcl-nagapattinam.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/cpcl-nagapatinam/05.jpg": {
+    "rel_src": "assets/images/cpcl-nagapatinam/05.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "cpcl-nagapattinam.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/hfapmay/01.jpg": {
+    "rel_src": "assets/images/hfapmay/01.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "hfapmay.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/hfapmay/02.jpg": {
+    "rel_src": "assets/images/hfapmay/02.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "hfapmay.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/hfapmay/03.jpg": {
+    "rel_src": "assets/images/hfapmay/03.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "hfapmay.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/hfapmay/04.jpg": {
+    "rel_src": "assets/images/hfapmay/04.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "hfapmay.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/hfapmay/05.jpg": {
+    "rel_src": "assets/images/hfapmay/05.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "hfapmay.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/hfapmay/06.jpg": {
+    "rel_src": "assets/images/hfapmay/06.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "hfapmay.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/hfapmay/07.jpg": {
+    "rel_src": "assets/images/hfapmay/07.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "hfapmay.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/hfapmay/08.jpg": {
+    "rel_src": "assets/images/hfapmay/08.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "hfapmay.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/reevalution/01.jpg": {
+    "rel_src": "assets/images/reevalution/01.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "reevaluation-scheme.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/reevalution/02.jpg": {
+    "rel_src": "assets/images/reevalution/02.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "reevaluation-scheme.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/reevalution/03.jpg": {
+    "rel_src": "assets/images/reevalution/03.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "reevaluation-scheme.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/capacity-building-training-program/01.jpg": {
+    "rel_src": "assets/images/capacity-building-training-program/01.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "capacity-building-training-program.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/capacity-building-training-program/03.jpg": {
+    "rel_src": "assets/images/capacity-building-training-program/03.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "capacity-building-training-program.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/capacity-building-training-program/04.jpg": {
+    "rel_src": "assets/images/capacity-building-training-program/04.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "capacity-building-training-program.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/capacity-building-training-program/05.jpg": {
+    "rel_src": "assets/images/capacity-building-training-program/05.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "capacity-building-training-program.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/capacity-building-training-program/02.jpg": {
+    "rel_src": "assets/images/capacity-building-training-program/02.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "capacity-building-training-program.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/kp-park/01.jpg": {
+    "rel_src": "assets/images/kp-park/01.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "kp-park.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/kp-park/02.jpg": {
+    "rel_src": "assets/images/kp-park/02.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "kp-park.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/kp-park/03.jpg": {
+    "rel_src": "assets/images/kp-park/03.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "kp-park.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/kp-park/04.jpg": {
+    "rel_src": "assets/images/kp-park/04.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "kp-park.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/kmrl/1.jpg": {
+    "rel_src": "assets/images/kmrl/1.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "kmrl.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/kmrl/2.jpg": {
+    "rel_src": "assets/images/kmrl/2.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "kmrl.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/kmrl/3.jpg": {
+    "rel_src": "assets/images/kmrl/3.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "kmrl.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/kmrl/4.jpg": {
+    "rel_src": "assets/images/kmrl/4.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "kmrl.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/kmrl/5.jpg": {
+    "rel_src": "assets/images/kmrl/5.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "kmrl.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/kmrl/6.jpg": {
+    "rel_src": "assets/images/kmrl/6.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "kmrl.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/kmrl/7.jpg": {
+    "rel_src": "assets/images/kmrl/7.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "kmrl.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/kmrl/8.jpg": {
+    "rel_src": "assets/images/kmrl/8.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "kmrl.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/kmrl/9.jpg": {
+    "rel_src": "assets/images/kmrl/9.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "kmrl.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/jammu/1.jpg": {
+    "rel_src": "assets/images/jammu/1.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "jammu.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/jammu/2.jpg": {
+    "rel_src": "assets/images/jammu/2.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "jammu.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/jammu/3.jpg": {
+    "rel_src": "assets/images/jammu/3.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "jammu.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/tidel-park/01.jpg": {
+    "rel_src": "assets/images/tidel-park/01.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "tidel-park.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/tidel-park/02.jpg": {
+    "rel_src": "assets/images/tidel-park/02.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "tidel-park.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/jipmer/1.jpg": {
+    "rel_src": "assets/images/jipmer/1.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "jipmer.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/jipmer/2.jpg": {
+    "rel_src": "assets/images/jipmer/2.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "jipmer.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/koratur/1.jpg": {
+    "rel_src": "assets/images/koratur/1.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "koratur.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/arungulam/2.jpg": {
+    "rel_src": "assets/images/arungulam/2.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "arungulam.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/arungulam/1.jpg": {
+    "rel_src": "assets/images/arungulam/1.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "arungulam.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/arungulam/3.jpg": {
+    "rel_src": "assets/images/arungulam/3.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "arungulam.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/kalanivasal/2.jpg": {
+    "rel_src": "assets/images/kalanivasal/2.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "kalanivasal.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/kalanivasal/1.jpg": {
+    "rel_src": "assets/images/kalanivasal/1.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "kalanivasal.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/kalanivasal/3.jpg": {
+    "rel_src": "assets/images/kalanivasal/3.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "kalanivasal.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/kalanivasal/4.jpg": {
+    "rel_src": "assets/images/kalanivasal/4.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "kalanivasal.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/saf/1.jpg": {
+    "rel_src": "assets/images/saf/1.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "saf.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/sidco-amb/1.jpg": {
+    "rel_src": "assets/images/sidco-amb/1.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "sidco.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/sidco/1.jpg": {
+    "rel_src": "assets/images/sidco/1.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "sidco-amb.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/keerapakkam/1.jpg": {
+    "rel_src": "assets/images/keerapakkam/1.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "keerapakkam.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/keerapakkam/2.jpg": {
+    "rel_src": "assets/images/keerapakkam/2.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "keerapakkam.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/keerapakkam/3.jpg": {
+    "rel_src": "assets/images/keerapakkam/3.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "keerapakkam.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/tpqas-jammu/1.jpg": {
+    "rel_src": "assets/images/tpqas-jammu/1.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "tpqas-jammu.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/tpqas-jammu/2.jpg": {
+    "rel_src": "assets/images/tpqas-jammu/2.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "tpqas-jammu.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/tpqas-jammu/3.jpg": {
+    "rel_src": "assets/images/tpqas-jammu/3.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "tpqas-jammu.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/tpqas-jammu/4.jpg": {
+    "rel_src": "assets/images/tpqas-jammu/4.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "tpqas-jammu.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/tpqas-jammu/5.jpg": {
+    "rel_src": "assets/images/tpqas-jammu/5.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "tpqas-jammu.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/tpqas-jammu/6.jpg": {
+    "rel_src": "assets/images/tpqas-jammu/6.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "tpqas-jammu.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/tpqas-jammu/7.jpg": {
+    "rel_src": "assets/images/tpqas-jammu/7.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "tpqas-jammu.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/tpqas-jammu/8.jpg": {
+    "rel_src": "assets/images/tpqas-jammu/8.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "tpqas-jammu.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/upt1/1.jpg": {
+    "rel_src": "assets/images/upt1/1.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "upt1.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/upt1/2.jpg": {
+    "rel_src": "assets/images/upt1/2.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "upt1.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/upt1/3.jpg": {
+    "rel_src": "assets/images/upt1/3.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "upt1.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/upt1/4.jpg": {
+    "rel_src": "assets/images/upt1/4.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "upt1.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/upt2/1.jpg": {
+    "rel_src": "assets/images/upt2/1.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "upt2.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/upt2/2.jpg": {
+    "rel_src": "assets/images/upt2/2.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "upt2.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/upt2/3.jpg": {
+    "rel_src": "assets/images/upt2/3.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "upt2.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/upt2/4.jpg": {
+    "rel_src": "assets/images/upt2/4.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "upt2.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/upt2/5.jpg": {
+    "rel_src": "assets/images/upt2/5.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "upt2.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/upt2/6.jpg": {
+    "rel_src": "assets/images/upt2/6.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "upt2.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/upt2/7.jpg": {
+    "rel_src": "assets/images/upt2/7.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "upt2.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/upt2/8.jpg": {
+    "rel_src": "assets/images/upt2/8.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "upt2.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/upt3/1.jpg": {
+    "rel_src": "assets/images/upt3/1.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "upt3.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/upt3/2.jpg": {
+    "rel_src": "assets/images/upt3/2.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "upt3.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/upt3/3.jpg": {
+    "rel_src": "assets/images/upt3/3.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "upt3.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/upt3/4.jpg": {
+    "rel_src": "assets/images/upt3/4.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "upt3.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/upt3/5.jpg": {
+    "rel_src": "assets/images/upt3/5.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "upt3.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/upt3/6.jpg": {
+    "rel_src": "assets/images/upt3/6.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "upt3.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/upt3/7.jpg": {
+    "rel_src": "assets/images/upt3/7.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "upt3.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/upt4/1.jpg": {
+    "rel_src": "assets/images/upt4/1.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "upt4.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/upt4/2.jpg": {
+    "rel_src": "assets/images/upt4/2.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "upt4.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/upt4/3.jpg": {
+    "rel_src": "assets/images/upt4/3.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "upt4.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/upt4/4.jpg": {
+    "rel_src": "assets/images/upt4/4.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "upt4.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/upt4/5.jpg": {
+    "rel_src": "assets/images/upt4/5.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "upt4.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/upt4/6.jpg": {
+    "rel_src": "assets/images/upt4/6.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "upt4.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/upt4/7.jpg": {
+    "rel_src": "assets/images/upt4/7.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "upt4.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/upt4/8.jpg": {
+    "rel_src": "assets/images/upt4/8.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "upt4.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/upt5/1.jpg": {
+    "rel_src": "assets/images/upt5/1.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "upt5.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/upt5/2.jpg": {
+    "rel_src": "assets/images/upt5/2.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "upt5.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/upt5/3.jpg": {
+    "rel_src": "assets/images/upt5/3.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "upt5.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/upt5/4.jpg": {
+    "rel_src": "assets/images/upt5/4.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "upt5.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/upt5/5.jpg": {
+    "rel_src": "assets/images/upt5/5.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "upt5.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/upt5/6.jpg": {
+    "rel_src": "assets/images/upt5/6.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "upt5.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/upt6/1.jpg": {
+    "rel_src": "assets/images/upt6/1.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "upt6.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/upt6/2.jpg": {
+    "rel_src": "assets/images/upt6/2.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "upt6.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/upt6/3.jpg": {
+    "rel_src": "assets/images/upt6/3.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "upt6.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/upt6/5.jpg": {
+    "rel_src": "assets/images/upt6/5.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "upt6.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/upt6/7.jpg": {
+    "rel_src": "assets/images/upt6/7.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "upt6.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/upt6/8.jpg": {
+    "rel_src": "assets/images/upt6/8.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "upt6.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/upt6/9.jpg": {
+    "rel_src": "assets/images/upt6/9.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "upt6.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/upt6/10.jpg": {
+    "rel_src": "assets/images/upt6/10.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "upt6.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/upt6/11.jpg": {
+    "rel_src": "assets/images/upt6/11.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "upt6.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/upt7/1.jpg": {
+    "rel_src": "assets/images/upt7/1.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "upt7.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/upt8/1.jpg": {
+    "rel_src": "assets/images/upt8/1.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "upt8.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/upt8/2.jpg": {
+    "rel_src": "assets/images/upt8/2.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "upt8.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/upt8/3.jpg": {
+    "rel_src": "assets/images/upt8/3.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "upt8.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/upt9/1.jpg": {
+    "rel_src": "assets/images/upt9/1.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "upt9.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/upt9/2.jpg": {
+    "rel_src": "assets/images/upt9/2.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "upt9.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/upt9/3.jpg": {
+    "rel_src": "assets/images/upt9/3.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "upt9.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/upt9/4.jpg": {
+    "rel_src": "assets/images/upt9/4.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "upt9.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/upt9/5.jpg": {
+    "rel_src": "assets/images/upt9/5.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "upt9.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/upt9/6.jpg": {
+    "rel_src": "assets/images/upt9/6.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "upt9.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/upt10/2.jpg": {
+    "rel_src": "assets/images/upt10/2.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "upt10.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/upt10/1.jpg": {
+    "rel_src": "assets/images/upt10/1.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "upt10.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/upt10/3.jpg": {
+    "rel_src": "assets/images/upt10/3.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "upt10.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/upt10/4.jpg": {
+    "rel_src": "assets/images/upt10/4.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "upt10.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/upt10/5.jpg": {
+    "rel_src": "assets/images/upt10/5.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "upt10.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/upt11/1.jpg": {
+    "rel_src": "assets/images/upt11/1.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "upt11.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/upt11/2.jpg": {
+    "rel_src": "assets/images/upt11/2.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "upt11.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/upt11/3.jpg": {
+    "rel_src": "assets/images/upt11/3.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "upt11.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/upt12/1.jpg": {
+    "rel_src": "assets/images/upt12/1.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "upt12.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/upt12/2.jpg": {
+    "rel_src": "assets/images/upt12/2.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "upt12.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/upt12/3.jpg": {
+    "rel_src": "assets/images/upt12/3.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "upt12.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/upt12/4.jpg": {
+    "rel_src": "assets/images/upt12/4.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "upt12.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/upt12/5.jpg": {
+    "rel_src": "assets/images/upt12/5.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "upt12.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/upt13/1.jpg": {
+    "rel_src": "assets/images/upt13/1.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "upt13.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/upt13/2.jpg": {
+    "rel_src": "assets/images/upt13/2.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "upt13.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/upt14/1.jpg": {
+    "rel_src": "assets/images/upt14/1.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "upt14.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/upt14/2.jpg": {
+    "rel_src": "assets/images/upt14/2.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "upt14.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/asiana/01.jpg": {
+    "rel_src": "assets/images/asiana/01.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "ashiana.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/asiana/02.jpg": {
+    "rel_src": "assets/images/asiana/02.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "ashiana.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/caterpillar/01.jpg": {
+    "rel_src": "assets/images/caterpillar/01.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "caterpillar.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/caterpillar/02.jpg": {
+    "rel_src": "assets/images/caterpillar/02.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "caterpillar.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/cauvery/01.jpg": {
+    "rel_src": "assets/images/cauvery/01.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "cauvery.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/cauvery/02.jpg": {
+    "rel_src": "assets/images/cauvery/02.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "cauvery.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/cauvery/03.jpg": {
+    "rel_src": "assets/images/cauvery/03.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "cauvery.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/cmwssb/01.jpg": {
+    "rel_src": "assets/images/cmwssb/01.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "cmwssb.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/cmwssb/02.jpg": {
+    "rel_src": "assets/images/cmwssb/02.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "cmwssb.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/cmwssb/03.jpg": {
+    "rel_src": "assets/images/cmwssb/03.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "cmwssb.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/hyundai/02.jpg": {
+    "rel_src": "assets/images/hyundai/02.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "hyundai.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/hyundai/01.jpg": {
+    "rel_src": "assets/images/hyundai/01.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "hyundai.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/hyundai/03.jpg": {
+    "rel_src": "assets/images/hyundai/03.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "hyundai.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/01.jpg": {
+    "rel_src": "assets/images/01.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "iit-jammu.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/kilambakkam1.jpg": {
+    "rel_src": "assets/images/kilambakkam1.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "Kilambakkam.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/KLIPSTP/01.jpg": {
+    "rel_src": "assets/images/KLIPSTP/01.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "KLIPSTP.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/KLIPSTP/02.jpg": {
+    "rel_src": "assets/images/KLIPSTP/02.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "KLIPSTP.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/kmrl-es/01.jpg": {
+    "rel_src": "assets/images/kmrl-es/01.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "kmrl-es.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/kmrl-es/02.jpg": {
+    "rel_src": "assets/images/kmrl-es/02.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "kmrl-es.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/Kuthambakkam/01.jpg": {
+    "rel_src": "assets/images/Kuthambakkam/01.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "Kuthambakkam.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/Kuthambakkam/02.jpg": {
+    "rel_src": "assets/images/Kuthambakkam/02.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "Kuthambakkam.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/Madhavaram/01.jpg": {
+    "rel_src": "assets/images/Madhavaram/01.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "Madhavaram.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/Madhavaram/02.jpg": {
+    "rel_src": "assets/images/Madhavaram/02.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "Madhavaram.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/rajapalayam/01.jpg": {
+    "rel_src": "assets/images/rajapalayam/01.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "rajapalayam.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/rajapalayam/02.jpg": {
+    "rel_src": "assets/images/rajapalayam/02.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "rajapalayam.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/royal/01.jpg": {
+    "rel_src": "assets/images/royal/01.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "royal.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/royal/02.jpg": {
+    "rel_src": "assets/images/royal/02.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "royal.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/vellore/01.jpg": {
+    "rel_src": "assets/images/vellore/01.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "vellore.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/vellore/02.jpg": {
+    "rel_src": "assets/images/vellore/02.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "vellore.html"
+    ]
+  },
+  "https://cubeiitm.org/assets/images/vellore/03.jpg": {
+    "rel_src": "assets/images/vellore/03.jpg",
+    "ext": ".jpg",
+    "sources": [
+      "vellore.html"
+    ]
+  }
+}
