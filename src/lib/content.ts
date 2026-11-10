@@ -106,11 +106,20 @@ const CONTENT_COLLECTIONS = [
   'enquiries',
 ] as const;
 
+// Single-document page settings (objects rather than collections).
+const CONTENT_OBJECTS = ['careersPage'] as const;
+
 export function sanitizeStoreContent<T extends Record<string, any>>(store: T): T {
   for (const key of CONTENT_COLLECTIONS) {
     const collection = (store as any)[key];
     if (Array.isArray(collection)) {
       (store as any)[key] = collection.map((item: any) => sanitizeValue(item, key));
+    }
+  }
+  for (const key of CONTENT_OBJECTS) {
+    const obj = (store as any)[key];
+    if (obj && typeof obj === 'object' && !Array.isArray(obj)) {
+      (store as any)[key] = sanitizeValue(obj, key);
     }
   }
   return store;

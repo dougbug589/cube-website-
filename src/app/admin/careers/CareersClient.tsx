@@ -1,20 +1,30 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import { 
-  Briefcase, Plus, Search, CheckCircle2, Loader2, MapPin, 
-  Edit3, Archive, ArchiveRestore, X, Clock, Calendar, 
-  FileText, Download, User, Mail, Phone, ExternalLink 
+import {
+  Briefcase, Plus, Search, CheckCircle2, Loader2, MapPin,
+  Edit3, Archive, ArchiveRestore, X, Clock, Calendar,
+  FileText, Download, User, Mail, Phone, ExternalLink
 } from 'lucide-react';
 import { createCareerAction, updateCareerAction, archiveCareerAction } from '@/app/admin/actions/cms';
+import CareersPageEditor from './CareersPageEditor';
+import { DEFAULT_EMPLOYMENT_TYPES, EXTRA_CAREER_DEPARTMENTS } from '@/lib/careers-page';
+import type { CareersPageContent } from '@/lib/careers-page';
+import ComboSelect from '@/components/admin/ComboSelect';
 import { useRouter } from 'next/navigation';
 
-export default function CareersManagerClient({ 
-  initialCareers, 
-  initialApplications = [] 
-}: { 
+export default function CareersManagerClient({
+  initialCareers,
+  initialApplications = [],
+  initialPageContent,
+  departmentOptions = EXTRA_CAREER_DEPARTMENTS,
+  employmentTypeOptions = DEFAULT_EMPLOYMENT_TYPES,
+}: {
   initialCareers: any[];
   initialApplications?: any[];
+  initialPageContent: CareersPageContent;
+  departmentOptions?: string[];
+  employmentTypeOptions?: string[];
 }) {
   const router = useRouter();
   const [careersList, setCareersList] = useState(initialCareers);
@@ -22,7 +32,7 @@ export default function CareersManagerClient({
   const [applicationsList, setApplicationsList] = useState(initialApplications);
   useEffect(() => { setApplicationsList(initialApplications); }, [initialApplications]);
 
-  const [activeAdminTab, setActiveAdminTab] = useState<'positions' | 'applications'>('positions');
+  const [activeAdminTab, setActiveAdminTab] = useState<'positions' | 'applications' | 'page'>('positions');
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editingJob, setEditingJob] = useState<any | null>(null);
   const [loading, setLoading] = useState(false);
@@ -40,6 +50,9 @@ export default function CareersManagerClient({
   const [description, setDescription] = useState('');
   const [closingDate, setClosingDate] = useState('');
   const [applicationEmail, setApplicationEmail] = useState('careers@cubeiitm.org');
+  const [qualifications, setQualifications] = useState('');
+  const [isPublished, setIsPublished] = useState(true);
+  const [formError, setFormError] = useState<string | null>(null);
 
   const openAddModal = () => {
     setEditingJob(null);
@@ -51,6 +64,9 @@ export default function CareersManagerClient({
     setDescription('');
     setClosingDate('');
     setApplicationEmail('careers@cubeiitm.org');
+    setQualifications('');
+    setIsPublished(true);
+    setFormError(null);
     setIsModalOpen(true);
   };
 
@@ -64,6 +80,11 @@ export default function CareersManagerClient({
     setDescription(job.description || '');
     setClosingDate(job.closingDate || '');
     setApplicationEmail(job.applicationEmail || 'careers@cubeiitm.org');
+    setQualifications(
+      Array.isArray(job.qualifications) ? job.qualifications.join('\n') : (job.qualifications || '')
+    );
+    setIsPublished(job.status !== 'draft' && job.isActive !== false);
+    setFormError(null);
     setIsModalOpen(true);
   };
 
@@ -80,26 +101,35 @@ export default function CareersManagerClient({
       description,
       closingDate,
       applicationEmail,
-      isActive: true,
-      status: 'published',
+      qualifications: qualifications.split('\n').map((q) => q.trim()).filter(Boolean),
+      isActive: isPublished,
+      status: isPublished ? 'published' : 'draft',
     };
 
-    if (editingJob) {
-      const res = await updateCareerAction(editingJob.id, payload);
-      if (res.success && res.career) {
-        setCareersList(careersList.map((c) => (c.id === editingJob.id ? { ...c, ...res.career } : c)));
-        setIsModalOpen(false);
-        router.refresh();
+    setFormError(null);
+    try {
+      if (editingJob) {
+        const res = await updateCareerAction(editingJob.id, payload);
+        if (res.success && res.career) {
+          setCareersList(careersList.map((c) => (c.id === editingJob.id ? { ...c, ...res.career } : c)));
+          setIsModalOpen(false);
+          router.refresh();
+        } else {
+          setFormError((res as any).error || 'Could not save this position.');
+        }
+      } else {
+        const res = await createCareerAction(payload);
+        if (res.success && res.career) {
+          setCareersList([res.career, ...careersList]);
+          setIsModalOpen(false);
+          router.refresh();
+        }
       }
-    } else {
-      const res = await createCareerAction(payload);
-      if (res.success && res.career) {
-        setCareersList([res.career, ...careersList]);
-        setIsModalOpen(false);
-        router.refresh();
-      }
+    } catch (err: any) {
+      setFormError(err?.message || 'Could not save this position.');
+    } finally {
+      setLoading(false);
     }
-    setLoading(false);
   };
 
   const handleArchiveSubmit = async (e: React.FormEvent) => {
@@ -152,6 +182,14 @@ export default function CareersManagerClient({
             >
               Applicant Resumes ({applicationsList.length})
             </button>
+            <button
+              onClick={() => setActiveAdminTab('page')}
+              className={`px-3.5 py-1.5 rounded-lg transition ${
+                activeAdminTab === 'page' ? 'bg-white text-[#070E5C] shadow-xs' : 'text-slate-600 hover:text-slate-900'
+              }`}
+            >
+              Page Content
+            </button>
           </div>
 
           {activeAdminTab === 'positions' && (
@@ -166,7 +204,9 @@ export default function CareersManagerClient({
         </div>
       </div>
 
-      {activeAdminTab === 'applications' ? (
+      {activeAdminTab === 'page' ? (
+        <CareersPageEditor initialContent={initialPageContent} />
+      ) : activeAdminTab === 'applications' ? (
         <div className="space-y-4">
           <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
             <h2 className="text-base font-bold text-[#070E5C] mb-4 flex items-center justify-between">
@@ -252,9 +292,15 @@ export default function CareersManagerClient({
                     {job.department}
                   </span>
                   <div className="flex items-center space-x-1.5">
-                    <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800">
-                      Active
-                    </span>
+                    {job.status === 'draft' || job.isActive === false ? (
+                      <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-slate-100 text-slate-600">
+                        Hidden
+                      </span>
+                    ) : (
+                      <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800">
+                        Live
+                      </span>
+                    )}
                     {/* Edit button */}
                     <button
                       onClick={() => openEditModal(job)}
@@ -283,6 +329,9 @@ export default function CareersManagerClient({
                   {job.location} &bull; {job.experience}
                 </p>
                 <p className="text-xs text-slate-600 mt-3 line-clamp-3 leading-relaxed">{job.description}</p>
+                {Array.isArray(job.qualifications) && job.qualifications.length > 0 && (
+                  <p className="text-[11px] text-slate-400 mt-2">{job.qualifications.length} qualification(s) listed</p>
+                )}
               </div>
 
               <div className="pt-4 mt-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
@@ -328,30 +377,21 @@ export default function CareersManagerClient({
               <div className="grid grid-cols-2 gap-4">
                 <div>
                   <label className="block text-xs font-bold text-slate-700 uppercase mb-1">Department Vertical</label>
-                  <select
+                  <ComboSelect
                     value={department}
-                    onChange={(e) => setDepartment(e.target.value)}
-                    className="w-full p-2.5 text-xs rounded-xl border border-slate-300 bg-white"
-                  >
-                    <option value="Building & Construction Vertical">Building &amp; Construction</option>
-                    <option value="Environment & Sustainability Vertical">Environment &amp; Sustainability</option>
-                    <option value="Urban Planning & Transportation Vertical">Urban Planning &amp; Transportation</option>
-                    <option value="CEL Analytical Laboratory">CEL Analytical Laboratory</option>
-                    <option value="Admin & Operations">Admin &amp; Operations</option>
-                  </select>
+                    onChange={setDepartment}
+                    options={departmentOptions}
+                    placeholder="Select or type a vertical"
+                  />
                 </div>
                 <div>
                   <label className="block text-xs font-bold text-slate-700 uppercase mb-1">Employment Type</label>
-                  <select
+                  <ComboSelect
                     value={employmentType}
-                    onChange={(e) => setEmploymentType(e.target.value)}
-                    className="w-full p-2.5 text-xs rounded-xl border border-slate-300 bg-white"
-                  >
-                    <option value="Full-Time">Full-Time</option>
-                    <option value="Full-Time Contract">Full-Time Contract</option>
-                    <option value="Project Associate">Project Associate</option>
-                    <option value="Consultant">Consultant</option>
-                  </select>
+                    onChange={setEmploymentType}
+                    options={employmentTypeOptions}
+                    placeholder="Select or type a type"
+                  />
                 </div>
               </div>
 
@@ -400,6 +440,46 @@ export default function CareersManagerClient({
                   className="w-full p-2.5 text-xs rounded-xl border border-slate-300"
                 />
               </div>
+
+              <div>
+                <label className="block text-xs font-bold text-slate-700 uppercase mb-1">Qualifications &amp; Requirements</label>
+                <textarea
+                  rows={4}
+                  value={qualifications}
+                  onChange={(e) => setQualifications(e.target.value)}
+                  placeholder={'One per line, e.g.\nM.Tech in Structural Engineering\nProficiency in ETABS / STAAD.Pro'}
+                  className="w-full p-2.5 text-xs rounded-xl border border-slate-300"
+                />
+                <p className="text-[10px] text-slate-400 mt-1">Each line becomes a bullet point in the job details popup.</p>
+              </div>
+
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-xs font-bold text-slate-700 uppercase mb-1">Application Email</label>
+                  <input
+                    type="email"
+                    value={applicationEmail}
+                    onChange={(e) => setApplicationEmail(e.target.value)}
+                    placeholder="careers@cubeiitm.org"
+                    className="w-full p-2.5 text-xs rounded-xl border border-slate-300"
+                  />
+                </div>
+                <div>
+                  <label className="block text-xs font-bold text-slate-700 uppercase mb-1">Visibility</label>
+                  <label className="flex items-center gap-2 p-2.5 rounded-xl border border-slate-300 cursor-pointer">
+                    <input
+                      type="checkbox"
+                      checked={isPublished}
+                      onChange={(e) => setIsPublished(e.target.checked)}
+                    />
+                    <span>{isPublished ? 'Live on careers page' : 'Hidden (draft)'}</span>
+                  </label>
+                </div>
+              </div>
+
+              {formError && (
+                <div className="p-3 rounded-xl bg-rose-50 border border-rose-200 text-rose-800">{formError}</div>
+              )}
 
               <div className="flex justify-end space-x-3 pt-3 border-t">
                 <button

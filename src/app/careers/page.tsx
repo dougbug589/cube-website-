@@ -1,6 +1,6 @@
 import React from 'react';
 import CareersHub from '@/components/careers/CareersHub';
-import { getPublishedCareers } from '@/lib/db/queries';
+import { getPublishedCareers, getCareersPageContent } from '@/lib/db/queries';
 
 export const dynamic = 'force-dynamic';
 
@@ -10,7 +10,10 @@ export const metadata = {
 };
 
 export default async function CareersPage() {
-  const publishedCareers = await getPublishedCareers();
+  const [publishedCareers, content] = await Promise.all([
+    getPublishedCareers(),
+    getCareersPageContent(),
+  ]);
 
-  return <CareersHub initialCareers={publishedCareers} />;
+  return <CareersHub initialCareers={publishedCareers} content={content} />;
 }
