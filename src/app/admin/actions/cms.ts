@@ -3,6 +3,7 @@
 import { cookies } from 'next/headers';
 import { revalidatePath } from 'next/cache';
 import { getCMSStore, saveCMSStore, resolveAdminSession, UserRole } from '@/lib/db/store';
+import { resolveCareersPage } from '@/lib/careers-page';
 
 // Keys that must never be supplied by client payloads (mass-assignment guard).
 const PROTECTED_KEYS = new Set([
@@ -479,6 +480,31 @@ export async function archiveCareerAction(id: string, archiveRemark?: string) {
   revalidatePath('/admin/careers');
   revalidatePath('/admin/archive');
   return { success: true };
+}
+
+export async function updateCareersPageAction(data: unknown) {
+  const session = await assertPermission(['super_admin', 'admin']);
+  const store = getCMSStore();
+
+  // Normalise to the known shape; unknown keys are dropped.
+  const content = resolveCareersPage(data);
+  store.careersPage = { ...content, updatedAt: new Date().toISOString() };
+
+  store.auditLogs.unshift({
+    id: `log_${Date.now()}`,
+    userId: session.userId,
+    userEmail: session.email,
+    action: 'UPDATE_CAREERS_PAGE',
+    resourceType: 'careers_page',
+    resourceId: 'careersPage',
+    timestamp: new Date().toISOString(),
+  });
+
+  saveCMSStore(store);
+
+  revalidatePath('/careers');
+  revalidatePath('/admin/careers');
+  return { success: true, content: resolveCareersPage(store.careersPage) };
 }
 
 // -------------------------------------------------------------

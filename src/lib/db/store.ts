@@ -43,6 +43,7 @@ export interface CMSStore {
   heroSlides: any[];
   enquiries: any[];
   jobApplications?: any[];
+  careersPage?: Record<string, any>;
 }
 
 const MAX_AUDIT_LOGS = 5000;

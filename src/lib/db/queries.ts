@@ -1,5 +1,6 @@
 import { getCMSStore } from '@/lib/db/store';
 import { normalizeNewsItem } from '@/lib/content';
+import { resolveCareersPage } from '@/lib/careers-page';
 
 // Dynamic Published News
 export async function getPublishedNews() {
@@ -47,6 +48,12 @@ export async function getActiveAnnouncements(targetPage: string = '/') {
 export async function getPublishedCareers() {
   const store = getCMSStore();
   return store.careers.filter((c) => c.status === 'published' && c.isActive);
+}
+
+// Admin-editable careers page content (merged over defaults)
+export async function getCareersPageContent() {
+  const store = getCMSStore();
+  return resolveCareersPage(store.careersPage);
 }
 
 // Dynamic Published Team Members
