@@ -27,7 +27,7 @@ export default async function EnvironmentSustainabilityPage() {
         title={vertical.title}
         description={vertical.longDescription}
         breadcrumbs={[
-          { label: 'Verticals', href: '/#verticals' },
+          { label: 'Verticals', href: '/verticals' },
           { label: 'Environment & Sustainability' },
         ]}
       />

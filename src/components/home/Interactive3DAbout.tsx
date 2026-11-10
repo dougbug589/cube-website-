@@ -169,7 +169,7 @@ export default function Interactive3DAbout() {
               <motion.div
                 whileHover={{ y: -4, scale: 1.01 }}
                 transition={{ duration: 0.2 }}
-                className="p-5 rounded-2xl bg-[#F7F7F4] border border-[#E5E7EB] hover:border-[#BBD6EA] hover:bg-[#EAF2F8] transition-all shadow-sm group cursor-pointer"
+                className="p-5 rounded-2xl bg-[#F7F7F4] border border-[#E5E7EB] hover:border-[#BBD6EA] hover:bg-[#EAF2F8] transition-all shadow-sm group"
               >
                 <div className="flex items-center space-x-2 text-[#070E5C] font-semibold text-sm">
                   <ShieldCheck className="w-4 h-4 text-[#D99A42] transition-transform group-hover:scale-110" />
@@ -187,7 +187,7 @@ export default function Interactive3DAbout() {
               <motion.div
                 whileHover={{ y: -4, scale: 1.01 }}
                 transition={{ duration: 0.2 }}
-                className="p-5 rounded-2xl bg-[#F7F7F4] border border-[#E5E7EB] hover:border-[#BBD6EA] hover:bg-[#EAF2F8] transition-all shadow-sm group cursor-pointer"
+                className="p-5 rounded-2xl bg-[#F7F7F4] border border-[#E5E7EB] hover:border-[#BBD6EA] hover:bg-[#EAF2F8] transition-all shadow-sm group"
               >
                 <div className="flex items-center space-x-2 text-[#070E5C] font-semibold text-sm">
                   <FlaskConical className="w-4 h-4 text-[#D99A42] transition-transform group-hover:scale-110" />

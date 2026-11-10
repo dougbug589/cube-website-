@@ -1,6 +1,7 @@
 'use client';
 
-import React, { useMemo, useState } from 'react';
+import React, { useMemo, useRef, useState } from 'react';
+import { useScrollSpy } from '@/lib/useScrollSpy';
 import Image from 'next/image';
 import Link from 'next/link';
 import PageHeader from '@/components/common/PageHeader';
@@ -14,6 +15,7 @@ import { boardMembers as fallbackBoard, advisoryPanel as fallbackAdvisory } from
 import { teamMembers as fallbackTeam } from '@/data/team';
 import { clients as fallbackClients } from '@/data/clients';
 import { useLiveList } from '@/lib/live';
+import { clientLogoAlt } from '@/lib/content';
 
 const LEADER_CATEGORIES = new Set(['leadership', 'board', 'advisory']);
 const FALLBACK_PEOPLE: any[] = [
@@ -33,7 +35,6 @@ export default function CompleteAboutExperience() {
     advisoryPanel: people.filter((m) => m.category === 'advisory'),
     teamMembers: people.filter((m) => !LEADER_CATEGORIES.has(m.category)),
   }), [people]);
-  const [activeSection, setActiveSection] = useState('overview');
   const [showAllTeam, setShowAllTeam] = useState(false);
 
   const navAnchors = [
@@ -47,6 +48,10 @@ export default function CompleteAboutExperience() {
     { id: 'our-team', label: 'Our Engineering Team' },
     { id: 'clients-partners', label: 'Clients & State Partners' },
   ];
+
+  // Highlight follows scrolling; tapping a pill still jumps to its section.
+  const anchorBarRef = useRef<HTMLDivElement>(null);
+  const [activeSection, setActiveSection] = useScrollSpy(navAnchors.map((a) => a.id), anchorBarRef);
 
   const scrollTo = (id: string) => {
     setActiveSection(id);
@@ -66,12 +71,15 @@ export default function CompleteAboutExperience() {
       />
 
       {/* Sticky Apple Glass Anchor Navigation Bar */}
-      <section className="sticky top-20 z-40 bg-white/85 backdrop-blur-2xl border-y border-[#BDD7E8]/70 py-3.5 px-4 sm:px-6 shadow-xs">
-        <div className="max-w-7xl mx-auto flex items-center justify-start gap-2 overflow-x-auto scrollbar-none no-scrollbar py-1">
+      <section className="sticky top-[var(--nav-offset,84px)] transition-[top] duration-500 z-40 bg-white/85 backdrop-blur-2xl border-y border-[#BDD7E8]/70 py-3.5 px-4 sm:px-6 shadow-xs">
+        <div ref={anchorBarRef} className="relative max-w-7xl mx-auto flex items-center justify-start gap-2 overflow-x-auto scrollbar-none no-scrollbar py-1">
           <div className="flex items-center space-x-1.5 sm:space-x-2 shrink-0">
             {navAnchors.map((item) => (
               <button
                 key={item.id}
+                type="button"
+                data-anchor={item.id}
+                aria-current={activeSection === item.id ? 'true' : undefined}
                 onClick={() => scrollTo(item.id)}
                 className={`px-4 py-2 rounded-full text-xs font-semibold tracking-wider transition-all duration-300 whitespace-nowrap cursor-pointer active:scale-95 ${
                   activeSection === item.id
@@ -497,7 +505,7 @@ export default function CompleteAboutExperience() {
                 <div className="relative h-14 w-full flex items-center justify-center">
                   <Image
                     src={client.logo || '/images/clients/tnuhdb.png'}
-                    alt={`Partner ${client.name}`}
+                    alt={clientLogoAlt(client.name)}
                     fill
                     className="object-contain filter grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300"
                   />

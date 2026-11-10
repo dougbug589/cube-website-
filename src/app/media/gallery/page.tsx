@@ -1,8 +1,9 @@
 'use client';
 import { useCmsUpdates } from '@/lib/live';
 
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
+import { createPortal } from 'react-dom';
 import PageHeader from '@/components/common/PageHeader';
 import { X, ChevronLeft, ChevronRight, Maximize2 } from 'lucide-react';
 
@@ -77,19 +78,46 @@ export default function GalleryPage() {
     : items.filter((item) => item.category === selectedCategory);
 
   const openLightbox = (index: number) => setLightboxIndex(index);
-  const closeLightbox = () => setLightboxIndex(null);
+  const closeLightbox = useCallback(() => setLightboxIndex(null), []);
 
-  const nextLightbox = () => {
-    if (lightboxIndex !== null) {
-      setLightboxIndex((lightboxIndex + 1) % filteredItems.length);
-    }
-  };
+  const nextLightbox = useCallback(() => {
+    setLightboxIndex((i) => (i === null || filteredItems.length === 0 ? i : (i + 1) % filteredItems.length));
+  }, [filteredItems.length]);
 
-  const prevLightbox = () => {
-    if (lightboxIndex !== null) {
-      setLightboxIndex((lightboxIndex - 1 + filteredItems.length) % filteredItems.length);
-    }
-  };
+  const prevLightbox = useCallback(() => {
+    setLightboxIndex((i) =>
+      i === null || filteredItems.length === 0 ? i : (i - 1 + filteredItems.length) % filteredItems.length
+    );
+  }, [filteredItems.length]);
+
+  // If a live CMS update removes photos while the viewer is open, close it
+  // instead of crashing on a missing index.
+  useEffect(() => {
+    if (lightboxIndex !== null && lightboxIndex >= filteredItems.length) setLightboxIndex(null);
+  }, [lightboxIndex, filteredItems.length]);
+
+  // Keyboard controls + lock page scroll while the viewer is open.
+  useEffect(() => {
+    if (lightboxIndex === null) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') closeLightbox();
+      else if (e.key === 'ArrowRight') nextLightbox();
+      else if (e.key === 'ArrowLeft') prevLightbox();
+    };
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    window.addEventListener('keydown', onKey);
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener('keydown', onKey);
+    };
+  }, [lightboxIndex, closeLightbox, nextLightbox, prevLightbox]);
+
+  // Swipe left/right on phones.
+  // A ref (not state) so a fast swipe's touchend always sees its touchstart.
+  const touchStartX = useRef<number | null>(null);
+
+  const activeItem = lightboxIndex !== null ? filteredItems[lightboxIndex] : null;
 
   return (
     <div>
@@ -127,8 +155,17 @@ export default function GalleryPage() {
             {filteredItems.map((item, idx) => (
               <div
                 key={item.id}
+                role="button"
+                tabIndex={0}
+                aria-label={`Open photo: ${item.title}`}
                 onClick={() => openLightbox(idx)}
-                className="group relative h-64 rounded-2xl overflow-hidden shadow-sm hover:shadow-cube cursor-pointer border border-slate-200 bg-slate-900 transition-all duration-300"
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    openLightbox(idx);
+                  }
+                }}
+                className="group relative h-64 rounded-2xl overflow-hidden shadow-sm hover:shadow-cube cursor-pointer border border-slate-200 bg-slate-900 transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D99A42]"
               >
                 <Image
                   src={item.src}
@@ -158,49 +195,76 @@ export default function GalleryPage() {
         </div>
       </section>
 
-      {/* Lightbox Modal */}
-      {lightboxIndex !== null && (
-        <div className="fixed inset-0 z-50 bg-white/95 text-[#24272B] backdrop-blur-md flex items-center justify-center p-4">
-          <button
-            onClick={closeLightbox}
-            className="absolute top-6 right-6 p-2 rounded-full bg-white/10 text-white hover:bg-white/20 transition"
+      {/* Lightbox Modal: portaled to <body> so position:fixed always covers the
+          screen (the page frame applies a CSS filter, which breaks fixed). */}
+      {activeItem &&
+        createPortal(
+          <div
+            role="dialog"
+            aria-modal="true"
+            aria-label={`Photo viewer: ${activeItem.title}`}
+            className="fixed inset-0 z-[60] bg-[#050A2E]/95 text-white backdrop-blur-md flex items-center justify-center p-4"
+            onClick={(e) => e.target === e.currentTarget && closeLightbox()}
+            onTouchStart={(e) => { touchStartX.current = e.touches[0].clientX; }}
+            onTouchEnd={(e) => {
+              if (touchStartX.current === null) return;
+              const dx = e.changedTouches[0].clientX - touchStartX.current;
+              if (Math.abs(dx) > 50) (dx < 0 ? nextLightbox : prevLightbox)();
+              touchStartX.current = null;
+            }}
           >
-            <X className="w-6 h-6" />
-          </button>
+            <button
+              type="button"
+              onClick={closeLightbox}
+              aria-label="Close photo viewer"
+              className="absolute top-[max(1rem,env(safe-area-inset-top))] right-4 sm:top-6 sm:right-6 p-3 rounded-full bg-white/15 text-white hover:bg-white/25 transition z-10"
+            >
+              <X className="w-6 h-6" />
+            </button>
 
-          <button
-            onClick={prevLightbox}
-            className="absolute left-4 sm:left-8 p-3 rounded-full bg-white/10 text-white hover:bg-white/20 transition"
-          >
-            <ChevronLeft className="w-6 h-6" />
-          </button>
+            {filteredItems.length > 1 && (
+              <button
+                type="button"
+                onClick={prevLightbox}
+                aria-label="Previous photo"
+                className="absolute left-2 sm:left-8 top-1/2 -translate-y-1/2 p-3 rounded-full bg-white/15 text-white hover:bg-white/25 transition z-10"
+              >
+                <ChevronLeft className="w-6 h-6" />
+              </button>
+            )}
 
-          <div className="max-w-4xl max-h-[85vh] flex flex-col items-center">
-            <div className="relative w-[90vw] max-w-4xl h-[60vh] sm:h-[70vh] rounded-2xl overflow-hidden shadow-2xl">
-              <Image
-                src={filteredItems[lightboxIndex].src}
-                alt={filteredItems[lightboxIndex].title}
-                fill
-                className="object-contain"
-              />
+            <div className="max-w-4xl max-h-[85vh] flex flex-col items-center">
+              <div className="relative w-[90vw] max-w-4xl h-[60vh] sm:h-[70vh] rounded-2xl overflow-hidden shadow-2xl">
+                <Image
+                  src={activeItem.src}
+                  alt={activeItem.title}
+                  fill
+                  sizes="90vw"
+                  className="object-contain"
+                />
+              </div>
+              <div className="mt-4 px-10 text-center text-white">
+                <h3 className="text-lg font-bold font-display">{activeItem.title}</h3>
+                <p className="text-xs text-slate-300 mt-1">{activeItem.description}</p>
+                <span className="text-[11px] text-[#D99A42] mt-1 block">
+                  {(lightboxIndex ?? 0) + 1} of {filteredItems.length}
+                </span>
+              </div>
             </div>
-            <div className="mt-4 text-center text-white">
-              <h3 className="text-lg font-bold font-display">{filteredItems[lightboxIndex].title}</h3>
-              <p className="text-xs text-slate-300 mt-1">{filteredItems[lightboxIndex].description}</p>
-              <span className="text-[10px] text-[#D99A42] mt-1 block">
-                {lightboxIndex + 1} of {filteredItems.length}
-              </span>
-            </div>
-          </div>
 
-          <button
-            onClick={nextLightbox}
-            className="absolute right-4 sm:right-8 p-3 rounded-full bg-white/10 text-white hover:bg-white/20 transition"
-          >
-            <ChevronRight className="w-6 h-6" />
-          </button>
-        </div>
-      )}
+            {filteredItems.length > 1 && (
+              <button
+                type="button"
+                onClick={nextLightbox}
+                aria-label="Next photo"
+                className="absolute right-2 sm:right-8 top-1/2 -translate-y-1/2 p-3 rounded-full bg-white/15 text-white hover:bg-white/25 transition z-10"
+              >
+                <ChevronRight className="w-6 h-6" />
+              </button>
+            )}
+          </div>,
+          document.body
+        )}
     </div>
   );
 }

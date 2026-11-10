@@ -15,6 +15,8 @@ import GlobalSearchModal from '@/components/common/GlobalSearchModal';
 export default function Navbar() {
   const pathname = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  // Which mobile accordion section is expanded (one at a time keeps the list short).
+  const [mobileExpanded, setMobileExpanded] = useState<string | null>(null);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const [searchOpen, setSearchOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -42,28 +44,62 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // 1b. Publish the header's on-screen height so sticky in-page bars (About,
+  // Media, Verticals anchor tabs) sit just below it, and slide up when it hides.
+  useEffect(() => {
+    const offset = visible ? (scrolled ? 84 : 96) : 0;
+    document.documentElement.style.setProperty('--nav-offset', `${offset}px`);
+  }, [visible, scrolled]);
+
   // 2. Close mobile menu on route change
   useEffect(() => {
     setMobileMenuOpen(false);
+    setMobileExpanded(null);
     setActiveDropdown(null);
   }, [pathname]);
 
-  // 3. Mobile drawer body scroll lock & focus trap
+  // 3. Mobile drawer body scroll lock, focus, and Escape-to-close
   useEffect(() => {
-    if (mobileMenuOpen) {
-      document.body.style.overflow = 'hidden';
-      drawerRef.current?.focus();
-    } else {
+    if (!mobileMenuOpen) {
       document.body.style.overflow = '';
+      setMobileExpanded(null); // reopen with every section collapsed
+      return;
     }
+    document.body.style.overflow = 'hidden';
+    drawerRef.current?.focus();
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setMobileMenuOpen(false);
+    };
+    window.addEventListener('keydown', onKey);
     return () => {
       document.body.style.overflow = '';
+      window.removeEventListener('keydown', onKey);
     };
   }, [mobileMenuOpen]);
 
+  const closeMobileMenu = () => setMobileMenuOpen(false);
+  const toggleMobileSection = (title: string) =>
+    setMobileExpanded((current) => (current === title ? null : title));
+
   return (
     <>
-      <header 
+      {/* Tap-outside backdrop for the mobile menu (previously only the X closed it) */}
+      <AnimatePresence>
+        {mobileMenuOpen && (
+          <motion.div
+            key="mobile-nav-backdrop"
+            aria-hidden
+            onClick={closeMobileMenu}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            className="fixed inset-0 z-40 bg-[#070E5C]/15 backdrop-blur-[2px] lg:hidden"
+          />
+        )}
+      </AnimatePresence>
+
+      <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-out flex flex-col items-center ${
           visible ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0 pointer-events-none'
         }`}
@@ -211,9 +247,12 @@ export default function Navbar() {
                 <Search className="w-4 h-4" />
               </button>
               <button
+                type="button"
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                 className="p-2.5 rounded-full bg-white/80 text-[#24272B] border border-white/80 shadow-xs"
-                aria-label="Toggle Navigation Menu"
+                aria-label={mobileMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
+                aria-expanded={mobileMenuOpen}
+                aria-controls="mobile-navigation"
               >
                 {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
               </button>
@@ -221,62 +260,104 @@ export default function Navbar() {
           </div>
         </div>
 
-        {/* Mobile Navigation Drawer with Staggered Entrance & Focus Trap */}
+        {/* Mobile Navigation Drawer: collapsible accordion sections */}
         <AnimatePresence>
           {mobileMenuOpen && (
             <motion.div
               ref={drawerRef}
+              id="mobile-navigation"
               tabIndex={-1}
+              role="dialog"
+              aria-modal="true"
+              aria-label="Site navigation"
               initial={{ opacity: 0, y: -20, scale: 0.98 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: -15, scale: 0.98 }}
               transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
-              className="w-[94%] max-w-md mx-auto mt-2 rounded-3xl bg-white/95 backdrop-blur-2xl border border-white/80 shadow-[0_20px_50px_rgba(7,14,92,0.15)] p-5 lg:hidden max-h-[calc(100vh-100px)] overflow-y-auto overscroll-contain outline-none z-50"
+              className="relative w-[94%] max-w-md mx-auto mt-2 rounded-3xl bg-white/95 backdrop-blur-2xl border border-white/80 shadow-[0_20px_50px_rgba(7,14,92,0.15)] p-4 sm:p-5 lg:hidden max-h-[calc(100dvh-100px)] overflow-y-auto overscroll-contain outline-none z-50"
             >
-              <div className="space-y-1">
-                {navigationItems.map((item, mIdx) => (
-                  <motion.div
-                    key={item.title}
-                    initial={{ opacity: 0, x: -12 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.2, delay: mIdx * 0.04 }}
-                    className="py-1"
-                  >
-                    <Link
-                      href={item.href}
-                      onClick={() => !item.children && setMobileMenuOpen(false)}
-                      className="flex items-center justify-between px-4 py-2.5 rounded-2xl text-sm font-semibold text-[#24272B] hover:text-[#070E5C] hover:bg-[#EAF2F8] transition-colors"
+              <nav className="space-y-1" aria-label="Mobile">
+                {navigationItems.map((item, mIdx) => {
+                  const hasChildren = Boolean(item.children && item.children.length > 0);
+                  const isExpanded = mobileExpanded === item.title;
+                  const isActive =
+                    pathname === item.href ||
+                    Boolean(item.children?.some((c) => c.href.split('#')[0] === pathname));
+                  const panelId = `mobile-nav-${item.title.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`;
+                  const rowClass = `flex w-full items-center justify-between px-4 py-3 rounded-2xl text-sm font-semibold transition-colors ${
+                    isExpanded || isActive
+                      ? 'text-[#070E5C] bg-[#EAF2F8]'
+                      : 'text-[#24272B] active:bg-[#EAF2F8]'
+                  }`;
+
+                  return (
+                    <motion.div
+                      key={item.title}
+                      initial={{ opacity: 0, x: -12 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.2, delay: mIdx * 0.04 }}
                     >
-                      <span>{item.title}</span>
-                      {item.children && <ChevronDown className="w-4 h-4 text-[#747B83]" />}
-                    </Link>
-                    {item.children && (
-                      <div className="pl-4 pr-1 py-1 space-y-1">
-                        {item.children.map((sub) => (
-                          <Link
-                            key={sub.title}
-                            href={sub.href}
-                            onClick={() => setMobileMenuOpen(false)}
-                            className="block px-3 py-1.5 rounded-xl text-xs text-[#747B83] hover:text-[#070E5C] hover:bg-[#EAF2F8] transition-colors"
+                      {hasChildren ? (
+                        // The whole row (label + arrow) opens/closes the section.
+                        <button
+                          type="button"
+                          onClick={() => toggleMobileSection(item.title)}
+                          aria-expanded={isExpanded}
+                          aria-controls={panelId}
+                          className={rowClass}
+                        >
+                          <span>{item.title}</span>
+                          <ChevronDown
+                            aria-hidden
+                            className={`w-5 h-5 text-[#747B83] transition-transform duration-300 ${isExpanded ? 'rotate-180 text-[#070E5C]' : ''}`}
+                          />
+                        </button>
+                      ) : (
+                        <Link href={item.href} onClick={closeMobileMenu} className={rowClass}>
+                          <span>{item.title}</span>
+                        </Link>
+                      )}
+
+                      <AnimatePresence initial={false}>
+                        {hasChildren && isExpanded && (
+                          <motion.div
+                            id={panelId}
+                            key="panel"
+                            initial={{ height: 0, opacity: 0 }}
+                            animate={{ height: 'auto', opacity: 1 }}
+                            exit={{ height: 0, opacity: 0 }}
+                            transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
+                            className="overflow-hidden"
                           >
-                            {sub.title}
-                          </Link>
-                        ))}
-                      </div>
-                    )}
-                  </motion.div>
-                ))}
+                            <div className="pl-4 pr-1 pt-1 pb-2 space-y-0.5">
+                              {item.children!.map((sub) => (
+                                <Link
+                                  key={sub.title}
+                                  href={sub.href}
+                                  onClick={closeMobileMenu}
+                                  className="block px-3 py-2.5 rounded-xl text-[13px] text-[#4A5568] active:text-[#070E5C] active:bg-[#EAF2F8] hover:text-[#070E5C] hover:bg-[#EAF2F8] transition-colors"
+                                >
+                                  {sub.title}
+                                </Link>
+                              ))}
+                            </div>
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
+                    </motion.div>
+                  );
+                })}
 
                 <div className="pt-4 mt-2 border-t border-[#E5E7EB]">
                   <Link
                     href="/contact"
-                    onClick={() => setMobileMenuOpen(false)}
+                    onClick={closeMobileMenu}
                     className="w-full py-3 rounded-full text-xs font-semibold text-center text-white bg-[#070E5C] hover:bg-[#D99A42] transition-colors block shadow-sm"
                   >
                     Contact CUBE
                   </Link>
                 </div>
-              </div>
+              </nav>
             </motion.div>
           )}
         </AnimatePresence>

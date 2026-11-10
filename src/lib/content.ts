@@ -134,3 +134,16 @@ export function normalizeNewsItem(item: any) {
     summary: excerpt,
   };
 }
+
+/**
+ * Client records scraped from the old site only carry placeholder names
+ * ("1", "2", ...). Never show those as captions; use a real name when one exists.
+ */
+export function clientDisplayName(name: unknown): string {
+  const value = typeof name === 'string' ? name.trim() : '';
+  return /^\d*$/.test(value) ? '' : value;
+}
+
+export function clientLogoAlt(name: unknown): string {
+  return clientDisplayName(name) || 'CUBE client organisation logo';
+}

@@ -110,7 +110,7 @@ export default function AdminDashboardLayout({ children }: AdminLayoutProps) {
   return (
     <div className="min-h-screen bg-[#F7F7F4] flex flex-col md:flex-row font-sans text-[#24272B] relative">
       <RealtimeRefresher />
-      <FloatingCubeBackground />
+      <FloatingCubeBackground besideSidebar />
       
       {/* Mobile Top Header - Clean Light Architectural Bar */}
       <div className="md:hidden bg-white border-b border-[#E5E7EB] text-[#24272B] p-4 flex items-center justify-between z-30">

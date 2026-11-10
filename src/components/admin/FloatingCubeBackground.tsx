@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import Image from 'next/image';
+import { ADMIN_BANNER_SRC } from '@/lib/branding';
 
 /**
  * Admin workspace background (dashboard + login).
@@ -10,13 +11,21 @@ import Image from 'next/image';
  * ADMIN_BG_SRC as a full-cover background with a soft overlay so panels stay
  * readable. If that file is missing, it falls back to the emblem watermark.
  */
-export const ADMIN_BG_SRC = '/images/admin/admin-dashboard-bg.jpg';
+export const ADMIN_BG_SRC = ADMIN_BANNER_SRC;
 
-export default function FloatingCubeBackground() {
+export default function FloatingCubeBackground({
+  besideSidebar = false,
+}: {
+  /** Admin console: on desktop, start the banner at the sidebar's right edge
+   *  (sidebar is w-64) so the CUBE logo is not hidden underneath it. */
+  besideSidebar?: boolean;
+}) {
   const [bannerAvailable, setBannerAvailable] = useState(true);
 
   return (
-    <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden select-none">
+    <div
+      className={`fixed inset-0 ${besideSidebar ? 'md:left-64' : ''} pointer-events-none z-0 overflow-hidden select-none`}
+    >
       {bannerAvailable ? (
         <>
           <Image

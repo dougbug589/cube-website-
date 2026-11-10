@@ -1,6 +1,7 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useRef } from 'react';
+import { useScrollSpy } from '@/lib/useScrollSpy';
 import Image from 'next/image';
 import Link from 'next/link';
 import PageHeader from '@/components/common/PageHeader';
@@ -12,7 +13,6 @@ import { newsItems as fallbackNewsItems } from '@/data/news';
 import { useLiveList } from '@/lib/live';
 
 export default function CompleteMediaExperience() {
-  const [activeMediaTab, setActiveMediaTab] = useState('news');
   // Live CMS news: published items only, updates instantly on admin changes.
   const newsItems = useLiveList<any>('/api/public/news', fallbackNewsItems as any[]);
 
@@ -23,6 +23,10 @@ export default function CompleteMediaExperience() {
     { id: 'life-at-cube', label: 'Life at CUBE' },
     { id: 'publications', label: 'Technical Publications' },
   ];
+
+  // Highlight follows scrolling; tapping a pill still jumps to its section.
+  const anchorBarRef = useRef<HTMLDivElement>(null);
+  const [activeMediaTab, setActiveMediaTab] = useScrollSpy(navAnchors.map((a) => a.id), anchorBarRef);
 
   const scrollTo = (id: string) => {
     setActiveMediaTab(id);
@@ -99,12 +103,15 @@ export default function CompleteMediaExperience() {
       />
 
       {/* Sticky Apple Glass Anchor Navigation Bar */}
-      <section className="sticky top-20 z-40 bg-white/85 backdrop-blur-2xl border-y border-[#BDD7E8]/70 py-3.5 px-4 sm:px-6 shadow-xs">
-        <div className="max-w-7xl mx-auto flex items-center justify-start gap-2 overflow-x-auto scrollbar-none no-scrollbar py-1">
+      <section className="sticky top-[var(--nav-offset,84px)] transition-[top] duration-500 z-40 bg-white/85 backdrop-blur-2xl border-y border-[#BDD7E8]/70 py-3.5 px-4 sm:px-6 shadow-xs">
+        <div ref={anchorBarRef} className="relative max-w-7xl mx-auto flex items-center justify-start gap-2 overflow-x-auto scrollbar-none no-scrollbar py-1">
           <div className="flex items-center space-x-1.5 sm:space-x-2 shrink-0">
             {navAnchors.map((item) => (
               <button
                 key={item.id}
+                type="button"
+                data-anchor={item.id}
+                aria-current={activeMediaTab === item.id ? 'true' : undefined}
                 onClick={() => scrollTo(item.id)}
                 className={`px-4 py-2 rounded-full text-xs font-semibold tracking-wider transition-all duration-300 whitespace-nowrap ${
                   activeMediaTab === item.id

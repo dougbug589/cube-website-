@@ -40,6 +40,31 @@ function dropBlankUrlFields(data: Record<string, any>): Record<string, any> {
   return out;
 }
 
+/**
+ * URL slug that is always valid and unique within a collection.
+ * - Non-English titles (e.g. Tamil) no longer produce an empty or "-" slug.
+ * - A duplicate title gets "-2", "-3"... so every item has its own public URL
+ *   (previously the second article with the same title was unreachable).
+ */
+function uniqueSlug(source: unknown, existing: Array<{ slug?: string }>, fallbackPrefix: string): string {
+  const base =
+    String(source || '')
+      .toLowerCase()
+      .normalize('NFKD')
+      .replace(/[\u0300-\u036f]/g, '')
+      .replace(/[^a-z0-9\s-]/g, '')
+      .trim()
+      .replace(/[\s_]+/g, '-')
+      .replace(/-+/g, '-')
+      .replace(/^-|-$/g, '')
+      .slice(0, 80) || `${fallbackPrefix}-${Date.now()}`;
+  const taken = new Set(existing.map((item) => item.slug).filter(Boolean));
+  if (!taken.has(base)) return base;
+  let n = 2;
+  while (taken.has(`${base}-${n}`)) n++;
+  return `${base}-${n}`;
+}
+
 // Helper to assert admin privileges
 async function assertPermission(allowedRoles: UserRole[] = ['super_admin', 'admin', 'editor']) {
   const token = (await cookies()).get('cube_admin_session')?.value;
@@ -66,11 +91,7 @@ export async function createNewsAction(data: {
   const session = await assertPermission(['super_admin', 'admin', 'editor']);
   const store = getCMSStore();
 
-  const slug = data.title
-    .toLowerCase()
-    .replace(/[^\w\s-]/g, '')
-    .trim()
-    .replace(/\s+/g, '-');
+  const slug = uniqueSlug(data.title, store.news, 'news');
 
   const newArticle = {
     id: `news_${Date.now()}`,
@@ -283,13 +304,7 @@ export async function createProjectAction(data: any) {
   const store = getCMSStore();
 
   const clean = sanitizeData(data);
-  const slug =
-    clean.slug ||
-    String(clean.title || '')
-      .toLowerCase()
-      .replace(/[^\w\s-]/g, '')
-      .trim()
-      .replace(/\s+/g, '-');
+  const slug = uniqueSlug(clean.slug || clean.title, store.projects, 'project');
 
   const newProject = {
     ...clean,

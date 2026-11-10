@@ -1,5 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
+import { ADMIN_BANNER_SRC } from '@/lib/branding';
+import Image from 'next/image';
 import { 
   FolderKanban, Newspaper, Briefcase, FileSpreadsheet, 
   FlaskConical, Users, Bell, ArrowRight, ShieldCheck, 
@@ -75,39 +77,49 @@ export default async function AdminDashboardOverviewPage() {
 
   return (
     <div className="space-y-8 max-w-7xl mx-auto">
-      {/* Light Architectural Welcome Banner */}
-      <div className="p-6 sm:p-8 rounded-3xl bg-white text-[#24272B] flex flex-col md:flex-row items-start md:items-center justify-between gap-6 shadow-sm border border-[#E5E7EB] relative overflow-hidden">
-        <div className="absolute -right-10 -bottom-10 w-48 h-48 bg-[#EAF2F8] rounded-full blur-2xl pointer-events-none" />
-
-        <div className="space-y-2 relative z-10">
-          <div className="inline-flex items-center space-x-2 text-xs font-semibold text-[#070E5C] bg-[#EAF2F8] px-3 py-1 rounded-full border border-[#BBD6EA]">
-            <ShieldCheck className="w-3.5 h-3.5 text-[#D99A42]" />
-            <span>Authenticated Institutional Console &bull; Realtime Sync</span>
-          </div>
-          <h1 className="text-2xl sm:text-3xl font-serif text-[#24272B] font-normal tracking-tight">
-            CUBE Content Operations Hub
-          </h1>
-          <p className="text-xs sm:text-sm text-[#4A5568] max-w-2xl leading-relaxed">
-            Manage projects, publish breaking news, configure public hiring popups, and review citizen enquiries in real-time. Changes sync immediately to the public portal without redeployment.
-          </p>
+      {/* Welcome banner: the full CUBE artwork (logo + heritage skyline) on the
+          left, console title and actions on a frosted card over the cubes. */}
+      <div className="relative rounded-3xl overflow-hidden border border-[#E5E7EB] shadow-sm bg-white/85 backdrop-blur-xl">
+        <div className="relative w-full aspect-[1280/772] md:aspect-auto md:h-[420px]">
+          <Image
+            src={ADMIN_BANNER_SRC}
+            alt="CUBE: Centre for Urbanization, Buildings & Environment"
+            fill
+            priority
+            sizes="(min-width: 768px) 75vw, 100vw"
+            className="object-cover object-left"
+          />
         </div>
 
-        <div className="flex flex-wrap items-center gap-3 relative z-10">
-          <Link
-            href="/admin/news/new"
-            className="px-4 py-2.5 rounded-full text-xs font-semibold bg-[#EAF2F8] hover:bg-[#D99A42] text-[#070E5C] hover:text-white border border-[#BBD6EA] flex items-center space-x-1.5 transition shadow-2xs"
-          >
-            <Plus className="w-4 h-4" />
-            <span>Create Article</span>
-          </Link>
-
-          <Link
-            href="/admin/announcements"
-            className="px-4 py-2.5 rounded-full text-xs font-semibold bg-white hover:bg-[#F7F7F4] text-[#24272B] border border-[#E5E7EB] flex items-center space-x-1.5 transition shadow-2xs"
-          >
-            <Bell className="w-4 h-4 text-[#D99A42]" />
-            <span>Manage Hiring Popup</span>
-          </Link>
+        <div className="relative md:absolute md:inset-y-0 md:right-0 md:w-[54%] lg:w-[48%] flex items-center p-4 sm:p-6 md:p-8">
+          <div className="w-full p-5 sm:p-6 rounded-2xl bg-white/85 backdrop-blur-xl border border-white/80 shadow-sm space-y-3 text-[#24272B]">
+            <div className="inline-flex items-center space-x-2 text-xs font-semibold text-[#070E5C] bg-[#EAF2F8] px-3 py-1 rounded-full border border-[#BBD6EA]">
+              <ShieldCheck className="w-3.5 h-3.5 text-[#D99A42]" />
+              <span>Authenticated Institutional Console &bull; Realtime Sync</span>
+            </div>
+            <h1 className="text-2xl sm:text-3xl font-serif text-[#24272B] font-normal tracking-tight">
+              CUBE Content Operations Hub
+            </h1>
+            <p className="text-xs sm:text-sm text-[#4A5568] leading-relaxed">
+              Manage projects, publish breaking news, configure public hiring popups, and review citizen enquiries in real-time. Changes sync immediately to the public portal without redeployment.
+            </p>
+            <div className="flex flex-wrap items-center gap-3 pt-1">
+              <Link
+                href="/admin/news?new=1"
+                className="px-4 py-2.5 rounded-full text-xs font-semibold bg-[#EAF2F8] hover:bg-[#D99A42] text-[#070E5C] hover:text-white border border-[#BBD6EA] flex items-center space-x-1.5 transition shadow-2xs"
+              >
+                <Plus className="w-4 h-4" />
+                <span>Create Article</span>
+              </Link>
+              <Link
+                href="/admin/announcements"
+                className="px-4 py-2.5 rounded-full text-xs font-semibold bg-white hover:bg-[#F7F7F4] text-[#24272B] border border-[#E5E7EB] flex items-center space-x-1.5 transition shadow-2xs"
+              >
+                <Bell className="w-4 h-4 text-[#D99A42]" />
+                <span>Manage Hiring Popup</span>
+              </Link>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -119,7 +131,7 @@ export default async function AdminDashboardOverviewPage() {
             <Link
               key={i}
               href={card.href}
-              className="p-5 rounded-2xl bg-white border border-[#E5E7EB] shadow-2xs hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 flex flex-col justify-between group"
+              className="p-5 rounded-2xl bg-white/85 backdrop-blur-xl border border-[#E5E7EB] shadow-2xs hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 flex flex-col justify-between group"
             >
               <div className="flex items-center justify-between">
                 <span className="text-[11px] font-semibold text-[#4A5568] uppercase tracking-wider">
@@ -149,7 +161,7 @@ export default async function AdminDashboardOverviewPage() {
         
         {/* Left Column: Quick Publishing Modules (8 Cols) */}
         <div className="lg:col-span-8 space-y-6">
-          <div className="bg-white rounded-2xl border border-[#E5E7EB] p-6 shadow-2xs">
+          <div className="bg-white/85 backdrop-blur-xl rounded-2xl border border-[#E5E7EB] p-6 shadow-2xs">
             <div className="flex items-center justify-between mb-4 pb-3 border-b border-[#E5E7EB]">
               <h2 className="text-base font-bold text-[#24272B] flex items-center font-serif">
                 <Newspaper className="w-4 h-4 text-[#D99A42] mr-2" />
@@ -198,7 +210,7 @@ export default async function AdminDashboardOverviewPage() {
           </div>
 
           {/* Universal Hiring Announcement Status Card */}
-          <div className="bg-white rounded-2xl border border-[#E5E7EB] p-6 shadow-2xs">
+          <div className="bg-white/85 backdrop-blur-xl rounded-2xl border border-[#E5E7EB] p-6 shadow-2xs">
             <div className="flex items-center justify-between mb-4 pb-3 border-b border-[#E5E7EB]">
               <h2 className="text-base font-bold text-[#24272B] flex items-center font-serif">
                 <Bell className="w-4 h-4 text-[#D99A42] mr-2" />
@@ -235,7 +247,7 @@ export default async function AdminDashboardOverviewPage() {
 
         {/* Right Column: Immutable Audit Trail (4 Cols) */}
         <div className="lg:col-span-4 space-y-6">
-          <div className="bg-white rounded-2xl border border-[#E5E7EB] p-6 shadow-2xs">
+          <div className="bg-white/85 backdrop-blur-xl rounded-2xl border border-[#E5E7EB] p-6 shadow-2xs">
             <div className="flex items-center justify-between mb-4 pb-3 border-b border-[#E5E7EB]">
               <h2 className="text-sm font-bold text-[#24272B] flex items-center font-serif">
                 <Clock className="w-4 h-4 text-[#D99A42] mr-1.5" />

@@ -3,6 +3,7 @@ import Image from 'next/image';
 import PageHeader from '@/components/common/PageHeader';
 import { Building2, ShieldCheck, Handshake } from 'lucide-react';
 import { clients } from '@/data/clients';
+import { clientLogoAlt } from '@/lib/content';
 import { partners } from '@/data/partners';
 
 export const metadata = {
@@ -46,7 +47,7 @@ export default function ClientsPage() {
                 <div className="relative h-14 w-full">
                   <Image
                     src={client.logo}
-                    alt={client.name}
+                    alt={clientLogoAlt(client.name)}
                     fill
                     className="object-contain filter grayscale group-hover:grayscale-0 transition-all duration-300"
                   />

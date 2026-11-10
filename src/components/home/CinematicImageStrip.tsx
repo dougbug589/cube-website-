@@ -107,7 +107,7 @@ export default function CinematicImageStrip() {
               ease: 'linear',
             },
           }}
-          className="flex space-x-6 w-max cursor-pointer"
+          className="flex space-x-6 w-max"
         >
           {duplicatedItems.map((item, idx) => (
             <motion.div
@@ -116,6 +116,14 @@ export default function CinematicImageStrip() {
               transition={{ duration: 0.3 }}
               className="w-[300px] sm:w-[380px] lg:w-[420px] shrink-0 group rounded-3xl overflow-hidden bg-white border border-[#E5E7EB] shadow-md hover:shadow-2xl transition-all"
             >
+              {/* The whole card opens the project (previously only the small arrow did). */}
+              <Link
+                href={item.link}
+                aria-label={`${item.title}: ${item.subtitle}`}
+                tabIndex={idx >= STRIP_ITEMS.length ? -1 : undefined}
+                aria-hidden={idx >= STRIP_ITEMS.length ? true : undefined}
+                className="block focus:outline-none focus-visible:ring-2 focus-visible:ring-[#070E5C] rounded-3xl"
+              >
               {/* Image Box */}
               <div className="relative h-[230px] sm:h-[260px] w-full overflow-hidden">
                 <Image
@@ -145,13 +153,14 @@ export default function CinematicImageStrip() {
                   </p>
                 </div>
 
-                <Link
-                  href={item.link}
+                <span
+                  aria-hidden
                   className="p-2.5 rounded-full bg-[#EAF2F8] text-[#070E5C] group-hover:bg-[#070E5C] group-hover:text-[#D99A42] transition-all shrink-0 mt-0.5 shadow-sm"
                 >
                   <ArrowUpRight className="w-4 h-4" />
-                </Link>
+                </span>
               </div>
+              </Link>
             </motion.div>
           ))}
         </motion.div>

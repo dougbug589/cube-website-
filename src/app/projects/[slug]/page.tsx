@@ -167,7 +167,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
 
             {/* Right 4 Cols: Project Metadata Sidebar in Apple Liquid Glass */}
             <div className="lg:col-span-4 space-y-6">
-              <div className="p-7 rounded-3xl apple-glass-card border border-[#BDD7E8] shadow-sm space-y-5 sticky top-28">
+              <div className="p-7 rounded-3xl apple-glass-card border border-[#BDD7E8] shadow-sm space-y-5 sticky top-[calc(var(--nav-offset,84px)+1rem)] transition-[top] duration-500">
                 <h3 className="font-serif text-lg font-medium text-[#24272B] pb-3 border-b border-[#E5E7EB]">
                   Project Specifications
                 </h3>

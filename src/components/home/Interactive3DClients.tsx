@@ -2,6 +2,7 @@
 
 import React, { useRef, useState } from 'react';
 import Image from 'next/image';
+import { clientDisplayName, clientLogoAlt } from '@/lib/content';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { ArrowUpRight, ShieldCheck, Sparkles } from 'lucide-react';
@@ -49,19 +50,21 @@ export default function Interactive3DClients({ clients }: Interactive3DClientsPr
           {row1.map((client, idx) => (
             <div
               key={`row1-${client.name}-${idx}`}
-              className="w-52 sm:w-60 h-28 rounded-2xl bg-white/90 backdrop-blur-2xl border border-white/90 shadow-[0_8px_24px_rgba(7,14,92,0.06),inset_0_1.5px_2px_rgba(255,255,255,0.95)] p-4 flex flex-col items-center justify-center transition-all duration-300 hover:scale-105 hover:-translate-y-1 hover:border-[#5B9BD5] hover:shadow-[0_16px_36px_rgba(7,14,92,0.12)] group cursor-pointer"
+              className="w-52 sm:w-60 h-28 rounded-2xl bg-white/90 backdrop-blur-2xl border border-white/90 shadow-[0_8px_24px_rgba(7,14,92,0.06),inset_0_1.5px_2px_rgba(255,255,255,0.95)] p-4 flex flex-col items-center justify-center transition-all duration-300 hover:scale-105 hover:-translate-y-1 hover:border-[#5B9BD5] hover:shadow-[0_16px_36px_rgba(7,14,92,0.12)] group"
             >
               <div className="relative h-14 w-full flex items-center justify-center">
                 <Image
                   src={client.logo || '/images/clients/tnuhdb.png'}
-                  alt={client.name}
+                  alt={clientLogoAlt(client.name)}
                   fill
                   className="object-contain filter grayscale opacity-85 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-110 transition-all duration-300 drop-shadow-xs"
                 />
               </div>
-              <span className="text-[11px] text-[#24272B] group-hover:text-[#070E5C] font-bold mt-2 truncate max-w-full">
-                {client.name}
-              </span>
+              {clientDisplayName(client.name) && (
+                <span className="text-[11px] text-[#24272B] group-hover:text-[#070E5C] font-bold mt-2 truncate max-w-full">
+                  {clientDisplayName(client.name)}
+                </span>
+              )}
             </div>
           ))}
         </div>
@@ -77,19 +80,21 @@ export default function Interactive3DClients({ clients }: Interactive3DClientsPr
           {row2.map((client, idx) => (
             <div
               key={`row2-${client.name}-${idx}`}
-              className="w-52 sm:w-60 h-28 rounded-2xl bg-white/90 backdrop-blur-2xl border border-white/90 shadow-[0_8px_24px_rgba(7,14,92,0.06),inset_0_1.5px_2px_rgba(255,255,255,0.95)] p-4 flex flex-col items-center justify-center transition-all duration-300 hover:scale-105 hover:-translate-y-1 hover:border-[#5B9BD5] hover:shadow-[0_16px_36px_rgba(7,14,92,0.12)] group cursor-pointer"
+              className="w-52 sm:w-60 h-28 rounded-2xl bg-white/90 backdrop-blur-2xl border border-white/90 shadow-[0_8px_24px_rgba(7,14,92,0.06),inset_0_1.5px_2px_rgba(255,255,255,0.95)] p-4 flex flex-col items-center justify-center transition-all duration-300 hover:scale-105 hover:-translate-y-1 hover:border-[#5B9BD5] hover:shadow-[0_16px_36px_rgba(7,14,92,0.12)] group"
             >
               <div className="relative h-14 w-full flex items-center justify-center">
                 <Image
                   src={client.logo || '/images/clients/tnuhdb.png'}
-                  alt={client.name}
+                  alt={clientLogoAlt(client.name)}
                   fill
                   className="object-contain filter grayscale opacity-85 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-110 transition-all duration-300 drop-shadow-xs"
                 />
               </div>
-              <span className="text-[11px] text-[#24272B] group-hover:text-[#070E5C] font-bold mt-2 truncate max-w-full">
-                {client.name}
-              </span>
+              {clientDisplayName(client.name) && (
+                <span className="text-[11px] text-[#24272B] group-hover:text-[#070E5C] font-bold mt-2 truncate max-w-full">
+                  {clientDisplayName(client.name)}
+                </span>
+              )}
             </div>
           ))}
         </div>

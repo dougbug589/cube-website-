@@ -57,6 +57,19 @@ export default function AdminNewsManager({ initialNews }: { initialNews: any[] }
     setIsModalOpen(true);
   };
 
+  // Deep link from the dashboard's "Create Article" button: /admin/news?new=1
+  // opens the new-article form directly (that button used to 404).
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('new') === '1') {
+      openAddModal();
+      params.delete('new');
+      const query = params.toString();
+      window.history.replaceState(null, '', window.location.pathname + (query ? `?${query}` : ''));
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   const openEditModal = (article: any) => {
     setEditingArticle(article);
     setTitle(article.title || '');

@@ -20,11 +20,21 @@ export default function PageHeader({ badge, title, description, breadcrumbs, bac
   const handleBack = () => {
     if (backHref) {
       router.push(backHref);
-    } else if (typeof window !== 'undefined' && window.history.length > 1) {
-      router.back();
-    } else {
-      router.push('/');
+      return;
     }
+    // Only step back through history when the previous page was on this site;
+    // otherwise (opened from Google, a shared link, a new tab) "Back" used to
+    // leave the website or do nothing. Fall back to the breadcrumb parent.
+    const cameFromThisSite =
+      typeof document !== 'undefined' &&
+      document.referrer.startsWith(window.location.origin) &&
+      window.history.length > 1;
+    if (cameFromThisSite) {
+      router.back();
+      return;
+    }
+    const parent = [...(breadcrumbs || [])].reverse().find((crumb) => crumb.href)?.href;
+    router.push(parent || '/');
   };
 
   return (
