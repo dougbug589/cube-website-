@@ -2,6 +2,8 @@
 
 import React, { useEffect, useState, useMemo } from 'react';
 import Image from 'next/image';
+import ImageUploadField from '@/components/admin/ImageUploadField';
+import { imageForUpdate } from '@/lib/image-field';
 import {
   Users,
   Plus,
@@ -135,40 +137,6 @@ export default function TeamClient({ initialMembers }: TeamClientProps) {
     setIsModalOpen(true);
   };
 
-  const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (!file) return;
-
-    // Check 10MB limit upfront
-    const maxSizeBytes = 10 * 1024 * 1024;
-    if (file.size > maxSizeBytes) {
-      const sizeMB = (file.size / (1024 * 1024)).toFixed(1);
-      alert('File size (' + sizeMB + ' MB) exceeds 10 MB maximum criteria. Please choose an image under 10 MB.');
-      e.target.value = '';
-      return;
-    }
-
-    setUploading(true);
-    const formData = new FormData();
-    formData.append('file', file);
-
-    try {
-      const res = await fetch('/api/admin/upload', {
-        method: 'POST',
-        body: formData,
-      });
-      const data = await res.json();
-      if (data.success) {
-        setImage(data.url);
-      } else {
-        alert(data.error || 'Upload failed');
-      }
-    } catch (err: any) {
-      alert('Error uploading photo: ' + err.message);
-    } finally {
-      setUploading(false);
-    }
-  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -187,7 +155,8 @@ export default function TeamClient({ initialMembers }: TeamClientProps) {
           designation,
           category,
           department: category,
-          image: image || editingMember.image || '/images/team/team_unknown.png',
+          // Empty = the admin deleted the photo (sent as an explicit delete).
+          image: imageForUpdate(image),
           bio,
           email,
           phone,
@@ -564,7 +533,7 @@ export default function TeamClient({ initialMembers }: TeamClientProps) {
                   </div>
                 )}
                 {/* Optional Archive Remark Banner */}
-                {member.archiveRemark && (
+                {member.archiveRemark && ['archived', 'Archive'].includes(member.status ?? '') && (
                   <div className="pt-2 border-t border-amber-200 text-[11px] text-amber-900 bg-amber-50/60 p-2.5 rounded-xl">
                     <span className="font-bold text-[10px] uppercase text-amber-800 tracking-wider flex items-center gap-1">
                       <Archive className="w-3 h-3" /> Archive Remark
@@ -758,41 +727,14 @@ export default function TeamClient({ initialMembers }: TeamClientProps) {
                 </div>
               </div>
 
-              {/* Photo Upload & URL */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
-                <div>
-                  <div className="flex items-center justify-between mb-1">
-                    <label className="block text-slate-700 font-semibold">
-                      Upload Photograph
-                    </label>
-                    <span className="text-[10px] font-bold text-[#070E5C] bg-[#EAF2F8] px-2 py-0.5 rounded border border-[#BBD6EA]">
-                      Max: 10 MB Criteria
-                    </span>
-                  </div>
-                  <input
-                    type="file"
-                    accept="image/*"
-                    onChange={handleFileUpload}
-                    className="w-full px-3 py-2 rounded-xl border border-dashed border-[#BBD6EA] bg-[#EAF2F8]/30 file:mr-3 file:py-1 file:px-3 file:rounded-full file:border-0 file:text-xs file:font-semibold file:bg-[#EAF2F8] file:text-[#070E5C]"
-                  />
-                  <p className="text-[10px] text-slate-500 mt-1">
-                    Supports JPG, PNG, WEBP (under 10 MB size limit).
-                  </p>
-                </div>
-
-                <div>
-                  <label className="block text-slate-700 font-semibold mb-1">
-                    Or Photo URL Path
-                  </label>
-                  <input
-                    type="text"
-                    placeholder="/images/team/... or /uploads/..."
-                    value={image}
-                    onChange={(e) => setImage(e.target.value)}
-                    className="w-full px-3 py-2 rounded-xl border border-[#E5E7EB] font-mono text-[11px] focus:ring-2 focus:ring-[#BBD6EA] outline-none"
-                  />
-                </div>
-              </div>
+              {/* Photo Upload */}
+              <ImageUploadField
+                label="Photograph"
+                value={image}
+                onChange={setImage}
+                onUploadingChange={setUploading}
+                previewClassName="h-48"
+              />
 
               {/* Bio / Institutional Notes */}
               <div>

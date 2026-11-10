@@ -260,7 +260,7 @@ export default function CELClient({ initialServices }: CELClientProps) {
               )}
 
               {/* Archive Remark Preview */}
-              {(service as any).archiveRemark && (
+              {(service as any).archiveRemark && ['archived', 'Archive'].includes((service as any).status) && (
                 <div className="mt-4 p-2.5 rounded-xl bg-amber-50/60 border border-amber-200 text-[11px] text-amber-900">
                   <span className="font-bold text-[10px] uppercase text-amber-800 tracking-wider flex items-center gap-1">
                     <Archive className="w-3 h-3" /> Archive Remark

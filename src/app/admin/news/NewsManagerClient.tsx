@@ -3,6 +3,8 @@
 import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import ImageUploadField from '@/components/admin/ImageUploadField';
+import { imageForUpdate } from '@/lib/image-field';
 import { 
   Newspaper, Plus, Search, Filter, CheckCircle2, 
   Clock, Archive, ArchiveRestore, Eye, Edit3, ArrowRight, AlertCircle, Loader2, X
@@ -93,7 +95,7 @@ export default function AdminNewsManager({ initialNews }: { initialNews: any[] }
           category,
           excerpt,
           content,
-          imageUrl,
+          imageUrl: imageForUpdate(imageUrl),
           featured,
         });
 
@@ -275,7 +277,7 @@ export default function AdminNewsManager({ initialNews }: { initialNews: any[] }
                       <div className="text-[11px] text-slate-400 line-clamp-1 mt-0.5">
                         {article.excerpt}
                       </div>
-                      {article.archiveRemark && (
+                      {article.archiveRemark && ['archived', 'Archive'].includes(article.status) && (
                         <div className="text-[10px] text-amber-800 bg-amber-50 px-2 py-0.5 rounded border border-amber-200 mt-1 inline-block">
                           Remark: {article.archiveRemark}
                         </div>
@@ -384,7 +386,7 @@ export default function AdminNewsManager({ initialNews }: { initialNews: any[] }
                 />
               </div>
 
-              <div className="grid grid-cols-2 gap-4">
+              <div>
                 <div>
                   <label className="block text-slate-700 font-semibold mb-1">
                     Category <span className="text-red-500">*</span>
@@ -401,18 +403,13 @@ export default function AdminNewsManager({ initialNews }: { initialNews: any[] }
                   </select>
                 </div>
 
-                <div>
-                  <label className="block text-slate-700 font-semibold mb-1">
-                    Cover Image URL
-                  </label>
-                  <input
-                    type="text"
-                    value={imageUrl}
-                    onChange={(e) => setImageUrl(e.target.value)}
-                    className="w-full px-3 py-2 rounded-xl border border-slate-200 font-mono text-[11px] focus:ring-2 focus:ring-teal-500 outline-none"
-                  />
-                </div>
               </div>
+
+              <ImageUploadField
+                label="Cover Image"
+                value={imageUrl}
+                onChange={setImageUrl}
+              />
 
               <div>
                 <label className="block text-slate-700 font-semibold mb-1">

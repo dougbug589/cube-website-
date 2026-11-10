@@ -9,6 +9,8 @@ import { boardMembers, executiveLeadership, advisoryPanel } from '@/data/leaders
 import { clients as initialClients } from '@/data/clients';
 import { celOverview } from '@/data/cel';
 import { sanitizeStoreContent } from '@/lib/content';
+import { getCMSBackend, getSupabaseAdmin } from '@/lib/db/backend';
+import { createCloudDriver, CloudDriver } from '@/lib/db/cloud-store';
 
 const DATA_DIR = path.join(process.cwd(), 'data-store');
 const DB_FILE = path.join(DATA_DIR, 'cube_cms_store.json');
@@ -51,6 +53,38 @@ const MAX_AUDIT_LOGS = 5000;
 let cachedStore: CMSStore | null = null;
 let lastMtime: number = 0;
 
+// ---------------------------------------------------------------------------
+// Backend selection: Supabase (hosting) or local JSON file (development).
+// ---------------------------------------------------------------------------
+const gStore = globalThis as unknown as { __cubeCloudDriver?: CloudDriver };
+
+function cloud(): CloudDriver {
+  if (!gStore.__cubeCloudDriver) {
+    gStore.__cubeCloudDriver = createCloudDriver(getSupabaseAdmin());
+  }
+  return gStore.__cubeCloudDriver;
+}
+
+async function loadCloudStore(): Promise<CMSStore> {
+  const driver = cloud();
+  let store = (await driver.load()) as CMSStore | null;
+  if (!store) {
+    // Empty database: create the same initial content the JSON store starts with.
+    await driver.seed(buildInitialStore() as unknown as Record<string, unknown>);
+    store = (await driver.load()) as CMSStore | null;
+    if (!store) throw new Error('CMS database could not be initialised.');
+  }
+  for (const key of COLLECTION_KEYS) {
+    if (!Array.isArray((store as any)[key])) (store as any)[key] = [];
+  }
+  return store;
+}
+
+const COLLECTION_KEYS = [
+  'users', 'auditLogs', 'news', 'projects', 'verticals', 'announcements', 'careers',
+  'tenders', 'celServices', 'teamMembers', 'clients', 'gallery', 'heroSlides', 'enquiries',
+] as const;
+
 function ensureDataStore(): CMSStore {
   if (!fs.existsSync(DATA_DIR)) {
     fs.mkdirSync(DATA_DIR, { recursive: true });
@@ -73,7 +107,13 @@ function ensureDataStore(): CMSStore {
     }
   }
 
-  // Initial Seed
+  const initialStore = buildInitialStore();
+  fs.writeFileSync(DB_FILE, JSON.stringify(initialStore, null, 2), 'utf-8');
+  return initialStore;
+}
+
+/** Initial CMS content used when a store (file or database) is first created. */
+function buildInitialStore(): CMSStore {
   const defaultPassword = process.env.DEFAULT_ADMIN_PASSWORD;
   if (!defaultPassword) {
     throw new Error(
@@ -298,15 +338,15 @@ function ensureDataStore(): CMSStore {
     ],
   };
 
-  fs.writeFileSync(DB_FILE, JSON.stringify(initialStore, null, 2), 'utf-8');
   return initialStore;
 }
 
-export const getCMSStore = (): CMSStore => {
+export const getCMSStore = async (): Promise<CMSStore> => {
+  if (getCMSBackend() === 'supabase') return loadCloudStore();
   return ensureDataStore();
 };
 
-export const saveCMSStore = (store: CMSStore) => {
+export const saveCMSStore = async (store: CMSStore): Promise<void> => {
   // Strip rich-text/font markup from every content collection before writing so
   // admin input can never alter the public site's typography or inject markup.
   sanitizeStoreContent(store);
@@ -315,6 +355,11 @@ export const saveCMSStore = (store: CMSStore) => {
   // stays fast as the site ages.
   if (Array.isArray(store.auditLogs) && store.auditLogs.length > MAX_AUDIT_LOGS) {
     store.auditLogs = store.auditLogs.slice(0, MAX_AUDIT_LOGS);
+  }
+
+  if (getCMSBackend() === 'supabase') {
+    await cloud().save(store as unknown as Record<string, unknown>);
+    return;
   }
 
   if (!fs.existsSync(DATA_DIR)) {
@@ -374,12 +419,12 @@ export function verifyAdminToken(token: string): (AdminSession & { sv: number })
  * Verifies the signature, then re-checks the live store so deactivated users,
  * role changes, and logged-out (revoked) tokens lose access immediately.
  */
-export function resolveAdminSession(token: string | undefined | null): AdminSession | null {
+export async function resolveAdminSession(token: string | undefined | null): Promise<AdminSession | null> {
   if (!token) return null;
   const session = verifyAdminToken(token);
   if (!session) return null;
 
-  const store = getCMSStore();
+  const store = await getCMSStore();
   const user = store.users.find((u) => u.id === session.userId);
   if (!user || !user.isActive) return null;
   if ((user.sessionVersion ?? 0) !== session.sv) return null;
@@ -393,16 +438,23 @@ export function resolveAdminSession(token: string | undefined | null): AdminSess
 }
 
 /** Revoke every token issued to this user (used by logout). */
-export function revokeAdminSessions(userId: string) {
-  const store = getCMSStore();
+export async function revokeAdminSessions(userId: string) {
+  const store = await getCMSStore();
   const user = store.users.find((u) => u.id === userId);
   if (!user) return;
   user.sessionVersion = (user.sessionVersion ?? 0) + 1;
-  saveCMSStore(store);
+  await saveCMSStore(store);
 }
 
 /** Version stamp of the CMS store; changes whenever any content is saved. */
-export function getStoreVersion(): number {
+export async function getStoreVersion(): Promise<number> {
+  if (getCMSBackend() === 'supabase') {
+    try {
+      return await cloud().version();
+    } catch {
+      return 0;
+    }
+  }
   try {
     return fs.statSync(DB_FILE).mtimeMs;
   } catch {

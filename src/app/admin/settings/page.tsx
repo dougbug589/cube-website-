@@ -1,11 +1,14 @@
 import React from 'react';
 import { Database, Globe } from 'lucide-react';
-import { isSupabaseConfigured } from '@/lib/supabase/client';
+import { getCMSBackend } from '@/lib/db/backend';
 import { requireAdmin } from '@/lib/auth-guard';
+
+export const dynamic = 'force-dynamic';
 
 export default async function AdminSettingsPage() {
   await requireAdmin();
-  const usesSupabase = isSupabaseConfigured;
+  // Reflects the backend actually in use (service-role key configured).
+  const usesSupabase = getCMSBackend() === 'supabase';
 
   return (
     <div className="space-y-6 max-w-4xl mx-auto">

@@ -5,7 +5,7 @@ export const dynamic = 'force-dynamic';
 
 export async function GET() {
   try {
-    const store = getCMSStore();
+    const store = await getCMSStore();
     const activeTenders = (store.tenders || []).filter(
       (t) => t.status !== 'archived' && t.status !== 'Archive'
     );

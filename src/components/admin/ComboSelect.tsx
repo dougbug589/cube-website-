@@ -11,7 +11,12 @@ interface ComboSelectProps {
   /** Allow values that are not in the list (typed by the admin). Default true. */
   allowCustom?: boolean;
   className?: string;
+  /** Override the text box styling (e.g. to match the public site's forms). */
+  inputClassName?: string;
 }
+
+const DEFAULT_INPUT_CLASS =
+  'w-full p-2.5 pr-9 text-xs rounded-xl border border-slate-300 bg-white focus:outline-none focus:border-[#070E5C] cursor-pointer';
 
 /**
  * Dropdown that always lists every option (scrollable), with type-to-filter
@@ -25,6 +30,7 @@ export default function ComboSelect({
   placeholder = 'Select or type...',
   allowCustom = true,
   className = '',
+  inputClassName,
 }: ComboSelectProps) {
   const listId = useId();
   const rootRef = useRef<HTMLDivElement>(null);
@@ -143,7 +149,7 @@ export default function ComboSelect({
           setActive(0);
         }}
         onKeyDown={onKeyDown}
-        className="w-full p-2.5 pr-9 text-xs rounded-xl border border-slate-300 bg-white focus:outline-none focus:border-[#070E5C] cursor-pointer"
+        className={inputClassName || DEFAULT_INPUT_CLASS}
       />
       <button
         type="button"

@@ -16,8 +16,9 @@ const nextConfig = {
   },
   async rewrites() {
     return {
-      // Admin uploads added after `next build` are not served from /public in
-      // production; fall back to a route that reads them from disk.
+      // Uploaded media keeps its /uploads/<file> URL. Files in /public at build
+      // time are served statically first; anything uploaded after deployment
+      // (runtime disk or Supabase Storage) falls back to /api/uploads.
       fallback: [{ source: '/uploads/:path*', destination: '/api/uploads/:path*' }],
     };
   },

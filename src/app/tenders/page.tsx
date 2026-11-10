@@ -11,8 +11,8 @@ export const metadata = {
   description: 'Official procurement and tender notices for Centre for Urbanization, Buildings & Environment (CUBE).',
 };
 
-export default function TendersPage() {
-  const store = getCMSStore();
+export default async function TendersPage() {
+  const store = await getCMSStore();
   const activeTenders = (store.tenders || []).filter(
     (t: any) => t.status !== 'archived' && t.status !== 'Archive'
   );

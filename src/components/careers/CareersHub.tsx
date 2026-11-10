@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import PageHeader from '@/components/common/PageHeader';
+import ComboSelect from '@/components/admin/ComboSelect';
 import {
   Briefcase, Send, CheckCircle2, Mail, MapPin,
   Upload, FileText, Sparkles, Building2, Users,
@@ -58,6 +59,12 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
   const [experience, setExperience] = useState(form.experienceOptions[0] || '');
   const [domain, setDomain] = useState(form.domainOptions[0] || '');
   const [jobTitle, setJobTitle] = useState(form.defaultJobTitle);
+  // Dropdown choices: the general talent pool + every live opening (newest first,
+  // as published by admin). ComboSelect removes duplicates and allows typing.
+  const positionOptions = [
+    form.defaultJobTitle,
+    ...initialCareers.map((job) => job?.title).filter((t): t is string => typeof t === 'string' && t.trim() !== ''),
+  ];
   const [coverLetter, setCoverLetter] = useState('');
   const [resumeFile, setResumeFile] = useState<File | null>(null);
 
@@ -585,12 +592,13 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
                         <label className="block text-xs font-bold uppercase tracking-wider text-[#24272B] mb-2">
                           Target Position / Opening
                         </label>
-                        <input
-                          type="text"
+                        {/* All live openings (plus the general pool); candidates can also type their own. */}
+                        <ComboSelect
                           value={jobTitle}
-                          onChange={(e) => setJobTitle(e.target.value)}
-                          placeholder="Position applied for"
-                          className="w-full px-4 py-3 rounded-2xl bg-white border border-[#BDD7E8] text-xs text-[#24272B] focus:outline-none focus:ring-2 focus:ring-[#070E5C]"
+                          onChange={setJobTitle}
+                          options={positionOptions}
+                          placeholder="Select or type the position"
+                          inputClassName="w-full px-4 py-3 pr-10 rounded-2xl bg-white border border-[#BDD7E8] text-xs text-[#24272B] focus:outline-none focus:ring-2 focus:ring-[#070E5C] cursor-pointer"
                         />
                       </div>
 

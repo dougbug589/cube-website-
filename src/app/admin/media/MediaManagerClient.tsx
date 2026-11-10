@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
+import ImageUploadField from '@/components/admin/ImageUploadField';
 import { 
   Upload, Search, Plus, Archive, ArchiveRestore, Edit3, X, Image as ImageIcon,
   CheckCircle2, Folder, ExternalLink, RefreshCw 
@@ -79,39 +80,17 @@ export default function MediaManagerClient({ initialGallery }: MediaManagerProps
     setIsModalOpen(true);
   };
 
-  const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (!file) return;
-
-    setUploading(true);
-    const formData = new FormData();
-    formData.append('file', file);
-
-    try {
-      const res = await fetch('/api/admin/upload', {
-        method: 'POST',
-        body: formData,
-      });
-      const data = await res.json();
-      if (data.success) {
-        setImageUrl(data.url);
-        if (!title) {
-          setTitle(file.name.replace(/\.[^/.]+$/, '').replace(/[-_]/g, ' '));
-        }
-      } else {
-        alert(data.error || 'Upload failed');
-      }
-    } catch (err: any) {
-      alert('Error uploading file: ' + err.message);
-    } finally {
-      setUploading(false);
+  // Auto-fill the title from the uploaded file's name when it is still empty.
+  const handleUploaded = (file: File) => {
+    if (!title) {
+      setTitle(file.name.replace(/\.[^/.]+$/, '').replace(/[-_]/g, ' '));
     }
   };
 
   const handleSave = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!title || !imageUrl) {
-      alert('Please provide a title and an image URL/file.');
+      alert('Please provide a title and upload an image.');
       return;
     }
 
@@ -385,50 +364,14 @@ export default function MediaManagerClient({ initialGallery }: MediaManagerProps
                 </select>
               </div>
 
-              <div>
-                <label className="block text-slate-700 font-semibold mb-1">
-                  Upload Photo from Computer
-                </label>
-                <div className="flex items-center gap-2">
-                  <input
-                    type="file"
-                    accept="image/*"
-                    onChange={handleFileUpload}
-                    className="w-full px-3 py-2 rounded-xl border border-dashed border-[#BBD6EA] bg-[#EAF2F8]/30 file:mr-3 file:py-1 file:px-3 file:rounded-full file:border-0 file:text-xs file:font-semibold file:bg-[#EAF2F8] file:text-[#070E5C] hover:file:bg-[#D99A42] hover:file:text-white"
-                  />
-                  {uploading && (
-                    <span className="text-[#070E5C] animate-spin font-bold">↻</span>
-                  )}
-                </div>
-              </div>
-
-              <div>
-                <label className="block text-slate-700 font-semibold mb-1">
-                  Or Direct Image Path / URL
-                </label>
-                <input
-                  type="text"
-                  required
-                  placeholder="/images/hero/slides_cpcl-arc.jpg or /uploads/..."
-                  value={imageUrl}
-                  onChange={(e) => setImageUrl(e.target.value)}
-                  className="w-full px-3 py-2 rounded-xl border border-[#E5E7EB] font-mono text-[11px] focus:ring-2 focus:ring-[#BBD6EA] outline-none"
-                />
-              </div>
-
-              {imageUrl && (
-                <div className="pt-2">
-                  <span className="block text-[11px] text-[#6B7280] mb-1">Live Image Preview:</span>
-                  <div className="relative h-32 w-full rounded-xl overflow-hidden border border-[#E5E7EB] bg-[#F7F7F4]">
-                    <Image
-                      src={imageUrl}
-                      alt="Preview"
-                      fill
-                      className="object-contain"
-                    />
-                  </div>
-                </div>
-              )}
+              <ImageUploadField
+                label="Photo"
+                required
+                value={imageUrl}
+                onChange={setImageUrl}
+                onUploaded={handleUploaded}
+                onUploadingChange={setUploading}
+              />
 
               <div className="flex items-center justify-end gap-3 pt-4 border-t border-[#E5E7EB]">
                 <button

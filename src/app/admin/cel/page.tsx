@@ -7,6 +7,6 @@ export const dynamic = 'force-dynamic';
 
 export default async function AdminCELPage() {
   await requireAdmin();
-  const store = getCMSStore();
+  const store = await getCMSStore();
   return <CELClient initialServices={store.celServices || []} />;
 }

@@ -4,6 +4,7 @@ import { cookies } from 'next/headers';
 import { revalidatePath } from 'next/cache';
 import { getCMSStore, saveCMSStore, resolveAdminSession, UserRole } from '@/lib/db/store';
 import { resolveCareersPage } from '@/lib/careers-page';
+import { isRemoveImage } from '@/lib/image-field';
 
 // Keys that must never be supplied by client payloads (mass-assignment guard).
 const PROTECTED_KEYS = new Set([
@@ -31,6 +32,11 @@ const URL_FIELD = /(url|link|href|src|image|images|logo|photo|thumbnail|banner|f
 function dropBlankUrlFields(data: Record<string, any>): Record<string, any> {
   const out: Record<string, any> = {};
   for (const [key, value] of Object.entries(data)) {
+    // An explicit Delete from the admin image field clears the image.
+    if (isRemoveImage(value)) {
+      out[key] = '';
+      continue;
+    }
     const blank =
       value === '' || value === null || value === undefined ||
       (Array.isArray(value) && value.length === 0);
@@ -65,10 +71,27 @@ function uniqueSlug(source: unknown, existing: Array<{ slug?: string }>, fallbac
   return `${base}-${n}`;
 }
 
+// Archive remark/date describe why an item is CURRENTLY archived. Restoring an
+// item returns it to its normal state, so the remark is cleared.
+function isArchivedStatus(status: unknown): boolean {
+  return status === 'archived' || status === 'Archive';
+}
+function syncArchiveMeta(item: Record<string, any>, archiveRemark?: string) {
+  if (isArchivedStatus(item.status)) {
+    if (archiveRemark) {
+      item.archiveRemark = archiveRemark;
+      item.archivedAt = new Date().toISOString();
+    }
+  } else {
+    delete item.archiveRemark;
+    delete item.archivedAt;
+  }
+}
+
 // Helper to assert admin privileges
 async function assertPermission(allowedRoles: UserRole[] = ['super_admin', 'admin', 'editor']) {
   const token = (await cookies()).get('cube_admin_session')?.value;
-  const session = resolveAdminSession(token);
+  const session = await resolveAdminSession(token);
   if (!session) throw new Error('Unauthorized: Session expired or signed out');
   if (!allowedRoles.includes(session.role)) {
     throw new Error(`Forbidden: Insufficient privileges. Required: ${allowedRoles.join(', ')}`);
@@ -89,7 +112,7 @@ export async function createNewsAction(data: {
   status: 'draft' | 'published';
 }) {
   const session = await assertPermission(['super_admin', 'admin', 'editor']);
-  const store = getCMSStore();
+  const store = await getCMSStore();
 
   const slug = uniqueSlug(data.title, store.news, 'news');
 
@@ -121,7 +144,7 @@ export async function createNewsAction(data: {
     timestamp: new Date().toISOString(),
   });
 
-  saveCMSStore(store);
+  await saveCMSStore(store);
 
   // Instant Next.js Cache Revalidation
   revalidatePath('/');
@@ -142,7 +165,7 @@ export async function updateNewsAction(id: string, data: {
   featured?: boolean;
 }) {
   const session = await assertPermission(['super_admin', 'admin', 'editor']);
-  const store = getCMSStore();
+  const store = await getCMSStore();
 
   const idx = store.news.findIndex((n) => n.id === id);
   if (idx === -1) return { success: false, error: 'Article not found' };
@@ -153,7 +176,11 @@ export async function updateNewsAction(id: string, data: {
     excerpt: data.excerpt,
     content: data.content,
     category: data.category,
-    ...(data.imageUrl ? { image: data.imageUrl } : {}),
+    ...(isRemoveImage(data.imageUrl)
+      ? { image: '', imageUrl: '' } // admin deleted the cover; public pages use their default
+      : data.imageUrl
+        ? { image: data.imageUrl }
+        : {}),
     ...(data.featured !== undefined ? { featured: data.featured } : {}),
     updatedAt: new Date().toISOString(),
   };
@@ -168,7 +195,7 @@ export async function updateNewsAction(id: string, data: {
     timestamp: new Date().toISOString(),
   });
 
-  saveCMSStore(store);
+  await saveCMSStore(store);
 
   revalidatePath('/');
   revalidatePath('/media');
@@ -181,12 +208,13 @@ export async function updateNewsAction(id: string, data: {
 
 export async function updateNewsStatusAction(id: string, status: 'draft' | 'published' | 'archived') {
   const session = await assertPermission(['super_admin', 'admin']);
-  const store = getCMSStore();
+  const store = await getCMSStore();
 
   const idx = store.news.findIndex((n) => n.id === id);
   if (idx === -1) return { success: false, error: 'Article not found' };
 
   store.news[idx].status = status;
+  syncArchiveMeta(store.news[idx]);
   store.news[idx].updatedAt = new Date().toISOString();
 
   store.auditLogs.unshift({
@@ -199,7 +227,7 @@ export async function updateNewsStatusAction(id: string, status: 'draft' | 'publ
     timestamp: new Date().toISOString(),
   });
 
-  saveCMSStore(store);
+  await saveCMSStore(store);
 
   revalidatePath('/');
   revalidatePath('/media');
@@ -211,16 +239,13 @@ export async function updateNewsStatusAction(id: string, status: 'draft' | 'publ
 
 export async function deleteNewsAction(id: string, archiveRemark?: string) {
   const session = await assertPermission(['super_admin', 'admin']);
-  const store = getCMSStore();
+  const store = await getCMSStore();
 
   const idx = store.news.findIndex((n) => n.id === id);
   if (idx !== -1) {
     const nextStatus = store.news[idx].status === 'archived' ? 'published' : 'archived';
     store.news[idx].status = nextStatus;
-    if (archiveRemark) {
-      store.news[idx].archiveRemark = archiveRemark;
-      store.news[idx].archivedAt = new Date().toISOString();
-    }
+    syncArchiveMeta(store.news[idx], archiveRemark);
     store.news[idx].updatedAt = new Date().toISOString();
   }
 
@@ -234,7 +259,7 @@ export async function deleteNewsAction(id: string, archiveRemark?: string) {
     timestamp: new Date().toISOString(),
   });
 
-  saveCMSStore(store);
+  await saveCMSStore(store);
 
   revalidatePath('/');
   revalidatePath('/media');
@@ -260,7 +285,7 @@ export async function updateAnnouncementAction(data: {
   frequency: string;
 }) {
   const session = await assertPermission(['super_admin', 'admin']);
-  const store = getCMSStore();
+  const store = await getCMSStore();
 
   const idx = store.announcements.findIndex((a) => a.id === data.id);
   if (idx === -1) {
@@ -290,7 +315,7 @@ export async function updateAnnouncementAction(data: {
     timestamp: new Date().toISOString(),
   });
 
-  saveCMSStore(store);
+  await saveCMSStore(store);
 
   revalidatePath('/');
   return { success: true };
@@ -301,7 +326,7 @@ export async function updateAnnouncementAction(data: {
 // -------------------------------------------------------------
 export async function createProjectAction(data: any) {
   const session = await assertPermission(['super_admin', 'admin', 'editor']);
-  const store = getCMSStore();
+  const store = await getCMSStore();
 
   const clean = sanitizeData(data);
   const slug = uniqueSlug(clean.slug || clean.title, store.projects, 'project');
@@ -327,7 +352,7 @@ export async function createProjectAction(data: any) {
     timestamp: new Date().toISOString(),
   });
 
-  saveCMSStore(store);
+  await saveCMSStore(store);
 
   revalidatePath('/');
   revalidatePath('/projects');
@@ -337,7 +362,7 @@ export async function createProjectAction(data: any) {
 
 export async function updateProjectAction(idOrSlug: string, data: any) {
   const session = await assertPermission(['super_admin', 'admin', 'editor']);
-  const store = getCMSStore();
+  const store = await getCMSStore();
 
   const idx = store.projects.findIndex((p) => p.id === idOrSlug || p.slug === idOrSlug);
   if (idx === -1) return { success: false, error: 'Project not found' };
@@ -358,7 +383,7 @@ export async function updateProjectAction(idOrSlug: string, data: any) {
     timestamp: new Date().toISOString(),
   });
 
-  saveCMSStore(store);
+  await saveCMSStore(store);
 
   revalidatePath('/');
   revalidatePath('/projects');
@@ -368,16 +393,13 @@ export async function updateProjectAction(idOrSlug: string, data: any) {
 
 export async function archiveProjectAction(idOrSlug: string, archiveRemark?: string) {
   const session = await assertPermission(['super_admin', 'admin']);
-  const store = getCMSStore();
+  const store = await getCMSStore();
 
   const idx = store.projects.findIndex((p) => p.id === idOrSlug || p.slug === idOrSlug);
   if (idx !== -1) {
     const isArchived = store.projects[idx].status === 'archived';
     store.projects[idx].status = isArchived ? 'published' : 'archived';
-    if (archiveRemark) {
-      store.projects[idx].archiveRemark = archiveRemark;
-      store.projects[idx].archivedAt = new Date().toISOString();
-    }
+    syncArchiveMeta(store.projects[idx], archiveRemark);
     store.projects[idx].updatedAt = new Date().toISOString();
   }
 
@@ -391,7 +413,7 @@ export async function archiveProjectAction(idOrSlug: string, archiveRemark?: str
     timestamp: new Date().toISOString(),
   });
 
-  saveCMSStore(store);
+  await saveCMSStore(store);
 
   revalidatePath('/');
   revalidatePath('/projects');
@@ -405,7 +427,7 @@ export async function archiveProjectAction(idOrSlug: string, archiveRemark?: str
 // -------------------------------------------------------------
 export async function createCareerAction(data: any) {
   const session = await assertPermission(['super_admin', 'admin']);
-  const store = getCMSStore();
+  const store = await getCMSStore();
 
   const newJob = {
     ...sanitizeData(data),
@@ -427,7 +449,7 @@ export async function createCareerAction(data: any) {
     timestamp: new Date().toISOString(),
   });
 
-  saveCMSStore(store);
+  await saveCMSStore(store);
 
   revalidatePath('/careers');
   revalidatePath('/admin/careers');
@@ -436,7 +458,7 @@ export async function createCareerAction(data: any) {
 
 export async function updateCareerAction(id: string, data: any) {
   const session = await assertPermission(['super_admin', 'admin']);
-  const store = getCMSStore();
+  const store = await getCMSStore();
 
   const idx = store.careers.findIndex((c) => c.id === id);
   if (idx === -1) return { success: false, error: 'Career position not found' };
@@ -457,7 +479,7 @@ export async function updateCareerAction(id: string, data: any) {
     timestamp: new Date().toISOString(),
   });
 
-  saveCMSStore(store);
+  await saveCMSStore(store);
 
   revalidatePath('/careers');
   revalidatePath('/admin/careers');
@@ -466,16 +488,13 @@ export async function updateCareerAction(id: string, data: any) {
 
 export async function archiveCareerAction(id: string, archiveRemark?: string) {
   const session = await assertPermission(['super_admin', 'admin']);
-  const store = getCMSStore();
+  const store = await getCMSStore();
 
   const idx = store.careers.findIndex((c) => c.id === id);
   if (idx !== -1) {
     const isArchived = store.careers[idx].status === 'archived';
     store.careers[idx].status = isArchived ? 'published' : 'archived';
-    if (archiveRemark) {
-      store.careers[idx].archiveRemark = archiveRemark;
-      store.careers[idx].archivedAt = new Date().toISOString();
-    }
+    syncArchiveMeta(store.careers[idx], archiveRemark);
     store.careers[idx].updatedAt = new Date().toISOString();
   }
 
@@ -489,7 +508,7 @@ export async function archiveCareerAction(id: string, archiveRemark?: string) {
     timestamp: new Date().toISOString(),
   });
 
-  saveCMSStore(store);
+  await saveCMSStore(store);
 
   revalidatePath('/careers');
   revalidatePath('/admin/careers');
@@ -499,7 +518,7 @@ export async function archiveCareerAction(id: string, archiveRemark?: string) {
 
 export async function updateCareersPageAction(data: unknown) {
   const session = await assertPermission(['super_admin', 'admin']);
-  const store = getCMSStore();
+  const store = await getCMSStore();
 
   // Normalise to the known shape; unknown keys are dropped.
   const content = resolveCareersPage(data);
@@ -515,7 +534,7 @@ export async function updateCareersPageAction(data: unknown) {
     timestamp: new Date().toISOString(),
   });
 
-  saveCMSStore(store);
+  await saveCMSStore(store);
 
   revalidatePath('/careers');
   revalidatePath('/admin/careers');
@@ -535,7 +554,7 @@ export async function createTenderAction(data: {
   status?: string;
 }) {
   const session = await assertPermission(['super_admin', 'admin']);
-  const store = getCMSStore();
+  const store = await getCMSStore();
 
   const newTender = {
     id: `tnd_${Date.now()}`,
@@ -561,7 +580,7 @@ export async function createTenderAction(data: {
     timestamp: new Date().toISOString(),
   });
 
-  saveCMSStore(store);
+  await saveCMSStore(store);
 
   revalidatePath('/admin/tenders');
   revalidatePath('/tenders');
@@ -578,7 +597,7 @@ export async function updateTenderAction(id: string, data: {
   status?: string;
 }) {
   const session = await assertPermission(['super_admin', 'admin']);
-  const store = getCMSStore();
+  const store = await getCMSStore();
 
   const idx = store.tenders.findIndex((t) => t.id === id);
   if (idx === -1) return { success: false, error: 'Tender not found' };
@@ -593,6 +612,8 @@ export async function updateTenderAction(id: string, data: {
     status: data.status || store.tenders[idx].status,
     updatedAt: new Date().toISOString(),
   };
+  // Changing the status away from Archive here also counts as a restore.
+  syncArchiveMeta(store.tenders[idx]);
 
   store.auditLogs.unshift({
     id: `log_${Date.now()}`,
@@ -604,7 +625,7 @@ export async function updateTenderAction(id: string, data: {
     timestamp: new Date().toISOString(),
   });
 
-  saveCMSStore(store);
+  await saveCMSStore(store);
 
   revalidatePath('/admin/tenders');
   revalidatePath('/tenders');
@@ -614,16 +635,13 @@ export async function updateTenderAction(id: string, data: {
 
 export async function deleteTenderAction(id: string, archiveRemark?: string) {
   const session = await assertPermission(['super_admin', 'admin']);
-  const store = getCMSStore();
+  const store = await getCMSStore();
 
   const idx = store.tenders.findIndex((t) => t.id === id);
   if (idx !== -1) {
     const isArchived = store.tenders[idx].status === 'Archive' || store.tenders[idx].status === 'archived';
     store.tenders[idx].status = isArchived ? 'Active' : 'Archive';
-    if (archiveRemark) {
-      store.tenders[idx].archiveRemark = archiveRemark;
-      store.tenders[idx].archivedAt = new Date().toISOString();
-    }
+    syncArchiveMeta(store.tenders[idx], archiveRemark);
   }
 
   store.auditLogs.unshift({
@@ -636,7 +654,7 @@ export async function deleteTenderAction(id: string, archiveRemark?: string) {
     timestamp: new Date().toISOString(),
   });
 
-  saveCMSStore(store);
+  await saveCMSStore(store);
 
   revalidatePath('/admin/tenders');
   revalidatePath('/tenders');
@@ -653,7 +671,7 @@ export async function addCELServiceAction(data: {
   parameters: string[];
 }) {
   const session = await assertPermission(['super_admin', 'admin']);
-  const store = getCMSStore();
+  const store = await getCMSStore();
 
   const newService = {
     id: `cel_${Date.now()}`,
@@ -677,7 +695,7 @@ export async function addCELServiceAction(data: {
     timestamp: new Date().toISOString(),
   });
 
-  saveCMSStore(store);
+  await saveCMSStore(store);
 
   revalidatePath('/admin/cel');
   revalidatePath('/cel');
@@ -692,7 +710,7 @@ export async function updateCELServiceAction(id: string, data: {
   parameters: string[];
 }) {
   const session = await assertPermission(['super_admin', 'admin']);
-  const store = getCMSStore();
+  const store = await getCMSStore();
 
   const idx = store.celServices.findIndex((s) => s.id === id);
   if (idx === -1) return { success: false, error: 'Laboratory service not found' };
@@ -716,7 +734,7 @@ export async function updateCELServiceAction(id: string, data: {
     timestamp: new Date().toISOString(),
   });
 
-  saveCMSStore(store);
+  await saveCMSStore(store);
 
   revalidatePath('/admin/cel');
   revalidatePath('/cel');
@@ -726,16 +744,13 @@ export async function updateCELServiceAction(id: string, data: {
 
 export async function deleteCELServiceAction(id: string, archiveRemark?: string) {
   const session = await assertPermission(['super_admin', 'admin']);
-  const store = getCMSStore();
+  const store = await getCMSStore();
 
   const idx = store.celServices.findIndex((s) => s.id === id);
   if (idx !== -1) {
     const isArchived = store.celServices[idx].status === 'archived';
     store.celServices[idx].status = isArchived ? 'published' : 'archived';
-    if (archiveRemark) {
-      store.celServices[idx].archiveRemark = archiveRemark;
-      store.celServices[idx].archivedAt = new Date().toISOString();
-    }
+    syncArchiveMeta(store.celServices[idx], archiveRemark);
   }
 
   store.auditLogs.unshift({
@@ -748,7 +763,7 @@ export async function deleteCELServiceAction(id: string, archiveRemark?: string)
     timestamp: new Date().toISOString(),
   });
 
-  saveCMSStore(store);
+  await saveCMSStore(store);
 
   revalidatePath('/admin/cel');
   revalidatePath('/cel');
@@ -776,7 +791,7 @@ export async function addTeamMemberAction(data: {
   emergencyContact?: string;
 }) {
   const session = await assertPermission(['super_admin', 'admin']);
-  const store = getCMSStore();
+  const store = await getCMSStore();
 
   const newMember = {
     id: `team_${Date.now()}`,
@@ -812,7 +827,7 @@ export async function addTeamMemberAction(data: {
     timestamp: new Date().toISOString(),
   });
 
-  saveCMSStore(store);
+  await saveCMSStore(store);
 
   revalidatePath('/admin/team');
   revalidatePath('/about/team');
@@ -840,7 +855,7 @@ export async function updateTeamMemberAction(idOrName: string, data: {
   emergencyContact?: string;
 }) {
   const session = await assertPermission(['super_admin', 'admin']);
-  const store = getCMSStore();
+  const store = await getCMSStore();
 
   const idx = store.teamMembers.findIndex((m) => m.id === idOrName || m.name === idOrName);
   if (idx === -1) {
@@ -853,7 +868,11 @@ export async function updateTeamMemberAction(idOrName: string, data: {
     designation: data.designation,
     category: data.category,
     department: data.department || data.category,
-    ...(data.image ? { image: data.image } : {}),
+    ...(isRemoveImage(data.image)
+      ? { image: '' } // admin deleted the photo; public pages show the placeholder
+      : data.image
+        ? { image: data.image }
+        : {}),
     bio: data.bio !== undefined ? data.bio : store.teamMembers[idx].bio,
     email: data.email !== undefined ? data.email : store.teamMembers[idx].email,
     phone: data.phone !== undefined ? data.phone : store.teamMembers[idx].phone,
@@ -877,7 +896,7 @@ export async function updateTeamMemberAction(idOrName: string, data: {
     timestamp: new Date().toISOString(),
   });
 
-  saveCMSStore(store);
+  await saveCMSStore(store);
 
   revalidatePath('/admin/team');
   revalidatePath('/about/team');
@@ -889,16 +908,13 @@ export async function updateTeamMemberAction(idOrName: string, data: {
 
 export async function deleteTeamMemberAction(id: string, archiveRemark?: string) {
   const session = await assertPermission(['super_admin', 'admin']);
-  const store = getCMSStore();
+  const store = await getCMSStore();
 
   const idx = store.teamMembers.findIndex((m) => m.id === id || m.name === id);
   if (idx !== -1) {
     const isArchived = store.teamMembers[idx].status === 'archived';
     store.teamMembers[idx].status = isArchived ? 'published' : 'archived';
-    if (archiveRemark) {
-      store.teamMembers[idx].archiveRemark = archiveRemark;
-      store.teamMembers[idx].archivedAt = new Date().toISOString();
-    }
+    syncArchiveMeta(store.teamMembers[idx], archiveRemark);
   }
 
   store.auditLogs.unshift({
@@ -911,7 +927,7 @@ export async function deleteTeamMemberAction(id: string, archiveRemark?: string)
     timestamp: new Date().toISOString(),
   });
 
-  saveCMSStore(store);
+  await saveCMSStore(store);
 
   revalidatePath('/admin/team');
   revalidatePath('/about/team');
@@ -927,7 +943,7 @@ export async function addMediaAssetAction(data: {
   imageUrl: string;
 }) {
   const session = await assertPermission(['super_admin', 'admin', 'editor']);
-  const store = getCMSStore();
+  const store = await getCMSStore();
 
   const newAsset = {
     id: `gal_${Date.now()}`,
@@ -950,7 +966,7 @@ export async function addMediaAssetAction(data: {
     timestamp: new Date().toISOString(),
   });
 
-  saveCMSStore(store);
+  await saveCMSStore(store);
 
   revalidatePath('/admin/media');
   revalidatePath('/media/gallery');
@@ -964,7 +980,7 @@ export async function updateMediaAssetAction(id: string, data: {
   imageUrl?: string;
 }) {
   const session = await assertPermission(['super_admin', 'admin', 'editor']);
-  const store = getCMSStore();
+  const store = await getCMSStore();
 
   const idx = store.gallery.findIndex((g) => g.id === id);
   if (idx === -1) return { success: false, error: 'Asset not found' };
@@ -987,7 +1003,7 @@ export async function updateMediaAssetAction(id: string, data: {
     timestamp: new Date().toISOString(),
   });
 
-  saveCMSStore(store);
+  await saveCMSStore(store);
 
   revalidatePath('/admin/media');
   revalidatePath('/media/gallery');
@@ -997,16 +1013,13 @@ export async function updateMediaAssetAction(id: string, data: {
 
 export async function deleteMediaAssetAction(id: string, archiveRemark?: string) {
   const session = await assertPermission(['super_admin', 'admin']);
-  const store = getCMSStore();
+  const store = await getCMSStore();
 
   const idx = store.gallery.findIndex((g) => g.id === id);
   if (idx !== -1) {
     const isArchived = store.gallery[idx].status === 'archived';
     store.gallery[idx].status = isArchived ? 'published' : 'archived';
-    if (archiveRemark) {
-      store.gallery[idx].archiveRemark = archiveRemark;
-      store.gallery[idx].archivedAt = new Date().toISOString();
-    }
+    syncArchiveMeta(store.gallery[idx], archiveRemark);
   }
 
   store.auditLogs.unshift({
@@ -1019,7 +1032,7 @@ export async function deleteMediaAssetAction(id: string, archiveRemark?: string)
     timestamp: new Date().toISOString(),
   });
 
-  saveCMSStore(store);
+  await saveCMSStore(store);
 
   revalidatePath('/admin/media');
   revalidatePath('/media/gallery');

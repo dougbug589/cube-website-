@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
-import fs from 'fs';
 import path from 'path';
 import { resolveAdminSession, UserRole } from '@/lib/db/store';
+import { putFile } from '@/lib/file-storage';
 
 // Max file size: 10MB
 const MAX_FILE_SIZE_BYTES = 10 * 1024 * 1024; // 10,485,760 bytes
@@ -55,7 +55,7 @@ function detectImageType(buffer: Buffer): DetectedImage | null {
 
 export async function POST(req: NextRequest) {
   try {
-    const user = resolveAdminSession(req.cookies.get('cube_admin_session')?.value);
+    const user = await resolveAdminSession(req.cookies.get('cube_admin_session')?.value);
     if (!user) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
@@ -103,13 +103,9 @@ export async function POST(req: NextRequest) {
       .slice(0, 80) || 'upload';
     const filename = `${Date.now()}_${cleanBase}${detected.ext}`;
 
-    const uploadDir = path.join(process.cwd(), 'public', 'uploads');
-    if (!fs.existsSync(uploadDir)) {
-      fs.mkdirSync(uploadDir, { recursive: true });
-    }
-
-    const filePath = path.join(uploadDir, filename);
-    fs.writeFileSync(filePath, buffer);
+    // Supabase Storage when hosted, public/uploads locally. Either way the
+    // public URL stays /uploads/<name> (served by /api/uploads when needed).
+    await putFile('uploads', filename, buffer, detected.mime);
 
     const publicUrl = `/uploads/${filename}`;
     return NextResponse.json({

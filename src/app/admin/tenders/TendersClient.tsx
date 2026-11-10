@@ -224,7 +224,7 @@ export default function TendersClient({ initialTenders }: TendersClientProps) {
                     <td className="py-3.5 px-4 max-w-md">
                       <div className="font-serif font-bold text-[#24272B]">{tender.title}</div>
                       <div className="text-[11px] text-[#6B7280] line-clamp-1 mt-0.5">{tender.description}</div>
-                      {tender.archiveRemark && (
+                      {tender.archiveRemark && ['archived', 'Archive'].includes(tender.status) && (
                         <div className="text-[10px] text-amber-800 bg-amber-50 px-2 py-0.5 rounded border border-amber-200 mt-1 inline-block">
                           Archive Remark: {tender.archiveRemark}
                         </div>

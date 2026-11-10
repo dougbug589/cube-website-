@@ -5,8 +5,8 @@ const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://cubeiitm.org';
 
 export const dynamic = 'force-dynamic';
 
-export default function sitemap(): MetadataRoute.Sitemap {
-  const store = getCMSStore();
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const store = await getCMSStore();
 
   const staticRoutes = [
     '',

@@ -7,6 +7,6 @@ export const dynamic = 'force-dynamic';
 
 export default async function AdminTeamPage() {
   await requireAdmin();
-  const store = getCMSStore();
+  const store = await getCMSStore();
   return <TeamClient initialMembers={store.teamMembers || []} />;
 }

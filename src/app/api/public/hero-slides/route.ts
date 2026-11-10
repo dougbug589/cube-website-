@@ -5,7 +5,7 @@ export const dynamic = 'force-dynamic';
 
 export async function GET() {
   try {
-    const store = getCMSStore();
+    const store = await getCMSStore();
     const slides = (store.heroSlides || [])
       .filter((s) => s.status === 'published')
       .sort((a, b) => (a.displayOrder || 0) - (b.displayOrder || 0));
