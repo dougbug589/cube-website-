@@ -1,0 +1,13 @@
+# Dependencies & Build artifacts (Vercel builds these on the cloud)
+node_modules
+.next
+.git
+.vercel
+
+# Environment
+.env*.local
+
+# Cache & Temporary
+*.log
+.tsbuildinfo
+scraped_pages
