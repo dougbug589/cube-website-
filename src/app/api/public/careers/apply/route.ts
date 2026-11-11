@@ -3,13 +3,13 @@ import crypto from 'crypto';
 import { getCMSStore, saveCMSStore } from '@/lib/db/store';
 import { RESUME_MIME, detectResumeType } from '@/lib/resumes';
 import { putFile } from '@/lib/file-storage';
+import { consumeRateLimit } from '@/lib/rate-limit';
 
 const MAX_FILE_SIZE_BYTES = 10 * 1024 * 1024;
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 const WINDOW_MS = 10 * 60 * 1000;
 const MAX_PER_WINDOW = 5;
-const attempts = new Map<string, { count: number; windowStart: number }>();
 
 function clientIp(req: NextRequest): string {
   return (
@@ -19,18 +19,6 @@ function clientIp(req: NextRequest): string {
   );
 }
 
-function isRateLimited(ip: string): boolean {
-  const now = Date.now();
-  const record = attempts.get(ip);
-  if (!record || now - record.windowStart > WINDOW_MS) {
-    attempts.set(ip, { count: 1, windowStart: now });
-    return false;
-  }
-  if (record.count >= MAX_PER_WINDOW) return true;
-  record.count += 1;
-  return false;
-}
-
 function field(formData: FormData, key: string, max: number, fallback = ''): string {
   const value = formData.get(key);
   return (typeof value === 'string' ? value : fallback).trim().slice(0, max);
@@ -38,7 +26,8 @@ function field(formData: FormData, key: string, max: number, fallback = ''): str
 
 export async function POST(req: NextRequest) {
   try {
-    if (isRateLimited(clientIp(req))) {
+    const rateLimit = await consumeRateLimit(`career-application:${clientIp(req)}`, MAX_PER_WINDOW, WINDOW_MS);
+    if (!rateLimit.allowed) {
       return NextResponse.json(
         { error: 'Too many applications from this network. Please try again later.' },
         { status: 429 }

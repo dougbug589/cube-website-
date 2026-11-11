@@ -11,18 +11,10 @@ import {
   revokeAdminSessions,
   AdminSession,
 } from '@/lib/db/store';
+import { clearRateLimit, consumeRateLimit } from '@/lib/rate-limit';
 
 const MAX_ATTEMPTS = 5;
 const WINDOW_MS = 15 * 60 * 1000; // 15 minutes
-const BLOCK_MS = 15 * 60 * 1000;
-
-interface AttemptRecord {
-  count: number;
-  windowStart: number;
-  blockedUntil: number;
-}
-
-const loginAttempts = new Map<string, AttemptRecord>();
 
 // Used to equalize timing when the email does not exist.
 const DUMMY_HASH = '$2b$10$CwTycUXWue0Thq9StjUM0uJ8D7Qb1s6N5pQn8wXq0cJ5hVQ8G1pW';
@@ -35,40 +27,6 @@ async function getClientKey(email: string): Promise<string> {
     headerStore.get('x-real-ip') ||
     'unknown';
   return `${ip}:${email.toLowerCase()}`;
-}
-
-function checkRateLimit(key: string): { allowed: boolean; retryAfterMs: number } {
-  const now = Date.now();
-  const record = loginAttempts.get(key);
-
-  if (!record) return { allowed: true, retryAfterMs: 0 };
-
-  if (record.blockedUntil > now) {
-    return { allowed: false, retryAfterMs: record.blockedUntil - now };
-  }
-
-  if (now - record.windowStart > WINDOW_MS) {
-    loginAttempts.delete(key);
-    return { allowed: true, retryAfterMs: 0 };
-  }
-
-  return { allowed: true, retryAfterMs: 0 };
-}
-
-function recordFailure(key: string) {
-  const now = Date.now();
-  const record = loginAttempts.get(key);
-
-  if (!record || now - record.windowStart > WINDOW_MS) {
-    loginAttempts.set(key, { count: 1, windowStart: now, blockedUntil: 0 });
-    return;
-  }
-
-  record.count += 1;
-  if (record.count >= MAX_ATTEMPTS) {
-    record.blockedUntil = now + BLOCK_MS;
-  }
-  loginAttempts.set(key, record);
 }
 
 /**
@@ -104,7 +62,7 @@ export async function loginAdminAction(formData: FormData) {
   }
 
   const rateKey = await getClientKey(email);
-  const { allowed, retryAfterMs } = checkRateLimit(rateKey);
+  const { allowed, retryAfterMs } = await consumeRateLimit(rateKey, MAX_ATTEMPTS, WINDOW_MS);
   if (!allowed) {
     const minutes = Math.ceil(retryAfterMs / 60000);
     return {
@@ -121,17 +79,15 @@ export async function loginAdminAction(formData: FormData) {
   if (!user || !user.isActive) {
     // Perform a dummy comparison so response timing does not reveal account existence.
     await bcrypt.compare(password, DUMMY_HASH);
-    recordFailure(rateKey);
     return { success: false, error: 'Invalid institutional administrator credentials' };
   }
 
   const match = await bcrypt.compare(password, user.passwordHash);
   if (!match) {
-    recordFailure(rateKey);
     return { success: false, error: 'Invalid institutional administrator credentials' };
   }
 
-  loginAttempts.delete(rateKey);
+  await clearRateLimit(rateKey);
 
   const session: AdminSession = {
     userId: user.id,
@@ -230,7 +186,7 @@ export async function changePasswordAction(formData: FormData) {
   }
 
   const rateKey = `password-change:${session.userId}`;
-  const { allowed, retryAfterMs } = checkRateLimit(rateKey);
+  const { allowed, retryAfterMs } = await consumeRateLimit(rateKey, MAX_ATTEMPTS, WINDOW_MS);
   if (!allowed) {
     return {
       success: false,
@@ -240,10 +196,9 @@ export async function changePasswordAction(formData: FormData) {
 
   const user = (await getCMSStore()).users.find((u) => u.id === session.userId);
   if (!user || !(await bcrypt.compare(current, user.passwordHash))) {
-    recordFailure(rateKey);
     return { success: false, error: 'The current password is incorrect.' };
   }
-  loginAttempts.delete(rateKey);
+  await clearRateLimit(rateKey);
 
   const newHash = await bcrypt.hash(next, 12);
 

@@ -6,6 +6,7 @@
 
 - Added CI validation for linting, production builds, dependency audits, and repository data checks.
 - Added decoded image dimension validation for admin uploads to reject malformed or oversized images.
+- Added Supabase-backed distributed rate limiting for admin sign-in, enquiries, and career applications, with a local fallback for development.
 - Corrected project-content spelling errors in public descriptions.
 - Added a Content Security Policy covering the app's required fonts, maps, images, and API connections.
 
@@ -16,3 +17,4 @@
 ### Audit Notes
 
 - Next.js lint, production build, and dependency audit could not run because Node.js and npm are unavailable in the audit environment.
+- Apply `supabase/migrations/003_rate_limits.sql` to enable shared rate-limit buckets in hosted deployments.

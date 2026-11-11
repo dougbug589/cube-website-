@@ -3,6 +3,7 @@
 import { cookies, headers } from 'next/headers';
 import { getCMSStore, saveCMSStore, resolveAdminSession, UserRole, AdminSession } from '@/lib/db/store';
 import { revalidatePath } from 'next/cache';
+import { consumeRateLimit } from '@/lib/rate-limit';
 
 export interface SubmitEnquiryPayload {
   name: string;
@@ -20,7 +21,6 @@ const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 const SUBMISSION_WINDOW_MS = 10 * 60 * 1000;
 const MAX_SUBMISSIONS_PER_WINDOW = 5;
-const submissions = new Map<string, { count: number; windowStart: number }>();
 
 async function getClientIp(): Promise<string> {
   const headerStore = await headers();
@@ -30,24 +30,6 @@ async function getClientIp(): Promise<string> {
     headerStore.get('x-real-ip') ||
     'unknown'
   );
-}
-
-function isRateLimited(ip: string): boolean {
-  const now = Date.now();
-  const record = submissions.get(ip);
-
-  if (!record || now - record.windowStart > SUBMISSION_WINDOW_MS) {
-    submissions.set(ip, { count: 1, windowStart: now });
-    return false;
-  }
-
-  if (record.count >= MAX_SUBMISSIONS_PER_WINDOW) {
-    return true;
-  }
-
-  record.count += 1;
-  submissions.set(ip, record);
-  return false;
 }
 
 async function assertAdmin(
@@ -87,7 +69,8 @@ export async function submitEnquiryAction(payload: SubmitEnquiryPayload) {
   }
 
   const ip = await getClientIp();
-  if (isRateLimited(ip)) {
+  const rateLimit = await consumeRateLimit(`enquiry:${ip}`, MAX_SUBMISSIONS_PER_WINDOW, SUBMISSION_WINDOW_MS);
+  if (!rateLimit.allowed) {
     return {
       success: false,
       error: 'Too many submissions. Please try again later.',
