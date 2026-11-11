@@ -4,6 +4,7 @@
 
 ### Fixed
 
+- Added a Home navigation button beside About on desktop and mobile menus.
 - Added CI validation for linting, production builds, dependency audits, and repository data checks.
 - Added decoded image dimension validation for admin uploads to reject malformed or oversized images.
 - Added Supabase-backed distributed rate limiting for admin sign-in, enquiries, and career applications, with a local fallback for development.
