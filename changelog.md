@@ -4,6 +4,9 @@
 
 ### Fixed
 
+- Corrected project-content spelling errors in public descriptions.
+- Added a Content Security Policy covering the app's required fonts, maps, images, and API connections.
+
 - Replaced missing project-card and client-logo fallback image paths with existing public assets.
 - Confirmed TypeScript diagnostics are clean for the touched components.
 - Confirmed Python syntax, JSON data, featured-project, and data-image checks pass.

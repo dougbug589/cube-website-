@@ -15,7 +15,7 @@ export const projects: Project[] = [
       "/images/projects/urban-planning/images_lhp-indore.jpg"
     ],
     "scopeOfWork": [
-      "Adequacy check for exixting drains and proposed stormwater drains networks and micro water body.",
+      "Adequacy check for existing drains and proposed stormwater drains networks and micro water body.",
       "Surface Water Management and Inundation Study"
     ],
     "objectives": [
@@ -38,7 +38,7 @@ export const projects: Project[] = [
     "slug": "caterpillar",
     "title": "Reconstruction of Several Tenemental scheme under Housing For All/Pradhan Mantry Awas Yojana(HFA/PMAY)= 40+ schemes",
     "category": "Smart Cities",
-    "description": "Alternate location for Parayan Kuttai water body and its surplus arrangement. Adequacy check for exixting drains and proposed stormwater drains networks.",
+    "description": "Alternate location for Parayan Kuttai water body and its surplus arrangement. Adequacy check for existing drains and proposed stormwater drains networks.",
     "heroImage": "/images/projects/smart-cities/about_smart-city.jpg",
     "galleryImages": [
       "/images/projects/urban-planning/images_home-menu.jpg",
@@ -48,7 +48,7 @@ export const projects: Project[] = [
       "/images/projects/urban-planning/images_lhp-indore.jpg"
     ],
     "scopeOfWork": [
-      "Alternate location for Parayan Kuttai water body and its surplus arrangement. Adequacy check for exixting drains and proposed stormwater drains networks.",
+      "Alternate location for Parayan Kuttai water body and its surplus arrangement. Adequacy check for existing drains and proposed stormwater drains networks.",
       "CATERPILLAR INDIA PRIVATE LIMITED",
       "Identification of Alternate Location for Parayan Kuttai Water Body & Surface Water Optimization Plan"
     ],
@@ -1142,7 +1142,7 @@ export const projects: Project[] = [
     "slug": "upt10",
     "title": "Reconstruction of Several Tenemental scheme under Housing For All/Pradhan Mantry Awas Yojana(HFA/PMAY)= 40+ schemes",
     "category": "Urban Planning & Transportation",
-    "description": "Unprecedented flooding in the Adyar river in 2015 caused severe inundation in many areas on the both sides of the river. Taking congnisance of the high inundation levels in the study area, Chennai Metropolitian Development Authority (CMDA) had appointed CUBE to carry out a study to prepare flood inundation maps for the study area to assist them in assigning appropriate land use and suggesting suitable site measures and regulations.",
+    "description": "Unprecedented flooding in the Adyar river in 2015 caused severe inundation in many areas on the both sides of the river. Taking cognisance of the high inundation levels in the study area, Chennai Metropolitan Development Authority (CMDA) had appointed CUBE to carry out a study to prepare flood inundation maps for the study area to assist them in assigning appropriate land use and suggesting suitable site measures and regulations.",
     "heroImage": "/images/projects/urban-planning/images_home-menu.jpg",
     "galleryImages": [
       "/images/projects/urban-planning/upt10_2.jpg",
