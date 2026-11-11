@@ -21,7 +21,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
         {/* Project Thumbnail Image with Apple-style Fluid Zoom */}
         <div className="relative h-60 w-full overflow-hidden bg-slate-100">
           <Image
-            src={project.heroImage || '/images/about/about_building.jpg'}
+            src={project.heroImage || '/images/about/about_about.jpg'}
             alt={project.title}
             fill
             className="object-cover group-hover:scale-108 transition-transform duration-700 ease-out"

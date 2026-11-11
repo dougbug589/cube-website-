@@ -60,7 +60,7 @@ export default function Interactive3DClients({ clients }: Interactive3DClientsPr
             >
               <div className="relative h-14 w-full flex items-center justify-center">
                 <Image
-                  src={client.logo || '/images/clients/tnuhdb.png'}
+                  src={client.logo || '/images/clients/client_1.png'}
                   alt={clientLogoAlt(client.name)}
                   fill
                   className="object-contain filter grayscale opacity-85 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-110 transition-all duration-300 drop-shadow-xs"
@@ -93,7 +93,7 @@ export default function Interactive3DClients({ clients }: Interactive3DClientsPr
             >
               <div className="relative h-14 w-full flex items-center justify-center">
                 <Image
-                  src={client.logo || '/images/clients/tnuhdb.png'}
+                  src={client.logo || '/images/clients/client_1.png'}
                   alt={clientLogoAlt(client.name)}
                   fill
                   className="object-contain filter grayscale opacity-85 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-110 transition-all duration-300 drop-shadow-xs"
