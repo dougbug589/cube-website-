@@ -58,7 +58,7 @@ export default function CompleteMediaExperience() {
       date: 'November 12, 2023',
       location: 'IC&SR Hall, IIT Madras',
       category: 'Symposium',
-      image: '/images/about/about_environment.jpg',
+      image: '/images/projects/environment-sustainability/about_environment.jpg',
       description: 'Technical session bringing together hydrologists, CMDA planners, and IIT Madras civil engineering faculty to deliberate 2D hydrodynamic modeling for coastal catchments.',
     }
   ];
