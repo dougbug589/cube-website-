@@ -1,10 +1,13 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import PageHeader from '@/components/common/PageHeader';
+import DocumentRequestModal from '@/components/common/DocumentRequestModal';
 import { BookOpen, FileText, Download, ShieldCheck } from 'lucide-react';
 
 export default function PublicationsPage() {
+  const [selectedDoc, setSelectedDoc] = useState<{ title: string; authors?: string } | null>(null);
+
   const publications = [
     {
       title: 'Techno-Commercial Evaluation of Precast Concrete Construction in India',
@@ -80,8 +83,8 @@ export default function PublicationsPage() {
 
                 <div className="flex-shrink-0">
                   <button
-                    onClick={() => alert(`Technical document "${pub.title}" is available for government authorities and institutional partners upon official enquiry.`)}
-                    className="px-5 py-2.5 rounded-xl text-xs font-semibold text-teal-800 bg-white hover:bg-teal-50 border border-slate-300 hover:border-teal-300 transition flex items-center shadow-sm"
+                    onClick={() => setSelectedDoc({ title: pub.title, authors: pub.authors })}
+                    className="px-5 py-2.5 rounded-xl text-xs font-semibold text-teal-800 bg-white hover:bg-teal-50 border border-slate-300 hover:border-teal-300 transition flex items-center shadow-sm cursor-pointer"
                   >
                     <FileText className="w-4 h-4 mr-1.5 text-teal-600" />
                     <span>Request Document</span>
@@ -92,6 +95,13 @@ export default function PublicationsPage() {
           </div>
         </div>
       </section>
+
+      <DocumentRequestModal
+        isOpen={!!selectedDoc}
+        onClose={() => setSelectedDoc(null)}
+        documentTitle={selectedDoc?.title || ''}
+        documentAuthor={selectedDoc?.authors}
+      />
     </div>
   );
 }

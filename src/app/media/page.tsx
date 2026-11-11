@@ -1,10 +1,11 @@
 'use client';
 
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { useScrollSpy } from '@/lib/useScrollSpy';
 import Image from 'next/image';
 import Link from 'next/link';
 import PageHeader from '@/components/common/PageHeader';
+import DocumentRequestModal from '@/components/common/DocumentRequestModal';
 import { 
   Newspaper, Calendar, Image as ImageIcon, BookOpen, 
   ArrowRight, Sparkles, MapPin, ExternalLink, Download
@@ -15,6 +16,7 @@ import { useLiveList } from '@/lib/live';
 export default function CompleteMediaExperience() {
   // Live CMS news: published items only, updates instantly on admin changes.
   const newsItems = useLiveList<any>('/api/public/news', fallbackNewsItems as any[]);
+  const [selectedDoc, setSelectedDoc] = useState<{ title: string; authors?: string } | null>(null);
 
   const navAnchors = [
     { id: 'news', label: 'News & Announcements' },
@@ -302,16 +304,28 @@ export default function CompleteMediaExperience() {
                 <p className="text-xs sm:text-sm text-[#24272B]/80 mt-2 leading-relaxed">{pub.desc}</p>
                 <div className="mt-5 pt-3 border-t border-[#E5E7EB] flex items-center justify-between text-xs">
                   <span className="text-[#747B83]">Published by CUBE IIT Madras</span>
-                  <a href="mailto:contact@cubeiitm.org?subject=Request Publication Copy" className="font-bold text-[#070E5C] hover:text-[#D99A42] flex items-center gap-1">
+                  <button 
+                    type="button"
+                    onClick={() => setSelectedDoc({ title: pub.title, authors: pub.authors })}
+                    className="font-bold text-[#070E5C] hover:text-[#D99A42] flex items-center gap-1.5 transition cursor-pointer"
+                  >
                     <Download className="w-3.5 h-3.5 text-[#D99A42]" />
                     <span>Request Technical Document</span>
-                  </a>
+                  </button>
                 </div>
               </div>
             ))}
           </div>
         </div>
       </section>
+
+      {/* Interactive Modal for Document Requests */}
+      <DocumentRequestModal
+        isOpen={!!selectedDoc}
+        onClose={() => setSelectedDoc(null)}
+        documentTitle={selectedDoc?.title || ''}
+        documentAuthor={selectedDoc?.authors}
+      />
 
     </div>
   );
