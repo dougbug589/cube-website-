@@ -7,7 +7,7 @@ import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
   Menu, X, ChevronDown, Search, ArrowUpRight, 
-  ShieldCheck, Phone, Sparkles
+  ShieldCheck, Phone, Sparkles, House
 } from 'lucide-react';
 import { navigationItems } from '@/data/navigation';
 import GlobalSearchModal from '@/components/common/GlobalSearchModal';
@@ -183,6 +183,7 @@ export default function Navbar() {
                           : 'text-[#24272B] hover:text-[#070E5C]'
                       }`}
                     >
+                      {item.title === 'Home' && <House aria-hidden className="w-3.5 h-3.5 mr-1.5" />}
                       <span>{item.title}</span>
                       {item.badge && (
                         <span className="ml-1 whitespace-nowrap text-[9px] font-bold px-1.5 py-0.5 bg-[#BBD6EA]/70 text-[#070E5C] rounded-full border border-white/80">
@@ -342,7 +343,10 @@ export default function Navbar() {
                           aria-controls={panelId}
                           className={rowClass}
                         >
-                          <span>{item.title}</span>
+                          <span className="flex items-center">
+                            {item.title === 'Home' && <House aria-hidden className="w-4 h-4 mr-2" />}
+                            {item.title}
+                          </span>
                           <ChevronDown
                             aria-hidden
                             className={`w-5 h-5 text-[#747B83] transition-transform duration-300 ${isExpanded ? 'rotate-180 text-[#070E5C]' : ''}`}
@@ -350,7 +354,10 @@ export default function Navbar() {
                         </button>
                       ) : (
                         <Link href={item.href} onClick={closeMobileMenu} className={rowClass}>
-                          <span>{item.title}</span>
+                          <span className="flex items-center">
+                            {item.title === 'Home' && <House aria-hidden className="w-4 h-4 mr-2" />}
+                            {item.title}
+                          </span>
                         </Link>
                       )}
 
