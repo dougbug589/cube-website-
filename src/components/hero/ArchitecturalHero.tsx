@@ -148,7 +148,7 @@ export default function ArchitecturalHero() {
           loop
           muted
           playsInline
-          preload="auto"
+          preload="metadata"
           disablePictureInPicture
           aria-hidden="true"
           className="absolute inset-0 w-full h-full object-cover object-center filter contrast-[1.08] brightness-[0.96]"
