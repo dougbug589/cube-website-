@@ -1,32 +1,32 @@
 export const aboutContent = {
   overview: ["Centre for Urbanization, Buildings & Environment (CUBE) has been raised by IIT Madras and Government of Tamil Nadu as an Applied Research, Technology and Consultancy Centre. The ideology behind raising of CUBE as one of IIT Madras\u2019 outfits with support from the Tamil Nadu Government is to bring together the research & technological strengths of academia, facilitation & support from the Government, practical & innovative approach of the private sector and functional independence & administrative prowess to act as an enabler to tackle any multifaceted challenges facing the built environment.", "Established in May 2017 as a Centre of Excellence of Government of Tamil Nadu in collaboration with IIT Madras, CUBE was brought up with seeding fund contributions from CMDA, TNHB, TNPCB and MAWS. CUBE is registered as a Society under Tamil Nadu Societies Registration Act, 1975 with its Governing Body headed by the Director, IITM and comprising of nominees from four Tamil Nadu State Government departments namely MAWS, Finance, Housing & Urban Development & TNPCB, four members from IITM Faculty and four members from prominent Industries and organizations.", "CUBE extends its services under four verticals, namely, Building & Construction, Environment & Sustainability, Smart Cities and Urban Planning & Transportation. Within a short span of establishment, the Centre has blossomed into a reputed Applied Engineering, Technology and Consultancy Centre, taking on challenging assignments and stamping its presence effectively in the ecosystem, not only in Tamil Nadu but elsewhere as well, as a trusted solution provider. CUBE has also established its state of art Environment Laboratory (CEL) co located with the office, providing testing and analytical services for Water, Waste Water and Solid Waste.", "CUBE\u02bcs inherent strength is its capability to offer tailor made solutions in close participation with IIT Madras, industry experts & consultants, converge ideas in to actionable formats, create efficient delivery mechanisms, and act as a force multiplier to deliver effective, practical and seamless solutions to complex challenges of various multidisciplinary concerns in the urban development and built environment domains."],
-  vision: "To be a world-class Centre of Excellence that enables sustainable, resilient, and technologically advanced urbanization by translating premier academic research into tangible public infrastructure and environmental stewardship.",
-  mission: "To serve as a trusted institutional partner for governments, public sector undertakings, and industry by providing cutting-edge engineering consultancy, quality assurance, applied research, and technical policy advisory across buildings, environment, smart infrastructure, and urban mobility.",
+  vision: "To be the most acclaimed and trustworthy provider of Applied Research, Technology, Engineering & Consultancy Services with National footprint, in association with IIT Madras, delivering effective and measurable value in built environment aiming at future equipped and sustainable human habitats.",
+  mission: "Be the leader in Applied Engineering & Consultancy, with a spirit of pioneering and measured risk-taking; make an impact on challenging, non-routine projects that are driven through innovative solutions and cutting-edge R&D; execute projects with competitiveness & safety at benchmark quality, cost & time; be the 'One Point Solution Provider' for all urban built environment challenges, key infrastructure and rehabilitation projects; pursue best practices, continued technological advancement, deliver superior experience and value to customers; practice leadership with compassion, enable employees to grow and unleash their best all the time; and be recognized as a great place to work and grow professionally.",
   objectives: ["Achieve organizational excellence through well laid out policies, guidelines & procedures.", "Put in place an ISO Acredited Quality Management System.", "Bench Mark \u201cProcess Models\u201d for both Third Party Quality Assurance Services and Project Management Consulting Sevices.", "Extend Quality Assurance services into specialized Infrastructure; Airport, Tunnels, Metros, Dams, Railways, Harbour & Ports, Power Grids.", "Enable Hybrid Affordable Housing Technologies and carry out a Bench Marking Housing Project from conceptualisation to implementation.", "Establish \u2018Advanced Investigative Surveys\u2019 Sub-vertical with capabilities in the areas of LiDAR Surveys, Drones and Geomatics.", "Advancement of Urban Planning Services in Tamil Nadu & beyond.", "Establish at least one CUBE branded technology for Waste Water or Solid waste.", "To implement a key R & D project promoting applied research for \u2018Future Smart Roads\u2019 upto Proof of Concept Stage.", "To implement a meaningful project in the domains of Environment & Sustainability and Smart Cities."],
   coreValues: [
     {
-      title: "Integrity & Objectivity",
-      description: "Uncompromising technical rigor, transparency, and ethical standards in all engineering assessments and quality audits."
+      title: "Leadership",
+      description: "\u201cGood leadership requires you to surround yourself with people of diverse perspectives who can disagree with you without fear of retaliation.\u201d \u2014 Doris Kearns Goodwin"
     },
     {
-      title: "Institutional Collaboration",
-      description: "Active synergy between IIT Madras academic researchers and Government of Tamil Nadu execution departments."
+      title: "Excellence",
+      description: "\u201cWe are what we repeatedly do. Excellence, then, is not an act, but a habit.\u201d \u2014 Aristotle"
     },
     {
-      title: "Sustainable Stewardship",
-      description: "Prioritizing environmental preservation, circular economy, and climate resilience in every infrastructure project."
+      title: "Harmony",
+      description: "\u201cIt is the harmony of the diverse parts, their symmetry, their happy balance; in a word it is all that introduces order, all that gives unity, that permits us to see clearly and to comprehend at once both the ensemble and the details.\u201d \u2014 Henri Poincare"
     },
     {
-      title: "Engineering Innovation",
-      description: "Deploying advanced technologies like precast systems, IoT telemetry, 2D hydrodynamic modeling, and non-destructive testing."
+      title: "Intrepid",
+      description: "\u201cIt is easier to find a score of men wise enough to discover the truth than to find one intrepid enough, in the face of opposition, to stand up for it.\u201d \u2014 A A Hodge"
     },
     {
-      title: "Public Impact",
-      description: "Ensuring that engineering solutions directly elevate citizen safety, public health, and long-term urban livability."
+      title: "Innovation",
+      description: "\u201cInnovation distinguishes between a leader and a follower.\u201d \u2014 Steve Jobs"
     },
     {
-      title: "Continuous Learning",
-      description: "Fostering capacity building, training state engineers, and publishing actionable technical benchmarks."
+      title: "Decisive",
+      description: "\u201cBut the cure for most obstacles is, Be decisive.\u201d \u2014 George Weinberg"
     }
   ],
   chairmanMessage: ["India\u2019s great cities, and several tens of big cities in the making, did not grow organically along with their counterparts in other parts of the world. They grew frenetically, and are still growing, somewhat later than the rest, and in an era circumscribed by concerns about global warming and sustainability. The tension between resource scarcity, inorganic growth, and environmental concerns has to be managed if we are to land on our feet at the end of this growth phase. Technologies that mediate the trade-offs and produce desirable outcomes are key to managing the transition to healthy livable cities.", "Keeping this in mind, a Center for Excellence was conceived by IIT Madras to work towards achieving an ideal habitat in our cities, keeping the core values of the historical development of our cities in mind and bringing to bear the rapid technological changes that are taking place in these times. The Centre takes a holistic and multidisciplinary approach to resolving the many complex and diverse problems that human settlements face, be they environmental, social or technological. Today, the fledgling Centre is operational and is striving hard to build a strong foundation to emerge as the go-to place for sustainable and cost-effective technologies that address key urban challenges."],

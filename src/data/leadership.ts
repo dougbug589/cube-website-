@@ -19,28 +19,28 @@ export const boardMembers: Leader[] = [
     "name": "Thiru R. Kirlosh Kumar, IAS",
     "role": "Board Member",
     "category": "Board Member",
-    "image": "/images/leadership/about_leader.jpg",
+    "image": "/images/leadership/board_member_Thiru_R_Kirlosh_Kumar_IAS.jpg",
     "organization": "IIT Madras / Govt of Tamil Nadu"
   },
   {
     "name": "Thiru. M.A. Siddique IAS",
     "role": "Board Member",
     "category": "Board Member",
-    "image": "/images/leadership/about_leader.jpg",
+    "image": "/images/leadership/board_member_Thiru_MA_Siddique_IAS.jpg",
     "organization": "IIT Madras / Govt of Tamil Nadu"
   },
   {
     "name": "Thiru Gagandeep Singh Bedi, IAS",
     "role": "Board Member",
     "category": "Board Member",
-    "image": "/images/leadership/about_leader.jpg",
+    "image": "/images/leadership/board_member_Thiru_Gagandeep_Singh_Bedi.jpg",
     "organization": "IIT Madras / Govt of Tamil Nadu"
   },
   {
     "name": "Dr. P Alarmelmangai IAS",
     "role": "Board Member",
     "category": "Board Member",
-    "image": "/images/leadership/about_leader.jpg",
+    "image": "/images/leadership/board_member_Dr_P_Alarmelmangai_IAS.jpg",
     "organization": "IIT Madras / Govt of Tamil Nadu"
   },
   {
@@ -272,14 +272,14 @@ export const executiveLeadership: Leader[] = [
     category: 'Executive',
     organization: 'Indian Institute of Technology Madras',
     image: '/images/leadership/board_member_kamakoti.jpg',
-    bio: 'Prof. V. Kamakoti is the Director of IIT Madras and serves as the Chairman of CUBE. A renowned academician and leader in computer science and technology policy, he guides CUBE\'s strategic mission of delivering world-class engineering solutions for sustainable urbanization.'
+    bio: 'Prof. V. Kamakoti is the Director of IIT Madras and Chairman of CUBE. A Centre of Excellence was conceived by IIT Madras to work towards an ideal habitat in our cities, keeping the core values of the historical development of our cities in mind and bringing to bear the rapid technological changes of these times. The Centre takes a holistic and multidisciplinary approach to resolving the many complex and diverse environmental, social and technological problems that human settlements face.'
   },
   {
-    name: 'Chief Executive Officer',
-    role: 'CEO, CUBE',
+    name: 'L. Padmanaban',
+    role: 'CEO, CUBE (Major General, Retired)',
     category: 'Executive',
     organization: 'Centre for Urbanization, Buildings & Environment',
-    image: '/images/leadership/about_leader.jpg',
-    bio: 'Leading CUBE\'s operational verticals, project management consultancy, and industrial partnerships, bridging public governance with cutting-edge academic expertise.'
+    image: '/images/leadership/ceo_padmanaban.jpg',
+    bio: 'L. Padmanaban (Major General, Retired) is the Chief Executive Officer of CUBE. CUBE was incorporated in May 2017 as a joint initiative of the Government of Tamil Nadu (GoTN) and IIT Madras, and GoTN has declared CUBE as one of its Centres of Excellence. He leads CUBE\'s aim to develop quality and viable tailor-made solutions for industry, government and civil society in the domain of sustainable urban development through collaborative partnerships between academia, government and the private sector.'
   }
 ];

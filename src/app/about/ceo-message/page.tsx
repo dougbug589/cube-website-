@@ -29,17 +29,17 @@ export default function CEOMessagePage() {
             <div className="md:col-span-4 p-6 rounded-3xl bg-slate-50 border border-slate-200 shadow-cube text-center">
               <div className="relative h-44 w-44 mx-auto rounded-2xl overflow-hidden mb-4 border-2 border-teal-500 shadow-md">
                 <Image
-                  src="/images/leadership/about_leader.jpg"
-                  alt="CEO, CUBE"
+                  src="/images/leadership/ceo_padmanaban.jpg"
+                  alt="L. Padmanaban, CEO, CUBE"
                   fill
                   className="object-cover"
                 />
               </div>
               <h3 className="text-lg font-bold text-navy-950 font-display">
-                Chief Executive Officer
+                L. Padmanaban
               </h3>
               <p className="text-xs text-teal-700 font-bold mt-0.5">
-                CEO, CUBE
+                CEO, CUBE (Major General, Retired)
               </p>
               <div className="mt-4 pt-4 border-t border-slate-200 text-[11px] text-slate-500">
                 Centre for Urbanization, Buildings &amp; Environment

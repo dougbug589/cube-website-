@@ -37,24 +37,26 @@ export default function GlobalSearchModal({ isOpen, onClose }: GlobalSearchModal
   // Close on Escape key
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') onClose();
-      if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
-        e.preventDefault();
-        if (isOpen) onClose();
-      }
+      // Ctrl/⌘ K (open and close) is handled by the Navbar.
+      if (e.key === 'Escape' && isOpen) onClose();
     };
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [isOpen, onClose]);
 
   // Lock body scroll when open
+  // Restore the previous value on close instead of forcing 'auto', which
+  // undid other scroll locks (mobile menu, gallery viewer).
   useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'auto';
+    if (!isOpen) {
       setQuery('');
+      return;
     }
+    const previous = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.body.style.overflow = previous;
+    };
   }, [isOpen]);
 
   const searchResults = useMemo(() => {

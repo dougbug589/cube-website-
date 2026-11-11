@@ -23,6 +23,7 @@ export default function Navbar() {
   const [visible, setVisible] = useState(true);
   const lastScrollY = useRef(0);
   const drawerRef = useRef<HTMLDivElement>(null);
+  const pillRef = useRef<HTMLDivElement>(null);
 
   // 1. Hide on scroll-down, reveal on scroll-up
   useEffect(() => {
@@ -47,8 +48,18 @@ export default function Navbar() {
   // 1b. Publish the header's on-screen height so sticky in-page bars (About,
   // Media, Verticals anchor tabs) sit just below it, and slide up when it hides.
   useEffect(() => {
-    const offset = visible ? (scrolled ? 84 : 96) : 0;
-    document.documentElement.style.setProperty('--nav-offset', `${offset}px`);
+    const updateOffset = () => {
+      const el = pillRef.current;
+      const bottom = visible && el ? el.getBoundingClientRect().bottom : 0;
+      document.documentElement.style.setProperty('--nav-offset', `${Math.max(0, Math.round(bottom))}px`);
+    };
+    updateOffset();
+    const settle = setTimeout(updateOffset, 520);
+    window.addEventListener('resize', updateOffset);
+    return () => {
+      clearTimeout(settle);
+      window.removeEventListener('resize', updateOffset);
+    };
   }, [visible, scrolled]);
 
   // 2. Close mobile menu on route change
@@ -77,6 +88,20 @@ export default function Navbar() {
     };
   }, [mobileMenuOpen]);
 
+  // Ctrl+K / ⌘K opens (and closes) site search, as the hint in the header says.
+  const [isMac, setIsMac] = useState(false);
+  useEffect(() => {
+    setIsMac(/Mac|iPhone|iPad/i.test(navigator.platform || navigator.userAgent));
+    const onKey = (e: KeyboardEvent) => {
+      if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
+        e.preventDefault();
+        setSearchOpen((open) => !open);
+      }
+    };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, []);
+
   const closeMobileMenu = () => setMobileMenuOpen(false);
   const toggleMobileSection = (title: string) =>
     setMobileExpanded((current) => (current === title ? null : title));
@@ -104,18 +129,29 @@ export default function Navbar() {
           visible ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0 pointer-events-none'
         }`}
       >
+        {/* Frosted band behind the floating header once the page is scrolled:
+            page text under the header blurs and fades out instead of showing
+            sharply cut off beside / behind the pill. Moves with the header. */}
+        <div
+          aria-hidden
+          className={`pointer-events-none absolute inset-x-0 top-0 h-28 bg-white/45 backdrop-blur-md [mask-image:linear-gradient(to_bottom,black_55%,transparent)] [-webkit-mask-image:linear-gradient(to_bottom,black_55%,transparent)] transition-opacity duration-500 ${
+            scrolled ? 'opacity-100' : 'opacity-0'
+          }`}
+        />
+
         {/* Floating Apple-Style Glass Navbar Container */}
-        <div className={`w-full transition-all duration-500 ${scrolled ? 'max-w-6xl px-4 pt-3' : 'max-w-7xl px-4 sm:px-6 lg:px-8 pt-2'}`}>
+        <div className={`w-full max-w-[1720px] mx-auto transition-all duration-500 px-2 sm:px-4 md:px-6 lg:px-8 ${scrolled ? 'pt-3' : 'pt-2 sm:pt-4 md:pt-6 lg:pt-8'}`}>
           <div
+            ref={pillRef}
             className={`transition-all duration-500 rounded-full ${
               scrolled
-                ? 'apple-glass border border-white/90 px-6 h-16'
-                : 'bg-white/70 backdrop-blur-2xl border border-white/80 shadow-[0_8px_30px_rgba(7,14,92,0.03),inset_0_1px_1px_rgba(255,255,255,0.95)] px-6 h-20'
+                ? 'apple-glass border border-white/90 px-5 h-16'
+                : 'bg-white/40 backdrop-blur-3xl backdrop-saturate-150 border border-white/60 shadow-[0_16px_40px_rgba(7,14,92,0.10),inset_0_1px_1px_rgba(255,255,255,0.9),inset_0_-1px_1px_rgba(189,215,232,0.35)] px-6 h-20'
             } flex items-center justify-between`}
           >
             {/* Left: CUBE Emblem */}
             <Link href="/" className="flex items-center group shrink-0">
-              <div className={`relative transition-all duration-300 ${scrolled ? 'h-10 w-44 sm:w-52' : 'h-11 w-52 sm:w-60'}`}>
+              <div className={`relative transition-all duration-300 ${scrolled ? 'h-10 w-44 sm:w-52' : 'h-11 w-48 sm:w-56'}`}>
                 <Image
                   src="/images/branding/cube-live-logo.png"
                   alt="CUBE"
@@ -141,7 +177,7 @@ export default function Navbar() {
                   >
                     <Link
                       href={item.href}
-                      className={`relative flex items-center px-3 xl:px-4 py-2 text-xs font-semibold tracking-wider transition-colors duration-300 rounded-full z-10 shrink-0 ${
+                      className={`relative flex items-center whitespace-nowrap px-2.5 xl:px-4 py-2 text-[13px] xl:text-[15px] font-semibold tracking-wider transition-colors duration-300 rounded-full z-10 shrink-0 ${
                         isActive
                           ? 'text-[#070E5C] font-bold'
                           : 'text-[#24272B] hover:text-[#070E5C]'
@@ -149,7 +185,7 @@ export default function Navbar() {
                     >
                       <span>{item.title}</span>
                       {item.badge && (
-                        <span className="ml-1 text-[9px] font-bold px-1.5 py-0.5 bg-[#BBD6EA]/70 text-[#070E5C] rounded-full border border-white/80">
+                        <span className="ml-1 whitespace-nowrap text-[9px] font-bold px-1.5 py-0.5 bg-[#BBD6EA]/70 text-[#070E5C] rounded-full border border-white/80">
                           {item.badge}
                         </span>
                       )}
@@ -221,11 +257,11 @@ export default function Navbar() {
               <button
                 onClick={() => setSearchOpen(true)}
                 className="p-2 xl:p-2.5 rounded-full bg-white/70 hover:bg-white text-[#24272B] transition-all flex items-center space-x-1.5 text-xs border border-white/80 shadow-[0_2px_10px_rgba(0,0,0,0.02)] active:scale-95 shrink-0"
-                title="Search website"
+                title={`Search website (${isMac ? '⌘K' : 'Ctrl+K'})`}
               >
                 <Search className="w-3.5 h-3.5 text-[#747B83]" />
-                <span className="text-[#747B83] hidden 2xl:inline text-[11px]">Search</span>
-                <kbd className="hidden 2xl:inline text-[9px] px-1.5 py-0.5 rounded-md bg-slate-100 text-[#747B83] border border-slate-200">⌘K</kbd>
+                <span className={`text-[#747B83] hidden text-[11px] ${scrolled ? '' : '2xl:inline'}`}>Search</span>
+                <kbd className={`hidden ${scrolled ? '' : '2xl:inline'} text-[9px] px-1.5 py-0.5 rounded-md bg-slate-100 text-[#747B83] border border-slate-200`}>{isMac ? '⌘K' : 'Ctrl K'}</kbd>
               </button>
 
               <Link
@@ -241,7 +277,7 @@ export default function Navbar() {
             <div className="flex items-center space-x-2 lg:hidden">
               <button
                 onClick={() => setSearchOpen(true)}
-                className="p-2.5 rounded-full bg-white/80 text-[#24272B] border border-white/80 shadow-xs"
+                className="p-3 rounded-full bg-white/80 text-[#24272B] border border-white/80 shadow-xs"
                 aria-label="Search"
               >
                 <Search className="w-4 h-4" />
@@ -249,7 +285,7 @@ export default function Navbar() {
               <button
                 type="button"
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className="p-2.5 rounded-full bg-white/80 text-[#24272B] border border-white/80 shadow-xs"
+                className="p-3 rounded-full bg-white/80 text-[#24272B] border border-white/80 shadow-xs"
                 aria-label={mobileMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
                 aria-expanded={mobileMenuOpen}
                 aria-controls="mobile-navigation"

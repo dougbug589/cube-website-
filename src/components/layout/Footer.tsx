@@ -172,7 +172,7 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/about/board-members" className="hover:text-[#070E5C] transition-colors">
+                <Link href="/about#governing-board" className="hover:text-[#070E5C] transition-colors">
                   Governing Board
                 </Link>
               </li>

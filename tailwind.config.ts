@@ -64,6 +64,10 @@ const config: Config = {
         'fade-in': 'fadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards',
         'slide-up': 'slideUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards',
         'pulse-subtle': 'pulseSubtle 3s ease-in-out infinite',
+        // Logo marquees: each track holds its list twice, so moving by -50%
+        // loops seamlessly. Duration is set per track (inline style).
+        marquee: 'marquee 60s linear infinite',
+        'marquee-reverse': 'marquee 60s linear infinite reverse',
       },
       keyframes: {
         fadeIn: {
@@ -77,6 +81,10 @@ const config: Config = {
         pulseSubtle: {
           '0%, 100%': { opacity: '1' },
           '50%': { opacity: '0.85' },
+        },
+        marquee: {
+          '0%': { transform: 'translateX(0)' },
+          '100%': { transform: 'translateX(-50%)' },
         }
       }
     },

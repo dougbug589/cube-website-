@@ -38,8 +38,9 @@ export default function FloatingCubeBackground({
             className="object-cover object-left-bottom"
             onError={() => setBannerAvailable(false)}
           />
-          {/* Readability veil: keeps the banner visible but calm behind cards/tables */}
-          <div className="absolute inset-0 bg-gradient-to-br from-white/55 via-white/40 to-white/20" />
+          {/* Light blue & white veil: the banner stays visible in the background
+              while the admin keeps its light blue / white look. */}
+          <div className="absolute inset-0 bg-gradient-to-br from-white/65 via-[#F3F8FC]/50 to-[#EAF2F8]/45" />
         </>
       ) : (
         <>

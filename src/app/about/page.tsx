@@ -330,8 +330,8 @@ export default function CompleteAboutExperience() {
                 
                 <div className="relative h-56 w-56 rounded-full overflow-hidden shadow-[0_16px_40px_rgba(7,14,92,0.12)] border-4 border-white">
                   <Image
-                    src="/images/leadership/about_leader.jpg"
-                    alt="CEO, CUBE"
+                    src="/images/leadership/ceo_padmanaban.jpg"
+                    alt="L. Padmanaban, CEO, CUBE"
                     fill
                     className="object-cover object-center group-hover:scale-105 transition-transform duration-500"
                   />
@@ -340,10 +340,10 @@ export default function CompleteAboutExperience() {
 
               <div className="mt-5">
                 <h3 className="text-xl font-bold text-[#070E5C] font-serif tracking-tight">
-                  Chief Executive Officer
+                  L. Padmanaban
                 </h3>
                 <p className="text-xs text-[#D99A42] font-bold uppercase tracking-wider mt-1">
-                  CEO, CUBE
+                  CEO, CUBE (Major General, Retired)
                 </p>
                 <p className="text-xs text-[#747B83] mt-0.5 font-medium">
                   IIT Madras Research Park

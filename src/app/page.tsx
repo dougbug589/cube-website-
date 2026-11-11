@@ -81,7 +81,12 @@ import { aboutContent } from '@/data/about';
 
 
 
-import { boardMembers as fallbackBoardMembers } from '@/data/leadership';
+import { boardMembers as fallbackBoardMembers, executiveLeadership } from '@/data/leadership';
+
+const fallbackCeo = executiveLeadership.find((l) => (l.role || '').toUpperCase().includes('CEO'));
+const fallbackLeadershipList: any[] = fallbackCeo
+  ? [{ ...fallbackCeo, category: 'CEO' }, ...fallbackBoardMembers]
+  : fallbackBoardMembers;
 
 
 
@@ -105,7 +110,7 @@ export default function HomePage() {
   const [projectList, setProjectList] = useState<any[]>(fallbackProjects);
   const [verticalList, setVerticalList] = useState<any[]>(fallbackVerticals);
   const [celServiceList, setCelServiceList] = useState<any[]>(celOverview.testingServices);
-  const [boardList, setBoardList] = useState<any[]>(fallbackBoardMembers);
+  const [boardList, setBoardList] = useState<any[]>(fallbackLeadershipList);
   const [clientList, setClientList] = useState<any[]>(fallbackClients);
   const [newsList, setNewsList] = useState<any[]>(fallbackNewsItems);
 
@@ -158,7 +163,12 @@ export default function HomePage() {
             role: member.designation || member.role || '',
             organization: member.organization || member.department || 'IIT Madras',
           }));
-        const leaders = board.length > 0 ? board : leadership;
+        const ceo = leadership.find((l: any) => (l.role || '').toUpperCase().includes('CEO'));
+        const leaders = ceo
+          ? [{ ...ceo, category: 'CEO' }, ...board]
+          : board.length > 0
+          ? board
+          : leadership;
         setBoardList(leaders);
       }
       if (Array.isArray(clientsData)) {
@@ -1155,7 +1165,7 @@ export default function HomePage() {
         subtitle="Guided by the leadership of IIT Madras and senior Secretaries of the Government of Tamil Nadu."
         tagline="Governance & Leadership"
         ctaText="View Complete Governing Board"
-        ctaHref="/about/board-members"
+        ctaHref="/about#governing-board"
       />
 
       {/* 9. CLIENTS & INSTITUTIONAL PARTNERS (Interactive 3D Depth) */}

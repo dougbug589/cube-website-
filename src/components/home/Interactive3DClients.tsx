@@ -18,6 +18,9 @@ export default function Interactive3DClients({ clients }: Interactive3DClientsPr
   // Duplicate for seamless 2-row opposite marquee
   const row1 = [...displayClients, ...displayClients];
   const row2 = [...displayClients.slice().reverse(), ...displayClients.slice().reverse()];
+  // ~3s per logo (~90px/s) so 64 logos glide calmly instead of racing past;
+  // the second row runs a little slower so the two rows don't move in lockstep.
+  const baseSeconds = Math.max(30, displayClients.length * 3);
 
   return (
     <section className="py-20 sm:py-24 bg-gradient-to-b from-[#FFFFFF] via-[#F4F9FD] to-[#EAF2F8] border-b border-[#E5E7EB] relative overflow-hidden select-none">
@@ -46,7 +49,10 @@ export default function Interactive3DClients({ clients }: Interactive3DClientsPr
         <div className="absolute left-0 top-0 bottom-0 w-32 sm:w-48 bg-gradient-to-r from-white via-white/80 to-transparent z-20 pointer-events-none" />
         <div className="absolute right-0 top-0 bottom-0 w-32 sm:w-48 bg-gradient-to-l from-[#EAF2F8] via-[#EAF2F8]/80 to-transparent z-20 pointer-events-none" />
 
-        <div className="flex w-max items-center gap-6 animate-[marquee_45s_linear_infinite] hover:[animation-play-state:paused]">
+        <div
+          className="flex w-max items-center gap-6 pr-6 animate-marquee hover:[animation-play-state:paused] will-change-transform"
+          style={{ animationDuration: `${baseSeconds}s` }}
+        >
           {row1.map((client, idx) => (
             <div
               key={`row1-${client.name}-${idx}`}
@@ -76,7 +82,10 @@ export default function Interactive3DClients({ clients }: Interactive3DClientsPr
         <div className="absolute left-0 top-0 bottom-0 w-32 sm:w-48 bg-gradient-to-r from-white via-white/80 to-transparent z-20 pointer-events-none" />
         <div className="absolute right-0 top-0 bottom-0 w-32 sm:w-48 bg-gradient-to-l from-[#EAF2F8] via-[#EAF2F8]/80 to-transparent z-20 pointer-events-none" />
 
-        <div className="flex w-max items-center gap-6 animate-[marquee_50s_linear_infinite_reverse] hover:[animation-play-state:paused]">
+        <div
+          className="flex w-max items-center gap-6 pr-6 animate-marquee-reverse hover:[animation-play-state:paused] will-change-transform"
+          style={{ animationDuration: `${Math.round(baseSeconds * 1.1)}s` }}
+        >
           {row2.map((client, idx) => (
             <div
               key={`row2-${client.name}-${idx}`}
