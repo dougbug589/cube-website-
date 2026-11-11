@@ -70,14 +70,15 @@ export default function CELCard({ service }: CELCardProps) {
         animate={{
           rotateX,
           rotateY,
-          scale: isExpanded ? 1.03 : 1,
+          scale: isExpanded ? 1.02 : 1,
         }}
         transition={{ type: 'spring', stiffness: 350, damping: 25 }}
-        // No `transform-style: preserve-3d` here: nothing inside this card needs
-        // real 3D. With it, the tilt made the GPU depth-sort the white text panel
-        // against the card's own background, and on desktop the body could vanish
-        // (blank cards). Flattened, the card tilts as one image (same look).
-        className="relative w-full h-full rounded-3xl overflow-hidden cube-gradient-card transition-shadow duration-300 flex flex-col justify-between"
+        style={{
+          transformStyle: 'flat',
+          backfaceVisibility: 'hidden',
+          WebkitBackfaceVisibility: 'hidden',
+        }}
+        className="relative w-full h-full rounded-3xl overflow-hidden bg-white border border-[#BDD7E8] shadow-[0_12px_36px_rgba(7,14,92,0.06)] hover:border-[#5B9BD5] transition-colors duration-300 flex flex-col justify-between"
       >
         {/* TOP CINEMATIC IMAGE WITH 3D ZOOM DEPTH */}
         <div className="relative h-60 w-full overflow-hidden bg-slate-100 shrink-0">
@@ -123,14 +124,14 @@ export default function CELCard({ service }: CELCardProps) {
 
         {/* CARD BODY CONTENT */}
         <div className="p-6 flex-1 flex flex-col justify-between bg-white relative z-10">
-          <div>
-            <span className="text-[11px] font-semibold text-[#D99A42] uppercase tracking-wider block mb-1">
+          <div className="space-y-1">
+            <span className="text-[11px] font-semibold text-[#D99A42] uppercase tracking-wider block">
               CUBE Environmental Laboratory (CEL)
             </span>
-            <h3 className="font-serif text-lg font-medium text-[#24272B] leading-snug line-clamp-2">
+            <h3 className="font-serif text-lg font-bold text-[#070E5C] leading-snug line-clamp-2">
               {service.title}
             </h3>
-            <p className="text-xs text-[#747B83] mt-2 line-clamp-3 leading-relaxed font-sans">
+            <p className="text-xs text-[#24272B]/85 mt-2 line-clamp-3 leading-relaxed font-sans font-normal">
               {service.description}
             </p>
           </div>
