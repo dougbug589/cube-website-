@@ -1,7 +1,19 @@
 'use server';
 
 import { cookies } from 'next/headers';
-import { revalidatePath } from 'next/cache';
+import { revalidatePath as nextRevalidatePath } from 'next/cache';
+
+/**
+ * Only admin views need cache invalidation after a save. Every public page
+ * either renders fresh on each request (force-dynamic) or is a pre-built shell
+ * that loads its data in the browser and updates live (LiveSync). Revalidating
+ * those pre-built pages ('/', '/media', '/cel', '/projects', ...) made the
+ * server rebuild them with identical output after every save, ~1s of server
+ * work that delayed visitors' live updates.
+ */
+function revalidatePath(path: string) {
+  if (path.startsWith('/admin')) nextRevalidatePath(path);
+}
 import { getCMSStore, saveCMSStore, resolveAdminSession, UserRole } from '@/lib/db/store';
 import { resolveCareersPage } from '@/lib/careers-page';
 import { isRemoveImage } from '@/lib/image-field';
