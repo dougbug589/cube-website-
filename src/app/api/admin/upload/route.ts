@@ -1,10 +1,12 @@
 import { NextRequest, NextResponse } from 'next/server';
 import path from 'path';
+import sharp from 'sharp';
 import { resolveAdminSession, UserRole } from '@/lib/db/store';
 import { putFile } from '@/lib/file-storage';
 
 // Max file size: 10MB
 const MAX_FILE_SIZE_BYTES = 10 * 1024 * 1024; // 10,485,760 bytes
+const MAX_IMAGE_PIXELS = 40_000_000;
 
 const ALLOWED_ROLES: UserRole[] = ['super_admin', 'admin', 'editor'];
 
@@ -93,6 +95,18 @@ export async function POST(req: NextRequest) {
       return NextResponse.json(
         { error: 'Unsupported file type. Allowed: JPG, PNG, GIF, WEBP, AVIF.' },
         { status: 415 }
+      );
+    }
+
+    // Decode the image and reject decompression bombs or malformed files that
+    // pass a shallow magic-byte check.
+    try {
+      const metadata = await sharp(buffer, { limitInputPixels: MAX_IMAGE_PIXELS }).metadata();
+      if (!metadata.width || !metadata.height) throw new Error('Missing image dimensions');
+    } catch {
+      return NextResponse.json(
+        { error: 'The uploaded image is malformed or exceeds the supported dimensions.' },
+        { status: 422 }
       );
     }
 

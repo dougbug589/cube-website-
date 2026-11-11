@@ -4,6 +4,8 @@
 
 ### Fixed
 
+- Added CI validation for linting, production builds, dependency audits, and repository data checks.
+- Added decoded image dimension validation for admin uploads to reject malformed or oversized images.
 - Corrected project-content spelling errors in public descriptions.
 - Added a Content Security Policy covering the app's required fonts, maps, images, and API connections.
 
