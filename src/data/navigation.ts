@@ -87,7 +87,7 @@ export const navigationItems: NavigationItem[] = [
         href: '/media#news',
       },
       {
-        title: 'Events & Workshops',
+        title: 'Events',
         href: '/media#events',
       },
       {
@@ -99,7 +99,7 @@ export const navigationItems: NavigationItem[] = [
         href: '/media#life-at-cube',
       },
       {
-        title: 'Technical Publications',
+        title: 'Reports & Publications',
         href: '/media#publications',
       },
     ],

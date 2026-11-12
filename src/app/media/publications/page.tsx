@@ -4,47 +4,19 @@ import React, { useState } from 'react';
 import PageHeader from '@/components/common/PageHeader';
 import DocumentRequestModal from '@/components/common/DocumentRequestModal';
 import { BookOpen, FileText, Download, ShieldCheck } from 'lucide-react';
+import { cubeReports } from '@/data/media';
 
 export default function PublicationsPage() {
   const [selectedDoc, setSelectedDoc] = useState<{ title: string; authors?: string } | null>(null);
 
-  const publications = [
-    {
-      title: 'Techno-Commercial Evaluation of Precast Concrete Construction in India',
-      category: 'Building Technology',
-      year: '2023',
-      authors: 'CUBE Technical Team & IIT Madras Faculty Advisory',
-      description: 'Comprehensive analysis comparing speed, cost, and seismic performance between conventional reinforced concrete and advanced precast modular technologies across Tamil Nadu housing schemes.'
-    },
-    {
-      title: 'Framework for 2D Hydrodynamic Modeling & Urban Flood Risk Mitigation',
-      category: 'Water Resources',
-      year: '2023',
-      authors: 'Environment & Sustainability Vertical, CUBE',
-      description: 'Methodology report outlining hydrological modeling protocols, catchment rainfall-runoff relationships, and optimal detention basin sizing for rapidly developing peri-urban corridors.'
-    },
-    {
-      title: 'Transit-Oriented Development & Circulation Optimization for Regional Bus Termini',
-      category: 'Urban Transportation',
-      year: '2022',
-      authors: 'Urban Planning & Transportation Division',
-      description: 'Engineering benchmarks and simulation protocols derived from the Kilambakkam and Kuthambakkam bus terminal advisory assignments.'
-    },
-    {
-      title: 'Standard Operating Procedures for Environmental Laboratory Water Quality Testing',
-      category: 'CEL Guidelines',
-      year: '2022',
-      authors: 'CUBE Environmental Laboratory (CEL)',
-      description: 'Quality manual adhering to Bureau of Indian Standards (IS 10500) and Central Pollution Control Board sampling protocols.'
-    }
-  ];
+  const publications = cubeReports;
 
   return (
     <div>
       <PageHeader
         badge="Applied Research"
-        title="Publications & Technical Guidelines"
-        description="Applied technical reports, engineering guidelines, and whitepapers published by CUBE and IIT Madras faculty advisors."
+        title="Reports & Publications"
+        description="Reports prepared by CUBE for government departments. Request a copy of any report below."
         breadcrumbs={[
           { label: 'Media', href: '/media' },
           { label: 'Publications' },

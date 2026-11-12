@@ -82,6 +82,8 @@ export default function Vertical3DTeamCarousel({
   };
 
   const currentMember = list[currentIndex];
+  // First paragraph of the member's original bio (only some members have one).
+  const currentBio = ((currentMember as { bio?: string } | undefined)?.bio || '').split(/\n\s*\n/)[0];
 
   const getCardOffsetClass = (i: number) => {
     const offset = (i - currentIndex + total) % total;
@@ -289,9 +291,12 @@ export default function Vertical3DTeamCarousel({
                   {currentMember?.role}
                 </p>
 
-                <p className="text-xs text-[#747B83] leading-relaxed pt-2 border-t border-[#E5E7EB]">
-                  Contributing strategic oversight, institutional governance, and technical validation across CUBE applied research operations.
-                </p>
+                {/* Original bio from cubeiitm.org when available (no invented text). */}
+                {currentBio && (
+                  <p className="text-xs text-[#747B83] leading-relaxed pt-2 border-t border-[#E5E7EB] line-clamp-4">
+                    {currentBio}
+                  </p>
+                )}
               </div>
 
               {/* Action Buttons */}

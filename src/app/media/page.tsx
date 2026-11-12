@@ -12,6 +12,7 @@ import {
 } from 'lucide-react';
 import { newsItems as fallbackNewsItems } from '@/data/news';
 import { useLiveList } from '@/lib/live';
+import { cubeEvents, cubeReports } from '@/data/media';
 
 export default function CompleteMediaExperience() {
   // Live CMS news: published items only, updates instantly on admin changes.
@@ -20,10 +21,10 @@ export default function CompleteMediaExperience() {
 
   const navAnchors = [
     { id: 'news', label: 'News & Announcements' },
-    { id: 'events', label: 'Technical Events & Workshops' },
+    { id: 'events', label: 'Events & Milestones' },
     { id: 'gallery', label: 'Project Photo Gallery' },
     { id: 'life-at-cube', label: 'Life at CUBE' },
-    { id: 'publications', label: 'Technical Publications' },
+    { id: 'publications', label: 'Reports & Publications' },
   ];
 
   // Highlight follows scrolling; tapping a pill still jumps to its section.
@@ -38,69 +39,25 @@ export default function CompleteMediaExperience() {
     }
   };
 
-  const sampleEvents = [
-    {
-      title: 'Statewide Municipal Engineers Capacity Building Program',
-      date: 'May 18 - 20, 2024',
-      location: 'IIT Madras Research Park Auditorium, Chennai',
-      category: 'Capacity Building',
-      image: '/images/hero/slides_building-training-team.jpg',
-      description: '3-day residential workshop focused on modern concrete durability, non-destructive testing (NDT), and precast quality assurance for over 120 executive engineers from Tamil Nadu urban local bodies.',
-    },
-    {
-      title: 'Workshop on Innovative Precast Housing & Light House Projects',
-      date: 'January 24, 2024',
-      location: 'Civil Engineering Department, IIT Madras',
-      category: 'Technical Seminar',
-      image: '/images/hero/slides_07-cat.jpg',
-      description: 'Dissemination seminar presenting structural monitoring findings and construction speed benchmarks from the Light House Project (LHP) Chennai under GHTC-India.',
-    },
-    {
-      title: 'Urban Water Resilience & Flood Mitigation Symposium',
-      date: 'November 12, 2023',
-      location: 'IC&SR Hall, IIT Madras',
-      category: 'Symposium',
-      image: '/images/projects/environment-sustainability/about_environment.jpg',
-      description: 'Technical session bringing together hydrologists, CMDA planners, and IIT Madras civil engineering faculty to deliberate 2D hydrodynamic modeling for coastal catchments.',
-    }
-  ];
+  const sampleEvents = cubeEvents;
 
   const galleryImages = [
     { src: '/images/hero/slides_iit-tirupathi.jpg', title: 'IIT Tirupati Campus Structural PMC' },
     { src: '/images/hero/slides_cpcl-arc.jpg', title: 'CPCL Industrial & ARHC Precast Housing' },
     { src: '/images/hero/slides_ashiana.jpg', title: 'Affordable Housing Structural Assurance' },
     { src: '/images/hero/slides_design-engineering-consultancy.jpg', title: 'Design Engineering & Hydrodynamic Modeling' },
-    { src: '/images/hero/slides_building-training-team.jpg', title: 'CEL Testing & State Engineers Workshop' },
+    { src: '/images/hero/slides_building-training-team.jpg', title: 'CUBE Team' },
     { src: '/images/hero/slides_07-cat.jpg', title: 'Precast Quality Assurance & Field Testing' },
   ];
 
-  const publications = [
-    {
-      title: 'Technical Guidelines for Independent Third-Party Quality Assurance in Affordable Housing',
-      authors: 'CUBE Building Vertical & IIT Madras Faculty Committee',
-      date: '2024',
-      desc: 'Standardized operational manual outlining non-destructive testing frequencies, batch plant audits, and precast joint tolerances for state housing schemes.',
-    },
-    {
-      title: '2D Hydrodynamic Flood Inundation Modeling for Coastal Urban Catchments',
-      authors: 'CUBE Environmental Division & Department of Civil Engineering, IIT Madras',
-      date: '2023',
-      desc: 'Comparative study on integrated river basin hydrology and urban storm drainage networks for Chennai metropolitan watersheds.',
-    },
-    {
-      title: 'Benchmarking Concrete Durability Parameters in Aggressive Coastal Environments',
-      authors: 'CUBE Environmental Laboratory (CEL) Technical Staff',
-      date: '2023',
-      desc: 'Field and laboratory evaluation of rapid chloride permeability and sulphate resistance in high-performance precast mixes.',
-    }
-  ];
+  const publications = cubeReports.map((r) => ({ title: r.title, authors: r.authors, date: r.year, desc: r.description }));
 
   return (
     <div className="bg-[#FFFFFF] text-[#24272B] min-h-screen">
       <PageHeader
         badge="Media & Dispatches"
         title="Institutional Media Centre"
-        description="Comprehensive press announcements, capacity-building workshops, visual photo archive, research publications, and campus culture at CUBE."
+        description="News, events, photo gallery, reports and life at CUBE."
         breadcrumbs={[{ label: 'Media' }]}
       />
 
@@ -186,29 +143,31 @@ export default function CompleteMediaExperience() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-16">
             <span className="text-xs font-bold uppercase tracking-wider text-[#070E5C] bg-[#EAF2F8] px-3.5 py-1 rounded-full border border-[#BDD7E8]">
-              Knowledge Dissemination
+              Events
             </span>
             <h2 className="text-3xl sm:text-4xl font-serif font-bold text-[#070E5C] mt-2">
-              Workshops &amp; Engineering Seminars
+              Events &amp; Milestones
             </h2>
             <p className="text-xs sm:text-sm text-[#747B83] mt-2">
-              Mentoring state municipal engineers and showcasing cutting-edge precast and environmental advances.
+              Meetings, project milestones and events at CUBE.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {sampleEvents.map((evt, idx) => (
               <div key={idx} className="rounded-3xl bg-[#F6FAFD] border border-[#BDD7E8] p-6 shadow-2xs flex flex-col justify-between">
                 <div>
                   <div className="relative h-48 w-full rounded-2xl overflow-hidden mb-4 border border-white ring-1 ring-[#BDD7E8]">
                     <Image src={evt.image} alt={evt.title} fill className="object-cover" />
                   </div>
-                  <span className="text-[10px] font-bold uppercase tracking-wider text-[#D99A42]">{evt.category} &bull; {evt.date}</span>
+                  <span className="text-[10px] font-bold uppercase tracking-wider text-[#D99A42]">{evt.category}{evt.date ? <> &bull; {evt.date}</> : null}</span>
                   <h3 className="font-serif font-bold text-base text-[#070E5C] mt-1 leading-snug">{evt.title}</h3>
-                  <p className="text-xs text-[#747B83] mt-2 flex items-center gap-1">
-                    <MapPin className="w-3.5 h-3.5 text-[#D99A42]" />
-                    <span>{evt.location}</span>
-                  </p>
+                  {evt.location && (
+                    <p className="text-xs text-[#747B83] mt-2 flex items-center gap-1">
+                      <MapPin className="w-3.5 h-3.5 text-[#D99A42]" />
+                      <span>{evt.location}</span>
+                    </p>
+                  )}
                   <p className="text-xs text-[#24272B]/80 mt-3 line-clamp-3 leading-relaxed">{evt.description}</p>
                 </div>
               </div>
@@ -289,10 +248,10 @@ export default function CompleteMediaExperience() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-16">
             <span className="text-xs font-bold uppercase tracking-wider text-[#070E5C] bg-[#EAF2F8] px-3.5 py-1 rounded-full border border-[#BDD7E8]">
-              Applied Research Briefs
+              Reports
             </span>
             <h2 className="text-3xl sm:text-4xl font-serif font-bold text-[#070E5C] mt-2">
-              Technical Publications &amp; Whitepapers
+              Reports &amp; Publications
             </h2>
           </div>
 

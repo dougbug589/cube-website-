@@ -21,8 +21,6 @@ interface HeroSlide {
   projectHref: string;
   projectName: string;
   location: string;
-  statNumber: string;
-  statLabel: string;
 }
 
 const HERO_SLIDES: HeroSlide[] = [
@@ -37,8 +35,6 @@ const HERO_SLIDES: HeroSlide[] = [
     projectHref: '/projects/iit-tirupathi',
     projectName: 'IIT Tirupati Permanent Campus',
     location: 'Andhra Pradesh & IIT Madras',
-    statNumber: '40+',
-    statLabel: 'Landmark State Schemes Assured',
   },
   {
     id: 2,
@@ -51,8 +47,6 @@ const HERO_SLIDES: HeroSlide[] = [
     projectHref: '/projects/cpcl-arhc',
     projectName: 'CPCL Industrial & ARHC Precast Housing',
     location: 'Tamil Nadu & Chennai',
-    statNumber: '100%',
-    statLabel: 'Rigorous Technical Proof Checking',
   },
   {
     id: 3,
@@ -65,8 +59,6 @@ const HERO_SLIDES: HeroSlide[] = [
     projectHref: '/projects',
     projectName: 'Pradhan Mantri Awas Yojana (PMAY TN)',
     location: 'Statewide Tamil Nadu',
-    statNumber: '10,000+',
-    statLabel: 'Residential Units Assured',
   },
   {
     id: 4,
@@ -79,8 +71,6 @@ const HERO_SLIDES: HeroSlide[] = [
     projectHref: '/about',
     projectName: 'Government of Tamil Nadu & IIT Madras',
     location: 'IIT Madras Research Park',
-    statNumber: '80+',
-    statLabel: 'Distinguished Researchers & Engineers',
   },
 ];
 
