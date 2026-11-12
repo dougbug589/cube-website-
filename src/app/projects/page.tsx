@@ -3,6 +3,7 @@
 import React, { Suspense, useEffect, useState, useMemo } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { useLiveList } from '@/lib/live';
+import { isHydrated } from '@/lib/hydration';
 import PageHeader from '@/components/common/PageHeader';
 import ProjectCard from '@/components/cards/ProjectCard';
 import { Search } from 'lucide-react';
@@ -15,18 +16,39 @@ const SHORT_LABEL: Record<string, string> = {
   'Urban Planning & Transportation': 'Urban Planning',
 };
 
-function ProjectsPageInner() {
-  // Deep links from the home hero search widget: /projects?category=…&q=…
+/**
+ * Reads ?category= and ?q= deep links. Only this tiny component waits for the
+ * URL (useSearchParams), so the server still renders the full project grid;
+ * wrapping the whole page in that Suspense boundary made it render in the
+ * browser only (empty first paint, footer jumping down).
+ */
+function SearchParamsSync({ onChange }: { onChange: (category: string, q: string) => void }) {
   const searchParams = useSearchParams();
+  useEffect(() => {
+    const category = searchParams.get('category');
+    const q = searchParams.get('q');
+    if (category || q) onChange(category || 'All', q || '');
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [searchParams]);
+  return null;
+}
+
+function ProjectsPageInner() {
   // Live CMS data: updates instantly when an admin edits/archives a project.
   const projectList = useLiveList<any>('/api/public/projects', fallbackProjects);
-  const [selectedCategory, setSelectedCategory] = useState<string>(() => searchParams.get('category') || 'All');
-  const [searchQuery, setSearchQuery] = useState<string>(() => searchParams.get('q') || '');
-
+  const [selectedCategory, setSelectedCategory] = useState<string>('All');
+  const [searchQuery, setSearchQuery] = useState<string>('');
+  // In-app navigation: mount the first 12 cards for a fast first frame, the
+  // rest right after it paints. A full page load renders all of them (the
+  // server HTML must match, and crawlers see every project).
+  const [limit, setLimit] = useState<number>(() => (isHydrated() ? 12 : Infinity));
   useEffect(() => {
-    setSelectedCategory(searchParams.get('category') || 'All');
-    setSearchQuery(searchParams.get('q') || '');
-  }, [searchParams]);
+    if (limit === Infinity) return;
+    let id = requestAnimationFrame(() => {
+      id = requestAnimationFrame(() => setLimit(Infinity));
+    });
+    return () => cancelAnimationFrame(id);
+  }, [limit]);
 
   const categories = [
     'All',
@@ -67,6 +89,14 @@ function ProjectsPageInner() {
 
   return (
     <div className="text-[#243239] min-h-screen">
+      <Suspense fallback={null}>
+        <SearchParamsSync
+          onChange={(category, q) => {
+            setSelectedCategory(category);
+            setSearchQuery(q);
+          }}
+        />
+      </Suspense>
       <PageHeader
         badge="Projects"
         title="Projects"
@@ -128,7 +158,7 @@ function ProjectsPageInner() {
           {/* cards reflow smoothly when the filter or search changes */}
           <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6">
             <AnimatePresence mode="popLayout" initial={false}>
-              {filteredProjects.map((project) => (
+              {filteredProjects.slice(0, limit).map((project) => (
                 <motion.div
                   key={project.slug || project.id}
                   layout="position"
@@ -165,10 +195,5 @@ function ProjectsPageInner() {
 }
 
 export default function ProjectsPage() {
-  // useSearchParams needs a Suspense boundary for static prerendering (Next 15).
-  return (
-    <Suspense fallback={null}>
-      <ProjectsPageInner />
-    </Suspense>
-  );
+  return <ProjectsPageInner />;
 }

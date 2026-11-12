@@ -31,7 +31,7 @@ export default function CoreValuesPage() {
               return (
                 <div
                   key={i}
-                  className="p-8 rounded-3xl bg-slate-50 border border-slate-200 shadow-sm hover:shadow-cube hover:border-[#E9D6A8] transition-all flex flex-col justify-between"
+                  className="p-8 rounded-3xl bg-slate-50 border border-slate-200 shadow-sm hover:shadow-cube hover:border-[#E9D6A8] transition flex flex-col justify-between"
                 >
                   <div>
                     <div className="p-3 bg-[#F7EDD3] text-[#9A7015] rounded-2xl w-fit mb-4 border border-[#E9D6A8]">

@@ -137,7 +137,7 @@ export default function TeamPage() {
                 placeholder="Search team member by name or role..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-xs sm:text-sm focus:outline-none focus:border-[#2B3B44] transition-all"
+                className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-xs sm:text-sm focus:outline-none focus:border-[#2B3B44] transition"
               />
               {searchQuery && (
                 <button
@@ -181,7 +181,7 @@ export default function TeamPage() {
               return (
                 <div
                   key={dept.id}
-                  className={`bg-white rounded-2xl border border-slate-200/90 shadow-2xs overflow-hidden transition-all duration-300 ${dept.accent}`}
+                  className={`bg-white rounded-2xl border border-slate-200/90 shadow-2xs overflow-hidden transition duration-300 ${dept.accent}`}
                 >
                   {/* Accordion Header */}
                   <button
@@ -225,10 +225,10 @@ export default function TeamPage() {
                           {membersInDept.map((member, idx) => (
                             <div
                               key={member.name + idx}
-                              className="p-4 rounded-2xl bg-[#FAFAFA] border border-slate-200/70 hover:border-[#2B3B44]/30 hover:bg-white hover:shadow-md transition-all flex flex-col items-center text-center group"
+                              className="p-4 rounded-2xl bg-[#FAFAFA] border border-slate-200/70 hover:border-[#2B3B44]/30 hover:bg-white hover:shadow-md transition flex flex-col items-center text-center group"
                             >
                               {/* Circular Avatar matching original website */}
-                              <div className="relative h-24 w-24 rounded-full overflow-hidden mb-3 border-2 border-slate-200 group-hover:border-[#2B3B44] shadow-sm transition-all bg-white shrink-0">
+                              <div className="relative h-24 w-24 rounded-full overflow-hidden mb-3 border-2 border-slate-200 group-hover:border-[#2B3B44] shadow-sm transition bg-white shrink-0">
                                 <Image
                                   src={member.image || '/images/team/team_unknown.png'}
                                   alt={member.name}

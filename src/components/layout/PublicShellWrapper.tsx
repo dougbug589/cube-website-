@@ -1,6 +1,7 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect } from 'react';
+import { markHydrated } from '@/lib/hydration';
 import { usePathname } from 'next/navigation';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
@@ -9,6 +10,7 @@ import ScrollProgressBar from '@/components/common/ScrollProgressBar';
 import LiveSync from '@/components/common/LiveSync';
 import RevealOnScroll from '@/components/common/RevealOnScroll';
 import SplashScreen from '@/components/common/SplashScreen';
+import NavProgress from '@/components/common/NavProgress';
 
 /**
  * Public shell: fixed ambient canvas, floating glass top bar, full-bleed content.
@@ -16,6 +18,7 @@ import SplashScreen from '@/components/common/SplashScreen';
 export default function PublicShellWrapper({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const isAdmin = pathname.startsWith('/admin');
+  useEffect(() => markHydrated(), []);
 
   if (isAdmin) {
     // Admin interface must be completely separate from public website header/footer
@@ -34,6 +37,7 @@ export default function PublicShellWrapper({ children }: { children: React.React
       <div aria-hidden className="canvas-grain" />
       <LiveSync />
       <ScrollProgressBar />
+      <NavProgress />
       <UniversalAnnouncementPopup />
       <RevealOnScroll />
 

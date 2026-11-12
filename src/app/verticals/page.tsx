@@ -55,7 +55,7 @@ export default function CompleteVerticalsExperience() {
                 data-anchor={item.id}
                 aria-current={activeVertical === item.id ? 'true' : undefined}
                 onClick={() => scrollTo(item.id)}
-                className={`px-4 py-2 rounded-full text-xs font-semibold tracking-wider transition-all duration-300 whitespace-nowrap ${
+                className={`px-4 py-2 rounded-full text-xs font-semibold tracking-wider transition duration-300 whitespace-nowrap ${
                   activeVertical === item.id
                     ? 'bg-[#F0C468] text-[#243239] shadow-xs'
                     : 'bg-white/60 text-[#243239] hover:bg-[#F2F5F6] hover:text-[#2B3B44] border border-[#D3DDE1]/60'

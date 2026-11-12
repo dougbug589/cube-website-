@@ -30,7 +30,7 @@ export default function EventsPage() {
             {events.map((evt, idx) => (
               <div
                 key={idx}
-                className="p-8 rounded-3xl bg-slate-50 border border-slate-200 shadow-sm hover:shadow-cube transition-all grid grid-cols-1 lg:grid-cols-12 gap-8 items-center"
+                className="p-8 rounded-3xl bg-slate-50 border border-slate-200 shadow-sm hover:shadow-cube transition grid grid-cols-1 lg:grid-cols-12 gap-8 items-center"
               >
                 <div className="lg:col-span-5 relative h-64 sm:h-72 rounded-2xl overflow-hidden bg-[#F0C468]">
                   <Image

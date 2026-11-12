@@ -26,7 +26,7 @@ export default function VisionMissionPage() {
         <div className="shell">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
             {/* Vision Card (Architectural Light Palette) */}
-            <div className="p-8 sm:p-10 rounded-3xl bg-white text-[#243239] shadow-sm hover:shadow-xl border border-[#DCE4E7] transition-all flex flex-col justify-between">
+            <div className="p-8 sm:p-10 rounded-3xl bg-white text-[#243239] shadow-sm hover:shadow-xl border border-[#DCE4E7] transition flex flex-col justify-between">
               <div>
                 <div className="p-3 bg-[#F2F5F6] text-[#2B3B44] rounded-2xl w-fit mb-6 border border-[#B9C5CA]">
                   <Compass className="w-8 h-8 text-[#C4921B]" />
@@ -44,7 +44,7 @@ export default function VisionMissionPage() {
             </div>
 
             {/* Mission Card (Architectural Light Sky Palette) */}
-            <div className="p-8 sm:p-10 rounded-3xl bg-white text-[#243239] border border-[#DCE4E7] shadow-sm hover:shadow-xl transition-all flex flex-col justify-between">
+            <div className="p-8 sm:p-10 rounded-3xl bg-white text-[#243239] border border-[#DCE4E7] shadow-sm hover:shadow-xl transition flex flex-col justify-between">
               <div>
                 <div className="p-3 bg-[#F2F5F6] text-[#2B3B44] rounded-2xl w-fit mb-6 border border-[#B9C5CA]">
                   <Target className="w-8 h-8 text-[#C4921B]" />

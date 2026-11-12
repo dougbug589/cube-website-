@@ -55,7 +55,7 @@ export default function FlipCard({
       aria-label={`${title} interactive flip card`}
     >
       <div 
-        className="relative w-full h-full rounded-3xl transition-all duration-700 ease-out shadow-[0_10px_35px_rgba(36,50,57,0.06)] hover:shadow-[0_25px_65px_rgba(36,50,57,0.14)]"
+        className="relative w-full h-full rounded-3xl transition duration-700 ease-out shadow-[0_10px_35px_rgba(36,50,57,0.06)] hover:shadow-[0_25px_65px_rgba(36,50,57,0.14)]"
         style={{
           transformStyle: 'preserve-3d',
           transform: isFlipped ? 'rotateY(180deg) scale(1.02)' : 'rotateY(0deg)',
@@ -185,7 +185,7 @@ export default function FlipCard({
           <div className="pt-4 border-t border-[#B9C5CA]/80" onClick={(e) => e.stopPropagation()}>
             <Link
               href={href}
-              className="w-full flex items-center justify-center py-2.5 px-4 rounded-full text-xs font-semibold text-[#2B3B44] bg-[#F2F5F6] border border-[#B9C5CA] hover:bg-[#F6DA86] hover:text-[#243239] transition-all shadow-md group/btn"
+              className="w-full flex items-center justify-center py-2.5 px-4 rounded-full text-xs font-semibold text-[#2B3B44] bg-[#F2F5F6] border border-[#B9C5CA] hover:bg-[#F6DA86] hover:text-[#243239] transition shadow-md group/btn"
             >
               <span>{ctaText}</span>
               <ArrowUpRight className="w-4 h-4 ml-2 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform" />

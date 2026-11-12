@@ -85,12 +85,18 @@ const nextConfig = {
         ],
       },
       {
-        source: '/_next/image/:path*',
+        // Hero film: large and rarely changed. A new cut gets a new file name
+        // (cube-hero-v2.mp4, ...) so long caching never serves a stale copy.
+        source: '/videos/:path*',
         headers: [
-          {
-            key: 'Cache-Control',
-            value: 'public, max-age=31536000, immutable',
-          },
+          { key: 'Cache-Control', value: 'public, max-age=2592000, stale-while-revalidate=604800' },
+        ],
+      },
+      {
+        // Tender PDFs: cached for a day, then refreshed in the background.
+        source: '/tenders/:file(.+\\.pdf)',
+        headers: [
+          { key: 'Cache-Control', value: 'public, max-age=86400, stale-while-revalidate=604800' },
         ],
       },
     ];

@@ -47,7 +47,7 @@ const newsHref = (item: any) => `/media/news/${item.slug || item.id}`;
 
 function DateChip({ date }: { date?: string }) {
   if (!date) return null;
-  return <span className="liquid-glass-dark rounded-full px-3 py-1 text-[12.5px] font-bold text-white">{date}</span>;
+  return <span className="chip-photo rounded-full px-3 py-1 text-[12.5px] font-bold text-white">{date}</span>;
 }
 
 export default function MediaPage() {
@@ -88,7 +88,7 @@ export default function MediaPage() {
                 />
                 <div className="absolute top-4 left-4 flex gap-2">
                   {lead.category && (
-                    <span className="liquid-glass-dark rounded-full px-3 py-1 text-[12.5px] font-bold text-white">{lead.category}</span>
+                    <span className="chip-photo rounded-full px-3 py-1 text-[12.5px] font-bold text-white">{lead.category}</span>
                   )}
                   <DateChip date={lead.date} />
                 </div>
@@ -191,7 +191,7 @@ export default function MediaPage() {
                   className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.05]"
                 />
                 <div aria-hidden className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/0 to-transparent" />
-                <figcaption className="absolute left-3 right-3 bottom-3 liquid-glass-dark rounded-2xl px-4 py-3 text-[14.5px] font-semibold text-white leading-snug transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:-translate-y-1">
+                <figcaption className="absolute left-3 right-3 bottom-3 chip-photo rounded-2xl px-4 py-3 text-[14.5px] font-semibold text-white leading-snug transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:-translate-y-1">
                   {img.title}
                 </figcaption>
               </figure>

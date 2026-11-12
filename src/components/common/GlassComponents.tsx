@@ -36,7 +36,7 @@ export function GlassCard({
 
   return (
     <div
-      className={`rounded-3xl transition-all duration-300 relative overflow-hidden ${baseStyles} ${
+      className={`rounded-3xl transition duration-300 relative overflow-hidden ${baseStyles} ${
         borderGlow ? 'before:absolute before:inset-0 before:rounded-3xl before:p-[1px] before:bg-gradient-to-b before:from-white/80 before:to-transparent before:pointer-events-none' : ''
       } ${className}`}
       {...props}
@@ -64,7 +64,7 @@ export function GlassButton({
 
   return (
     <button
-      className={`px-6 py-2.5 rounded-full text-xs font-semibold tracking-wide transition-all duration-300 active:scale-95 flex items-center justify-center gap-2 cursor-pointer ${btnStyles} ${className}`}
+      className={`px-6 py-2.5 rounded-full text-xs font-semibold tracking-wide transition duration-300 active:scale-95 flex items-center justify-center gap-2 cursor-pointer ${btnStyles} ${className}`}
       {...props}
     >
       {children}

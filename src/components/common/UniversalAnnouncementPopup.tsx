@@ -25,6 +25,9 @@ interface Announcement {
   isActive: boolean;
 }
 
+const ANN_TTL_MS = 5 * 60 * 1000;
+const ANN_CACHE = new Map<string, { t: number; data: unknown }>();
+
 export default function UniversalAnnouncementPopup() {
   const [announcements, setAnnouncements] = useState<Announcement[]>([]);
   const [dismissedIds, setDismissedIds] = useState<string[]>([]);
@@ -34,13 +37,24 @@ export default function UniversalAnnouncementPopup() {
   // Load announcements targeted at THIS page (previously the page was never
   // sent, so home-only popups appeared on every page). Reloads on navigation
   // and instantly when an admin changes announcements.
-  const loadAnnouncements = useCallback(async () => {
+  // Answers are cached per page for a few minutes, so moving between pages
+  // does not cost a server request each time; an admin change (CMS update
+  // event) bypasses the cache.
+  const loadAnnouncements = useCallback(async (force = false) => {
     try {
-      const res = await fetch(`/api/public/announcements?page=${encodeURIComponent(pathname || '/')}`, {
-        cache: 'no-store',
-      });
-      if (!res.ok) return;
-      const data = await res.json();
+      const key = pathname || '/';
+      const hit = ANN_CACHE.get(key);
+      let data: unknown;
+      if (!force && hit && Date.now() - hit.t < ANN_TTL_MS) {
+        data = hit.data;
+      } else {
+        const res = await fetch(`/api/public/announcements?page=${encodeURIComponent(key)}`, {
+          cache: 'no-store',
+        });
+        if (!res.ok) return;
+        data = await res.json();
+        ANN_CACHE.set(key, { t: Date.now(), data });
+      }
       if (!Array.isArray(data)) return;
       const visible = data.filter((ann: Announcement) => {
         if (ann.frequency === 'once_per_session') {
@@ -58,11 +72,15 @@ export default function UniversalAnnouncementPopup() {
     }
   }, [pathname]);
 
+  // After the new page has rendered (idle), not in the middle of navigation.
   useEffect(() => {
-    loadAnnouncements();
+    const w = window as any;
+    const run = () => loadAnnouncements();
+    const id = w.requestIdleCallback ? w.requestIdleCallback(run, { timeout: 1500 }) : window.setTimeout(run, 300);
+    return () => (w.cancelIdleCallback ? w.cancelIdleCallback(id) : clearTimeout(id));
   }, [loadAnnouncements]);
 
-  useCmsUpdates(loadAnnouncements);
+  useCmsUpdates(useCallback(() => loadAnnouncements(true), [loadAnnouncements]));
 
   const dismiss = (id: string, frequency: string) => {
     if (frequency === 'once_per_session') {
@@ -146,7 +164,7 @@ export default function UniversalAnnouncementPopup() {
                 <Link
                   href={ann.ctaUrl}
                   onClick={() => dismiss(ann.id, ann.frequency)}
-                  className="inline-flex items-center gap-1.5 px-4 py-2 sm:py-1.5 rounded-full bg-[#F2F5F6] hover:bg-[#2B3B44] text-[#2B3B44] hover:text-white font-bold text-xs border border-[#D3DDE1] transition-all shadow-2xs hover:shadow-xs active:scale-95"
+                  className="inline-flex items-center gap-1.5 px-4 py-2 sm:py-1.5 rounded-full bg-[#F2F5F6] hover:bg-[#2B3B44] text-[#2B3B44] hover:text-white font-bold text-xs border border-[#D3DDE1] transition shadow-2xs hover:shadow-xs active:scale-95"
                 >
                   <span>{ann.ctaText || 'Learn More'}</span>
                   <ArrowUpRight className="w-3.5 h-3.5 text-[#C4921B]" />

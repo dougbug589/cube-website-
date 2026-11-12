@@ -41,14 +41,14 @@ export default function ClientsPage() {
             {clients.map((client, idx) => (
               <div
                 key={idx}
-                className="h-28 p-4 bg-slate-50 hover:bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-cube hover:border-[#E9D6A8] transition-all flex flex-col items-center justify-center text-center group"
+                className="h-28 p-4 bg-slate-50 hover:bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-cube hover:border-[#E9D6A8] transition flex flex-col items-center justify-center text-center group"
               >
                 <div className="relative h-14 w-full">
                   <Image
                     src={client.logo}
                     alt={clientLogoAlt(client.name)}
                     fill
-                    className="object-contain filter grayscale group-hover:grayscale-0 transition-all duration-300"
+                    className="object-contain filter grayscale group-hover:grayscale-0 transition duration-300"
                   />
                 </div>
               </div>
@@ -76,14 +76,14 @@ export default function ClientsPage() {
             {partners.map((partner, idx) => (
               <div
                 key={idx}
-                className="h-28 p-4 bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-cube hover:border-[#E9D6A8] transition-all flex flex-col items-center justify-center text-center group"
+                className="h-28 p-4 bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-cube hover:border-[#E9D6A8] transition flex flex-col items-center justify-center text-center group"
               >
                 <div className="relative h-14 w-full">
                   <Image
                     src={partner.logo}
                     alt={partner.name}
                     fill
-                    className="object-contain filter grayscale group-hover:grayscale-0 transition-all duration-300"
+                    className="object-contain filter grayscale group-hover:grayscale-0 transition duration-300"
                   />
                 </div>
               </div>

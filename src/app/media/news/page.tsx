@@ -30,7 +30,7 @@ export default async function NewsPage() {
             {newsList.map((item) => (
               <article
                 key={item.id}
-                className="group rounded-2xl bg-white border border-[#DCE4E7] overflow-hidden shadow-2xs hover:shadow-md hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between"
+                className="group rounded-2xl bg-white border border-[#DCE4E7] overflow-hidden shadow-2xs hover:shadow-md hover:-translate-y-1 transition duration-300 flex flex-col justify-between"
               >
                 <div>
                   <div className="relative h-48 w-full bg-[#EEF2F4] overflow-hidden">
@@ -74,7 +74,7 @@ export default async function NewsPage() {
                   <div className="pt-4 border-t border-[#DCE4E7] flex items-center justify-between">
                     <Link
                       href={`/media/news/${item.slug || item.id}`}
-                      className="text-xs font-semibold text-[#2B3B44] group-hover:text-[#C4921B] group-hover:translate-x-0.5 transition-all flex items-center"
+                      className="text-xs font-semibold text-[#2B3B44] group-hover:text-[#C4921B] group-hover:translate-x-0.5 transition flex items-center"
                     >
                       <span>Read Full Press Release</span>
                       <ArrowRight className="w-3.5 h-3.5 ml-1" />

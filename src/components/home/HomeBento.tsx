@@ -67,8 +67,8 @@ function useCycle(length: number, ms: number, running: boolean, startDelay = 0) 
 function TileHead({ label }: { label: string }) {
   return (
     <div className="absolute top-4 left-4 right-4 z-10 flex items-center justify-between">
-      <span className="liquid-glass-dark rounded-full px-3.5 py-1.5 text-[15px] font-extrabold text-white tracking-wide" style={{ background: 'rgba(20, 30, 36, 0.42)' }}>{label}</span>
-      <span className="liquid-glass-dark grid place-items-center w-9 h-9 rounded-full text-white transition-transform duration-500 group-hover:rotate-45">
+      <span className="chip-photo rounded-full px-3.5 py-1.5 text-[15px] font-extrabold text-white tracking-wide" style={{ background: 'rgba(20, 30, 36, 0.42)' }}>{label}</span>
+      <span className="chip-photo grid place-items-center w-9 h-9 rounded-full text-white transition-transform duration-500 group-hover:rotate-45">
         <ArrowUpRight size={16} strokeWidth={2.25} />
       </span>
     </div>

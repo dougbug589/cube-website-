@@ -83,19 +83,35 @@ export default function Navbar() {
   const [expanded, setExpanded] = useState<string | null>(null);
   const [mega, setMega] = useState<string | null>(null);
   const [hovered, setHovered] = useState<string | null>(null);
+  // Optimistic highlight: the gold pill moves to a clicked item at once,
+  // before the new page has rendered.
+  const [pendingHref, setPendingHref] = useState<string | null>(null);
   const [searchOpen, setSearchOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [isMac, setIsMac] = useState(false);
   const drawerRef = useRef<HTMLDivElement>(null);
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  // Menu photos are fetched ahead of time (after the page settles, or as soon
-  // as the pointer reaches the menu) so a panel never opens with blank cards.
-  const [warm, setWarm] = useState(false);
+  // Menu photos are fetched ahead of time so a panel never opens with blank
+  // cards. Desktop with a mouse only (phones have no mega-menu) and never with
+  // data saver. Level 1 (page idle): the 7 Projects/Verticals cards.
+  // Level 2 (pointer reaches the menu): also the About/Media previews.
+  const [warm, setWarm] = useState(0);
+  const canWarm = useRef(false);
   useEffect(() => {
+    const conn = (navigator as any).connection;
+    canWarm.current =
+      window.matchMedia('(min-width: 1280px) and (hover: hover) and (pointer: fine)').matches &&
+      !conn?.saveData &&
+      !/(^|-)2g$/.test(conn?.effectiveType || '');
+    if (!canWarm.current) return;
     const w = window as any;
-    const id = w.requestIdleCallback ? w.requestIdleCallback(() => setWarm(true), { timeout: 3000 }) : window.setTimeout(() => setWarm(true), 2000);
+    const go = () => setWarm((v) => Math.max(v, 1));
+    const id = w.requestIdleCallback ? w.requestIdleCallback(go, { timeout: 4000 }) : window.setTimeout(go, 2500);
     return () => (w.cancelIdleCallback ? w.cancelIdleCallback(id) : clearTimeout(id));
+  }, []);
+  const warmAll = useCallback(() => {
+    if (canWarm.current) setWarm(2);
   }, []);
 
   const featuredProjects = useMemo(
@@ -161,6 +177,7 @@ export default function Navbar() {
     megaRef.current = null;
     setMega(null);
     setHovered(null);
+    setPendingHref(null);
   }, [pathname]);
 
   // Drawer: scroll lock, focus, Escape
@@ -273,7 +290,7 @@ export default function Navbar() {
           <nav
             aria-label="Primary"
             className="capsule hidden xl:flex pointer-events-auto items-center p-1 rounded-full"
-            onMouseEnter={() => setWarm(true)}
+            onMouseEnter={warmAll}
             onMouseLeave={() => {
               setHovered(null);
               scheduleClose();
@@ -282,7 +299,7 @@ export default function Navbar() {
             {MENU.map((raw) => {
               const item = raw as Item;
               const mm = hasMega(item.title);
-              const active = isItemActive(pathname, item);
+              const active = isItemActive(pendingHref ?? pathname, item);
               const open = mega === item.title;
               const showHover = hovered === item.title && !active;
               return (
@@ -292,6 +309,9 @@ export default function Navbar() {
                     itemRefs.current[item.title] = el;
                   }}
                   href={item.href}
+                  onClick={(e) => {
+                    if (e.button === 0 && !e.metaKey && !e.ctrlKey && !e.shiftKey && !e.altKey) setPendingHref(item.href);
+                  }}
                   aria-current={active ? 'page' : undefined}
                   aria-haspopup={mm || undefined}
                   aria-expanded={mm ? open : undefined}
@@ -407,14 +427,14 @@ export default function Navbar() {
 
         {/* off-screen warm-up: same src/sizes/quality as the menus, so the
             browser caches exactly the files the panels will ask for */}
-        {warm && (
+        {warm > 0 && (
           <div aria-hidden className="hidden xl:block fixed left-[-9999px] top-0 w-px h-px overflow-hidden pointer-events-none">
             {[...verticals.map((v) => v.heroImage), ...featuredProjects.map((p) => p.heroImage)].map((src) => (
               <span key={`w-${src}`} className="relative block w-px h-px">
                 <Image src={src} alt="" fill quality={85} sizes="440px" loading="eager" />
               </span>
             ))}
-            {Array.from(new Set(Object.values(MEGA_PREVIEW))).map((src) => (
+            {warm > 1 && Array.from(new Set(Object.values(MEGA_PREVIEW))).map((src) => (
               <span key={`p-${src}`} className="relative block w-px h-px">
                 <Image src={src} alt="" fill quality={85} sizes="400px" loading="eager" />
               </span>
@@ -729,7 +749,7 @@ function PhotoCard({ href, image, title, text, tall = false }: { href: string; i
         <span className="font-display text-[18px] font-bold leading-snug line-clamp-2">{title}</span>
         {text && <span className="mt-1 text-[14.5px] text-white/85 leading-snug line-clamp-2">{text}</span>}
       </span>
-      <ArrowUpRight size={18} className="absolute top-3 right-3 text-white opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300" />
+      <ArrowUpRight size={18} className="absolute top-3 right-3 text-white opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition duration-300" />
     </Link>
   );
 }

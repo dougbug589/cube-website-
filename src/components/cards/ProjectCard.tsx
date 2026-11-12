@@ -38,9 +38,9 @@ export default function ProjectCard({ project }: ProjectCardProps) {
         />
         <div aria-hidden className="absolute inset-0 bg-gradient-to-t from-black/35 via-transparent to-transparent" />
         <div className="absolute top-3 left-3 right-3 flex items-start justify-between gap-2">
-          <span className="liquid-glass-dark rounded-full px-3 py-1 text-[12.5px] font-bold text-white">{SHORT[p.category] || p.category}</span>
+          <span className="chip-photo rounded-full px-3 py-1 text-[12.5px] font-bold text-white">{SHORT[p.category] || p.category}</span>
           {p.projectStatus && (
-            <span className="liquid-glass-dark rounded-full px-3 py-1 text-[12.5px] font-bold text-white">{p.projectStatus}</span>
+            <span className="chip-photo rounded-full px-3 py-1 text-[12.5px] font-bold text-white">{p.projectStatus}</span>
           )}
         </div>
       </div>

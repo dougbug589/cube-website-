@@ -53,7 +53,7 @@ export default function LifeAtCubePage() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {highlights.map((h, i) => (
-              <div key={i} className="rounded-3xl bg-slate-50 border border-slate-200 overflow-hidden shadow-sm hover:shadow-cube transition-all flex flex-col justify-between">
+              <div key={i} className="rounded-3xl bg-slate-50 border border-slate-200 overflow-hidden shadow-sm hover:shadow-cube transition flex flex-col justify-between">
                 <div className="relative h-64 w-full bg-slate-900">
                   <Image
                     src={h.image}

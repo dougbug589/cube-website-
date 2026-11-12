@@ -35,7 +35,7 @@ export function GlassPanel({
   };
 
   const interactiveStyles = interactive
-    ? 'transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_20px_48px_rgba(15,25,32,0.6)] hover:border-[#C4921B]/45 active:scale-[0.99]'
+    ? 'transition duration-500 hover:-translate-y-1 hover:shadow-[0_20px_48px_rgba(15,25,32,0.6)] hover:border-[#C4921B]/45 active:scale-[0.99]'
     : '';
 
   return (
@@ -79,7 +79,7 @@ export function GlassButton({
 
   return (
     <button
-      className={`relative inline-flex items-center justify-center font-medium rounded-full backdrop-blur-xl shadow-xs transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] select-none ${sizeStyles} ${variantStyles} ${className}`}
+      className={`relative inline-flex items-center justify-center font-medium rounded-full backdrop-blur-xl shadow-xs transition duration-300 hover:scale-[1.02] active:scale-[0.98] select-none ${sizeStyles} ${variantStyles} ${className}`}
       {...props}
     >
       {children}

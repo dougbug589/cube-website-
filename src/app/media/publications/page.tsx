@@ -29,7 +29,7 @@ export default function PublicationsPage() {
             {publications.map((pub, idx) => (
               <div
                 key={idx}
-                className="p-8 rounded-3xl bg-slate-50 border border-slate-200 shadow-sm hover:shadow-cube transition-all flex flex-col md:flex-row md:items-center justify-between gap-6"
+                className="p-8 rounded-3xl bg-slate-50 border border-slate-200 shadow-sm hover:shadow-cube transition flex flex-col md:flex-row md:items-center justify-between gap-6"
               >
                 <div className="space-y-2 flex-1">
                   <div className="flex items-center space-x-3 text-xs">
