@@ -54,6 +54,8 @@ Two lines of work run through this repository:
 - Slate rail sidebar on desktop, photo hero, and stacked project carousel (Etihad-style layout). Superseded the same day by the top bar. (`75f0d52`)
 
 #### Fixed
+- Contact details now match the original cubeiitm.org: Module No. 6C, 6th Floor, Phase II Building, IIT Madras Research Park, Kanagam Road, Taramani, Chennai 600 113; office@cubeiitm.org; 044 6121 0901. The previous address, email and phone came from the initial upstream commit and appeared nowhere on CUBE's site. Opening hours, also not on the original, were removed from the footer and contact page. (`561bcc0`)
+- Mega-menu photos sharp on all screens: About and Media used thin banners stretched about 3.3x; they now use well-proportioned photos, and all menu photos request enough pixels for high-density screens. (`9bd8b76`)
 - Header menus no longer appear transparent and then snap to blur: the glass panel now animates itself instead of a fading wrapper, so the blur works from the first frame. The mobile drawer had the same fix. (`c9eadec`)
 - Header dropdowns render beside the bar instead of inside it, so their glass blurs the page rather than looking flat. (`cfdfeb6`)
 - Sticky in-page tab bars sit just below the top bar: the offset now measures the bar's real height (85 px on desktop) instead of assuming 80 px. (`11fed57`)
