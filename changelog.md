@@ -36,6 +36,7 @@ Two lines of work run through this repository:
 - Etihad-inspired theme: slate and gold palette, scroll-reveal animations, gold scroll-progress bar. (`1977bf6`)
 
 #### Changed
+- Leadership message boxes scroll slower again (loop timings unchanged). (`7fa6166`)
 - Leadership message boxes scroll a little slower again (the quicker pause and glide back to the top stay). (`f0911f2`)
 - Leadership message boxes scroll faster still, pause for less time at the bottom, glide back to the top more quickly (still eased) and restart sooner. (`422f344`)
 - Leadership messages: the boxes scroll faster again and now glide back to the top with a gentle ease-in-out instead of jumping, then rest for a moment before starting again. The separate Chairman Message and CEO Message pages use the same portrait and scrolling box, with plain page headings in place of invented ones. (`9ced23a`)
