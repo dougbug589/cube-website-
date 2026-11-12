@@ -24,7 +24,7 @@ const CENTRE_LINKS = [
 
 // CUBE's real profiles (same as the original site), from the contact data
 // Brand colours: LinkedIn blue, X black, Facebook blue (white marks on top).
-const SOCIAL = [
+export const SOCIAL = [
   { label: 'CUBE on LinkedIn', href: contactInfo.socialLinks.linkedin, Icon: LinkedInIcon, bg: '#0A66C2', glow: 'rgba(10,102,194,0.45)' },
   { label: 'CUBE on X', href: contactInfo.socialLinks.x, Icon: XIcon, bg: '#0F1419', glow: 'rgba(15,20,25,0.4)' },
   { label: 'CUBE on Facebook', href: contactInfo.socialLinks.facebook, Icon: FacebookIcon, bg: '#1877F2', glow: 'rgba(24,119,242,0.45)' },

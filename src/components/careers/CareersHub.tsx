@@ -6,6 +6,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import PageHeader from '@/components/common/PageHeader';
 import SectionHeading from '@/components/common/SectionHeading';
 import ComboSelect from '@/components/admin/ComboSelect';
+import { FIELD, LABEL } from '@/components/common/formStyles';
 import {
   Briefcase, Send, CheckCircle2, Mail, MapPin,
   Upload, FileText, Sparkles, Building2, Users,
@@ -29,11 +30,6 @@ const BENEFIT_ICONS: Record<CareerBenefitIcon, React.ElementType> = {
 
 const SPRING = { type: 'spring' as const, stiffness: 420, damping: 34, mass: 0.8 };
 const EASE = [0.22, 1, 0.36, 1] as const;
-
-// Shared form styling: legible 16px text, soft white fields, gold focus ring.
-const FIELD =
-  'w-full h-12 px-4 rounded-2xl bg-white border border-[#33454E]/15 text-[16px] text-[#243239] placeholder:text-[#8A979D] transition-[border-color,box-shadow] duration-300 focus:outline-none focus:border-[#C4921B]/60 focus:ring-4 focus:ring-[#F0C468]/30';
-const LABEL = 'block text-[14.5px] font-bold text-[#243239] mb-2';
 
 interface CareersHubProps {
   initialCareers: any[];
