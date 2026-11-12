@@ -13,6 +13,7 @@ import { getCurrentAdmin, logoutAdminAction } from '@/app/admin/actions/auth';
 import FloatingCubeBackground from '@/components/admin/FloatingCubeBackground';
 import RealtimeRefresher from '@/components/admin/RealtimeRefresher';
 import PublishStatus from '@/components/admin/PublishStatus';
+import { CMS_UPDATED_EVENT } from '@/lib/live';
 
 interface AdminLayoutProps {
   children: React.ReactNode;
@@ -23,6 +24,43 @@ export default function AdminDashboardLayout({ children }: AdminLayoutProps) {
   const router = useRouter();
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [loggingOut, setLoggingOut] = useState(false);
+
+  // Live counters: new enquiries and job applications from the website forms.
+  const [inbox, setInbox] = useState<{ enquiries: number; applications: number }>({ enquiries: 0, applications: 0 });
+  useEffect(() => {
+    if (pathname === '/admin/login') return;
+    let active = true;
+    const load = async () => {
+      try {
+        const res = await fetch('/api/admin/inbox-counts', { cache: 'no-store' });
+        if (res.ok && active) setInbox(await res.json());
+      } catch {}
+    };
+    load();
+    window.addEventListener(CMS_UPDATED_EVENT, load);
+    window.addEventListener('focus', load);
+    const t = setInterval(load, 30000);
+    return () => {
+      active = false;
+      window.removeEventListener(CMS_UPDATED_EVENT, load);
+      window.removeEventListener('focus', load);
+      clearInterval(t);
+    };
+  }, [pathname]);
+  // Show the total in the browser tab title, e.g. "(2) CUBE Admin". Next.js
+  // resets the title on every refresh, so re-apply it whenever it changes.
+  useEffect(() => {
+    if (pathname === '/admin/login') return;
+    const total = inbox.enquiries + inbox.applications;
+    const wanted = total > 0 ? `(${total}) CUBE Admin` : 'CUBE Admin';
+    const apply = () => {
+      if (document.title !== wanted) document.title = wanted;
+    };
+    apply();
+    const observer = new MutationObserver(apply);
+    observer.observe(document.head, { subtree: true, childList: true, characterData: true });
+    return () => observer.disconnect();
+  }, [inbox, pathname]);
 
   // Back button: count in-app admin navigations ourselves (document.referrer
   // does not change on client-side navigation). If this tab has moved between
@@ -246,7 +284,16 @@ export default function AdminDashboardLayout({ children }: AdminLayoutProps) {
                     <Icon className={`w-4 h-4 ${isActive ? 'text-[#070E5C]' : 'text-[#D99A42]'}`} />
                     <span>{item.label}</span>
                   </div>
-                  {item.badge && (
+                  {(item.href === '/admin/enquiries' && inbox.enquiries > 0) ||
+                  (item.href === '/admin/careers' && inbox.applications > 0) ? (
+                    <span
+                      className="min-w-[20px] h-5 px-1.5 rounded-full bg-[#D99A42] text-white text-[10px] font-bold flex items-center justify-center shadow-sm"
+                      aria-label={`${item.href === '/admin/enquiries' ? inbox.enquiries : inbox.applications} new`}
+                      title="New submissions from the website"
+                    >
+                      {item.href === '/admin/enquiries' ? inbox.enquiries : inbox.applications}
+                    </span>
+                  ) : item.badge && (
                     <span
                       className={`text-[9px] font-bold px-1.5 py-0.5 rounded-md uppercase tracking-wide ${
                         isActive

@@ -59,8 +59,14 @@ export function buildPublicSnapshot(store: Record<string, any>) {
   return out;
 }
 
+/**
+ * Opt-in. Only for the interim setup where the admin runs on a local computer
+ * and the public site is a separate read-only deployment (Vercel). On the
+ * production server the website and admin are one app sharing one data store,
+ * so nothing needs publishing: leave PUBLISH_TO_GITHUB unset there.
+ */
 export function autoPublishEnabled(): boolean {
-  return !process.env.VERCEL && process.env.AUTO_PUBLISH !== 'false';
+  return !process.env.VERCEL && process.env.PUBLISH_TO_GITHUB === 'true';
 }
 
 const g = globalThis as unknown as {

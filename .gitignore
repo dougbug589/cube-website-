@@ -38,3 +38,7 @@ __pycache__/
 Thumbs.db
 
 .vercel
+
+# server runtime
+logs/
+backups/

@@ -528,6 +528,21 @@ export async function archiveCareerAction(id: string, archiveRemark?: string) {
   return { success: true };
 }
 
+/** Mark a job application as reviewed (clears its "New" flag and sidebar count). */
+export async function markApplicationReviewedAction(id: string) {
+  const session = await assertPermission(['super_admin', 'admin', 'editor']);
+  const store = await getCMSStore();
+  const app = (store.jobApplications || []).find((a: any) => a.id === id);
+  if (!app) return { success: false, error: 'Application not found' };
+  if (app.status === 'new') {
+    app.status = 'reviewed';
+    app.reviewedAt = new Date().toISOString();
+    app.reviewedBy = session.email;
+    await saveCMSStore(store);
+  }
+  return { success: true };
+}
+
 export async function updateCareersPageAction(data: unknown) {
   const session = await assertPermission(['super_admin', 'admin']);
   const store = await getCMSStore();
