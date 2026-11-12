@@ -1,34 +1,58 @@
 'use client';
 
-import React, { useState, useEffect, useRef, useCallback } from 'react';
+import React, { useState, useEffect, useRef, useCallback, useMemo } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, ChevronDown, Search, ArrowUpRight, User } from 'lucide-react';
 import { navigationItems } from '@/data/navigation';
+import { verticals } from '@/data/verticals';
+import { projects } from '@/data/projects';
 import GlobalSearchModal from '@/components/common/GlobalSearchModal';
 
 /**
- * Site header: one floating glass bar for every width.
+ * Site header — wide, flush to the top edge (not floating).
  *
- * - xl (1280px+): full menu with a gold morphing active pill and glass
- *   dropdowns. Upstream measured the full menu at ~1180px, so it never
- *   appears below xl (it overflowed and pushed the CTA out when zoomed).
- * - below xl: logo, search, menu button and an accordion drawer.
- * - Turns more opaque once the page scrolls. Never hides, so sticky in-page
- *   tab bars can rely on a constant offset.
- * - Publishes --nav-offset (bar bottom + gap) for those sticky bars.
+ * 1. Condenses on scroll: the glass band shrinks 80 → 64 px, the row lifts,
+ *    the logo scales down and the tagline tucks away. Transform/opacity only.
+ * 2. Sliding hover pill: a glass highlight springs between menu items under
+ *    the pointer; the current page keeps a light-gold pill.
+ * 3. Three capsules: brand · menu capsule · actions capsule.
+ * 4. Mega-menus: About and Media list their pages in columns beside an intro
+ *    card; Verticals and Projects show photo cards.
+ *
+ * Glass correctness: a backdrop-filter only blurs the page if no ancestor is
+ * fading (opacity < 1), filtered, or itself a backdrop-filter. So the band,
+ * the mega-menu and the drawer are siblings, and each animates its OWN
+ * opacity/transform. (A fading wrapper made the menus look transparent until
+ * the fade finished, then snap to blur.)
+ *
+ * Full menu from 1280 px (upstream measured it at ~1180 px); below that a
+ * menu button opens a drawer. Publishes --nav-offset for sticky in-page bars.
  */
 
-const BAR_TOP = 12; // px, matches top-3
-const BAR_H_DESKTOP = 76; // xl:h-[76px]
-const BAR_H_MOBILE = 64; // h-16
+const BAR_H = { desktop: 80, desktopCompact: 64, mobile: 64, mobileCompact: 56 };
 
 const MENU = navigationItems.filter((i) => i.title !== 'Home');
 const DRAWER = [...navigationItems, { title: 'Contact Us', href: '/contact' }];
 
 type Item = (typeof DRAWER)[number] & { children?: { title: string; href: string; description?: string }[]; badge?: string };
+
+const MEGA_INTRO: Record<string, { image: string; title: string; text: string; href: string }> = {
+  About: {
+    image: '/images/about/about_about.jpg',
+    title: 'About CUBE',
+    text: 'Centre of Excellence of the Government of Tamil Nadu, with IIT Madras.',
+    href: '/about',
+  },
+  Media: {
+    image: '/images/about/images_about-bg.jpg',
+    title: 'Media centre',
+    text: 'News, events, publications and life at CUBE.',
+    href: '/media',
+  },
+};
 
 function isItemActive(pathname: string, item: Item) {
   if (item.href === '/') return pathname === '/';
@@ -39,28 +63,34 @@ function isItemActive(pathname: string, item: Item) {
   );
 }
 
+const SPRING = { type: 'spring' as const, stiffness: 420, damping: 34, mass: 0.8 };
+const PANEL_SPRING = { type: 'spring' as const, stiffness: 380, damping: 30, mass: 0.8 };
+
 export default function Navbar() {
   const pathname = usePathname();
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [expanded, setExpanded] = useState<string | null>(null);
-  const [dropdown, setDropdown] = useState<string | null>(null);
+  const [mega, setMega] = useState<string | null>(null);
+  const [hovered, setHovered] = useState<string | null>(null);
   const [searchOpen, setSearchOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
+  const [compact, setCompact] = useState(false);
   const [isMac, setIsMac] = useState(false);
   const drawerRef = useRef<HTMLDivElement>(null);
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const headerRef = useRef<HTMLElement>(null);
-  const itemRefs = useRef<Record<string, HTMLDivElement | null>>({});
-  const [dropdownX, setDropdownX] = useState(0);
 
-  // Scroll state (rAF-throttled, passive)
+  const featuredProjects = useMemo(
+    () => (projects as any[]).filter((p) => p.featured && p.heroImage).slice(0, 3),
+    []
+  );
+
+  // Condense on scroll (rAF-throttled, passive)
   useEffect(() => {
     let ticking = false;
     const onScroll = () => {
       if (ticking) return;
       ticking = true;
       requestAnimationFrame(() => {
-        setScrolled(window.scrollY > 24);
+        setCompact(window.scrollY > 24);
         ticking = false;
       });
     };
@@ -69,17 +99,17 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  // Offset for sticky in-page bars (About, Media, Verticals)
+  // Offset for sticky in-page bars, tracks the visible band height
   useEffect(() => {
     const mq = window.matchMedia('(min-width: 1280px)');
     const apply = () => {
-      const h = mq.matches ? BAR_H_DESKTOP : BAR_H_MOBILE;
-      document.documentElement.style.setProperty('--nav-offset', `${BAR_TOP + h + 8}px`);
+      const h = mq.matches ? (compact ? BAR_H.desktopCompact : BAR_H.desktop) : compact ? BAR_H.mobileCompact : BAR_H.mobile;
+      document.documentElement.style.setProperty('--nav-offset', `${h + 8}px`);
     };
     apply();
     mq.addEventListener('change', apply);
     return () => mq.removeEventListener('change', apply);
-  }, []);
+  }, [compact]);
 
   // Ctrl/⌘K search
   useEffect(() => {
@@ -89,6 +119,7 @@ export default function Navbar() {
         e.preventDefault();
         setSearchOpen((o) => !o);
       }
+      if (e.key === 'Escape') setMega(null);
     };
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
@@ -98,7 +129,8 @@ export default function Navbar() {
   useEffect(() => {
     setDrawerOpen(false);
     setExpanded(null);
-    setDropdown(null);
+    setMega(null);
+    setHovered(null);
   }, [pathname]);
 
   // Drawer: scroll lock, focus, Escape
@@ -117,32 +149,22 @@ export default function Navbar() {
     };
   }, [drawerOpen]);
 
-  // Dropdown hover intent: small close delay so moving into the panel doesn't flicker
-  const openDropdown = useCallback((title: string | null) => {
+  // Mega-menu hover intent: grace period so moving into the panel doesn't close it
+  const openMega = useCallback((title: string | null) => {
     if (closeTimer.current) clearTimeout(closeTimer.current);
-    if (title) {
-      const el = itemRefs.current[title];
-      const header = headerRef.current;
-      if (el && header) {
-        const r = el.getBoundingClientRect();
-        const h = header.getBoundingClientRect();
-        setDropdownX(r.left + r.width / 2 - h.left);
-      }
-    }
-    setDropdown(title);
+    setMega(title);
   }, []);
   const scheduleClose = useCallback(() => {
     if (closeTimer.current) clearTimeout(closeTimer.current);
-    closeTimer.current = setTimeout(() => setDropdown(null), 240);
+    closeTimer.current = setTimeout(() => setMega(null), 220);
   }, []);
 
-  const openItem = (MENU as Item[]).find((i) => i.title === dropdown);
-
-  // Liquid glass; a touch more opaque once content scrolls underneath.
-  const surface = scrolled || drawerOpen ? 'liquid-glass is-solid' : 'liquid-glass';
+  const hasMega = (title: string) => title === 'Verticals' || title === 'Projects' || Boolean((MENU as Item[]).find((i) => i.title === title)?.children?.length);
+  const megaItem = (MENU as Item[]).find((i) => i.title === mega);
 
   return (
     <>
+      {/* drawer backdrop */}
       <AnimatePresence>
         {drawerOpen && (
           <motion.div
@@ -153,176 +175,206 @@ export default function Navbar() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-0 z-40 bg-[#E6ECEF] backdrop-blur-[2px] xl:hidden"
+            className="fixed inset-0 z-40 bg-[#243239]/20 xl:hidden"
           />
         )}
       </AnimatePresence>
 
-      <header ref={headerRef} className="fixed top-3 inset-x-3 sm:inset-x-4 lg:inset-x-6 z-50">
+      <header className="fixed top-0 inset-x-0 z-50 pointer-events-none">
+        {/* 1 · glass band (its own layer; scales down when compact) */}
         <div
-          className={`relative mx-auto max-w-[1600px] h-16 xl:h-[76px] rounded-[24px] ${surface}`}
+          aria-hidden
+          className={`topbar-glass absolute inset-x-0 top-0 h-16 xl:h-20 origin-top transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+            compact ? 'scale-y-[0.875] xl:scale-y-[0.8] is-compact' : ''
+          }`}
+        />
+
+        {/* content row (lifts when compact) */}
+        <div
+          className={`relative h-16 xl:h-20 mx-auto max-w-[1600px] px-4 sm:px-6 xl:px-8 flex items-center justify-between gap-4 transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+            compact ? '-translate-y-1 xl:-translate-y-2' : ''
+          }`}
         >
-          {/* gold specular hairline */}
-          <div aria-hidden className="pointer-events-none absolute top-0 left-10 right-10 h-px bg-gradient-to-r from-transparent via-[#E9B215]/50 to-transparent" />
+          {/* Brand */}
+          <Link href="/" className="press group pointer-events-auto flex items-center gap-3.5 shrink-0" aria-label="CUBE home">
+            <span
+              className={`relative h-12 xl:h-[58px] w-[116px] xl:w-[142px] shrink-0 origin-left transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+                compact ? 'scale-[0.84]' : ''
+              }`}
+            >
+              <Image
+                src="/images/branding/cube-live-logo.png"
+                alt=""
+                fill
+                priority
+                sizes="142px"
+                className="object-contain object-left drop-shadow-[0_1px_1px_rgba(255,255,255,0.6)]"
+              />
+            </span>
+            <span
+              aria-hidden
+              className={`hidden sm:block h-9 w-px bg-[#33454E]/15 transition-transform duration-500 ${compact ? '-translate-x-4' : ''}`}
+            />
+            <span
+              className={`hidden sm:flex flex-col leading-none transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+                compact ? '-translate-x-4' : ''
+              }`}
+            >
+              <span className="font-display text-[19px] font-extrabold tracking-[0.08em] text-[#243239]">CUBE</span>
+              <span
+                className={`font-sans text-[11px] font-bold uppercase tracking-[0.12em] text-[#5B6A71] mt-1 transition-[opacity,transform] duration-300 ${
+                  compact ? 'opacity-0 -translate-y-1' : 'opacity-100'
+                }`}
+              >
+                Centre of Excellence
+              </span>
+            </span>
+          </Link>
 
-          <div className="h-full flex items-center justify-between gap-4 pl-2.5 pr-2 xl:pl-3 xl:pr-2.5">
-            {/* Brand */}
-            <Link href="/" className="press group flex items-center gap-3.5 shrink-0" aria-label="CUBE home">
-              <span className="relative h-12 xl:h-[60px] w-[118px] xl:w-[148px] shrink-0">
-                <Image
-                  src="/images/branding/cube-live-logo.png"
-                  alt=""
-                  fill
-                  priority
-                  sizes="148px"
-                  className="object-contain object-left drop-shadow-[0_1px_1px_rgba(255,255,255,0.6)] transition-transform duration-500 group-hover:scale-[1.03]"
-                />
-              </span>
-              <span aria-hidden className="hidden sm:block h-9 w-px bg-[#33454E]/15" />
-              <span className="hidden sm:flex flex-col leading-none">
-                <span className="font-display text-[19px] font-extrabold tracking-[0.08em] text-[#243239]">CUBE</span>
-                <span className="font-sans text-[11px] font-bold uppercase tracking-[0.12em] text-[#5B6A71] mt-1">Centre of Excellence</span>
-              </span>
+          {/* 2 + 3 · menu capsule with sliding hover pill */}
+          <nav
+            aria-label="Primary"
+            className="capsule hidden xl:flex pointer-events-auto items-center p-1 rounded-full"
+            onMouseLeave={() => {
+              setHovered(null);
+              scheduleClose();
+            }}
+          >
+            {MENU.map((raw) => {
+              const item = raw as Item;
+              const mm = hasMega(item.title);
+              const active = isItemActive(pathname, item);
+              const open = mega === item.title;
+              const showHover = hovered === item.title && !active;
+              return (
+                <Link
+                  key={item.title}
+                  href={item.href}
+                  aria-current={active ? 'page' : undefined}
+                  aria-haspopup={mm || undefined}
+                  aria-expanded={mm ? open : undefined}
+                  onMouseEnter={() => {
+                    setHovered(item.title);
+                    openMega(mm ? item.title : null);
+                  }}
+                  onFocus={() => {
+                    setHovered(item.title);
+                    openMega(mm ? item.title : null);
+                  }}
+                  className={`press relative flex items-center gap-1.5 h-11 px-4 2xl:px-5 rounded-full text-[15.5px] whitespace-nowrap transition-colors duration-300 ${
+                    active ? 'text-[#243239] font-bold' : 'text-[#46565E] font-semibold hover:text-[#243239]'
+                  }`}
+                >
+                  {active && (
+                    <motion.span
+                      layoutId="nav-active"
+                      transition={SPRING}
+                      className="absolute inset-0 rounded-full bg-gradient-to-b from-[#F8E3A3] to-[#F0C468]/75 border border-[#C4921B]/25 shadow-[0_6px_18px_-10px_rgba(196,146,27,0.8)]"
+                    />
+                  )}
+                  {showHover && (
+                    <motion.span
+                      layoutId="nav-hover"
+                      transition={SPRING}
+                      className="absolute inset-0 rounded-full bg-white/80 border border-white shadow-[0_6px_16px_-10px_rgba(36,50,57,0.45),inset_0_1px_0_#fff]"
+                    />
+                  )}
+                  <span className="relative">{item.title}</span>
+                  {item.badge && (
+                    <span title={item.badge} aria-label={item.badge} className="relative w-1.5 h-1.5 rounded-full bg-[#E9B215] shadow-[0_0_8px_#E9B215]" />
+                  )}
+                  {mm && (
+                    <ChevronDown
+                      size={14}
+                      strokeWidth={2}
+                      className={`relative transition-transform duration-300 ${open ? 'rotate-180 text-[#9A7015]' : 'text-[#7A888E]'}`}
+                    />
+                  )}
+                </Link>
+              );
+            })}
+          </nav>
+
+          {/* 3 · actions capsule */}
+          <div className="capsule pointer-events-auto flex items-center gap-1 p-1 rounded-full shrink-0">
+            <button
+              type="button"
+              onClick={() => setSearchOpen(true)}
+              aria-label="Search"
+              title={`Search (${isMac ? '⌘K' : 'Ctrl+K'})`}
+              className="press jiggle h-10 w-10 2xl:w-auto 2xl:px-3.5 rounded-full grid 2xl:flex place-items-center items-center gap-2 text-[#46565E] hover:text-[#243239] hover:bg-white/80 transition-colors"
+            >
+              <Search size={18} strokeWidth={2} />
+              <kbd className="hidden 2xl:inline font-sans text-[10px] px-1.5 py-0.5 rounded-md bg-[#E6ECEF] text-[#5B6A71] border border-[#33454E]/10">
+                {isMac ? '⌘K' : 'Ctrl K'}
+              </kbd>
+            </button>
+            <Link
+              href="/admin/login"
+              aria-label="Admin sign in"
+              title="Admin"
+              className="press jiggle hidden xl:grid h-10 w-10 rounded-full place-items-center text-[#5B6A71] hover:text-[#243239] hover:bg-white/80 transition-colors"
+            >
+              <User size={18} strokeWidth={2} />
             </Link>
-
-            {/* Desktop menu */}
-            <nav aria-label="Primary" className="hidden xl:flex items-center gap-0.5 2xl:gap-1" onMouseLeave={scheduleClose}>
-              {MENU.map((raw) => {
-                const item = raw as Item;
-                const hasChildren = Boolean(item.children?.length);
-                const active = isItemActive(pathname, item);
-                const open = dropdown === item.title;
-                return (
-                  <div
-                    key={item.title}
-                    ref={(el) => {
-                      itemRefs.current[item.title] = el;
-                    }}
-                    className="relative"
-                    onMouseEnter={() => openDropdown(hasChildren ? item.title : null)}
-                  >
-                    <Link
-                      href={item.href}
-                      aria-current={active ? 'page' : undefined}
-                      aria-haspopup={hasChildren || undefined}
-                      aria-expanded={hasChildren ? open : undefined}
-                      onFocus={() => openDropdown(hasChildren ? item.title : null)}
-                      className={`press relative flex items-center gap-1.5 h-11 px-3.5 2xl:px-4 rounded-2xl text-[16px] font-semibold whitespace-nowrap transition-colors duration-300 ${
-                        active ? 'text-[#243239] font-bold' : 'text-[#46565E] hover:text-[#243239]'
-                      }`}
-                    >
-                      {active && (
-                        <motion.span
-                          layoutId="nav-active"
-                          transition={{ type: 'spring', stiffness: 420, damping: 36 }}
-                          className="absolute inset-0 rounded-2xl bg-gradient-to-b from-[#F8E3A3] to-[#F0C468]/70 border border-[#C4921B]/30 shadow-[0_8px_24px_-12px_rgba(196,146,27,0.7)]"
-                        />
-                      )}
-                      {!active && open && <span className="absolute inset-0 rounded-2xl bg-[#33454E]/[0.08]" />}
-                      <span className="relative">{item.title}</span>
-                      {item.badge && (
-                        <span
-                          title={item.badge}
-                          aria-label={item.badge}
-                          className="relative w-1.5 h-1.5 rounded-full bg-[#E9B215] shadow-[0_0_8px_#E9B215]"
-                        />
-                      )}
-                      {hasChildren && (
-                        <ChevronDown
-                          size={13}
-                          strokeWidth={1.75}
-                          className={`relative transition-transform duration-300 ${open ? 'rotate-180 text-[#9A7015]' : 'text-[#7A888E]'}`}
-                        />
-                      )}
-                    </Link>
-
-                  </div>
-                );
-              })}
-            </nav>
-
-            {/* Right controls */}
-            <div className="flex items-center gap-1.5 shrink-0">
-              <button
-                type="button"
-                onClick={() => setSearchOpen(true)}
-                aria-label="Search"
-                title={`Search (${isMac ? '⌘K' : 'Ctrl+K'})`}
-                className="press jiggle h-11 w-11 2xl:w-auto 2xl:px-3.5 rounded-2xl grid 2xl:flex place-items-center items-center gap-2 text-[#46565E] hover:text-[#243239] bg-[#33454E]/[0.05] border border-[#33454E]/15 hover:border-[#33454E]/15 transition-colors"
-              >
-                <Search size={18} strokeWidth={2} />
-                <kbd className="hidden 2xl:inline font-sans text-[10px] px-1.5 py-0.5 rounded-md bg-[#E6ECEF] text-[#5B6A71] border border-[#33454E]/15">
-                  {isMac ? '⌘K' : 'Ctrl K'}
-                </kbd>
-              </button>
-
-              <Link
-                href="/admin/login"
-                aria-label="Admin sign in"
-                title="Admin"
-                className="press jiggle hidden xl:grid h-11 w-11 rounded-2xl place-items-center text-[#5B6A71] hover:text-[#243239] bg-[#33454E]/[0.05] border border-[#33454E]/15 hover:border-[#33454E]/15 transition-colors"
-              >
-                <User size={18} strokeWidth={2} />
-              </Link>
-
-              <Link
-                href="/contact"
-                className="hidden sm:inline-flex btn-gold gold-shimmer items-center gap-1.5 h-11 px-5 rounded-2xl text-[15.5px] font-extrabold"
-              >
-                Get in touch <ArrowUpRight size={14} strokeWidth={2} />
-              </Link>
-
-              <button
-                type="button"
-                onClick={() => setDrawerOpen((o) => !o)}
-                className="press xl:hidden h-11 w-11 rounded-2xl grid place-items-center text-[#243239] bg-[#33454E]/[0.05] border border-[#33454E]/15"
-                aria-label={drawerOpen ? 'Close menu' : 'Open menu'}
-                aria-expanded={drawerOpen}
-                aria-controls="site-drawer"
-              >
-                {drawerOpen ? <X size={18} strokeWidth={1.75} /> : <Menu size={18} strokeWidth={1.75} />}
-              </button>
-            </div>
+            <Link
+              href="/contact"
+              className="hidden sm:inline-flex btn-gold gold-shimmer items-center gap-1.5 h-10 px-5 rounded-full text-[15px] font-extrabold"
+            >
+              Get in touch <ArrowUpRight size={14} strokeWidth={2.25} />
+            </Link>
+            <button
+              type="button"
+              onClick={() => setDrawerOpen((o) => !o)}
+              className="press xl:hidden h-10 w-10 rounded-full grid place-items-center text-[#243239] hover:bg-white/80"
+              aria-label={drawerOpen ? 'Close menu' : 'Open menu'}
+              aria-expanded={drawerOpen}
+              aria-controls="site-drawer"
+            >
+              {drawerOpen ? <X size={19} strokeWidth={2} /> : <Menu size={19} strokeWidth={2} />}
+            </button>
           </div>
         </div>
 
-        {/*
-          Dropdown lives OUTSIDE the glass bar: a backdrop-filter nested in
-          another backdrop-filter (or under any CSS filter) can only blur its
-          parent, not the page, so it looked flat. As a sibling it blurs the page.
-        */}
-        <AnimatePresence>
-          {openItem?.children?.length ? (
-            <motion.div
-              key={openItem.title}
-              initial={{ opacity: 0, y: 10, scale: 0.94 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              exit={{ opacity: 0, y: 4, scale: 0.97, transition: { duration: 0.14 } }}
-              transition={{ type: 'spring', stiffness: 520, damping: 30, mass: 0.7 }}
-              style={{ left: dropdownX - 152, transformOrigin: '50% 0%' }}
-              className="hidden xl:block absolute top-full pt-3 w-[304px]"
-              onMouseEnter={() => openDropdown(openItem.title)}
-              onMouseLeave={scheduleClose}
-            >
-              <div className="liquid-glass is-menu rounded-[24px] p-2">
-                <div aria-hidden className="absolute top-0 left-6 right-6 h-px bg-gradient-to-r from-transparent via-[#E9B215]/60 to-transparent" />
-                <p className="label-mono px-3 pt-2 pb-1.5">{openItem.title}</p>
-                {openItem.children.map((sub) => (
-                  <Link
-                    key={sub.title}
-                    href={sub.href}
-                    className="press group flex items-center justify-between gap-3 px-3 py-2.5 rounded-2xl text-[15px] font-semibold text-[#33454E] hover:text-[#243239] hover:bg-white/55 transition-colors"
+        {/* 4 · mega-menu: sibling of the band; positioned by a static wrapper,
+               the glass panel animates itself so its blur is live from frame 1 */}
+        <div
+          className={`hidden xl:flex absolute inset-x-0 top-full justify-center px-8 transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+            compact ? '-translate-y-4' : ''
+          }`}
+        >
+          <AnimatePresence>
+            {megaItem && (
+              <motion.div
+                key="mega"
+                initial={{ opacity: 0, y: -10, scale: 0.98 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                exit={{ opacity: 0, y: -6, scale: 0.99, transition: { duration: 0.16 } }}
+                transition={PANEL_SPRING}
+                onMouseEnter={() => openMega(megaItem.title)}
+                onMouseLeave={() => {
+                  setHovered(null);
+                  scheduleClose();
+                }}
+                className="liquid-glass is-menu pointer-events-auto mt-2 w-full max-w-[1120px] rounded-[28px] p-3 origin-top"
+              >
+                <AnimatePresence mode="wait" initial={false}>
+                  <motion.div
+                    key={megaItem.title}
+                    initial={{ opacity: 0, y: 6 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -4 }}
+                    transition={{ duration: 0.18, ease: [0.22, 1, 0.36, 1] }}
                   >
-                    <span>{sub.title}</span>
-                    <ArrowUpRight size={14} strokeWidth={2} className="text-[#9A7015] opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all" />
-                  </Link>
-                ))}
-              </div>
-            </motion.div>
-          ) : null}
-        </AnimatePresence>
+                    <MegaContent item={megaItem} featured={featuredProjects} />
+                  </motion.div>
+                </AnimatePresence>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
 
-        {/* Drawer (below xl) */}
+        {/* Drawer (below xl): the motion element IS the glass */}
         <AnimatePresence>
           {drawerOpen && (
             <motion.div
@@ -332,11 +384,11 @@ export default function Navbar() {
               role="dialog"
               aria-modal="true"
               aria-label="Site navigation"
-              initial={{ opacity: 0, y: -12, scale: 0.94, filter: 'blur(8px)' }}
-              animate={{ opacity: 1, y: 0, scale: 1, filter: 'blur(0px)', transitionEnd: { filter: 'none' } }}
-              exit={{ opacity: 0, y: -8, scale: 0.97, transition: { duration: 0.18 } }}
-              transition={{ type: 'spring', stiffness: 460, damping: 32, mass: 0.8 }}
-              className="xl:hidden liquid-glass is-solid origin-top mt-2 mx-auto max-w-md rounded-[26px] p-2.5 max-h-[calc(100dvh-96px)] overflow-y-auto overscroll-contain outline-none"
+              initial={{ opacity: 0, y: -10, scale: 0.97 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: -8, scale: 0.98, transition: { duration: 0.16 } }}
+              transition={PANEL_SPRING}
+              className="xl:hidden liquid-glass is-menu pointer-events-auto origin-top absolute inset-x-3 top-[calc(100%+8px)] mx-auto max-w-md rounded-[26px] p-2.5 max-h-[calc(100dvh-88px)] overflow-y-auto overscroll-contain outline-none"
             >
               <nav aria-label="Mobile" className="space-y-0.5">
                 {DRAWER.map((raw, i) => {
@@ -346,7 +398,7 @@ export default function Navbar() {
                   const active = isItemActive(pathname, item);
                   const panelId = `drawer-${item.title.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`;
                   const row = `press flex w-full items-center justify-between gap-3 px-4 py-3.5 rounded-2xl text-[17px] font-bold transition-colors ${
-                    active || isExpanded ? 'text-[#243239] bg-[#C4921B]/12' : 'text-[#33454E] active:bg-[#33454E]/[0.08]'
+                    active || isExpanded ? 'text-[#243239] bg-[#F0C468]/30' : 'text-[#33454E] active:bg-[#33454E]/[0.08]'
                   }`;
                   return (
                     <motion.div
@@ -414,7 +466,7 @@ export default function Navbar() {
                   href="/admin/login"
                   onClick={() => setDrawerOpen(false)}
                   aria-label="Admin sign in"
-                  className="h-11 w-11 rounded-xl grid place-items-center text-[#5B6A71] bg-[#33454E]/[0.05] border border-[#33454E]/15"
+                  className="h-12 w-12 rounded-2xl grid place-items-center text-[#5B6A71] bg-white/60 border border-[#33454E]/10"
                 >
                   <User size={18} strokeWidth={2} />
                 </Link>
@@ -426,5 +478,77 @@ export default function Navbar() {
 
       <GlobalSearchModal isOpen={searchOpen} onClose={() => setSearchOpen(false)} />
     </>
+  );
+}
+
+/* ───────────────────────── mega-menu content ───────────────────────── */
+
+function MegaContent({ item, featured }: { item: Item; featured: any[] }) {
+  if (item.title === 'Verticals') {
+    return (
+      <div className="grid grid-cols-4 gap-3">
+        {verticals.map((v) => (
+          <PhotoCard key={v.slug} href={`/verticals/${v.slug}`} image={v.heroImage} title={v.title} text={v.tagline} />
+        ))}
+      </div>
+    );
+  }
+
+  if (item.title === 'Projects') {
+    return (
+      <div className="grid grid-cols-4 gap-3">
+        {featured.map((p) => (
+          <PhotoCard key={p.slug} href={`/projects/${p.slug}`} image={p.heroImage} title={p.title} text={p.category} />
+        ))}
+        <Link
+          href="/projects"
+          className="press group rounded-[20px] bg-white/55 border border-white/80 p-5 flex flex-col justify-between hover:bg-white/80 transition-colors"
+        >
+          <span className="label-mono">Portfolio</span>
+          <span>
+            <span className="block font-display text-[22px] font-extrabold text-[#243239] leading-tight">All projects</span>
+            <span className="mt-1 block text-[14px] text-[#5B6A71]">Search and filter the full record.</span>
+          </span>
+          <ArrowUpRight size={20} className="text-[#C4921B] transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+        </Link>
+      </div>
+    );
+  }
+
+  const intro = MEGA_INTRO[item.title];
+  return (
+    <div className="grid grid-cols-[300px_1fr] gap-3">
+      {intro ? (
+        <PhotoCard href={intro.href} image={intro.image} title={intro.title} text={intro.text} tall />
+      ) : (
+        <div />
+      )}
+      <div className="grid grid-cols-2 gap-1 content-start p-2">
+        {item.children?.map((sub) => (
+          <Link
+            key={sub.title}
+            href={sub.href}
+            className="press group flex items-center justify-between gap-3 px-4 py-3 rounded-2xl text-[15.5px] font-semibold text-[#33454E] hover:text-[#243239] hover:bg-white/70 transition-colors"
+          >
+            <span>{sub.title}</span>
+            <ArrowUpRight size={15} strokeWidth={2} className="text-[#C4921B] opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300" />
+          </Link>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function PhotoCard({ href, image, title, text, tall = false }: { href: string; image: string; title: string; text?: string; tall?: boolean }) {
+  return (
+    <Link href={href} className={`press group relative overflow-hidden rounded-[20px] ${tall ? 'min-h-[260px]' : 'h-[230px]'} bg-[#DCE4E8]`}>
+      <Image src={image} alt="" fill sizes="280px" className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.05]" />
+      <span aria-hidden className="absolute inset-0 bg-gradient-to-t from-[#1B262C]/80 via-[#1B262C]/20 to-transparent" />
+      <span className="absolute inset-x-0 bottom-0 p-4 text-white">
+        <span className="block font-display text-[17px] font-bold leading-snug line-clamp-2">{title}</span>
+        {text && <span className="mt-1 block text-[13px] text-white/80 leading-snug line-clamp-2">{text}</span>}
+      </span>
+      <ArrowUpRight size={18} className="absolute top-3 right-3 text-white opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300" />
+    </Link>
   );
 }
