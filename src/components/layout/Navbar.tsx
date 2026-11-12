@@ -41,13 +41,13 @@ type Item = (typeof DRAWER)[number] & { children?: { title: string; href: string
 
 const MEGA_INTRO: Record<string, { image: string; title: string; text: string; href: string }> = {
   About: {
-    image: '/images/about/about_about.jpg',
+    image: '/images/hero/slides_building-training-team.jpg',
     title: 'About CUBE',
     text: 'Centre of Excellence of the Government of Tamil Nadu, with IIT Madras.',
     href: '/about',
   },
   Media: {
-    image: '/images/about/images_about-bg.jpg',
+    image: '/images/media/news/images_newsnew2.jpg',
     title: 'Media centre',
     text: 'News, events, publications and life at CUBE.',
     href: '/media',
@@ -534,7 +534,16 @@ function MegaContent({ item, featured }: { item: Item; featured: any[] }) {
 function PhotoCard({ href, image, title, text, tall = false }: { href: string; image: string; title: string; text?: string; tall?: boolean }) {
   return (
     <Link href={href} className={`press group relative overflow-hidden rounded-[20px] ${tall ? 'min-h-[260px]' : 'h-[230px]'} bg-[#DCE4E8]`}>
-      <Image src={image} alt="" fill sizes="280px" className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.05]" />
+      {/* object-cover crops to the card: request enough pixels for the cropped
+          width (card height x photo aspect) on sharp screens, not the card width */}
+      <Image
+        src={image}
+        alt=""
+        fill
+        quality={85}
+        sizes={tall ? '600px' : '440px'}
+        className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.05]"
+      />
       <span aria-hidden className="absolute inset-0 bg-gradient-to-t from-[#1B262C]/80 via-[#1B262C]/20 to-transparent" />
       <span className="absolute inset-x-0 bottom-0 p-4 text-white">
         <span className="block font-display text-[18px] font-bold leading-snug line-clamp-2">{title}</span>
