@@ -15,11 +15,11 @@ import { Pause, Play, Quote } from 'lucide-react';
  * Scrolling is driven by rAF writes to scrollTop (no React re-renders).
  */
 
-const SPEED = 40; // px per second
+const SPEED = 52; // px per second
 const START_DELAY = 1400; // ms after the box comes into view
-const END_HOLD = 2600; // ms at the end before rewinding
+const END_HOLD = 1500; // ms at the end before rewinding
 const AFTER_USER = 3500; // ms of quiet after a manual scroll
-const TOP_HOLD = 1800; // ms at the top before the next pass
+const TOP_HOLD = 1100; // ms at the top before the next pass
 // gentle start and finish for the glide back to the top
 const easeInOutSine = (k: number) => -(Math.cos(Math.PI * k) - 1) / 2;
 
@@ -128,7 +128,7 @@ export default function MessageSection({
         // start the glide back to the top (longer for longer messages)
         phase = 'rewind';
         rewindFrom = box.scrollTop;
-        rewindDur = Math.min(2800, Math.max(1600, 1100 + rewindFrom * 1.6));
+        rewindDur = Math.min(1800, Math.max(1100, 800 + rewindFrom * 1.0));
         rewindElapsed = 0;
       }
       if (phase === 'rewind') {
