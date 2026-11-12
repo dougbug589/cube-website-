@@ -38,7 +38,9 @@ export default function PageHeader({ badge, title, description, breadcrumbs, bac
   };
 
   return (
-    <div className="bg-gradient-to-b from-[#FFFFFF] via-[#FAF8F4] to-[#F5EFE4] text-[#24272B] pt-28 sm:pt-32 pb-12 sm:pb-16 border-b border-[#E5E7EB] relative overflow-hidden select-none">
+    <div className="bg-gradient-to-b from-[#FFFFFF] via-[#FAF8F4] to-[#F5EFE4] text-[#24272B] pt-24 sm:pt-28 lg:pt-14 pb-12 sm:pb-16 border-b border-[#E5E7EB] relative overflow-hidden select-none">
+      {/* Gold hairline tying inner pages to the slate chrome */}
+      <div aria-hidden className="absolute top-0 inset-x-0 h-[3px] bg-gradient-to-r from-[#33454E] via-[#C4921B] to-[#33454E]" />
       {/* Subtle Architectural Dot Grid */}
       <div 
         className="absolute inset-0 pointer-events-none opacity-[0.035]"

@@ -38,7 +38,8 @@ import {
 
 
 
-import ArchitecturalHero from '@/components/hero/ArchitecturalHero';
+import EtihadHero from '@/components/hero/EtihadHero';
+import StackedProjectCarousel from '@/components/home/StackedProjectCarousel';
 
 
 
@@ -54,7 +55,6 @@ import VerticalFlipCard from '@/components/cards/VerticalFlipCard';
 
 
 
-import ProjectCard from '@/components/cards/ProjectCard';
 
 
 
@@ -106,7 +106,6 @@ export default function HomePage() {
 
 
 
-  const [activeProjectTab, setActiveProjectTab] = useState<string>('All');
   const [projectList, setProjectList] = useState<any[]>(fallbackProjects);
   const [verticalList, setVerticalList] = useState<any[]>(fallbackVerticals);
   const [celServiceList, setCelServiceList] = useState<any[]>(celOverview.testingServices);
@@ -208,15 +207,6 @@ export default function HomePage() {
 
 
 
-  const filteredProjects = activeProjectTab === 'All'
-
-
-
-    ? projectList.filter(p => p.featured).slice(0, 6)
-
-
-
-    : projectList.filter(p => p.category === activeProjectTab).slice(0, 6);
 
 
 
@@ -228,7 +218,7 @@ export default function HomePage() {
 
 
 
-    <div className="flex flex-col min-h-screen bg-[#FFFFFF] text-[#24272B]">
+    <div className="flex flex-col min-h-screen bg-[#2B3B44] text-[#24272B]">
 
 
 
@@ -236,11 +226,34 @@ export default function HomePage() {
 
 
 
-      {/* 1. ASYMMETRICAL EDITORIAL ARCHITECTURAL HERO */}
+      {/* 1. ETIHAD HERO — full-bleed photo + floating project search */}
+      <EtihadHero />
 
-
-
-      <ArchitecturalHero />
+      {/* 1b. DARK SLATE — gold constellation + stacked featured-project carousel */}
+      <section className="relative bg-[#2B3B44] text-white pb-16 lg:pb-20 overflow-hidden">
+        <svg aria-hidden className="absolute inset-x-0 top-0 w-full h-72 opacity-40 pointer-events-none" preserveAspectRatio="none" viewBox="0 0 1400 300">
+          <g stroke="#C4921B" strokeWidth="0.6" fill="none" opacity="0.55">
+            <path d="M 100 40 L 320 120 L 560 60 L 780 150" />
+            <path d="M 320 120 L 460 200 L 700 160 L 980 80" />
+            <path d="M 780 150 L 980 80 L 1200 140 L 1380 90" />
+          </g>
+          <g fill="#C4921B" opacity="0.7">
+            {[[100,40],[320,120],[560,60],[780,150],[460,200],[700,160],[980,80],[1200,140],[1380,90]].map(([x,y],i)=>(
+              <circle key={i} cx={x} cy={y} r="1.8" />
+            ))}
+          </g>
+        </svg>
+        <div className="relative px-5 sm:px-8 lg:px-16 pt-4 lg:pt-8 reveal">
+          <span className="text-[10px] uppercase tracking-[0.3em] text-[#A89476]">Applied execution</span>
+          <h2 className="headline-light text-3xl lg:text-4xl mt-2">
+            Projects across <span className="gold-keyword">Tamil Nadu</span> &amp; beyond
+          </h2>
+          <p className="text-sm text-white/60 font-light mt-2">Let us assure your next build — TPQA, PMC and proof checking for 40+ public schemes.</p>
+        </div>
+        <div className="mt-6 reveal">
+          <StackedProjectCarousel projects={projectList} />
+        </div>
+      </section>
 
 
 
@@ -393,226 +406,6 @@ export default function HomePage() {
 
 
               <ArrowUpRight className="w-3.5 h-3.5 ml-2 text-[#C4921B]" />
-
-
-
-            </Link>
-
-
-
-          </div>
-
-
-
-
-
-
-
-        </div>
-
-
-
-      </section>
-
-
-
-
-
-
-
-      {/* 5. FEATURED PROJECTS – EDITORIAL PORTFOLIO */}
-
-
-
-      <section className="py-24 bg-[#FFFFFF] border-b border-[#E5E7EB]">
-
-
-
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-
-
-
-          
-
-
-
-          <div className="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-6">
-
-
-
-            <div>
-
-
-
-              <span className="text-xs uppercase tracking-widest text-[#C4921B] font-bold">
-
-
-
-                Applied Execution
-
-
-
-              </span>
-
-
-
-              <h2 className="font-serif text-3xl sm:text-5xl font-light text-[#24272B] tracking-tight mt-1">
-
-
-
-                Featured Applied Projects
-
-
-
-              </h2>
-
-
-
-              <p className="text-xs sm:text-sm text-[#747B83] mt-2 max-w-xl">
-
-
-
-                Independent Third Party Quality Assurance (TPQA), PMC, and structural proof checking across 40+ premier public schemes.
-
-
-
-              </p>
-
-
-
-            </div>
-
-
-
-
-
-
-
-            {/* Filter Tabs in Architectural Pill Style */}
-
-
-
-            <div className="flex flex-wrap gap-2">
-
-
-
-              {['All', 'Building & Construction', 'Environment & Sustainability', 'Smart Cities', 'Urban Planning & Transportation'].map((cat) => (
-
-
-
-                <button
-
-
-
-                  key={cat}
-
-
-
-                  onClick={() => setActiveProjectTab(cat)}
-
-
-
-                  className={`px-4 py-2 rounded-full text-xs font-semibold transition-all ${
-
-
-
-                    activeProjectTab === cat
-
-
-
-                      ? 'bg-[#F5EFE4] text-[#2B3B44] border border-[#C9BCA6] shadow-sm'
-
-
-
-                      : 'bg-[#F7F7F4] text-[#747B83] hover:text-[#24272B] hover:bg-[#F5EFE4]'
-
-
-
-                  }`}
-
-
-
-                >
-
-
-
-                  {cat === 'Building & Construction' ? 'Buildings' : cat === 'Environment & Sustainability' ? 'Environment' : cat === 'Urban Planning & Transportation' ? 'Transport' : cat}
-
-
-
-                </button>
-
-
-
-              ))}
-
-
-
-            </div>
-
-
-
-          </div>
-
-
-
-
-
-
-
-          {/* Project Grid */}
-
-
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-
-
-
-            {filteredProjects.map((project) => (
-
-
-
-              <ProjectCard key={project.slug} project={project} />
-
-
-
-            ))}
-
-
-
-          </div>
-
-
-
-
-
-
-
-          <div className="mt-16 text-center">
-
-
-
-            <Link
-
-
-
-              href="/projects"
-
-
-
-              className="inline-flex items-center px-8 py-3.5 rounded-full text-xs font-semibold text-[#2B3B44] bg-[#F5EFE4] border border-[#C9BCA6] hover:bg-[#C4921B] hover:text-[#24272B] shadow-sm transition-all"
-
-
-
-            >
-
-
-
-              <span>Explore All 40+ Projects with Full Case Studies</span>
-
-
-
-              <ArrowUpRight className="w-4 h-4 ml-2" />
 
 
 

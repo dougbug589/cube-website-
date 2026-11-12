@@ -1,17 +1,25 @@
 'use client';
 
-import React, { useState, useMemo } from 'react';
+import React, { Suspense, useEffect, useState, useMemo } from 'react';
+import { useSearchParams } from 'next/navigation';
 import { useLiveList } from '@/lib/live';
 import PageHeader from '@/components/common/PageHeader';
 import ProjectCard from '@/components/cards/ProjectCard';
 import { Search, Filter, Sparkles } from 'lucide-react';
 import { projects as fallbackProjects } from '@/data/projects';
 
-export default function ProjectsPage() {
+function ProjectsPageInner() {
+  // Deep links from the home hero search widget: /projects?category=…&q=…
+  const searchParams = useSearchParams();
   // Live CMS data: updates instantly when an admin edits/archives a project.
   const projectList = useLiveList<any>('/api/public/projects', fallbackProjects);
-  const [selectedCategory, setSelectedCategory] = useState<string>('All');
-  const [searchQuery, setSearchQuery] = useState<string>('');
+  const [selectedCategory, setSelectedCategory] = useState<string>(() => searchParams.get('category') || 'All');
+  const [searchQuery, setSearchQuery] = useState<string>(() => searchParams.get('q') || '');
+
+  useEffect(() => {
+    setSelectedCategory(searchParams.get('category') || 'All');
+    setSearchQuery(searchParams.get('q') || '');
+  }, [searchParams]);
 
   const categories = [
     'All',
@@ -116,5 +124,14 @@ export default function ProjectsPage() {
         </div>
       </section>
     </div>
+  );
+}
+
+export default function ProjectsPage() {
+  // useSearchParams needs a Suspense boundary for static prerendering (Next 15).
+  return (
+    <Suspense fallback={null}>
+      <ProjectsPageInner />
+    </Suspense>
   );
 }
