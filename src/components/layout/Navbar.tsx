@@ -119,7 +119,7 @@ export default function Navbar() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-0 z-40 bg-[#070E5C]/15 backdrop-blur-[2px] lg:hidden"
+            className="fixed inset-0 z-40 bg-[#070E5C]/15 backdrop-blur-[2px] xl:hidden"
           />
         )}
       </AnimatePresence>
@@ -163,7 +163,7 @@ export default function Navbar() {
             </Link>
 
             {/* Desktop Navigation Links with Sliding Morphing Active Indicator */}
-            <nav className="hidden lg:flex items-center space-x-0.5 xl:space-x-1 relative">
+            <nav className="hidden xl:flex items-center space-x-0.5 2xl:space-x-1 relative">
               {navigationItems.map((item) => {
                 const isActive = pathname === item.href || (item.children && item.children.some(c => pathname === c.href));
                 const hasChildren = Boolean(item.children && item.children.length > 0);
@@ -177,7 +177,7 @@ export default function Navbar() {
                   >
                     <Link
                       href={item.href}
-                      className={`relative flex items-center whitespace-nowrap px-2.5 xl:px-4 py-2 text-[13px] xl:text-[15px] font-semibold tracking-wider transition-colors duration-300 rounded-full z-10 shrink-0 ${
+                      className={`relative flex items-center whitespace-nowrap px-2.5 2xl:px-4 py-2 text-[13px] 2xl:text-[15px] font-semibold tracking-wider transition-colors duration-300 rounded-full z-10 shrink-0 ${
                         isActive
                           ? 'text-[#070E5C] font-bold bg-white/30 backdrop-blur-xl backdrop-saturate-150 border border-white/55 shadow-[0_4px_14px_rgba(255,255,255,0.16),inset_0_1px_1px_rgba(255,255,255,0.65)]'
                           : 'text-[#24272B] border border-transparent hover:text-[#070E5C] hover:bg-white/20'
@@ -245,7 +245,7 @@ export default function Navbar() {
             </nav>
 
             {/* Right Quick Controls */}
-            <div className="hidden lg:flex items-center space-x-2 shrink-0">
+            <div className="hidden xl:flex items-center space-x-2 shrink-0">
               <button
                 onClick={() => setSearchOpen(true)}
                 className="p-2 xl:p-2.5 rounded-full bg-white/70 hover:bg-white text-[#24272B] transition-all flex items-center space-x-1.5 text-xs border border-white/80 shadow-[0_2px_10px_rgba(0,0,0,0.02)] active:scale-95 shrink-0"
@@ -266,7 +266,7 @@ export default function Navbar() {
             </div>
 
             {/* Mobile Menu Toggle Button */}
-            <div className="flex items-center space-x-2 lg:hidden">
+            <div className="flex items-center space-x-2 xl:hidden">
               <button
                 onClick={() => setSearchOpen(true)}
                 className="p-3 rounded-full bg-white/80 text-[#24272B] border border-white/80 shadow-xs"
@@ -302,7 +302,7 @@ export default function Navbar() {
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: -15, scale: 0.98 }}
               transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
-              className="relative w-[94%] max-w-md mx-auto mt-2 rounded-3xl bg-white/95 backdrop-blur-2xl border border-white/80 shadow-[0_20px_50px_rgba(7,14,92,0.15)] p-4 sm:p-5 lg:hidden max-h-[calc(100dvh-100px)] overflow-y-auto overscroll-contain outline-none z-50"
+              className="relative w-[94%] max-w-md mx-auto mt-2 rounded-3xl bg-white/95 backdrop-blur-2xl border border-white/80 shadow-[0_20px_50px_rgba(7,14,92,0.15)] p-4 sm:p-5 xl:hidden max-h-[calc(100dvh-100px)] overflow-y-auto overscroll-contain outline-none z-50"
             >
               <nav className="space-y-1" aria-label="Mobile">
                 {navigationItems.map((item, mIdx) => {
