@@ -1,14 +1,37 @@
 'use client';
 
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import Link from 'next/link';
-import { Search, X, ArrowRight, Building, Leaf, Cpu, Compass, FileText, FlaskConical } from 'lucide-react';
+import { Search, X, ArrowRight, Building, Leaf, Cpu, Compass, FileText, FlaskConical, LayoutGrid } from 'lucide-react';
+import { navigationItems } from '@/data/navigation';
 import { projects as fallbackProjects } from '@/data/projects';
 import { verticals } from '@/data/verticals';
 import { celOverview } from '@/data/cel';
 import { newsItems as fallbackNews } from '@/data/news';
 
 const txt = (v: unknown) => (typeof v === 'string' ? v : '').toLowerCase();
+
+// Site pages (menu items and their sub-pages) are searchable too.
+const PAGES = (() => {
+  const seen = new Set<string>();
+  const out: { title: string; href: string; parent?: string }[] = [];
+  const add = (title: string, href: string, parent?: string) => {
+    if (seen.has(href + title)) return;
+    seen.add(href + title);
+    out.push({ title, href, parent });
+  };
+  navigationItems.forEach((item) => {
+    add(item.title === 'CEL' ? 'CEL Laboratory' : item.title, item.href);
+    item.children?.forEach((c) => add(c.title, c.href, item.title));
+  });
+  add('Contact Us', '/contact');
+  return out;
+})();
+
+type Result = { title: string; category: string; description: string; href: string; icon: any };
+
+/** First few words, for short typewriter suggestions. */
+const shortPhrase = (s: string, words = 4) => s.split(/\s+/).slice(0, words).join(' ').replace(/[,:;.\-–]+$/, '');
 
 interface GlobalSearchModalProps {
   isOpen: boolean;
@@ -59,17 +82,18 @@ export default function GlobalSearchModal({ isOpen, onClose }: GlobalSearchModal
     };
   }, [isOpen]);
 
-  const searchResults = useMemo(() => {
-    if (!query.trim()) return [];
-    const q = query.toLowerCase().trim();
+  const runSearch = useCallback((raw: string): Result[] => {
+    const q = raw.toLowerCase().trim();
+    if (!q) return [];
 
-    const results: {
-      title: string;
-      category: string;
-      description: string;
-      href: string;
-      icon: any;
-    }[] = [];
+    const results: Result[] = [];
+
+    // Search Pages
+    PAGES.forEach((pg) => {
+      if (txt(pg.title).includes(q) || txt(pg.parent).includes(q)) {
+        results.push({ title: pg.title, category: 'Page', description: pg.parent ? `${pg.parent} · ${pg.title}` : '', href: pg.href, icon: LayoutGrid });
+      }
+    });
 
     // Search Verticals
     verticals.forEach((v) => {
@@ -86,11 +110,11 @@ export default function GlobalSearchModal({ isOpen, onClose }: GlobalSearchModal
 
     // Search Projects
     projects.forEach((p) => {
-      if (txt(p.title).includes(q) || txt(p.description).includes(q) || txt(p.category).includes(q)) {
+      if (txt(p.title).includes(q) || txt(p.description).includes(q) || txt(p.category).includes(q) || txt(p.client).includes(q) || txt(p.location).includes(q)) {
         results.push({
           title: p.title,
-          category: `Project (${p.category})`,
-          description: p.description,
+          category: 'Project',
+          description: [p.client, p.location].filter(Boolean).join(' · ') || p.category,
           href: `/projects/${p.slug}`,
           icon: Building
         });
@@ -124,7 +148,40 @@ export default function GlobalSearchModal({ isOpen, onClose }: GlobalSearchModal
     });
 
     return results.slice(0, 10);
-  }, [query, projects, newsItems, celServices]);
+  }, [projects, newsItems, celServices]);
+
+  const searchResults = useMemo(() => runSearch(query), [runSearch, query]);
+
+  // Typewriter suggestions: real things on the site, each verified to return results.
+  const suggestions = useMemo(() => {
+    const pages = ['About CUBE', 'Board Members', 'IIT Advisory Panel', 'Our Team', 'Tenders', 'Careers', 'CEL Laboratory', 'Vision & Mission'];
+    const verts = verticals.map((v) => v.title);
+    const clients = Array.from(new Set(projects.filter((p) => p.featured && p.client && p.client.length <= 24).map((p) => p.client)));
+    const news = newsItems.map((n) => shortPhrase(String(n.title || ''))).filter((t) => t.length > 6);
+    const cel = celServices.map((c) => shortPhrase(String(c.title || ''), 3)).filter(Boolean);
+    const pools = [pages, verts, clients, news, cel];
+    const mixed: string[] = [];
+    for (let i = 0; mixed.length < 24 && i < 12; i++) pools.forEach((pool) => pool[i] && mixed.push(pool[i]));
+    return Array.from(new Set(mixed)).filter((t) => runSearch(t).length > 0);
+  }, [projects, newsItems, celServices, runSearch]);
+
+  // Type → hold → backspace → next. Runs only while the box is open and empty.
+  const [typed, setTyped] = useState('');
+  const [sIdx, setSIdx] = useState(0);
+  const [deleting, setDeleting] = useState(false);
+  const [reducedMotion, setReducedMotion] = useState(false);
+  useEffect(() => setReducedMotion(window.matchMedia('(prefers-reduced-motion: reduce)').matches), []);
+  useEffect(() => {
+    if (!isOpen || query || reducedMotion || suggestions.length === 0) return;
+    const target = suggestions[sIdx % suggestions.length];
+    let t: ReturnType<typeof setTimeout>;
+    if (!deleting && typed.length < target.length) t = setTimeout(() => setTyped(target.slice(0, typed.length + 1)), 55 + Math.random() * 30);
+    else if (!deleting) t = setTimeout(() => setDeleting(true), 1400);
+    else if (typed.length > 0) t = setTimeout(() => setTyped(typed.slice(0, -1)), 24);
+    else t = setTimeout(() => { setDeleting(false); setSIdx((i) => (i + 1) % suggestions.length); }, 220);
+    return () => clearTimeout(t);
+  }, [isOpen, query, reducedMotion, suggestions, sIdx, typed, deleting]);
+  const currentSuggestion = suggestions.length ? suggestions[sIdx % suggestions.length] : '';
 
   if (!isOpen) return null;
 
@@ -135,16 +192,31 @@ export default function GlobalSearchModal({ isOpen, onClose }: GlobalSearchModal
         onClick={(e) => e.stopPropagation()}
       >
         {/* Search Input Bar */}
-        <div className="flex items-center px-4 py-3.5 border-b border-slate-200 bg-slate-50/50">
+        <div className={`flex items-center px-5 py-4 ${query.trim() ? 'border-b border-slate-200' : ''}`}>
           <Search className="w-5 h-5 text-[#9A7015] mr-3 flex-shrink-0" />
-          <input
-            type="text"
-            autoFocus
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-            placeholder="Search projects, verticals, CEL services, news..."
-            className="w-full bg-transparent text-slate-800 placeholder-slate-400 focus:outline-none text-base"
-          />
+          <div className="relative flex-1 min-w-0">
+            <input
+              type="text"
+              autoFocus
+              value={query}
+              aria-label="Search the site"
+              onChange={(e) => setQuery(e.target.value)}
+              onKeyDown={(e) => {
+                // Tab fills in the suggestion being typed
+                if (e.key === 'Tab' && !query && currentSuggestion) {
+                  e.preventDefault();
+                  setQuery(currentSuggestion);
+                }
+              }}
+              className="w-full bg-transparent text-[#243239] focus:outline-none text-[17px] font-medium"
+            />
+            {!query && (
+              <span aria-hidden className="pointer-events-none absolute inset-0 flex items-center text-[17px] text-[#7A888E] whitespace-nowrap overflow-hidden">
+                Search for&nbsp;<span className="text-[#46565E] font-semibold">{reducedMotion ? 'pages, projects, news…' : typed}</span>
+                {!reducedMotion && <span className="ml-0.5 inline-block w-[2px] h-[1.1em] rounded-full bg-[#C4921B] animate-caret" />}
+              </span>
+            )}
+          </div>
           {query && (
             <button
               onClick={() => setQuery('')}
@@ -161,27 +233,9 @@ export default function GlobalSearchModal({ isOpen, onClose }: GlobalSearchModal
           </button>
         </div>
 
-        {/* Results Area */}
+        {/* Results (only once something is typed) */}
+        {query.trim() && (
         <div className="max-h-[60vh] overflow-y-auto p-4 space-y-2">
-          {!query.trim() && (
-            <div className="py-8 text-center">
-              <p className="text-sm text-slate-500">
-                Type keywords like <span className="font-semibold text-[#9A7015]">&quot;precast&quot;</span>, <span className="font-semibold text-[#9A7015]">&quot;water&quot;</span>, <span className="font-semibold text-[#9A7015]">&quot;TIDEL&quot;</span>, or <span className="font-semibold text-[#9A7015]">&quot;testing&quot;</span>.
-              </p>
-              <div className="mt-4 flex flex-wrap justify-center gap-2">
-                {['Building & Construction', 'Environment', 'Smart Cities', 'Bus Terminals', 'CEL Lab'].map((tag) => (
-                  <button
-                    key={tag}
-                    onClick={() => setQuery(tag)}
-                    className="px-3 py-1 text-xs bg-slate-100 hover:bg-[#F7EDD3] hover:text-[#9A7015] text-slate-600 rounded-full transition"
-                  >
-                    {tag}
-                  </button>
-                ))}
-              </div>
-            </div>
-          )}
-
           {query.trim() && searchResults.length === 0 && (
             <div className="py-12 text-center text-slate-500">
               <p className="text-base font-medium">No results found for &quot;{query}&quot;</p>
@@ -219,6 +273,7 @@ export default function GlobalSearchModal({ isOpen, onClose }: GlobalSearchModal
             );
           })}
         </div>
+        )}
       </div>
     </div>
   );
