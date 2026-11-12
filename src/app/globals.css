@@ -341,6 +341,52 @@
 }
 .jiggle:hover > svg, .jiggle:focus-visible > svg { animation: jiggle 0.55s var(--ease-out); }
 
+/* ═══════════ SPLASH + PAGE REVEAL ═══════════ */
+.splash {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: grid;
+  place-items: center;
+  background: var(--canvas-1);
+  transform: translateY(0);
+  border-radius: 0;
+  transition: transform 0.85s cubic-bezier(0.76, 0, 0.24, 1), border-radius 0.85s cubic-bezier(0.76, 0, 0.24, 1);
+  will-change: transform;
+}
+.splash.is-exit {
+  transform: translateY(-104%);
+  border-bottom-left-radius: 56px;
+  border-bottom-right-radius: 56px;
+}
+html.no-splash .splash { display: none; }
+.splash-inner { display: flex; flex-direction: column; align-items: center; transition: transform 0.85s cubic-bezier(0.76, 0, 0.24, 1), opacity 0.5s ease; }
+.splash.is-exit .splash-inner { transform: translateY(40px) scale(0.96); opacity: 0; }
+
+@keyframes splashLogo { from { opacity: 0; transform: scale(0.86); filter: blur(10px); } to { opacity: 1; transform: none; filter: none; } }
+@keyframes splashRise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+@keyframes splashLine { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+.splash-logo { animation: splashLogo 0.8s var(--spring-soft) both; }
+.splash-word { animation: splashRise 0.6s var(--ease-out) 0.18s both; }
+.splash-tag { animation: splashRise 0.6s var(--ease-out) 0.28s both; }
+.splash-line {
+  display: block;
+  width: 120px;
+  height: 3px;
+  border-radius: 3px;
+  background: linear-gradient(90deg, #F0C468, #C4921B);
+  transform-origin: left center;
+  animation: splashLine 0.9s var(--ease-out) 0.2s both;
+}
+
+/* page content waits slightly lowered, then springs up as the splash lifts */
+html.splash-pending .page-shell { transform: translateY(56px) scale(0.975); opacity: 0.4; }
+html.splash-pending.splash-done .page-shell {
+  transform: none;
+  opacity: 1;
+  transition: transform 1.05s var(--spring-soft), opacity 0.6s ease;
+}
+
 /* ═══════════ MOTION ═══════════ */
 @keyframes riseIn { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
 @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
@@ -386,6 +432,8 @@
 .reveal-stagger.revealed > :nth-child(n+7) { transition-delay: 340ms; }
 
 @media (prefers-reduced-motion: reduce) {
+  .splash { display: none; }
+  html.splash-pending .page-shell { transform: none; opacity: 1; }
   .reveal, .reveal-stagger > * { opacity: 1; transform: none; filter: none; transition: none; }
   *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
 }

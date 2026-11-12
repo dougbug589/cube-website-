@@ -3,6 +3,7 @@ import { Plus_Jakarta_Sans } from 'next/font/google';
 import './globals.css';
 import PublicShellWrapper from '@/components/layout/PublicShellWrapper';
 import LegacyCacheCleanup from '@/components/common/LegacyCacheCleanup';
+import { SPLASH_BOOT_SCRIPT } from '@/lib/splash';
 
 // One family site-wide: Plus Jakarta Sans. Soft curves and open forms, but
 // formal enough for an institutional site; bold display, 500-weight body.
@@ -56,8 +57,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${jakarta.variable} scroll-smooth`}>
+    <html lang="en" className={`${jakarta.variable} scroll-smooth`} suppressHydrationWarning>
       <body className="min-h-screen flex flex-col bg-[#F6F8F9] text-[#243239] antialiased">
+        {/* decides splash vs no-splash before first paint (no flash on return visits) */}
+        <script dangerouslySetInnerHTML={{ __html: SPLASH_BOOT_SCRIPT }} />
         <LegacyCacheCleanup />
         <PublicShellWrapper>{children}</PublicShellWrapper>
       </body>

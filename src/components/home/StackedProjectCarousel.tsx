@@ -3,13 +3,23 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { motion } from 'framer-motion';
-import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
+import { motion, AnimatePresence, type PanInfo } from 'framer-motion';
+import { ArrowRight } from 'lucide-react';
 
 /**
- * Etihad "Flights from Kolkata" stacked carousel, for CUBE projects.
- * Five overlapping cards; the centre card is elevated and larger. Auto-rotates,
- * pauses on hover/focus, arrows + keyboard, click a side card to centre it.
+ * Stacked project carousel (Etihad "Flights from …" pattern) for CUBE.
+ *
+ * Every card has the same box and is placed purely with transforms
+ * (x, scale, y, opacity), so a switch is a real slide on the compositor,
+ * driven by an under-damped spring for a soft bounce. Cards enter from one
+ * edge and leave by the other in the direction of travel.
+ *
+ * No arrows or dots: it auto-scrolls, a side card can be clicked, and the
+ * stage can be swiped / dragged with a rubber-band feel. Keyboard ← → work
+ * when a card has focus.
+ *
+ * Pauses while a card is hovered or focused, while dragging, off-screen,
+ * in a hidden tab, and for reduced motion.
  */
 
 type AnyProject = {
@@ -18,10 +28,8 @@ type AnyProject = {
   title: string;
   category?: string;
   heroImage?: string;
-  description?: string;
   client?: string;
   location?: string;
-  scopeOfWork?: string[];
   featured?: boolean;
   status?: string;
 };
@@ -33,186 +41,206 @@ const SHORT_CATEGORY: Record<string, string> = {
   'Urban Planning & Transportation': 'Urban · Transport',
 };
 
-const VISIBLE = 5; // odd number, centre = 2
 const AUTO_MS = 4000;
+const BOUNCE = { type: 'spring' as const, stiffness: 190, damping: 17, mass: 0.9 };
+
+/** transform pose for a card `offset` slots away from the centre */
+function pose(offset: number, spacing: number) {
+  const abs = Math.abs(offset);
+  return {
+    x: offset * spacing,
+    scale: abs === 0 ? 1 : abs === 1 ? 0.8 : 0.64,
+    y: abs === 0 ? -12 : abs === 1 ? 26 : 52,
+    opacity: abs >= 3 ? 0 : abs === 2 ? 0.55 : 1,
+  };
+}
 
 export default function StackedProjectCarousel({ projects }: { projects: AnyProject[] }) {
   const items = useMemo(() => {
     const live = projects.filter((p) => p.status !== 'archived');
     const featured = live.filter((p) => p.featured);
-    const pool = featured.length >= VISIBLE ? featured : [...featured, ...live.filter((p) => !p.featured)];
+    const pool = featured.length >= 5 ? featured : [...featured, ...live.filter((p) => !p.featured)];
     return pool.slice(0, 10);
   }, [projects]);
 
+  const n = items.length;
   const [center, setCenter] = useState(0);
-  // Pause only while a card is hovered or focused, or the carousel is not
-  // visible. (Pausing on the whole full-width section kept it frozen.)
+  const [dir, setDir] = useState<1 | -1>(1);
   const [cardHover, setCardHover] = useState(false);
   const [cardFocus, setCardFocus] = useState(false);
+  const [dragging, setDragging] = useState(false);
   const [onScreen, setOnScreen] = useState(false);
   const [reduced, setReduced] = useState(false);
+  const [spacing, setSpacing] = useState(350);
   const rootRef = useRef<HTMLDivElement>(null);
 
-  const n = items.length;
-  const next = useCallback(() => setCenter((c) => (n ? (c + 1) % n : 0)), [n]);
-  const prev = useCallback(() => setCenter((c) => (n ? (c - 1 + n) % n : 0)), [n]);
-  const paused = cardHover || cardFocus || !onScreen || reduced;
+  const go = useCallback(
+    (step: number) => {
+      if (!n) return;
+      setDir(step >= 0 ? 1 : -1);
+      setCenter((c) => (((c + step) % n) + n) % n);
+    },
+    [n]
+  );
 
+  // visibility, reduced motion, responsive spacing
   useEffect(() => {
-    setReduced(window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+    const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
+    setReduced(mq.matches);
+    const sm = window.matchMedia('(min-width: 640px)');
+    const lg = window.matchMedia('(min-width: 1024px)');
+    const applySpacing = () => setSpacing(lg.matches ? 350 : sm.matches ? 270 : 190);
+    applySpacing();
+    sm.addEventListener('change', applySpacing);
+    lg.addEventListener('change', applySpacing);
+
     const el = rootRef.current;
-    if (!el) return;
     let visible = false;
     const sync = () => setOnScreen(visible && document.visibilityState === 'visible');
-    const io = new IntersectionObserver(([e]) => {
-      visible = e.isIntersecting;
-      sync();
-    }, { threshold: 0.3 });
-    io.observe(el);
+    const io = el
+      ? new IntersectionObserver(([e]) => {
+          visible = e.isIntersecting;
+          sync();
+        }, { threshold: 0.3 })
+      : null;
+    if (el && io) io.observe(el);
     document.addEventListener('visibilitychange', sync);
     return () => {
-      io.disconnect();
+      sm.removeEventListener('change', applySpacing);
+      lg.removeEventListener('change', applySpacing);
+      io?.disconnect();
       document.removeEventListener('visibilitychange', sync);
     };
   }, []);
 
-  // Auto-scroll: one step every AUTO_MS. Keyed on `center`, so any manual
-  // step restarts the clock instead of double-stepping.
+  // auto-scroll; keyed on `center` so a manual step restarts the clock
+  const paused = cardHover || cardFocus || dragging || !onScreen || reduced;
   useEffect(() => {
     if (paused || n < 2) return;
-    const t = setTimeout(next, AUTO_MS);
+    const t = setTimeout(() => go(1), AUTO_MS);
     return () => clearTimeout(t);
-  }, [center, paused, n, next]);
+  }, [center, paused, n, go]);
 
   if (n === 0) return null;
 
-  const pauseHandlers = {
-    onMouseEnter: () => setCardHover(true),
-    onMouseLeave: () => setCardHover(false),
-    onFocus: () => setCardFocus(true),
-    onBlur: () => setCardFocus(false),
+  const offsets = n >= 5 ? [-2, -1, 0, 1, 2] : n >= 3 ? [-1, 0, 1] : [0];
+  const onDragEnd = (_: unknown, info: PanInfo) => {
+    setDragging(false);
+    const swipe = info.offset.x + info.velocity.x * 0.2;
+    if (swipe < -60) go(1);
+    else if (swipe > 60) go(-1);
   };
 
-  const half = Math.floor(VISIBLE / 2);
-  const visible = Array.from({ length: Math.min(VISIBLE, n) }, (_, i) => {
-    const offset = i - half;
-    const index = (center + offset + n) % n;
-    return { offset, index, project: items[index] };
-  });
-
   return (
-    <div
-      ref={rootRef}
-      className="relative"
-      onKeyDown={(e) => {
-        if (e.key === 'ArrowRight') next();
-        if (e.key === 'ArrowLeft') prev();
-      }}
-    >
-      {/* Stage */}
-      <div className="relative flex items-end justify-center px-4 sm:px-6 overflow-hidden pt-10 pb-14 min-h-[460px] sm:min-h-[540px]">
-        {visible.map(({ offset, index, project }) => {
-          const isCenter = offset === 0;
-          const abs = Math.abs(offset);
-          const href = `/projects/${project.slug || project.id || ''}`;
-          const label = SHORT_CATEGORY[project.category || ''] || project.category || 'Project';
-          const sub = project.location || project.client || 'Tamil Nadu · IIT Madras';
-          const z = 20 - abs;
-          const key = `${project.slug || project.id || index}`;
+    <div ref={rootRef} className="relative">
+      <motion.div
+        className="relative h-[480px] sm:h-[580px] overflow-hidden touch-pan-y cursor-grab active:cursor-grabbing"
+        drag="x"
+        dragConstraints={{ left: 0, right: 0 }}
+        dragElastic={0.18}
+        dragTransition={{ bounceStiffness: 420, bounceDamping: 22 }}
+        onDragStart={() => setDragging(true)}
+        onDragEnd={onDragEnd}
+        onKeyDown={(e) => {
+          if (e.key === 'ArrowRight') go(1);
+          if (e.key === 'ArrowLeft') go(-1);
+        }}
+      >
+        <AnimatePresence initial={false} custom={dir}>
+          {offsets.map((offset) => {
+            const index = (((center + offset) % n) + n) % n;
+            const project = items[index];
+            const key = `${project.slug || project.id || index}`;
+            const isCenter = offset === 0;
+            const target = pose(offset, spacing);
+            const href = `/projects/${project.slug || project.id || ''}`;
+            const label = SHORT_CATEGORY[project.category || ''] || project.category || 'Project';
+            const sub = project.location || project.client || 'Tamil Nadu · IIT Madras';
 
-          const card = (
-            <motion.div
-              key={key}
-              initial={false}
-              animate={{
-                scale: isCenter ? 1 : abs === 1 ? 0.9 : 0.8,
-                y: isCenter ? -22 : abs === 1 ? 6 : 22,
-                opacity: abs === 2 ? 0.7 : 1,
-                filter: abs === 2 ? 'blur(1.5px)' : 'blur(0px)',
-              }}
-              transition={{ type: 'spring', stiffness: 240, damping: 24, mass: 0.9 }}
-              style={{ zIndex: z }}
-              className={`relative shrink-0 rounded-[26px] overflow-hidden bg-[#DCE4E8] ring-1 ring-black/5 will-change-transform ${
-                isCenter
-                  ? 'w-[290px] sm:w-[380px] h-[400px] sm:h-[470px] depth-3'
-                  : 'w-[220px] sm:w-[290px] h-[330px] sm:h-[400px] depth-2'
-              } ${abs === 2 ? 'hidden md:block' : ''} ${offset !== -half ? '-ml-10 sm:-ml-14' : ''}`}
-            >
-              <Image
-                src={project.heroImage || '/images/about/about_about.jpg'}
-                alt={project.title}
-                fill
-                sizes="(max-width: 640px) 70vw, 380px"
-                className={`object-cover transition-transform duration-700 ${isCenter ? 'scale-100' : 'scale-105'}`}
-              />
-              <div className="liquid-glass-dark absolute top-4 left-4 rounded-full px-3.5 py-1.5 text-[12.5px] text-white font-bold">
-                {label}
-              </div>
-              <div className="absolute inset-x-0 bottom-0 text-left bg-gradient-to-t from-black/80 via-black/30 to-transparent pt-24 pb-5 px-5">
-                <div className={`font-display text-white font-bold leading-snug line-clamp-2 ${isCenter ? 'text-xl sm:text-[26px]' : 'text-base sm:text-lg'}`}>
-                  {project.title}
-                </div>
-                <div className="text-[13.5px] text-[#F0C468] mt-1.5 font-semibold truncate">{sub}</div>
-                {isCenter && (
-                  <div className="liquid-glass-dark mt-4 inline-flex items-center gap-1.5 h-9 px-4 rounded-full text-[14px] font-bold text-white">
-                    View project <ArrowRight size={14} />
-                  </div>
+            return (
+              <motion.div
+                key={key}
+                custom={dir}
+                variants={{
+                  enter: (d: number) => ({ ...pose(3 * d, spacing), opacity: 0 }),
+                  show: { x: target.x, scale: target.scale, y: target.y, opacity: target.opacity },
+                  leave: (d: number) => ({ ...pose(-3 * d, spacing), opacity: 0 }),
+                }}
+                initial="enter"
+                animate="show"
+                exit="leave"
+                transition={reduced ? { duration: 0 } : BOUNCE}
+                style={{ zIndex: 10 - Math.abs(offset) }}
+                className={`absolute left-1/2 top-8 sm:top-10 -ml-[165px] sm:-ml-[220px] w-[330px] sm:w-[440px] h-[420px] sm:h-[500px] will-change-transform ${
+                  Math.abs(offset) === 2 ? 'hidden md:block' : ''
+                }`}
+              >
+                {isCenter ? (
+                  <Link
+                    href={href}
+                    draggable={false}
+                    onClick={(e) => dragging && e.preventDefault()}
+                    onMouseEnter={() => setCardHover(true)}
+                    onMouseLeave={() => setCardHover(false)}
+                    onFocus={() => setCardFocus(true)}
+                    onBlur={() => setCardFocus(false)}
+                    className="press block h-full rounded-[28px] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#E9B215]"
+                  >
+                    <Card project={project} label={label} sub={sub} isCenter />
+                  </Link>
+                ) : (
+                  <button
+                    type="button"
+                    aria-label={`Show ${project.title}`}
+                    onClick={() => !dragging && go(offset)}
+                    onMouseEnter={() => setCardHover(true)}
+                    onMouseLeave={() => setCardHover(false)}
+                    onFocus={() => setCardFocus(true)}
+                    onBlur={() => setCardFocus(false)}
+                    className="press block w-full h-full text-left rounded-[28px] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#E9B215]"
+                  >
+                    <Card project={project} label={label} sub={sub} isCenter={false} />
+                  </button>
                 )}
-              </div>
-              {/* gold specular edge on the hero card */}
-              {isCenter && <div aria-hidden className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#E9B215]/80 to-transparent" />}
-            </motion.div>
-          );
+              </motion.div>
+            );
+          })}
+        </AnimatePresence>
+      </motion.div>
 
-          return isCenter ? (
-            <Link key={key} href={href} {...pauseHandlers} className="press relative focus:outline-none focus-visible:ring-2 focus-visible:ring-[#E9B215] rounded-[26px]" style={{ zIndex: z }}>
-              {card}
-            </Link>
-          ) : (
-            <button
-              key={key}
-              {...pauseHandlers}
-              type="button"
-              aria-label={`Show ${project.title}`}
-              onClick={() => setCenter(index)}
-              className="press relative focus:outline-none focus-visible:ring-2 focus-visible:ring-[#E9B215] rounded-[26px]"
-              style={{ zIndex: z }}
-            >
-              {card}
-            </button>
-          );
-        })}
-      </div>
-
-      {/* Controls */}
-      <div className="flex items-center justify-between px-5 sm:px-8 lg:px-16">
-        <div className="flex items-center gap-2">
-          <button
-            type="button"
-            onClick={prev}
-            aria-label="Previous project"
-            className="press jiggle w-11 h-11 rounded-full grid place-items-center text-[#243239] bg-white/80 border border-[#33454E]/15 shadow-sm hover:bg-[#F0C468] hover:text-[#243239] hover:border-[#C4921B] transition"
-          >
-            <ChevronLeft size={18} strokeWidth={1.5} />
-          </button>
-          <button
-            type="button"
-            onClick={next}
-            aria-label="Next project"
-            className="press jiggle w-11 h-11 rounded-full grid place-items-center text-[#243239] bg-white/80 border border-[#33454E]/15 shadow-sm hover:bg-[#F0C468] hover:text-[#243239] hover:border-[#C4921B] transition"
-          >
-            <ChevronRight size={18} strokeWidth={1.5} />
-          </button>
-          <div className="ml-3 flex items-center gap-1">
-            {items.map((_, i) => (
-              <span key={i} className={`h-1 rounded-full transition-all duration-500 ${i === center ? 'w-6 bg-[#F0C468]' : 'w-1.5 bg-[#33454E]/25'}`} />
-            ))}
-          </div>
-        </div>
+      <div className="flex justify-end px-5 sm:px-8 lg:px-16 -mt-2">
         <Link href="/projects" className="text-[15px] font-bold text-[#243239] hover:text-[#9A7015] border-b-2 border-[#C4921B] pb-0.5 transition-colors">
-          View all
+          View all projects
         </Link>
       </div>
+    </div>
+  );
+}
+
+function Card({ project, label, sub, isCenter }: { project: AnyProject; label: string; sub: string; isCenter: boolean }) {
+  return (
+    <div className={`relative h-full rounded-[28px] overflow-hidden bg-[#DCE4E8] ring-1 ring-black/5 ${isCenter ? 'depth-3' : 'depth-2'}`}>
+      <Image
+        src={project.heroImage || '/images/about/about_about.jpg'}
+        alt={project.title}
+        fill
+        draggable={false}
+        sizes="(max-width: 640px) 330px, 440px"
+        className="object-cover select-none pointer-events-none"
+      />
+      <div className="liquid-glass-dark absolute top-4 left-4 rounded-full px-3.5 py-1.5 text-[12.5px] text-white font-bold">{label}</div>
+      <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent pt-24 pb-5 px-5">
+        <div className="font-display text-white font-bold leading-snug line-clamp-2 text-xl sm:text-[26px]">{project.title}</div>
+        <div className="text-[13.5px] text-[#F0C468] mt-1.5 font-semibold truncate">{sub}</div>
+        <div
+          className={`liquid-glass-dark mt-4 inline-flex items-center gap-1.5 h-9 px-4 rounded-full text-[14px] font-bold text-white transition-opacity duration-300 ${
+            isCenter ? 'opacity-100' : 'opacity-0'
+          }`}
+        >
+          View project <ArrowRight size={14} />
+        </div>
+      </div>
+      {isCenter && <div aria-hidden className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#E9B215]/80 to-transparent" />}
     </div>
   );
 }

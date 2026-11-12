@@ -8,6 +8,7 @@ import UniversalAnnouncementPopup from '@/components/common/UniversalAnnouncemen
 import ScrollProgressBar from '@/components/common/ScrollProgressBar';
 import LiveSync from '@/components/common/LiveSync';
 import RevealOnScroll from '@/components/common/RevealOnScroll';
+import SplashScreen from '@/components/common/SplashScreen';
 
 /**
  * Public shell: fixed ambient canvas, floating glass top bar, full-bleed content.
@@ -43,7 +44,10 @@ export default function PublicShellWrapper({ children }: { children: React.React
       */}
       <Navbar />
 
-      <div className="relative z-[1] flex flex-col min-h-screen">
+      <SplashScreen />
+
+      {/* page-shell: lowered while the splash shows, springs up as it lifts */}
+      <div className="page-shell relative z-[1] flex flex-col min-h-screen">
         <main className="flex-1 w-full overflow-x-clip">{children}</main>
         <Footer />
       </div>
