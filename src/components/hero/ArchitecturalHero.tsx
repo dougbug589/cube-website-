@@ -143,7 +143,7 @@ export default function ArchitecturalHero() {
           aria-hidden="true"
           className="absolute inset-0 w-full h-full object-cover object-center filter contrast-[1.08] brightness-[0.96]"
         >
-          <source src="/video.mp4" type="video/mp4" />
+          <source src="/videos/cube-hero.mp4" type="video/mp4" />
         </video>
 
         {/* Apple VisionOS-style Frosted Glass Vignette: Darkens & tints smoothly so light blue & pure white fonts glow with 4K clarity */}

@@ -41,6 +41,14 @@ export default function AdminDashboardLayout({ children }: AdminLayoutProps) {
     else router.push('/admin/dashboard');
   };
   const [isVerifying, setIsVerifying] = useState(pathname !== '/admin/login');
+  // Shown if verification never answers (e.g. a tab left open across a server
+  // update), instead of spinning forever.
+  const [verifyStuck, setVerifyStuck] = useState(false);
+  useEffect(() => {
+    if (!isVerifying) return;
+    const t = setTimeout(() => setVerifyStuck(true), 8000);
+    return () => clearTimeout(t);
+  }, [isVerifying]);
   const [adminUser, setAdminUser] = useState<{
     fullName: string;
     email: string;
@@ -91,6 +99,29 @@ export default function AdminDashboardLayout({ children }: AdminLayoutProps) {
           <p className="text-xs font-semibold text-[#747B83] uppercase tracking-wider">
             Verifying Admin Authorization...
           </p>
+          {verifyStuck && (
+            <div className="flex flex-col items-center gap-3 pt-2 text-center">
+              <p className="text-xs text-[#4A5568] max-w-xs">
+                This is taking longer than expected. The admin may have been updated since this tab was opened.
+              </p>
+              <div className="flex gap-2">
+                <button
+                  type="button"
+                  onClick={() => window.location.reload()}
+                  className="px-4 py-2 rounded-full text-xs font-semibold bg-[#070E5C] text-white"
+                >
+                  Reload
+                </button>
+                <button
+                  type="button"
+                  onClick={() => window.location.assign('/admin/login')}
+                  className="px-4 py-2 rounded-full text-xs font-semibold bg-white border border-[#BBD6EA] text-[#070E5C]"
+                >
+                  Sign in again
+                </button>
+              </div>
+            </div>
+          )}
         </div>
       </div>
     );
