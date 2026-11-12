@@ -89,6 +89,15 @@ export default function Navbar() {
   const drawerRef = useRef<HTMLDivElement>(null);
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
+  // Menu photos are fetched ahead of time (after the page settles, or as soon
+  // as the pointer reaches the menu) so a panel never opens with blank cards.
+  const [warm, setWarm] = useState(false);
+  useEffect(() => {
+    const w = window as any;
+    const id = w.requestIdleCallback ? w.requestIdleCallback(() => setWarm(true), { timeout: 3000 }) : window.setTimeout(() => setWarm(true), 2000);
+    return () => (w.cancelIdleCallback ? w.cancelIdleCallback(id) : clearTimeout(id));
+  }, []);
+
   const featuredProjects = useMemo(
     () => (projects as any[]).filter((p) => p.featured && p.heroImage).slice(0, 3),
     []
@@ -264,6 +273,7 @@ export default function Navbar() {
           <nav
             aria-label="Primary"
             className="capsule hidden xl:flex pointer-events-auto items-center p-1 rounded-full"
+            onMouseEnter={() => setWarm(true)}
             onMouseLeave={() => {
               setHovered(null);
               scheduleClose();
@@ -394,6 +404,23 @@ export default function Navbar() {
             )}
           </AnimatePresence>
         </div>
+
+        {/* off-screen warm-up: same src/sizes/quality as the menus, so the
+            browser caches exactly the files the panels will ask for */}
+        {warm && (
+          <div aria-hidden className="hidden xl:block fixed left-[-9999px] top-0 w-px h-px overflow-hidden pointer-events-none">
+            {[...verticals.map((v) => v.heroImage), ...featuredProjects.map((p) => p.heroImage)].map((src) => (
+              <span key={`w-${src}`} className="relative block w-px h-px">
+                <Image src={src} alt="" fill quality={85} sizes="440px" loading="eager" />
+              </span>
+            ))}
+            {Array.from(new Set(Object.values(MEGA_PREVIEW))).map((src) => (
+              <span key={`p-${src}`} className="relative block w-px h-px">
+                <Image src={src} alt="" fill quality={85} sizes="400px" loading="eager" />
+              </span>
+            ))}
+          </div>
+        )}
 
         {/* Drawer (below xl): the motion element IS the glass */}
         <AnimatePresence>
@@ -622,6 +649,7 @@ function ListPreview({ item }: { item: Item }) {
               fill
               quality={85}
               sizes="400px"
+              loading="eager"
               className="object-cover object-[50%_22%]"
             />
           </motion.span>
@@ -693,6 +721,7 @@ function PhotoCard({ href, image, title, text, tall = false }: { href: string; i
         fill
         quality={85}
         sizes={tall ? '600px' : '440px'}
+        loading="eager"
         className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.05]"
       />
       <span aria-hidden className="absolute inset-0 bg-gradient-to-t from-[#1B262C]/80 via-[#1B262C]/20 to-transparent" />
