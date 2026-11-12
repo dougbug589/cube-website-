@@ -424,19 +424,19 @@ html.splash-pending.splash-done .page-shell {
 /* Apply on view: add .reveal to any element; RevealOnScroll toggles .revealed */
 .reveal {
   opacity: 0;
-  transform: translateY(22px) scale(0.985);
-  filter: blur(6px);
-  transition: opacity 0.7s var(--ease-out), transform 0.8s var(--spring-soft), filter 0.6s var(--ease-out);
+  transform: translateY(18px) scale(0.99);
+  filter: blur(4px);
+  transition: opacity 0.45s var(--ease-out), transform 0.6s var(--spring-soft), filter 0.4s var(--ease-out);
 }
 .reveal.revealed { opacity: 1; transform: none; filter: none; }
-.reveal-stagger > * { opacity: 0; transform: translateY(18px) scale(0.98); filter: blur(5px); transition: opacity 0.6s var(--ease-out), transform 0.75s var(--spring-soft), filter 0.5s var(--ease-out); }
+.reveal-stagger > * { opacity: 0; transform: translateY(14px) scale(0.985); filter: blur(4px); transition: opacity 0.42s var(--ease-out), transform 0.55s var(--spring-soft), filter 0.36s var(--ease-out); }
 .reveal-stagger.revealed > * { opacity: 1; transform: none; filter: none; }
-.reveal-stagger.revealed > :nth-child(2) { transition-delay: 60ms; }
-.reveal-stagger.revealed > :nth-child(3) { transition-delay: 120ms; }
-.reveal-stagger.revealed > :nth-child(4) { transition-delay: 180ms; }
-.reveal-stagger.revealed > :nth-child(5) { transition-delay: 240ms; }
-.reveal-stagger.revealed > :nth-child(6) { transition-delay: 300ms; }
-.reveal-stagger.revealed > :nth-child(n+7) { transition-delay: 340ms; }
+.reveal-stagger.revealed > :nth-child(2) { transition-delay: 40ms; }
+.reveal-stagger.revealed > :nth-child(3) { transition-delay: 80ms; }
+.reveal-stagger.revealed > :nth-child(4) { transition-delay: 120ms; }
+.reveal-stagger.revealed > :nth-child(5) { transition-delay: 160ms; }
+.reveal-stagger.revealed > :nth-child(6) { transition-delay: 200ms; }
+.reveal-stagger.revealed > :nth-child(n+7) { transition-delay: 230ms; }
 
 @media (prefers-reduced-motion: reduce) {
   .splash { display: none; }

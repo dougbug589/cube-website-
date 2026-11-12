@@ -22,10 +22,11 @@ const CENTRE_LINKS = [
   { label: 'Our Clients', href: '/about/clients' },
 ];
 
+// CUBE's real profiles (same as the original site), from the contact data
 const SOCIAL = [
-  { label: 'LinkedIn', href: 'https://linkedin.com', Icon: Linkedin },
-  { label: 'Twitter', href: 'https://twitter.com', Icon: Twitter },
-  { label: 'Facebook', href: 'https://facebook.com', Icon: Facebook },
+  { label: 'LinkedIn', href: contactInfo.socialLinks.linkedin, Icon: Linkedin },
+  { label: 'Twitter', href: contactInfo.socialLinks.twitter, Icon: Twitter },
+  { label: 'Facebook', href: contactInfo.socialLinks.facebook, Icon: Facebook },
 ];
 
 export default function Footer() {
@@ -54,7 +55,7 @@ export default function Footer() {
                   key={label}
                   href={href}
                   target="_blank"
-                  rel="noreferrer"
+                  rel="noopener noreferrer"
                   aria-label={label}
                   className="press jiggle grid place-items-center w-10 h-10 rounded-full bg-white/70 border border-[#33454E]/15 text-[#46565E] hover:bg-[#F6DA86] hover:border-[#C4921B] hover:text-[#1B262C] transition-colors"
                 >

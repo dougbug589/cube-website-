@@ -7,6 +7,9 @@ const projectRoot = path.dirname(fileURLToPath(import.meta.url));
 const nextConfig = {
   reactStrictMode: true,
   outputFileTracingRoot: projectRoot,
+  // Lets a production preview build live beside the dev server's .next
+  // (NEXT_DIST_DIR=.next-prod next build && NEXT_DIST_DIR=.next-prod next start).
+  distDir: process.env.NEXT_DIST_DIR || '.next',
   compress: true,
   poweredByHeader: false,
   images: {

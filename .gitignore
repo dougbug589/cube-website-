@@ -42,3 +42,6 @@ Thumbs.db
 # server runtime
 logs/
 backups/
+
+# local production preview build
+/.next-prod/
