@@ -17,6 +17,7 @@ Two lines of work run through this repository:
 ### Redesign
 
 #### Added
+- Search dialog: a minimal box whose placeholder types real things you can search (pages such as Board Members or Careers, the verticals, project clients such as IIT Tirupati, news and CEL), each checked to return results; Tab fills in the suggestion. The keyword hint and chip buttons were removed. Site pages are now searchable, and projects match on client and location. (`4b8a4b8`)
 - Home "Work with CUBE" rebuilt as three intent cards (start a project, bid on a tender, join the team), each with an icon, one line and an arrow, plus a slim glass strip with the office address, email and phone. (`12ea909`)
 - Home Partners section: the seven partner logo sheets in white tiles with a slow, staggered float, and a light-gold "Clients served" card that links to the clients page. (`12ea909`)
 - Top bar mega-menus: About and Media list their pages in two columns beside a photo card; Verticals and Projects show photo cards. (`c9eadec`)
