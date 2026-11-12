@@ -141,7 +141,7 @@ export default function GalleryPage() {
                 onClick={() => setSelectedCategory(cat)}
                 className={`px-4 py-2 rounded-xl text-xs font-semibold transition-all ${
                   selectedCategory === cat
-                    ? 'bg-[#EAF2F8] text-[#070E5C] border border-[#BBD6EA] shadow-md'
+                    ? 'bg-[#F5EFE4] text-[#2B3B44] border border-[#C9BCA6] shadow-md'
                     : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
                 }`}
               >
@@ -165,7 +165,7 @@ export default function GalleryPage() {
                     openLightbox(idx);
                   }
                 }}
-                className="group relative h-64 rounded-2xl overflow-hidden shadow-sm hover:shadow-cube cursor-pointer border border-slate-200 bg-slate-900 transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D99A42]"
+                className="group relative h-64 rounded-2xl overflow-hidden shadow-sm hover:shadow-cube cursor-pointer border border-slate-200 bg-slate-900 transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#C4921B]"
               >
                 <Image
                   src={item.src}
@@ -173,10 +173,10 @@ export default function GalleryPage() {
                   fill
                   className="object-cover group-hover:scale-108 transition-transform duration-500"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#070E5C]/90 via-navy-950/20 to-transparent opacity-80 group-hover:opacity-95 transition-opacity" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#2B3B44]/90 via-navy-950/20 to-transparent opacity-80 group-hover:opacity-95 transition-opacity" />
 
                 <div className="absolute top-3 left-3">
-                  <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-white/90 text-[#070E5C] text-[#070E5C] border border-[#BDD7E8]">
+                  <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-white/90 text-[#2B3B44] text-[#2B3B44] border border-[#D8CDB8]">
                     {item.category}
                   </span>
                 </div>
@@ -186,7 +186,7 @@ export default function GalleryPage() {
                   <p className="text-[11px] text-slate-300 line-clamp-1 mt-0.5">{item.description}</p>
                 </div>
 
-                <div className="absolute top-3 right-3 p-1.5 rounded-lg bg-white/90 text-[#070E5C] text-white opacity-0 group-hover:opacity-100 transition-opacity">
+                <div className="absolute top-3 right-3 p-1.5 rounded-lg bg-white/90 text-[#2B3B44] text-white opacity-0 group-hover:opacity-100 transition-opacity">
                   <Maximize2 className="w-3.5 h-3.5" />
                 </div>
               </div>
@@ -246,7 +246,7 @@ export default function GalleryPage() {
               <div className="mt-4 px-10 text-center text-white">
                 <h3 className="text-lg font-bold font-display">{activeItem.title}</h3>
                 <p className="text-xs text-slate-300 mt-1">{activeItem.description}</p>
-                <span className="text-[11px] text-[#D99A42] mt-1 block">
+                <span className="text-[11px] text-[#C4921B] mt-1 block">
                   {(lightboxIndex ?? 0) + 1} of {filteredItems.length}
                 </span>
               </div>

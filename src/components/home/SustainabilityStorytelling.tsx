@@ -55,10 +55,10 @@ const SUSTAINABILITY_PILLARS = [
 
 export default function SustainabilityStorytelling() {
   return (
-    <section className="py-24 bg-gradient-to-b from-[#FFFFFF] via-[#F6FAFD] to-[#EAF2F8] border-b border-[#E5E7EB] relative overflow-hidden">
+    <section className="reveal py-24 bg-gradient-to-b from-[#FFFFFF] via-[#FAF8F4] to-[#F5EFE4] border-b border-[#E5E7EB] relative overflow-hidden">
       
       {/* Background Refractive Glows */}
-      <div className="absolute top-1/3 left-10 w-96 h-96 bg-[#BBD6EA]/25 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-1/3 left-10 w-96 h-96 bg-[#C9BCA6]/25 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-10 right-10 w-96 h-96 bg-white/70 rounded-full blur-3xl pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -66,7 +66,7 @@ export default function SustainabilityStorytelling() {
         {/* Section Header (Morphogenesis Reference 3) */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
           <div className="space-y-2 max-w-2xl">
-            <span className="text-xs uppercase tracking-widest text-[#D99A42] font-bold inline-flex items-center gap-1.5">
+            <span className="text-xs uppercase tracking-widest text-[#C4921B] font-bold inline-flex items-center gap-1.5">
               <Sparkles className="w-3.5 h-3.5" />
               <span>Environmental Stewardship &bull; Morphogenesis Impact Model</span>
             </span>
@@ -80,10 +80,10 @@ export default function SustainabilityStorytelling() {
 
           <Link
             href="/verticals/environment-sustainability"
-            className="px-6 py-3 rounded-full text-xs font-semibold text-[#070E5C] bg-white border border-[#BDD7E8] hover:bg-[#EAF2F8] hover:scale-105 active:scale-95 shadow-xs transition-all self-start md:self-end flex items-center gap-2"
+            className="px-6 py-3 rounded-full text-xs font-semibold text-[#2B3B44] bg-white border border-[#D8CDB8] hover:bg-[#F5EFE4] hover:scale-105 active:scale-95 shadow-xs transition-all self-start md:self-end flex items-center gap-2"
           >
             <span>Explore Environmental Vertical</span>
-            <ArrowUpRight className="w-3.5 h-3.5 text-[#D99A42]" />
+            <ArrowUpRight className="w-3.5 h-3.5 text-[#C4921B]" />
           </Link>
         </div>
 
@@ -101,8 +101,8 @@ export default function SustainabilityStorytelling() {
                 <div>
                   {/* Top Bar with Icon & Category */}
                   <div className="flex items-center justify-between mb-4">
-                    <div className="w-10 h-10 rounded-2xl bg-white/90 border border-[#BDD7E8] flex items-center justify-center text-[#070E5C] shadow-2xs group-hover:bg-[#EAF2F8] transition-colors">
-                      <Icon className="w-5 h-5 text-[#070E5C]" />
+                    <div className="w-10 h-10 rounded-2xl bg-white/90 border border-[#D8CDB8] flex items-center justify-center text-[#2B3B44] shadow-2xs group-hover:bg-[#F5EFE4] transition-colors">
+                      <Icon className="w-5 h-5 text-[#2B3B44]" />
                     </div>
 
                     <span className="text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full bg-white/80 border border-[#E5E7EB] text-[#747B83]">
@@ -111,12 +111,12 @@ export default function SustainabilityStorytelling() {
                   </div>
 
                   {/* Title & Verified Metric */}
-                  <h3 className="font-serif text-2xl font-medium text-[#24272B] tracking-tight group-hover:text-[#070E5C] transition-colors">
+                  <h3 className="font-serif text-2xl font-medium text-[#24272B] tracking-tight group-hover:text-[#2B3B44] transition-colors">
                     {pillar.title}
                   </h3>
 
                   <div className="mt-3 flex items-baseline gap-2">
-                    <span className="font-serif text-2xl font-semibold text-[#070E5C]">
+                    <span className="font-serif text-2xl font-semibold text-[#2B3B44]">
                       {pillar.metric}
                     </span>
                     <span className="text-xs text-[#747B83] font-medium">
@@ -133,7 +133,7 @@ export default function SustainabilityStorytelling() {
                 <div className="pt-6 mt-6 border-t border-[#E5E7EB] flex items-center justify-between">
                   <Link
                     href={pillar.href}
-                    className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#070E5C] group-hover:text-[#D99A42] transition-colors"
+                    className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#2B3B44] group-hover:text-[#C4921B] transition-colors"
                   >
                     <span>Read Verification Methodology</span>
                     <ArrowUpRight className="w-3.5 h-3.5" />

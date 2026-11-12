@@ -99,7 +99,7 @@ export default function HeroSlider() {
 
   return (
     <section 
-      className="relative min-h-[90vh] lg:min-h-screen flex items-center justify-center overflow-hidden bg-[#070E5C] pt-20 select-none"
+      className="relative min-h-[90vh] lg:min-h-screen flex items-center justify-center overflow-hidden bg-[#2B3B44] pt-20 select-none"
       aria-label="CUBE Infrastructure Projects Carousel"
     >
       {/* Background Slides with Automatic 5s Cross-fade */}
@@ -121,9 +121,9 @@ export default function HeroSlider() {
                 isCurrent ? 'scale-105' : 'scale-100'
               }`}
             />
-            {/* CUBE Navy Brand Gradient Overlay (#070E5C) */}
-            <div className="absolute inset-0 bg-gradient-to-r from-[#070E5C]/95 via-[#070E5C]/80 to-[#070E5C]/45" />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#070E5C] via-transparent to-[#070E5C]/60" />
+            {/* CUBE Navy Brand Gradient Overlay (#2B3B44) */}
+            <div className="absolute inset-0 bg-gradient-to-r from-[#2B3B44]/95 via-[#2B3B44]/80 to-[#2B3B44]/45" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#2B3B44] via-transparent to-[#2B3B44]/60" />
           </div>
         );
       })}
@@ -133,9 +133,9 @@ export default function HeroSlider() {
         <div className="max-w-3xl">
           
           {/* Institutional Badge with Gold Border */}
-          <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-[#070E5C]/90 border border-[#D7A00F]/50 backdrop-blur-md shadow-lg mb-6">
-            <span className="flex h-2 w-2 rounded-full bg-[#D7A00F] animate-ping" />
-            <ShieldCheck className="w-4 h-4 text-[#D7A00F]" />
+          <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-[#2B3B44]/90 border border-[#C4921B]/50 backdrop-blur-md shadow-lg mb-6">
+            <span className="flex h-2 w-2 rounded-full bg-[#C4921B] animate-ping" />
+            <ShieldCheck className="w-4 h-4 text-[#C4921B]" />
             <span className="text-xs font-bold tracking-wide text-[#FDF6DE]">
               {active.badge}
             </span>
@@ -147,8 +147,8 @@ export default function HeroSlider() {
           </h1>
 
           {/* Subtitle with Gold Highlight */}
-          <p className="mt-3 text-sm sm:text-base font-bold text-[#D7A00F] tracking-wide flex items-center">
-            <Compass className="w-4 h-4 mr-2 text-[#D7A00F] flex-shrink-0" />
+          <p className="mt-3 text-sm sm:text-base font-bold text-[#C4921B] tracking-wide flex items-center">
+            <Compass className="w-4 h-4 mr-2 text-[#C4921B] flex-shrink-0" />
             <span>{active.subtitle}</span>
           </p>
 
@@ -161,7 +161,7 @@ export default function HeroSlider() {
           <div className="mt-8 flex flex-wrap items-center gap-4">
             <Link
               href={active.projectLink}
-              className="px-6 py-3.5 rounded-xl text-xs sm:text-sm font-bold text-[#070E5C] bg-[#D7A00F] hover:bg-[#BF8C0B] transition-all shadow-cube-glow hover:shadow-xl flex items-center group"
+              className="px-6 py-3.5 rounded-xl text-xs sm:text-sm font-bold text-[#2B3B44] bg-[#C4921B] hover:bg-[#B07F14] transition-all shadow-cube-glow hover:shadow-xl flex items-center group"
             >
               <span>Explore 40+ Projects</span>
               <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
@@ -176,7 +176,7 @@ export default function HeroSlider() {
 
             <Link
               href="/cel"
-              className="px-4 py-3.5 rounded-xl text-xs sm:text-sm font-semibold text-[#D7A00F] hover:text-white transition flex items-center"
+              className="px-4 py-3.5 rounded-xl text-xs sm:text-sm font-semibold text-[#C4921B] hover:text-white transition flex items-center"
             >
               <span>CEL Testing Lab &rarr;</span>
             </Link>
@@ -191,20 +191,20 @@ export default function HeroSlider() {
         <button
           onClick={prevSlide}
           aria-label="Previous Slide"
-          className="p-2.5 rounded-xl bg-[#070E5C]/80 hover:bg-[#D7A00F] hover:text-[#070E5C] text-white border border-[#C4CAD8]/30 backdrop-blur-md transition-all shadow-lg"
+          className="p-2.5 rounded-xl bg-[#2B3B44]/80 hover:bg-[#C4921B] hover:text-[#2B3B44] text-white border border-[#C4CAD8]/30 backdrop-blur-md transition-all shadow-lg"
         >
           <ChevronLeft className="w-5 h-5" />
         </button>
 
         {/* Indicators */}
-        <div className="flex space-x-1.5 px-3 py-2.5 rounded-xl bg-[#070E5C]/80 border border-[#C4CAD8]/30 backdrop-blur-md items-center">
+        <div className="flex space-x-1.5 px-3 py-2.5 rounded-xl bg-[#2B3B44]/80 border border-[#C4CAD8]/30 backdrop-blur-md items-center">
           {HERO_SLIDES.map((_, idx) => (
             <button
               key={idx}
               onClick={() => setCurrentSlide(idx)}
               aria-label={`Go to slide ${idx + 1}`}
               className={`h-2 rounded-full transition-all duration-500 ${
-                idx === currentSlide ? 'w-7 bg-[#D7A00F] shadow-sm shadow-[#D7A00F]/50' : 'w-2 bg-white/30 hover:bg-white/60'
+                idx === currentSlide ? 'w-7 bg-[#C4921B] shadow-sm shadow-[#C4921B]/50' : 'w-2 bg-white/30 hover:bg-white/60'
               }`}
             />
           ))}
@@ -214,7 +214,7 @@ export default function HeroSlider() {
         <button
           onClick={nextSlide}
           aria-label="Next Slide"
-          className="p-2.5 rounded-xl bg-[#070E5C]/80 hover:bg-[#D7A00F] hover:text-[#070E5C] text-white border border-[#C4CAD8]/30 backdrop-blur-md transition-all shadow-lg"
+          className="p-2.5 rounded-xl bg-[#2B3B44]/80 hover:bg-[#C4921B] hover:text-[#2B3B44] text-white border border-[#C4CAD8]/30 backdrop-blur-md transition-all shadow-lg"
         >
           <ChevronRight className="w-5 h-5" />
         </button>

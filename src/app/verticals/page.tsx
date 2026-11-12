@@ -45,7 +45,7 @@ export default function CompleteVerticalsExperience() {
       />
 
       {/* Sticky Apple Glass Anchor Navigation Bar */}
-      <section className="sticky top-[var(--nav-offset,84px)] transition-[top] duration-500 z-40 bg-white/85 backdrop-blur-2xl border-y border-[#BDD7E8]/70 py-3.5 px-4 sm:px-6 shadow-xs">
+      <section className="sticky top-[var(--nav-offset,84px)] transition-[top] duration-500 z-40 bg-white/85 backdrop-blur-2xl border-y border-[#D8CDB8]/70 py-3.5 px-4 sm:px-6 shadow-xs">
         <div ref={anchorBarRef} className="relative max-w-7xl mx-auto flex items-center justify-start gap-2 overflow-x-auto scrollbar-none no-scrollbar py-1">
           <div className="flex items-center space-x-1.5 sm:space-x-2 shrink-0">
             {navAnchors.map((item) => (
@@ -57,8 +57,8 @@ export default function CompleteVerticalsExperience() {
                 onClick={() => scrollTo(item.id)}
                 className={`px-4 py-2 rounded-full text-xs font-semibold tracking-wider transition-all duration-300 whitespace-nowrap ${
                   activeVertical === item.id
-                    ? 'bg-[#070E5C] text-white shadow-xs'
-                    : 'bg-white/60 text-[#24272B] hover:bg-[#EAF2F8] hover:text-[#070E5C] border border-[#BDD7E8]/60'
+                    ? 'bg-[#2B3B44] text-white shadow-xs'
+                    : 'bg-white/60 text-[#24272B] hover:bg-[#F5EFE4] hover:text-[#2B3B44] border border-[#D8CDB8]/60'
                 }`}
               >
                 {item.label}
@@ -83,7 +83,7 @@ export default function CompleteVerticalsExperience() {
               key={vert.id}
               id={vert.id}
               className={`py-20 sm:py-28 border-b border-[#E5E7EB] ${
-                isEven ? 'bg-gradient-to-b from-[#FFFFFF] to-[#F6FAFD]' : 'bg-[#FFFFFF]'
+                isEven ? 'bg-gradient-to-b from-[#FFFFFF] to-[#FAF8F4]' : 'bg-[#FFFFFF]'
               }`}
             >
               <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -92,17 +92,17 @@ export default function CompleteVerticalsExperience() {
                   
                   <div className="lg:col-span-7 space-y-6">
                     <div className="flex items-center gap-2">
-                      <span className="w-2.5 h-2.5 rounded-full bg-[#D99A42]" />
-                      <span className="text-xs font-bold uppercase tracking-wider text-[#070E5C] bg-[#EAF2F8] px-3.5 py-1 rounded-full border border-[#BDD7E8]">
+                      <span className="w-2.5 h-2.5 rounded-full bg-[#C4921B]" />
+                      <span className="text-xs font-bold uppercase tracking-wider text-[#2B3B44] bg-[#F5EFE4] px-3.5 py-1 rounded-full border border-[#D8CDB8]">
                         Vertical Division 0{vIdx + 1}
                       </span>
                     </div>
 
-                    <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-[#070E5C] tracking-tight leading-tight">
+                    <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-[#2B3B44] tracking-tight leading-tight">
                       {vert.title}
                     </h2>
 
-                    <p className="text-base sm:text-lg font-medium text-[#D99A42]">
+                    <p className="text-base sm:text-lg font-medium text-[#C4921B]">
                       {vert.tagline}
                     </p>
 
@@ -112,13 +112,13 @@ export default function CompleteVerticalsExperience() {
 
                     {/* Capabilities Checklist */}
                     <div className="pt-2">
-                      <h4 className="text-xs font-bold uppercase tracking-wider text-[#070E5C] mb-3">
+                      <h4 className="text-xs font-bold uppercase tracking-wider text-[#2B3B44] mb-3">
                         Key Capabilities &amp; Institutional Scope
                       </h4>
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                         {vert.capabilities.map((cap, cIdx) => (
-                          <div key={cIdx} className="flex items-start gap-2.5 p-3 rounded-2xl bg-white border border-[#BDD7E8]/70 shadow-2xs">
-                            <CheckCircle2 className="w-4 h-4 text-[#D99A42] shrink-0 mt-0.5" />
+                          <div key={cIdx} className="flex items-start gap-2.5 p-3 rounded-2xl bg-white border border-[#D8CDB8]/70 shadow-2xs">
+                            <CheckCircle2 className="w-4 h-4 text-[#C4921B] shrink-0 mt-0.5" />
                             <span className="text-xs text-[#24272B] font-semibold">{cap}</span>
                           </div>
                         ))}
@@ -128,8 +128,8 @@ export default function CompleteVerticalsExperience() {
 
                   {/* Right Image Feature Card */}
                   <div className="lg:col-span-5">
-                    <div className="rounded-3xl bg-white/90 backdrop-blur-2xl border border-[#BDD7E8] p-6 shadow-[0_20px_50px_rgba(7,14,92,0.08)] relative overflow-hidden">
-                      <div className="relative h-72 sm:h-80 w-full rounded-2xl overflow-hidden mb-6 border border-white ring-1 ring-[#BDD7E8]">
+                    <div className="rounded-3xl bg-white/90 backdrop-blur-2xl border border-[#D8CDB8] p-6 shadow-[0_20px_50px_rgba(7,14,92,0.08)] relative overflow-hidden">
+                      <div className="relative h-72 sm:h-80 w-full rounded-2xl overflow-hidden mb-6 border border-white ring-1 ring-[#D8CDB8]">
                         <Image
                           src={vert.heroImage || '/images/hero/slides_07-cat.jpg'}
                           alt={vert.title}
@@ -139,10 +139,10 @@ export default function CompleteVerticalsExperience() {
                       </div>
 
                       <div className="flex items-center justify-between text-xs text-[#747B83] border-t border-[#E5E7EB] pt-4">
-                        <span className="font-semibold text-[#070E5C]">{vert.projectCount ? `${vert.projectCount}+ Projects Assured` : '20+ Projects Completed'}</span>
+                        <span className="font-semibold text-[#2B3B44]">{vert.projectCount ? `${vert.projectCount}+ Projects Assured` : '20+ Projects Completed'}</span>
                         <Link
                           href="/projects"
-                          className="font-bold text-[#070E5C] hover:text-[#D99A42] flex items-center gap-1 transition"
+                          className="font-bold text-[#2B3B44] hover:text-[#C4921B] flex items-center gap-1 transition"
                         >
                           <span>Explore Projects</span>
                           <ArrowRight className="w-3.5 h-3.5" />
@@ -157,10 +157,10 @@ export default function CompleteVerticalsExperience() {
                 {vertProjects.length > 0 && (
                   <div className="pt-8 border-t border-[#E5E7EB]">
                     <div className="flex items-center justify-between mb-6">
-                      <h3 className="text-lg font-serif font-bold text-[#070E5C]">
+                      <h3 className="text-lg font-serif font-bold text-[#2B3B44]">
                         Featured Schemes in {vert.title}
                       </h3>
-                      <Link href="/projects" className="text-xs font-semibold text-[#D99A42] hover:underline flex items-center gap-1">
+                      <Link href="/projects" className="text-xs font-semibold text-[#C4921B] hover:underline flex items-center gap-1">
                         <span>View All Projects</span>
                         <ArrowRight className="w-3.5 h-3.5" />
                       </Link>
@@ -168,13 +168,13 @@ export default function CompleteVerticalsExperience() {
 
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                       {vertProjects.map((proj, pIdx) => (
-                        <div key={proj.slug || pIdx} className="p-5 rounded-3xl bg-white border border-[#BDD7E8] shadow-2xs hover:shadow-xs transition">
-                          <span className="text-[10px] font-bold text-[#070E5C] uppercase tracking-wider">{proj.client}</span>
+                        <div key={proj.slug || pIdx} className="p-5 rounded-3xl bg-white border border-[#D8CDB8] shadow-2xs hover:shadow-xs transition">
+                          <span className="text-[10px] font-bold text-[#2B3B44] uppercase tracking-wider">{proj.client}</span>
                           <h4 className="font-serif font-bold text-base text-[#24272B] mt-1 leading-snug">{proj.title}</h4>
                           <p className="text-xs text-[#747B83] mt-2 line-clamp-2">{proj.description}</p>
                           <div className="mt-4 pt-3 border-t border-[#E5E7EB] flex items-center justify-between text-xs">
-                            <span className="text-[#D99A42] font-semibold">{proj.status}</span>
-                            <Link href={`/projects/${proj.slug}`} className="font-bold text-[#070E5C] hover:underline">
+                            <span className="text-[#C4921B] font-semibold">{proj.status}</span>
+                            <Link href={`/projects/${proj.slug}`} className="font-bold text-[#2B3B44] hover:underline">
                               Case Study &rarr;
                             </Link>
                           </div>

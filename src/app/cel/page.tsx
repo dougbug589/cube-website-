@@ -63,7 +63,7 @@ Parameters / Notes: ${formData.parametersNeeded || 'Standard Matrix Parameters'}
   };
 
   return (
-    <div className="bg-[#F4F5F8] min-h-screen">
+    <div className="bg-[#FAF8F4] min-h-screen">
       <PageHeader
         badge="State-of-the-Art Analytical Facility"
         title="CUBE Environmental Laboratory (CEL)"
@@ -76,10 +76,10 @@ Parameters / Notes: ${formData.parametersNeeded || 'Standard Matrix Parameters'}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             <div className="lg:col-span-7 space-y-6">
-              <span className="text-xs font-bold uppercase tracking-wider text-[#070E5C] bg-[#D7A00F] px-3 py-1 rounded-full shadow-sm">
+              <span className="text-xs font-bold uppercase tracking-wider text-[#2B3B44] bg-[#C4921B] px-3 py-1 rounded-full shadow-sm">
                 IIT Madras Research Park Facility
               </span>
-              <h2 className="text-3xl font-display font-extrabold text-[#070E5C]">
+              <h2 className="text-3xl font-display font-extrabold text-[#2B3B44]">
                 Precision Analytical Diagnostics for Environmental Engineering
               </h2>
               <p className="text-sm sm:text-base text-slate-700 leading-relaxed font-normal">
@@ -87,13 +87,13 @@ Parameters / Notes: ${formData.parametersNeeded || 'Standard Matrix Parameters'}
               </p>
 
               <div className="space-y-3 pt-2">
-                <h4 className="text-xs font-bold uppercase tracking-wider text-[#D7A00F]">
+                <h4 className="text-xs font-bold uppercase tracking-wider text-[#C4921B]">
                   Laboratory Capabilities &amp; Clean Room Facilities:
                 </h4>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
                   {celOverview.facilities.map((fac, i) => (
-                    <div key={i} className="flex items-center text-xs font-semibold text-slate-800 bg-[#F4F5F8] p-2.5 rounded-xl border border-[#C4CAD8]">
-                      <CheckCircle2 className="w-4 h-4 text-[#D7A00F] mr-2 flex-shrink-0" />
+                    <div key={i} className="flex items-center text-xs font-semibold text-slate-800 bg-[#FAF8F4] p-2.5 rounded-xl border border-[#C4CAD8]">
+                      <CheckCircle2 className="w-4 h-4 text-[#C4921B] mr-2 flex-shrink-0" />
                       <span>{fac}</span>
                     </div>
                   ))}
@@ -115,13 +115,13 @@ Parameters / Notes: ${formData.parametersNeeded || 'Standard Matrix Parameters'}
       </section>
 
       {/* Testing Services Cards */}
-      <section className="py-20 bg-[#F4F5F8] border-b border-[#C4CAD8]">
+      <section className="py-20 bg-[#FAF8F4] border-b border-[#C4CAD8]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-14">
-            <span className="text-xs font-bold uppercase tracking-wider text-[#070E5C] bg-[#D7A00F] px-3 py-1 rounded-full shadow-sm">
+            <span className="text-xs font-bold uppercase tracking-wider text-[#2B3B44] bg-[#C4921B] px-3 py-1 rounded-full shadow-sm">
               Testing Parameters
             </span>
-            <h2 className="text-3xl font-display font-extrabold text-[#070E5C] mt-3">
+            <h2 className="text-3xl font-display font-extrabold text-[#2B3B44] mt-3">
               CEL Testing Services &amp; Matrices
             </h2>
             <p className="text-sm text-slate-600 mt-2">
@@ -140,12 +140,12 @@ Parameters / Notes: ${formData.parametersNeeded || 'Standard Matrix Parameters'}
       {/* Laboratory Real-Time Booking Form */}
       <section id="enquiry" className="py-20 bg-white">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="p-8 sm:p-12 rounded-3xl bg-[#F4F5F8] border border-[#C4CAD8] shadow-cube">
+          <div className="p-8 sm:p-12 rounded-3xl bg-[#FAF8F4] border border-[#C4CAD8] shadow-cube">
             <div className="text-center max-w-xl mx-auto mb-10">
-              <span className="text-xs font-bold uppercase tracking-wider text-[#070E5C] bg-[#D7A00F] px-3 py-1 rounded-full shadow-sm">
+              <span className="text-xs font-bold uppercase tracking-wider text-[#2B3B44] bg-[#C4921B] px-3 py-1 rounded-full shadow-sm">
                 Real-Time Sample Submission
               </span>
-              <h2 className="text-2xl sm:text-3xl font-display font-extrabold text-[#070E5C] mt-2">
+              <h2 className="text-2xl sm:text-3xl font-display font-extrabold text-[#2B3B44] mt-2">
                 Laboratory Test Enquiry &amp; Booking
               </h2>
               <p className="text-xs sm:text-sm text-slate-600 mt-2">
@@ -154,9 +154,9 @@ Parameters / Notes: ${formData.parametersNeeded || 'Standard Matrix Parameters'}
             </div>
 
             {formSubmitted ? (
-              <div className="p-8 rounded-2xl bg-white border border-[#D7A00F] text-center space-y-3 shadow-md">
-                <CheckCircle2 className="w-12 h-12 text-[#D7A00F] mx-auto" />
-                <h3 className="text-lg font-bold text-[#070E5C] font-display">
+              <div className="p-8 rounded-2xl bg-white border border-[#C4921B] text-center space-y-3 shadow-md">
+                <CheckCircle2 className="w-12 h-12 text-[#C4921B] mx-auto" />
+                <h3 className="text-lg font-bold text-[#2B3B44] font-display">
                   CEL Testing Enquiry Received in Real-Time
                 </h3>
                 <p className="text-xs text-slate-700 max-w-md mx-auto leading-relaxed">
@@ -175,7 +175,7 @@ Parameters / Notes: ${formData.parametersNeeded || 'Standard Matrix Parameters'}
                       parametersNeeded: '',
                     });
                   }}
-                  className="mt-4 px-5 py-2.5 rounded-xl text-xs font-bold bg-[#EAF2F8] text-[#070E5C] border border-[#BBD6EA] hover:bg-[#D7A00F] hover:text-[#070E5C] transition shadow-md"
+                  className="mt-4 px-5 py-2.5 rounded-xl text-xs font-bold bg-[#F5EFE4] text-[#2B3B44] border border-[#C9BCA6] hover:bg-[#C4921B] hover:text-[#2B3B44] transition shadow-md"
                 >
                   Submit Another Sample Scope
                 </button>
@@ -190,7 +190,7 @@ Parameters / Notes: ${formData.parametersNeeded || 'Standard Matrix Parameters'}
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                   <div>
-                    <label className="text-xs font-bold text-[#070E5C] block mb-1">
+                    <label className="text-xs font-bold text-[#2B3B44] block mb-1">
                       Contact Person *
                     </label>
                     <input
@@ -199,12 +199,12 @@ Parameters / Notes: ${formData.parametersNeeded || 'Standard Matrix Parameters'}
                       placeholder="Your Full Name"
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      className="w-full px-4 py-2.5 rounded-xl bg-white border border-[#C4CAD8] text-xs focus:outline-none focus:border-[#D7A00F] transition shadow-sm"
+                      className="w-full px-4 py-2.5 rounded-xl bg-white border border-[#C4CAD8] text-xs focus:outline-none focus:border-[#C4921B] transition shadow-sm"
                     />
                   </div>
 
                   <div>
-                    <label className="text-xs font-bold text-[#070E5C] block mb-1">
+                    <label className="text-xs font-bold text-[#2B3B44] block mb-1">
                       Official Email Address *
                     </label>
                     <input
@@ -213,12 +213,12 @@ Parameters / Notes: ${formData.parametersNeeded || 'Standard Matrix Parameters'}
                       placeholder="name@organization.com"
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      className="w-full px-4 py-2.5 rounded-xl bg-white border border-[#C4CAD8] text-xs focus:outline-none focus:border-[#D7A00F] transition shadow-sm"
+                      className="w-full px-4 py-2.5 rounded-xl bg-white border border-[#C4CAD8] text-xs focus:outline-none focus:border-[#C4921B] transition shadow-sm"
                     />
                   </div>
 
                   <div>
-                    <label className="text-xs font-bold text-[#070E5C] block mb-1">
+                    <label className="text-xs font-bold text-[#2B3B44] block mb-1">
                       Phone Number *
                     </label>
                     <input
@@ -227,12 +227,12 @@ Parameters / Notes: ${formData.parametersNeeded || 'Standard Matrix Parameters'}
                       placeholder="+91 Contact Number"
                       value={formData.phone}
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                      className="w-full px-4 py-2.5 rounded-xl bg-white border border-[#C4CAD8] text-xs focus:outline-none focus:border-[#D7A00F] transition shadow-sm"
+                      className="w-full px-4 py-2.5 rounded-xl bg-white border border-[#C4CAD8] text-xs focus:outline-none focus:border-[#C4921B] transition shadow-sm"
                     />
                   </div>
 
                   <div>
-                    <label className="text-xs font-bold text-[#070E5C] block mb-1">
+                    <label className="text-xs font-bold text-[#2B3B44] block mb-1">
                       Organization / University
                     </label>
                     <input
@@ -240,14 +240,14 @@ Parameters / Notes: ${formData.parametersNeeded || 'Standard Matrix Parameters'}
                       placeholder="e.g. TNPCB / Industry / IITM"
                       value={formData.organization}
                       onChange={(e) => setFormData({ ...formData, organization: e.target.value })}
-                      className="w-full px-4 py-2.5 rounded-xl bg-white border border-[#C4CAD8] text-xs focus:outline-none focus:border-[#D7A00F] transition shadow-sm"
+                      className="w-full px-4 py-2.5 rounded-xl bg-white border border-[#C4CAD8] text-xs focus:outline-none focus:border-[#C4921B] transition shadow-sm"
                     />
                   </div>
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                   <div>
-                    <label className="text-xs font-bold text-[#070E5C] block mb-1">
+                    <label className="text-xs font-bold text-[#2B3B44] block mb-1">
                       Sample Matrix / Category *
                     </label>
                     <input
@@ -256,12 +256,12 @@ Parameters / Notes: ${formData.parametersNeeded || 'Standard Matrix Parameters'}
                       value={formData.matrix}
                       onChange={(e) => setFormData({ ...formData, matrix: e.target.value })}
                       placeholder="Type sample category manually (e.g. Water Quality, Wastewater, Soil, Concrete...)"
-                      className="w-full px-4 py-2.5 rounded-xl bg-white border border-[#C4CAD8] text-xs focus:outline-none focus:border-[#D7A00F] transition shadow-sm"
+                      className="w-full px-4 py-2.5 rounded-xl bg-white border border-[#C4CAD8] text-xs focus:outline-none focus:border-[#C4921B] transition shadow-sm"
                     />
                   </div>
 
                   <div>
-                    <label className="text-xs font-bold text-[#070E5C] block mb-1">
+                    <label className="text-xs font-bold text-[#2B3B44] block mb-1">
                       Estimated Sample Volume *
                     </label>
                     <input
@@ -270,13 +270,13 @@ Parameters / Notes: ${formData.parametersNeeded || 'Standard Matrix Parameters'}
                       value={formData.sampleCount}
                       onChange={(e) => setFormData({ ...formData, sampleCount: e.target.value })}
                       placeholder="Type volume manually (e.g. 5 Samples, 20 Samples, 50 Litres...)"
-                      className="w-full px-4 py-2.5 rounded-xl bg-white border border-[#C4CAD8] text-xs focus:outline-none focus:border-[#D7A00F] transition shadow-sm"
+                      className="w-full px-4 py-2.5 rounded-xl bg-white border border-[#C4CAD8] text-xs focus:outline-none focus:border-[#C4921B] transition shadow-sm"
                     />
                   </div>
                 </div>
 
                 <div>
-                  <label className="text-xs font-bold text-[#070E5C] block mb-1">
+                  <label className="text-xs font-bold text-[#2B3B44] block mb-1">
                     Specific Parameters / Project Notes
                   </label>
                   <textarea
@@ -284,7 +284,7 @@ Parameters / Notes: ${formData.parametersNeeded || 'Standard Matrix Parameters'}
                     placeholder="List specific testing parameters (BOD, COD, Heavy metals, Pathogens, etc.) and project location..."
                     value={formData.parametersNeeded}
                     onChange={(e) => setFormData({ ...formData, parametersNeeded: e.target.value })}
-                    className="w-full px-4 py-2.5 rounded-xl bg-white border border-[#C4CAD8] text-xs focus:outline-none focus:border-[#D7A00F] transition shadow-sm"
+                    className="w-full px-4 py-2.5 rounded-xl bg-white border border-[#C4CAD8] text-xs focus:outline-none focus:border-[#C4921B] transition shadow-sm"
                   />
                 </div>
 
@@ -292,7 +292,7 @@ Parameters / Notes: ${formData.parametersNeeded || 'Standard Matrix Parameters'}
                   <button
                     type="submit"
                     disabled={loading}
-                    className="w-full sm:w-auto px-8 py-3 rounded-xl text-xs font-bold text-[#070E5C] bg-[#D7A00F] hover:bg-[#BF8C0B] transition shadow-cube-glow flex items-center justify-center disabled:opacity-50"
+                    className="w-full sm:w-auto px-8 py-3 rounded-xl text-xs font-bold text-[#2B3B44] bg-[#C4921B] hover:bg-[#B07F14] transition shadow-cube-glow flex items-center justify-center disabled:opacity-50"
                   >
                     {loading ? (
                       <>

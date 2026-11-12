@@ -55,11 +55,11 @@ export function GlassButton({
   let btnStyles = '';
 
   if (variant === 'gold') {
-    btnStyles = 'bg-[#D99A42] hover:bg-[#C77B60] text-white shadow-[0_4px_20px_rgba(217,154,66,0.3)] hover:shadow-[0_6px_25px_rgba(217,154,66,0.4)]';
+    btnStyles = 'bg-[#C4921B] hover:bg-[#C77B60] text-white shadow-[0_4px_20px_rgba(217,154,66,0.3)] hover:shadow-[0_6px_25px_rgba(217,154,66,0.4)]';
   } else if (variant === 'primary') {
-    btnStyles = 'bg-[#070E5C] hover:bg-[#0A1682] text-white shadow-[0_4px_20px_rgba(7,14,92,0.2)] hover:shadow-[0_8px_30px_rgba(7,14,92,0.3)]';
+    btnStyles = 'bg-[#2B3B44] hover:bg-[#0A1682] text-white shadow-[0_4px_20px_rgba(7,14,92,0.2)] hover:shadow-[0_8px_30px_rgba(7,14,92,0.3)]';
   } else {
-    btnStyles = 'bg-white/70 hover:bg-white/95 text-[#24272B] hover:text-[#070E5C] backdrop-blur-xl border border-white/80 shadow-[0_4px_20px_rgba(0,0,0,0.04)]';
+    btnStyles = 'bg-white/70 hover:bg-white/95 text-[#24272B] hover:text-[#2B3B44] backdrop-blur-xl border border-white/80 shadow-[0_4px_20px_rgba(0,0,0,0.04)]';
   }
 
   return (

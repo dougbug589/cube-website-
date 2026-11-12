@@ -112,7 +112,7 @@ export default async function SmartCitiesPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-16 bg-gradient-to-b from-[#FFFFFF] via-[#F6FAFD] to-[#EAF2F8] border-t border-[#BDD7E8]/60 text-[#24272B] text-center">
+      <section className="py-16 bg-gradient-to-b from-[#FFFFFF] via-[#FAF8F4] to-[#F5EFE4] border-t border-[#D8CDB8]/60 text-[#24272B] text-center">
         <div className="max-w-4xl mx-auto px-4">
           <h2 className="text-2xl sm:text-3xl font-display font-bold">
             Accelerating Data-Driven Urban Infrastructure
@@ -123,7 +123,7 @@ export default async function SmartCitiesPage() {
           <div className="mt-6">
             <Link
               href="/contact"
-              className="inline-flex items-center px-6 py-3 rounded-xl text-xs font-bold text-white bg-[#D99A42] hover:bg-[#C77B60] shadow-md transition"
+              className="inline-flex items-center px-6 py-3 rounded-xl text-xs font-bold text-white bg-[#C4921B] hover:bg-[#C77B60] shadow-md transition"
             >
               <span>Connect with Smart Cities Team</span>
               <ArrowRight className="w-4 h-4 ml-2" />

@@ -296,7 +296,7 @@ export default function HomePage() {
 
 
 
-              <span className="text-xs uppercase tracking-widest text-[#D99A42] font-bold">
+              <span className="text-xs uppercase tracking-widest text-[#C4921B] font-bold">
 
 
 
@@ -380,7 +380,7 @@ export default function HomePage() {
 
 
 
-              className="inline-flex items-center px-6 py-3 rounded-full text-xs font-semibold text-[#070E5C] bg-white hover:bg-[#EAF2F8] border border-[#E5E7EB] shadow-sm transition-all"
+              className="inline-flex items-center px-6 py-3 rounded-full text-xs font-semibold text-[#2B3B44] bg-white hover:bg-[#F5EFE4] border border-[#E5E7EB] shadow-sm transition-all"
 
 
 
@@ -392,7 +392,7 @@ export default function HomePage() {
 
 
 
-              <ArrowUpRight className="w-3.5 h-3.5 ml-2 text-[#D99A42]" />
+              <ArrowUpRight className="w-3.5 h-3.5 ml-2 text-[#C4921B]" />
 
 
 
@@ -444,7 +444,7 @@ export default function HomePage() {
 
 
 
-              <span className="text-xs uppercase tracking-widest text-[#D99A42] font-bold">
+              <span className="text-xs uppercase tracking-widest text-[#C4921B] font-bold">
 
 
 
@@ -520,11 +520,11 @@ export default function HomePage() {
 
 
 
-                      ? 'bg-[#EAF2F8] text-[#070E5C] border border-[#BBD6EA] shadow-sm'
+                      ? 'bg-[#F5EFE4] text-[#2B3B44] border border-[#C9BCA6] shadow-sm'
 
 
 
-                      : 'bg-[#F7F7F4] text-[#747B83] hover:text-[#24272B] hover:bg-[#EAF2F8]'
+                      : 'bg-[#F7F7F4] text-[#747B83] hover:text-[#24272B] hover:bg-[#F5EFE4]'
 
 
 
@@ -600,7 +600,7 @@ export default function HomePage() {
 
 
 
-              className="inline-flex items-center px-8 py-3.5 rounded-full text-xs font-semibold text-[#070E5C] bg-[#EAF2F8] border border-[#BBD6EA] hover:bg-[#D99A42] hover:text-[#24272B] shadow-sm transition-all"
+              className="inline-flex items-center px-8 py-3.5 rounded-full text-xs font-semibold text-[#2B3B44] bg-[#F5EFE4] border border-[#C9BCA6] hover:bg-[#C4921B] hover:text-[#24272B] shadow-sm transition-all"
 
 
 
@@ -647,7 +647,7 @@ export default function HomePage() {
 
 
 
-      <section className="py-24 bg-[#EAF2F8] border-b border-[#BBD6EA] text-[#24272B] relative overflow-hidden">
+      <section className="py-24 bg-[#F5EFE4] border-b border-[#C9BCA6] text-[#24272B] relative overflow-hidden">
 
 
 
@@ -667,11 +667,11 @@ export default function HomePage() {
 
 
 
-              <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-[#070E5C]">
+              <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-[#2B3B44]">
 
 
 
-                <FlaskConical className="w-4 h-4 text-[#D99A42]" />
+                <FlaskConical className="w-4 h-4 text-[#C4921B]" />
 
 
 
@@ -683,7 +683,7 @@ export default function HomePage() {
 
 
 
-              <h2 className="font-serif text-3xl sm:text-5xl font-light text-[#070E5C] tracking-tight">
+              <h2 className="font-serif text-3xl sm:text-5xl font-light text-[#2B3B44] tracking-tight">
 
 
 
@@ -727,7 +727,7 @@ export default function HomePage() {
 
 
 
-                className="px-6 py-3.5 rounded-full text-xs font-semibold text-[#070E5C] bg-[#EAF2F8] border border-[#BBD6EA] hover:bg-[#D99A42] hover:text-[#24272B] transition-all text-center shadow-sm flex items-center justify-center gap-2"
+                className="px-6 py-3.5 rounded-full text-xs font-semibold text-[#2B3B44] bg-[#F5EFE4] border border-[#C9BCA6] hover:bg-[#C4921B] hover:text-[#24272B] transition-all text-center shadow-sm flex items-center justify-center gap-2"
 
 
 
@@ -755,7 +755,7 @@ export default function HomePage() {
 
 
 
-                className="px-6 py-3.5 rounded-full text-xs font-semibold text-[#070E5C] bg-white hover:bg-[#F7F7F4] border border-[#BBD6EA] transition-all text-center"
+                className="px-6 py-3.5 rounded-full text-xs font-semibold text-[#2B3B44] bg-white hover:bg-[#F7F7F4] border border-[#C9BCA6] transition-all text-center"
 
 
 
@@ -850,7 +850,7 @@ export default function HomePage() {
 
 
 
-              <span className="text-xs uppercase tracking-widest text-[#D99A42] font-bold">
+              <span className="text-xs uppercase tracking-widest text-[#C4921B] font-bold">
 
 
 
@@ -1122,7 +1122,7 @@ export default function HomePage() {
 
 
 
-              className="inline-flex items-center text-xs font-semibold text-[#070E5C] hover:text-[#D99A42] transition-colors"
+              className="inline-flex items-center text-xs font-semibold text-[#2B3B44] hover:text-[#C4921B] transition-colors"
 
 
 
@@ -1202,7 +1202,7 @@ export default function HomePage() {
 
 
 
-              <span className="text-xs uppercase tracking-widest text-[#D99A42] font-bold">
+              <span className="text-xs uppercase tracking-widest text-[#C4921B] font-bold">
 
 
 
@@ -1238,7 +1238,7 @@ export default function HomePage() {
 
 
 
-              className="text-xs font-semibold text-[#070E5C] hover:text-[#D99A42] flex items-center transition-colors"
+              className="text-xs font-semibold text-[#2B3B44] hover:text-[#C4921B] flex items-center transition-colors"
 
 
 
@@ -1322,7 +1322,7 @@ export default function HomePage() {
 
 
 
-                      <span className="text-[10px] font-bold px-2.5 py-0.5 rounded-full bg-white/95 text-[#070E5C] shadow-sm">
+                      <span className="text-[10px] font-bold px-2.5 py-0.5 rounded-full bg-white/95 text-[#2B3B44] shadow-sm">
 
 
 
@@ -1354,7 +1354,7 @@ export default function HomePage() {
 
 
 
-                      <Calendar className="w-3.5 h-3.5 mr-1 text-[#D99A42]" />
+                      <Calendar className="w-3.5 h-3.5 mr-1 text-[#C4921B]" />
 
 
 
@@ -1366,7 +1366,7 @@ export default function HomePage() {
 
 
 
-                    <h3 className="font-serif text-base font-medium text-[#24272B] line-clamp-2 leading-snug group-hover:text-[#070E5C] transition-colors">
+                    <h3 className="font-serif text-base font-medium text-[#24272B] line-clamp-2 leading-snug group-hover:text-[#2B3B44] transition-colors">
 
 
 
@@ -1414,7 +1414,7 @@ export default function HomePage() {
 
 
 
-                    className="text-xs font-semibold text-[#070E5C] hover:text-[#D99A42] flex items-center gap-1 transition-colors"
+                    className="text-xs font-semibold text-[#2B3B44] hover:text-[#C4921B] flex items-center gap-1 transition-colors"
 
 
 
@@ -1470,7 +1470,7 @@ export default function HomePage() {
 
 
 
-      <section className="py-24 bg-gradient-to-br from-[#EAF2F8] via-[#F7F7F4] to-[#DCEAF4] text-[#24272B] border-b border-[#E5E7EB]">
+      <section className="py-24 bg-gradient-to-br from-[#F5EFE4] via-[#F7F7F4] to-[#DCEAF4] text-[#24272B] border-b border-[#E5E7EB]">
 
 
 
@@ -1497,7 +1497,7 @@ export default function HomePage() {
 
 
 
-          <h2 className="font-serif text-3xl sm:text-5xl font-light text-[#070E5C] tracking-tight">
+          <h2 className="font-serif text-3xl sm:text-5xl font-light text-[#2B3B44] tracking-tight">
 
 
 
@@ -1541,7 +1541,7 @@ export default function HomePage() {
 
 
 
-              className="px-8 py-3.5 rounded-full text-xs font-semibold text-[#070E5C] bg-[#EAF2F8] border border-[#BBD6EA] hover:bg-[#D99A42] hover:text-[#24272B] shadow-sm transition-all flex items-center gap-2"
+              className="px-8 py-3.5 rounded-full text-xs font-semibold text-[#2B3B44] bg-[#F5EFE4] border border-[#C9BCA6] hover:bg-[#C4921B] hover:text-[#24272B] shadow-sm transition-all flex items-center gap-2"
 
 
 
@@ -1573,7 +1573,7 @@ export default function HomePage() {
 
 
 
-              className="px-8 py-3.5 rounded-full text-xs font-semibold text-[#070E5C] bg-white hover:bg-[#F7F7F4] border border-[#BBD6EA] shadow-sm transition-all"
+              className="px-8 py-3.5 rounded-full text-xs font-semibold text-[#2B3B44] bg-white hover:bg-[#F7F7F4] border border-[#C9BCA6] shadow-sm transition-all"
 
 
 

@@ -21,7 +21,7 @@ const DEPARTMENTS: DepartmentSection[] = [
     title: 'Building & Construction',
     icon: Building2,
     defaultOpen: true,
-    accent: 'border-l-4 border-l-[#D7A00F]',
+    accent: 'border-l-4 border-l-[#C4921B]',
   },
   {
     id: 'Environment & Sustainability',
@@ -35,7 +35,7 @@ const DEPARTMENTS: DepartmentSection[] = [
     title: 'Urban Planning & Transportation',
     icon: NavigationIcon,
     defaultOpen: false,
-    accent: 'border-l-4 border-l-[#070E5C]',
+    accent: 'border-l-4 border-l-[#2B3B44]',
   },
   {
     id: 'Admin',
@@ -135,7 +135,7 @@ export default function TeamPage() {
                 placeholder="Search team member by name or role..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-xs sm:text-sm focus:outline-none focus:border-[#070E5C] transition-all"
+                className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-xs sm:text-sm focus:outline-none focus:border-[#2B3B44] transition-all"
               />
               {searchQuery && (
                 <button
@@ -188,7 +188,7 @@ export default function TeamPage() {
                     aria-expanded={isOpen}
                   >
                     <div className="flex items-center space-x-3.5">
-                      <div className="p-2 rounded-xl bg-[#EAF2F8] text-[#070E5C] group-hover:scale-105 transition-transform">
+                      <div className="p-2 rounded-xl bg-[#F5EFE4] text-[#2B3B44] group-hover:scale-105 transition-transform">
                         <DeptIcon className="w-5 h-5" />
                       </div>
                       <div>
@@ -202,7 +202,7 @@ export default function TeamPage() {
                     </div>
 
                     {/* Expand/Collapse Indicator matching the original website screenshot */}
-                    <div className="h-8 w-8 rounded-lg bg-slate-100 text-slate-600 group-hover:bg-[#EAF2F8] group-hover:text-[#070E5C] flex items-center justify-center transition-colors">
+                    <div className="h-8 w-8 rounded-lg bg-slate-100 text-slate-600 group-hover:bg-[#F5EFE4] group-hover:text-[#2B3B44] flex items-center justify-center transition-colors">
                       {isOpen ? (
                         <Minus className="w-4 h-4 stroke-[2.5]" />
                       ) : (
@@ -223,10 +223,10 @@ export default function TeamPage() {
                           {membersInDept.map((member, idx) => (
                             <div
                               key={member.name + idx}
-                              className="p-4 rounded-2xl bg-[#FAFAFA] border border-slate-200/70 hover:border-[#070E5C]/30 hover:bg-white hover:shadow-md transition-all flex flex-col items-center text-center group"
+                              className="p-4 rounded-2xl bg-[#FAFAFA] border border-slate-200/70 hover:border-[#2B3B44]/30 hover:bg-white hover:shadow-md transition-all flex flex-col items-center text-center group"
                             >
                               {/* Circular Avatar matching original website */}
-                              <div className="relative h-24 w-24 rounded-full overflow-hidden mb-3 border-2 border-slate-200 group-hover:border-[#070E5C] shadow-sm transition-all bg-white shrink-0">
+                              <div className="relative h-24 w-24 rounded-full overflow-hidden mb-3 border-2 border-slate-200 group-hover:border-[#2B3B44] shadow-sm transition-all bg-white shrink-0">
                                 <Image
                                   src={member.image || '/images/team/team_unknown.png'}
                                   alt={member.name}
@@ -237,7 +237,7 @@ export default function TeamPage() {
                               <h3 className="text-xs sm:text-sm font-bold text-[#24272B] font-display line-clamp-1 mt-1">
                                 {member.name}
                               </h3>
-                              <p className="text-[11px] text-[#070E5C] font-semibold mt-1 line-clamp-2">
+                              <p className="text-[11px] text-[#2B3B44] font-semibold mt-1 line-clamp-2">
                                 {member.designation}
                               </p>
                             </div>

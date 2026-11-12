@@ -28,10 +28,10 @@ export default function VisionMissionPage() {
             {/* Vision Card (Architectural Light Palette) */}
             <div className="p-8 sm:p-10 rounded-3xl bg-white text-[#24272B] shadow-sm hover:shadow-xl border border-[#E5E7EB] transition-all flex flex-col justify-between">
               <div>
-                <div className="p-3 bg-[#EAF2F8] text-[#070E5C] rounded-2xl w-fit mb-6 border border-[#BBD6EA]">
-                  <Compass className="w-8 h-8 text-[#D99A42]" />
+                <div className="p-3 bg-[#F5EFE4] text-[#2B3B44] rounded-2xl w-fit mb-6 border border-[#C9BCA6]">
+                  <Compass className="w-8 h-8 text-[#C4921B]" />
                 </div>
-                <span className="text-xs font-bold uppercase tracking-widest text-[#D99A42]">
+                <span className="text-xs font-bold uppercase tracking-widest text-[#C4921B]">
                   Our Institutional Vision
                 </span>
                 <h2 className="text-2xl sm:text-3xl font-serif font-light text-[#24272B] mt-2">
@@ -50,10 +50,10 @@ export default function VisionMissionPage() {
             {/* Mission Card (Architectural Light Sky Palette) */}
             <div className="p-8 sm:p-10 rounded-3xl bg-white text-[#24272B] border border-[#E5E7EB] shadow-sm hover:shadow-xl transition-all flex flex-col justify-between">
               <div>
-                <div className="p-3 bg-[#EAF2F8] text-[#070E5C] rounded-2xl w-fit mb-6 border border-[#BBD6EA]">
-                  <Target className="w-8 h-8 text-[#D99A42]" />
+                <div className="p-3 bg-[#F5EFE4] text-[#2B3B44] rounded-2xl w-fit mb-6 border border-[#C9BCA6]">
+                  <Target className="w-8 h-8 text-[#C4921B]" />
                 </div>
-                <span className="text-xs font-bold uppercase tracking-widest text-[#D99A42]">
+                <span className="text-xs font-bold uppercase tracking-widest text-[#C4921B]">
                   Our Execution Mission
                 </span>
                 <h2 className="text-2xl sm:text-3xl font-serif font-light text-[#24272B] mt-2">
@@ -67,7 +67,7 @@ export default function VisionMissionPage() {
               <div className="mt-8 pt-6 border-t border-[#E5E7EB]">
                 <Link
                   href="/about/objectives"
-                  className="inline-flex items-center text-xs font-semibold text-[#070E5C] hover:text-[#D99A42] transition-colors"
+                  className="inline-flex items-center text-xs font-semibold text-[#2B3B44] hover:text-[#C4921B] transition-colors"
                 >
                   <span>Explore 10 Institutional Objectives</span>
                   <ArrowUpRight className="w-3.5 h-3.5 ml-1" />

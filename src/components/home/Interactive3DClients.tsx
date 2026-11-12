@@ -23,16 +23,16 @@ export default function Interactive3DClients({ clients }: Interactive3DClientsPr
   const baseSeconds = Math.max(30, displayClients.length * 3);
 
   return (
-    <section className="py-20 sm:py-24 bg-gradient-to-b from-[#FFFFFF] via-[#F4F9FD] to-[#EAF2F8] border-b border-[#E5E7EB] relative overflow-hidden select-none">
+    <section className="reveal py-20 sm:py-24 bg-gradient-to-b from-[#FFFFFF] via-[#F4F9FD] to-[#F5EFE4] border-b border-[#E5E7EB] relative overflow-hidden select-none">
       
       {/* Dynamic Ambient Optical Glows */}
       <div className="absolute top-1/3 left-1/4 w-[600px] h-[350px] bg-[#5B9BD5]/15 rounded-full blur-[100px] pointer-events-none" />
-      <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[300px] bg-[#D99A42]/10 rounded-full blur-[90px] pointer-events-none" />
+      <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[300px] bg-[#C4921B]/10 rounded-full blur-[90px] pointer-events-none" />
 
       {/* Section Header */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12 relative z-10 text-center">
-        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/90 border border-[#BDD7E8] text-[#070E5C] text-xs font-bold uppercase tracking-widest shadow-xs mb-3">
-          <Sparkles className="w-3.5 h-3.5 text-[#D99A42]" />
+        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/90 border border-[#D8CDB8] text-[#2B3B44] text-xs font-bold uppercase tracking-widest shadow-xs mb-3">
+          <Sparkles className="w-3.5 h-3.5 text-[#C4921B]" />
           <span>Trusted Institutional Ecosystem</span>
         </div>
         <h2 className="font-serif text-3xl sm:text-5xl font-light text-[#24272B] tracking-tight">
@@ -47,7 +47,7 @@ export default function Interactive3DClients({ clients }: Interactive3DClientsPr
       <div className="relative w-full overflow-hidden py-3">
         {/* Apple Glass Frosted Vignette Edges */}
         <div className="absolute left-0 top-0 bottom-0 w-32 sm:w-48 bg-gradient-to-r from-white via-white/80 to-transparent z-20 pointer-events-none" />
-        <div className="absolute right-0 top-0 bottom-0 w-32 sm:w-48 bg-gradient-to-l from-[#EAF2F8] via-[#EAF2F8]/80 to-transparent z-20 pointer-events-none" />
+        <div className="absolute right-0 top-0 bottom-0 w-32 sm:w-48 bg-gradient-to-l from-[#F5EFE4] via-[#F5EFE4]/80 to-transparent z-20 pointer-events-none" />
 
         <div
           className="flex w-max items-center gap-6 pr-6 animate-marquee hover:[animation-play-state:paused] will-change-transform"
@@ -67,7 +67,7 @@ export default function Interactive3DClients({ clients }: Interactive3DClientsPr
                 />
               </div>
               {clientDisplayName(client.name) && (
-                <span className="text-[11px] text-[#24272B] group-hover:text-[#070E5C] font-bold mt-2 truncate max-w-full">
+                <span className="text-[11px] text-[#24272B] group-hover:text-[#2B3B44] font-bold mt-2 truncate max-w-full">
                   {clientDisplayName(client.name)}
                 </span>
               )}
@@ -80,7 +80,7 @@ export default function Interactive3DClients({ clients }: Interactive3DClientsPr
       <div className="relative w-full overflow-hidden py-3 mt-3">
         {/* Vignette Edges */}
         <div className="absolute left-0 top-0 bottom-0 w-32 sm:w-48 bg-gradient-to-r from-white via-white/80 to-transparent z-20 pointer-events-none" />
-        <div className="absolute right-0 top-0 bottom-0 w-32 sm:w-48 bg-gradient-to-l from-[#EAF2F8] via-[#EAF2F8]/80 to-transparent z-20 pointer-events-none" />
+        <div className="absolute right-0 top-0 bottom-0 w-32 sm:w-48 bg-gradient-to-l from-[#F5EFE4] via-[#F5EFE4]/80 to-transparent z-20 pointer-events-none" />
 
         <div
           className="flex w-max items-center gap-6 pr-6 animate-marquee-reverse hover:[animation-play-state:paused] will-change-transform"
@@ -100,7 +100,7 @@ export default function Interactive3DClients({ clients }: Interactive3DClientsPr
                 />
               </div>
               {clientDisplayName(client.name) && (
-                <span className="text-[11px] text-[#24272B] group-hover:text-[#070E5C] font-bold mt-2 truncate max-w-full">
+                <span className="text-[11px] text-[#24272B] group-hover:text-[#2B3B44] font-bold mt-2 truncate max-w-full">
                   {clientDisplayName(client.name)}
                 </span>
               )}
@@ -113,10 +113,10 @@ export default function Interactive3DClients({ clients }: Interactive3DClientsPr
       <div className="mt-10 text-center relative z-10">
         <Link
           href="/about#clients-partners"
-          className="inline-flex items-center gap-2 px-7 py-3 rounded-full text-xs font-bold uppercase tracking-wider text-[#070E5C] bg-white border border-[#BDD7E8] hover:bg-[#EAF2F8] shadow-sm hover:shadow-md hover:scale-105 transition-all duration-300 active:scale-95"
+          className="inline-flex items-center gap-2 px-7 py-3 rounded-full text-xs font-bold uppercase tracking-wider text-[#2B3B44] bg-white border border-[#D8CDB8] hover:bg-[#F5EFE4] shadow-sm hover:shadow-md hover:scale-105 transition-all duration-300 active:scale-95"
         >
           <span>View All Government &amp; Corporate Clients</span>
-          <ArrowUpRight className="w-4 h-4 text-[#D99A42]" />
+          <ArrowUpRight className="w-4 h-4 text-[#C4921B]" />
         </Link>
       </div>
 

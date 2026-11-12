@@ -41,7 +41,7 @@ export default async function NewsPage() {
                       className="object-cover group-hover:scale-105 transition-transform duration-500"
                     />
                     <div className="absolute top-3 left-3">
-                      <span className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-white/95 text-[#070E5C] border border-[#BBD6EA] shadow-2xs backdrop-blur-md">
+                      <span className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-white/95 text-[#2B3B44] border border-[#C9BCA6] shadow-2xs backdrop-blur-md">
                         {item.category}
                       </span>
                     </div>
@@ -50,7 +50,7 @@ export default async function NewsPage() {
                   <div className="p-6">
                     <div className="flex items-center text-xs text-[#747B83] space-x-3 mb-2.5">
                       <span className="flex items-center">
-                        <Calendar className="w-3.5 h-3.5 mr-1 text-[#070E5C]" />
+                        <Calendar className="w-3.5 h-3.5 mr-1 text-[#2B3B44]" />
                         {item.date}
                       </span>
                       <span>&bull;</span>
@@ -60,7 +60,7 @@ export default async function NewsPage() {
                       </span>
                     </div>
 
-                    <h2 className="text-base font-serif font-bold text-[#24272B] group-hover:text-[#070E5C] transition-colors line-clamp-2 leading-snug">
+                    <h2 className="text-base font-serif font-bold text-[#24272B] group-hover:text-[#2B3B44] transition-colors line-clamp-2 leading-snug">
                       {item.title}
                     </h2>
 
@@ -74,7 +74,7 @@ export default async function NewsPage() {
                   <div className="pt-4 border-t border-[#E5E7EB] flex items-center justify-between">
                     <Link
                       href={`/media/news/${item.slug || item.id}`}
-                      className="text-xs font-semibold text-[#070E5C] group-hover:text-[#D99A42] group-hover:translate-x-0.5 transition-all flex items-center"
+                      className="text-xs font-semibold text-[#2B3B44] group-hover:text-[#C4921B] group-hover:translate-x-0.5 transition-all flex items-center"
                     >
                       <span>Read Full Press Release</span>
                       <ArrowRight className="w-3.5 h-3.5 ml-1" />

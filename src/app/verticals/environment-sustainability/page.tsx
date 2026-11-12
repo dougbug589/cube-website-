@@ -73,8 +73,8 @@ export default async function EnvironmentSustainabilityPage() {
                 className="object-cover group-hover:scale-105 transition-transform duration-700"
                 priority
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#070E5C]/60 via-transparent to-transparent" />
-              <div className="absolute bottom-4 left-4 right-4 text-white text-xs font-medium bg-white/90 text-[#24272B] backdrop-blur-md p-3 rounded-xl border border-[#BDD7E8]">
+              <div className="absolute inset-0 bg-gradient-to-t from-[#2B3B44]/60 via-transparent to-transparent" />
+              <div className="absolute bottom-4 left-4 right-4 text-white text-xs font-medium bg-white/90 text-[#24272B] backdrop-blur-md p-3 rounded-xl border border-[#D8CDB8]">
                 Ecological Restoration &amp; Urban Watershed Management
               </div>
             </div>

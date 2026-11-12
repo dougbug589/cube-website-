@@ -168,7 +168,7 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
       {detailJob && (
         <motion.div
           key="job-detail-overlay"
-          className="fixed inset-0 z-[1000] flex items-end sm:items-center justify-center p-0 sm:p-6 bg-[#070E5C]/40 backdrop-blur-sm"
+          className="fixed inset-0 z-[1000] flex items-end sm:items-center justify-center p-0 sm:p-6 bg-[#2B3B44]/40 backdrop-blur-sm"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
@@ -178,7 +178,7 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
             role="dialog"
             aria-modal="true"
             aria-labelledby="job-detail-title"
-            className="relative w-full sm:max-w-2xl max-h-[92vh] sm:max-h-[88vh] flex flex-col rounded-t-3xl sm:rounded-3xl bg-white border border-[#BDD7E8] shadow-[0_30px_80px_rgba(7,14,92,0.25)] overflow-hidden"
+            className="relative w-full sm:max-w-2xl max-h-[92vh] sm:max-h-[88vh] flex flex-col rounded-t-3xl sm:rounded-3xl bg-white border border-[#D8CDB8] shadow-[0_30px_80px_rgba(7,14,92,0.25)] overflow-hidden"
             initial={{ opacity: 0, y: 40, scale: 0.97 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 40, scale: 0.97 }}
@@ -186,17 +186,17 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
             onClick={(e) => e.stopPropagation()}
           >
             {/* Header */}
-            <div className="relative shrink-0 px-6 sm:px-8 pt-7 pb-5 bg-gradient-to-b from-[#EAF2F8] to-white border-b border-[#E5E7EB]">
+            <div className="relative shrink-0 px-6 sm:px-8 pt-7 pb-5 bg-gradient-to-b from-[#F5EFE4] to-white border-b border-[#E5E7EB]">
               <button
                 onClick={() => setDetailJob(null)}
                 aria-label="Close job details"
-                className="absolute top-4 right-4 h-9 w-9 rounded-full bg-white/90 border border-[#BDD7E8] text-[#070E5C] hover:bg-[#070E5C] hover:text-white flex items-center justify-center transition"
+                className="absolute top-4 right-4 h-9 w-9 rounded-full bg-white/90 border border-[#D8CDB8] text-[#2B3B44] hover:bg-[#2B3B44] hover:text-white flex items-center justify-center transition"
               >
                 <X className="w-4 h-4" />
               </button>
 
               <div className="flex flex-wrap items-center gap-2 pr-10">
-                <span className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-white text-[#070E5C] border border-[#BDD7E8]">
+                <span className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-white text-[#2B3B44] border border-[#D8CDB8]">
                   {detailJob.department || 'Engineering Vertical'}
                 </span>
                 <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200">
@@ -204,23 +204,23 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
                 </span>
               </div>
 
-              <h2 id="job-detail-title" className="mt-3 text-xl sm:text-2xl font-bold font-serif text-[#070E5C] leading-tight">
+              <h2 id="job-detail-title" className="mt-3 text-xl sm:text-2xl font-bold font-serif text-[#2B3B44] leading-tight">
                 {detailJob.title}
               </h2>
 
               <div className="mt-3 flex flex-wrap gap-x-5 gap-y-2 text-xs text-[#747B83] font-medium">
                 <span className="flex items-center gap-1.5">
-                  <MapPin className="w-3.5 h-3.5 text-[#D99A42]" />
+                  <MapPin className="w-3.5 h-3.5 text-[#C4921B]" />
                   {detailJob.location || 'IIT Madras Research Park, Chennai'}
                 </span>
                 {detailJob.experience && (
                   <span className="flex items-center gap-1.5">
-                    <Clock className="w-3.5 h-3.5 text-[#D99A42]" />
+                    <Clock className="w-3.5 h-3.5 text-[#C4921B]" />
                     {detailJob.experience}
                   </span>
                 )}
                 <span className="flex items-center gap-1.5">
-                  <CalendarDays className="w-3.5 h-3.5 text-[#D99A42]" />
+                  <CalendarDays className="w-3.5 h-3.5 text-[#C4921B]" />
                   {detailJob.closingDate ? `Apply by ${formatDate(detailJob.closingDate)}` : 'Open until filled'}
                 </span>
               </div>
@@ -229,8 +229,8 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
             {/* Body (scrolls) */}
             <div className="flex-1 min-h-0 overflow-y-auto overscroll-contain px-6 sm:px-8 py-6 space-y-6">
               <div>
-                <h3 className="text-xs font-bold uppercase tracking-wider text-[#070E5C] mb-2 flex items-center gap-2">
-                  <FileText className="w-4 h-4 text-[#D99A42]" />
+                <h3 className="text-xs font-bold uppercase tracking-wider text-[#2B3B44] mb-2 flex items-center gap-2">
+                  <FileText className="w-4 h-4 text-[#C4921B]" />
                   Role Overview
                 </h3>
                 <p className="text-sm text-[#24272B]/85 leading-relaxed whitespace-pre-line">
@@ -240,8 +240,8 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
 
               {detailQualifications.length > 0 && (
                 <div>
-                  <h3 className="text-xs font-bold uppercase tracking-wider text-[#070E5C] mb-3 flex items-center gap-2">
-                    <Award className="w-4 h-4 text-[#D99A42]" />
+                  <h3 className="text-xs font-bold uppercase tracking-wider text-[#2B3B44] mb-3 flex items-center gap-2">
+                    <Award className="w-4 h-4 text-[#C4921B]" />
                     Qualifications &amp; Requirements
                   </h3>
                   <ul className="space-y-2">
@@ -256,9 +256,9 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
               )}
 
               {c.jobDetail.howToApplySteps.length > 0 && (
-                <div className="rounded-2xl bg-[#F6FAFD] border border-[#BDD7E8] p-5">
-                  <h3 className="text-xs font-bold uppercase tracking-wider text-[#070E5C] mb-3 flex items-center gap-2">
-                    <Sparkles className="w-4 h-4 text-[#D99A42]" />
+                <div className="rounded-2xl bg-[#FAF8F4] border border-[#D8CDB8] p-5">
+                  <h3 className="text-xs font-bold uppercase tracking-wider text-[#2B3B44] mb-3 flex items-center gap-2">
+                    <Sparkles className="w-4 h-4 text-[#C4921B]" />
                     {c.jobDetail.howToApplyTitle}
                   </h3>
                   <ol className="space-y-2 text-xs text-[#24272B]/85 leading-relaxed list-decimal list-inside">
@@ -270,7 +270,7 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
                     Questions? Write to{' '}
                     <a
                       href={`mailto:${detailEmail}`}
-                      className="font-semibold text-[#070E5C] hover:text-[#D99A42] underline underline-offset-2"
+                      className="font-semibold text-[#2B3B44] hover:text-[#C4921B] underline underline-offset-2"
                     >
                       {detailEmail}
                     </a>
@@ -283,14 +283,14 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
             <div className="shrink-0 px-6 sm:px-8 py-4 border-t border-[#E5E7EB] bg-white flex flex-col-reverse sm:flex-row sm:items-center sm:justify-end gap-3">
               <a
                 href={`mailto:${detailEmail}?subject=${encodeURIComponent(`Application: ${detailJob.title}`)}`}
-                className="px-5 py-3 rounded-full bg-white border border-[#BDD7E8] text-[#070E5C] hover:bg-[#EAF2F8] text-xs font-bold transition flex items-center justify-center gap-2"
+                className="px-5 py-3 rounded-full bg-white border border-[#D8CDB8] text-[#2B3B44] hover:bg-[#F5EFE4] text-xs font-bold transition flex items-center justify-center gap-2"
               >
-                <Mail className="w-3.5 h-3.5 text-[#D99A42]" />
+                <Mail className="w-3.5 h-3.5 text-[#C4921B]" />
                 Email Application
               </a>
               <button
                 onClick={() => handleApplyClick(detailJob)}
-                className="px-7 py-3 rounded-full bg-[#070E5C] hover:bg-[#D99A42] text-white text-xs font-bold tracking-wider uppercase transition shadow-md flex items-center justify-center gap-2 active:scale-95"
+                className="px-7 py-3 rounded-full bg-[#2B3B44] hover:bg-[#C4921B] text-white text-xs font-bold tracking-wider uppercase transition shadow-md flex items-center justify-center gap-2 active:scale-95"
               >
                 <Send className="w-3.5 h-3.5" />
                 Apply &amp; Upload CV
@@ -312,20 +312,20 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
       />
 
       {/* Interactive Hub Navigation Tabs */}
-      <section className="py-8 bg-gradient-to-b from-[#FFFFFF] to-[#F6FAFD] border-b border-[#E5E7EB]">
+      <section className="py-8 bg-gradient-to-b from-[#FFFFFF] to-[#FAF8F4] border-b border-[#E5E7EB]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-wrap items-center justify-between gap-4">
 
-            <div className="inline-flex flex-wrap p-1.5 rounded-full bg-white/80 backdrop-blur-xl border border-[#BDD7E8] shadow-xs">
+            <div className="inline-flex flex-wrap p-1.5 rounded-full bg-white/80 backdrop-blur-xl border border-[#D8CDB8] shadow-xs">
               <button
                 onClick={() => setActiveTab('openings')}
                 className={`px-6 py-2.5 rounded-full text-xs font-semibold tracking-wider transition-all duration-300 flex items-center gap-2 ${
                   activeTab === 'openings'
-                    ? 'bg-[#070E5C] text-white shadow-md'
-                    : 'text-[#24272B] hover:text-[#070E5C]'
+                    ? 'bg-[#2B3B44] text-white shadow-md'
+                    : 'text-[#24272B] hover:text-[#2B3B44]'
                 }`}
               >
-                <Briefcase className="w-4 h-4 text-[#D99A42]" />
+                <Briefcase className="w-4 h-4 text-[#C4921B]" />
                 <span>{c.tabs.openingsLabel} ({initialCareers.length})</span>
               </button>
 
@@ -333,11 +333,11 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
                 onClick={openPortal}
                 className={`px-6 py-2.5 rounded-full text-xs font-semibold tracking-wider transition-all duration-300 flex items-center gap-2 ${
                   activeTab === 'portal'
-                    ? 'bg-[#070E5C] text-white shadow-md'
-                    : 'text-[#24272B] hover:text-[#070E5C]'
+                    ? 'bg-[#2B3B44] text-white shadow-md'
+                    : 'text-[#24272B] hover:text-[#2B3B44]'
                 }`}
               >
-                <Upload className="w-4 h-4 text-[#D99A42]" />
+                <Upload className="w-4 h-4 text-[#C4921B]" />
                 <span>{c.tabs.portalLabel}</span>
               </button>
             </div>
@@ -347,7 +347,7 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
                 <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
                 <span>
                   {c.contactLabel}:{' '}
-                  <a href={`mailto:${c.contactEmail}`} className="font-bold text-[#070E5C] hover:text-[#D99A42]">
+                  <a href={`mailto:${c.contactEmail}`} className="font-bold text-[#2B3B44] hover:text-[#C4921B]">
                     {c.contactEmail}
                   </a>
                 </span>
@@ -359,7 +359,7 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
       </section>
 
       {/* Main Section Content */}
-      <section className="py-16 sm:py-20 bg-gradient-to-b from-[#F6FAFD] to-[#FFFFFF] border-b border-[#E5E7EB]">
+      <section className="py-16 sm:py-20 bg-gradient-to-b from-[#FAF8F4] to-[#FFFFFF] border-b border-[#E5E7EB]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
           {activeTab === 'openings' ? (
@@ -367,12 +367,12 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
 
               {/* Job Listings Grid */}
               {initialCareers.length === 0 ? (
-                <div className="p-12 sm:p-16 rounded-3xl bg-white/90 backdrop-blur-2xl border border-[#BDD7E8] text-center shadow-sm max-w-3xl mx-auto">
-                  <div className="h-16 w-16 mx-auto rounded-2xl bg-[#EAF2F8] border border-[#BDD7E8] text-[#070E5C] flex items-center justify-center mb-6">
-                    <Briefcase className="w-8 h-8 text-[#D99A42]" />
+                <div className="p-12 sm:p-16 rounded-3xl bg-white/90 backdrop-blur-2xl border border-[#D8CDB8] text-center shadow-sm max-w-3xl mx-auto">
+                  <div className="h-16 w-16 mx-auto rounded-2xl bg-[#F5EFE4] border border-[#D8CDB8] text-[#2B3B44] flex items-center justify-center mb-6">
+                    <Briefcase className="w-8 h-8 text-[#C4921B]" />
                   </div>
                   <span className="text-xs font-bold uppercase tracking-wider text-[#747B83]">Status Notice</span>
-                  <h3 className="text-2xl font-bold font-serif text-[#070E5C] mt-2">
+                  <h3 className="text-2xl font-bold font-serif text-[#2B3B44] mt-2">
                     {c.emptyState.title}
                   </h3>
                   <p className="mt-3 text-xs sm:text-sm text-[#747B83] max-w-lg mx-auto leading-relaxed">
@@ -380,7 +380,7 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
                   </p>
                   <button
                     onClick={openPortal}
-                    className="mt-6 px-6 py-3 rounded-full bg-[#EAF2F8] hover:bg-[#D99A42] text-[#070E5C] hover:text-white border border-[#BDD7E8] text-xs font-bold transition shadow-xs"
+                    className="mt-6 px-6 py-3 rounded-full bg-[#F5EFE4] hover:bg-[#C4921B] text-[#2B3B44] hover:text-white border border-[#D8CDB8] text-xs font-bold transition shadow-xs"
                   >
                     {c.emptyState.buttonLabel} &rarr;
                   </button>
@@ -401,11 +401,11 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
                           setDetailJob(job);
                         }
                       }}
-                      className="group cursor-pointer rounded-3xl bg-white/95 backdrop-blur-2xl border border-[#BDD7E8] p-6 shadow-sm hover:shadow-md hover:-translate-y-0.5 hover:border-[#8EBCE0] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#070E5C] transition-all flex flex-col justify-between"
+                      className="group cursor-pointer rounded-3xl bg-white/95 backdrop-blur-2xl border border-[#D8CDB8] p-6 shadow-sm hover:shadow-md hover:-translate-y-0.5 hover:border-[#C4921B] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#2B3B44] transition-all flex flex-col justify-between"
                     >
                       <div>
                         <div className="flex items-center justify-between gap-2 mb-3">
-                          <span className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-[#EAF2F8] text-[#070E5C] border border-[#BDD7E8]">
+                          <span className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-[#F5EFE4] text-[#2B3B44] border border-[#D8CDB8]">
                             {job.department || 'Engineering Vertical'}
                           </span>
                           <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200">
@@ -413,12 +413,12 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
                           </span>
                         </div>
 
-                        <h3 className="text-lg font-bold font-serif text-[#070E5C] leading-snug">
+                        <h3 className="text-lg font-bold font-serif text-[#2B3B44] leading-snug">
                           {job.title}
                         </h3>
 
                         <p className="text-xs text-[#747B83] mt-2 flex items-center gap-1.5 font-medium">
-                          <MapPin className="w-3.5 h-3.5 text-[#D99A42]" />
+                          <MapPin className="w-3.5 h-3.5 text-[#C4921B]" />
                           <span>{job.location || 'IIT Madras Research Park, Chennai'}</span>
                         </p>
 
@@ -426,7 +426,7 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
                           {job.description}
                         </p>
 
-                        <span className="mt-3 inline-flex items-center gap-1 text-[11px] font-semibold text-[#070E5C] group-hover:text-[#D99A42] transition-colors">
+                        <span className="mt-3 inline-flex items-center gap-1 text-[11px] font-semibold text-[#2B3B44] group-hover:text-[#C4921B] transition-colors">
                           View full details
                           <ChevronRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5" />
                         </span>
@@ -436,9 +436,9 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
                         <span className="text-[11px] text-[#747B83]">Exp: {job.experience || '3+ Yrs'}</span>
                         <button
                           onClick={(e) => { e.stopPropagation(); handleApplyClick(job); }}
-                          className="shrink-0 px-4 py-2 rounded-full bg-[#EAF2F8] hover:bg-[#D99A42] text-[#070E5C] hover:text-white border border-[#BDD7E8] text-xs font-bold transition-all shadow-xs flex items-center gap-1.5"
+                          className="shrink-0 px-4 py-2 rounded-full bg-[#F5EFE4] hover:bg-[#C4921B] text-[#2B3B44] hover:text-white border border-[#D8CDB8] text-xs font-bold transition-all shadow-xs flex items-center gap-1.5"
                         >
-                          <Send className="w-3 h-3 text-[#D99A42]" />
+                          <Send className="w-3 h-3 text-[#C4921B]" />
                           <span>Apply &amp; Upload CV</span>
                         </button>
                       </div>
@@ -448,12 +448,12 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
               )}
 
               {/* Resume Upload Callout */}
-              <div className="rounded-3xl bg-gradient-to-r from-[#EAF2F8] via-white to-[#F6FAFD] border border-[#BDD7E8] p-8 sm:p-10 shadow-sm flex flex-col lg:flex-row items-center justify-between gap-8">
+              <div className="rounded-3xl bg-gradient-to-r from-[#F5EFE4] via-white to-[#FAF8F4] border border-[#D8CDB8] p-8 sm:p-10 shadow-sm flex flex-col lg:flex-row items-center justify-between gap-8">
                 <div className="max-w-2xl space-y-2">
-                  <span className="text-xs font-bold uppercase tracking-wider text-[#070E5C] bg-white px-3 py-1 rounded-full border border-[#BDD7E8]">
+                  <span className="text-xs font-bold uppercase tracking-wider text-[#2B3B44] bg-white px-3 py-1 rounded-full border border-[#D8CDB8]">
                     {c.talentCallout.badge}
                   </span>
-                  <h3 className="text-2xl sm:text-3xl font-serif font-bold text-[#070E5C]">
+                  <h3 className="text-2xl sm:text-3xl font-serif font-bold text-[#2B3B44]">
                     {c.talentCallout.heading}
                   </h3>
                   <p className="text-xs sm:text-sm text-[#747B83] leading-relaxed">
@@ -463,7 +463,7 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
 
                 <button
                   onClick={openPortal}
-                  className="px-8 py-3.5 rounded-full bg-[#070E5C] hover:bg-[#D99A42] text-white font-bold text-xs tracking-wider uppercase transition shadow-md whitespace-nowrap active:scale-95"
+                  className="px-8 py-3.5 rounded-full bg-[#2B3B44] hover:bg-[#C4921B] text-white font-bold text-xs tracking-wider uppercase transition shadow-md whitespace-nowrap active:scale-95"
                 >
                   {c.talentCallout.buttonLabel} &rarr;
                 </button>
@@ -475,14 +475,14 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
             /* CAREER PORTAL FORM */
             <div className="max-w-4xl mx-auto">
 
-              <div className="rounded-3xl bg-white/95 backdrop-blur-2xl border border-[#BDD7E8] p-8 sm:p-12 shadow-[0_20px_50px_rgba(7,14,92,0.06)] relative overflow-hidden">
-                <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#BDD7E8] to-transparent opacity-90" />
+              <div className="rounded-3xl bg-white/95 backdrop-blur-2xl border border-[#D8CDB8] p-8 sm:p-12 shadow-[0_20px_50px_rgba(7,14,92,0.06)] relative overflow-hidden">
+                <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#D8CDB8] to-transparent opacity-90" />
 
                 <div className="text-center max-w-2xl mx-auto mb-10">
-                  <span className="text-xs font-bold uppercase tracking-wider text-[#070E5C] bg-[#EAF2F8] px-3.5 py-1 rounded-full border border-[#BDD7E8]">
+                  <span className="text-xs font-bold uppercase tracking-wider text-[#2B3B44] bg-[#F5EFE4] px-3.5 py-1 rounded-full border border-[#D8CDB8]">
                     {form.badge}
                   </span>
-                  <h2 className="text-3xl font-serif font-bold text-[#070E5C] mt-3">
+                  <h2 className="text-3xl font-serif font-bold text-[#2B3B44] mt-3">
                     {form.heading}
                   </h2>
                   <p className="text-xs sm:text-sm text-[#747B83] mt-2">
@@ -491,17 +491,17 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
                 </div>
 
                 {submitSuccess ? (
-                  <div className="p-8 sm:p-12 rounded-2xl bg-[#EAF2F8] border border-[#BDD7E8] text-center space-y-4">
+                  <div className="p-8 sm:p-12 rounded-2xl bg-[#F5EFE4] border border-[#D8CDB8] text-center space-y-4">
                     <div className="w-16 h-16 rounded-full bg-emerald-100 text-emerald-700 mx-auto flex items-center justify-center">
                       <Check className="w-8 h-8" />
                     </div>
-                    <h3 className="text-2xl font-serif font-bold text-[#070E5C]">{form.successTitle}</h3>
+                    <h3 className="text-2xl font-serif font-bold text-[#2B3B44]">{form.successTitle}</h3>
                     <p className="text-xs sm:text-sm text-[#747B83] max-w-md mx-auto leading-relaxed">
                       {form.successMessage}
                     </p>
                     <button
                       onClick={() => { setSubmitSuccess(false); setActiveTab('openings'); }}
-                      className="mt-4 px-6 py-2.5 rounded-full bg-[#070E5C] text-white text-xs font-bold hover:bg-[#D99A42] transition"
+                      className="mt-4 px-6 py-2.5 rounded-full bg-[#2B3B44] text-white text-xs font-bold hover:bg-[#C4921B] transition"
                     >
                       Return to Careers Overview
                     </button>
@@ -526,7 +526,7 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
                           value={fullName}
                           onChange={(e) => setFullName(e.target.value)}
                           placeholder="e.g. Dr. K. Ramesh"
-                          className="w-full px-4 py-3 rounded-2xl bg-white border border-[#BDD7E8] text-xs text-[#24272B] focus:outline-none focus:ring-2 focus:ring-[#070E5C]"
+                          className="w-full px-4 py-3 rounded-2xl bg-white border border-[#D8CDB8] text-xs text-[#24272B] focus:outline-none focus:ring-2 focus:ring-[#2B3B44]"
                         />
                       </div>
 
@@ -540,7 +540,7 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
                           value={email}
                           onChange={(e) => setEmail(e.target.value)}
                           placeholder="ramesh@example.com"
-                          className="w-full px-4 py-3 rounded-2xl bg-white border border-[#BDD7E8] text-xs text-[#24272B] focus:outline-none focus:ring-2 focus:ring-[#070E5C]"
+                          className="w-full px-4 py-3 rounded-2xl bg-white border border-[#D8CDB8] text-xs text-[#24272B] focus:outline-none focus:ring-2 focus:ring-[#2B3B44]"
                         />
                       </div>
 
@@ -554,7 +554,7 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
                           value={phone}
                           onChange={(e) => setPhone(e.target.value)}
                           placeholder="+91 98765 43210"
-                          className="w-full px-4 py-3 rounded-2xl bg-white border border-[#BDD7E8] text-xs text-[#24272B] focus:outline-none focus:ring-2 focus:ring-[#070E5C]"
+                          className="w-full px-4 py-3 rounded-2xl bg-white border border-[#D8CDB8] text-xs text-[#24272B] focus:outline-none focus:ring-2 focus:ring-[#2B3B44]"
                         />
                       </div>
 
@@ -565,7 +565,7 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
                         <select
                           value={experience}
                           onChange={(e) => setExperience(e.target.value)}
-                          className="w-full px-4 py-3 rounded-2xl bg-white border border-[#BDD7E8] text-xs text-[#24272B] focus:outline-none focus:ring-2 focus:ring-[#070E5C]"
+                          className="w-full px-4 py-3 rounded-2xl bg-white border border-[#D8CDB8] text-xs text-[#24272B] focus:outline-none focus:ring-2 focus:ring-[#2B3B44]"
                         >
                           {form.experienceOptions.map((opt) => (
                             <option key={opt} value={opt}>{opt}</option>
@@ -580,7 +580,7 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
                         <select
                           value={domain}
                           onChange={(e) => setDomain(e.target.value)}
-                          className="w-full px-4 py-3 rounded-2xl bg-white border border-[#BDD7E8] text-xs text-[#24272B] focus:outline-none focus:ring-2 focus:ring-[#070E5C]"
+                          className="w-full px-4 py-3 rounded-2xl bg-white border border-[#D8CDB8] text-xs text-[#24272B] focus:outline-none focus:ring-2 focus:ring-[#2B3B44]"
                         >
                           {form.domainOptions.map((opt) => (
                             <option key={opt} value={opt}>{opt}</option>
@@ -598,7 +598,7 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
                           onChange={setJobTitle}
                           options={positionOptions}
                           placeholder="Select or type the position"
-                          inputClassName="w-full px-4 py-3 pr-10 rounded-2xl bg-white border border-[#BDD7E8] text-xs text-[#24272B] focus:outline-none focus:ring-2 focus:ring-[#070E5C] cursor-pointer"
+                          inputClassName="w-full px-4 py-3 pr-10 rounded-2xl bg-white border border-[#D8CDB8] text-xs text-[#24272B] focus:outline-none focus:ring-2 focus:ring-[#2B3B44] cursor-pointer"
                         />
                       </div>
 
@@ -609,7 +609,7 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
                       <label className="block text-xs font-bold uppercase tracking-wider text-[#24272B] mb-2">
                         Upload Resume / Curriculum Vitae (PDF or DOCX - Max 10MB) *
                       </label>
-                      <div className="rounded-2xl border-2 border-dashed border-[#BDD7E8] p-6 text-center hover:bg-[#F6FAFD] transition cursor-pointer relative">
+                      <div className="rounded-2xl border-2 border-dashed border-[#D8CDB8] p-6 text-center hover:bg-[#FAF8F4] transition cursor-pointer relative">
                         <input
                           type="file"
                           accept=".pdf,.doc,.docx"
@@ -618,8 +618,8 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
                           className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
                         />
                         <div className="flex flex-col items-center">
-                          <Upload className="w-8 h-8 text-[#D99A42] mb-2" />
-                          <p className="text-xs font-bold text-[#070E5C]">
+                          <Upload className="w-8 h-8 text-[#C4921B] mb-2" />
+                          <p className="text-xs font-bold text-[#2B3B44]">
                             {resumeFile ? resumeFile.name : 'Click or Drag & Drop your Resume here'}
                           </p>
                           <p className="text-[10px] text-[#747B83] mt-1">
@@ -638,7 +638,7 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
                         value={coverLetter}
                         onChange={(e) => setCoverLetter(e.target.value)}
                         placeholder={form.coverNotePlaceholder}
-                        className="w-full px-4 py-3 rounded-2xl bg-white border border-[#BDD7E8] text-xs text-[#24272B] focus:outline-none focus:ring-2 focus:ring-[#070E5C]"
+                        className="w-full px-4 py-3 rounded-2xl bg-white border border-[#D8CDB8] text-xs text-[#24272B] focus:outline-none focus:ring-2 focus:ring-[#2B3B44]"
                       />
                     </div>
 
@@ -646,7 +646,7 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
                       <button
                         type="button"
                         onClick={() => setActiveTab('openings')}
-                        className="text-xs font-semibold text-[#747B83] hover:text-[#070E5C]"
+                        className="text-xs font-semibold text-[#747B83] hover:text-[#2B3B44]"
                       >
                         &larr; Back to Openings
                       </button>
@@ -654,7 +654,7 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
                       <button
                         type="submit"
                         disabled={submitting}
-                        className="px-8 py-3.5 rounded-full bg-[#070E5C] hover:bg-[#D99A42] text-white text-xs font-bold tracking-wider uppercase transition shadow-md flex items-center gap-2 disabled:opacity-50"
+                        className="px-8 py-3.5 rounded-full bg-[#2B3B44] hover:bg-[#C4921B] text-white text-xs font-bold tracking-wider uppercase transition shadow-md flex items-center gap-2 disabled:opacity-50"
                       >
                         {submitting ? 'Submitting Application...' : form.submitLabel}
                         <Send className="w-3.5 h-3.5" />
@@ -678,7 +678,7 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
         <section className="py-16 bg-[#FFFFFF]">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center max-w-2xl mx-auto mb-12">
-              <h3 className="text-2xl font-serif font-bold text-[#070E5C]">
+              <h3 className="text-2xl font-serif font-bold text-[#2B3B44]">
                 {c.benefits.heading}
               </h3>
               <p className="text-xs sm:text-sm text-[#747B83] mt-2">
@@ -690,9 +690,9 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
               {c.benefits.items.map((item, i) => {
                 const Icon = BENEFIT_ICONS[item.icon] || Award;
                 return (
-                  <div key={i} className="p-6 rounded-3xl bg-[#F6FAFD] border border-[#BDD7E8] text-center">
-                    <Icon className="w-8 h-8 text-[#D99A42] mx-auto mb-3" />
-                    <h4 className="font-serif font-bold text-[#070E5C] text-base">{item.title}</h4>
+                  <div key={i} className="p-6 rounded-3xl bg-[#FAF8F4] border border-[#D8CDB8] text-center">
+                    <Icon className="w-8 h-8 text-[#C4921B] mx-auto mb-3" />
+                    <h4 className="font-serif font-bold text-[#2B3B44] text-base">{item.title}</h4>
                     <p className="text-xs text-[#747B83] mt-2 leading-relaxed">{item.description}</p>
                   </div>
                 );

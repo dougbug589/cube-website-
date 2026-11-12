@@ -41,7 +41,7 @@ export default function Interactive3DAbout() {
   };
 
   return (
-    <section className="py-24 bg-[#FFFFFF] border-b border-[#E5E7EB] relative overflow-hidden select-none">
+    <section className="reveal py-24 bg-[#FFFFFF] border-b border-[#E5E7EB] relative overflow-hidden select-none">
       {/* Subtle architectural grid pattern */}
       <div 
         className="absolute inset-0 opacity-[0.03] pointer-events-none"
@@ -67,7 +67,7 @@ export default function Interactive3DAbout() {
                 rotateY,
                 transformStyle: 'preserve-3d',
               }}
-              className="relative rounded-3xl p-3 bg-gradient-to-br from-white via-[#F7F7F4] to-[#EAF2F8] border border-[#E5E7EB] shadow-2xl transition-shadow duration-500 hover:shadow-[0_25px_50px_-12px_rgba(7,14,92,0.18)]"
+              className="relative rounded-3xl p-3 bg-gradient-to-br from-white via-[#F7F7F4] to-[#F5EFE4] border border-[#E5E7EB] shadow-2xl transition-shadow duration-500 hover:shadow-[0_25px_50px_-12px_rgba(7,14,92,0.18)]"
             >
               {/* PRIMARY 3D MAIN PHOTOGRAPH */}
               <div className="relative h-80 sm:h-96 w-full rounded-2xl overflow-hidden shadow-lg group">
@@ -79,7 +79,7 @@ export default function Interactive3DAbout() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent flex items-end p-6">
                   <div className="text-white space-y-1">
-                    <span className="text-[10px] uppercase font-bold tracking-widest text-[#D99A42]">
+                    <span className="text-[10px] uppercase font-bold tracking-widest text-[#C4921B]">
                       HQ &bull; Chennai
                     </span>
                     <div className="text-sm font-serif font-medium">
@@ -107,8 +107,8 @@ export default function Interactive3DAbout() {
                 
                 {/* Floating Badge */}
                 <div className="absolute top-3 left-3">
-                  <span className="px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-white/95 text-[#070E5C] shadow-sm backdrop-blur-sm flex items-center gap-1.5">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#D99A42] animate-pulse" />
+                  <span className="px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-white/95 text-[#2B3B44] shadow-sm backdrop-blur-sm flex items-center gap-1.5">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#C4921B] animate-pulse" />
                     <span>Academic Nexus</span>
                   </span>
                 </div>
@@ -134,10 +134,10 @@ export default function Interactive3DAbout() {
                   />
                 </div>
                 <div className="pr-2">
-                  <div className="text-[9px] uppercase font-bold text-[#D99A42] tracking-wider">
+                  <div className="text-[9px] uppercase font-bold text-[#C4921B] tracking-wider">
                     Established 2017
                   </div>
-                  <div className="text-xs font-serif font-semibold text-[#070E5C]">
+                  <div className="text-xs font-serif font-semibold text-[#2B3B44]">
                     IIT Madras &bull; Govt of TN
                   </div>
                 </div>
@@ -149,14 +149,14 @@ export default function Interactive3DAbout() {
           {/* RIGHT: EDITORIAL TYPOGRAPHY & ANIMATED INTERACTIVE PILLARS (7 cols) */}
           <div className="lg:col-span-7 space-y-6">
             
-            <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-[#D99A42]">
-              <span className="w-2 h-2 rounded-full bg-[#D99A42]" />
+            <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-[#C4921B]">
+              <span className="w-2 h-2 rounded-full bg-[#C4921B]" />
               <span>Foundational Mandate</span>
             </div>
 
             <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-light text-[#24272B] leading-[1.08] tracking-tight">
               Research. Engineering. <br />
-              <span className="italic font-normal text-[#070E5C]">A Resilient Future.</span>
+              <span className="italic font-normal text-[#2B3B44]">A Resilient Future.</span>
             </h2>
 
             <p className="text-sm sm:text-base text-[#747B83] leading-relaxed font-sans">
@@ -169,16 +169,16 @@ export default function Interactive3DAbout() {
               <motion.div
                 whileHover={{ y: -4, scale: 1.01 }}
                 transition={{ duration: 0.2 }}
-                className="p-5 rounded-2xl bg-[#F7F7F4] border border-[#E5E7EB] hover:border-[#BBD6EA] hover:bg-[#EAF2F8] transition-all shadow-sm group"
+                className="p-5 rounded-2xl bg-[#F7F7F4] border border-[#E5E7EB] hover:border-[#C9BCA6] hover:bg-[#F5EFE4] transition-all shadow-sm group"
               >
-                <div className="flex items-center space-x-2 text-[#070E5C] font-semibold text-sm">
-                  <ShieldCheck className="w-4 h-4 text-[#D99A42] transition-transform group-hover:scale-110" />
+                <div className="flex items-center space-x-2 text-[#2B3B44] font-semibold text-sm">
+                  <ShieldCheck className="w-4 h-4 text-[#C4921B] transition-transform group-hover:scale-110" />
                   <span>Independent TPQA &amp; Durability</span>
                 </div>
                 <p className="text-xs text-[#747B83] mt-2 leading-relaxed">
                   Third-party audits, non-destructive testing (NDT), and concrete durability verification for mega public housing schemes.
                 </p>
-                <div className="mt-3 flex items-center text-[11px] font-semibold text-[#070E5C] opacity-0 group-hover:opacity-100 transition-opacity">
+                <div className="mt-3 flex items-center text-[11px] font-semibold text-[#2B3B44] opacity-0 group-hover:opacity-100 transition-opacity">
                   <span>Explore TPQA Standards</span>
                   <ArrowUpRight className="w-3.5 h-3.5 ml-1" />
                 </div>
@@ -187,16 +187,16 @@ export default function Interactive3DAbout() {
               <motion.div
                 whileHover={{ y: -4, scale: 1.01 }}
                 transition={{ duration: 0.2 }}
-                className="p-5 rounded-2xl bg-[#F7F7F4] border border-[#E5E7EB] hover:border-[#BBD6EA] hover:bg-[#EAF2F8] transition-all shadow-sm group"
+                className="p-5 rounded-2xl bg-[#F7F7F4] border border-[#E5E7EB] hover:border-[#C9BCA6] hover:bg-[#F5EFE4] transition-all shadow-sm group"
               >
-                <div className="flex items-center space-x-2 text-[#070E5C] font-semibold text-sm">
-                  <FlaskConical className="w-4 h-4 text-[#D99A42] transition-transform group-hover:scale-110" />
+                <div className="flex items-center space-x-2 text-[#2B3B44] font-semibold text-sm">
+                  <FlaskConical className="w-4 h-4 text-[#C4921B] transition-transform group-hover:scale-110" />
                   <span>Applied Academic Translation</span>
                 </div>
                 <p className="text-xs text-[#747B83] mt-2 leading-relaxed">
                   Direct access to IIT Madras civil engineering faculty, advanced computational tools, and state environmental laboratories.
                 </p>
-                <div className="mt-3 flex items-center text-[11px] font-semibold text-[#070E5C] opacity-0 group-hover:opacity-100 transition-opacity">
+                <div className="mt-3 flex items-center text-[11px] font-semibold text-[#2B3B44] opacity-0 group-hover:opacity-100 transition-opacity">
                   <span>Faculty Advisory Panel</span>
                   <ArrowUpRight className="w-3.5 h-3.5 ml-1" />
                 </div>
@@ -208,10 +208,10 @@ export default function Interactive3DAbout() {
             <div className="pt-4 flex flex-wrap items-center gap-4">
               <Link
                 href="/about"
-                className="px-7 py-3 rounded-full bg-[#EAF2F8] text-[#070E5C] hover:bg-[#D99A42] hover:text-white border border-[#BBD6EA] text-xs font-semibold tracking-wide transition-all shadow-sm hover:shadow-md flex items-center gap-2"
+                className="px-7 py-3 rounded-full bg-[#F5EFE4] text-[#2B3B44] hover:bg-[#C4921B] hover:text-white border border-[#C9BCA6] text-xs font-semibold tracking-wide transition-all shadow-sm hover:shadow-md flex items-center gap-2"
               >
                 <span>Explore Governance &amp; Objectives</span>
-                <ArrowUpRight className="w-3.5 h-3.5 text-[#D99A42]" />
+                <ArrowUpRight className="w-3.5 h-3.5 text-[#C4921B]" />
               </Link>
 
               <Link

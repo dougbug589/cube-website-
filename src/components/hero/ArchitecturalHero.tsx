@@ -156,15 +156,15 @@ export default function ArchitecturalHero() {
         <div className="absolute bottom-0 left-0 right-0 h-14 z-20 bg-gradient-to-t from-[#F7F7F4] to-transparent" />
 
         {/* Ambient Cyan/Ice-Blue Refractive Glow for Apple Cinematic Look */}
-        <div className="absolute top-1/4 left-1/4 w-[600px] h-[600px] z-10 bg-[#38bdf8]/15 rounded-full blur-[120px] pointer-events-none" />
-        <div className="absolute top-1/3 right-1/4 w-[500px] h-[500px] z-10 bg-[#60a5fa]/15 rounded-full blur-[100px] pointer-events-none" />
+        <div className="absolute top-1/4 left-1/4 w-[600px] h-[600px] z-10 bg-[#E9B215]/15 rounded-full blur-[120px] pointer-events-none" />
+        <div className="absolute top-1/3 right-1/4 w-[500px] h-[500px] z-10 bg-[#E9B215]/15 rounded-full blur-[100px] pointer-events-none" />
       </div>
 
       {/* Top Institutional Metadata Bar */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full z-10 mb-4">
         <div className="flex flex-wrap items-center justify-between gap-4 text-xs tracking-wider uppercase font-semibold text-white/80 border-b border-white/20 pb-3">
           <div className="flex items-center gap-2.5">
-            <span className="w-2.5 h-2.5 rounded-full bg-[#38bdf8] shadow-[0_0_12px_#38bdf8] animate-pulse" />
+            <span className="w-2.5 h-2.5 rounded-full bg-[#E9B215] shadow-[0_0_12px_#E9B215] animate-pulse" />
             <span className="text-white font-bold tracking-wider">Centre of Excellence</span>
             <span>&bull;</span>
             <span className="text-white/80">Govt of Tamil Nadu &amp; IIT Madras</span>
@@ -176,7 +176,7 @@ export default function ArchitecturalHero() {
               className="px-4 py-1.5 rounded-full bg-white/15 hover:bg-white/25 text-white border border-white/30 text-[11px] font-semibold tracking-wider transition-all shadow-sm backdrop-blur-md flex items-center gap-1.5 active:scale-95"
             >
               <span>View All 40+ Schemes</span>
-              <ArrowUpRight className="w-3.5 h-3.5 text-[#38bdf8]" />
+              <ArrowUpRight className="w-3.5 h-3.5 text-[#E9B215]" />
             </Link>
           </div>
         </div>
@@ -195,7 +195,7 @@ export default function ArchitecturalHero() {
               transition={{ duration: 0.5 }}
               className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/20 border border-white/40 text-white text-xs font-semibold shadow-sm backdrop-blur-xl"
             >
-              <ShieldCheck className="w-3.5 h-3.5 text-[#38bdf8]" />
+              <ShieldCheck className="w-3.5 h-3.5 text-[#E9B215]" />
               <span>{slide.category}</span>
             </motion.div>
 
@@ -213,7 +213,7 @@ export default function ArchitecturalHero() {
           >
             <h1 className="font-serif text-4xl sm:text-6xl lg:text-[4.5rem] font-light tracking-tight text-white drop-shadow-[0_4px_16px_rgba(0,0,0,0.5)] leading-[1.08]">
               {slide.title}{' '}
-              <span className="italic font-normal text-[#7dd3fc] drop-shadow-[0_0_24px_rgba(56,189,248,0.4)] border-b-2 border-[#38bdf8] pb-0.5">
+              <span className="italic font-normal text-[#F0C468] drop-shadow-[0_0_24px_rgba(56,189,248,0.4)] border-b-2 border-[#E9B215] pb-0.5">
                 {slide.italicWord}
               </span>{' '}
               {slide.subtitle}
@@ -229,10 +229,10 @@ export default function ArchitecturalHero() {
           <div className="flex flex-wrap items-center gap-4 pt-2">
             <Link
               href="/projects"
-              className="px-7 py-3 rounded-full bg-white text-[#070E5C] font-semibold text-xs tracking-wider transition-all shadow-[0_4px_20px_rgba(255,255,255,0.35)] hover:bg-[#e0f2fe] hover:scale-105 active:scale-95 flex items-center gap-2"
+              className="px-7 py-3 rounded-full bg-white text-[#2B3B44] font-semibold text-xs tracking-wider transition-all shadow-[0_4px_20px_rgba(255,255,255,0.35)] hover:bg-[#F7EDD3] hover:scale-105 active:scale-95 flex items-center gap-2"
             >
               <span>Explore Our Projects</span>
-              <ArrowUpRight className="w-4 h-4 text-[#0284c7]" />
+              <ArrowUpRight className="w-4 h-4 text-[#B07F14]" />
             </Link>
 
           </div>
@@ -247,7 +247,7 @@ export default function ArchitecturalHero() {
                   aria-label={`Go to slide ${idx + 1}`}
                   className={`transition-all duration-500 rounded-full cursor-pointer ${
                     currentIdx === idx 
-                      ? 'w-8 h-2 bg-[#38bdf8] shadow-[0_0_12px_#38bdf8]' 
+                      ? 'w-8 h-2 bg-[#E9B215] shadow-[0_0_12px_#E9B215]' 
                       : 'w-2 h-2 bg-white/40 hover:bg-white/80'
                   }`}
                 />

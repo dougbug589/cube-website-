@@ -50,7 +50,7 @@ export default async function NewsDetailPage({ params }: { params: Promise<{ slu
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <Link
             href="/media/news"
-            className="inline-flex items-center gap-1 text-xs font-semibold text-[#070E5C] hover:text-[#D99A42] mb-6"
+            className="inline-flex items-center gap-1 text-xs font-semibold text-[#2B3B44] hover:text-[#C4921B] mb-6"
           >
             <ArrowLeft className="w-3.5 h-3.5" />
             Back to all news
@@ -58,14 +58,14 @@ export default async function NewsDetailPage({ params }: { params: Promise<{ slu
 
           <div className="flex flex-wrap items-center gap-4 text-xs text-[#747B83] mb-6">
             <span className="flex items-center">
-              <Calendar className="w-3.5 h-3.5 mr-1 text-[#070E5C]" />
+              <Calendar className="w-3.5 h-3.5 mr-1 text-[#2B3B44]" />
               {item.date}
             </span>
             <span className="flex items-center">
               <User className="w-3.5 h-3.5 mr-1" />
               {item.author || 'CUBE Editorial'}
             </span>
-            <span className="px-2.5 py-0.5 rounded-full bg-[#EAF2F8] text-[#070E5C] font-semibold">
+            <span className="px-2.5 py-0.5 rounded-full bg-[#F5EFE4] text-[#2B3B44] font-semibold">
               {item.category}
             </span>
           </div>

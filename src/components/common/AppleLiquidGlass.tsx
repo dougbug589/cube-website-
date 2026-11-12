@@ -19,23 +19,23 @@ export function GlassPanel({
   const getVariantStyles = () => {
     switch (variant) {
       case 'nav':
-        return 'bg-white/70 backdrop-blur-[28px] saturate-[180%] border border-white/80 shadow-[0_8px_32px_rgba(36,39,43,0.06),inset_0_1px_1px_rgba(255,255,255,0.95)]';
+        return 'bg-[#33454E]/75 backdrop-blur-[28px] saturate-[150%] border border-[#C9BCA6]/25 shadow-[0_8px_32px_rgba(15,25,32,0.5),inset_0_1px_1px_rgba(245,239,228,0.1)]';
       case 'card':
-        return 'bg-gradient-to-br from-white/90 via-[#F7FAFC]/80 to-[#EAF2F8]/85 backdrop-blur-[24px] saturate-[175%] border border-[#BDD7E8] shadow-[0_12px_36px_rgba(36,39,43,0.05),inset_0_1px_1.5px_rgba(255,255,255,0.95)] rounded-3xl';
+        return 'bg-gradient-to-br from-[#3A4C56]/95 via-[#33454E]/90 to-[#243239]/90 backdrop-blur-[24px] saturate-[150%] border border-[#C9BCA6]/20 shadow-[0_12px_36px_rgba(15,25,32,0.55),inset_0_1px_1.5px_rgba(245,239,228,0.1)] rounded-3xl';
       case 'modal':
-        return 'bg-white/85 backdrop-blur-[32px] saturate-[190%] border border-white/90 shadow-[0_24px_64px_rgba(36,39,43,0.14),inset_0_1px_2px_rgba(255,255,255,1)] rounded-3xl';
+        return 'bg-[#33454E]/95 backdrop-blur-[32px] saturate-[160%] border border-[#C9BCA6]/30 shadow-[0_24px_64px_rgba(15,25,32,0.65),inset_0_1px_2px_rgba(245,239,228,0.12)] rounded-3xl';
       case 'pill':
-        return 'bg-white/75 backdrop-blur-[20px] saturate-[160%] border border-[#BDD7E8]/80 shadow-[0_4px_16px_rgba(36,39,43,0.04),inset_0_1px_1px_rgba(255,255,255,0.9)] rounded-full';
+        return 'bg-[#33454E]/80 backdrop-blur-[20px] saturate-[150%] border border-[#C9BCA6]/25 shadow-[0_4px_16px_rgba(15,25,32,0.45),inset_0_1px_1px_rgba(245,239,228,0.08)] rounded-full';
       case 'subtle':
-        return 'bg-white/45 backdrop-blur-[16px] border border-white/60 shadow-[0_4px_20px_rgba(36,39,43,0.03)] rounded-2xl';
+        return 'bg-[#33454E]/50 backdrop-blur-[16px] border border-[#C9BCA6]/15 shadow-[0_4px_20px_rgba(15,25,32,0.4)] rounded-2xl';
       case 'panel':
       default:
-        return 'bg-white/72 backdrop-blur-[24px] saturate-[160%] border border-white/85 shadow-[0_16px_40px_rgba(36,39,43,0.06),inset_0_1px_1.5px_rgba(255,255,255,0.9)] rounded-3xl';
+        return 'bg-[#33454E]/80 backdrop-blur-[24px] saturate-[150%] border border-[#C9BCA6]/20 shadow-[0_16px_40px_rgba(15,25,32,0.5),inset_0_1px_1.5px_rgba(245,239,228,0.08)] rounded-3xl';
     }
   };
 
   const interactiveStyles = interactive
-    ? 'transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_20px_48px_rgba(36,39,43,0.09)] hover:border-white active:scale-[0.99]'
+    ? 'transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_20px_48px_rgba(15,25,32,0.6)] hover:border-[#C4921B]/45 active:scale-[0.99]'
     : '';
 
   return (
@@ -43,8 +43,8 @@ export function GlassPanel({
       className={`relative overflow-hidden ${getVariantStyles()} ${interactiveStyles} ${className}`}
       {...props}
     >
-      {/* Specular Edge Highlight Sheen */}
-      <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-white to-transparent opacity-80 pointer-events-none" />
+      {/* Gold Specular Edge Highlight Sheen */}
+      <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-[#C4921B]/50 to-transparent opacity-80 pointer-events-none" />
       {children}
     </div>
   );
@@ -68,13 +68,13 @@ export function GlassButton({
 
   const variantStyles = {
     solid:
-      'bg-white/90 text-[#070E5C] border border-[#BDD7E8] hover:bg-white hover:shadow-md hover:border-[#5B9BD5]',
+      'bg-[#C4921B] text-[#2B3B44] border border-[#C4921B] hover:bg-[#E9B215] hover:shadow-[0_6px_20px_rgba(196,146,27,0.35)] hover:border-[#E9B215]',
     outline:
-      'bg-white/40 text-[#24272B] border border-white/80 hover:bg-white/80 hover:border-[#BDD7E8]',
+      'bg-transparent text-[#C9BCA6] border border-[#C9BCA6]/30 hover:bg-[#33454E]/80 hover:text-[#F5EFE4] hover:border-[#C4921B]/50',
     pill:
-      'bg-[#EAF2F8]/90 text-[#070E5C] border border-[#BDD7E8] hover:bg-[#D99A42] hover:text-white hover:border-transparent',
+      'bg-[#33454E]/85 text-[#E9B215] border border-[#C4921B]/35 hover:bg-[#C4921B] hover:text-[#2B3B44] hover:border-transparent',
     ghost:
-      'bg-transparent text-[#747B83] hover:text-[#24272B] hover:bg-white/50 border border-transparent',
+      'bg-transparent text-[#A89476] hover:text-[#F5EFE4] hover:bg-white/[0.06] border border-transparent',
   }[variant];
 
   return (
@@ -103,16 +103,16 @@ export function GlassStat({
   return (
     <GlassPanel variant="card" interactive className={`p-6 ${className}`}>
       <div className="flex items-center justify-between mb-3">
-        <span className="text-[11px] uppercase tracking-widest text-[#747B83] font-bold">
+        <span className="text-[11px] uppercase tracking-widest text-[#A89476] font-bold">
           {label}
         </span>
-        {Icon && <Icon className="w-4 h-4 text-[#D99A42]" />}
+        {Icon && <Icon className="w-4 h-4 text-[#E9B215]" />}
       </div>
-      <div className="font-serif text-3xl sm:text-4xl font-light text-[#24272B] tracking-tight">
+      <div className="font-display text-3xl sm:text-4xl font-semibold text-[#F5EFE4] tracking-tight">
         {value}
       </div>
       {subtext && (
-        <p className="text-xs text-[#747B83] mt-1.5 leading-relaxed">
+        <p className="text-xs text-[#A89476] mt-1.5 leading-relaxed">
           {subtext}
         </p>
       )}

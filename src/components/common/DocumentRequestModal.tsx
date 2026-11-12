@@ -104,15 +104,15 @@ export default function DocumentRequestModal({
             <div className="w-14 h-14 bg-emerald-50 text-emerald-600 rounded-full flex items-center justify-center mx-auto mb-4 border border-emerald-200">
               <CheckCircle2 className="w-8 h-8" />
             </div>
-            <h3 className="text-xl font-bold font-serif text-[#070E5C] mb-2">
+            <h3 className="text-xl font-bold font-serif text-[#2B3B44] mb-2">
               Request Received Successfully
             </h3>
             <p className="text-xs sm:text-sm text-slate-600 max-w-sm mx-auto mb-6">
-              Thank you for your interest in <span className="font-semibold text-[#070E5C]">&ldquo;{documentTitle}&rdquo;</span>. Our technical research desk will dispatch the document copy to your registered official email address.
+              Thank you for your interest in <span className="font-semibold text-[#2B3B44]">&ldquo;{documentTitle}&rdquo;</span>. Our technical research desk will dispatch the document copy to your registered official email address.
             </p>
             <button
               onClick={resetAndClose}
-              className="px-6 py-2.5 rounded-full bg-[#070E5C] text-white text-xs font-semibold hover:bg-[#070E5C]/90 transition cursor-pointer"
+              className="px-6 py-2.5 rounded-full bg-[#2B3B44] text-white text-xs font-semibold hover:bg-[#2B3B44]/90 transition cursor-pointer"
             >
               Done
             </button>
@@ -120,17 +120,17 @@ export default function DocumentRequestModal({
         ) : (
           <div>
             <div className="flex items-center gap-3 mb-4 pr-8">
-              <div className="w-10 h-10 rounded-2xl bg-[#EAF2F8] border border-[#BDD7E8] text-[#070E5C] flex items-center justify-center shrink-0">
-                <FileText className="w-5 h-5 text-[#D99A42]" />
+              <div className="w-10 h-10 rounded-2xl bg-[#F5EFE4] border border-[#D8CDB8] text-[#2B3B44] flex items-center justify-center shrink-0">
+                <FileText className="w-5 h-5 text-[#C4921B]" />
               </div>
               <div>
-                <span className="text-[10px] font-bold uppercase tracking-wider text-[#D99A42]">Official Request</span>
-                <h3 className="font-serif font-bold text-lg text-[#070E5C] leading-tight">Request Technical Document</h3>
+                <span className="text-[10px] font-bold uppercase tracking-wider text-[#C4921B]">Official Request</span>
+                <h3 className="font-serif font-bold text-lg text-[#2B3B44] leading-tight">Request Technical Document</h3>
               </div>
             </div>
 
-            <div className="bg-[#F6FAFD] p-3.5 rounded-2xl border border-[#BDD7E8]/70 mb-5 text-xs">
-              <p className="font-semibold text-[#070E5C] line-clamp-2">{documentTitle}</p>
+            <div className="bg-[#FAF8F4] p-3.5 rounded-2xl border border-[#D8CDB8]/70 mb-5 text-xs">
+              <p className="font-semibold text-[#2B3B44] line-clamp-2">{documentTitle}</p>
               {documentAuthor && (
                 <p className="text-[11px] text-slate-500 mt-1">{documentAuthor}</p>
               )}
@@ -154,7 +154,7 @@ export default function DocumentRequestModal({
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                     placeholder="e.g. Dr. Rajesh Kumar"
-                    className="w-full px-3.5 py-2 text-xs rounded-xl border border-slate-300 focus:outline-none focus:border-[#070E5C] focus:ring-1 focus:ring-[#070E5C]"
+                    className="w-full px-3.5 py-2 text-xs rounded-xl border border-slate-300 focus:outline-none focus:border-[#2B3B44] focus:ring-1 focus:ring-[#2B3B44]"
                   />
                 </div>
                 <div>
@@ -167,7 +167,7 @@ export default function DocumentRequestModal({
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                     placeholder="name@dept.gov.in"
-                    className="w-full px-3.5 py-2 text-xs rounded-xl border border-slate-300 focus:outline-none focus:border-[#070E5C] focus:ring-1 focus:ring-[#070E5C]"
+                    className="w-full px-3.5 py-2 text-xs rounded-xl border border-slate-300 focus:outline-none focus:border-[#2B3B44] focus:ring-1 focus:ring-[#2B3B44]"
                   />
                 </div>
               </div>
@@ -183,7 +183,7 @@ export default function DocumentRequestModal({
                     value={formData.phone}
                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                     placeholder="+91 98765 43210"
-                    className="w-full px-3.5 py-2 text-xs rounded-xl border border-slate-300 focus:outline-none focus:border-[#070E5C] focus:ring-1 focus:ring-[#070E5C]"
+                    className="w-full px-3.5 py-2 text-xs rounded-xl border border-slate-300 focus:outline-none focus:border-[#2B3B44] focus:ring-1 focus:ring-[#2B3B44]"
                   />
                 </div>
                 <div>
@@ -196,7 +196,7 @@ export default function DocumentRequestModal({
                     value={formData.organization}
                     onChange={(e) => setFormData({ ...formData, organization: e.target.value })}
                     placeholder="CMDA / GCC / Dept / Firm"
-                    className="w-full px-3.5 py-2 text-xs rounded-xl border border-slate-300 focus:outline-none focus:border-[#070E5C] focus:ring-1 focus:ring-[#070E5C]"
+                    className="w-full px-3.5 py-2 text-xs rounded-xl border border-slate-300 focus:outline-none focus:border-[#2B3B44] focus:ring-1 focus:ring-[#2B3B44]"
                   />
                 </div>
               </div>
@@ -210,7 +210,7 @@ export default function DocumentRequestModal({
                   value={formData.purpose}
                   onChange={(e) => setFormData({ ...formData, purpose: e.target.value })}
                   placeholder="e.g., Reference for urban drainage DPR, academic research, quality audit study..."
-                  className="w-full px-3.5 py-2 text-xs rounded-xl border border-slate-300 focus:outline-none focus:border-[#070E5C] focus:ring-1 focus:ring-[#070E5C] resize-none"
+                  className="w-full px-3.5 py-2 text-xs rounded-xl border border-slate-300 focus:outline-none focus:border-[#2B3B44] focus:ring-1 focus:ring-[#2B3B44] resize-none"
                 />
               </div>
 
@@ -225,7 +225,7 @@ export default function DocumentRequestModal({
                 <button
                   type="submit"
                   disabled={loading}
-                  className="px-5 py-2 rounded-xl bg-[#070E5C] text-white text-xs font-semibold hover:bg-[#070E5C]/90 transition flex items-center gap-1.5 shadow-sm disabled:opacity-50 cursor-pointer"
+                  className="px-5 py-2 rounded-xl bg-[#2B3B44] text-white text-xs font-semibold hover:bg-[#2B3B44]/90 transition flex items-center gap-1.5 shadow-sm disabled:opacity-50 cursor-pointer"
                 >
                   {loading ? (
                     <>

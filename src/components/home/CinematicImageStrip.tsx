@@ -73,12 +73,12 @@ export default function CinematicImageStrip() {
   const duplicatedItems = [...STRIP_ITEMS, ...STRIP_ITEMS];
 
   return (
-    <section className="py-20 bg-[#F7F7F4] border-y border-[#E5E7EB] overflow-hidden select-none">
+    <section className="reveal py-20 bg-[#F7F7F4] border-y border-[#E5E7EB] overflow-hidden select-none">
       {/* Section Header */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-10">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
           <div className="space-y-2">
-            <span className="text-xs uppercase tracking-widest text-[#D99A42] font-bold">
+            <span className="text-xs uppercase tracking-widest text-[#C4921B] font-bold">
               Engineering Panorama
             </span>
             <h2 className="font-serif text-3xl sm:text-5xl font-light text-[#24272B] tracking-tight">
@@ -122,7 +122,7 @@ export default function CinematicImageStrip() {
                 aria-label={`${item.title}: ${item.subtitle}`}
                 tabIndex={idx >= STRIP_ITEMS.length ? -1 : undefined}
                 aria-hidden={idx >= STRIP_ITEMS.length ? true : undefined}
-                className="block focus:outline-none focus-visible:ring-2 focus-visible:ring-[#070E5C] rounded-3xl"
+                className="block focus:outline-none focus-visible:ring-2 focus-visible:ring-[#2B3B44] rounded-3xl"
               >
               {/* Image Box */}
               <div className="relative h-[230px] sm:h-[260px] w-full overflow-hidden">
@@ -145,7 +145,7 @@ export default function CinematicImageStrip() {
               {/* Content Bottom */}
               <div className="p-6 flex items-start justify-between gap-4">
                 <div>
-                  <h3 className="font-serif text-lg font-medium text-[#24272B] group-hover:text-[#070E5C] transition-colors line-clamp-1">
+                  <h3 className="font-serif text-lg font-medium text-[#24272B] group-hover:text-[#2B3B44] transition-colors line-clamp-1">
                     {item.title}
                   </h3>
                   <p className="text-xs text-[#747B83] mt-1 line-clamp-1">
@@ -155,7 +155,7 @@ export default function CinematicImageStrip() {
 
                 <span
                   aria-hidden
-                  className="p-2.5 rounded-full bg-[#EAF2F8] text-[#070E5C] group-hover:bg-[#070E5C] group-hover:text-[#D99A42] transition-all shrink-0 mt-0.5 shadow-sm"
+                  className="p-2.5 rounded-full bg-[#F5EFE4] text-[#2B3B44] group-hover:bg-[#2B3B44] group-hover:text-[#C4921B] transition-all shrink-0 mt-0.5 shadow-sm"
                 >
                   <ArrowUpRight className="w-4 h-4" />
                 </span>

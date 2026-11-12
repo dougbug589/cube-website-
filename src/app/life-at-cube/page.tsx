@@ -77,7 +77,7 @@ export default function LifeAtCubePage() {
       </section>
 
       {/* Join the Team CTA */}
-      <section className="py-16 bg-[#EAF2F8] text-[#070E5C] border border-[#BBD6EA] text-center">
+      <section className="py-16 bg-[#F5EFE4] text-[#2B3B44] border border-[#C9BCA6] text-center">
         <div className="max-w-3xl mx-auto px-4">
           <h2 className="text-2xl sm:text-3xl font-display font-bold">
             Interested in Joining the CUBE Team?

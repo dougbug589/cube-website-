@@ -53,7 +53,7 @@ export default async function TendersPage() {
                   >
                     <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
                       <div className="flex items-center gap-2">
-                        <span className="font-mono text-xs font-bold px-2.5 py-1 rounded-lg bg-[#EAF2F8] text-[#070E5C] border border-[#BBD6EA]">
+                        <span className="font-mono text-xs font-bold px-2.5 py-1 rounded-lg bg-[#F5EFE4] text-[#2B3B44] border border-[#C9BCA6]">
                           REF: {tender.referenceNumber}
                         </span>
                         <span className="text-xs px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 font-semibold">
@@ -61,7 +61,7 @@ export default async function TendersPage() {
                         </span>
                       </div>
                       <div className="flex items-center gap-2 text-xs text-slate-500">
-                        <Calendar className="w-3.5 h-3.5 text-[#070E5C]" />
+                        <Calendar className="w-3.5 h-3.5 text-[#2B3B44]" />
                         <span>Closing: <strong className="text-slate-800">{tender.closingDate}</strong></span>
                       </div>
                     </div>
@@ -84,7 +84,7 @@ export default async function TendersPage() {
                           href={tender.documentUrl}
                           target="_blank"
                           rel="noreferrer"
-                          className="px-4 py-1.5 rounded-full bg-[#EAF2F8] hover:bg-[#D99A42] text-[#070E5C] hover:text-white border border-[#BDD7E8] text-xs font-semibold flex items-center gap-1.5 transition"
+                          className="px-4 py-1.5 rounded-full bg-[#F5EFE4] hover:bg-[#C4921B] text-[#2B3B44] hover:text-white border border-[#D8CDB8] text-xs font-semibold flex items-center gap-1.5 transition"
                         >
                           <Download className="w-3.5 h-3.5" />
                           <span>Download Tender Document</span>
@@ -92,7 +92,7 @@ export default async function TendersPage() {
                       ) : (
                         <a
                           href="mailto:contact@cubeiitm.org"
-                          className="px-4 py-1.5 rounded-full bg-[#EAF2F8] hover:bg-[#D99A42] text-[#070E5C] hover:text-white border border-[#BBD6EA] text-xs font-semibold flex items-center gap-1.5 transition"
+                          className="px-4 py-1.5 rounded-full bg-[#F5EFE4] hover:bg-[#C4921B] text-[#2B3B44] hover:text-white border border-[#C9BCA6] text-xs font-semibold flex items-center gap-1.5 transition"
                         >
                           <Mail className="w-3.5 h-3.5" />
                           <span>Request Document via Email</span>
