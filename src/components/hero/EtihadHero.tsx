@@ -74,7 +74,7 @@ export default function EtihadHero() {
     };
   }, []);
 
-  // CUBE film (public/videos/cube-hero.mp4, 36 MB): wide screens, motion allowed, no data saver.
+  // CUBE film (public/videos/cube-hero-v2.mp4: 720p, 30 fps, 21 MB, faststart; re-encoded from the 38 MB 50 fps original): wide screens, motion allowed, no data saver.
   useEffect(() => {
     const conn = (navigator as any).connection;
     const saveData = Boolean(conn && (conn.saveData || /(^|-)2g$/.test(conn.effectiveType || '')));
@@ -152,7 +152,7 @@ export default function EtihadHero() {
               onError={() => setUseVideo(false)}
               className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${videoPlaying ? 'opacity-100' : 'opacity-0'}`}
             >
-              <source src="/videos/cube-hero.mp4" type="video/mp4" />
+              <source src="/videos/cube-hero-v2.mp4" type="video/mp4" />
             </video>
           )}
           {/* legibility scrims */}
@@ -225,7 +225,7 @@ export default function EtihadHero() {
               <Link href={slide.href} className="group inline-flex items-center gap-2 text-[16.5px] text-white/85 hover:text-white transition-colors">
                 <span className="font-semibold">{slide.tag}</span>
                 {slide.location && <span className="text-white/55">· {slide.location}</span>}
-                <ArrowUpRight size={15} className="opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all" />
+                <ArrowUpRight size={15} className="opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition" />
               </Link>
             </motion.div>
           </AnimatePresence>
