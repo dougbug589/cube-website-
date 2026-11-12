@@ -14,8 +14,8 @@ import GlobalSearchModal from '@/components/common/GlobalSearchModal';
 /**
  * Site header — wide, flush to the top edge (not floating).
  *
- * 1. Condenses on scroll: the glass band shrinks 80 → 64 px, the row lifts,
- *    the logo scales down and the tagline tucks away. Transform/opacity only.
+ * 1. Constant height (80 px desktop, 64 px mobile). Once content scrolls
+ *    underneath, only the glass tint deepens (opacity on ::after).
  * 2. Sliding hover pill: a glass highlight springs between menu items under
  *    the pointer; the current page keeps a light-gold pill.
  * 3. Three capsules: brand · menu capsule · actions capsule.
@@ -32,7 +32,7 @@ import GlobalSearchModal from '@/components/common/GlobalSearchModal';
  * menu button opens a drawer. Publishes --nav-offset for sticky in-page bars.
  */
 
-const BAR_H = { desktop: 80, desktopCompact: 64, mobile: 64, mobileCompact: 56 };
+const BAR_H = { desktop: 85, mobile: 68 }; // fallbacks only; real height is measured
 
 const MENU = navigationItems.filter((i) => i.title !== 'Home');
 const DRAWER = [...navigationItems, { title: 'Contact Us', href: '/contact' }];
@@ -73,7 +73,7 @@ export default function Navbar() {
   const [mega, setMega] = useState<string | null>(null);
   const [hovered, setHovered] = useState<string | null>(null);
   const [searchOpen, setSearchOpen] = useState(false);
-  const [compact, setCompact] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const [isMac, setIsMac] = useState(false);
   const drawerRef = useRef<HTMLDivElement>(null);
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -83,14 +83,14 @@ export default function Navbar() {
     []
   );
 
-  // Condense on scroll (rAF-throttled, passive)
+  // Scrolled state: only deepens the glass tint (rAF-throttled, passive)
   useEffect(() => {
     let ticking = false;
     const onScroll = () => {
       if (ticking) return;
       ticking = true;
       requestAnimationFrame(() => {
-        setCompact(window.scrollY > 24);
+        setScrolled(window.scrollY > 24);
         ticking = false;
       });
     };
@@ -99,17 +99,23 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  // Offset for sticky in-page bars, tracks the visible band height
+  // Offset for sticky in-page bars (constant: the bar never changes height)
   useEffect(() => {
+    // Measure the real band height (rem-based, so it follows the root font size).
     const mq = window.matchMedia('(min-width: 1280px)');
     const apply = () => {
-      const h = mq.matches ? (compact ? BAR_H.desktopCompact : BAR_H.desktop) : compact ? BAR_H.mobileCompact : BAR_H.mobile;
-      document.documentElement.style.setProperty('--nav-offset', `${h + 8}px`);
+      const band = document.querySelector('.topbar-glass');
+      const h = band ? band.getBoundingClientRect().height : mq.matches ? BAR_H.desktop : BAR_H.mobile;
+      document.documentElement.style.setProperty('--nav-offset', `${Math.round(h) + 8}px`);
     };
     apply();
     mq.addEventListener('change', apply);
-    return () => mq.removeEventListener('change', apply);
-  }, [compact]);
+    window.addEventListener('resize', apply, { passive: true });
+    return () => {
+      mq.removeEventListener('change', apply);
+      window.removeEventListener('resize', apply);
+    };
+  }, []);
 
   // Ctrl/⌘K search
   useEffect(() => {
@@ -181,26 +187,20 @@ export default function Navbar() {
       </AnimatePresence>
 
       <header className="fixed top-0 inset-x-0 z-50 pointer-events-none">
-        {/* 1 · glass band (its own layer; scales down when compact) */}
+        {/* glass band (its own layer; tint deepens once scrolled) */}
         <div
           aria-hidden
-          className={`topbar-glass absolute inset-x-0 top-0 h-16 xl:h-20 origin-top transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
-            compact ? 'scale-y-[0.875] xl:scale-y-[0.8] is-compact' : ''
-          }`}
+          className={`topbar-glass absolute inset-x-0 top-0 h-16 xl:h-20 ${scrolled ? 'is-scrolled' : ''}`}
         />
 
-        {/* content row (lifts when compact) */}
+        {/* content row */}
         <div
-          className={`relative h-16 xl:h-20 mx-auto max-w-[1600px] px-4 sm:px-6 xl:px-8 flex items-center justify-between gap-4 transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
-            compact ? '-translate-y-1 xl:-translate-y-2' : ''
-          }`}
+          className="relative h-16 xl:h-20 mx-auto max-w-[1600px] px-4 sm:px-6 xl:px-8 flex items-center justify-between gap-4"
         >
           {/* Brand */}
           <Link href="/" className="press group pointer-events-auto flex items-center gap-3.5 shrink-0" aria-label="CUBE home">
             <span
-              className={`relative h-12 xl:h-[58px] w-[116px] xl:w-[142px] shrink-0 origin-left transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
-                compact ? 'scale-[0.84]' : ''
-              }`}
+              className="relative h-12 xl:h-[58px] w-[116px] xl:w-[142px] shrink-0"
             >
               <Image
                 src="/images/branding/cube-live-logo.png"
@@ -213,19 +213,13 @@ export default function Navbar() {
             </span>
             <span
               aria-hidden
-              className={`hidden sm:block h-9 w-px bg-[#33454E]/15 transition-transform duration-500 ${compact ? '-translate-x-4' : ''}`}
+              className="hidden sm:block h-9 w-px bg-[#33454E]/15"
             />
             <span
-              className={`hidden sm:flex flex-col leading-none transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
-                compact ? '-translate-x-4' : ''
-              }`}
+              className="hidden sm:flex flex-col leading-none"
             >
               <span className="font-display text-[19px] font-extrabold tracking-[0.08em] text-[#243239]">CUBE</span>
-              <span
-                className={`font-sans text-[11px] font-bold uppercase tracking-[0.12em] text-[#5B6A71] mt-1 transition-[opacity,transform] duration-300 ${
-                  compact ? 'opacity-0 -translate-y-1' : 'opacity-100'
-                }`}
-              >
+              <span className="font-sans text-[11px] font-bold uppercase tracking-[0.12em] text-[#5B6A71] mt-1">
                 Centre of Excellence
               </span>
             </span>
@@ -339,9 +333,7 @@ export default function Navbar() {
         {/* 4 · mega-menu: sibling of the band; positioned by a static wrapper,
                the glass panel animates itself so its blur is live from frame 1 */}
         <div
-          className={`hidden xl:flex absolute inset-x-0 top-full justify-center px-8 transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
-            compact ? '-translate-y-4' : ''
-          }`}
+          className="hidden xl:flex absolute inset-x-0 top-full justify-center px-8"
         >
           <AnimatePresence>
             {megaItem && (

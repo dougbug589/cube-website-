@@ -319,9 +319,8 @@
   mask-composite: exclude;
 }
 /* ═══════════ TOP BAR: wide, flush band ═══════════
-   One backdrop-filter layer for the whole band. The compact state only
-   scales the band (scaleY) and fades in a denser tint on ::after, so the
-   condense animation is transform/opacity only. */
+   One backdrop-filter layer for the whole band. Constant height; once the
+   page scrolls, a denser tint fades in on ::after (opacity only). */
 .topbar-glass {
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.72) 0%, rgba(246, 248, 249, 0.6) 100%);
   backdrop-filter: blur(22px) saturate(180%);
@@ -338,7 +337,7 @@
   opacity: 0;
   transition: opacity 0.5s cubic-bezier(0.22, 1, 0.36, 1);
 }
-.topbar-glass.is-compact::after { opacity: 1; }
+.topbar-glass.is-scrolled::after { opacity: 1; }
 
 /* capsules inside the band (no blur of their own: never stack backdrop-filters) */
 .capsule {
