@@ -8,6 +8,9 @@ import { ArrowRight, ArrowUpRight, MapPin, Mail, Phone, Landmark, ShieldCheck, F
 import EtihadHero from '@/components/hero/EtihadHero';
 import StackedProjectCarousel from '@/components/home/StackedProjectCarousel';
 import VerticalShowcase from '@/components/home/VerticalShowcase';
+import NewsTicker from '@/components/home/NewsTicker';
+import HomeBento from '@/components/home/HomeBento';
+import { cubeEvents } from '@/data/media';
 
 import { CMS_UPDATED_EVENT } from '@/lib/live';
 import { verticals as fallbackVerticals } from '@/data/verticals';
@@ -17,6 +20,18 @@ import { boardMembers as fallbackBoardMembers, executiveLeadership } from '@/dat
 import { newsItems as fallbackNewsItems } from '@/data/news';
 import { clients as fallbackClients } from '@/data/clients';
 import { contactInfo } from '@/data/contact';
+
+const LIFE_SHOTS = [
+  { image: '/images/life-at-cube/about_life.jpg' },
+  { image: '/images/life-at-cube/about_life1.jpg' },
+  { image: '/images/life-at-cube/about_life2.jpg' },
+  { image: '/images/hero/slides_building-training-team.jpg' },
+];
+
+const MEDIA_SHOTS = cubeEvents
+  .filter((e) => e.image)
+  .slice(0, 6)
+  .map((e) => ({ image: e.image, title: e.title, date: e.date }));
 
 const ABOUT_POINTS = [
   { Icon: Landmark, k: 'Est. 2017', v: 'Centre of Excellence of the Government of Tamil Nadu, with IIT Madras.' },
@@ -137,70 +152,17 @@ export default function HomePage() {
     };
   }, []);
 
-  const liveProjects = useMemo(() => projectList.filter((p) => p.status !== 'archived'), [projectList]);
-  const latestNews = useMemo(() => newsList.slice(0, 3), [newsList]);
-  const leaders = useMemo(() => boardList.slice(0, 4), [boardList]);
   const logos = useMemo(() => clientList.filter((c) => c.logo), [clientList]);
-
-  const facts = [
-    { k: 'Mandate', v: 'Centre of Excellence', s: 'Govt of Tamil Nadu × IIT Madras' },
-    { k: 'Verticals', v: String(verticalList.length).padStart(2, '0'), s: 'Engineering disciplines' },
-    { k: 'Portfolio', v: String(liveProjects.length), s: 'Applied projects on record' },
-    { k: 'Laboratory', v: 'CEL', s: 'Environmental testing, IITM Research Park' },
-  ];
 
   return (
     <div className="flex flex-col min-h-screen text-[#243239]">
       {/* 01 · Hero */}
       <EtihadHero />
 
-      {/* 02 · Featured projects (stacked carousel on constellation) */}
-      <section className="relative pb-16 lg:pb-24 overflow-hidden">
-        <svg aria-hidden className="absolute inset-x-0 top-0 w-full h-72 opacity-40 pointer-events-none" preserveAspectRatio="none" viewBox="0 0 1400 300">
-          <g stroke="#C4921B" strokeWidth="0.6" fill="none" opacity="0.55">
-            <path d="M 100 40 L 320 120 L 560 60 L 780 150" />
-            <path d="M 320 120 L 460 200 L 700 160 L 980 80" />
-            <path d="M 780 150 L 980 80 L 1200 140 L 1380 90" />
-          </g>
-          <g fill="#C4921B" opacity="0.7">
-            {[[100, 40], [320, 120], [560, 60], [780, 150], [460, 200], [700, 160], [980, 80], [1200, 140], [1380, 90]].map(([x, y], i) => (
-              <circle key={i} cx={x} cy={y} r="1.8" />
-            ))}
-          </g>
-        </svg>
-        <div className="relative px-5 sm:px-8 lg:px-16 pt-4 lg:pt-8 reveal">
-          <p className="label-mono">Applied execution</p>
-          <h2 className="headline-light text-3xl lg:text-4xl mt-3">
-            Projects across <span className="gold-keyword">Tamil Nadu</span> &amp; beyond
-          </h2>
-          <p className="text-sm text-[#46565E] mt-3">Third-party quality assurance, PMC and proof checking for public infrastructure.</p>
-        </div>
-        <div className="mt-6 reveal">
-          <StackedProjectCarousel projects={projectList} />
-        </div>
-      </section>
+      {/* 02 · News — the original site leads with News right under the hero */}
+      <NewsTicker items={newsList} />
 
-      {/* 03 · Facts strip */}
-      <section className="relative">
-        <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12">
-          <div className="hairline" />
-          <dl className="grid grid-cols-2 lg:grid-cols-4 reveal-stagger">
-            {facts.map((f, i) => (
-              <div
-                key={f.k}
-                className={`py-8 lg:py-10 px-4 lg:px-8 ${i % 2 === 1 ? 'border-l' : ''} ${i >= 2 ? 'border-t lg:border-t-0' : ''} ${i === 2 ? 'lg:border-l' : ''} border-[#33454E]/15 ${i === 0 ? 'pl-0 lg:pl-0' : ''}`}
-              >
-                <dt className="label-mono">{f.k}</dt>
-                <dd className="mt-3 font-display text-2xl sm:text-3xl font-extrabold text-[#243239]">{f.v}</dd>
-                <dd className="mt-1 text-[14px] text-[#5B6A71]">{f.s}</dd>
-              </div>
-            ))}
-          </dl>
-          <div className="hairline" />
-        </div>
-      </section>
-
-      {/* 04 · About — essentials only; the full story lives on /about */}
+      {/* 03 · About — essentials only; the full story lives on /about */}
       <Section
         id="about"
         eyebrow="About CUBE"
@@ -236,6 +198,32 @@ export default function HomePage() {
           </ul>
         </div>
       </Section>
+
+      {/* 04 · Featured projects (stacked carousel on constellation) */}
+      <section className="relative pb-16 lg:pb-24 overflow-hidden">
+        <svg aria-hidden className="absolute inset-x-0 top-0 w-full h-72 opacity-40 pointer-events-none" preserveAspectRatio="none" viewBox="0 0 1400 300">
+          <g stroke="#C4921B" strokeWidth="0.6" fill="none" opacity="0.55">
+            <path d="M 100 40 L 320 120 L 560 60 L 780 150" />
+            <path d="M 320 120 L 460 200 L 700 160 L 980 80" />
+            <path d="M 780 150 L 980 80 L 1200 140 L 1380 90" />
+          </g>
+          <g fill="#C4921B" opacity="0.7">
+            {[[100, 40], [320, 120], [560, 60], [780, 150], [460, 200], [700, 160], [980, 80], [1200, 140], [1380, 90]].map(([x, y], i) => (
+              <circle key={i} cx={x} cy={y} r="1.8" />
+            ))}
+          </g>
+        </svg>
+        <div className="relative px-5 sm:px-8 lg:px-16 pt-4 lg:pt-8 reveal">
+          <p className="label-mono">Applied execution</p>
+          <h2 className="headline-light text-3xl lg:text-4xl mt-3">
+            Projects across <span className="gold-keyword">Tamil Nadu</span> &amp; beyond
+          </h2>
+          <p className="text-sm text-[#46565E] mt-3">Third-party quality assurance, PMC and proof checking for public infrastructure.</p>
+        </div>
+        <div className="mt-6 reveal">
+          <StackedProjectCarousel projects={projectList} />
+        </div>
+      </section>
 
       {/* 05 · Verticals — auto-advancing showcase */}
       <Section
@@ -287,85 +275,24 @@ export default function HomePage() {
         </div>
       </Section>
 
-      {/* 07 · Leadership */}
+      {/* 07 · Life at CUBE · Leadership · Media · Clients (original's tile block) */}
       <Section
-        id="leadership"
-        band
-        eyebrow="Governance"
-        title="Led by IIT Madras and the Government of Tamil Nadu."
-        action={{ href: '/about#governing-board', label: 'Full governing board' }}
+        id="life-at-cube"
+        eyebrow="Inside CUBE"
+        title="People, leadership and the work in the field."
+        action={{ href: '/media', label: 'Media centre' }}
       >
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-5 reveal-stagger">
-          {leaders.map((m, i) => (
-            <div key={`${m.name}-${i}`} className="glass glass-edge p-4 flex items-center gap-4 sm:block">
-              <div className="relative w-16 h-16 sm:w-full sm:h-56 rounded-xl overflow-hidden shrink-0 bg-[#E6ECEF]">
-                {m.image && (
-                  <Image src={m.image} alt={m.name} fill sizes="(max-width: 640px) 64px, 25vw" className="object-cover object-top" />
-                )}
-              </div>
-              <div className="sm:mt-4">
-                <p className="text-[16px] font-bold text-[#243239] leading-snug">{m.name}</p>
-                <p className="mt-1 text-[13.5px] text-[#5B6A71] leading-snug line-clamp-2">{m.role}</p>
-              </div>
-            </div>
-          ))}
+        <div className="reveal">
+          <HomeBento
+            life={LIFE_SHOTS}
+            leaders={boardList.filter((m) => m.image)}
+            media={MEDIA_SHOTS}
+            clients={logos}
+          />
         </div>
       </Section>
 
-      {/* 08 · Clients marquee */}
-      {logos.length > 0 && (
-        <section className="relative py-12 lg:py-16 overflow-hidden">
-          <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 mb-8 reveal">
-            <p className="label-mono">Clients &amp; partners</p>
-          </div>
-          <div className="relative [mask-image:linear-gradient(90deg,transparent,black_8%,black_92%,transparent)]">
-            <div
-              className="flex w-max gap-4 animate-marquee hover:[animation-play-state:paused]"
-              style={{ animationDuration: `${Math.max(40, logos.length * 3)}s` }}
-            >
-              {[...logos, ...logos].map((c, i) => (
-                <div key={`${c.name}-${i}`} className="h-20 w-40 shrink-0 rounded-xl bg-[#F2F5F6]/[0.92] border border-white/40 p-4">
-                  <div className="relative w-full h-full">
-                    <Image src={c.logo} alt={c.name} fill sizes="160px" className="object-contain" />
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-      )}
-
-      {/* 09 · News */}
-      {latestNews.length > 0 && (
-        <Section id="news" eyebrow="Newsroom" title="Latest from the Centre." action={{ href: '/media#news', label: 'All news' }}>
-          <div className="grid md:grid-cols-3 gap-4 lg:gap-5 reveal-stagger">
-            {latestNews.map((n) => (
-              <Link
-                key={n.id || n.title}
-                href={n.slug || n.id ? `/media/news/${n.slug || n.id}` : '/media#news'}
-                className="group glass glass-interactive glass-edge overflow-hidden flex flex-col"
-              >
-                {n.image && (
-                  <div className="relative h-48 overflow-hidden">
-                    <Image src={n.image} alt="" fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]" />
-                  </div>
-                )}
-                <div className="p-5 flex-1 flex flex-col">
-                  <div className="flex items-center gap-2 text-[13px] text-[#5B6A71]">
-                    {n.date && <span className="font-sans">{n.date}</span>}
-                    {n.date && n.category && <span className="opacity-40">·</span>}
-                    {n.category && <span>{n.category}</span>}
-                  </div>
-                  <h3 className="mt-2 text-[16px] font-bold text-[#243239] leading-snug line-clamp-2">{n.title}</h3>
-                  {n.summary && <p className="mt-2 text-[14px] text-[#5B6A71] leading-relaxed line-clamp-2">{n.summary}</p>}
-                </div>
-              </Link>
-            ))}
-          </div>
-        </Section>
-      )}
-
-      {/* 10 · Contact */}
+      {/* 08 · Contact */}
       <section className="relative py-20 lg:py-28">
         <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12">
           <div className="glass-strong glass-blur ambient-glow p-8 sm:p-10 lg:p-14 grid lg:grid-cols-12 gap-10 items-center reveal">

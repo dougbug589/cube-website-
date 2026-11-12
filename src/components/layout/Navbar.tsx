@@ -25,8 +25,8 @@ const BAR_TOP = 12; // px, matches top-3
 const BAR_H_DESKTOP = 76; // xl:h-[76px]
 const BAR_H_MOBILE = 64; // h-16
 
-const MENU = [...navigationItems.filter((i) => i.title !== 'Home'), { title: 'Tenders', href: '/tenders' }];
-const DRAWER = [...navigationItems, { title: 'Tenders', href: '/tenders' }, { title: 'Contact', href: '/contact' }];
+const MENU = navigationItems.filter((i) => i.title !== 'Home');
+const DRAWER = [...navigationItems, { title: 'Contact Us', href: '/contact' }];
 
 type Item = (typeof DRAWER)[number] & { children?: { title: string; href: string; description?: string }[]; badge?: string };
 

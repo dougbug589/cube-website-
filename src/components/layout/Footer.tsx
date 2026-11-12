@@ -6,6 +6,7 @@ import Image from 'next/image';
 import { MapPin, Mail, Phone, Clock, ArrowUpRight, Linkedin, Twitter, Facebook } from 'lucide-react';
 import { contactInfo } from '@/data/contact';
 import { verticals } from '@/data/verticals';
+import { partners } from '@/data/partners';
 
 /**
  * Footer — light-brown band that closes the warm canvas.
@@ -14,11 +15,11 @@ import { verticals } from '@/data/verticals';
 
 const CENTRE_LINKS = [
   { label: 'About CUBE', href: '/about' },
-  { label: 'Vision & mission', href: '/about/vision-mission' },
-  { label: 'Governing board', href: '/about#governing-board' },
-  { label: 'IIT advisory panel', href: '/about/advisory-panel' },
-  { label: 'Our team', href: '/about/team' },
-  { label: 'Media centre', href: '/media' },
+  { label: 'Vision & Mission', href: '/about/vision-mission' },
+  { label: 'Board Members', href: '/about/board-members' },
+  { label: 'IIT Advisory Panel', href: '/about/advisory-panel' },
+  { label: 'Our Team', href: '/about/team' },
+  { label: 'Our Clients', href: '/about/clients' },
 ];
 
 const SOCIAL = [
@@ -121,6 +122,20 @@ export default function Footer() {
             </Link>
           </div>
         </div>
+
+        {/* Partners — placed in the footer, as on the original site */}
+        {partners.length > 0 && (
+          <div className="mt-14">
+            <p className="label-mono">Partners</p>
+            <ul className="mt-4 grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-7 gap-3">
+              {partners.map((p) => (
+                <li key={p.logo} className="relative h-20 rounded-2xl bg-white border border-[#33454E]/[0.06] depth-1 transition-transform duration-500 hover:-translate-y-1">
+                  <Image src={p.logo} alt={p.name} fill sizes="200px" className="object-contain p-2" />
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
 
         <div className="mt-14 pt-6 border-t border-[#33454E]/15 flex flex-col md:flex-row gap-4 md:items-center justify-between text-[13.5px] text-[#5B6A71]">
           <p>© {year} Centre for Urbanization, Buildings &amp; Environment (CUBE). All rights reserved.</p>
