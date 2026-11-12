@@ -30,7 +30,7 @@ type Vertical = {
   capabilities?: string[];
 };
 
-const STEP_MS = 6500;
+const STEP_MS = 4500;
 const SPRING = { type: 'spring' as const, stiffness: 380, damping: 30, mass: 0.8 };
 
 export default function VerticalShowcase({ verticals }: { verticals: Vertical[] }) {

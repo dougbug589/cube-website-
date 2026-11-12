@@ -41,8 +41,8 @@ const SHORT_CATEGORY: Record<string, string> = {
   'Urban Planning & Transportation': 'Urban · Transport',
 };
 
-const AUTO_MS = 4000;
-const BOUNCE = { type: 'spring' as const, stiffness: 190, damping: 17, mass: 0.9 };
+const AUTO_MS = 2800;
+const BOUNCE = { type: 'spring' as const, stiffness: 260, damping: 19, mass: 0.8 };
 
 /** transform pose for a card `offset` slots away from the centre */
 function pose(offset: number, spacing: number) {

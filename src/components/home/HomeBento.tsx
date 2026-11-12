@@ -104,11 +104,11 @@ export default function HomeBento({
   clients: Logo[];
 }) {
   const { ref, running } = useGridVisible();
-  const [li, lifeBind] = useCycle(life.length, 4200, running, 0);
-  const [pi, peopleBind] = useCycle(leaders.length, 3600, running, 900);
-  const [mi, mediaBind] = useCycle(media.length, 4600, running, 1800);
+  const [li, lifeBind] = useCycle(life.length, 3000, running, 0);
+  const [pi, peopleBind] = useCycle(leaders.length, 2600, running, 700);
+  const [mi, mediaBind] = useCycle(media.length, 3200, running, 1400);
   const logoPages = Math.max(1, Math.ceil(clients.length / 6));
-  const [ci, clientBind] = useCycle(logoPages, 3200, running, 2600);
+  const [ci, clientBind] = useCycle(logoPages, 2400, running, 2000);
 
   const lifeShot = life[li];
   const person = leaders[pi];
