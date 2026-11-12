@@ -36,6 +36,7 @@ Two lines of work run through this repository:
 - Etihad-inspired theme: slate and gold palette, scroll-reveal animations, gold scroll-progress bar. (`1977bf6`)
 
 #### Changed
+- Inner pages now use the full width of the top bar, like the home page: About and its sub-pages, Media, Projects, project and vertical pages, CEL, Careers, Contact, Tenders, Life at CUBE, gallery, events, news and publications, plus the page header. The Chairman and CEO messages and Objectives keep a centred reading column so long text stays comfortable to read. (`2362812`)
 - Careers page redesigned, with content and the application flow unchanged: a glass tab bar with a springing gold pill and the number of openings, a wide job card with an open-status badge, location, experience and a skills panel, a gold talent-network callout, an application view with a summary rail beside the form (16px fields, drag-and-drop resume upload, animated confirmation), a glass job-detail sheet and glass benefit cards. (`98162a7`)
 - Home page now uses the full width of the top bar (up to 1600px) instead of a 1280px column, so sections line up with the logo and the Get in touch button; About, Verticals, CEL, Inside CUBE, Partners and Work with CUBE were retuned for the extra width (larger vision text, full-height vertical tabs, taller photos, heading and office details beside the three cards on wide screens). The footer follows the same width. (`8145035`)
 - Media page redesigned, with content unchanged: the same glass section bar as About (News, Events, Gallery, Life at CUBE, Reports), a large lead story above image-led news cards, photo-first event cards, a gallery in a gap-free mosaic with glass captions, a Life at CUBE photo collage and report rows with a request button. Headings that never appeared on the original site, such as "Institutional Media Centre" and "Press Dispatches", are now plain labels. The About and Media pages share one section-bar component, and section links no longer stretch across the screen on phones. (`d304849`)
@@ -61,6 +62,7 @@ Two lines of work run through this repository:
 - Slate rail sidebar on desktop, photo hero, and stacked project carousel (Etihad-style layout). Superseded the same day by the top bar. (`75f0d52`)
 
 #### Fixed
+- Top-bar menus could open with blank photo cards because their photos only started downloading when the panel opened. They are now fetched in the background once the page is idle, or as soon as the pointer reaches the menu, so they are ready on first open. (`4252581`)
 - Project and vertical titles in the top-bar menus overflowed their photo cards; they clamp to two lines again. (`8fb8559`)
 - Top bar: between 1280 and 1439px wide the Get in touch button was cut off at the right edge; the CUBE wordmark now hides in that range so everything fits. (`8145035`)
 - Production build restored: an unescaped apostrophe on the media page, introduced in the previous change, had failed the build. (`1e21f9b`)
