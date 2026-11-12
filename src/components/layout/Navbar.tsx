@@ -181,7 +181,7 @@ export default function Navbar() {
               <span aria-hidden className="hidden sm:block h-9 w-px bg-[#33454E]/15" />
               <span className="hidden sm:flex flex-col leading-none">
                 <span className="font-display text-[19px] font-extrabold tracking-[0.08em] text-[#243239]">CUBE</span>
-                <span className="font-sans text-[11px] font-bold uppercase tracking-[0.12em] text-[#5B6A71] mt-1">Beyond foundations</span>
+                <span className="font-sans text-[11px] font-bold uppercase tracking-[0.12em] text-[#5B6A71] mt-1">Centre of Excellence</span>
               </span>
             </Link>
 

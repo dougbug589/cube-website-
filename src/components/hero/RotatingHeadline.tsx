@@ -26,7 +26,7 @@ export const CUBE_PAIRS: HeadlinePair[] = [
   { verb: 'assure', phrase: 'housing India can trust.' },
   { verb: 'test', phrase: 'the water cities drink.' },
   { verb: 'plan', phrase: 'cities that move.' },
-  { verb: 'build', phrase: 'beyond foundations.' },
+  { verb: 'are', phrase: 'a Centre of Excellence.' },
 ];
 
 type Phase = 'typeVerb' | 'typePhrase' | 'hold' | 'deletePhrase' | 'deleteVerb' | 'gap';
