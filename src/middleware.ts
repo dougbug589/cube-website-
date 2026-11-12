@@ -19,6 +19,15 @@ export async function middleware(request: NextRequest) {
     return NextResponse.next();
   }
 
+  // The admin only runs on the local CUBE computer. On the read-only public
+  // deployment (Vercel without Supabase) it does not exist at all.
+  const publishedSite =
+    process.env.CMS_BACKEND === 'published' ||
+    (!!process.env.VERCEL && !process.env.SUPABASE_SERVICE_ROLE_KEY && process.env.CMS_BACKEND !== 'file');
+  if (publishedSite) {
+    return new NextResponse('Not found', { status: 404, headers: { 'X-Robots-Tag': 'noindex' } });
+  }
+
   // Fail closed: never run the CMS with a missing/weak signing secret.
   const jwtSecret = getJwtSecret();
   if (!jwtSecret) {

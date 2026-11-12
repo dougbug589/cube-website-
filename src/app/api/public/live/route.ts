@@ -1,5 +1,5 @@
 import { getStoreVersion } from '@/lib/db/store';
-import { getCMSBackend } from '@/lib/db/backend';
+import { getCMSBackend, isPublishedSite } from '@/lib/db/backend';
 
 export const dynamic = 'force-dynamic';
 export const runtime = 'nodejs';
@@ -44,6 +44,20 @@ function ensureWatcher() {
 }
 
 export async function GET(request: Request) {
+  // Read-only live site: content only changes with a new deployment, so send
+  // the version once and ask browsers to reconnect a day later (no open
+  // connections kept on the serverless host).
+  if (isPublishedSite()) {
+    const v = await getStoreVersion();
+    return new Response(`retry: 86400000
+event: version
+data: ${v}
+
+`, {
+      headers: { 'Content-Type': 'text/event-stream; charset=utf-8', 'Cache-Control': 'no-cache' },
+    });
+  }
+
   const encoder = new TextEncoder();
   let cleanup = () => {};
 

@@ -3,6 +3,7 @@
 import { cookies, headers } from 'next/headers';
 import { getCMSStore, saveCMSStore, resolveAdminSession, UserRole, AdminSession } from '@/lib/db/store';
 import { revalidatePath } from 'next/cache';
+import { isPublishedSite } from '@/lib/db/backend';
 import { consumeRateLimit } from '@/lib/rate-limit';
 
 export interface SubmitEnquiryPayload {
@@ -45,6 +46,13 @@ async function assertAdmin(
 }
 
 export async function submitEnquiryAction(payload: SubmitEnquiryPayload) {
+  // The live website is read-only (the admin and its inbox run locally).
+  if (isPublishedSite()) {
+    return {
+      success: false,
+      error: 'Online enquiries are not available yet. Please email contact@cubeiitm.org or call +91 44 6646 9800.',
+    };
+  }
   const name = payload.name?.trim();
   const email = payload.email?.trim();
   const message = payload.message?.trim();

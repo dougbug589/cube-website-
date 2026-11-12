@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import crypto from 'crypto';
 import { getCMSStore, saveCMSStore } from '@/lib/db/store';
+import { isPublishedSite } from '@/lib/db/backend';
 import { RESUME_MIME, detectResumeType } from '@/lib/resumes';
 import { putFile } from '@/lib/file-storage';
 import { consumeRateLimit } from '@/lib/rate-limit';
@@ -25,6 +26,13 @@ function field(formData: FormData, key: string, max: number, fallback = ''): str
 }
 
 export async function POST(req: NextRequest) {
+  // The live website is read-only (applications are kept on the local admin).
+  if (isPublishedSite()) {
+    return NextResponse.json(
+      { error: 'Online applications are not available yet. Please email your CV to careers@cubeiitm.org.' },
+      { status: 503 }
+    );
+  }
   try {
     const rateLimit = await consumeRateLimit(`career-application:${clientIp(req)}`, MAX_PER_WINDOW, WINDOW_MS);
     if (!rateLimit.allowed) {

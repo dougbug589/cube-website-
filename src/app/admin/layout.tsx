@@ -12,6 +12,7 @@ import {
 import { getCurrentAdmin, logoutAdminAction } from '@/app/admin/actions/auth';
 import FloatingCubeBackground from '@/components/admin/FloatingCubeBackground';
 import RealtimeRefresher from '@/components/admin/RealtimeRefresher';
+import PublishStatus from '@/components/admin/PublishStatus';
 
 interface AdminLayoutProps {
   children: React.ReactNode;
@@ -158,6 +159,7 @@ export default function AdminDashboardLayout({ children }: AdminLayoutProps) {
           </div>
         </div>
 
+        <PublishStatus compact />
         <Link
           href="/"
           target="_blank"
@@ -326,6 +328,7 @@ export default function AdminDashboardLayout({ children }: AdminLayoutProps) {
           </div>
 
           <div className="flex items-center space-x-4">
+            <PublishStatus />
             <div className="flex items-center text-xs font-semibold text-emerald-800 bg-emerald-50 px-3 py-1 rounded-full border border-emerald-200">
               <span className="h-2 w-2 rounded-full bg-emerald-500 mr-2 animate-pulse" />
               <span>Realtime Live Synced</span>

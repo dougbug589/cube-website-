@@ -11,6 +11,9 @@ import { celOverview } from '@/data/cel';
 import { sanitizeStoreContent } from '@/lib/content';
 import { getCMSBackend, getSupabaseAdmin } from '@/lib/db/backend';
 import { createCloudDriver, CloudDriver } from '@/lib/db/cloud-store';
+import { schedulePublish } from '@/lib/publish';
+// Public content published by the local admin (read by the live website).
+import publishedSnapshot from '@/content/published-store.json';
 
 const DATA_DIR = path.join(process.cwd(), 'data-store');
 const DB_FILE = path.join(DATA_DIR, 'cube_cms_store.json');
@@ -348,8 +351,25 @@ function buildInitialStore(): CMSStore {
   return initialStore;
 }
 
+/** Read-only store for the live website, built from the published snapshot. */
+function loadPublishedStore(): CMSStore {
+  const store = JSON.parse(JSON.stringify((publishedSnapshot as any).store || {})) as CMSStore;
+  for (const key of COLLECTION_KEYS) {
+    if (!Array.isArray((store as any)[key])) (store as any)[key] = [];
+  }
+  return store;
+}
+
+export class ReadOnlySiteError extends Error {
+  constructor() {
+    super('This website is read-only. Content is edited in the admin on the CUBE office computer.');
+  }
+}
+
 export const getCMSStore = async (): Promise<CMSStore> => {
-  if (getCMSBackend() === 'supabase') return loadCloudStore();
+  const backend = getCMSBackend();
+  if (backend === 'supabase') return loadCloudStore();
+  if (backend === 'published') return loadPublishedStore();
   return ensureDataStore();
 };
 
@@ -368,6 +388,7 @@ export const saveCMSStore = async (store: CMSStore): Promise<void> => {
     await cloud().save(store as unknown as Record<string, unknown>);
     return;
   }
+  if (getCMSBackend() === 'published') throw new ReadOnlySiteError();
 
   if (!fs.existsSync(DATA_DIR)) {
     fs.mkdirSync(DATA_DIR, { recursive: true });
@@ -380,6 +401,9 @@ export const saveCMSStore = async (store: CMSStore): Promise<void> => {
   try {
     lastMtime = fs.statSync(DB_FILE).mtimeMs;
   } catch {}
+
+  // Local admin: push public changes to the live website (debounced).
+  schedulePublish(store as unknown as Record<string, any>);
 };
 
 // JWT Session Management
@@ -455,6 +479,9 @@ export async function revokeAdminSessions(userId: string) {
 
 /** Version stamp of the CMS store; changes whenever any content is saved. */
 export async function getStoreVersion(): Promise<number> {
+  if (getCMSBackend() === 'published') {
+    return Date.parse((publishedSnapshot as any).publishedAt) || 1;
+  }
   if (getCMSBackend() === 'supabase') {
     try {
       return await cloud().version();
