@@ -37,7 +37,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
 
           {project.featured && (
             <div className="absolute top-3.5 right-3.5 z-10">
-              <span className="text-[10px] font-extrabold px-3 py-1 rounded-full bg-[#C4921B] text-white shadow-xs">
+              <span className="text-[10px] font-extrabold px-3 py-1 rounded-full bg-[#F0C468] text-[#243239] shadow-xs">
                 Key Project
               </span>
             </div>
@@ -52,21 +52,21 @@ export default function ProjectCard({ project }: ProjectCardProps) {
 
         {/* Content Body with Architectural Light Refinement */}
         <div className="p-6">
-          <h3 className="text-base sm:text-lg font-bold font-serif text-[#24272B] group-hover:text-[#2B3B44] transition-colors line-clamp-2 leading-snug">
+          <h3 className="text-base sm:text-lg font-bold font-display text-[#243239] group-hover:text-[#2B3B44] transition-colors line-clamp-2 leading-snug">
             {project.title}
           </h3>
 
-          <p className="text-xs text-[#747B83] mt-2.5 line-clamp-2 leading-relaxed font-sans">
+          <p className="text-xs text-[#5B6A71] mt-2.5 line-clamp-2 leading-relaxed font-sans">
             {project.description}
           </p>
 
           {project.scopeOfWork && project.scopeOfWork.length > 0 && (
-            <div className="mt-4 pt-3 border-t border-[#E5E7EB]/70 space-y-1.5">
+            <div className="mt-4 pt-3 border-t border-[#DCE4E7]/70 space-y-1.5">
               <div className="text-[10px] font-bold text-[#C4921B] uppercase tracking-wider">
                 Key Scope:
               </div>
               {project.scopeOfWork.slice(0, 2).map((item, i) => (
-                <div key={i} className="flex items-start text-xs text-[#4A5568]">
+                <div key={i} className="flex items-start text-xs text-[#46565E]">
                   <CheckCircle2 className="w-3.5 h-3.5 text-[#C4921B] mr-1.5 shrink-0 mt-0.5" />
                   <span className="line-clamp-1">{item}</span>
                 </div>
@@ -77,8 +77,8 @@ export default function ProjectCard({ project }: ProjectCardProps) {
       </div>
 
       {/* Footer Pill Action */}
-      <div className="p-6 pt-0 flex items-center justify-between text-xs text-[#747B83] border-t border-transparent group-hover:border-[#E5E7EB]/50 transition-colors">
-        <span className="text-[11px] font-medium text-[#747B83]">
+      <div className="p-6 pt-0 flex items-center justify-between text-xs text-[#5B6A71] border-t border-transparent group-hover:border-[#DCE4E7]/50 transition-colors">
+        <span className="text-[11px] font-medium text-[#5B6A71]">
           {project.location || 'Tamil Nadu, India'}
         </span>
         <div className="flex items-center space-x-1 font-semibold text-[#2B3B44] group-hover:text-[#C4921B] transition-colors">

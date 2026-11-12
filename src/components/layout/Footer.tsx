@@ -3,267 +3,133 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { 
-  Building2, Leaf, Cpu, Compass, MapPin, 
-  Mail, Phone, Clock, ArrowUpRight, ShieldCheck,
-  Linkedin, Twitter, Facebook
-} from 'lucide-react';
+import { MapPin, Mail, Phone, Clock, ArrowUpRight, Linkedin, Twitter, Facebook } from 'lucide-react';
 import { contactInfo } from '@/data/contact';
 import { verticals } from '@/data/verticals';
 
+/**
+ * Footer — light-brown band that closes the warm canvas.
+ * Four columns (identity, verticals, the Centre, office) and a quiet legal row.
+ */
+
+const CENTRE_LINKS = [
+  { label: 'About CUBE', href: '/about' },
+  { label: 'Vision & mission', href: '/about/vision-mission' },
+  { label: 'Governing board', href: '/about#governing-board' },
+  { label: 'IIT advisory panel', href: '/about/advisory-panel' },
+  { label: 'Our team', href: '/about/team' },
+  { label: 'Media centre', href: '/media' },
+];
+
+const SOCIAL = [
+  { label: 'LinkedIn', href: 'https://linkedin.com', Icon: Linkedin },
+  { label: 'Twitter', href: 'https://twitter.com', Icon: Twitter },
+  { label: 'Facebook', href: 'https://facebook.com', Icon: Facebook },
+];
+
 export default function Footer() {
-  const currentYear = new Date().getFullYear();
+  const year = new Date().getFullYear();
 
   return (
-    <footer className="bg-[#243239] text-[#C9BCA6] border-t border-[#C4921B]/25">
-      {/* Top Pre-Footer Minimal Institutional Banner */}
-      <div className="bg-[#2B3B44]/80 border-b border-[#C9BCA6]/12 py-10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="flex items-start space-x-4">
-              <div className="p-3 bg-[#33454E] rounded-2xl border border-[#C4921B]/25 shadow-sm shrink-0">
-                <ShieldCheck className="w-5 h-5 text-[#E9B215]" />
-              </div>
-              <div>
-                <h4 className="font-display text-base font-semibold text-[#F5EFE4]">Centre of Excellence</h4>
-                <p className="text-xs text-[#A89476] mt-0.5 leading-relaxed">
-                  Established jointly by the Government of Tamil Nadu &amp; Indian Institute of Technology Madras.
-                </p>
-              </div>
-            </div>
+    <footer className="relative mt-10 text-[#46565E]">
+      <div aria-hidden className="absolute inset-0 bg-[#EEF2F4]" />
+      <div aria-hidden className="absolute top-0 inset-x-0 hairline" />
 
-            <div className="flex items-start space-x-4">
-              <div className="p-3 bg-[#33454E] rounded-2xl border border-[#C4921B]/25 shadow-sm shrink-0">
-                <Building2 className="w-5 h-5 text-[#E9B215]" />
-              </div>
-              <div>
-                <h4 className="font-display text-base font-semibold text-[#F5EFE4]">Engineering Consultancy</h4>
-                <p className="text-xs text-[#A89476] mt-0.5 leading-relaxed">
-                  Independent Third Party Quality Assurance (TPQA) &amp; structural proof checking for 40+ schemes.
-                </p>
-              </div>
-            </div>
-
-            <div className="flex items-start space-x-4">
-              <div className="p-3 bg-[#33454E] rounded-2xl border border-[#C4921B]/25 shadow-sm shrink-0">
-                <Leaf className="w-5 h-5 text-[#E9B215]" />
-              </div>
-              <div>
-                <h4 className="font-display text-base font-semibold text-[#F5EFE4]">CUBE Environmental Lab (CEL)</h4>
-                <p className="text-xs text-[#A89476] mt-0.5 leading-relaxed">
-                  Advanced water, wastewater, soil, and building materials testing facility at IITM Research Park.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Main Slate Footer Grid */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12">
-          
-          {/* Col 1: Identity & Official Emblem (4 cols) */}
-          <div className="lg:col-span-4 space-y-6">
-            <Link href="/" className="inline-block">
-              <div className="relative h-14 w-64 rounded-xl bg-[#F5EFE4]/95 p-2 shadow-[0_2px_12px_rgba(15,25,32,0.4)]">
-                <Image
-                  src="/images/branding/cube-live-logo.png"
-                  alt="CUBE - Centre for Urbanization, Buildings & Environment"
-                  fill
-                  className="object-contain object-left p-2"
-                />
-              </div>
+      <div className="relative max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 pt-16 lg:pt-20 pb-10">
+        <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-12">
+          {/* Identity */}
+          <div className="lg:col-span-4">
+            <Link href="/" className="inline-block" aria-label="CUBE home">
+              <span className="relative block h-14 w-60 rounded-2xl bg-white border border-[#33454E]/15 shadow-sm">
+                <Image src="/images/branding/cube-live-logo.png" alt="" fill sizes="240px" className="object-contain object-left p-2.5" />
+              </span>
             </Link>
-
-            <p className="text-xs text-[#A89476] leading-relaxed max-w-sm">
-              An autonomous Centre of Excellence translating cutting-edge academic research from IIT Madras into resilient public infrastructure, sustainable water systems, and smart urban environments.
+            <p className="mt-5 text-[15px] leading-relaxed max-w-sm">
+              Centre for Urbanization, Buildings &amp; Environment. A Centre of Excellence of the Government of Tamil Nadu and IIT Madras.
             </p>
-
-            <div className="pt-2">
-              <div className="text-[11px] uppercase tracking-[0.25em] font-bold text-[#E9B215] mb-3">
-                Connect With CUBE
-              </div>
-              <div className="flex items-center space-x-2">
+            <div className="mt-6 flex items-center gap-2">
+              {SOCIAL.map(({ label, href, Icon }) => (
                 <a
-                  href="https://linkedin.com"
+                  key={label}
+                  href={href}
                   target="_blank"
                   rel="noreferrer"
-                  className="p-2.5 rounded-full bg-[#33454E] hover:bg-[#C4921B] text-[#C9BCA6] hover:text-[#2B3B44] transition-colors border border-[#C9BCA6]/20"
-                  aria-label="LinkedIn"
+                  aria-label={label}
+                  className="press jiggle grid place-items-center w-10 h-10 rounded-full bg-white/70 border border-[#33454E]/15 text-[#46565E] hover:bg-[#F6DA86] hover:border-[#C4921B] hover:text-[#1B262C] transition-colors"
                 >
-                  <Linkedin className="w-4 h-4" />
+                  <Icon size={16} strokeWidth={1.75} />
                 </a>
-                <a
-                  href="https://twitter.com"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="p-2.5 rounded-full bg-[#33454E] hover:bg-[#C4921B] text-[#C9BCA6] hover:text-[#2B3B44] transition-colors border border-[#C9BCA6]/20"
-                  aria-label="Twitter"
-                >
-                  <Twitter className="w-4 h-4" />
-                </a>
-                <a
-                  href="https://facebook.com"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="p-2.5 rounded-full bg-[#33454E] hover:bg-[#C4921B] text-[#C9BCA6] hover:text-[#2B3B44] transition-colors border border-[#C9BCA6]/20"
-                  aria-label="Facebook"
-                >
-                  <Facebook className="w-4 h-4" />
-                </a>
-              </div>
+              ))}
             </div>
           </div>
 
-          {/* Col 2: Core Verticals (3 cols) */}
-          <div className="lg:col-span-3 space-y-4">
-            <h4 className="font-display text-base font-semibold text-[#F5EFE4]">
-              Core Verticals
-            </h4>
-            <ul className="space-y-2.5 text-xs text-[#A89476]">
+          {/* Verticals */}
+          <nav aria-label="Verticals" className="lg:col-span-3">
+            <p className="label-mono">Verticals</p>
+            <ul className="mt-4 space-y-2.5 text-[15px]">
+              {verticals.map((v) => (
+                <li key={v.slug}>
+                  <Link href={`/verticals/${v.slug}`} className="hover:text-[#243239] transition-colors">
+                    {v.title}
+                  </Link>
+                </li>
+              ))}
               <li>
-                <Link href="/verticals/building-construction" className="hover:text-[#E9B215] transition-colors flex items-center gap-1.5">
-                  <span className="text-[#C4921B]">&rsaquo;</span> Building &amp; Construction
-                </Link>
-              </li>
-              <li>
-                <Link href="/verticals/environment-sustainability" className="hover:text-[#E9B215] transition-colors flex items-center gap-1.5">
-                  <span className="text-[#C4921B]">&rsaquo;</span> Environment &amp; Sustainability
-                </Link>
-              </li>
-              <li>
-                <Link href="/verticals/smart-cities" className="hover:text-[#E9B215] transition-colors flex items-center gap-1.5">
-                  <span className="text-[#C4921B]">&rsaquo;</span> Smart Cities &amp; IoT
-                </Link>
-              </li>
-              <li>
-                <Link href="/verticals/urban-planning-transportation" className="hover:text-[#E9B215] transition-colors flex items-center gap-1.5">
-                  <span className="text-[#C4921B]">&rsaquo;</span> Urban Planning &amp; Transportation
-                </Link>
-              </li>
-              <li>
-                <Link href="/cel" className="hover:text-[#E9B215] transition-colors flex items-center gap-1.5">
-                  <span className="text-[#C4921B]">&rsaquo;</span> CEL Laboratory Testing
-                </Link>
+                <Link href="/cel" className="hover:text-[#243239] transition-colors">CEL laboratory</Link>
               </li>
             </ul>
-          </div>
+          </nav>
 
-          {/* Col 3: About & Governance (2 cols) */}
-          <div className="lg:col-span-2 space-y-4">
-            <h4 className="font-display text-base font-semibold text-[#F5EFE4]">
-              Governance
-            </h4>
-            <ul className="space-y-2.5 text-xs text-[#A89476]">
-              <li>
-                <Link href="/about" className="hover:text-[#E9B215] transition-colors">
-                  About Overview
-                </Link>
+          {/* The Centre */}
+          <nav aria-label="The Centre" className="lg:col-span-2">
+            <p className="label-mono">The Centre</p>
+            <ul className="mt-4 space-y-2.5 text-[15px]">
+              {CENTRE_LINKS.map((l) => (
+                <li key={l.href}>
+                  <Link href={l.href} className="hover:text-[#243239] transition-colors">{l.label}</Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
+
+          {/* Office */}
+          <div className="lg:col-span-3">
+            <p className="label-mono">Office</p>
+            <ul className="mt-4 space-y-3.5 text-[15px]">
+              <li className="flex gap-3">
+                <MapPin size={17} strokeWidth={1.75} className="text-[#C4921B] shrink-0 mt-0.5" />
+                <span className="leading-relaxed">{contactInfo.address}</span>
               </li>
-              <li>
-                <Link href="/about/vision-mission" className="hover:text-[#E9B215] transition-colors">
-                  Vision &amp; Mission
-                </Link>
+              <li className="flex gap-3 items-center">
+                <Mail size={17} strokeWidth={1.75} className="text-[#C4921B] shrink-0" />
+                <a href={`mailto:${contactInfo.email}`} className="font-semibold text-[#243239] hover:text-[#9A7015] transition-colors">{contactInfo.email}</a>
               </li>
-              <li>
-                <Link href="/about/chairman-message" className="hover:text-[#E9B215] transition-colors">
-                  Chairman Message
-                </Link>
+              <li className="flex gap-3 items-center">
+                <Phone size={17} strokeWidth={1.75} className="text-[#C4921B] shrink-0" />
+                <a href={`tel:${String(contactInfo.phone).replace(/\s+/g, '')}`} className="font-semibold text-[#243239] hover:text-[#9A7015] transition-colors">{contactInfo.phone}</a>
               </li>
-              <li>
-                <Link href="/about#governing-board" className="hover:text-[#E9B215] transition-colors">
-                  Governing Board
-                </Link>
-              </li>
-              <li>
-                <Link href="/about/advisory-panel" className="hover:text-[#E9B215] transition-colors">
-                  IIT Advisory Panel
-                </Link>
-              </li>
-              <li>
-                <Link href="/about/team" className="hover:text-[#E9B215] transition-colors">
-                  Our Team (80+)
-                </Link>
+              <li className="flex gap-3 items-center">
+                <Clock size={17} strokeWidth={1.75} className="text-[#C4921B] shrink-0" />
+                <span>Mon to Fri, 9:00 to 17:30 IST</span>
               </li>
             </ul>
+            <Link
+              href="/contact"
+              className="gold-shimmer mt-6 inline-flex items-center gap-2 h-12 px-6 rounded-full text-[15px] font-bold btn-gold"
+            >
+              Send an enquiry <ArrowUpRight size={16} strokeWidth={2.25} />
+            </Link>
           </div>
-
-          {/* Col 4: Institutional Contact (3 cols) */}
-          <div className="lg:col-span-3 space-y-4">
-            <h4 className="font-display text-base font-semibold text-[#F5EFE4]">
-              Institutional Office
-            </h4>
-            
-            <div className="space-y-3 text-xs text-[#A89476]">
-              <div className="flex items-start space-x-2.5">
-                <MapPin className="w-4 h-4 text-[#C4921B] shrink-0 mt-0.5" />
-                <span>
-                  First Floor, IIT Madras Research Park, Kanagam Road, Taramani, Chennai, Tamil Nadu 600113, India
-                </span>
-              </div>
-
-              <div className="flex items-center space-x-2.5">
-                <Mail className="w-4 h-4 text-[#C4921B] shrink-0" />
-                <a href="mailto:contact@cubeiitm.org" className="text-[#C9BCA6] font-medium hover:text-[#E9B215] transition-colors">
-                  contact@cubeiitm.org
-                </a>
-              </div>
-
-              <div className="flex items-center space-x-2.5">
-                <Phone className="w-4 h-4 text-[#C4921B] shrink-0" />
-                <a href="tel:+914466469800" className="text-[#C9BCA6] font-medium hover:text-[#E9B215] transition-colors">
-                  +91 44 6646 9800
-                </a>
-              </div>
-
-              <div className="flex items-center space-x-2.5">
-                <Clock className="w-4 h-4 text-[#C4921B] shrink-0" />
-                <span>Monday &ndash; Friday: 9:00 AM &ndash; 5:30 PM (IST)</span>
-              </div>
-            </div>
-
-            <div className="pt-2">
-              <Link
-                href="/contact"
-                className="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-full bg-[#C4921B] text-[#2B3B44] hover:bg-[#E9B215] text-xs font-semibold transition-all shadow-[0_4px_16px_rgba(196,146,27,0.3)] gold-shimmer"
-              >
-                <span>Submit Technical Query</span>
-                <ArrowUpRight className="w-3.5 h-3.5" />
-              </Link>
-            </div>
-          </div>
-
         </div>
-      </div>
 
-      {/* Bottom Sub-Footer Legal & Attribution */}
-      <div className="border-t border-[#C9BCA6]/12 bg-[#2B3B44]/80 py-6 text-xs text-[#A89476]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-4">
-          <div>
-            &copy; {currentYear} Centre for Urbanization, Buildings &amp; Environment (CUBE). All rights reserved.
-            <span className="block sm:inline sm:ml-2 text-[11px] text-[#A89476]/70">
-              Autonomous Centre of Excellence &bull; Govt of Tamil Nadu &amp; IIT Madras.
-            </span>
-          </div>
-
-          <div className="flex items-center space-x-6 text-[11px]">
-            <Link href="/tenders" className="hover:text-[#E9B215] transition-colors">
-              Tenders
-            </Link>
-            <span>&bull;</span>
-            <Link href="/careers" className="hover:text-[#E9B215] transition-colors">
-              Careers
-            </Link>
-            <span>&bull;</span>
-            <Link href="/media" className="hover:text-[#E9B215] transition-colors">
-              Media Center
-            </Link>
-            <span>&bull;</span>
-            <Link href="/contact" className="hover:text-[#E9B215] transition-colors">
-              Contact
-            </Link>
-          </div>
+        <div className="mt-14 pt-6 border-t border-[#33454E]/15 flex flex-col md:flex-row gap-4 md:items-center justify-between text-[13.5px] text-[#5B6A71]">
+          <p>© {year} Centre for Urbanization, Buildings &amp; Environment (CUBE). All rights reserved.</p>
+          <nav aria-label="Footer" className="flex flex-wrap gap-x-6 gap-y-2">
+            <Link href="/tenders" className="hover:text-[#243239] transition-colors">Tenders</Link>
+            <Link href="/careers" className="hover:text-[#243239] transition-colors">Careers</Link>
+            <Link href="/media" className="hover:text-[#243239] transition-colors">Media</Link>
+            <Link href="/contact" className="hover:text-[#243239] transition-colors">Contact</Link>
+          </nav>
         </div>
       </div>
     </footer>

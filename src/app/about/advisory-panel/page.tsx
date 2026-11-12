@@ -35,15 +35,15 @@ export default async function AdvisoryPanelPage() {
         ]}
       />
 
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-transparent">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
             {advisoryPanel.map((member, idx) => (
               <div
                 key={idx}
-                className="p-6 rounded-3xl bg-slate-50 border border-slate-200/90 shadow-sm hover:shadow-cube hover:border-teal-300 transition-all flex flex-col items-center text-center group"
+                className="p-6 rounded-3xl bg-slate-50 border border-slate-200/90 shadow-sm hover:shadow-cube hover:border-[#E9D6A8] transition-all flex flex-col items-center text-center group"
               >
-                <div className="relative h-28 w-28 rounded-full overflow-hidden mb-4 border-2 border-slate-200 group-hover:border-teal-500 shadow-sm transition-all">
+                <div className="relative h-28 w-28 rounded-full overflow-hidden mb-4 border-2 border-slate-200 group-hover:border-[#E9D6A8] shadow-sm transition-all">
                   <Image
                     src={member.image || '/images/leadership/about_leader.jpg'}
                     alt={member.name}
@@ -54,14 +54,14 @@ export default async function AdvisoryPanelPage() {
                 <h3 className="text-sm font-bold text-navy-950 font-display line-clamp-1">
                   {member.name}
                 </h3>
-                <p className="text-xs text-teal-700 font-medium mt-1 line-clamp-2">
+                <p className="text-xs text-[#9A7015] font-medium mt-1 line-clamp-2">
                   {member.role}
                 </p>
                 <p className="text-[10px] text-slate-500 mt-1 line-clamp-1">
                   IIT Madras
                 </p>
                 <div className="mt-auto pt-4">
-                  <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-teal-50 text-teal-700 border border-teal-200">
+                  <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-[#F7EDD3] text-[#9A7015] border border-[#E9D6A8]">
                     Faculty Advisor
                   </span>
                 </div>

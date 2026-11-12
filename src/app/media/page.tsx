@@ -53,7 +53,7 @@ export default function CompleteMediaExperience() {
   const publications = cubeReports.map((r) => ({ title: r.title, authors: r.authors, date: r.year, desc: r.description }));
 
   return (
-    <div className="bg-[#FFFFFF] text-[#24272B] min-h-screen">
+    <div className="bg-transparent text-[#243239] min-h-screen">
       <PageHeader
         badge="Media & Dispatches"
         title="Institutional Media Centre"
@@ -62,7 +62,7 @@ export default function CompleteMediaExperience() {
       />
 
       {/* Sticky Apple Glass Anchor Navigation Bar */}
-      <section className="sticky top-[var(--nav-offset,84px)] transition-[top] duration-500 z-40 bg-white/85 backdrop-blur-2xl border-y border-[#D8CDB8]/70 py-3.5 px-4 sm:px-6 shadow-xs">
+      <section className="sticky top-[var(--nav-offset,84px)] transition-[top] duration-500 z-40 bg-white/85 backdrop-blur-2xl border-y border-[#D3DDE1]/70 py-3.5 px-4 sm:px-6 shadow-xs">
         <div ref={anchorBarRef} className="relative max-w-7xl mx-auto flex items-center justify-start gap-2 overflow-x-auto scrollbar-none no-scrollbar py-1">
           <div className="flex items-center space-x-1.5 sm:space-x-2 shrink-0">
             {navAnchors.map((item) => (
@@ -74,8 +74,8 @@ export default function CompleteMediaExperience() {
                 onClick={() => scrollTo(item.id)}
                 className={`px-4 py-2 rounded-full text-xs font-semibold tracking-wider transition-all duration-300 whitespace-nowrap ${
                   activeMediaTab === item.id
-                    ? 'bg-[#2B3B44] text-white shadow-xs'
-                    : 'bg-white/60 text-[#24272B] hover:bg-[#F5EFE4] hover:text-[#2B3B44] border border-[#D8CDB8]/60'
+                    ? 'bg-[#F0C468] text-[#243239] shadow-xs'
+                    : 'bg-white/60 text-[#243239] hover:bg-[#F2F5F6] hover:text-[#2B3B44] border border-[#D3DDE1]/60'
                 }`}
               >
                 {item.label}
@@ -86,18 +86,18 @@ export default function CompleteMediaExperience() {
       </section>
 
       {/* 1. NEWS & ANNOUNCEMENTS */}
-      <section id="news" className="py-20 sm:py-24 bg-gradient-to-b from-[#FFFFFF] to-[#FAF8F4] border-b border-[#E5E7EB]">
+      <section id="news" className="py-20 sm:py-24 bg-transparent border-b border-[#DCE4E7]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-12">
             <div>
-              <span className="text-xs font-bold uppercase tracking-wider text-[#2B3B44] bg-white px-3.5 py-1 rounded-full border border-[#D8CDB8]">
+              <span className="text-xs font-bold uppercase tracking-wider text-[#2B3B44] bg-white px-3.5 py-1 rounded-full border border-[#D3DDE1]">
                 Press Dispatches
               </span>
-              <h2 className="text-3xl sm:text-4xl font-serif font-bold text-[#2B3B44] mt-2">
+              <h2 className="text-3xl sm:text-4xl font-display font-bold text-[#2B3B44] mt-2">
                 Latest News &amp; Announcements
               </h2>
             </div>
-            <p className="text-xs sm:text-sm text-[#747B83] mt-2 sm:mt-0">
+            <p className="text-xs sm:text-sm text-[#5B6A71] mt-2 sm:mt-0">
               Verified institutional reports and state project updates
             </p>
           </div>
@@ -106,26 +106,26 @@ export default function CompleteMediaExperience() {
             {newsItems.slice(0, 6).map((item) => (
               <div
                 key={item.id}
-                className="rounded-3xl bg-white border border-[#D8CDB8] p-6 shadow-2xs hover:shadow-md hover:border-[#C4921B] transition-all flex flex-col justify-between"
+                className="rounded-3xl bg-white border border-[#D3DDE1] p-6 shadow-2xs hover:shadow-md hover:border-[#C4921B] transition-all flex flex-col justify-between"
               >
                 <div>
-                  <div className="flex items-center justify-between text-[11px] font-semibold text-[#747B83] mb-3">
-                    <span className="px-2.5 py-0.5 rounded-full bg-[#F5EFE4] text-[#2B3B44] border border-[#D8CDB8]">
+                  <div className="flex items-center justify-between text-[11px] font-semibold text-[#5B6A71] mb-3">
+                    <span className="px-2.5 py-0.5 rounded-full bg-[#F2F5F6] text-[#2B3B44] border border-[#D3DDE1]">
                       {item.category || 'Press Release'}
                     </span>
                     <span>{item.date}</span>
                   </div>
 
-                  <h3 className="font-serif font-bold text-lg text-[#2B3B44] leading-snug">
+                  <h3 className="font-display font-bold text-lg text-[#2B3B44] leading-snug">
                     {item.title}
                   </h3>
 
-                  <p className="text-xs text-[#24272B]/80 mt-2 line-clamp-3 leading-relaxed">
+                  <p className="text-xs text-[#243239]/80 mt-2 line-clamp-3 leading-relaxed">
                     {item.summary || item.content}
                   </p>
                 </div>
 
-                <div className="mt-6 pt-4 border-t border-[#E5E7EB] flex items-center justify-between text-xs">
+                <div className="mt-6 pt-4 border-t border-[#DCE4E7] flex items-center justify-between text-xs">
                   <span className="text-[#C4921B] font-semibold">IIT Madras &amp; GoTN</span>
                   <Link href={`/media/news/${(item as any).slug || item.id}`} className="font-bold text-[#2B3B44] hover:underline flex items-center gap-1">
                     <span>Read Full Story</span>
@@ -139,36 +139,36 @@ export default function CompleteMediaExperience() {
       </section>
 
       {/* 2. TECHNICAL EVENTS & WORKSHOPS */}
-      <section id="events" className="py-20 sm:py-24 bg-white border-b border-[#E5E7EB]">
+      <section id="events" className="py-20 sm:py-24 bg-transparent border-b border-[#DCE4E7]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-16">
-            <span className="text-xs font-bold uppercase tracking-wider text-[#2B3B44] bg-[#F5EFE4] px-3.5 py-1 rounded-full border border-[#D8CDB8]">
+            <span className="text-xs font-bold uppercase tracking-wider text-[#2B3B44] bg-[#F2F5F6] px-3.5 py-1 rounded-full border border-[#D3DDE1]">
               Events
             </span>
-            <h2 className="text-3xl sm:text-4xl font-serif font-bold text-[#2B3B44] mt-2">
+            <h2 className="text-3xl sm:text-4xl font-display font-bold text-[#2B3B44] mt-2">
               Events &amp; Milestones
             </h2>
-            <p className="text-xs sm:text-sm text-[#747B83] mt-2">
+            <p className="text-xs sm:text-sm text-[#5B6A71] mt-2">
               Meetings, project milestones and events at CUBE.
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {sampleEvents.map((evt, idx) => (
-              <div key={idx} className="rounded-3xl bg-[#FAF8F4] border border-[#D8CDB8] p-6 shadow-2xs flex flex-col justify-between">
+              <div key={idx} className="rounded-3xl bg-[#F6F8F9] border border-[#D3DDE1] p-6 shadow-2xs flex flex-col justify-between">
                 <div>
-                  <div className="relative h-48 w-full rounded-2xl overflow-hidden mb-4 border border-white ring-1 ring-[#D8CDB8]">
+                  <div className="relative h-48 w-full rounded-2xl overflow-hidden mb-4 border border-white ring-1 ring-[#D3DDE1]">
                     <Image src={evt.image} alt={evt.title} fill className="object-cover" />
                   </div>
                   <span className="text-[10px] font-bold uppercase tracking-wider text-[#C4921B]">{evt.category}{evt.date ? <> &bull; {evt.date}</> : null}</span>
-                  <h3 className="font-serif font-bold text-base text-[#2B3B44] mt-1 leading-snug">{evt.title}</h3>
+                  <h3 className="font-display font-bold text-base text-[#2B3B44] mt-1 leading-snug">{evt.title}</h3>
                   {evt.location && (
-                    <p className="text-xs text-[#747B83] mt-2 flex items-center gap-1">
+                    <p className="text-xs text-[#5B6A71] mt-2 flex items-center gap-1">
                       <MapPin className="w-3.5 h-3.5 text-[#C4921B]" />
                       <span>{evt.location}</span>
                     </p>
                   )}
-                  <p className="text-xs text-[#24272B]/80 mt-3 line-clamp-3 leading-relaxed">{evt.description}</p>
+                  <p className="text-xs text-[#243239]/80 mt-3 line-clamp-3 leading-relaxed">{evt.description}</p>
                 </div>
               </div>
             ))}
@@ -177,20 +177,20 @@ export default function CompleteMediaExperience() {
       </section>
 
       {/* 3. PHOTO GALLERY */}
-      <section id="gallery" className="py-20 sm:py-24 bg-gradient-to-b from-[#FFFFFF] to-[#FAF8F4] border-b border-[#E5E7EB]">
+      <section id="gallery" className="py-20 sm:py-24 bg-transparent border-b border-[#DCE4E7]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-16">
-            <span className="text-xs font-bold uppercase tracking-wider text-[#2B3B44] bg-[#F5EFE4] px-3.5 py-1 rounded-full border border-[#D8CDB8]">
+            <span className="text-xs font-bold uppercase tracking-wider text-[#2B3B44] bg-[#F2F5F6] px-3.5 py-1 rounded-full border border-[#D3DDE1]">
               Site Documentation
             </span>
-            <h2 className="text-3xl sm:text-4xl font-serif font-bold text-[#2B3B44] mt-2">
+            <h2 className="text-3xl sm:text-4xl font-display font-bold text-[#2B3B44] mt-2">
               Curated Project &amp; Laboratory Gallery
             </h2>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {galleryImages.map((img, i) => (
-              <div key={i} className="group rounded-3xl overflow-hidden border border-[#D8CDB8] bg-white shadow-2xs hover:shadow-md transition-all">
+              <div key={i} className="group rounded-3xl overflow-hidden border border-[#D3DDE1] bg-white shadow-2xs hover:shadow-md transition-all">
                 <div className="relative h-60 w-full overflow-hidden">
                   <Image
                     src={img.src}
@@ -209,33 +209,33 @@ export default function CompleteMediaExperience() {
       </section>
 
       {/* 4. LIFE AT CUBE */}
-      <section id="life-at-cube" className="py-20 sm:py-24 bg-white border-b border-[#E5E7EB]">
+      <section id="life-at-cube" className="py-20 sm:py-24 bg-transparent border-b border-[#DCE4E7]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             <div className="lg:col-span-7 space-y-5">
-              <span className="text-xs font-bold uppercase tracking-wider text-[#2B3B44] bg-[#F5EFE4] px-3.5 py-1 rounded-full border border-[#D8CDB8]">
+              <span className="text-xs font-bold uppercase tracking-wider text-[#2B3B44] bg-[#F2F5F6] px-3.5 py-1 rounded-full border border-[#D3DDE1]">
                 Workplace Culture
               </span>
-              <h2 className="text-3xl sm:text-4xl font-serif font-bold text-[#2B3B44]">
+              <h2 className="text-3xl sm:text-4xl font-display font-bold text-[#2B3B44]">
                 Life at CUBE: Applied Engineering Innovation at IITM Research Park
               </h2>
-              <p className="text-sm text-[#24272B]/85 leading-relaxed font-sans">
+              <p className="text-sm text-[#243239]/85 leading-relaxed font-sans">
                 Operating out of the premier IIT Madras Research Park in Chennai, CUBE brings together young engineering minds, seasoned state advisors, and world-renowned faculty in an open, vibrant research environment.
               </p>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
-                <div className="p-4 rounded-2xl bg-[#FAF8F4] border border-[#D8CDB8]">
+                <div className="p-4 rounded-2xl bg-[#F6F8F9] border border-[#D3DDE1]">
                   <h4 className="text-xs font-bold text-[#2B3B44] uppercase tracking-wider">Faculty Collaboration</h4>
-                  <p className="text-xs text-[#747B83] mt-1">Direct daily liaison with IIT Madras departments and research labs.</p>
+                  <p className="text-xs text-[#5B6A71] mt-1">Direct daily liaison with IIT Madras departments and research labs.</p>
                 </div>
-                <div className="p-4 rounded-2xl bg-[#FAF8F4] border border-[#D8CDB8]">
+                <div className="p-4 rounded-2xl bg-[#F6F8F9] border border-[#D3DDE1]">
                   <h4 className="text-xs font-bold text-[#2B3B44] uppercase tracking-wider">Field Impact</h4>
-                  <p className="text-xs text-[#747B83] mt-1">Direct oversight of major infrastructure works shaping Tamil Nadu.</p>
+                  <p className="text-xs text-[#5B6A71] mt-1">Direct oversight of major infrastructure works shaping Tamil Nadu.</p>
                 </div>
               </div>
             </div>
 
             <div className="lg:col-span-5">
-              <div className="relative h-80 w-full rounded-3xl overflow-hidden border border-[#D8CDB8] shadow-md">
+              <div className="relative h-80 w-full rounded-3xl overflow-hidden border border-[#D3DDE1] shadow-md">
                 <Image src="/images/hero/slides_building-training-team.jpg" alt="Team at CUBE" fill className="object-cover" />
               </div>
             </div>
@@ -244,25 +244,25 @@ export default function CompleteMediaExperience() {
       </section>
 
       {/* 5. TECHNICAL PUBLICATIONS */}
-      <section id="publications" className="py-20 sm:py-24 bg-gradient-to-b from-[#FAF8F4] to-[#FFFFFF]">
+      <section id="publications" className="py-20 sm:py-24 bg-transparent">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-16">
-            <span className="text-xs font-bold uppercase tracking-wider text-[#2B3B44] bg-[#F5EFE4] px-3.5 py-1 rounded-full border border-[#D8CDB8]">
+            <span className="text-xs font-bold uppercase tracking-wider text-[#2B3B44] bg-[#F2F5F6] px-3.5 py-1 rounded-full border border-[#D3DDE1]">
               Reports
             </span>
-            <h2 className="text-3xl sm:text-4xl font-serif font-bold text-[#2B3B44] mt-2">
+            <h2 className="text-3xl sm:text-4xl font-display font-bold text-[#2B3B44] mt-2">
               Reports &amp; Publications
             </h2>
           </div>
 
           <div className="space-y-6 max-w-4xl mx-auto">
             {publications.map((pub, idx) => (
-              <div key={idx} className="p-6 sm:p-8 rounded-3xl bg-white border border-[#D8CDB8] shadow-2xs hover:shadow-xs transition">
+              <div key={idx} className="p-6 sm:p-8 rounded-3xl bg-white border border-[#D3DDE1] shadow-2xs hover:shadow-xs transition">
                 <span className="text-[10px] font-bold uppercase tracking-wider text-[#C4921B]">{pub.authors} &bull; {pub.date}</span>
-                <h3 className="font-serif font-bold text-lg sm:text-xl text-[#2B3B44] mt-1 leading-snug">{pub.title}</h3>
-                <p className="text-xs sm:text-sm text-[#24272B]/80 mt-2 leading-relaxed">{pub.desc}</p>
-                <div className="mt-5 pt-3 border-t border-[#E5E7EB] flex items-center justify-between text-xs">
-                  <span className="text-[#747B83]">Published by CUBE IIT Madras</span>
+                <h3 className="font-display font-bold text-lg sm:text-xl text-[#2B3B44] mt-1 leading-snug">{pub.title}</h3>
+                <p className="text-xs sm:text-sm text-[#243239]/80 mt-2 leading-relaxed">{pub.desc}</p>
+                <div className="mt-5 pt-3 border-t border-[#DCE4E7] flex items-center justify-between text-xs">
+                  <span className="text-[#5B6A71]">Published by CUBE IIT Madras</span>
                   <button 
                     type="button"
                     onClick={() => setSelectedDoc({ title: pub.title, authors: pub.authors })}

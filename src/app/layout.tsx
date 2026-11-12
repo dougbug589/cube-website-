@@ -1,25 +1,15 @@
 import type { Metadata } from 'next';
-import { Inter, Manrope, Cormorant_Garamond } from 'next/font/google';
+import { Plus_Jakarta_Sans } from 'next/font/google';
 import './globals.css';
 import PublicShellWrapper from '@/components/layout/PublicShellWrapper';
 import LegacyCacheCleanup from '@/components/common/LegacyCacheCleanup';
 
-const inter = Inter({
+// One family site-wide: Plus Jakarta Sans. Soft curves and open forms, but
+// formal enough for an institutional site; bold display, 500-weight body.
+const jakarta = Plus_Jakarta_Sans({
   subsets: ['latin'],
-  variable: '--font-inter',
-  display: 'swap',
-});
-
-const manrope = Manrope({
-  subsets: ['latin'],
-  variable: '--font-manrope',
-  display: 'swap',
-});
-
-const cormorant = Cormorant_Garamond({
-  subsets: ['latin'],
-  weight: ['300', '400', '500', '600', '700'],
-  variable: '--font-cormorant',
+  weight: ['400', '500', '600', '700', '800'],
+  variable: '--font-sans',
   display: 'swap',
 });
 
@@ -66,8 +56,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${inter.variable} ${manrope.variable} ${cormorant.variable} scroll-smooth`}>
-      <body className="min-h-screen flex flex-col bg-[#2B3B44] text-[#F5EFE4] antialiased">
+    <html lang="en" className={`${jakarta.variable} scroll-smooth`}>
+      <body className="min-h-screen flex flex-col bg-[#F6F8F9] text-[#243239] antialiased">
         <LegacyCacheCleanup />
         <PublicShellWrapper>{children}</PublicShellWrapper>
       </body>

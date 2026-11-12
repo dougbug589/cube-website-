@@ -101,10 +101,10 @@ export default function DocumentRequestModal({
 
         {submitted ? (
           <div className="text-center py-6">
-            <div className="w-14 h-14 bg-emerald-50 text-emerald-600 rounded-full flex items-center justify-center mx-auto mb-4 border border-emerald-200">
+            <div className="w-14 h-14 bg-[#F7EDD3] text-[#9A7015] rounded-full flex items-center justify-center mx-auto mb-4 border border-[#E9D6A8]">
               <CheckCircle2 className="w-8 h-8" />
             </div>
-            <h3 className="text-xl font-bold font-serif text-[#2B3B44] mb-2">
+            <h3 className="text-xl font-bold font-display text-[#2B3B44] mb-2">
               Request Received Successfully
             </h3>
             <p className="text-xs sm:text-sm text-slate-600 max-w-sm mx-auto mb-6">
@@ -112,7 +112,7 @@ export default function DocumentRequestModal({
             </p>
             <button
               onClick={resetAndClose}
-              className="px-6 py-2.5 rounded-full bg-[#2B3B44] text-white text-xs font-semibold hover:bg-[#2B3B44]/90 transition cursor-pointer"
+              className="px-6 py-2.5 rounded-full bg-[#F0C468] text-[#243239] text-xs font-semibold hover:bg-[#2B3B44]/90 transition cursor-pointer"
             >
               Done
             </button>
@@ -120,16 +120,16 @@ export default function DocumentRequestModal({
         ) : (
           <div>
             <div className="flex items-center gap-3 mb-4 pr-8">
-              <div className="w-10 h-10 rounded-2xl bg-[#F5EFE4] border border-[#D8CDB8] text-[#2B3B44] flex items-center justify-center shrink-0">
+              <div className="w-10 h-10 rounded-2xl bg-[#F2F5F6] border border-[#D3DDE1] text-[#2B3B44] flex items-center justify-center shrink-0">
                 <FileText className="w-5 h-5 text-[#C4921B]" />
               </div>
               <div>
                 <span className="text-[10px] font-bold uppercase tracking-wider text-[#C4921B]">Official Request</span>
-                <h3 className="font-serif font-bold text-lg text-[#2B3B44] leading-tight">Request Technical Document</h3>
+                <h3 className="font-display font-bold text-lg text-[#2B3B44] leading-tight">Request Technical Document</h3>
               </div>
             </div>
 
-            <div className="bg-[#FAF8F4] p-3.5 rounded-2xl border border-[#D8CDB8]/70 mb-5 text-xs">
+            <div className="bg-[#F6F8F9] p-3.5 rounded-2xl border border-[#D3DDE1]/70 mb-5 text-xs">
               <p className="font-semibold text-[#2B3B44] line-clamp-2">{documentTitle}</p>
               {documentAuthor && (
                 <p className="text-[11px] text-slate-500 mt-1">{documentAuthor}</p>
@@ -225,7 +225,7 @@ export default function DocumentRequestModal({
                 <button
                   type="submit"
                   disabled={loading}
-                  className="px-5 py-2 rounded-xl bg-[#2B3B44] text-white text-xs font-semibold hover:bg-[#2B3B44]/90 transition flex items-center gap-1.5 shadow-sm disabled:opacity-50 cursor-pointer"
+                  className="px-5 py-2 rounded-xl bg-[#F0C468] text-[#243239] text-xs font-semibold hover:bg-[#2B3B44]/90 transition flex items-center gap-1.5 shadow-sm disabled:opacity-50 cursor-pointer"
                 >
                   {loading ? (
                     <>

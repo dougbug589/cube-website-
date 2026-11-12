@@ -62,7 +62,7 @@ export default function StackedProjectCarousel({ projects }: { projects: AnyProj
   if (n === 0) return null;
 
   const half = Math.floor(VISIBLE / 2);
-  const window = Array.from({ length: Math.min(VISIBLE, n) }, (_, i) => {
+  const visible = Array.from({ length: Math.min(VISIBLE, n) }, (_, i) => {
     const offset = i - half;
     const index = (center + offset + n) % n;
     return { offset, index, project: items[index] };
@@ -82,7 +82,7 @@ export default function StackedProjectCarousel({ projects }: { projects: AnyProj
     >
       {/* Stage */}
       <div className="relative flex items-end justify-center px-4 sm:px-6 overflow-hidden pt-6 pb-8 min-h-[380px]">
-        {window.map(({ offset, index, project }) => {
+        {visible.map(({ offset, index, project }) => {
           const isCenter = offset === 0;
           const abs = Math.abs(offset);
           const href = `/projects/${project.slug || project.id || ''}`;
@@ -93,21 +93,19 @@ export default function StackedProjectCarousel({ projects }: { projects: AnyProj
 
           const card = (
             <motion.div
-              layout
               key={key}
               initial={false}
               animate={{
                 scale: isCenter ? 1 : abs === 1 ? 0.92 : 0.84,
                 y: isCenter ? -18 : abs === 1 ? 4 : 16,
                 opacity: abs === 2 ? 0.75 : 1,
-                x: offset * (isCenter ? 0 : 0),
               }}
               transition={{ type: 'spring', stiffness: 260, damping: 30 }}
               style={{ zIndex: z }}
-              className={`relative shrink-0 rounded-xl overflow-hidden bg-[#33454E] ring-1 ring-white/10 ${
+              className={`relative shrink-0 rounded-xl overflow-hidden bg-[#DCE4E8] ring-1 ring-black/5 ${
                 isCenter
-                  ? 'w-[260px] sm:w-[300px] h-[340px] sm:h-[360px] shadow-[0_30px_80px_rgba(10,18,24,0.65)]'
-                  : 'w-[190px] sm:w-[230px] h-[280px] sm:h-[300px] shadow-[0_20px_50px_rgba(10,18,24,0.45)]'
+                  ? 'w-[260px] sm:w-[300px] h-[340px] sm:h-[360px] shadow-[0_30px_80px_rgba(36,50,57,0.55)]'
+                  : 'w-[190px] sm:w-[230px] h-[280px] sm:h-[300px] shadow-[0_20px_50px_rgba(36,50,57,0.35)]'
               } ${abs === 2 ? 'hidden md:block' : ''} ${offset !== -half ? '-ml-8 sm:-ml-10' : ''}`}
             >
               <Image
@@ -117,16 +115,16 @@ export default function StackedProjectCarousel({ projects }: { projects: AnyProj
                 sizes="(max-width: 640px) 60vw, 320px"
                 className={`object-cover transition-transform duration-700 ${isCenter ? 'scale-100' : 'scale-105'}`}
               />
-              <div className="absolute top-3 left-3 bg-white/95 backdrop-blur rounded-md px-2.5 py-1 text-[10px] text-[#33454E] font-medium shadow">
+              <div className="absolute top-3 left-3 bg-white/95 rounded-full px-3 py-1 text-[11.5px] text-[#243239] font-bold shadow-sm">
                 {label}
               </div>
               <div className="absolute inset-x-0 bottom-0 text-left bg-gradient-to-t from-black/85 via-black/35 to-transparent pt-20 pb-4 px-4">
-                <div className={`text-white font-light leading-snug line-clamp-2 ${isCenter ? 'text-lg sm:text-xl' : 'text-sm sm:text-base'}`}>
+                <div className={`font-display text-white font-bold leading-snug line-clamp-2 ${isCenter ? 'text-lg sm:text-[22px]' : 'text-[15px] sm:text-base'}`}>
                   {project.title}
                 </div>
-                <div className="text-[11px] text-[#E9B215] mt-1 font-light truncate">{sub}</div>
+                <div className="text-[12.5px] text-[#F0C468] mt-1 font-semibold truncate">{sub}</div>
                 {isCenter && (
-                  <div className="mt-3 inline-flex items-center gap-1.5 text-[11px] text-white/90 border-b border-[#C4921B] pb-0.5">
+                  <div className="mt-3 inline-flex items-center gap-1.5 text-[13px] font-semibold text-white border-b-2 border-[#E9B215] pb-0.5">
                     View project <ArrowRight size={12} />
                   </div>
                 )}
@@ -162,7 +160,7 @@ export default function StackedProjectCarousel({ projects }: { projects: AnyProj
             type="button"
             onClick={prev}
             aria-label="Previous project"
-            className="w-10 h-10 rounded-full grid place-items-center text-white/80 bg-white/[0.06] border border-white/10 hover:bg-[#C4921B] hover:text-[#2B3B44] hover:border-[#C4921B] transition"
+            className="press jiggle w-11 h-11 rounded-full grid place-items-center text-[#243239] bg-white/80 border border-[#33454E]/15 shadow-sm hover:bg-[#F0C468] hover:text-[#243239] hover:border-[#C4921B] transition"
           >
             <ChevronLeft size={18} strokeWidth={1.5} />
           </button>
@@ -170,17 +168,17 @@ export default function StackedProjectCarousel({ projects }: { projects: AnyProj
             type="button"
             onClick={next}
             aria-label="Next project"
-            className="w-10 h-10 rounded-full grid place-items-center text-white/80 bg-white/[0.06] border border-white/10 hover:bg-[#C4921B] hover:text-[#2B3B44] hover:border-[#C4921B] transition"
+            className="press jiggle w-11 h-11 rounded-full grid place-items-center text-[#243239] bg-white/80 border border-[#33454E]/15 shadow-sm hover:bg-[#F0C468] hover:text-[#243239] hover:border-[#C4921B] transition"
           >
             <ChevronRight size={18} strokeWidth={1.5} />
           </button>
           <div className="ml-3 flex items-center gap-1">
             {items.map((_, i) => (
-              <span key={i} className={`h-1 rounded-full transition-all duration-500 ${i === center ? 'w-5 bg-[#E9B215]' : 'w-1 bg-white/25'}`} />
+              <span key={i} className={`h-1 rounded-full transition-all duration-500 ${i === center ? 'w-6 bg-[#F0C468]' : 'w-1.5 bg-[#33454E]/25'}`} />
             ))}
           </div>
         </div>
-        <Link href="/projects" className="text-sm text-white/90 hover:text-[#E9B215] border-b border-[#C4921B] pb-0.5 font-light transition">
+        <Link href="/projects" className="text-[15px] font-bold text-[#243239] hover:text-[#9A7015] border-b-2 border-[#C4921B] pb-0.5 transition-colors">
           View all
         </Link>
       </div>

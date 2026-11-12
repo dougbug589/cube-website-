@@ -22,12 +22,12 @@ export default function CEOMessagePage() {
         ]}
       />
 
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-transparent">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-10 items-start">
             {/* CEO Profile Card */}
             <div className="md:col-span-4 p-6 rounded-3xl bg-slate-50 border border-slate-200 shadow-cube text-center">
-              <div className="relative h-44 w-44 mx-auto rounded-2xl overflow-hidden mb-4 border-2 border-teal-500 shadow-md">
+              <div className="relative h-44 w-44 mx-auto rounded-2xl overflow-hidden mb-4 border-2 border-[#E9D6A8] shadow-md">
                 <Image
                   src="/images/leadership/ceo_padmanaban.jpg"
                   alt="L. Padmanaban, CEO, CUBE"
@@ -38,7 +38,7 @@ export default function CEOMessagePage() {
               <h3 className="text-lg font-bold text-navy-950 font-display">
                 L. Padmanaban
               </h3>
-              <p className="text-xs text-teal-700 font-bold mt-0.5">
+              <p className="text-xs text-[#9A7015] font-bold mt-0.5">
                 CEO, CUBE (Major General, Retired)
               </p>
               <div className="mt-4 pt-4 border-t border-slate-200 text-[11px] text-slate-500">
@@ -48,7 +48,7 @@ export default function CEOMessagePage() {
 
             {/* Message Body */}
             <div className="md:col-span-8 space-y-6">
-              <div className="p-3 bg-teal-50 text-teal-700 rounded-2xl w-fit">
+              <div className="p-3 bg-[#F7EDD3] text-[#9A7015] rounded-2xl w-fit">
                 <Quote className="w-8 h-8" />
               </div>
 
@@ -64,7 +64,7 @@ export default function CEOMessagePage() {
 
               <div className="pt-6 border-t border-slate-200">
                 <div className="font-bold text-navy-950 text-base">Office of the CEO</div>
-                <div className="text-xs text-teal-700 font-semibold">Centre for Urbanization, Buildings &amp; Environment (CUBE)</div>
+                <div className="text-xs text-[#9A7015] font-semibold">Centre for Urbanization, Buildings &amp; Environment (CUBE)</div>
                 <div className="text-xs text-slate-500">IIT Madras Research Park, Chennai</div>
               </div>
             </div>

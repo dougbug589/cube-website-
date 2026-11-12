@@ -26,7 +26,7 @@ export default async function TendersPage() {
         breadcrumbs={[{ label: 'Tenders' }]}
       />
 
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-transparent">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           {activeTenders.length > 0 ? (
             <div className="space-y-6">
@@ -39,8 +39,8 @@ export default async function TendersPage() {
                     IIT Madras &amp; Government of Tamil Nadu sanctioned EOIs and Tenders
                   </p>
                 </div>
-                <span className="px-3 py-1 rounded-full bg-emerald-50 text-emerald-800 text-xs font-bold border border-emerald-200 flex items-center gap-1.5">
-                  <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                <span className="px-3 py-1 rounded-full bg-[#F7EDD3] text-[#9A7015] text-xs font-bold border border-[#E9D6A8] flex items-center gap-1.5">
+                  <span className="w-2 h-2 rounded-full bg-[#F7EDD3]0 animate-pulse" />
                   Live Sync
                 </span>
               </div>
@@ -49,14 +49,14 @@ export default async function TendersPage() {
                 {activeTenders.map((tender: any) => (
                   <div
                     key={tender.id}
-                    className="p-6 rounded-2xl bg-[#F7F7F4] border border-[#E5E7EB] hover:shadow-md transition space-y-4"
+                    className="p-6 rounded-2xl bg-[#EEF2F4] border border-[#DCE4E7] hover:shadow-md transition space-y-4"
                   >
                     <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
                       <div className="flex items-center gap-2">
-                        <span className="font-mono text-xs font-bold px-2.5 py-1 rounded-lg bg-[#F5EFE4] text-[#2B3B44] border border-[#C9BCA6]">
+                        <span className="font-sans text-xs font-bold px-2.5 py-1 rounded-lg bg-[#F2F5F6] text-[#2B3B44] border border-[#B9C5CA]">
                           REF: {tender.referenceNumber}
                         </span>
-                        <span className="text-xs px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 font-semibold">
+                        <span className="text-xs px-2.5 py-0.5 rounded-full bg-[#F7EDD3] text-[#9A7015] font-semibold">
                           {tender.status || 'Active'}
                         </span>
                       </div>
@@ -67,7 +67,7 @@ export default async function TendersPage() {
                     </div>
 
                     <div>
-                      <h3 className="text-lg font-bold text-[#24272B] font-display">
+                      <h3 className="text-lg font-bold text-[#243239] font-display">
                         {tender.title}
                       </h3>
                       <p className="text-xs text-slate-600 mt-1 leading-relaxed">
@@ -84,7 +84,7 @@ export default async function TendersPage() {
                           href={tender.documentUrl}
                           target="_blank"
                           rel="noreferrer"
-                          className="px-4 py-1.5 rounded-full bg-[#F5EFE4] hover:bg-[#C4921B] text-[#2B3B44] hover:text-white border border-[#D8CDB8] text-xs font-semibold flex items-center gap-1.5 transition"
+                          className="px-4 py-1.5 rounded-full bg-[#F2F5F6] hover:bg-[#F6DA86] text-[#2B3B44] hover:text-[#243239] border border-[#D3DDE1] text-xs font-semibold flex items-center gap-1.5 transition"
                         >
                           <Download className="w-3.5 h-3.5" />
                           <span>Download Tender Document</span>
@@ -92,7 +92,7 @@ export default async function TendersPage() {
                       ) : (
                         <a
                           href="mailto:contact@cubeiitm.org"
-                          className="px-4 py-1.5 rounded-full bg-[#F5EFE4] hover:bg-[#C4921B] text-[#2B3B44] hover:text-white border border-[#C9BCA6] text-xs font-semibold flex items-center gap-1.5 transition"
+                          className="px-4 py-1.5 rounded-full bg-[#F2F5F6] hover:bg-[#F6DA86] text-[#2B3B44] hover:text-[#243239] border border-[#B9C5CA] text-xs font-semibold flex items-center gap-1.5 transition"
                         >
                           <Mail className="w-3.5 h-3.5" />
                           <span>Request Document via Email</span>
@@ -106,7 +106,7 @@ export default async function TendersPage() {
           ) : (
             /* Verified Empty State Per Institutional Requirement */
             <div className="p-10 sm:p-14 rounded-3xl bg-slate-50 border border-slate-200 text-center shadow-sm">
-              <div className="h-16 w-16 mx-auto rounded-2xl bg-teal-50 border border-teal-200 text-teal-700 flex items-center justify-center mb-6">
+              <div className="h-16 w-16 mx-auto rounded-2xl bg-[#F7EDD3] border border-[#E9D6A8] text-[#9A7015] flex items-center justify-center mb-6">
                 <FileText className="w-8 h-8" />
               </div>
 
@@ -123,13 +123,13 @@ export default async function TendersPage() {
               </p>
 
               <div className="mt-8 pt-8 border-t border-slate-200 max-w-md mx-auto text-xs text-slate-500 space-y-3">
-                <div className="flex items-center justify-center space-x-2 text-teal-700 font-semibold">
+                <div className="flex items-center justify-center space-x-2 text-[#9A7015] font-semibold">
                   <Bell className="w-4 h-4" />
                   <span>Procurement Notifications:</span>
                 </div>
                 <p>
                   Vendors and suppliers may direct procurement queries to{' '}
-                  <a href="mailto:contact@cubeiitm.org" className="text-teal-700 font-semibold hover:underline">
+                  <a href="mailto:contact@cubeiitm.org" className="text-[#9A7015] font-semibold hover:underline">
                     contact@cubeiitm.org
                   </a>
                 </p>

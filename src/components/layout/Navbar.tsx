@@ -1,214 +1,368 @@
 'use client';
 
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, ChevronDown, Search, House, ArrowUpRight, User } from 'lucide-react';
+import { Menu, X, ChevronDown, Search, ArrowUpRight, User } from 'lucide-react';
 import { navigationItems } from '@/data/navigation';
 import GlobalSearchModal from '@/components/common/GlobalSearchModal';
 
 /**
- * Mobile / tablet chrome (below lg): a compact fixed slate-glass top bar plus a
- * liquid-glass accordion drawer. Desktop navigation is the left rail (Sidebar.tsx).
+ * Site header: one floating glass bar for every width.
  *
- * Publishes `--nav-offset` (height of the fixed bar on small screens, 0 on
- * desktop where the rail takes no vertical space) so sticky in-page tab bars
- * (About, Media, Verticals) sit just below the chrome.
+ * - xl (1280px+): full menu with a gold morphing active pill and glass
+ *   dropdowns. Upstream measured the full menu at ~1180px, so it never
+ *   appears below xl (it overflowed and pushed the CTA out when zoomed).
+ * - below xl: logo, search, menu button and an accordion drawer.
+ * - Turns more opaque once the page scrolls. Never hides, so sticky in-page
+ *   tab bars can rely on a constant offset.
+ * - Publishes --nav-offset (bar bottom + gap) for those sticky bars.
  */
-const MOBILE_BAR_HEIGHT = 56;
+
+const BAR_TOP = 12; // px, matches top-3
+const BAR_H_DESKTOP = 76; // xl:h-[76px]
+const BAR_H_MOBILE = 64; // h-16
+
+const MENU = [...navigationItems.filter((i) => i.title !== 'Home'), { title: 'Tenders', href: '/tenders' }];
+const DRAWER = [...navigationItems, { title: 'Tenders', href: '/tenders' }, { title: 'Contact', href: '/contact' }];
+
+type Item = (typeof DRAWER)[number] & { children?: { title: string; href: string; description?: string }[]; badge?: string };
+
+function isItemActive(pathname: string, item: Item) {
+  if (item.href === '/') return pathname === '/';
+  return (
+    pathname === item.href ||
+    pathname.startsWith(item.href + '/') ||
+    Boolean(item.children?.some((c) => c.href.split('#')[0] === pathname))
+  );
+}
 
 export default function Navbar() {
   const pathname = usePathname();
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [mobileExpanded, setMobileExpanded] = useState<string | null>(null);
+  const [drawerOpen, setDrawerOpen] = useState(false);
+  const [expanded, setExpanded] = useState<string | null>(null);
+  const [dropdown, setDropdown] = useState<string | null>(null);
   const [searchOpen, setSearchOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [isMac, setIsMac] = useState(false);
   const drawerRef = useRef<HTMLDivElement>(null);
+  const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
+  // Scroll state (rAF-throttled, passive)
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 16);
+    let ticking = false;
+    const onScroll = () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        setScrolled(window.scrollY > 24);
+        ticking = false;
+      });
+    };
     onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  // Header offset for sticky in-page bars.
+  // Offset for sticky in-page bars (About, Media, Verticals)
   useEffect(() => {
-    const mq = window.matchMedia('(min-width: 1024px)');
+    const mq = window.matchMedia('(min-width: 1280px)');
     const apply = () => {
-      document.documentElement.style.setProperty('--nav-offset', `${mq.matches ? 0 : MOBILE_BAR_HEIGHT}px`);
+      const h = mq.matches ? BAR_H_DESKTOP : BAR_H_MOBILE;
+      document.documentElement.style.setProperty('--nav-offset', `${BAR_TOP + h + 8}px`);
     };
     apply();
     mq.addEventListener('change', apply);
     return () => mq.removeEventListener('change', apply);
   }, []);
 
-  // Close drawer on route change
+  // Ctrl/⌘K search
   useEffect(() => {
-    setMobileMenuOpen(false);
-    setMobileExpanded(null);
+    setIsMac(/Mac|iPhone|iPad/i.test(navigator.platform || navigator.userAgent));
+    const onKey = (e: KeyboardEvent) => {
+      if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
+        e.preventDefault();
+        setSearchOpen((o) => !o);
+      }
+    };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, []);
+
+  // Reset menus on navigation
+  useEffect(() => {
+    setDrawerOpen(false);
+    setExpanded(null);
+    setDropdown(null);
   }, [pathname]);
 
   // Drawer: scroll lock, focus, Escape
   useEffect(() => {
-    if (!mobileMenuOpen) {
+    if (!drawerOpen) {
       document.body.style.overflow = '';
-      setMobileExpanded(null);
       return;
     }
     document.body.style.overflow = 'hidden';
     drawerRef.current?.focus();
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') setMobileMenuOpen(false);
-    };
+    const onKey = (e: KeyboardEvent) => e.key === 'Escape' && setDrawerOpen(false);
     window.addEventListener('keydown', onKey);
     return () => {
       document.body.style.overflow = '';
       window.removeEventListener('keydown', onKey);
     };
-  }, [mobileMenuOpen]);
+  }, [drawerOpen]);
 
-  const closeMobileMenu = () => setMobileMenuOpen(false);
-  const toggleMobileSection = (title: string) =>
-    setMobileExpanded((current) => (current === title ? null : title));
+  // Dropdown hover intent: small close delay so moving into the panel doesn't flicker
+  const openDropdown = useCallback((title: string | null) => {
+    if (closeTimer.current) clearTimeout(closeTimer.current);
+    setDropdown(title);
+  }, []);
+  const scheduleClose = useCallback(() => {
+    if (closeTimer.current) clearTimeout(closeTimer.current);
+    closeTimer.current = setTimeout(() => setDropdown(null), 140);
+  }, []);
 
-  const drawerItems = [...navigationItems, { title: 'Tenders', href: '/tenders' }, { title: 'Contact', href: '/contact' }];
+  // Liquid glass; a touch more opaque once content scrolls underneath.
+  const surface = scrolled || drawerOpen ? 'liquid-glass is-solid' : 'liquid-glass';
 
   return (
     <>
       <AnimatePresence>
-        {mobileMenuOpen && (
+        {drawerOpen && (
           <motion.div
-            key="mobile-nav-backdrop"
+            key="drawer-backdrop"
             aria-hidden
-            onClick={closeMobileMenu}
+            onClick={() => setDrawerOpen(false)}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-0 z-40 bg-[#2B3B44]/60 backdrop-blur-[2px] lg:hidden"
+            className="fixed inset-0 z-40 bg-[#E6ECEF] backdrop-blur-[2px] xl:hidden"
           />
         )}
       </AnimatePresence>
 
-      <header className="lg:hidden fixed top-0 left-0 right-0 z-50">
+      <header className="fixed top-3 inset-x-3 sm:inset-x-4 lg:inset-x-6 z-50">
         <div
-          className={`h-14 px-4 flex items-center justify-between transition-all duration-500 ${
-            scrolled || mobileMenuOpen
-              ? 'bg-[#33454E]/85 backdrop-blur-2xl backdrop-saturate-150 border-b border-[#C9BCA6]/15 shadow-[0_10px_30px_rgba(15,25,32,0.35)]'
-              : 'bg-gradient-to-b from-[#1F2B32]/70 to-transparent'
-          }`}
+          className={`relative mx-auto max-w-[1600px] h-16 xl:h-[76px] rounded-[24px] ${surface}`}
         >
-          <Link href="/" className="flex items-center gap-2.5">
-            <div className="relative h-8 w-28 rounded-md bg-[#F5EFE4]/95 px-1.5 py-0.5 overflow-hidden shadow-[0_2px_8px_rgba(15,25,32,0.3)]">
-              <Image src="/images/branding/cube-live-logo.png" alt="CUBE" fill priority className="object-contain object-left p-0.5" />
-            </div>
-            <span className="font-display tracking-[0.14em] text-white text-base leading-none">CUBE</span>
-          </Link>
+          {/* gold specular hairline */}
+          <div aria-hidden className="pointer-events-none absolute top-0 left-10 right-10 h-px bg-gradient-to-r from-transparent via-[#E9B215]/50 to-transparent" />
 
-          <div className="flex items-center gap-1.5">
-            <button
-              onClick={() => setSearchOpen(true)}
-              className="w-10 h-10 rounded-full grid place-items-center text-[#F5EFE4] bg-white/[0.08] border border-white/10 active:scale-95 transition"
-              aria-label="Search"
-            >
-              <Search size={17} strokeWidth={1.5} />
-            </button>
-            <button
-              type="button"
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="w-10 h-10 rounded-full grid place-items-center text-[#F5EFE4] bg-white/[0.08] border border-white/10 active:scale-95 transition"
-              aria-label={mobileMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
-              aria-expanded={mobileMenuOpen}
-              aria-controls="mobile-navigation"
-            >
-              {mobileMenuOpen ? <X size={19} strokeWidth={1.5} /> : <Menu size={19} strokeWidth={1.5} />}
-            </button>
+          <div className="h-full flex items-center justify-between gap-4 pl-2.5 pr-2 xl:pl-3 xl:pr-2.5">
+            {/* Brand */}
+            <Link href="/" className="press group flex items-center gap-3.5 shrink-0" aria-label="CUBE home">
+              <span className="relative h-12 xl:h-[60px] w-[118px] xl:w-[148px] shrink-0">
+                <Image
+                  src="/images/branding/cube-live-logo.png"
+                  alt=""
+                  fill
+                  priority
+                  sizes="148px"
+                  className="object-contain object-left drop-shadow-[0_1px_1px_rgba(255,255,255,0.6)] transition-transform duration-500 group-hover:scale-[1.03]"
+                />
+              </span>
+              <span aria-hidden className="hidden sm:block h-9 w-px bg-[#33454E]/15" />
+              <span className="hidden sm:flex flex-col leading-none">
+                <span className="font-display text-[19px] font-extrabold tracking-[0.08em] text-[#243239]">CUBE</span>
+                <span className="font-sans text-[11px] font-bold uppercase tracking-[0.12em] text-[#5B6A71] mt-1">Beyond foundations</span>
+              </span>
+            </Link>
+
+            {/* Desktop menu */}
+            <nav aria-label="Primary" className="hidden xl:flex items-center gap-0.5 2xl:gap-1" onMouseLeave={scheduleClose}>
+              {MENU.map((raw) => {
+                const item = raw as Item;
+                const hasChildren = Boolean(item.children?.length);
+                const active = isItemActive(pathname, item);
+                const open = dropdown === item.title;
+                return (
+                  <div
+                    key={item.title}
+                    className="relative"
+                    onMouseEnter={() => openDropdown(hasChildren ? item.title : null)}
+                  >
+                    <Link
+                      href={item.href}
+                      aria-current={active ? 'page' : undefined}
+                      aria-haspopup={hasChildren || undefined}
+                      aria-expanded={hasChildren ? open : undefined}
+                      onFocus={() => openDropdown(hasChildren ? item.title : null)}
+                      className={`press relative flex items-center gap-1.5 h-11 px-3.5 2xl:px-4 rounded-2xl text-[16px] font-semibold whitespace-nowrap transition-colors duration-300 ${
+                        active ? 'text-[#243239] font-bold' : 'text-[#46565E] hover:text-[#243239]'
+                      }`}
+                    >
+                      {active && (
+                        <motion.span
+                          layoutId="nav-active"
+                          transition={{ type: 'spring', stiffness: 420, damping: 36 }}
+                          className="absolute inset-0 rounded-2xl bg-gradient-to-b from-[#F8E3A3] to-[#F0C468]/70 border border-[#C4921B]/30 shadow-[0_8px_24px_-12px_rgba(196,146,27,0.7)]"
+                        />
+                      )}
+                      {!active && open && <span className="absolute inset-0 rounded-2xl bg-[#33454E]/[0.08]" />}
+                      <span className="relative">{item.title}</span>
+                      {item.badge && (
+                        <span
+                          title={item.badge}
+                          aria-label={item.badge}
+                          className="relative w-1.5 h-1.5 rounded-full bg-[#E9B215] shadow-[0_0_8px_#E9B215]"
+                        />
+                      )}
+                      {hasChildren && (
+                        <ChevronDown
+                          size={13}
+                          strokeWidth={1.75}
+                          className={`relative transition-transform duration-300 ${open ? 'rotate-180 text-[#9A7015]' : 'text-[#7A888E]'}`}
+                        />
+                      )}
+                    </Link>
+
+                    <AnimatePresence>
+                      {hasChildren && open && (
+                        <motion.div
+                          initial={{ opacity: 0, y: 8, scale: 0.94, filter: 'blur(6px)' }}
+                          animate={{ opacity: 1, y: 0, scale: 1, filter: 'blur(0px)' }}
+                          exit={{ opacity: 0, y: 4, scale: 0.97, filter: 'blur(4px)', transition: { duration: 0.16 } }}
+                          transition={{ type: 'spring', stiffness: 520, damping: 30, mass: 0.7 }}
+                          className="absolute left-1/2 -translate-x-1/2 top-full pt-3 w-72"
+                          onMouseEnter={() => openDropdown(item.title)}
+                        >
+                          <div className="liquid-glass is-solid rounded-[22px] p-2 origin-top">
+                            <div aria-hidden className="absolute top-0 left-6 right-6 h-px bg-gradient-to-r from-transparent via-[#E9B215]/50 to-transparent" />
+                            <p className="label-mono px-3 pt-2 pb-1.5">{item.title}</p>
+                            {item.children!.map((sub) => (
+                              <Link
+                                key={sub.title}
+                                href={sub.href}
+                                className="group flex items-center justify-between gap-3 px-3 py-2.5 rounded-xl text-[15px] font-semibold text-[#33454E] hover:text-[#243239] hover:bg-[#33454E]/[0.08] transition-colors"
+                              >
+                                <span>{sub.title}</span>
+                                <ArrowUpRight size={13} strokeWidth={1.75} className="text-[#9A7015] opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all" />
+                              </Link>
+                            ))}
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+                );
+              })}
+            </nav>
+
+            {/* Right controls */}
+            <div className="flex items-center gap-1.5 shrink-0">
+              <button
+                type="button"
+                onClick={() => setSearchOpen(true)}
+                aria-label="Search"
+                title={`Search (${isMac ? '⌘K' : 'Ctrl+K'})`}
+                className="press jiggle h-11 w-11 2xl:w-auto 2xl:px-3.5 rounded-2xl grid 2xl:flex place-items-center items-center gap-2 text-[#46565E] hover:text-[#243239] bg-[#33454E]/[0.05] border border-[#33454E]/15 hover:border-[#33454E]/15 transition-colors"
+              >
+                <Search size={18} strokeWidth={2} />
+                <kbd className="hidden 2xl:inline font-sans text-[10px] px-1.5 py-0.5 rounded-md bg-[#E6ECEF] text-[#5B6A71] border border-[#33454E]/15">
+                  {isMac ? '⌘K' : 'Ctrl K'}
+                </kbd>
+              </button>
+
+              <Link
+                href="/admin/login"
+                aria-label="Admin sign in"
+                title="Admin"
+                className="press jiggle hidden xl:grid h-11 w-11 rounded-2xl place-items-center text-[#5B6A71] hover:text-[#243239] bg-[#33454E]/[0.05] border border-[#33454E]/15 hover:border-[#33454E]/15 transition-colors"
+              >
+                <User size={18} strokeWidth={2} />
+              </Link>
+
+              <Link
+                href="/contact"
+                className="hidden sm:inline-flex btn-gold gold-shimmer items-center gap-1.5 h-11 px-5 rounded-2xl text-[15.5px] font-extrabold"
+              >
+                Get in touch <ArrowUpRight size={14} strokeWidth={2} />
+              </Link>
+
+              <button
+                type="button"
+                onClick={() => setDrawerOpen((o) => !o)}
+                className="press xl:hidden h-11 w-11 rounded-2xl grid place-items-center text-[#243239] bg-[#33454E]/[0.05] border border-[#33454E]/15"
+                aria-label={drawerOpen ? 'Close menu' : 'Open menu'}
+                aria-expanded={drawerOpen}
+                aria-controls="site-drawer"
+              >
+                {drawerOpen ? <X size={18} strokeWidth={1.75} /> : <Menu size={18} strokeWidth={1.75} />}
+              </button>
+            </div>
           </div>
         </div>
 
+        {/* Drawer (below xl) */}
         <AnimatePresence>
-          {mobileMenuOpen && (
+          {drawerOpen && (
             <motion.div
               ref={drawerRef}
-              id="mobile-navigation"
+              id="site-drawer"
               tabIndex={-1}
               role="dialog"
               aria-modal="true"
               aria-label="Site navigation"
-              initial={{ opacity: 0, y: -16, scale: 0.98 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              exit={{ opacity: 0, y: -12, scale: 0.98 }}
-              transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
-              className="relative mx-3 mt-2 rounded-3xl bg-[#2B3B44]/90 backdrop-blur-2xl backdrop-saturate-150 border border-[#C9BCA6]/20 shadow-[0_20px_50px_rgba(15,25,32,0.6),inset_0_1px_1px_rgba(245,239,228,0.1)] p-3 max-h-[calc(100dvh-80px)] overflow-y-auto overscroll-contain outline-none"
+              initial={{ opacity: 0, y: -12, scale: 0.94, filter: 'blur(8px)' }}
+              animate={{ opacity: 1, y: 0, scale: 1, filter: 'blur(0px)' }}
+              exit={{ opacity: 0, y: -8, scale: 0.97, filter: 'blur(6px)', transition: { duration: 0.18 } }}
+              transition={{ type: 'spring', stiffness: 460, damping: 32, mass: 0.8 }}
+              className="xl:hidden liquid-glass is-solid origin-top mt-2 mx-auto max-w-md rounded-[26px] p-2.5 max-h-[calc(100dvh-96px)] overflow-y-auto overscroll-contain outline-none"
             >
-              <div aria-hidden className="absolute top-0 left-6 right-6 h-px bg-gradient-to-r from-transparent via-[#C4921B]/60 to-transparent" />
-              <nav className="space-y-0.5" aria-label="Mobile">
-                {drawerItems.map((item, mIdx) => {
-                  const children = 'children' in item ? item.children : undefined;
-                  const hasChildren = Boolean(children && children.length > 0);
-                  const isExpanded = mobileExpanded === item.title;
-                  const isActive =
-                    pathname === item.href ||
-                    Boolean(children?.some((c) => c.href.split('#')[0] === pathname));
-                  const panelId = `mobile-nav-${item.title.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`;
-                  const rowClass = `flex w-full items-center justify-between px-4 py-3 rounded-2xl text-[14px] font-light transition-colors ${
-                    isExpanded || isActive ? 'text-[#E9B215] bg-[#C4921B]/12' : 'text-[#E8E2D5] active:bg-white/[0.06]'
+              <nav aria-label="Mobile" className="space-y-0.5">
+                {DRAWER.map((raw, i) => {
+                  const item = raw as Item;
+                  const hasChildren = Boolean(item.children?.length);
+                  const isExpanded = expanded === item.title;
+                  const active = isItemActive(pathname, item);
+                  const panelId = `drawer-${item.title.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`;
+                  const row = `press flex w-full items-center justify-between gap-3 px-4 py-3.5 rounded-2xl text-[17px] font-bold transition-colors ${
+                    active || isExpanded ? 'text-[#243239] bg-[#C4921B]/12' : 'text-[#33454E] active:bg-[#33454E]/[0.08]'
                   }`;
-
                   return (
                     <motion.div
                       key={item.title}
-                      initial={{ opacity: 0, x: -10 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ duration: 0.2, delay: mIdx * 0.035 }}
+                      initial={{ opacity: 0, y: -4 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.18, delay: i * 0.025 }}
                     >
                       {hasChildren ? (
                         <button
                           type="button"
-                          onClick={() => toggleMobileSection(item.title)}
+                          className={row}
                           aria-expanded={isExpanded}
                           aria-controls={panelId}
-                          className={rowClass}
+                          onClick={() => setExpanded((c) => (c === item.title ? null : item.title))}
                         >
-                          <span className="flex items-center">{item.title}</span>
-                          <ChevronDown
-                            aria-hidden
-                            className={`w-[18px] h-[18px] text-[#A89476] transition-transform duration-300 ${isExpanded ? 'rotate-180 text-[#E9B215]' : ''}`}
-                          />
+                          {item.title}
+                          <ChevronDown size={16} strokeWidth={1.75} className={`transition-transform duration-300 ${isExpanded ? 'rotate-180 text-[#9A7015]' : 'text-[#7A888E]'}`} />
                         </button>
                       ) : (
-                        <Link href={item.href} onClick={closeMobileMenu} className={rowClass}>
-                          <span className="flex items-center">
-                            {item.title === 'Home' && <House aria-hidden className="w-4 h-4 mr-2" />}
-                            {item.title}
-                          </span>
-                          {'badge' in item && item.badge && (
-                            <span className="text-[9px] font-semibold px-1.5 py-0.5 bg-[#C4921B] text-[#2B3B44] rounded-full">{item.badge}</span>
-                          )}
+                        <Link href={item.href} className={row} onClick={() => setDrawerOpen(false)}>
+                          {item.title}
+                          {item.badge && <span className="font-sans text-[10px] uppercase tracking-wider text-[#9A7015]">{item.badge}</span>}
                         </Link>
                       )}
-
                       <AnimatePresence initial={false}>
                         {hasChildren && isExpanded && (
                           <motion.div
                             id={panelId}
-                            key="panel"
                             initial={{ height: 0, opacity: 0 }}
                             animate={{ height: 'auto', opacity: 1 }}
                             exit={{ height: 0, opacity: 0 }}
-                            transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
+                            transition={{ duration: 0.24, ease: [0.16, 1, 0.3, 1] }}
                             className="overflow-hidden"
                           >
-                            <div className="pl-4 pr-1 pt-1 pb-2 space-y-0.5">
-                              {children!.map((sub) => (
+                            <div className="ml-3.5 pl-3 my-1 border-l border-[#33454E]/15 space-y-0.5">
+                              {item.children!.map((sub) => (
                                 <Link
                                   key={sub.title}
                                   href={sub.href}
-                                  onClick={closeMobileMenu}
-                                  className="block px-3 py-2.5 rounded-xl text-[13px] font-light text-[#C9BCA6] active:text-[#E9B215] hover:text-white hover:bg-white/[0.06] transition-colors"
+                                  onClick={() => setDrawerOpen(false)}
+                                  className="block px-3 py-2.5 rounded-xl text-[15.5px] font-semibold text-[#46565E] hover:text-[#243239] hover:bg-[#33454E]/[0.05] transition-colors"
                                 >
                                   {sub.title}
                                 </Link>
@@ -220,25 +374,25 @@ export default function Navbar() {
                     </motion.div>
                   );
                 })}
-
-                <div className="pt-3 mt-2 border-t border-[#C9BCA6]/15 grid grid-cols-[1fr_auto] gap-2">
-                  <Link
-                    href="/contact"
-                    onClick={closeMobileMenu}
-                    className="gold-shimmer py-3 rounded-full text-xs font-medium text-center text-[#2B3B44] bg-[#C4921B] hover:bg-[#E9B215] transition-colors flex items-center justify-center gap-1.5"
-                  >
-                    Get in touch <ArrowUpRight size={13} />
-                  </Link>
-                  <Link
-                    href="/admin/login"
-                    onClick={closeMobileMenu}
-                    aria-label="Admin"
-                    className="w-11 h-11 rounded-full grid place-items-center text-[#C9BCA6] bg-white/[0.06] border border-white/10"
-                  >
-                    <User size={16} strokeWidth={1.5} />
-                  </Link>
-                </div>
               </nav>
+              <div className="hairline my-2.5" />
+              <div className="grid grid-cols-[1fr_auto] gap-2">
+                <Link
+                  href="/contact"
+                  onClick={() => setDrawerOpen(false)}
+                  className="btn-gold gold-shimmer h-12 rounded-2xl inline-flex items-center justify-center gap-1.5 text-[16px] font-extrabold"
+                >
+                  Get in touch <ArrowUpRight size={15} />
+                </Link>
+                <Link
+                  href="/admin/login"
+                  onClick={() => setDrawerOpen(false)}
+                  aria-label="Admin sign in"
+                  className="h-11 w-11 rounded-xl grid place-items-center text-[#5B6A71] bg-[#33454E]/[0.05] border border-[#33454E]/15"
+                >
+                  <User size={18} strokeWidth={2} />
+                </Link>
+              </div>
             </motion.div>
           )}
         </AnimatePresence>

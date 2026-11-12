@@ -1,30 +1,44 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 
+/**
+ * Gold reading-progress hairline.
+ * Compositor-only: updates `transform: scaleX()` directly on the element inside a
+ * rAF, so scrolling never triggers React renders or layout.
+ */
 export default function ScrollProgressBar() {
-  const [scrollProgress, setScrollProgress] = useState(0);
+  const barRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const handleScroll = () => {
-      const totalScroll = document.documentElement.scrollTop;
-      const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-      if (windowHeight > 0) {
-        setScrollProgress((totalScroll / windowHeight) * 100);
-      }
+    let frame = 0;
+    const update = () => {
+      frame = 0;
+      const el = document.documentElement;
+      const max = el.scrollHeight - el.clientHeight;
+      const p = max > 0 ? Math.min(1, Math.max(0, el.scrollTop / max)) : 0;
+      if (barRef.current) barRef.current.style.transform = `scaleX(${p})`;
     };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
+    const onScroll = () => {
+      if (!frame) frame = requestAnimationFrame(update);
+    };
+    update();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll, { passive: true });
+    return () => {
+      if (frame) cancelAnimationFrame(frame);
+      window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('resize', onScroll);
+    };
   }, []);
 
   return (
-    <div className="fixed top-0 left-0 lg:left-44 right-0 h-[2.5px] z-[60] pointer-events-none bg-transparent">
+    <div aria-hidden className="fixed top-0 inset-x-0 h-[2px] z-[60] pointer-events-none">
       <div
-        className="h-full bg-gradient-to-r from-[#C4921B] via-[#E9B215] to-[#C4921B] transition-all duration-150 ease-out"
-        style={{ width: `${scrollProgress}%` }}
+        ref={barRef}
+        className="h-full origin-left bg-gradient-to-r from-[#C4921B] via-[#E9B215] to-[#C4921B] will-change-transform"
+        style={{ transform: 'scaleX(0)' }}
       />
     </div>
   );
 }
-

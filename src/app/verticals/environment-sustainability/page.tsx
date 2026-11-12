@@ -33,15 +33,15 @@ export default async function EnvironmentSustainabilityPage() {
       />
 
       {/* Main Section */}
-      <section className="py-12 sm:py-16 md:py-20 bg-white border-b border-slate-200">
+      <section className="py-12 sm:py-16 md:py-20 bg-transparent border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           {/* Overview Grid - Stacked on Mobile, 2-Col on Desktop */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center mb-16">
             
             <div className="lg:col-span-7 space-y-6">
-              <div className="inline-flex items-center space-x-2 text-xs font-bold uppercase tracking-wider text-teal-700 bg-teal-50 px-3 py-1.5 rounded-full border border-teal-200">
-                <Leaf className="w-3.5 h-3.5 text-teal-600" />
+              <div className="inline-flex items-center space-x-2 text-xs font-bold uppercase tracking-wider text-[#9A7015] bg-[#F7EDD3] px-3 py-1.5 rounded-full border border-[#E9D6A8]">
+                <Leaf className="w-3.5 h-3.5 text-[#9A7015]" />
                 <span>Water &amp; Ecological Engineering</span>
               </div>
 
@@ -57,7 +57,7 @@ export default async function EnvironmentSustainabilityPage() {
               <div className="pt-2 grid grid-cols-1 sm:grid-cols-2 gap-3">
                 {vertical.capabilities.map((cap, i) => (
                   <div key={i} className="flex items-start text-xs sm:text-sm font-semibold text-slate-800 bg-slate-50 p-2.5 rounded-xl border border-slate-200/80">
-                    <CheckCircle2 className="w-4 h-4 text-teal-600 mr-2 flex-shrink-0 mt-0.5" />
+                    <CheckCircle2 className="w-4 h-4 text-[#9A7015] mr-2 flex-shrink-0 mt-0.5" />
                     <span>{cap}</span>
                   </div>
                 ))}
@@ -74,7 +74,7 @@ export default async function EnvironmentSustainabilityPage() {
                 priority
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#2B3B44]/60 via-transparent to-transparent" />
-              <div className="absolute bottom-4 left-4 right-4 text-white text-xs font-medium bg-white/90 text-[#24272B] backdrop-blur-md p-3 rounded-xl border border-[#D8CDB8]">
+              <div className="absolute bottom-4 left-4 right-4 text-white text-xs font-medium bg-white/90 text-[#243239] backdrop-blur-md p-3 rounded-xl border border-[#D3DDE1]">
                 Ecological Restoration &amp; Urban Watershed Management
               </div>
             </div>
@@ -84,7 +84,7 @@ export default async function EnvironmentSustainabilityPage() {
           {/* Key Environmental Services */}
           <div className="mt-12 pt-12 border-t border-slate-200">
             <div className="text-center max-w-3xl mx-auto mb-10">
-              <span className="text-xs font-bold uppercase tracking-wider text-teal-700 bg-teal-50 px-3 py-1 rounded-full border border-teal-200">
+              <span className="text-xs font-bold uppercase tracking-wider text-[#9A7015] bg-[#F7EDD3] px-3 py-1 rounded-full border border-[#E9D6A8]">
                 Specialized Mandates
               </span>
               <h3 className="text-2xl sm:text-3xl font-bold font-display text-navy-950 mt-2">
@@ -94,9 +94,9 @@ export default async function EnvironmentSustainabilityPage() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {vertical.keyServices.map((srv, i) => (
-                <div key={i} className="p-6 rounded-2xl bg-slate-50 hover:bg-white border border-slate-200 hover:border-teal-400/60 hover:shadow-lg transition-all duration-300">
+                <div key={i} className="p-6 rounded-2xl bg-slate-50 hover:bg-white border border-slate-200 hover:border-[#E9D6A8]/60 hover:shadow-lg transition-all duration-300">
                   <h4 className="text-base font-bold text-navy-950 mb-2 flex items-center">
-                    <Waves className="w-4 h-4 text-teal-600 mr-2 flex-shrink-0" />
+                    <Waves className="w-4 h-4 text-[#9A7015] mr-2 flex-shrink-0" />
                     <span>{srv.title}</span>
                   </h4>
                   <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
@@ -108,9 +108,9 @@ export default async function EnvironmentSustainabilityPage() {
           </div>
 
           {/* Connected CEL Environmental Laboratory Banner */}
-          <div className="mt-16 p-8 rounded-3xl bg-gradient-to-r from-[#060F1E] to-[#0A1A33] text-white border border-teal-500/30 flex flex-col md:flex-row items-center justify-between gap-6 shadow-xl">
+          <div className="mt-16 p-8 rounded-3xl bg-gradient-to-r from-[#060F1E] to-[#0A1A33] text-white border border-[#E9D6A8]/30 flex flex-col md:flex-row items-center justify-between gap-6 shadow-xl">
             <div className="space-y-2 text-center md:text-left">
-              <span className="text-[11px] uppercase tracking-wider font-bold text-teal-300 bg-teal-900/60 px-3 py-1 rounded-full border border-teal-400/30">
+              <span className="text-[11px] uppercase tracking-wider font-bold text-[#C4921B] bg-[#C4921B]/60 px-3 py-1 rounded-full border border-[#E9D6A8]/30">
                 Co-Located Testing Laboratory
               </span>
               <h4 className="text-xl sm:text-2xl font-bold font-display">
@@ -122,7 +122,7 @@ export default async function EnvironmentSustainabilityPage() {
             </div>
             <Link
               href="/cel"
-              className="px-6 py-3 rounded-xl bg-teal-400 hover:bg-teal-300 text-navy-950 font-bold text-xs sm:text-sm flex-shrink-0 transition-all shadow-cube-glow flex items-center"
+              className="px-6 py-3 rounded-xl bg-[#EFD9A6] hover:bg-[#EFD9A6] text-navy-950 font-bold text-xs sm:text-sm flex-shrink-0 transition-all shadow-cube-glow flex items-center"
             >
               <span>Explore CEL Services</span>
               <ArrowRight className="w-4 h-4 ml-2" />
@@ -133,7 +133,7 @@ export default async function EnvironmentSustainabilityPage() {
           <div className="mt-16 pt-12 border-t border-slate-200">
             <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-8 gap-4">
               <div>
-                <span className="text-xs font-bold uppercase tracking-wider text-teal-700 bg-teal-50 px-3 py-1 rounded-full border border-teal-200">
+                <span className="text-xs font-bold uppercase tracking-wider text-[#9A7015] bg-[#F7EDD3] px-3 py-1 rounded-full border border-[#E9D6A8]">
                   Applied Track Record
                 </span>
                 <h3 className="text-2xl font-bold font-display text-navy-950 mt-2">
@@ -142,7 +142,7 @@ export default async function EnvironmentSustainabilityPage() {
               </div>
               <Link
                 href="/projects"
-                className="text-xs font-bold text-teal-700 hover:text-teal-900 flex items-center"
+                className="text-xs font-bold text-[#9A7015] hover:text-[#9A7015] flex items-center"
               >
                 <span>View All 40+ Projects</span>
                 <ArrowRight className="w-3.5 h-3.5 ml-1" />

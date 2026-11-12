@@ -22,49 +22,49 @@ export default function VisionMissionPage() {
         ]}
       />
 
-      <section className="py-20 bg-[#F7F7F4]">
+      <section className="py-20 bg-transparent">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
             {/* Vision Card (Architectural Light Palette) */}
-            <div className="p-8 sm:p-10 rounded-3xl bg-white text-[#24272B] shadow-sm hover:shadow-xl border border-[#E5E7EB] transition-all flex flex-col justify-between">
+            <div className="p-8 sm:p-10 rounded-3xl bg-white text-[#243239] shadow-sm hover:shadow-xl border border-[#DCE4E7] transition-all flex flex-col justify-between">
               <div>
-                <div className="p-3 bg-[#F5EFE4] text-[#2B3B44] rounded-2xl w-fit mb-6 border border-[#C9BCA6]">
+                <div className="p-3 bg-[#F2F5F6] text-[#2B3B44] rounded-2xl w-fit mb-6 border border-[#B9C5CA]">
                   <Compass className="w-8 h-8 text-[#C4921B]" />
                 </div>
                 <span className="text-xs font-bold uppercase tracking-widest text-[#C4921B]">
                   Our Institutional Vision
                 </span>
-                <h2 className="text-2xl sm:text-3xl font-serif font-light text-[#24272B] mt-2">
+                <h2 className="text-2xl sm:text-3xl font-display font-bold text-[#243239] mt-2">
                   World-Class Applied Urban Excellence
                 </h2>
-                <p className="mt-6 text-sm sm:text-base text-[#747B83] leading-relaxed font-sans font-normal">
+                <p className="mt-6 text-sm sm:text-base text-[#5B6A71] leading-relaxed font-sans font-normal">
                   &ldquo;{aboutContent.vision}&rdquo;
                 </p>
               </div>
 
-              <div className="mt-8 pt-6 border-t border-[#E5E7EB] text-xs text-[#747B83]">
+              <div className="mt-8 pt-6 border-t border-[#DCE4E7] text-xs text-[#5B6A71]">
                 Endorsed by the Governing Board &bull; IIT Madras &bull; Government of Tamil Nadu
               </div>
             </div>
 
             {/* Mission Card (Architectural Light Sky Palette) */}
-            <div className="p-8 sm:p-10 rounded-3xl bg-white text-[#24272B] border border-[#E5E7EB] shadow-sm hover:shadow-xl transition-all flex flex-col justify-between">
+            <div className="p-8 sm:p-10 rounded-3xl bg-white text-[#243239] border border-[#DCE4E7] shadow-sm hover:shadow-xl transition-all flex flex-col justify-between">
               <div>
-                <div className="p-3 bg-[#F5EFE4] text-[#2B3B44] rounded-2xl w-fit mb-6 border border-[#C9BCA6]">
+                <div className="p-3 bg-[#F2F5F6] text-[#2B3B44] rounded-2xl w-fit mb-6 border border-[#B9C5CA]">
                   <Target className="w-8 h-8 text-[#C4921B]" />
                 </div>
                 <span className="text-xs font-bold uppercase tracking-widest text-[#C4921B]">
                   Our Execution Mission
                 </span>
-                <h2 className="text-2xl sm:text-3xl font-serif font-light text-[#24272B] mt-2">
+                <h2 className="text-2xl sm:text-3xl font-display font-bold text-[#243239] mt-2">
                   Applied Engineering for Public Good
                 </h2>
-                <p className="mt-6 text-sm sm:text-base text-[#747B83] leading-relaxed font-sans font-normal">
+                <p className="mt-6 text-sm sm:text-base text-[#5B6A71] leading-relaxed font-sans font-normal">
                   &ldquo;{aboutContent.mission}&rdquo;
                 </p>
               </div>
 
-              <div className="mt-8 pt-6 border-t border-[#E5E7EB]">
+              <div className="mt-8 pt-6 border-t border-[#DCE4E7]">
                 <Link
                   href="/about/objectives"
                   className="inline-flex items-center text-xs font-semibold text-[#2B3B44] hover:text-[#C4921B] transition-colors"

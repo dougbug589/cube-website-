@@ -37,10 +37,10 @@ export default function LifeAtCubePage() {
         breadcrumbs={[{ label: 'Life at CUBE' }]}
       />
 
-      <section className="py-20 bg-white border-b border-slate-200">
+      <section className="py-20 bg-transparent border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto text-center mb-16">
-            <span className="text-xs font-bold uppercase tracking-wider text-teal-700 bg-teal-50 px-3 py-1 rounded-full border border-teal-200">
+            <span className="text-xs font-bold uppercase tracking-wider text-[#9A7015] bg-[#F7EDD3] px-3 py-1 rounded-full border border-[#E9D6A8]">
               Our Collaborative Culture
             </span>
             <h2 className="text-3xl sm:text-4xl font-display font-extrabold text-navy-950 mt-3">
@@ -77,7 +77,7 @@ export default function LifeAtCubePage() {
       </section>
 
       {/* Join the Team CTA */}
-      <section className="py-16 bg-[#F5EFE4] text-[#2B3B44] border border-[#C9BCA6] text-center">
+      <section className="py-16 bg-transparent text-[#2B3B44] border border-[#B9C5CA] text-center">
         <div className="max-w-3xl mx-auto px-4">
           <h2 className="text-2xl sm:text-3xl font-display font-bold">
             Interested in Joining the CUBE Team?
@@ -88,7 +88,7 @@ export default function LifeAtCubePage() {
           <div className="mt-6 flex justify-center gap-4">
             <Link
               href="/careers"
-              className="px-6 py-3 rounded-xl text-xs font-bold text-navy-950 bg-teal-400 hover:bg-teal-300 transition"
+              className="px-6 py-3 rounded-xl text-xs font-bold text-navy-950 bg-[#EFD9A6] hover:bg-[#EFD9A6] transition"
             >
               <span>View Career Openings</span>
             </Link>

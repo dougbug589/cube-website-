@@ -131,7 +131,7 @@ export default function GalleryPage() {
         ]}
       />
 
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-transparent">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Category Filter Pills */}
           <div className="flex flex-wrap justify-center gap-2 mb-12">
@@ -141,7 +141,7 @@ export default function GalleryPage() {
                 onClick={() => setSelectedCategory(cat)}
                 className={`px-4 py-2 rounded-xl text-xs font-semibold transition-all ${
                   selectedCategory === cat
-                    ? 'bg-[#F5EFE4] text-[#2B3B44] border border-[#C9BCA6] shadow-md'
+                    ? 'bg-[#F2F5F6] text-[#2B3B44] border border-[#B9C5CA] shadow-md'
                     : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
                 }`}
               >
@@ -165,7 +165,7 @@ export default function GalleryPage() {
                     openLightbox(idx);
                   }
                 }}
-                className="group relative h-64 rounded-2xl overflow-hidden shadow-sm hover:shadow-cube cursor-pointer border border-slate-200 bg-slate-900 transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#C4921B]"
+                className="group relative h-64 rounded-2xl overflow-hidden shadow-sm hover:shadow-cube cursor-pointer border border-slate-200 bg-[#F0C468] transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#C4921B]"
               >
                 <Image
                   src={item.src}
@@ -176,7 +176,7 @@ export default function GalleryPage() {
                 <div className="absolute inset-0 bg-gradient-to-t from-[#2B3B44]/90 via-navy-950/20 to-transparent opacity-80 group-hover:opacity-95 transition-opacity" />
 
                 <div className="absolute top-3 left-3">
-                  <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-white/90 text-[#2B3B44] text-[#2B3B44] border border-[#D8CDB8]">
+                  <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-white/90 text-[#2B3B44] text-[#2B3B44] border border-[#D3DDE1]">
                     {item.category}
                   </span>
                 </div>

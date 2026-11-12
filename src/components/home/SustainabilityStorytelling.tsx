@@ -55,10 +55,10 @@ const SUSTAINABILITY_PILLARS = [
 
 export default function SustainabilityStorytelling() {
   return (
-    <section className="reveal py-24 bg-gradient-to-b from-[#FFFFFF] via-[#FAF8F4] to-[#F5EFE4] border-b border-[#E5E7EB] relative overflow-hidden">
+    <section className="reveal py-24 bg-transparent border-b border-[#DCE4E7] relative overflow-hidden">
       
       {/* Background Refractive Glows */}
-      <div className="absolute top-1/3 left-10 w-96 h-96 bg-[#C9BCA6]/25 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-1/3 left-10 w-96 h-96 bg-[#B9C5CA]/25 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-10 right-10 w-96 h-96 bg-white/70 rounded-full blur-3xl pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -70,17 +70,17 @@ export default function SustainabilityStorytelling() {
               <Sparkles className="w-3.5 h-3.5" />
               <span>Environmental Stewardship &bull; Morphogenesis Impact Model</span>
             </span>
-            <h2 className="font-serif text-3xl sm:text-5xl font-light text-[#24272B] tracking-tight">
+            <h2 className="font-display text-3xl sm:text-5xl font-bold text-[#243239] tracking-tight">
               Sustainability &amp; Ecological Engineering
             </h2>
-            <p className="text-xs sm:text-sm text-[#747B83] leading-relaxed pt-1">
+            <p className="text-xs sm:text-sm text-[#5B6A71] leading-relaxed pt-1">
               Translating advanced civil and environmental research from IIT Madras into verified low-carbon infrastructure, zero-effluent water reuse, and climate-resilient urbanization.
             </p>
           </div>
 
           <Link
             href="/verticals/environment-sustainability"
-            className="px-6 py-3 rounded-full text-xs font-semibold text-[#2B3B44] bg-white border border-[#D8CDB8] hover:bg-[#F5EFE4] hover:scale-105 active:scale-95 shadow-xs transition-all self-start md:self-end flex items-center gap-2"
+            className="px-6 py-3 rounded-full text-xs font-semibold text-[#2B3B44] bg-white border border-[#D3DDE1] hover:bg-[#F2F5F6] hover:scale-105 active:scale-95 shadow-xs transition-all self-start md:self-end flex items-center gap-2"
           >
             <span>Explore Environmental Vertical</span>
             <ArrowUpRight className="w-3.5 h-3.5 text-[#C4921B]" />
@@ -101,36 +101,36 @@ export default function SustainabilityStorytelling() {
                 <div>
                   {/* Top Bar with Icon & Category */}
                   <div className="flex items-center justify-between mb-4">
-                    <div className="w-10 h-10 rounded-2xl bg-white/90 border border-[#D8CDB8] flex items-center justify-center text-[#2B3B44] shadow-2xs group-hover:bg-[#F5EFE4] transition-colors">
+                    <div className="w-10 h-10 rounded-2xl bg-white/90 border border-[#D3DDE1] flex items-center justify-center text-[#2B3B44] shadow-2xs group-hover:bg-[#F2F5F6] transition-colors">
                       <Icon className="w-5 h-5 text-[#2B3B44]" />
                     </div>
 
-                    <span className="text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full bg-white/80 border border-[#E5E7EB] text-[#747B83]">
+                    <span className="text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full bg-white/80 border border-[#DCE4E7] text-[#5B6A71]">
                       {pillar.category}
                     </span>
                   </div>
 
                   {/* Title & Verified Metric */}
-                  <h3 className="font-serif text-2xl font-medium text-[#24272B] tracking-tight group-hover:text-[#2B3B44] transition-colors">
+                  <h3 className="font-display text-2xl font-medium text-[#243239] tracking-tight group-hover:text-[#2B3B44] transition-colors">
                     {pillar.title}
                   </h3>
 
                   <div className="mt-3 flex items-baseline gap-2">
-                    <span className="font-serif text-2xl font-semibold text-[#2B3B44]">
+                    <span className="font-display text-2xl font-semibold text-[#2B3B44]">
                       {pillar.metric}
                     </span>
-                    <span className="text-xs text-[#747B83] font-medium">
+                    <span className="text-xs text-[#5B6A71] font-medium">
                       &bull; {pillar.metricLabel}
                     </span>
                   </div>
 
-                  <p className="text-xs text-[#747B83] mt-3 leading-relaxed">
+                  <p className="text-xs text-[#5B6A71] mt-3 leading-relaxed">
                     {pillar.description}
                   </p>
                 </div>
 
                 {/* Bottom Action */}
-                <div className="pt-6 mt-6 border-t border-[#E5E7EB] flex items-center justify-between">
+                <div className="pt-6 mt-6 border-t border-[#DCE4E7] flex items-center justify-between">
                   <Link
                     href={pillar.href}
                     className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#2B3B44] group-hover:text-[#C4921B] transition-colors"
@@ -139,7 +139,7 @@ export default function SustainabilityStorytelling() {
                     <ArrowUpRight className="w-3.5 h-3.5" />
                   </Link>
 
-                  <span className="text-[10px] font-bold text-[#747B83] uppercase tracking-wider">
+                  <span className="text-[10px] font-bold text-[#5B6A71] uppercase tracking-wider">
                     IIT Madras Research
                   </span>
                 </div>

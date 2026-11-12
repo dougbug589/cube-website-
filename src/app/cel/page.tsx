@@ -63,7 +63,7 @@ Parameters / Notes: ${formData.parametersNeeded || 'Standard Matrix Parameters'}
   };
 
   return (
-    <div className="bg-[#FAF8F4] min-h-screen">
+    <div className="bg-transparent min-h-screen">
       <PageHeader
         badge="State-of-the-Art Analytical Facility"
         title="CUBE Environmental Laboratory (CEL)"
@@ -72,11 +72,11 @@ Parameters / Notes: ${formData.parametersNeeded || 'Standard Matrix Parameters'}
       />
 
       {/* Overview Section */}
-      <section className="py-20 bg-white border-b border-[#C4CAD8]">
+      <section className="py-20 bg-transparent border-b border-[#C4CAD8]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             <div className="lg:col-span-7 space-y-6">
-              <span className="text-xs font-bold uppercase tracking-wider text-[#2B3B44] bg-[#C4921B] px-3 py-1 rounded-full shadow-sm">
+              <span className="text-xs font-bold uppercase tracking-wider text-[#2B3B44] bg-[#F0C468] px-3 py-1 rounded-full shadow-sm">
                 IIT Madras Research Park Facility
               </span>
               <h2 className="text-3xl font-display font-extrabold text-[#2B3B44]">
@@ -92,7 +92,7 @@ Parameters / Notes: ${formData.parametersNeeded || 'Standard Matrix Parameters'}
                 </h4>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
                   {celOverview.facilities.map((fac, i) => (
-                    <div key={i} className="flex items-center text-xs font-semibold text-slate-800 bg-[#FAF8F4] p-2.5 rounded-xl border border-[#C4CAD8]">
+                    <div key={i} className="flex items-center text-xs font-semibold text-slate-800 bg-[#F6F8F9] p-2.5 rounded-xl border border-[#C4CAD8]">
                       <CheckCircle2 className="w-4 h-4 text-[#C4921B] mr-2 flex-shrink-0" />
                       <span>{fac}</span>
                     </div>
@@ -115,10 +115,10 @@ Parameters / Notes: ${formData.parametersNeeded || 'Standard Matrix Parameters'}
       </section>
 
       {/* Testing Services Cards */}
-      <section className="py-20 bg-[#FAF8F4] border-b border-[#C4CAD8]">
+      <section className="py-20 bg-transparent border-b border-[#C4CAD8]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-14">
-            <span className="text-xs font-bold uppercase tracking-wider text-[#2B3B44] bg-[#C4921B] px-3 py-1 rounded-full shadow-sm">
+            <span className="text-xs font-bold uppercase tracking-wider text-[#2B3B44] bg-[#F0C468] px-3 py-1 rounded-full shadow-sm">
               Testing Parameters
             </span>
             <h2 className="text-3xl font-display font-extrabold text-[#2B3B44] mt-3">
@@ -138,11 +138,11 @@ Parameters / Notes: ${formData.parametersNeeded || 'Standard Matrix Parameters'}
       </section>
 
       {/* Laboratory Real-Time Booking Form */}
-      <section id="enquiry" className="py-20 bg-white">
+      <section id="enquiry" className="py-20 bg-transparent">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="p-8 sm:p-12 rounded-3xl bg-[#FAF8F4] border border-[#C4CAD8] shadow-cube">
+          <div className="p-8 sm:p-12 rounded-3xl bg-[#F6F8F9] border border-[#C4CAD8] shadow-cube">
             <div className="text-center max-w-xl mx-auto mb-10">
-              <span className="text-xs font-bold uppercase tracking-wider text-[#2B3B44] bg-[#C4921B] px-3 py-1 rounded-full shadow-sm">
+              <span className="text-xs font-bold uppercase tracking-wider text-[#2B3B44] bg-[#F0C468] px-3 py-1 rounded-full shadow-sm">
                 Real-Time Sample Submission
               </span>
               <h2 className="text-2xl sm:text-3xl font-display font-extrabold text-[#2B3B44] mt-2">
@@ -175,7 +175,7 @@ Parameters / Notes: ${formData.parametersNeeded || 'Standard Matrix Parameters'}
                       parametersNeeded: '',
                     });
                   }}
-                  className="mt-4 px-5 py-2.5 rounded-xl text-xs font-bold bg-[#F5EFE4] text-[#2B3B44] border border-[#C9BCA6] hover:bg-[#C4921B] hover:text-[#2B3B44] transition shadow-md"
+                  className="mt-4 px-5 py-2.5 rounded-xl text-xs font-bold bg-[#F2F5F6] text-[#2B3B44] border border-[#B9C5CA] hover:bg-[#F6DA86] hover:text-[#2B3B44] transition shadow-md"
                 >
                   Submit Another Sample Scope
                 </button>
@@ -292,7 +292,7 @@ Parameters / Notes: ${formData.parametersNeeded || 'Standard Matrix Parameters'}
                   <button
                     type="submit"
                     disabled={loading}
-                    className="w-full sm:w-auto px-8 py-3 rounded-xl text-xs font-bold text-[#2B3B44] bg-[#C4921B] hover:bg-[#B07F14] transition shadow-cube-glow flex items-center justify-center disabled:opacity-50"
+                    className="w-full sm:w-auto px-8 py-3 rounded-xl text-xs font-bold text-[#2B3B44] bg-[#F0C468] hover:bg-[#B07F14] transition shadow-cube-glow flex items-center justify-center disabled:opacity-50"
                   >
                     {loading ? (
                       <>

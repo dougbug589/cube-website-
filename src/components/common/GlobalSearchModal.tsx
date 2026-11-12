@@ -136,7 +136,7 @@ export default function GlobalSearchModal({ isOpen, onClose }: GlobalSearchModal
       >
         {/* Search Input Bar */}
         <div className="flex items-center px-4 py-3.5 border-b border-slate-200 bg-slate-50/50">
-          <Search className="w-5 h-5 text-teal-600 mr-3 flex-shrink-0" />
+          <Search className="w-5 h-5 text-[#9A7015] mr-3 flex-shrink-0" />
           <input
             type="text"
             autoFocus
@@ -166,14 +166,14 @@ export default function GlobalSearchModal({ isOpen, onClose }: GlobalSearchModal
           {!query.trim() && (
             <div className="py-8 text-center">
               <p className="text-sm text-slate-500">
-                Type keywords like <span className="font-semibold text-teal-600">&quot;precast&quot;</span>, <span className="font-semibold text-teal-600">&quot;water&quot;</span>, <span className="font-semibold text-teal-600">&quot;TIDEL&quot;</span>, or <span className="font-semibold text-teal-600">&quot;testing&quot;</span>.
+                Type keywords like <span className="font-semibold text-[#9A7015]">&quot;precast&quot;</span>, <span className="font-semibold text-[#9A7015]">&quot;water&quot;</span>, <span className="font-semibold text-[#9A7015]">&quot;TIDEL&quot;</span>, or <span className="font-semibold text-[#9A7015]">&quot;testing&quot;</span>.
               </p>
               <div className="mt-4 flex flex-wrap justify-center gap-2">
                 {['Building & Construction', 'Environment', 'Smart Cities', 'Bus Terminals', 'CEL Lab'].map((tag) => (
                   <button
                     key={tag}
                     onClick={() => setQuery(tag)}
-                    className="px-3 py-1 text-xs bg-slate-100 hover:bg-teal-50 hover:text-teal-700 text-slate-600 rounded-full transition"
+                    className="px-3 py-1 text-xs bg-slate-100 hover:bg-[#F7EDD3] hover:text-[#9A7015] text-slate-600 rounded-full transition"
                   >
                     {tag}
                   </button>
@@ -198,12 +198,12 @@ export default function GlobalSearchModal({ isOpen, onClose }: GlobalSearchModal
                 onClick={onClose}
                 className="group flex items-start p-3 rounded-xl hover:bg-slate-100/90 transition border border-transparent hover:border-slate-200"
               >
-                <div className="p-2 rounded-lg bg-teal-50 group-hover:bg-teal-600 text-teal-700 group-hover:text-white transition mr-3.5 flex-shrink-0 mt-0.5">
+                <div className="p-2 rounded-lg bg-[#F7EDD3] group-hover:bg-[#F6DA86] text-[#9A7015] group-hover:text-[#243239] transition mr-3.5 flex-shrink-0 mt-0.5">
                   <Icon className="w-4 h-4" />
                 </div>
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center justify-between">
-                    <h4 className="text-sm font-semibold text-slate-800 group-hover:text-teal-700 transition truncate">
+                    <h4 className="text-sm font-semibold text-slate-800 group-hover:text-[#9A7015] transition truncate">
                       {item.title}
                     </h4>
                     <span className="text-[11px] font-medium px-2 py-0.5 rounded-full bg-slate-100 text-slate-600 ml-2 flex-shrink-0">
@@ -214,7 +214,7 @@ export default function GlobalSearchModal({ isOpen, onClose }: GlobalSearchModal
                     {item.description}
                   </p>
                 </div>
-                <ArrowRight className="w-4 h-4 text-slate-300 group-hover:text-teal-600 transition ml-2 self-center flex-shrink-0 opacity-0 group-hover:opacity-100" />
+                <ArrowRight className="w-4 h-4 text-slate-300 group-hover:text-[#9A7015] transition ml-2 self-center flex-shrink-0 opacity-0 group-hover:opacity-100" />
               </Link>
             );
           })}

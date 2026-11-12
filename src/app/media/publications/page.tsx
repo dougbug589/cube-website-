@@ -23,7 +23,7 @@ export default function PublicationsPage() {
         ]}
       />
 
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-transparent">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="space-y-6">
             {publications.map((pub, idx) => (
@@ -33,7 +33,7 @@ export default function PublicationsPage() {
               >
                 <div className="space-y-2 flex-1">
                   <div className="flex items-center space-x-3 text-xs">
-                    <span className="font-bold text-teal-700 bg-teal-50 px-2.5 py-0.5 rounded-full border border-teal-200">
+                    <span className="font-bold text-[#9A7015] bg-[#F7EDD3] px-2.5 py-0.5 rounded-full border border-[#E9D6A8]">
                       {pub.category}
                     </span>
                     <span className="text-slate-400">&bull;</span>
@@ -56,9 +56,9 @@ export default function PublicationsPage() {
                 <div className="flex-shrink-0">
                   <button
                     onClick={() => setSelectedDoc({ title: pub.title, authors: pub.authors })}
-                    className="px-5 py-2.5 rounded-xl text-xs font-semibold text-teal-800 bg-white hover:bg-teal-50 border border-slate-300 hover:border-teal-300 transition flex items-center shadow-sm cursor-pointer"
+                    className="px-5 py-2.5 rounded-xl text-xs font-semibold text-[#9A7015] bg-white hover:bg-[#F7EDD3] border border-slate-300 hover:border-[#E9D6A8] transition flex items-center shadow-sm cursor-pointer"
                   >
-                    <FileText className="w-4 h-4 mr-1.5 text-teal-600" />
+                    <FileText className="w-4 h-4 mr-1.5 text-[#9A7015]" />
                     <span>Request Document</span>
                   </button>
                 </div>

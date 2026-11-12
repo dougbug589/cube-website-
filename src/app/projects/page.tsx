@@ -45,7 +45,7 @@ function ProjectsPageInner() {
   }, [projectList, selectedCategory, searchQuery]);
 
   return (
-    <div className="bg-[#FFFFFF] text-[#24272B] min-h-screen">
+    <div className="bg-transparent text-[#243239] min-h-screen">
       <PageHeader
         badge="Applied Execution"
         title="Project Portfolio"
@@ -53,11 +53,11 @@ function ProjectsPageInner() {
         breadcrumbs={[{ label: 'Projects' }]}
       />
 
-      <section className="py-20 bg-gradient-to-b from-[#FFFFFF] via-[#FAF8F4] to-[#F5EFE4] border-b border-[#E5E7EB]">
+      <section className="py-20 bg-transparent border-b border-[#DCE4E7]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           {/* Apple Liquid Glass Filter and Search Bar */}
-          <div className="p-4 sm:p-5 rounded-3xl bg-white/80 backdrop-blur-2xl border border-[#D8CDB8] shadow-[0_8px_24px_rgba(7,14,92,0.04)] flex flex-col md:flex-row md:items-center justify-between gap-5 mb-10">
+          <div className="p-4 sm:p-5 rounded-3xl bg-white/80 backdrop-blur-2xl border border-[#D3DDE1] shadow-[0_8px_24px_rgba(36,50,57,0.04)] flex flex-col md:flex-row md:items-center justify-between gap-5 mb-10">
             {/* Glass Category Filter Chips */}
             <div className="flex flex-wrap gap-2">
               {categories.map((cat) => (
@@ -66,8 +66,8 @@ function ProjectsPageInner() {
                   onClick={() => setSelectedCategory(cat)}
                   className={`px-4 py-2 rounded-full text-xs font-semibold tracking-wide transition-all ${
                     selectedCategory === cat
-                      ? 'bg-[#F5EFE4] text-[#2B3B44] border border-[#D8CDB8] font-bold shadow-xs scale-105'
-                      : 'bg-white/60 text-[#747B83] hover:text-[#24272B] hover:bg-white border border-transparent'
+                      ? 'bg-[#F2F5F6] text-[#2B3B44] border border-[#D3DDE1] font-bold shadow-xs scale-105'
+                      : 'bg-white/60 text-[#5B6A71] hover:text-[#243239] hover:bg-white border border-transparent'
                   }`}
                 >
                   {cat === 'Building & Construction' ? 'Buildings' : cat === 'Environment & Sustainability' ? 'Environment' : cat === 'Urban Planning & Transportation' ? 'Transport' : cat}
@@ -77,19 +77,19 @@ function ProjectsPageInner() {
 
             {/* Search Input with Apple Frosted Glass Style */}
             <div className="relative min-w-[260px] sm:min-w-[300px]">
-              <Search className="w-4 h-4 text-[#747B83] absolute left-4 top-1/2 -translate-y-1/2" />
+              <Search className="w-4 h-4 text-[#5B6A71] absolute left-4 top-1/2 -translate-y-1/2" />
               <input
                 type="text"
                 placeholder="Search projects, client, domain..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-11 pr-4 py-2.5 text-xs rounded-full bg-white border border-[#D8CDB8] text-[#24272B] placeholder-[#747B83] focus:outline-none focus:border-[#2B3B44] shadow-2xs transition-colors"
+                className="w-full pl-11 pr-4 py-2.5 text-xs rounded-full bg-white border border-[#D3DDE1] text-[#243239] placeholder-[#747B83] focus:outline-none focus:border-[#2B3B44] shadow-2xs transition-colors"
               />
             </div>
           </div>
 
           {/* Results Count */}
-          <div className="mb-8 text-xs text-[#747B83] flex items-center justify-between">
+          <div className="mb-8 text-xs text-[#5B6A71] flex items-center justify-between">
             <div>
               Showing <span className="font-bold text-[#2B3B44]">{filteredProjects.length}</span> verified infrastructure projects
             </div>
@@ -109,12 +109,12 @@ function ProjectsPageInner() {
 
           {/* Empty State */}
           {filteredProjects.length === 0 && (
-            <div className="text-center py-20 rounded-3xl bg-white border border-[#D8CDB8] p-8">
-              <p className="text-sm font-semibold text-[#24272B]">No projects match your search criteria.</p>
-              <p className="text-xs text-[#747B83] mt-1">Try resetting the category filter or searching with a different keyword.</p>
+            <div className="text-center py-20 rounded-3xl bg-white border border-[#D3DDE1] p-8">
+              <p className="text-sm font-semibold text-[#243239]">No projects match your search criteria.</p>
+              <p className="text-xs text-[#5B6A71] mt-1">Try resetting the category filter or searching with a different keyword.</p>
               <button
                 onClick={() => { setSelectedCategory('All'); setSearchQuery(''); }}
-                className="mt-4 px-5 py-2 rounded-full text-xs font-semibold bg-[#F5EFE4] text-[#2B3B44] border border-[#D8CDB8]"
+                className="mt-4 px-5 py-2 rounded-full text-xs font-semibold bg-[#F2F5F6] text-[#2B3B44] border border-[#D3DDE1]"
               >
                 Reset Filters
               </button>

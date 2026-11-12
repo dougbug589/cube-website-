@@ -23,7 +23,7 @@ export default function CoreValuesPage() {
         ]}
       />
 
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-transparent">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {aboutContent.coreValues.map((val, i) => {
@@ -31,10 +31,10 @@ export default function CoreValuesPage() {
               return (
                 <div
                   key={i}
-                  className="p-8 rounded-3xl bg-slate-50 border border-slate-200 shadow-sm hover:shadow-cube hover:border-teal-300 transition-all flex flex-col justify-between"
+                  className="p-8 rounded-3xl bg-slate-50 border border-slate-200 shadow-sm hover:shadow-cube hover:border-[#E9D6A8] transition-all flex flex-col justify-between"
                 >
                   <div>
-                    <div className="p-3 bg-teal-50 text-teal-700 rounded-2xl w-fit mb-4 border border-teal-200">
+                    <div className="p-3 bg-[#F7EDD3] text-[#9A7015] rounded-2xl w-fit mb-4 border border-[#E9D6A8]">
                       <Icon className="w-6 h-6" />
                     </div>
                     <h3 className="text-xl font-bold font-display text-navy-950">
@@ -44,7 +44,7 @@ export default function CoreValuesPage() {
                       {val.description}
                     </p>
                   </div>
-                  <div className="mt-6 pt-4 border-t border-slate-200/80 text-[10px] font-bold text-teal-700 uppercase tracking-wider">
+                  <div className="mt-6 pt-4 border-t border-slate-200/80 text-[10px] font-bold text-[#9A7015] uppercase tracking-wider">
                     Core Value {(i + 1).toString().padStart(2, '0')}
                   </div>
                 </div>

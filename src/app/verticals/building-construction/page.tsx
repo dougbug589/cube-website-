@@ -33,11 +33,11 @@ export default async function BuildingConstructionPage() {
       />
 
       {/* Overview & Key Services */}
-      <section className="py-20 bg-white border-b border-slate-200">
+      <section className="py-20 bg-transparent border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center mb-16">
             <div className="lg:col-span-7 space-y-6">
-              <span className="text-xs font-bold uppercase tracking-wider text-[#B07F14] bg-[#FBF6EA] px-3 py-1 rounded-full border border-[#C9BCA6]">
+              <span className="text-xs font-bold uppercase tracking-wider text-[#B07F14] bg-[#FBF6EA] px-3 py-1 rounded-full border border-[#B9C5CA]">
                 Engineering Consultancy &amp; TPQA
               </span>
               <h2 className="text-3xl font-display font-extrabold text-navy-950">
@@ -95,7 +95,7 @@ export default async function BuildingConstructionPage() {
       <section className="py-20 bg-slate-50 border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-12">
-            <span className="text-xs font-bold uppercase tracking-wider text-[#B07F14] bg-[#FBF6EA] px-3 py-1 rounded-full border border-[#C9BCA6]">
+            <span className="text-xs font-bold uppercase tracking-wider text-[#B07F14] bg-[#FBF6EA] px-3 py-1 rounded-full border border-[#B9C5CA]">
               Field Execution
             </span>
             <h2 className="text-3xl font-display font-extrabold text-navy-950 mt-3">
@@ -115,18 +115,18 @@ export default async function BuildingConstructionPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-16 bg-gradient-to-b from-[#FFFFFF] via-[#FAF8F4] to-[#F5EFE4] border-t border-[#D8CDB8]/60 text-[#24272B] text-center">
+      <section className="py-16 bg-transparent border-t border-[#D3DDE1]/60 text-[#243239] text-center">
         <div className="max-w-4xl mx-auto px-4">
           <h2 className="text-2xl sm:text-3xl font-display font-bold">
             Require Structural Assurance or PMC for Your Project?
           </h2>
-          <p className="mt-3 text-xs sm:text-sm text-[#747B83]">
+          <p className="mt-3 text-xs sm:text-sm text-[#5B6A71]">
             Consult with IIT Madras faculty advisors and CUBE structural engineers for independent technical proof checking.
           </p>
           <div className="mt-6">
             <Link
               href="/contact"
-              className="inline-flex items-center px-6 py-3 rounded-xl text-xs font-bold text-white bg-[#C4921B] hover:bg-[#C77B60] shadow-md transition"
+              className="inline-flex items-center px-6 py-3 rounded-xl text-xs font-bold text-[#243239] bg-[#F0C468] hover:bg-[#C77B60] shadow-md transition"
             >
               <span>Connect with Building Division</span>
               <ArrowRight className="w-4 h-4 ml-2" />

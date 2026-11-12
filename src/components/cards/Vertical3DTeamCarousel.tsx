@@ -96,9 +96,9 @@ export default function Vertical3DTeamCarousel({
   };
 
   return (
-    <section className="py-24 bg-gradient-to-b from-[#FFFFFF] via-[#FAF8F4] to-[#F5EFE4] border-b border-[#E5E7EB] relative overflow-hidden">
+    <section className="py-24 bg-transparent border-b border-[#DCE4E7] relative overflow-hidden">
       {/* Background ambient lighting */}
-      <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-96 h-96 bg-[#C9BCA6]/20 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-96 h-96 bg-[#B9C5CA]/20 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-10 right-1/4 w-80 h-80 bg-white/60 rounded-full blur-2xl pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -109,10 +109,10 @@ export default function Vertical3DTeamCarousel({
             <Sparkles className="w-3.5 h-3.5" />
             <span>{tagline}</span>
           </span>
-          <h2 className="font-serif text-3xl sm:text-5xl font-light text-[#24272B] tracking-tight mt-2">
+          <h2 className="font-display text-3xl sm:text-5xl font-bold text-[#243239] tracking-tight mt-2">
             {title}
           </h2>
-          <p className="text-xs sm:text-sm text-[#747B83] mt-2">
+          <p className="text-xs sm:text-sm text-[#5B6A71] mt-2">
             {subtitle}
           </p>
         </div>
@@ -157,7 +157,7 @@ export default function Vertical3DTeamCarousel({
                     onClick={() => updateCarousel(i)}
                     className={`absolute w-[320px] sm:w-[410px] h-[220px] sm:h-[240px] rounded-3xl transition-all duration-500 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] cursor-pointer select-none overflow-hidden ${
                       isCenter 
-                        ? 'z-30 shadow-[0_20px_45px_-12px_rgba(7,14,92,0.18)] border-2 border-white ring-1 ring-[#D8CDB8]' 
+                        ? 'z-30 shadow-[0_20px_45px_-12px_rgba(36,50,57,0.18)] border-2 border-white ring-1 ring-[#D3DDE1]' 
                         : 'shadow-md border border-white/70 hover:opacity-90'
                     }`}
                     style={{
@@ -165,7 +165,7 @@ export default function Vertical3DTeamCarousel({
                       ...(offsetClass === 'center-card' && {
                         transform: 'translateY(0) scale(1.05) translateZ(0)',
                         opacity: 1,
-                        background: 'linear-gradient(135deg, #FFFFFF 0%, #FAF8F4 50%, #F5EFE4 100%)',
+                        background: 'linear-gradient(135deg, #FFFFFF 0%, #F6F8F9 50%, #F2F5F6 100%)',
                       }),
                       ...(offsetClass === 'up-1-card' && {
                         transform: 'translateY(-130px) scale(0.9) translateZ(-110px)',
@@ -197,7 +197,7 @@ export default function Vertical3DTeamCarousel({
                     <div className="relative w-full h-full p-5 flex items-center gap-4 sm:gap-5">
                       
                       {/* Portrait Avatar Container - Always perfectly framed without clipping forehead or chin */}
-                      <div className="relative flex-shrink-0 w-28 h-28 sm:w-32 sm:h-32 rounded-2xl overflow-hidden shadow-sm border-2 border-white bg-slate-100 ring-1 ring-[#D8CDB8]/60">
+                      <div className="relative flex-shrink-0 w-28 h-28 sm:w-32 sm:h-32 rounded-2xl overflow-hidden shadow-sm border-2 border-white bg-slate-100 ring-1 ring-[#D3DDE1]/60">
                         <Image
                           src={member.image || '/images/leadership/about_leader.jpg'}
                           alt={member.name}
@@ -212,12 +212,12 @@ export default function Vertical3DTeamCarousel({
 
                       {/* Right Details inside Card */}
                       <div className="flex-1 min-w-0 pr-1">
-                        <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-white/90 backdrop-blur-md text-[#2B3B44] border border-[#D8CDB8]/80 shadow-xs mb-1.5">
+                        <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-white/90 backdrop-blur-md text-[#2B3B44] border border-[#D3DDE1]/80 shadow-xs mb-1.5">
                           <ShieldCheck className="w-3 h-3 text-[#C4921B]" />
                           <span className="truncate">{member.category || 'Board Member'}</span>
                         </span>
 
-                        <h4 className="font-serif text-base sm:text-lg font-semibold text-[#24272B] tracking-tight leading-snug line-clamp-2">
+                        <h4 className="font-display text-base sm:text-lg font-semibold text-[#243239] tracking-tight leading-snug line-clamp-2">
                           {member.name}
                         </h4>
 
@@ -225,7 +225,7 @@ export default function Vertical3DTeamCarousel({
                           {member.role}
                         </p>
 
-                        <p className="text-[11px] text-[#747B83] mt-0.5 line-clamp-1">
+                        <p className="text-[11px] text-[#5B6A71] mt-0.5 line-clamp-1">
                           {member.organization || 'IIT Madras / Govt of Tamil Nadu'}
                         </p>
                       </div>
@@ -238,7 +238,7 @@ export default function Vertical3DTeamCarousel({
 
             <Link
               href={ctaHref}
-              className="relative z-40 mt-40 inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-xs sm:text-sm font-semibold text-white bg-[#2B3B44] hover:bg-[#0b1580] hover:scale-105 active:scale-95 shadow-lg shadow-[#2B3B44]/20 transition-all"
+              className="relative z-40 mt-40 inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-xs sm:text-sm font-semibold text-[#243239] bg-[#F0C468] hover:bg-[#0b1580] hover:scale-105 active:scale-95 shadow-lg shadow-[#2B3B44]/20 transition-all"
             >
               <span>View All Other Board Members</span>
               <ArrowUpRight className="w-4 h-4 text-[#C4921B]" />
@@ -253,37 +253,37 @@ export default function Vertical3DTeamCarousel({
               <button
                 onClick={handlePrev}
                 aria-label="Previous member"
-                className="w-11 h-11 rounded-full apple-glass border border-[#D8CDB8] text-[#2B3B44] flex items-center justify-center hover:bg-white hover:scale-110 active:scale-95 transition-all shadow-sm group"
+                className="w-11 h-11 rounded-full apple-glass border border-[#D3DDE1] text-[#2B3B44] flex items-center justify-center hover:bg-white hover:scale-110 active:scale-95 transition-all shadow-sm group"
               >
                 <ChevronUp className="w-5 h-5 group-hover:-translate-y-0.5 transition-transform" />
               </button>
               <button
                 onClick={handleNext}
                 aria-label="Next member"
-                className="w-11 h-11 rounded-full apple-glass border border-[#D8CDB8] text-[#2B3B44] flex items-center justify-center hover:bg-white hover:scale-110 active:scale-95 transition-all shadow-sm group"
+                className="w-11 h-11 rounded-full apple-glass border border-[#D3DDE1] text-[#2B3B44] flex items-center justify-center hover:bg-white hover:scale-110 active:scale-95 transition-all shadow-sm group"
               >
                 <ChevronDown className="w-5 h-5 group-hover:translate-y-0.5 transition-transform" />
               </button>
-              <span className="text-[11px] font-semibold text-[#747B83] uppercase tracking-wider ml-2">
+              <span className="text-[11px] font-semibold text-[#5B6A71] uppercase tracking-wider ml-2">
                 {String(currentIndex + 1).padStart(2, '0')} / {String(total).padStart(2, '0')}
               </span>
             </div>
 
             {/* Member Info Card with Apple Frosted Glass */}
-            <div className="w-full max-w-md p-6 sm:p-7 rounded-3xl apple-glass-card border border-[#D8CDB8]/80 text-left transition-all duration-500 shadow-[0_16px_36px_-12px_rgba(7,14,92,0.06)]">
+            <div className="w-full max-w-md p-6 sm:p-7 rounded-3xl apple-glass-card border border-[#D3DDE1]/80 text-left transition-all duration-500 shadow-[0_16px_36px_-12px_rgba(36,50,57,0.06)]">
               <div className="space-y-2">
                 <div className="flex items-center gap-2">
-                  <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-[#F5EFE4] text-[#2B3B44] border border-[#D8CDB8]">
+                  <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-[#F2F5F6] text-[#2B3B44] border border-[#D3DDE1]">
                     {currentMember?.category || 'Leadership'}
                   </span>
                   {currentMember?.organization && (
-                    <span className="text-[11px] text-[#747B83] font-medium truncate">
+                    <span className="text-[11px] text-[#5B6A71] font-medium truncate">
                       {currentMember.organization}
                     </span>
                   )}
                 </div>
 
-                <h3 className="font-serif text-2xl sm:text-3xl font-medium text-[#24272B] tracking-tight">
+                <h3 className="font-display text-2xl sm:text-3xl font-medium text-[#243239] tracking-tight">
                   {currentMember?.name}
                 </h3>
 
@@ -293,7 +293,7 @@ export default function Vertical3DTeamCarousel({
 
                 {/* Original bio from cubeiitm.org when available (no invented text). */}
                 {currentBio && (
-                  <p className="text-xs text-[#747B83] leading-relaxed pt-2 border-t border-[#E5E7EB] line-clamp-4">
+                  <p className="text-xs text-[#5B6A71] leading-relaxed pt-2 border-t border-[#DCE4E7] line-clamp-4">
                     {currentBio}
                   </p>
                 )}
@@ -303,14 +303,14 @@ export default function Vertical3DTeamCarousel({
               <div className="mt-5 pt-3 flex flex-wrap items-center gap-3">
                 <Link
                   href={ctaHref}
-                  className="inline-flex items-center px-4 py-2 rounded-full text-xs font-semibold text-[#2B3B44] bg-white border border-[#D8CDB8] hover:bg-[#F5EFE4] hover:scale-105 active:scale-95 shadow-sm transition-all"
+                  className="inline-flex items-center px-4 py-2 rounded-full text-xs font-semibold text-[#2B3B44] bg-white border border-[#D3DDE1] hover:bg-[#F2F5F6] hover:scale-105 active:scale-95 shadow-sm transition-all"
                 >
                   <span>{ctaText}</span>
                   <ArrowUpRight className="w-3.5 h-3.5 ml-1.5 text-[#C4921B]" />
                 </Link>
                 <Link
                   href="/about/chairman-message"
-                  className="text-xs font-semibold text-[#747B83] hover:text-[#2B3B44] transition-colors"
+                  className="text-xs font-semibold text-[#5B6A71] hover:text-[#2B3B44] transition-colors"
                 >
                   Read Messages &rarr;
                 </Link>
@@ -326,8 +326,8 @@ export default function Vertical3DTeamCarousel({
                   aria-label={`Go to slide ${i + 1}`}
                   className={`h-2 rounded-full transition-all duration-300 ${
                     i === currentIndex 
-                      ? 'w-7 bg-[#2B3B44]' 
-                      : 'w-2 bg-[#D8CDB8]/70 hover:bg-[#747B83]'
+                      ? 'w-7 bg-[#F0C468]' 
+                      : 'w-2 bg-[#D3DDE1]/70 hover:bg-[#747B83]'
                   }`}
                 />
               ))}

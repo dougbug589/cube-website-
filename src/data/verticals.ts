@@ -11,7 +11,7 @@ export const verticals: Vertical[] = [
     "longDescription": "The Building & Construction vertical at CUBE operates at the intersection of rigorous academic research from IIT Madras and real-world infrastructure delivery. We specialize in structural health monitoring, quality assurance, project management consultancy, rehabilitation of historic and distressed structures, and implementation of innovative building technologies like precast concrete systems and Light House Projects.",
     "heroImage": "/images/projects/building-construction/about_building.jpg",
     "icon": "Building2",
-    "color": "from-blue-600 to-indigo-700",
+    "color": "from-[#33454E] to-[#243239]",
     "projectCount": 24,
     "capabilities": [
       "Structural Design & Proof Checking",
@@ -50,7 +50,7 @@ export const verticals: Vertical[] = [
     "longDescription": "CUBE\u2019s Environment & Sustainability division delivers rigorous scientific solutions for complex environmental challenges. Working closely with the Tamil Nadu Pollution Control Board, municipal corporations, and industrial corridors, our engineers and hydrologists lead watershed management, zero liquid discharge studies, lake rejuvenation, and comprehensive environmental impact audits.",
     "heroImage": "/images/projects/environment-sustainability/about_environment.jpg",
     "icon": "Leaf",
-    "color": "from-teal-600 to-emerald-700",
+    "color": "from-[#4F6B66] to-[#3A524D]",
     "projectCount": 18,
     "capabilities": [
       "Hydrological & Flood Modeling",
@@ -89,7 +89,7 @@ export const verticals: Vertical[] = [
     "longDescription": "In alignment with the Smart Cities Mission and modern municipal governance, CUBE provides advisory and technical supervision for smart urban solutions. From intelligent transport management systems (ITMS) to automated water supply SCADA grids, we ensure that technological interventions are robust, scalable, and tailored to local urban contexts.",
     "heroImage": "/images/projects/smart-cities/about_smart-city.jpg",
     "icon": "Cpu",
-    "color": "from-cyan-600 to-blue-700",
+    "color": "from-[#4A5F6A] to-[#33454E]",
     "projectCount": 12,
     "capabilities": [
       "Integrated Command & Control Centers (ICCC)",
@@ -124,7 +124,7 @@ export const verticals: Vertical[] = [
     "longDescription": "The Urban Planning & Transportation vertical bridges spatial planning, highway engineering, and public transit network design. CUBE has served as key technical advisor for landmark transit hubs in Tamil Nadu\u2014including Kilambakkam, Kuthambakkam, and Madhavaram bus terminals\u2014optimizing circulation, pedestrian safety, and regional connectivity.",
     "heroImage": "/images/projects/urban-planning/about_upt-pro2.jpg",
     "icon": "Compass",
-    "color": "from-amber-600 to-orange-700",
+    "color": "from-[#C4921B] to-[#9A7015]",
     "projectCount": 16,
     "capabilities": [
       "Comprehensive Mobility Plans (CMP)",

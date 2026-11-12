@@ -134,7 +134,7 @@ export default function HeroSlider() {
           
           {/* Institutional Badge with Gold Border */}
           <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-[#2B3B44]/90 border border-[#C4921B]/50 backdrop-blur-md shadow-lg mb-6">
-            <span className="flex h-2 w-2 rounded-full bg-[#C4921B] animate-ping" />
+            <span className="flex h-2 w-2 rounded-full bg-[#F0C468] animate-ping" />
             <ShieldCheck className="w-4 h-4 text-[#C4921B]" />
             <span className="text-xs font-bold tracking-wide text-[#FDF6DE]">
               {active.badge}
@@ -161,7 +161,7 @@ export default function HeroSlider() {
           <div className="mt-8 flex flex-wrap items-center gap-4">
             <Link
               href={active.projectLink}
-              className="px-6 py-3.5 rounded-xl text-xs sm:text-sm font-bold text-[#2B3B44] bg-[#C4921B] hover:bg-[#B07F14] transition-all shadow-cube-glow hover:shadow-xl flex items-center group"
+              className="px-6 py-3.5 rounded-xl text-xs sm:text-sm font-bold text-[#2B3B44] bg-[#F0C468] hover:bg-[#B07F14] transition-all shadow-cube-glow hover:shadow-xl flex items-center group"
             >
               <span>Explore 40+ Projects</span>
               <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
@@ -191,7 +191,7 @@ export default function HeroSlider() {
         <button
           onClick={prevSlide}
           aria-label="Previous Slide"
-          className="p-2.5 rounded-xl bg-[#2B3B44]/80 hover:bg-[#C4921B] hover:text-[#2B3B44] text-white border border-[#C4CAD8]/30 backdrop-blur-md transition-all shadow-lg"
+          className="p-2.5 rounded-xl bg-[#2B3B44]/80 hover:bg-[#F6DA86] hover:text-[#2B3B44] text-white border border-[#C4CAD8]/30 backdrop-blur-md transition-all shadow-lg"
         >
           <ChevronLeft className="w-5 h-5" />
         </button>
@@ -204,7 +204,7 @@ export default function HeroSlider() {
               onClick={() => setCurrentSlide(idx)}
               aria-label={`Go to slide ${idx + 1}`}
               className={`h-2 rounded-full transition-all duration-500 ${
-                idx === currentSlide ? 'w-7 bg-[#C4921B] shadow-sm shadow-[#C4921B]/50' : 'w-2 bg-white/30 hover:bg-white/60'
+                idx === currentSlide ? 'w-7 bg-[#F0C468] shadow-sm shadow-[#C4921B]/50' : 'w-2 bg-white/30 hover:bg-white/60'
               }`}
             />
           ))}
@@ -214,7 +214,7 @@ export default function HeroSlider() {
         <button
           onClick={nextSlide}
           aria-label="Next Slide"
-          className="p-2.5 rounded-xl bg-[#2B3B44]/80 hover:bg-[#C4921B] hover:text-[#2B3B44] text-white border border-[#C4CAD8]/30 backdrop-blur-md transition-all shadow-lg"
+          className="p-2.5 rounded-xl bg-[#2B3B44]/80 hover:bg-[#F6DA86] hover:text-[#2B3B44] text-white border border-[#C4CAD8]/30 backdrop-blur-md transition-all shadow-lg"
         >
           <ChevronRight className="w-5 h-5" />
         </button>

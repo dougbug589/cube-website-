@@ -22,12 +22,12 @@ export default function ChairmanMessagePage() {
         ]}
       />
 
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-transparent">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-10 items-start">
             {/* Chairman Profile Card */}
             <div className="md:col-span-4 p-6 rounded-3xl bg-slate-50 border border-slate-200 shadow-cube text-center">
-              <div className="relative h-44 w-44 mx-auto rounded-2xl overflow-hidden mb-4 border-2 border-teal-500 shadow-md">
+              <div className="relative h-44 w-44 mx-auto rounded-2xl overflow-hidden mb-4 border-2 border-[#E9D6A8] shadow-md">
                 <Image
                   src="/images/leadership/board_member_kamakoti.jpg"
                   alt="Prof. V. Kamakoti, Chairman CUBE & Director IIT Madras"
@@ -38,7 +38,7 @@ export default function ChairmanMessagePage() {
               <h3 className="text-lg font-bold text-navy-950 font-display">
                 Prof. V. Kamakoti
               </h3>
-              <p className="text-xs text-teal-700 font-bold mt-0.5">
+              <p className="text-xs text-[#9A7015] font-bold mt-0.5">
                 Chairman, CUBE
               </p>
               <p className="text-xs text-slate-500 mt-0.5">
@@ -51,7 +51,7 @@ export default function ChairmanMessagePage() {
 
             {/* Message Body */}
             <div className="md:col-span-8 space-y-6">
-              <div className="p-3 bg-teal-50 text-teal-700 rounded-2xl w-fit">
+              <div className="p-3 bg-[#F7EDD3] text-[#9A7015] rounded-2xl w-fit">
                 <Quote className="w-8 h-8" />
               </div>
 
@@ -68,7 +68,7 @@ export default function ChairmanMessagePage() {
               <div className="pt-6 border-t border-slate-200">
                 <div className="font-bold text-navy-950 text-base">Prof. V. Kamakoti</div>
                 <div className="text-xs text-slate-500">Director, Indian Institute of Technology Madras</div>
-                <div className="text-xs text-teal-700 font-semibold">Chairman, CUBE Governing Board</div>
+                <div className="text-xs text-[#9A7015] font-semibold">Chairman, CUBE Governing Board</div>
               </div>
             </div>
           </div>

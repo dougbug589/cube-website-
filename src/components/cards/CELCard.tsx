@@ -78,7 +78,7 @@ export default function CELCard({ service }: CELCardProps) {
           backfaceVisibility: 'hidden',
           WebkitBackfaceVisibility: 'hidden',
         }}
-        className="relative w-full h-full rounded-3xl overflow-hidden bg-white border border-[#D8CDB8] shadow-[0_12px_36px_rgba(7,14,92,0.06)] hover:border-[#5B9BD5] transition-colors duration-300 flex flex-col justify-between"
+        className="relative w-full h-full rounded-3xl overflow-hidden bg-white border border-[#D3DDE1] shadow-[0_12px_36px_rgba(36,50,57,0.06)] hover:border-[#5B9BD5] transition-colors duration-300 flex flex-col justify-between"
       >
         {/* TOP CINEMATIC IMAGE WITH 3D ZOOM DEPTH */}
         <div className="relative h-60 w-full overflow-hidden bg-slate-100 shrink-0">
@@ -100,16 +100,16 @@ export default function CELCard({ service }: CELCardProps) {
 
           {/* Floating Badges */}
           <div className="absolute top-3.5 left-3.5 right-3.5 flex justify-between items-center z-10">
-            <span className="text-[10px] font-bold tracking-wider uppercase px-3 py-1 bg-white/95 text-[#2B3B44] rounded-full shadow-sm backdrop-blur-sm border border-[#C9BCA6]">
+            <span className="text-[10px] font-bold tracking-wider uppercase px-3 py-1 bg-white/95 text-[#2B3B44] rounded-full shadow-sm backdrop-blur-sm border border-[#B9C5CA]">
               {service.category}
             </span>
-            <span className="text-[10px] font-bold px-2.5 py-0.5 bg-[#C4921B] text-white rounded-full shadow-sm">
+            <span className="text-[10px] font-bold px-2.5 py-0.5 bg-[#F0C468] text-[#243239] rounded-full shadow-sm">
               CEL Certified
             </span>
           </div>
 
           {/* Dynamic 3D Drawer Pill */}
-          <div className="absolute bottom-3 right-3 z-10 flex items-center space-x-1.5 px-3 py-1 rounded-full bg-white/95 text-[#2B3B44] text-[11px] shadow-sm backdrop-blur-sm border border-[#C9BCA6]">
+          <div className="absolute bottom-3 right-3 z-10 flex items-center space-x-1.5 px-3 py-1 rounded-full bg-white/95 text-[#2B3B44] text-[11px] shadow-sm backdrop-blur-sm border border-[#B9C5CA]">
             <Sparkles className="w-3 h-3 text-[#C4921B]" />
             <span className="text-[10px] font-semibold">
               {isExpanded ? 'Testing Parameters' : (<><span className="hidden [@media(hover:hover)]:inline">Hover to Expand</span><span className="[@media(hover:hover)]:hidden">Tap to Expand</span></>)}
@@ -128,15 +128,15 @@ export default function CELCard({ service }: CELCardProps) {
             <span className="text-[11px] font-semibold text-[#C4921B] uppercase tracking-wider block">
               CUBE Environmental Laboratory (CEL)
             </span>
-            <h3 className="font-serif text-lg font-bold text-[#2B3B44] leading-snug line-clamp-2">
+            <h3 className="font-display text-lg font-bold text-[#2B3B44] leading-snug line-clamp-2">
               {service.title}
             </h3>
-            <p className="text-xs text-[#24272B]/85 mt-2 line-clamp-3 leading-relaxed font-sans font-normal">
+            <p className="text-xs text-[#243239]/85 mt-2 line-clamp-3 leading-relaxed font-sans font-normal">
               {service.description}
             </p>
           </div>
 
-          <div className="pt-3 border-t border-[#E5E7EB] flex items-center justify-between text-xs font-semibold text-[#2B3B44]">
+          <div className="pt-3 border-t border-[#DCE4E7] flex items-center justify-between text-xs font-semibold text-[#2B3B44]">
             <span>View protocols &amp; equipment</span>
             <ArrowUpRight className="w-4 h-4 text-[#C4921B] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
           </div>
@@ -150,36 +150,36 @@ export default function CELCard({ service }: CELCardProps) {
               animate={{ y: 0, opacity: 1 }}
               exit={{ y: '100%', opacity: 0 }}
               transition={{ type: 'spring', stiffness: 320, damping: 28 }}
-              className="absolute inset-x-0 bottom-0 top-16 bg-gradient-to-b from-white/95 via-white/98 to-[#F7F7F4] backdrop-blur-md p-6 flex flex-col justify-between z-20 border-t border-[#C9BCA6] shadow-2xl rounded-b-3xl"
+              className="absolute inset-x-0 bottom-0 top-16 bg-gradient-to-b from-white/95 via-white/98 to-[#F7F7F4] backdrop-blur-md p-6 flex flex-col justify-between z-20 border-t border-[#B9C5CA] shadow-2xl rounded-b-3xl"
               onClick={(e) => e.stopPropagation()}
             >
               <div>
-                <div className="flex items-center justify-between pb-2 border-b border-[#E5E7EB]">
+                <div className="flex items-center justify-between pb-2 border-b border-[#DCE4E7]">
                   <div className="flex items-center space-x-1.5">
                     <FlaskConical className="w-3.5 h-3.5 text-[#2B3B44]" />
                     <span className="text-[10px] font-bold uppercase tracking-wider text-[#2B3B44]">
                       CEL Analytical Specifications
                     </span>
                   </div>
-                  <span className="h-2 w-2 rounded-full bg-[#C4921B] animate-pulse" />
+                  <span className="h-2 w-2 rounded-full bg-[#F0C468] animate-pulse" />
                 </div>
 
-                <h4 className="font-serif text-base font-semibold text-[#2B3B44] mt-2.5 line-clamp-1">
+                <h4 className="font-display text-base font-semibold text-[#2B3B44] mt-2.5 line-clamp-1">
                   {service.title}
                 </h4>
 
-                <p className="text-xs text-[#747B83] mt-1.5 leading-relaxed line-clamp-2">
+                <p className="text-xs text-[#5B6A71] mt-1.5 leading-relaxed line-clamp-2">
                   Rigorous laboratory testing in accordance with Bureau of Indian Standards (BIS) and CPCB protocols.
                 </p>
 
                 {service.parameters && service.parameters.length > 0 && (
                   <div className="mt-3.5 space-y-2">
-                    <div className="text-[10px] font-bold text-[#24272B] uppercase tracking-wider">
+                    <div className="text-[10px] font-bold text-[#243239] uppercase tracking-wider">
                       Tested Parameters:
                     </div>
                     <div className="space-y-1.5">
                       {service.parameters.slice(0, 3).map((pt, idx) => (
-                        <div key={idx} className="flex items-start text-xs text-[#24272B]">
+                        <div key={idx} className="flex items-start text-xs text-[#243239]">
                           <CheckCircle2 className="w-3.5 h-3.5 text-[#2B3B44] mr-2 shrink-0 mt-0.5" />
                           <span className="line-clamp-1 font-medium">{pt}</span>
                         </div>
@@ -189,17 +189,17 @@ export default function CELCard({ service }: CELCardProps) {
                 )}
 
                 {service.equipment && service.equipment.length > 0 && (
-                  <div className="mt-2.5 text-[11px] text-[#747B83]">
-                    <span className="font-semibold text-[#24272B]">Key Instruments: </span>
+                  <div className="mt-2.5 text-[11px] text-[#5B6A71]">
+                    <span className="font-semibold text-[#243239]">Key Instruments: </span>
                     <span>{service.equipment.slice(0, 2).join(', ')}</span>
                   </div>
                 )}
               </div>
 
-              <div className="pt-3 border-t border-[#E5E7EB]">
+              <div className="pt-3 border-t border-[#DCE4E7]">
                 <Link
                   href="/cel#enquiry"
-                  className="w-full flex items-center justify-center py-2.5 px-4 rounded-full text-xs font-semibold text-[#2B3B44] bg-[#F5EFE4] border border-[#C9BCA6] hover:bg-[#C4921B] hover:text-white transition-all shadow-sm group/btn"
+                  className="w-full flex items-center justify-center py-2.5 px-4 rounded-full text-xs font-semibold text-[#2B3B44] bg-[#F2F5F6] border border-[#B9C5CA] hover:bg-[#F6DA86] hover:text-[#243239] transition-all shadow-sm group/btn"
                 >
                   <span>Book Laboratory Testing</span>
                   <ArrowUpRight className="w-4 h-4 ml-1.5 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform" />

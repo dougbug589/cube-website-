@@ -38,7 +38,7 @@ export default async function NewsDetailPage({ params }: { params: Promise<{ slu
   const paragraphs = toParagraphs(item.content);
 
   return (
-    <div className="bg-[#FFFFFF] min-h-screen">
+    <div className="bg-transparent min-h-screen">
       <PageHeader
         badge="Press Release"
         title={item.title}
@@ -56,7 +56,7 @@ export default async function NewsDetailPage({ params }: { params: Promise<{ slu
             Back to all news
           </Link>
 
-          <div className="flex flex-wrap items-center gap-4 text-xs text-[#747B83] mb-6">
+          <div className="flex flex-wrap items-center gap-4 text-xs text-[#5B6A71] mb-6">
             <span className="flex items-center">
               <Calendar className="w-3.5 h-3.5 mr-1 text-[#2B3B44]" />
               {item.date}
@@ -65,12 +65,12 @@ export default async function NewsDetailPage({ params }: { params: Promise<{ slu
               <User className="w-3.5 h-3.5 mr-1" />
               {item.author || 'CUBE Editorial'}
             </span>
-            <span className="px-2.5 py-0.5 rounded-full bg-[#F5EFE4] text-[#2B3B44] font-semibold">
+            <span className="px-2.5 py-0.5 rounded-full bg-[#F2F5F6] text-[#2B3B44] font-semibold">
               {item.category}
             </span>
           </div>
 
-          <div className="relative h-64 sm:h-80 w-full rounded-2xl overflow-hidden bg-[#F7F7F4] mb-8">
+          <div className="relative h-64 sm:h-80 w-full rounded-2xl overflow-hidden bg-[#EEF2F4] mb-8">
             <Image
               src={item.image || '/images/hero/slides_building-training-team.jpg'}
               alt={item.title}

@@ -16,10 +16,11 @@ const config: Config = {
         slateCard: '#3A4C56',
         goldCore: '#C4921B',
         goldBright: '#E9B215',
-        pearl: '#F5EFE4',
-        sand: '#C9BCA6',
-        sandDim: '#A89476',
-        sandFaint: '#8A7F6D',
+        pearl: '#F2F5F6',
+        sand: '#B9C5CA',
+        sandDim: '#8C9AA0',
+        sandFaint: '#7A888E',
+        glow: '#7FD1C8',
         // Legacy aliases (components referencing old names keep working)
         navy: {
           DEFAULT: '#2B3B44',
@@ -29,7 +30,7 @@ const config: Config = {
           800: '#33454E',
           700: '#3A4C56',
           600: '#4A5F6A',
-          50: '#F5EFE4',
+          50: '#F2F5F6',
         },
         gold: {
           DEFAULT: '#C4921B',
@@ -42,18 +43,18 @@ const config: Config = {
           50: '#FBF6EA',
         },
         silver: {
-          DEFAULT: '#C9BCA6',
-          300: '#C9BCA6',
-          400: '#A89476',
-          500: '#8A7F6D',
+          DEFAULT: '#B9C5CA',
+          300: '#B9C5CA',
+          400: '#8C9AA0',
+          500: '#7A888E',
         },
-        'light-grey': '#F5EFE4',
+        'light-grey': '#F2F5F6',
         slate: {
-          50: '#F5EFE4',
-          100: '#E8E2D5',
-          200: '#C9BCA6',
-          300: '#A89476',
-          400: '#8A7F6D',
+          50: '#F2F5F6',
+          100: '#E6ECEF',
+          200: '#B9C5CA',
+          300: '#8C9AA0',
+          400: '#7A888E',
           500: '#5A6B74',
           600: '#4A5F6A',
           700: '#3A4C56',
@@ -63,14 +64,19 @@ const config: Config = {
         }
       },
       fontFamily: {
-        sans: ["var(--font-inter)", "sans-serif"],
-        display: ["var(--font-cormorant)", "serif"],
-        soft: ["var(--font-manrope)", "sans-serif"],
+        sans: ["var(--font-sans)", "system-ui", "sans-serif"],
+        display: ["var(--font-sans)", "system-ui", "sans-serif"],
+        // legacy `font-serif` usages across pages now resolve to the display face
+        serif: ["var(--font-sans)", "system-ui", "sans-serif"],
+        soft: ["var(--font-sans)", "sans-serif"],
+        mono: ["var(--font-sans)", "system-ui", "sans-serif"],
       },
       boxShadow: {
-        'cube': '0 10px 30px -10px rgba(15, 25, 32, 0.5), 0 4px 6px -4px rgba(15, 25, 32, 0.35)',
-        'cube-hover': '0 20px 40px -15px rgba(15, 25, 32, 0.6), 0 8px 16px -6px rgba(196, 146, 27, 0.25)',
+        'cube': '0 10px 30px -12px rgba(36,50,57, 0.22), 0 4px 6px -4px rgba(36,50,57, 0.12)',
+        'cube-hover': '0 20px 40px -16px rgba(36,50,57, 0.3), 0 8px 16px -6px rgba(196, 146, 27, 0.2)',
         'cube-glow': '0 0 25px rgba(196, 146, 27, 0.4)',
+        'glass': '0 18px 50px -24px rgba(36,50,57, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.9)',
+        'glass-hover': '0 28px 70px -28px rgba(36,50,57, 0.38), 0 0 0 1px rgba(196, 146, 27, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.9)',
         'cube-navy-glow': '0 0 25px rgba(43, 59, 68, 0.55)',
       },
       animation: {
@@ -79,6 +85,8 @@ const config: Config = {
         'pulse-subtle': 'pulseSubtle 3s ease-in-out infinite',
         'float-y': 'floatY 6s ease-in-out infinite',
         'gold-pulse': 'goldPulse 2.5s ease-out infinite',
+        aurora: 'aurora 28s ease-in-out infinite alternate',
+        'aurora-slow': 'aurora 40s ease-in-out infinite alternate-reverse',
         // Logo marquees: each track holds its list twice, so moving by -50%
         // loops seamlessly. Duration is set per track (inline style).
         marquee: 'marquee 60s linear infinite',
@@ -100,6 +108,11 @@ const config: Config = {
         goldPulse: {
           '0%, 100%': { boxShadow: '0 0 0 0 rgba(196, 146, 27, 0.45)' },
           '50%': { boxShadow: '0 0 0 8px rgba(196, 146, 27, 0)' },
+        },
+        aurora: {
+          '0%': { transform: 'translate3d(0,0,0) scale(1)' },
+          '50%': { transform: 'translate3d(6%, -4%, 0) scale(1.08)' },
+          '100%': { transform: 'translate3d(-4%, 6%, 0) scale(0.96)' },
         },
         pulseSubtle: {
           '0%, 100%': { opacity: '1' },

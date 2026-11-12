@@ -188,11 +188,11 @@ export default function TeamPage() {
                     aria-expanded={isOpen}
                   >
                     <div className="flex items-center space-x-3.5">
-                      <div className="p-2 rounded-xl bg-[#F5EFE4] text-[#2B3B44] group-hover:scale-105 transition-transform">
+                      <div className="p-2 rounded-xl bg-[#F2F5F6] text-[#2B3B44] group-hover:scale-105 transition-transform">
                         <DeptIcon className="w-5 h-5" />
                       </div>
                       <div>
-                        <h2 className="text-base sm:text-lg font-bold text-[#24272B] font-display">
+                        <h2 className="text-base sm:text-lg font-bold text-[#243239] font-display">
                           {dept.title}
                         </h2>
                         <p className="text-xs text-slate-400 font-medium">
@@ -202,7 +202,7 @@ export default function TeamPage() {
                     </div>
 
                     {/* Expand/Collapse Indicator matching the original website screenshot */}
-                    <div className="h-8 w-8 rounded-lg bg-slate-100 text-slate-600 group-hover:bg-[#F5EFE4] group-hover:text-[#2B3B44] flex items-center justify-center transition-colors">
+                    <div className="h-8 w-8 rounded-lg bg-slate-100 text-slate-600 group-hover:bg-[#F2F5F6] group-hover:text-[#2B3B44] flex items-center justify-center transition-colors">
                       {isOpen ? (
                         <Minus className="w-4 h-4 stroke-[2.5]" />
                       ) : (
@@ -234,7 +234,7 @@ export default function TeamPage() {
                                   className="object-cover group-hover:scale-105 transition-transform duration-300"
                                 />
                               </div>
-                              <h3 className="text-xs sm:text-sm font-bold text-[#24272B] font-display line-clamp-1 mt-1">
+                              <h3 className="text-xs sm:text-sm font-bold text-[#243239] font-display line-clamp-1 mt-1">
                                 {member.name}
                               </h3>
                               <p className="text-[11px] text-[#2B3B44] font-semibold mt-1 line-clamp-2">
