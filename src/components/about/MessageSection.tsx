@@ -15,7 +15,7 @@ import { Pause, Play, Quote } from 'lucide-react';
  * Scrolling is driven by rAF writes to scrollTop (no React re-renders).
  */
 
-const SPEED = 52; // px per second
+const SPEED = 44; // px per second
 const START_DELAY = 1400; // ms after the box comes into view
 const END_HOLD = 1500; // ms at the end before rewinding
 const AFTER_USER = 3500; // ms of quiet after a manual scroll
