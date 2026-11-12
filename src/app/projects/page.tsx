@@ -5,8 +5,15 @@ import { useSearchParams } from 'next/navigation';
 import { useLiveList } from '@/lib/live';
 import PageHeader from '@/components/common/PageHeader';
 import ProjectCard from '@/components/cards/ProjectCard';
-import { Search, Filter, Sparkles } from 'lucide-react';
+import { Search } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { projects as fallbackProjects } from '@/data/projects';
+
+const SHORT_LABEL: Record<string, string> = {
+  'Building & Construction': 'Buildings',
+  'Environment & Sustainability': 'Environment',
+  'Urban Planning & Transportation': 'Urban Planning',
+};
 
 function ProjectsPageInner() {
   // Deep links from the home hero search widget: /projects?category=…&q=…
@@ -39,88 +46,118 @@ function ProjectsPageInner() {
         !searchQuery.trim() ||
         (p.title && p.title.toLowerCase().includes(searchQuery.toLowerCase())) ||
         (p.description && p.description.toLowerCase().includes(searchQuery.toLowerCase())) ||
-        (p.scopeOfWork && p.scopeOfWork.some((s: string) => s.toLowerCase().includes(searchQuery.toLowerCase())));
+        (p.scopeOfWork && p.scopeOfWork.some((s: string) => s.toLowerCase().includes(searchQuery.toLowerCase()))) ||
+        (p.client && String(p.client).toLowerCase().includes(searchQuery.toLowerCase())) ||
+        (p.location && String(p.location).toLowerCase().includes(searchQuery.toLowerCase()));
       return matchesCategory && matchesSearch;
     });
   }, [projectList, selectedCategory, searchQuery]);
 
+  const counts = useMemo(() => {
+    const c: Record<string, number> = { All: 0 };
+    projectList.forEach((p: any) => {
+      if (p.status === 'archived') return;
+      c.All += 1;
+      c[p.category] = (c[p.category] || 0) + 1;
+    });
+    return c;
+  }, [projectList]);
+  // Only verticals that actually have projects get a filter.
+  const filters = categories.filter((c) => c === 'All' || counts[c]);
+
   return (
-    <div className="bg-transparent text-[#243239] min-h-screen">
+    <div className="text-[#243239] min-h-screen">
       <PageHeader
-        badge="Applied Execution"
-        title="Project Portfolio"
+        badge="Projects"
+        title="Projects"
         description="Selected projects across Building & Construction, Environment & Sustainability and Urban Planning & Transportation."
         breadcrumbs={[{ label: 'Projects' }]}
       />
 
-      <section className="py-20 bg-transparent border-b border-[#DCE4E7]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          
-          {/* Apple Liquid Glass Filter and Search Bar */}
-          <div className="p-4 sm:p-5 rounded-3xl bg-white/80 backdrop-blur-2xl border border-[#D3DDE1] shadow-[0_8px_24px_rgba(36,50,57,0.04)] flex flex-col md:flex-row md:items-center justify-between gap-5 mb-10">
-            {/* Glass Category Filter Chips */}
-            <div className="flex flex-wrap gap-2">
-              {categories.map((cat) => (
+      {/* Toolbar: glass capsule with a springing filter pill and search */}
+      <div className="sticky top-[var(--nav-offset,93px)] z-40 px-4 sm:px-6 py-3">
+        <div className="liquid-glass is-solid mx-auto max-w-5xl rounded-[26px] sm:rounded-full p-1.5 flex flex-col sm:flex-row gap-1.5 sm:items-center">
+          <div className="flex items-center gap-0.5 overflow-x-auto no-scrollbar">
+            {filters.map((cat) => {
+              const on = selectedCategory === cat;
+              return (
                 <button
                   key={cat}
+                  type="button"
                   onClick={() => setSelectedCategory(cat)}
-                  className={`px-4 py-2 rounded-full text-xs font-semibold tracking-wide transition-all ${
-                    selectedCategory === cat
-                      ? 'bg-[#F2F5F6] text-[#2B3B44] border border-[#D3DDE1] font-bold shadow-xs scale-105'
-                      : 'bg-white/60 text-[#5B6A71] hover:text-[#243239] hover:bg-white border border-transparent'
+                  aria-pressed={on}
+                  className={`press relative h-10 px-4 rounded-full text-[14.5px] whitespace-nowrap transition-colors duration-300 ${
+                    on ? 'text-[#243239] font-bold' : 'text-[#46565E] font-semibold hover:text-[#243239]'
                   }`}
                 >
-                  {cat === 'Building & Construction' ? 'Buildings' : cat === 'Environment & Sustainability' ? 'Environment' : cat === 'Urban Planning & Transportation' ? 'Transport' : cat}
+                  {on && (
+                    <motion.span
+                      layoutId="projects-filter-pill"
+                      transition={{ type: 'spring', stiffness: 420, damping: 34, mass: 0.8 }}
+                      className="absolute inset-0 rounded-full bg-gradient-to-b from-[#F8E3A3] to-[#F0C468]/80 border border-[#C4921B]/25 shadow-[0_6px_16px_-10px_rgba(196,146,27,0.8)]"
+                    />
+                  )}
+                  <span className="relative">
+                    {SHORT_LABEL[cat] || cat} <span className="text-[#7A888E] font-semibold">{counts[cat] || 0}</span>
+                  </span>
                 </button>
+              );
+            })}
+          </div>
+          <label className="relative flex-1 min-w-0 sm:ml-auto">
+            <Search className="w-4 h-4 text-[#7A888E] absolute left-4 top-1/2 -translate-y-1/2" />
+            <input
+              type="text"
+              placeholder="Search title, client or place"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="w-full h-10 pl-10 pr-4 rounded-full bg-white/80 border border-[#33454E]/10 text-[15.5px] text-[#243239] placeholder-[#7A888E] focus:outline-none focus:border-[#C4921B]/60 transition-colors"
+            />
+          </label>
+        </div>
+      </div>
+
+      <section className="py-10 lg:py-14">
+        <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12">
+          <p className="mb-6 text-[15.5px] text-[#5B6A71]">
+            <span className="font-bold text-[#243239]">{filteredProjects.length}</span> {filteredProjects.length === 1 ? 'project' : 'projects'}
+            {selectedCategory !== 'All' && <> in {selectedCategory}</>}
+            {searchQuery.trim() && <> matching &ldquo;{searchQuery.trim()}&rdquo;</>}
+          </p>
+
+          {/* cards reflow smoothly when the filter or search changes */}
+          <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6">
+            <AnimatePresence mode="popLayout" initial={false}>
+              {filteredProjects.map((project) => (
+                <motion.div
+                  key={project.slug || project.id}
+                  layout="position"
+                  initial={{ opacity: 0, scale: 0.96 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.96 }}
+                  transition={{ type: 'spring', stiffness: 380, damping: 32, mass: 0.8 }}
+                >
+                  <ProjectCard project={project} />
+                </motion.div>
               ))}
-            </div>
+            </AnimatePresence>
+          </motion.div>
 
-            {/* Search Input with Apple Frosted Glass Style */}
-            <div className="relative min-w-[260px] sm:min-w-[300px]">
-              <Search className="w-4 h-4 text-[#5B6A71] absolute left-4 top-1/2 -translate-y-1/2" />
-              <input
-                type="text"
-                placeholder="Search projects, client, domain..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-11 pr-4 py-2.5 text-xs rounded-full bg-white border border-[#D3DDE1] text-[#243239] placeholder-[#747B83] focus:outline-none focus:border-[#2B3B44] shadow-2xs transition-colors"
-              />
-            </div>
-          </div>
-
-          {/* Results Count */}
-          <div className="mb-8 text-xs text-[#5B6A71] flex items-center justify-between">
-            <div>
-              Showing <span className="font-bold text-[#2B3B44]">{filteredProjects.length}</span> verified infrastructure projects
-            </div>
-            {selectedCategory !== 'All' && (
-              <span className="text-[13.5px] font-semibold text-[#C4921B]">
-                Filtered by: {selectedCategory}
-              </span>
-            )}
-          </div>
-
-          {/* Project Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {filteredProjects.map((project) => (
-              <ProjectCard key={project.slug || project.id} project={project} />
-            ))}
-          </div>
-
-          {/* Empty State */}
           {filteredProjects.length === 0 && (
-            <div className="text-center py-20 rounded-3xl bg-white border border-[#D3DDE1] p-8">
-              <p className="text-sm font-semibold text-[#243239]">No projects match your search criteria.</p>
-              <p className="text-xs text-[#5B6A71] mt-1">Try resetting the category filter or searching with a different keyword.</p>
+            <div className="glass rounded-[26px] p-10 text-center">
+              <p className="font-display text-xl font-bold text-[#243239]">No projects match.</p>
               <button
-                onClick={() => { setSelectedCategory('All'); setSearchQuery(''); }}
-                className="mt-4 px-5 py-2 rounded-full text-xs font-semibold bg-[#F2F5F6] text-[#2B3B44] border border-[#D3DDE1]"
+                type="button"
+                onClick={() => {
+                  setSelectedCategory('All');
+                  setSearchQuery('');
+                }}
+                className="press btn-soft mt-5 inline-flex items-center h-11 px-5 rounded-full text-[15.5px] font-bold"
               >
-                Reset Filters
+                Show all projects
               </button>
             </div>
           )}
-
         </div>
       </section>
     </div>

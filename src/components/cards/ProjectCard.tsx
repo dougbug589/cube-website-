@@ -3,87 +3,54 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowRight, Building2, CheckCircle2, ExternalLink, ArrowUpRight } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
 import { Project } from '@/types';
 
 interface ProjectCardProps {
   project: Project;
 }
 
+const SHORT: Record<string, string> = {
+  'Building & Construction': 'Buildings',
+  'Environment & Sustainability': 'Environment',
+  'Urban Planning & Transportation': 'Urban Planning',
+  'Smart Cities': 'Smart Cities',
+};
+
+/**
+ * Image-led project card: photo with glass chips (vertical, status), then
+ * title, client and location. Details live on the project page.
+ */
 export default function ProjectCard({ project }: ProjectCardProps) {
-  const projectHref = `/projects/${project.slug || (project as any).id || ''}`;
+  const p = project as any;
+  const href = `/projects/${p.slug || p.id || ''}`;
+  const meta = [p.client, p.location].filter(Boolean).join(' · ');
+
   return (
-    <Link
-      href={projectHref}
-      className="group rounded-3xl cube-gradient-card hover:-translate-y-2 transition-all duration-500 flex flex-col justify-between overflow-hidden relative cursor-pointer"
-    >
-      <div>
-        {/* Project Thumbnail Image with Apple-style Fluid Zoom */}
-        <div className="relative h-60 w-full overflow-hidden bg-slate-100">
-          <Image
-            src={project.heroImage || '/images/about/about_about.jpg'}
-            alt={project.title}
-            fill
-            className="object-cover group-hover:scale-108 transition-transform duration-700 ease-out"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
-
-          {/* Frosted Glass Category Pill */}
-          <div className="absolute top-3.5 left-3.5 z-10">
-            <span className="text-[13.5px] font-bold uppercase tracking-wider px-3 py-1 rounded-full border border-white/80 bg-white/80 text-[#2B3B44] backdrop-blur-xl shadow-xs">
-              {project.category}
-            </span>
-          </div>
-
-          {project.featured && (
-            <div className="absolute top-3.5 right-3.5 z-10">
-              <span className="text-[13.5px] font-extrabold px-3 py-1 rounded-full bg-[#F0C468] text-[#243239] shadow-xs">
-                Key Project
-              </span>
-            </div>
-          )}
-
-          {/* Subtle Hover Action Badge */}
-          <div className="absolute bottom-3.5 right-3.5 z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center space-x-1 px-3 py-1 rounded-full bg-white/90 text-[#2B3B44] text-xs font-semibold backdrop-blur-md shadow-xs border border-white/80">
-            <span>View Scheme</span>
-            <ArrowUpRight className="w-3.5 h-3.5 text-[#C4921B]" />
-          </div>
-        </div>
-
-        {/* Content Body with Architectural Light Refinement */}
-        <div className="p-6">
-          <h3 className="text-base sm:text-lg font-bold font-display text-[#243239] group-hover:text-[#2B3B44] transition-colors line-clamp-2 leading-snug">
-            {project.title}
-          </h3>
-
-          <p className="text-xs text-[#5B6A71] mt-2.5 line-clamp-2 leading-relaxed font-sans">
-            {project.description}
-          </p>
-
-          {project.scopeOfWork && project.scopeOfWork.length > 0 && (
-            <div className="mt-4 pt-3 border-t border-[#DCE4E7]/70 space-y-1.5">
-              <div className="text-[13.5px] font-bold text-[#C4921B] uppercase tracking-wider">
-                Scope of work
-              </div>
-              {project.scopeOfWork.slice(0, 2).map((item, i) => (
-                <div key={i} className="flex items-start text-xs text-[#46565E]">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-[#C4921B] mr-1.5 shrink-0 mt-0.5" />
-                  <span className="line-clamp-1">{item}</span>
-                </div>
-              ))}
-            </div>
+    <Link href={href} className="press group glass glass-interactive glass-edge rounded-[26px] overflow-hidden flex flex-col h-full">
+      <div className="relative aspect-[16/10] overflow-hidden bg-[#DCE4E8]">
+        <Image
+          src={p.heroImage || '/images/about/about_about.jpg'}
+          alt={p.title}
+          fill
+          sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
+          className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.05]"
+        />
+        <div aria-hidden className="absolute inset-0 bg-gradient-to-t from-black/35 via-transparent to-transparent" />
+        <div className="absolute top-3 left-3 right-3 flex items-start justify-between gap-2">
+          <span className="liquid-glass-dark rounded-full px-3 py-1 text-[12.5px] font-bold text-white">{SHORT[p.category] || p.category}</span>
+          {p.projectStatus && (
+            <span className="liquid-glass-dark rounded-full px-3 py-1 text-[12.5px] font-bold text-white">{p.projectStatus}</span>
           )}
         </div>
       </div>
-
-      {/* Footer Pill Action */}
-      <div className="p-6 pt-0 flex items-center justify-between text-xs text-[#5B6A71] border-t border-transparent group-hover:border-[#DCE4E7]/50 transition-colors">
-        <span className="text-[13.5px] font-medium text-[#5B6A71]">
-          {[project.client, project.location].filter(Boolean).join(' · ')}
-        </span>
-        <div className="flex items-center space-x-1 font-semibold text-[#2B3B44] group-hover:text-[#C4921B] transition-colors">
-          <span>Overview</span>
-          <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
+      <div className="p-5 lg:p-6 flex-1 flex flex-col">
+        <h3 className="font-display text-[18px] font-bold text-[#243239] leading-snug line-clamp-3">{p.title}</h3>
+        <div className="mt-auto pt-4 flex items-end justify-between gap-3">
+          <span className="text-[14.5px] text-[#5B6A71] leading-snug line-clamp-2">{meta}</span>
+          <span className="grid place-items-center w-10 h-10 rounded-full bg-white border border-[#33454E]/10 text-[#243239] depth-1 shrink-0 transition-[transform,background-color] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:bg-[#F0C468] group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
+            <ArrowUpRight size={17} strokeWidth={2.25} />
+          </span>
         </div>
       </div>
     </Link>
