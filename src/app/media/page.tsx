@@ -220,7 +220,7 @@ export default function CompleteMediaExperience() {
                 Life at CUBE: Applied Engineering Innovation at IITM Research Park
               </h2>
               <p className="text-sm text-[#243239]/85 leading-relaxed font-sans">
-                CUBE's office and its Environment Laboratory are at the IIT Madras Research Park, Taramani, Chennai.
+                CUBE&apos;s office and its Environment Laboratory are at the IIT Madras Research Park, Taramani, Chennai.
               </p>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
                 <div className="p-4 rounded-2xl bg-[#F6F8F9] border border-[#D3DDE1]">
