@@ -11,7 +11,10 @@ const nextConfig = {
   poweredByHeader: false,
   images: {
     formats: ['image/avif', 'image/webp'],
-    minimumCacheTTL: 60 * 60 * 24 * 30, // 30 days image cache
+    // 1 day: optimized images are re-checked daily, so a photo replaced at the
+    // same path (e.g. a board member portrait) shows up within a day instead of
+    // the old copy being served for 30 days.
+    minimumCacheTTL: 60 * 60 * 24,
     deviceSizes: [640, 750, 828, 1080, 1200],
     imageSizes: [32, 48, 64, 96, 128, 256, 384],
   },
@@ -71,7 +74,7 @@ const nextConfig = {
         headers: [
           {
             key: 'Cache-Control',
-            value: 'public, max-age=31536000, immutable',
+            value: 'public, max-age=86400, stale-while-revalidate=604800',
           },
         ],
       },
