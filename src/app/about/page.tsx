@@ -1,15 +1,13 @@
 'use client';
 
 import React, { useMemo, useRef, useState } from 'react';
-import { useScrollSpy } from '@/lib/useScrollSpy';
 import Image from 'next/image';
 import Link from 'next/link';
+import { motion } from 'framer-motion';
+import { ArrowUpRight, ChevronDown, Landmark, GraduationCap, Quote } from 'lucide-react';
+import { useScrollSpy } from '@/lib/useScrollSpy';
 import PageHeader from '@/components/common/PageHeader';
-import { 
-  Building2, ShieldCheck, Users, Award, ArrowRight, 
-  CheckCircle2, Compass, Quote, Target, HeartHandshake, 
-  Briefcase, Phone, Mail, ExternalLink, ChevronRight
-} from 'lucide-react';
+import SectionHeading from '@/components/common/SectionHeading';
 import { aboutContent } from '@/data/about';
 import { boardMembers as fallbackBoard, advisoryPanel as fallbackAdvisory } from '@/data/leadership';
 import { teamMembers as fallbackTeam } from '@/data/team';
@@ -24,373 +22,229 @@ const FALLBACK_PEOPLE: any[] = [
   ...fallbackAdvisory.map((m) => ({ ...m, category: 'advisory' })),
   ...fallbackTeam.map((m) => ({ ...m, category: m.department })),
 ];
-const withRole = (list: any[]) =>
-  list.map((m) => ({ ...m, role: m.role || m.designation || '' }));
+const withRole = (list: any[]) => list.map((m) => ({ ...m, role: m.role || m.designation || '' }));
 
-export default function CompleteAboutExperience() {
+// Section labels follow the About menu on cubeiitm.org.
+const SECTIONS = [
+  { id: 'overview', label: 'About CUBE' },
+  { id: 'vision-mission', label: 'Vision & Mission' },
+  { id: 'objectives-values', label: 'Objectives & Values' },
+  { id: 'chairman-message', label: 'Chairman Message' },
+  { id: 'ceo-message', label: 'CEO Message' },
+  { id: 'governing-board', label: 'Board Members' },
+  { id: 'advisory-panel', label: 'IIT Advisory Panel' },
+  { id: 'our-team', label: 'Our Team' },
+  { id: 'clients-partners', label: 'Our Clients' },
+];
+
+const SPRING = { type: 'spring' as const, stiffness: 420, damping: 34, mass: 0.8 };
+
+export default function AboutPage() {
   // Live CMS data: archived/edited members and clients update instantly.
   const people = useLiveList<any>('/api/public/team', FALLBACK_PEOPLE, withRole);
   const clients = useLiveList<any>('/api/public/clients', fallbackClients as any[]);
-  const { boardMembers, advisoryPanel, teamMembers } = useMemo(() => ({
-    boardMembers: people.filter((m) => m.category === 'board'),
-    advisoryPanel: people.filter((m) => m.category === 'advisory'),
-    teamMembers: people.filter((m) => !LEADER_CATEGORIES.has(m.category)),
-  }), [people]);
+  const { boardMembers, advisoryPanel, teamMembers } = useMemo(
+    () => ({
+      boardMembers: people.filter((m) => m.category === 'board'),
+      advisoryPanel: people.filter((m) => m.category === 'advisory'),
+      teamMembers: people.filter((m) => !LEADER_CATEGORIES.has(m.category)),
+    }),
+    [people]
+  );
   const [showAllTeam, setShowAllTeam] = useState(false);
+  const missionPoints = useMemo(
+    () => aboutContent.mission.split(';').map((m) => m.trim().replace(/\.$/, '')).filter(Boolean),
+    []
+  );
 
-  const navAnchors = [
-    { id: 'overview', label: 'Institutional Overview' },
-    { id: 'vision-mission', label: 'Vision & Mission' },
-    { id: 'objectives-values', label: 'Objectives & Core Values' },
-    { id: 'chairman-message', label: 'Chairman Message' },
-    { id: 'ceo-message', label: 'CEO Message' },
-    { id: 'governing-board', label: 'Governing Board' },
-    { id: 'advisory-panel', label: 'IIT Advisory Panel' },
-    { id: 'our-team', label: 'Our Engineering Team' },
-    { id: 'clients-partners', label: 'Clients & State Partners' },
-  ];
-
-  // Highlight follows scrolling; tapping a pill still jumps to its section.
-  const anchorBarRef = useRef<HTMLDivElement>(null);
-  const [activeSection, setActiveSection] = useScrollSpy(navAnchors.map((a) => a.id), anchorBarRef);
-
-  const scrollTo = (id: string) => {
-    setActiveSection(id);
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
+  // Highlight follows scrolling; tapping a section still jumps to it.
+  const navRef = useRef<HTMLDivElement>(null);
+  const [active, setActive] = useScrollSpy(SECTIONS.map((s) => s.id), navRef);
+  const jump = (id: string) => {
+    setActive(id);
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   };
 
   return (
-    <div className="bg-transparent text-[#243239] min-h-screen">
+    <div className="text-[#243239] min-h-screen">
       <PageHeader
-        badge="Centre of Excellence"
-        title="About CUBE IIT Madras"
-        description="Comprehensive institutional overview, strategic vision, governance leadership, faculty advisory network, and state infrastructure partnerships."
+        badge="About"
+        title="About CUBE"
+        description="Centre for Urbanization, Buildings & Environment, a Centre of Excellence of the Government of Tamil Nadu and IIT Madras."
         breadcrumbs={[{ label: 'About CUBE' }]}
       />
 
-      {/* Sticky Apple Glass Anchor Navigation Bar */}
-      <section className="sticky top-[var(--nav-offset,84px)] transition-[top] duration-500 z-40 bg-white/85 backdrop-blur-2xl border-y border-[#D3DDE1]/70 py-3.5 px-4 sm:px-6 shadow-xs">
-        <div ref={anchorBarRef} className="relative max-w-7xl mx-auto flex items-center justify-start gap-2 overflow-x-auto scrollbar-none no-scrollbar py-1">
-          <div className="flex items-center space-x-1.5 sm:space-x-2 shrink-0">
-            {navAnchors.map((item) => (
-              <button
-                key={item.id}
-                type="button"
-                data-anchor={item.id}
-                aria-current={activeSection === item.id ? 'true' : undefined}
-                onClick={() => scrollTo(item.id)}
-                className={`px-4 py-2 rounded-full text-xs font-semibold tracking-wider transition-all duration-300 whitespace-nowrap cursor-pointer active:scale-95 ${
-                  activeSection === item.id
-                    ? 'bg-[#F0C468] text-[#243239] shadow-sm'
-                    : 'bg-white/80 text-[#243239] hover:bg-[#F2F5F6] hover:text-[#2B3B44] border border-[#D3DDE1]'
-                }`}
-              >
-                {item.label}
-              </button>
-            ))}
+      {/* Section navigator: liquid-glass capsule, gold pill springs to the section in view */}
+      <div className="sticky top-[var(--nav-offset,93px)] z-40 px-4 sm:px-6 py-3">
+        <div ref={navRef} className="liquid-glass is-solid mx-auto max-w-max rounded-full p-1 overflow-x-auto no-scrollbar">
+          <div className="flex items-center gap-0.5 w-max">
+            {SECTIONS.map((s) => {
+              const on = active === s.id;
+              return (
+                <button
+                  key={s.id}
+                  type="button"
+                  data-anchor={s.id}
+                  aria-current={on ? 'true' : undefined}
+                  onClick={() => jump(s.id)}
+                  className={`press relative h-10 px-4 rounded-full text-[14.5px] whitespace-nowrap transition-colors duration-300 ${
+                    on ? 'text-[#243239] font-bold' : 'text-[#46565E] font-semibold hover:text-[#243239]'
+                  }`}
+                >
+                  {on && (
+                    <motion.span
+                      layoutId="about-section-pill"
+                      transition={SPRING}
+                      className="absolute inset-0 rounded-full bg-gradient-to-b from-[#F8E3A3] to-[#F0C468]/80 border border-[#C4921B]/25 shadow-[0_6px_16px_-10px_rgba(196,146,27,0.8)]"
+                    />
+                  )}
+                  <span className="relative">{s.label}</span>
+                </button>
+              );
+            })}
           </div>
         </div>
-      </section>
+      </div>
 
-      {/* 1. INSTITUTIONAL OVERVIEW */}
-      <section id="overview" className="py-20 sm:py-24 bg-transparent border-b border-[#DCE4E7]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            
-            <div className="lg:col-span-7 space-y-6">
-              <span className="text-xs font-bold uppercase tracking-wider text-[#2B3B44] bg-white px-3.5 py-1 rounded-full border border-[#D3DDE1] shadow-xs">
-                Foundational Mandate
+      {/* 1 · Overview */}
+      <section id="overview" className="scroll-mt-40 py-16 lg:py-20">
+        <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 grid lg:grid-cols-12 gap-10 lg:gap-14">
+          <div className="lg:col-span-7 reveal">
+            <p className="label-mono">About CUBE</p>
+            <p className="mt-4 text-[20px] sm:text-[22px] leading-relaxed text-[#243239] font-semibold">{aboutContent.overview[0]}</p>
+            <div className="mt-6 space-y-5 text-[17px] leading-relaxed text-[#46565E]">
+              {aboutContent.overview.slice(1).map((para, i) => (
+                <p key={i}>{para}</p>
+              ))}
+            </div>
+          </div>
+
+          <div className="lg:col-span-5 space-y-4 lg:sticky lg:top-[calc(var(--nav-offset,93px)+5rem)] self-start reveal-stagger">
+            <div className="liquid-glass rounded-[28px] p-8 text-center">
+              <div className="relative h-36 w-36 mx-auto">
+                <Image src="/images/branding/cube-primary-logo.png" alt="CUBE" fill sizes="144px" className="object-contain" />
+              </div>
+              <p className="mt-5 font-display text-2xl font-extrabold text-[#243239]">Centre of Excellence</p>
+              <p className="mt-1 label-mono">IIT Madras · Government of Tamil Nadu</p>
+              <p className="mt-5 pt-5 border-t border-[#33454E]/10 text-[15px] text-[#5B6A71] leading-relaxed">{contactInfo.address}</p>
+            </div>
+            <div className="glass glass-interactive glass-edge rounded-[24px] p-5 flex items-start gap-4">
+              <span className="grid place-items-center w-12 h-12 rounded-2xl bg-[#F7EDD3] text-[#9A7015] depth-1 shrink-0">
+                <Landmark size={21} strokeWidth={2} />
               </span>
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold text-[#2B3B44] tracking-tight leading-tight">
-                Bridging Premier Academic Intellect with Public Infrastructure Delivery
-              </h2>
-
-              <div className="space-y-4 text-sm sm:text-base text-[#243239]/85 leading-relaxed font-sans">
-                {aboutContent.overview.map((para, i) => (
-                  <p key={i}>{para}</p>
-                ))}
-              </div>
-
-              <div className="pt-4 grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div className="p-5 rounded-3xl bg-white/95 backdrop-blur-xl border border-[#D3DDE1] shadow-xs">
-                  <div className="font-bold text-[#2B3B44] text-sm flex items-center gap-2">
-                    <ShieldCheck className="w-4 h-4 text-[#C4921B]" />
-                    <span>Government of Tamil Nadu</span>
-                  </div>
-                  <p className="text-xs text-[#5B6A71] mt-2 leading-relaxed">
-                    Seed funding from CMDA, TNHB, TNPCB and MAWS; four State Government departments nominate members to the Governing Body.
-                  </p>
-                </div>
-
-                <div className="p-5 rounded-3xl bg-white/95 backdrop-blur-xl border border-[#D3DDE1] shadow-xs">
-                  <div className="font-bold text-[#2B3B44] text-sm flex items-center gap-2">
-                    <Award className="w-4 h-4 text-[#C4921B]" />
-                    <span>IIT Madras Research Excellence</span>
-                  </div>
-                  <p className="text-xs text-[#5B6A71] mt-2 leading-relaxed">
-                    Raised by IIT Madras with the Government of Tamil Nadu; the Governing Body is headed by the Director, IITM, with four members from IITM Faculty.
-                  </p>
-                </div>
-              </div>
+              <span>
+                <span className="block font-display text-[18px] font-bold text-[#243239]">Government of Tamil Nadu</span>
+                <span className="mt-1 block text-[15.5px] text-[#5B6A71] leading-relaxed">
+                  Seed funding from CMDA, TNHB, TNPCB and MAWS; four State Government departments nominate members to the Governing Body.
+                </span>
+              </span>
             </div>
-
-            {/* Right: Institutional Glass Plaque */}
-            <div className="lg:col-span-5 flex flex-col items-center">
-              <div className="rounded-3xl bg-white/90 backdrop-blur-2xl border border-[#D3DDE1] shadow-[0_20px_50px_rgba(36,50,57,0.08)] p-8 text-center w-full max-w-md relative overflow-hidden">
-                <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#C4921B] to-transparent opacity-90" />
-
-                <div className="relative h-44 w-44 mx-auto mb-6 flex items-center justify-center">
-                  <Image
-                    src="/images/branding/cube-primary-logo.png"
-                    alt="Official CUBE Identity"
-                    fill
-                    className="object-contain drop-shadow-md"
-                  />
-                </div>
-
-                <h3 className="text-xl font-bold text-[#2B3B44] font-display">
-                  Centre of Excellence
-                </h3>
-                <p className="text-xs text-[#C4921B] font-semibold tracking-wider uppercase mt-1">
-                  IIT Madras &bull; Government of Tamil Nadu
-                </p>
-
-                <div className="mt-5 pt-5 border-t border-[#DCE4E7] text-xs text-[#5B6A71] leading-relaxed">
-                  {contactInfo.address}
-                </div>
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </section>
-
-      {/* 2. VISION & MISSION */}
-      <section id="vision-mission" className="py-20 sm:py-24 bg-transparent border-b border-[#DCE4E7]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-2xl mx-auto mb-16">
-            <span className="text-xs font-bold uppercase tracking-wider text-[#2B3B44] bg-[#F2F5F6] px-3.5 py-1 rounded-full border border-[#D3DDE1]">
-              Strategic Blueprint
-            </span>
-            <h2 className="text-3xl sm:text-4xl font-display font-bold text-[#2B3B44] mt-3">
-              Vision &amp; Mission Mandates
-            </h2>
-            <p className="text-xs sm:text-sm text-[#5B6A71] mt-2">
-              Transforming built environments through scientific rigor and public accountability.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="p-8 sm:p-10 rounded-3xl bg-gradient-to-br from-[#F6F8F9] to-white border border-[#D3DDE1] shadow-sm relative overflow-hidden">
-              <Compass className="w-10 h-10 text-[#C4921B] mb-4" />
-              <h3 className="font-display text-2xl font-bold text-[#2B3B44] mb-3">Institutional Vision</h3>
-              <p className="text-sm text-[#243239]/85 leading-relaxed font-sans">
-                {aboutContent.vision}
-              </p>
-            </div>
-
-            <div className="p-8 sm:p-10 rounded-3xl bg-gradient-to-br from-[#F2F5F6] to-white border border-[#D3DDE1] shadow-sm relative overflow-hidden">
-              <Target className="w-10 h-10 text-[#C4921B] mb-4" />
-              <h3 className="font-display text-2xl font-bold text-[#2B3B44] mb-3">Institutional Mission</h3>
-              <p className="text-sm text-[#243239]/85 leading-relaxed font-sans">
-                {aboutContent.mission}
-              </p>
+            <div className="glass glass-interactive glass-edge rounded-[24px] p-5 flex items-start gap-4">
+              <span className="grid place-items-center w-12 h-12 rounded-2xl bg-[#F7EDD3] text-[#9A7015] depth-1 shrink-0">
+                <GraduationCap size={21} strokeWidth={2} />
+              </span>
+              <span>
+                <span className="block font-display text-[18px] font-bold text-[#243239]">IIT Madras</span>
+                <span className="mt-1 block text-[15.5px] text-[#5B6A71] leading-relaxed">
+                  Raised by IIT Madras with the Government of Tamil Nadu; the Governing Body is headed by the Director, IITM, with four members from IITM Faculty.
+                </span>
+              </span>
             </div>
           </div>
         </div>
       </section>
 
-      {/* 3. OBJECTIVES & VALUES */}
-      <section id="objectives-values" className="py-20 sm:py-24 bg-transparent border-b border-[#DCE4E7]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          
-          <div className="text-center max-w-2xl mx-auto mb-16">
-            <span className="text-xs font-bold uppercase tracking-wider text-[#2B3B44] bg-[#F2F5F6] px-3.5 py-1 rounded-full border border-[#D3DDE1]">
-              Operational Pillars
-            </span>
-            <h2 className="text-3xl sm:text-4xl font-display font-bold text-[#2B3B44] mt-3">
-              10 Institutional Objectives &amp; Core Values
-            </h2>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-            {/* Objectives List */}
-            <div className="space-y-4">
-              <h3 className="font-display text-xl font-bold text-[#2B3B44] pb-2 border-b border-[#D3DDE1]">
-                Institutional Objectives
-              </h3>
-              <div className="space-y-3">
-                {aboutContent.objectives.map((obj, i) => (
-                  <div key={i} className="flex items-start gap-3 p-3.5 rounded-2xl bg-white border border-[#D3DDE1]/70 shadow-2xs">
-                    <CheckCircle2 className="w-4 h-4 text-[#C4921B] shrink-0 mt-0.5" />
-                    <span className="text-xs sm:text-sm text-[#243239]/90 font-medium leading-relaxed">{obj}</span>
-                  </div>
+      {/* 2 · Vision & Mission */}
+      <section id="vision-mission" className="scroll-mt-40 py-16 lg:py-20 band-mist">
+        <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12">
+          <SectionHeading eyebrow="Vision & Mission" title="Vision & mission." />
+          <div className="grid lg:grid-cols-12 gap-5 reveal-stagger">
+            <div className="lg:col-span-5 liquid-glass rounded-[28px] p-8 lg:p-10">
+              <p className="label-mono">Vision</p>
+              <p className="mt-4 font-display text-[22px] lg:text-[24px] font-bold leading-snug text-[#243239]">{aboutContent.vision}</p>
+            </div>
+            <div className="lg:col-span-7 glass rounded-[28px] p-8 lg:p-10">
+              <p className="label-mono">Mission</p>
+              <ul className="mt-4 grid sm:grid-cols-2 gap-x-6 gap-y-3">
+                {missionPoints.map((m) => (
+                  <li key={m} className="flex items-start gap-3 text-[16.5px] text-[#46565E] leading-relaxed">
+                    <span className="mt-2.5 w-1.5 h-1.5 rounded-full bg-[#C4921B] shrink-0" />
+                    <span>{m.charAt(0).toUpperCase() + m.slice(1)}</span>
+                  </li>
                 ))}
-              </div>
+              </ul>
             </div>
-
-            {/* Core Values List */}
-            <div className="space-y-4">
-              <h3 className="font-display text-xl font-bold text-[#2B3B44] pb-2 border-b border-[#D3DDE1]">
-                Foundational Values
-              </h3>
-              <div className="space-y-3">
-                {aboutContent.coreValues.map((val, i) => (
-                  <div key={i} className="p-4 rounded-2xl bg-white border border-[#D3DDE1]/70 shadow-2xs">
-                    <h4 className="text-sm font-bold text-[#2B3B44] flex items-center gap-2">
-                      <HeartHandshake className="w-4 h-4 text-[#C4921B]" />
-                      <span>{val.title}</span>
-                    </h4>
-                    <p className="text-xs text-[#5B6A71] mt-1.5 leading-relaxed">
-                      {val.description}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </section>
-
-      {/* 4. CHAIRMAN MESSAGE */}
-      <section id="chairman-message" className="py-14 sm:py-16 bg-transparent border-b border-[#DCE4E7] relative overflow-hidden">
-        {/* Soft Ambient Refractive Glow */}
-        <div className="absolute top-1/2 left-10 w-96 h-96 bg-[#B9C5CA]/20 rounded-full blur-3xl pointer-events-none" />
-
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-12 items-center">
-            
-            {/* Clean Frameless Floating Portrait */}
-            <div className="md:col-span-4 flex flex-col items-center text-center">
-              <div className="relative group">
-                {/* Soft ambient aura behind floating portrait */}
-                <div className="absolute -inset-4 bg-gradient-to-tr from-[#5B9BD5]/20 via-[#B9C5CA]/30 to-[#C4921B]/15 rounded-full blur-xl opacity-70 group-hover:opacity-100 transition-opacity duration-500" />
-                
-                <div className="relative h-56 w-56 rounded-full overflow-hidden shadow-[0_16px_40px_rgba(36,50,57,0.12)] border-4 border-white">
-                  <Image
-                    src="/images/leadership/board_member_kamakoti.jpg"
-                    alt="Prof. V. Kamakoti, Chairman CUBE & Director IIT Madras"
-                    fill
-                    className="object-cover object-center group-hover:scale-105 transition-transform duration-500"
-                  />
-                </div>
-              </div>
-
-              <div className="mt-5">
-                <h3 className="text-xl font-bold text-[#2B3B44] font-display tracking-tight">
-                  Prof. V. Kamakoti
-                </h3>
-                <p className="text-xs text-[#C4921B] font-bold uppercase tracking-wider mt-1">
-                  Chairman, CUBE
-                </p>
-                <p className="text-xs text-[#5B6A71] mt-0.5 font-medium">
-                  Director, IIT Madras
-                </p>
-              </div>
-            </div>
-
-            {/* Seamless Content Flow Without Box */}
-            <div className="md:col-span-8 space-y-4">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#F2F5F6] border border-[#D3DDE1] text-xs font-bold uppercase tracking-wider text-[#2B3B44]">
-                <Quote className="w-3.5 h-3.5 text-[#C4921B]" />
-                <span>Executive Address from the Chairman</span>
-              </div>
-
-              <div className="space-y-3.5 text-xs sm:text-sm text-[#243239]/85 leading-relaxed font-sans">
-                {aboutContent.chairmanMessage.map((p, idx) => (
-                  <p key={idx}>{p}</p>
-                ))}
-              </div>
-            </div>
-
           </div>
         </div>
       </section>
 
-      {/* 5. CEO MESSAGE */}
-      <section id="ceo-message" className="py-14 sm:py-16 bg-transparent border-b border-[#DCE4E7] relative overflow-hidden">
-        {/* Soft Ambient Refractive Glow */}
-        <div className="absolute top-1/2 right-10 w-96 h-96 bg-[#B9C5CA]/20 rounded-full blur-3xl pointer-events-none" />
+      {/* 3 · Objectives & Core Values */}
+      <section id="objectives-values" className="scroll-mt-40 py-16 lg:py-20">
+        <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12">
+          <SectionHeading eyebrow="Objectives" title="Objectives." />
+          <ol className="grid sm:grid-cols-2 gap-4 reveal-stagger">
+            {aboutContent.objectives.map((obj, i) => (
+              <li key={i} className="glass glass-interactive rounded-[22px] p-5 flex items-start gap-4">
+                <span className="font-display text-[22px] font-extrabold text-[#C4921B] tabular-nums leading-none mt-0.5 w-9 shrink-0">
+                  {String(i + 1).padStart(2, '0')}
+                </span>
+                <span className="text-[16.5px] text-[#243239] leading-relaxed">{obj}</span>
+              </li>
+            ))}
+          </ol>
 
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-12 items-center">
-            
-            {/* Clean Frameless Floating Portrait */}
-            <div className="md:col-span-4 flex flex-col items-center text-center">
-              <div className="relative group">
-                {/* Soft ambient aura behind floating portrait */}
-                <div className="absolute -inset-4 bg-gradient-to-tr from-[#C4921B]/15 via-[#B9C5CA]/30 to-[#5B9BD5]/20 rounded-full blur-xl opacity-70 group-hover:opacity-100 transition-opacity duration-500" />
-                
-                <div className="relative h-56 w-56 rounded-full overflow-hidden shadow-[0_16px_40px_rgba(36,50,57,0.12)] border-4 border-white">
-                  <Image
-                    src="/images/leadership/ceo_padmanaban.jpg"
-                    alt="L. Padmanaban, CEO, CUBE"
-                    fill
-                    className="object-cover object-center group-hover:scale-105 transition-transform duration-500"
-                  />
-                </div>
+          <SectionHeading eyebrow="Core Values" title="Core values." className="mt-16 lg:mt-20" />
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 reveal-stagger">
+            {aboutContent.coreValues.map((val, i) => (
+              <div key={i} className="glass glass-interactive glass-edge rounded-[24px] p-6">
+                <p className="font-display text-[22px] font-extrabold text-[#243239]">{val.title}</p>
+                <p className="mt-2 text-[16px] text-[#5B6A71] leading-relaxed">{val.description}</p>
               </div>
-
-              <div className="mt-5">
-                <h3 className="text-xl font-bold text-[#2B3B44] font-display tracking-tight">
-                  L. Padmanaban
-                </h3>
-                <p className="text-xs text-[#C4921B] font-bold uppercase tracking-wider mt-1">
-                  CEO, CUBE (Major General, Retired)
-                </p>
-                <p className="text-xs text-[#5B6A71] mt-0.5 font-medium">
-                  IIT Madras Research Park
-                </p>
-              </div>
-            </div>
-
-            {/* Seamless Content Flow Without Box */}
-            <div className="md:col-span-8 space-y-4">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#F2F5F6] border border-[#D3DDE1] text-xs font-bold uppercase tracking-wider text-[#2B3B44]">
-                <Quote className="w-3.5 h-3.5 text-[#C4921B]" />
-                <span>Operational Leadership Address</span>
-              </div>
-
-              <div className="space-y-3.5 text-xs sm:text-sm text-[#243239]/85 leading-relaxed font-sans">
-                {aboutContent.ceoMessage.map((p, idx) => (
-                  <p key={idx}>{p}</p>
-                ))}
-              </div>
-            </div>
-
+            ))}
           </div>
         </div>
       </section>
 
-      {/* 6. GOVERNING BOARD */}
-      <section id="governing-board" className="py-20 sm:py-24 bg-transparent border-b border-[#DCE4E7]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-2xl mx-auto mb-16">
-            <span className="text-xs font-bold uppercase tracking-wider text-[#2B3B44] bg-[#F2F5F6] px-3.5 py-1 rounded-full border border-[#D3DDE1]">
-              Governance Leadership
-            </span>
-            <h2 className="text-3xl sm:text-4xl font-display font-bold text-[#2B3B44] mt-3">
-              Distinguished Governing Board
-            </h2>
-            <p className="text-xs sm:text-sm text-[#5B6A71] mt-2">
-              Headed by the Director, IITM, with nominees from four Tamil Nadu State Government departments, four members from IITM Faculty and four members from prominent industries and organizations.
-            </p>
-          </div>
+      {/* 4 · Chairman Message */}
+      <Message
+        id="chairman-message"
+        label="Chairman Message"
+        image="/images/leadership/board_member_kamakoti.jpg"
+        name="Prof. V Kamakoti"
+        lines={['Director, IIT Madras']}
+        paragraphs={aboutContent.chairmanMessage}
+        band
+      />
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {boardMembers.map((member, i) => (
-              <div key={i} className="p-6 rounded-3xl bg-[#F6F8F9] border border-[#D3DDE1] flex items-center gap-4 shadow-2xs hover:shadow-xs transition">
-                <div className="relative w-20 h-20 rounded-2xl overflow-hidden shrink-0 border border-white ring-1 ring-[#D3DDE1]">
-                  <Image src={member.image || '/images/leadership/about_leader.jpg'} alt={member.name} fill className="object-cover" />
+      {/* 5 · CEO Message */}
+      <Message
+        id="ceo-message"
+        label="CEO Message"
+        image="/images/leadership/ceo_padmanaban.jpg"
+        name="L. PADMANABAN"
+        lines={['(Major General [Retired])', 'CEO']}
+        paragraphs={aboutContent.ceoMessage}
+      />
+
+      {/* 6 · Board Members */}
+      <section id="governing-board" className="scroll-mt-40 py-16 lg:py-20 band-mist">
+        <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12">
+          <SectionHeading
+            eyebrow="Board Members"
+            title="Governing Body."
+            lead="Headed by the Director, IITM, with nominees from four Tamil Nadu State Government departments, four members from IITM Faculty and four members from prominent industries and organizations."
+            action={{ href: '/about/board-members', label: 'Board members' }}
+          />
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4 reveal-stagger">
+            {boardMembers.map((m, i) => (
+              <div key={`${m.name}-${i}`} className="glass glass-interactive glass-edge rounded-[24px] overflow-hidden flex flex-col">
+                <div className="relative aspect-square bg-[#DCE4E8]">
+                  <Image src={m.image || '/images/leadership/about_leader.jpg'} alt={m.name} fill sizes="(max-width: 640px) 50vw, 17vw" className="object-cover object-top" />
                 </div>
-                <div>
-                  <h4 className="font-display font-bold text-[#2B3B44] text-base leading-snug">{member.name}</h4>
-                  <p className="text-xs font-semibold text-[#C4921B] mt-0.5">{member.role}</p>
-                  <p className="text-[13.5px] text-[#5B6A71] mt-0.5 line-clamp-1">{member.organization}</p>
+                <div className="p-4 lg:p-5">
+                  <p className="font-display text-[17px] font-bold text-[#243239] leading-snug">{m.name}</p>
+                  {m.role && <p className="mt-1 text-[14.5px] font-semibold text-[#9A7015]">{m.role}</p>}
+                  {m.organization && <p className="mt-1 text-[14px] text-[#5B6A71] leading-snug line-clamp-3">{m.organization}</p>}
                 </div>
               </div>
             ))}
@@ -398,114 +252,143 @@ export default function CompleteAboutExperience() {
         </div>
       </section>
 
-      {/* 7. IIT ADVISORY PANEL */}
-      <section id="advisory-panel" className="py-20 sm:py-24 bg-transparent border-b border-[#DCE4E7]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-2xl mx-auto mb-16">
-            <span className="text-xs font-bold uppercase tracking-wider text-[#2B3B44] bg-[#F2F5F6] px-3.5 py-1 rounded-full border border-[#D3DDE1]">
-              Academic Intellect
-            </span>
-            <h2 className="text-3xl sm:text-4xl font-display font-bold text-[#2B3B44] mt-3">
-              IIT Madras Advisory Faculty Panel
-            </h2>
-            <p className="text-xs sm:text-sm text-[#5B6A71] mt-2">
-              25 faculty from the Departments of Civil, Mechanical, Aerospace and Chemical Engineering, IIT Madras.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {advisoryPanel.map((advisor, i) => (
-              <div key={i} className="p-5 rounded-3xl bg-white border border-[#D3DDE1] text-center shadow-2xs hover:shadow-xs transition">
-                <div className="relative w-24 h-24 mx-auto rounded-2xl overflow-hidden mb-3 border border-white ring-1 ring-[#D3DDE1]">
-                  <Image src={advisor.image || '/images/leadership/about_leader.jpg'} alt={advisor.name} fill className="object-cover" />
+      {/* 7 · IIT Advisory Panel */}
+      <section id="advisory-panel" className="scroll-mt-40 py-16 lg:py-20">
+        <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12">
+          <SectionHeading
+            eyebrow="IIT Advisory Panel"
+            title="IIT Madras advisory panel."
+            lead="25 faculty from the Departments of Civil, Mechanical, Aerospace and Chemical Engineering, IIT Madras."
+            action={{ href: '/about/advisory-panel', label: 'Advisory panel' }}
+          />
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 reveal-stagger">
+            {advisoryPanel.map((a, i) => (
+              <div key={`${a.name}-${i}`} className="glass glass-interactive rounded-[22px] p-4 text-center">
+                <div className="relative w-20 h-20 mx-auto rounded-full overflow-hidden bg-[#DCE4E8] depth-1">
+                  <Image src={a.image || '/images/leadership/about_leader.jpg'} alt={a.name} fill sizes="80px" className="object-cover object-top" />
                 </div>
-                <h4 className="font-display font-bold text-[#2B3B44] text-sm leading-snug">{advisor.name}</h4>
-                <p className="text-[13.5px] font-semibold text-[#C4921B] mt-0.5">{advisor.role}</p>
-                <p className="text-[13.5px] text-[#5B6A71] mt-0.5">{advisor.organization || 'IIT Madras'}</p>
+                <p className="mt-3 font-display text-[16px] font-bold text-[#243239] leading-snug">{a.name}</p>
+                {a.role && <p className="mt-1 text-[13.5px] text-[#5B6A71] leading-snug line-clamp-2">{a.role}</p>}
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* 8. OUR ENGINEERING TEAM (80+) */}
-      <section id="our-team" className="py-20 sm:py-24 bg-transparent border-b border-[#DCE4E7]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-2xl mx-auto mb-16">
-            <span className="text-xs font-bold uppercase tracking-wider text-[#2B3B44] bg-[#F2F5F6] px-3.5 py-1 rounded-full border border-[#D3DDE1]">
-              Multidisciplinary Specialists
-            </span>
-            <h2 className="text-3xl sm:text-4xl font-display font-bold text-[#2B3B44] mt-3">
-              Our Applied Engineering Team (80+)
-            </h2>
-            <p className="text-xs sm:text-sm text-[#5B6A71] mt-2">
-              Staff across Building & Construction, Environment & Sustainability, Urban Planning & Transportation and Administration.
-            </p>
+      {/* 8 · Our Team */}
+      <section id="our-team" className="scroll-mt-40 py-16 lg:py-20 band-mist">
+        <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12">
+          <SectionHeading
+            eyebrow="Our Team"
+            title={<>Our team <span className="text-[#C4921B]">({teamMembers.length})</span></>}
+            lead="Staff across Building & Construction, Environment & Sustainability, Urban Planning & Transportation and Administration."
+            action={{ href: '/about/team', label: 'Team by department' }}
+          />
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3 reveal-stagger">
+            {(showAllTeam ? teamMembers : teamMembers.slice(0, 12)).map((t, i) => (
+              <div key={`${t.name}-${i}`} className="glass rounded-[20px] p-3.5 flex items-center gap-3.5">
+                <div className="relative w-14 h-14 rounded-2xl overflow-hidden bg-white shrink-0 depth-1">
+                  <Image src={t.image || '/images/team/team_unknown.png'} alt={t.name} fill sizes="56px" className="object-cover" />
+                </div>
+                <div className="min-w-0">
+                  <p className="font-display text-[16px] font-bold text-[#243239] truncate">{t.name}</p>
+                  <p className="text-[14px] font-semibold text-[#9A7015] truncate">{t.designation}</p>
+                  {t.department && <p className="text-[13.5px] text-[#5B6A71] truncate">{t.department}</p>}
+                </div>
+              </div>
+            ))}
           </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {(showAllTeam ? teamMembers : teamMembers.slice(0, 12)).map((tm, i) => (
-              <div 
-                key={i} 
-                className="p-5 rounded-3xl bg-[#F6F8F9] border border-[#D3DDE1] flex items-center gap-4 hover:shadow-md hover:border-[#5B9BD5] transition-all duration-300"
+          {teamMembers.length > 12 && (
+            <div className="mt-8 text-center">
+              <button
+                type="button"
+                onClick={() => setShowAllTeam((v) => !v)}
+                className="press btn-soft inline-flex items-center gap-2 h-12 px-6 rounded-full text-[16px] font-bold"
               >
-                <div className="relative w-16 h-16 rounded-2xl overflow-hidden shrink-0 border border-white ring-1 ring-[#D3DDE1] bg-white">
-                  <Image src={tm.image || '/images/team/team_unknown.png'} alt={tm.name} fill className="object-cover" />
-                </div>
-                <div className="min-w-0 flex-1">
-                  <h4 className="font-display font-bold text-[#2B3B44] text-sm truncate">{tm.name}</h4>
-                  <p className="text-[13.5px] font-semibold text-[#C4921B] truncate">{tm.designation}</p>
-                  <p className="text-[13.5px] text-[#5B6A71] truncate">{tm.department || 'CUBE Applied Engineering'}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {/* View More / View Less Toggle Button */}
-          <div className="mt-12 text-center">
-            <button
-              onClick={() => setShowAllTeam(!showAllTeam)}
-              className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full text-xs font-bold uppercase tracking-wider text-[#243239] bg-[#F0C468] hover:bg-[#F6DA86] shadow-[0_8px_24px_rgba(36,50,57,0.15)] hover:shadow-lg transition-all duration-300 active:scale-95 cursor-pointer"
-            >
-              <span>{showAllTeam ? 'Show Less (12 Members)' : `View All ${teamMembers.length} Members (+${Math.max(teamMembers.length - 12, 0)} More)`}</span>
-              <ChevronRight className={`w-4 h-4 transition-transform duration-300 ${showAllTeam ? '-rotate-90' : 'rotate-90'}`} />
-            </button>
-          </div>
+                {showAllTeam ? 'Show fewer' : `Show all ${teamMembers.length}`}
+                <ChevronDown size={17} className={`transition-transform duration-300 ${showAllTeam ? 'rotate-180' : ''}`} />
+              </button>
+            </div>
+          )}
         </div>
       </section>
 
-      {/* 9. CLIENTS & PARTNERS */}
-      <section id="clients-partners" className="py-20 sm:py-24 bg-transparent">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-2xl mx-auto mb-16">
-            <span className="text-xs font-bold uppercase tracking-wider text-[#2B3B44] bg-[#F2F5F6] px-3.5 py-1 rounded-full border border-[#D3DDE1]">
-              Institutional Ecosystem
-            </span>
-            <h2 className="text-3xl sm:text-4xl font-display font-bold text-[#2B3B44] mt-3">
-              Clients &amp; Partners
-            </h2>
-          </div>
-
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
-            {clients.map((client, i) => (
-              <div 
-                key={i} 
-                className="h-28 p-4 rounded-2xl bg-white/90 backdrop-blur-xl border border-[#D3DDE1]/80 shadow-[0_4px_16px_rgba(36,50,57,0.03),inset_0_1px_1px_rgba(255,255,255,0.95)] hover:border-[#5B9BD5] hover:scale-105 transition-all duration-300 flex flex-col items-center justify-center text-center group"
-              >
-                <div className="relative h-14 w-full flex items-center justify-center">
+      {/* 9 · Our Clients */}
+      <section id="clients-partners" className="scroll-mt-40 py-16 lg:py-20">
+        <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12">
+          <SectionHeading
+            eyebrow="Our Clients"
+            title={<>Clients <span className="text-[#C4921B]">({clients.length})</span></>}
+            action={{ href: '/about/clients', label: 'All clients' }}
+          />
+          <div className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-7 gap-3 reveal-stagger">
+            {clients.map((c, i) => (
+              <div key={`${c.logo}-${i}`} className="group h-24 rounded-[18px] bg-white border border-[#33454E]/[0.07] depth-1 p-3 transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-1">
+                <div className="relative w-full h-full">
                   <Image
-                    src={client.logo || '/images/clients/client_1.png'}
-                    alt={clientLogoAlt(client.name)}
+                    src={c.logo || '/images/clients/client_1.png'}
+                    alt={clientLogoAlt(c.name)}
                     fill
-                    className="object-contain filter grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300"
+                    sizes="150px"
+                    className="object-contain grayscale opacity-80 transition-[filter,opacity] duration-500 group-hover:grayscale-0 group-hover:opacity-100"
                   />
                 </div>
               </div>
             ))}
           </div>
+          <div className="mt-12 flex justify-center">
+            <Link href="/contact" className="press btn-gold gold-shimmer inline-flex items-center gap-2 h-12 px-7 rounded-full text-[16px] font-extrabold">
+              Contact CUBE <ArrowUpRight size={16} strokeWidth={2.25} />
+            </Link>
+          </div>
         </div>
       </section>
-
     </div>
+  );
+}
+
+/** Portrait + message, signed as on cubeiitm.org. */
+function Message({
+  id,
+  label,
+  image,
+  name,
+  lines,
+  paragraphs,
+  band = false,
+}: {
+  id: string;
+  label: string;
+  image: string;
+  name: string;
+  lines: string[];
+  paragraphs: string[];
+  band?: boolean;
+}) {
+  return (
+    <section id={id} className={`scroll-mt-40 py-16 lg:py-20 ${band ? 'band-mist' : ''}`}>
+      <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 grid lg:grid-cols-12 gap-8 lg:gap-14 items-start">
+        <div className="lg:col-span-4 reveal lg:sticky lg:top-[calc(var(--nav-offset,93px)+5rem)]">
+          <div className="relative aspect-[4/5] max-w-sm rounded-[28px] overflow-hidden depth-3 bg-[#DCE4E8]">
+            <Image src={image} alt={name} fill sizes="(max-width: 1024px) 80vw, 30vw" className="object-cover object-top" />
+          </div>
+          <p className="mt-5 font-display text-2xl font-extrabold text-[#243239]">{name}</p>
+          {lines.map((l) => (
+            <p key={l} className="text-[15.5px] text-[#5B6A71]">{l}</p>
+          ))}
+        </div>
+        <div className="lg:col-span-8 reveal">
+          <p className="label-mono inline-flex items-center gap-2">
+            <Quote size={15} className="text-[#C4921B]" /> {label}
+          </p>
+          {paragraphs[0] && <p className="mt-4 text-[20px] sm:text-[21px] leading-relaxed text-[#243239] font-semibold">{paragraphs[0]}</p>}
+          <div className="mt-5 space-y-4 text-[17px] leading-relaxed text-[#46565E]">
+            {paragraphs.slice(1).map((p, i) => (
+              <p key={i}>{p}</p>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
   );
 }

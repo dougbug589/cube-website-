@@ -171,7 +171,7 @@ export default function HomePage() {
         action={{ href: '/about', label: 'About the Centre' }}
       >
         <div className="grid lg:grid-cols-12 gap-6 lg:gap-8 items-stretch">
-          <div className="lg:col-span-5 liquid-glass rounded-[28px] p-8 lg:p-10 flex flex-col reveal">
+          <div className="lg:col-span-7 liquid-glass rounded-[28px] p-8 lg:p-10 flex flex-col reveal">
             <p className="label-mono">Our vision</p>
             <p className="mt-4 font-display text-xl lg:text-[22px] font-bold leading-snug text-[#243239]">
               To be the most acclaimed and trustworthy provider of Applied Research, Technology, Engineering &amp; Consultancy Services with National footprint, in association with IIT Madras, delivering effective and measurable value in built environment aiming at future equipped and sustainable human habitats.
@@ -186,14 +186,17 @@ export default function HomePage() {
             </div>
           </div>
 
-          <ul className="lg:col-span-7 grid sm:grid-cols-3 gap-4 lg:gap-5 reveal-stagger">
+          {/* compact rows stacked beside the vision card: no empty card bottoms */}
+          <ul className="lg:col-span-5 grid gap-4 lg:gap-5 content-between reveal-stagger">
             {ABOUT_POINTS.map((pt) => (
-              <li key={pt.k} className="glass glass-interactive glass-edge rounded-[24px] p-6 lg:p-7 flex flex-col">
-                <span className="grid place-items-center w-11 h-11 rounded-2xl bg-[#F7EDD3] text-[#9A7015] depth-1">
-                  <pt.Icon size={20} strokeWidth={2} />
+              <li key={pt.k} className="glass glass-interactive glass-edge rounded-[24px] p-5 lg:p-6 flex items-start gap-4">
+                <span className="grid place-items-center w-12 h-12 rounded-2xl bg-[#F7EDD3] text-[#9A7015] depth-1 shrink-0">
+                  <pt.Icon size={21} strokeWidth={2} />
                 </span>
-                <p className="mt-5 font-display text-[19px] font-bold text-[#243239] leading-snug">{pt.k}</p>
-                <p className="mt-2 text-[16.5px] text-[#5B6A71] leading-relaxed">{pt.v}</p>
+                <span>
+                  <span className="block font-display text-[19px] font-bold text-[#243239] leading-snug">{pt.k}</span>
+                  <span className="mt-1 block text-[16.5px] text-[#5B6A71] leading-relaxed">{pt.v}</span>
+                </span>
               </li>
             ))}
           </ul>
