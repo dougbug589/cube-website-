@@ -4,6 +4,7 @@
 
 ### Fixed
 
+- Pinned transitive `minimatch` dependencies to `11.0.8`, clearing the npm audit findings.
 - Integrated the Home navigation item with the themed navigation styling and added matching icons across desktop and mobile menus.
 - Added a Home navigation button beside About on desktop and mobile menus.
 - Added CI validation for linting, production builds, dependency audits, and repository data checks.
