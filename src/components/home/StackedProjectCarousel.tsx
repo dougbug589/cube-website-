@@ -81,7 +81,7 @@ export default function StackedProjectCarousel({ projects }: { projects: AnyProj
       }}
     >
       {/* Stage */}
-      <div className="relative flex items-end justify-center px-4 sm:px-6 overflow-hidden pt-6 pb-8 min-h-[380px]">
+      <div className="relative flex items-end justify-center px-4 sm:px-6 overflow-hidden pt-10 pb-14 min-h-[460px] sm:min-h-[540px]">
         {visible.map(({ offset, index, project }) => {
           const isCenter = offset === 0;
           const abs = Math.abs(offset);
@@ -96,36 +96,37 @@ export default function StackedProjectCarousel({ projects }: { projects: AnyProj
               key={key}
               initial={false}
               animate={{
-                scale: isCenter ? 1 : abs === 1 ? 0.92 : 0.84,
-                y: isCenter ? -18 : abs === 1 ? 4 : 16,
-                opacity: abs === 2 ? 0.75 : 1,
+                scale: isCenter ? 1 : abs === 1 ? 0.9 : 0.8,
+                y: isCenter ? -22 : abs === 1 ? 6 : 22,
+                opacity: abs === 2 ? 0.7 : 1,
+                filter: abs === 2 ? 'blur(1.5px)' : 'blur(0px)',
               }}
-              transition={{ type: 'spring', stiffness: 260, damping: 30 }}
+              transition={{ type: 'spring', stiffness: 240, damping: 24, mass: 0.9 }}
               style={{ zIndex: z }}
-              className={`relative shrink-0 rounded-xl overflow-hidden bg-[#DCE4E8] ring-1 ring-black/5 ${
+              className={`relative shrink-0 rounded-[26px] overflow-hidden bg-[#DCE4E8] ring-1 ring-black/5 will-change-transform ${
                 isCenter
-                  ? 'w-[260px] sm:w-[300px] h-[340px] sm:h-[360px] shadow-[0_30px_80px_rgba(36,50,57,0.55)]'
-                  : 'w-[190px] sm:w-[230px] h-[280px] sm:h-[300px] shadow-[0_20px_50px_rgba(36,50,57,0.35)]'
-              } ${abs === 2 ? 'hidden md:block' : ''} ${offset !== -half ? '-ml-8 sm:-ml-10' : ''}`}
+                  ? 'w-[290px] sm:w-[380px] h-[400px] sm:h-[470px] depth-3'
+                  : 'w-[220px] sm:w-[290px] h-[330px] sm:h-[400px] depth-2'
+              } ${abs === 2 ? 'hidden md:block' : ''} ${offset !== -half ? '-ml-10 sm:-ml-14' : ''}`}
             >
               <Image
                 src={project.heroImage || '/images/about/about_about.jpg'}
                 alt={project.title}
                 fill
-                sizes="(max-width: 640px) 60vw, 320px"
+                sizes="(max-width: 640px) 70vw, 380px"
                 className={`object-cover transition-transform duration-700 ${isCenter ? 'scale-100' : 'scale-105'}`}
               />
-              <div className="absolute top-3 left-3 bg-white/95 rounded-full px-3 py-1 text-[11.5px] text-[#243239] font-bold shadow-sm">
+              <div className="liquid-glass-dark absolute top-4 left-4 rounded-full px-3.5 py-1.5 text-[12.5px] text-white font-bold">
                 {label}
               </div>
-              <div className="absolute inset-x-0 bottom-0 text-left bg-gradient-to-t from-black/85 via-black/35 to-transparent pt-20 pb-4 px-4">
-                <div className={`font-display text-white font-bold leading-snug line-clamp-2 ${isCenter ? 'text-lg sm:text-[22px]' : 'text-[15px] sm:text-base'}`}>
+              <div className="absolute inset-x-0 bottom-0 text-left bg-gradient-to-t from-black/80 via-black/30 to-transparent pt-24 pb-5 px-5">
+                <div className={`font-display text-white font-bold leading-snug line-clamp-2 ${isCenter ? 'text-xl sm:text-[26px]' : 'text-base sm:text-lg'}`}>
                   {project.title}
                 </div>
-                <div className="text-[12.5px] text-[#F0C468] mt-1 font-semibold truncate">{sub}</div>
+                <div className="text-[13.5px] text-[#F0C468] mt-1.5 font-semibold truncate">{sub}</div>
                 {isCenter && (
-                  <div className="mt-3 inline-flex items-center gap-1.5 text-[13px] font-semibold text-white border-b-2 border-[#E9B215] pb-0.5">
-                    View project <ArrowRight size={12} />
+                  <div className="liquid-glass-dark mt-4 inline-flex items-center gap-1.5 h-9 px-4 rounded-full text-[14px] font-bold text-white">
+                    View project <ArrowRight size={14} />
                   </div>
                 )}
               </div>
@@ -135,7 +136,7 @@ export default function StackedProjectCarousel({ projects }: { projects: AnyProj
           );
 
           return isCenter ? (
-            <Link key={key} href={href} className="relative focus:outline-none focus-visible:ring-2 focus-visible:ring-[#E9B215] rounded-xl" style={{ zIndex: z }}>
+            <Link key={key} href={href} className="press relative focus:outline-none focus-visible:ring-2 focus-visible:ring-[#E9B215] rounded-[26px]" style={{ zIndex: z }}>
               {card}
             </Link>
           ) : (
@@ -144,7 +145,7 @@ export default function StackedProjectCarousel({ projects }: { projects: AnyProj
               type="button"
               aria-label={`Show ${project.title}`}
               onClick={() => setCenter(index)}
-              className="relative focus:outline-none focus-visible:ring-2 focus-visible:ring-[#E9B215] rounded-xl hover:-translate-y-1.5 transition-transform duration-300"
+              className="press relative focus:outline-none focus-visible:ring-2 focus-visible:ring-[#E9B215] rounded-[26px]"
               style={{ zIndex: z }}
             >
               {card}

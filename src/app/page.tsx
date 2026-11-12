@@ -3,7 +3,7 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowRight, ArrowUpRight, MapPin, Mail, Phone } from 'lucide-react';
+import { ArrowRight, ArrowUpRight, MapPin, Mail, Phone, Landmark, ShieldCheck, FlaskConical } from 'lucide-react';
 
 import EtihadHero from '@/components/hero/EtihadHero';
 import StackedProjectCarousel from '@/components/home/StackedProjectCarousel';
@@ -13,11 +13,16 @@ import { CMS_UPDATED_EVENT } from '@/lib/live';
 import { verticals as fallbackVerticals } from '@/data/verticals';
 import { projects as fallbackProjects } from '@/data/projects';
 import { celOverview } from '@/data/cel';
-import { aboutContent } from '@/data/about';
 import { boardMembers as fallbackBoardMembers, executiveLeadership } from '@/data/leadership';
 import { newsItems as fallbackNewsItems } from '@/data/news';
 import { clients as fallbackClients } from '@/data/clients';
 import { contactInfo } from '@/data/contact';
+
+const ABOUT_POINTS = [
+  { Icon: Landmark, k: 'Est. 2017', v: 'Centre of Excellence of the Government of Tamil Nadu, with IIT Madras.' },
+  { Icon: ShieldCheck, k: 'Independent', v: 'Governing body chaired by the IIT Madras Director, with state and industry members.' },
+  { Icon: FlaskConical, k: 'Applied', v: 'Consultancy, quality assurance and environmental testing for public projects.' },
+];
 
 const fallbackCeo = executiveLeadership.find((l) => (l.role || '').toUpperCase().includes('CEO'));
 const fallbackLeadershipList: any[] = fallbackCeo
@@ -195,38 +200,40 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 04 · About */}
+      {/* 04 · About — essentials only; the full story lives on /about */}
       <Section
         id="about"
         eyebrow="About CUBE"
         title="Academic depth, delivered as public infrastructure."
         action={{ href: '/about', label: 'About the Centre' }}
       >
-        <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-start">
-          <div className="lg:col-span-7 reveal">
-            <p className="text-lg sm:text-xl leading-relaxed text-[#33454E]">{aboutContent.overview[0]}</p>
-            {aboutContent.overview[1] && (
-              <p className="mt-6 text-[16px] leading-relaxed text-[#46565E]">{aboutContent.overview[1]}</p>
-            )}
-            <div className="mt-8 flex flex-wrap gap-3">
-              <Link href="/about#governing-board" className="inline-flex items-center gap-2 h-12 px-6 rounded-full text-[16px] font-extrabold gold-shimmer btn-gold">
-                Governing board <ArrowUpRight size={15} />
+        <div className="grid lg:grid-cols-12 gap-6 lg:gap-8 items-stretch">
+          <div className="lg:col-span-5 liquid-glass rounded-[28px] p-8 lg:p-10 flex flex-col reveal">
+            <p className="label-mono">Our vision</p>
+            <p className="mt-4 font-display text-2xl lg:text-[28px] font-bold leading-snug text-[#243239]">
+              The most trusted provider of applied research, engineering and consultancy for India&apos;s built environment.
+            </p>
+            <div className="mt-auto pt-8 flex flex-wrap gap-3">
+              <Link href="/about#governing-board" className="press btn-gold gold-shimmer inline-flex items-center gap-2 h-12 px-6 rounded-full text-[16px] font-extrabold">
+                Governing board <ArrowUpRight size={16} strokeWidth={2.25} />
               </Link>
-              <Link href="/about#our-team" className="inline-flex items-center gap-2 h-12 px-6 rounded-full btn-soft text-[16px] font-bold">
+              <Link href="/about#our-team" className="press btn-soft inline-flex items-center gap-2 h-12 px-6 rounded-full text-[16px] font-bold">
                 Our team
               </Link>
             </div>
           </div>
-          <div className="lg:col-span-5 grid gap-4 reveal-stagger">
-            <div className="glass glass-edge p-6 lg:p-7">
-              <p className="label-mono">Vision</p>
-              <p className="mt-3 text-[16px] leading-relaxed text-[#33454E]">{aboutContent.vision}</p>
-            </div>
-            <div className="glass glass-edge p-6 lg:p-7">
-              <p className="label-mono">Mission</p>
-              <p className="mt-3 text-[16px] leading-relaxed text-[#33454E]">{aboutContent.mission}</p>
-            </div>
-          </div>
+
+          <ul className="lg:col-span-7 grid sm:grid-cols-3 gap-4 lg:gap-5 reveal-stagger">
+            {ABOUT_POINTS.map((pt) => (
+              <li key={pt.k} className="glass glass-interactive glass-edge rounded-[24px] p-6 lg:p-7 flex flex-col">
+                <span className="grid place-items-center w-11 h-11 rounded-2xl bg-[#F7EDD3] text-[#9A7015] depth-1">
+                  <pt.Icon size={20} strokeWidth={2} />
+                </span>
+                <p className="mt-5 font-display text-[19px] font-bold text-[#243239] leading-snug">{pt.k}</p>
+                <p className="mt-2 text-[15px] text-[#5B6A71] leading-relaxed">{pt.v}</p>
+              </li>
+            ))}
+          </ul>
         </div>
       </Section>
 

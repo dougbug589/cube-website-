@@ -10,7 +10,10 @@ const nextConfig = {
   compress: true,
   poweredByHeader: false,
   images: {
-    formats: ['image/avif', 'image/webp'],
+    // WebP only: AVIF encoding hung indefinitely here (browser image requests
+    // never completed, e.g. the header logo), and it is far slower to encode.
+    // WebP is supported by every current browser and encodes in milliseconds.
+    formats: ['image/webp'],
     // 1 day: optimized images are re-checked daily, so a photo replaced at the
     // same path (e.g. a board member portrait) shows up within a day instead of
     // the old copy being served for 30 days.
