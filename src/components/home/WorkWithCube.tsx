@@ -81,7 +81,7 @@ export default function WorkWithCube() {
           </a>
           <span aria-hidden className="hidden lg:block w-px h-8 bg-[#33454E]/10" />
           <a
-            href={`tel:${String(contactInfo.phone).replace(/\s+/g, '')}`}
+            href={`tel:${contactInfo.phoneTel}`}
             className="flex items-center gap-3 text-[16.5px] font-bold text-[#243239] hover:text-[#9A7015] transition-colors whitespace-nowrap"
           >
             <Phone size={19} strokeWidth={2} className="text-[#C4921B] shrink-0" />

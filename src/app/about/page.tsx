@@ -16,6 +16,7 @@ import { teamMembers as fallbackTeam } from '@/data/team';
 import { clients as fallbackClients } from '@/data/clients';
 import { useLiveList } from '@/lib/live';
 import { clientLogoAlt } from '@/lib/content';
+import { contactInfo } from '@/data/contact';
 
 const LEADER_CATEGORIES = new Set(['leadership', 'board', 'advisory']);
 const FALLBACK_PEOPLE: any[] = [
@@ -158,7 +159,7 @@ export default function CompleteAboutExperience() {
                 </p>
 
                 <div className="mt-5 pt-5 border-t border-[#DCE4E7] text-xs text-[#5B6A71] leading-relaxed">
-                  First Floor, IIT Madras Research Park, Kanagam Road, Taramani, Chennai 600113
+                  {contactInfo.address}
                 </div>
               </div>
             </div>

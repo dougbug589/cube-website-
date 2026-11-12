@@ -335,8 +335,8 @@ function buildInitialStore(): CMSStore {
       {
         id: 'enq_sample_1',
         name: 'Government of Tamil Nadu - Municipal Administration',
-        email: 'contact@cubeiitm.org',
-        phone: '+91 44 6646 9800',
+        email: 'office@cubeiitm.org',
+        phone: '044 6121 0901',
         organization: 'Directorate of Municipal Administration, TN',
         category: 'Technical Enquiry',
         subject: 'Third Party Quality Assurance (TPQA) for Water Supply Rejuvenation',

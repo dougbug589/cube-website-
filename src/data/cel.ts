@@ -11,7 +11,7 @@ export const celOverview: {
   title: 'CUBE Environmental Laboratory (CEL)',
   subtitle: 'Advanced Environmental Testing, Characterization & Analytical Diagnostics',
   description: 'The CUBE Environmental Laboratory (CEL) is a premier analytical facility established under CUBE at IIT Madras Research Park. CEL provides precision environmental testing services across water, wastewater, solid waste, and soil matrices, backing environmental engineering projects with verified empirical data.',
-  location: 'First Floor, IIT Madras Research Park, Taramani, Chennai',
+  location: 'IIT Madras Research Park, Taramani, Chennai',
   facilities: [
     'Inductively Coupled Plasma Mass Spectrometry (ICP-MS) Lab',
     'Gas Chromatography - Mass Spectrometry (GC-MS) Clean Room',

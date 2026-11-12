@@ -3,7 +3,7 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { MapPin, Mail, Phone, Clock, ArrowUpRight } from 'lucide-react';
+import { MapPin, Mail, Phone, ArrowUpRight } from 'lucide-react';
 import { XIcon, LinkedInIcon, FacebookIcon } from '@/components/common/BrandIcons';
 import { contactInfo } from '@/data/contact';
 import { verticals } from '@/data/verticals';
@@ -111,11 +111,7 @@ export default function Footer() {
               </li>
               <li className="flex gap-3 items-center">
                 <Phone size={17} strokeWidth={1.75} className="text-[#C4921B] shrink-0" />
-                <a href={`tel:${String(contactInfo.phone).replace(/\s+/g, '')}`} className="font-semibold text-[#243239] hover:text-[#9A7015] transition-colors">{contactInfo.phone}</a>
-              </li>
-              <li className="flex gap-3 items-center">
-                <Clock size={17} strokeWidth={1.75} className="text-[#C4921B] shrink-0" />
-                <span>Mon to Fri, 9:00 to 17:30 IST</span>
+                <a href={`tel:${contactInfo.phoneTel}`} className="font-semibold text-[#243239] hover:text-[#9A7015] transition-colors">{contactInfo.phone}</a>
               </li>
             </ul>
             <Link

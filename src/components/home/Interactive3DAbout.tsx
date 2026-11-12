@@ -83,7 +83,7 @@ export default function Interactive3DAbout() {
                       HQ &bull; Chennai
                     </span>
                     <div className="text-sm font-display font-medium">
-                      First Floor, IIT Madras Research Park, Taramani
+                      Module 6C, 6th Floor, IIT Madras Research Park, Taramani
                     </div>
                   </div>
                 </div>

@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import PageHeader from '@/components/common/PageHeader';
 import { 
-  MapPin, Mail, Phone, Clock, Send, 
+  MapPin, Mail, Phone, Send, 
   CheckCircle2, ExternalLink, Loader2, Sparkles, Building2 
 } from 'lucide-react';
 import { contactInfo } from '@/data/contact';
@@ -108,17 +108,9 @@ export default function ContactPage() {
                   <Phone className="w-5 h-5 text-[#C4921B] mr-3 flex-shrink-0 mt-0.5" />
                   <div>
                     <span className="font-bold text-[#243239] block mb-0.5">Telephone Enquiries:</span>
-                    <a href={`tel:${contactInfo.phone}`} className="text-[#2B3B44] hover:text-[#C4921B] font-semibold underline">
+                    <a href={`tel:${contactInfo.phoneTel}`} className="text-[#2B3B44] hover:text-[#C4921B] font-semibold underline">
                       {contactInfo.phone}
                     </a>
-                  </div>
-                </div>
-
-                <div className="flex items-start pt-3 border-t border-[#DCE4E7]">
-                  <Clock className="w-5 h-5 text-[#C4921B] mr-3 flex-shrink-0 mt-0.5" />
-                  <div>
-                    <span className="font-bold text-[#243239] block mb-0.5">Working Hours:</span>
-                    <p>{contactInfo.workingHours}</p>
                   </div>
                 </div>
               </GlassPanel>

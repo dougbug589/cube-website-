@@ -91,7 +91,7 @@ export default async function TendersPage() {
                         </a>
                       ) : (
                         <a
-                          href="mailto:contact@cubeiitm.org"
+                          href="mailto:office@cubeiitm.org"
                           className="px-4 py-1.5 rounded-full bg-[#F2F5F6] hover:bg-[#F6DA86] text-[#2B3B44] hover:text-[#243239] border border-[#B9C5CA] text-xs font-semibold flex items-center gap-1.5 transition"
                         >
                           <Mail className="w-3.5 h-3.5" />
@@ -129,8 +129,8 @@ export default async function TendersPage() {
                 </div>
                 <p>
                   Vendors and suppliers may direct procurement queries to{' '}
-                  <a href="mailto:contact@cubeiitm.org" className="text-[#9A7015] font-semibold hover:underline">
-                    contact@cubeiitm.org
+                  <a href="mailto:office@cubeiitm.org" className="text-[#9A7015] font-semibold hover:underline">
+                    office@cubeiitm.org
                   </a>
                 </p>
               </div>
