@@ -38,7 +38,7 @@ export default function Footer() {
       <div aria-hidden className="absolute inset-0 bg-[#EEF2F4]" />
       <div aria-hidden className="absolute top-0 inset-x-0 hairline" />
 
-      <div className="relative max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 pt-16 lg:pt-20 pb-10">
+      <div className="relative shell pt-16 lg:pt-20 pb-10">
         <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-12">
           {/* Identity */}
           <div className="lg:col-span-4">

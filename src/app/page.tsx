@@ -66,7 +66,7 @@ function Section({
 }) {
   return (
     <section id={id} className={`relative py-20 lg:py-28 ${band ? 'band-mist' : ''}`}>
-      <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12">
+      <div className="shell">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 lg:mb-16 reveal">
           <div className="max-w-2xl">
             <p className="label-mono">{eyebrow}</p>
@@ -173,7 +173,7 @@ export default function HomePage() {
         <div className="grid lg:grid-cols-12 gap-6 lg:gap-8 items-stretch">
           <div className="lg:col-span-7 liquid-glass rounded-[28px] p-8 lg:p-10 flex flex-col reveal">
             <p className="label-mono">Our vision</p>
-            <p className="mt-4 font-display text-xl lg:text-[22px] font-bold leading-snug text-[#243239]">
+            <p className="mt-4 font-display text-xl lg:text-[22px] 2xl:text-[27px] font-bold leading-snug text-[#243239]">
               To be the most acclaimed and trustworthy provider of Applied Research, Technology, Engineering &amp; Consultancy Services with National footprint, in association with IIT Madras, delivering effective and measurable value in built environment aiming at future equipped and sustainable human habitats.
             </p>
             <div className="mt-auto pt-8 flex flex-wrap gap-3">
@@ -217,7 +217,7 @@ export default function HomePage() {
             ))}
           </g>
         </svg>
-        <div className="relative px-5 sm:px-8 lg:px-16 pt-4 lg:pt-8 reveal">
+        <div className="relative shell pt-4 lg:pt-8 reveal">
           <p className="label-mono">Applied execution</p>
           <h2 className="headline-light text-3xl lg:text-4xl mt-3">
             Projects across <span className="gold-keyword">Tamil Nadu</span> &amp; beyond
@@ -251,10 +251,10 @@ export default function HomePage() {
       >
         <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center">
           <div className="lg:col-span-6 reveal">
-            <p className="text-[19px] leading-relaxed text-[#243239]">{celOverview.subtitle}</p>
+            <p className="text-[19px] 2xl:text-[23px] leading-relaxed text-[#243239] font-semibold">{celOverview.subtitle}</p>
             <div className="mt-7 grid grid-cols-3 gap-3 reveal-stagger">
               {celServiceList.slice(0, 3).map((s) => (
-                <div key={s.id || s.title} className="glass rounded-[20px] px-4 py-4 text-center">
+                <div key={s.id || s.title} className="glass rounded-[20px] px-4 py-4 2xl:py-6 text-center">
                   <span className="text-[16.5px] font-bold text-[#243239]">{s.title}</span>
                 </div>
               ))}
@@ -270,7 +270,7 @@ export default function HomePage() {
           </div>
           <div className="lg:col-span-6 grid grid-cols-2 gap-4 reveal">
             {['/images/cel/about_cel.jpg', '/images/cel/about_cel1.jpg', '/images/cel/about_cel2.jpg'].map((src, i) => (
-              <div key={src} className={`relative rounded-[24px] overflow-hidden depth-2 bg-[#DCE4E8] ${i === 0 ? 'col-span-2 h-60' : 'h-40'}`}>
+              <div key={src} className={`relative rounded-[24px] overflow-hidden depth-2 bg-[#DCE4E8] ${i === 0 ? 'col-span-2 h-60 2xl:h-72' : 'h-40 2xl:h-52'}`}>
                 <Image src={src} alt="CUBE Environmental Laboratory" fill sizes="(max-width: 1024px) 100vw, 45vw" className="object-cover" />
               </div>
             ))}

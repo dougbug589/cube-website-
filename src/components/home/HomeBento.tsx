@@ -116,7 +116,7 @@ export default function HomeBento({
   const logos = clients.slice(ci * 6, ci * 6 + 6);
 
   return (
-    <div ref={ref} className="grid gap-4 lg:gap-5 md:grid-cols-2 lg:grid-cols-3 lg:grid-rows-[300px_300px]">
+    <div ref={ref} className="grid gap-4 lg:gap-5 md:grid-cols-2 lg:grid-cols-3 lg:grid-rows-[300px_300px] 2xl:grid-rows-[340px_340px]">
       {/* Life at CUBE — wide */}
       <Link
         href="/life-at-cube"

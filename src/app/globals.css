@@ -132,6 +132,12 @@
   color: var(--gold-deep);
 }
 
+/* page shell: same width and side padding as the top bar, so section edges
+   line up with the logo and the Get in touch button */
+.shell { width: 100%; max-width: 1600px; margin-inline: auto; padding-inline: 1.25rem; }
+@media (min-width: 640px) { .shell { padding-inline: 1.5rem; } }
+@media (min-width: 1280px) { .shell { padding-inline: 2rem; } }
+
 /* gold highlighted keyword */
 .gold-keyword {
   color: var(--gold-core);

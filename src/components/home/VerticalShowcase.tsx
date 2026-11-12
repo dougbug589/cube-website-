@@ -97,7 +97,7 @@ export default function VerticalShowcase({ verticals }: { verticals: Vertical[] 
               aria-selected={on}
               aria-controls={`vpanel-${item.slug}`}
               onClick={() => setActive(i)}
-              className="press relative shrink-0 lg:shrink text-left rounded-[24px] px-6 py-5 lg:py-6 min-w-[220px] lg:min-w-0"
+              className="press relative shrink-0 lg:shrink lg:flex-1 lg:flex lg:flex-col lg:justify-center text-left rounded-[24px] px-6 py-5 lg:py-6 min-w-[220px] lg:min-w-0"
             >
               {/* resting surface */}
               <span aria-hidden className="absolute inset-0 rounded-[24px] bg-white/50 border border-[#33454E]/[0.07]" />
@@ -139,7 +139,7 @@ export default function VerticalShowcase({ verticals }: { verticals: Vertical[] 
 
       {/* Panel */}
       <div className="lg:col-span-8">
-        <div className="relative overflow-hidden rounded-[32px] depth-3 min-h-[460px] lg:min-h-[520px] bg-[#243239]">
+        <div className="relative overflow-hidden rounded-[32px] depth-3 min-h-[460px] lg:min-h-[520px] 2xl:min-h-[580px] bg-[#243239]">
           {/* image: scale + blur settle */}
           <AnimatePresence initial={false}>
             <motion.div

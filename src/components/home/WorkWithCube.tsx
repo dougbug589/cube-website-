@@ -38,20 +38,44 @@ const DOORS = [
 export default function WorkWithCube() {
   return (
     <section id="work-with-cube" className="relative py-20 lg:py-28">
-      <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12">
-        <div className="max-w-2xl reveal">
-          <p className="label-mono">Work with CUBE</p>
-          <h2 className="headline-light text-3xl sm:text-4xl lg:text-[2.75rem] text-[#243239] mt-3">
-            Bring a project, a tender, or a question.
-          </h2>
+      <div className="shell grid 2xl:grid-cols-12 gap-x-10 gap-y-12">
+        {/* left: heading and office details (stacked beside the cards on wide screens) */}
+        <div className="2xl:col-span-4 flex flex-col">
+          <div className="reveal">
+            <p className="label-mono">Work with CUBE</p>
+            <h2 className="headline-light text-3xl sm:text-4xl lg:text-[2.75rem] text-[#243239] mt-3">
+              Bring a project, a tender, or a question.
+            </h2>
+          </div>
+
+          <div className="mt-8 liquid-glass rounded-[24px] px-6 py-5 lg:px-7 flex flex-col md:flex-row 2xl:flex-col md:items-center 2xl:items-start gap-4 md:gap-8 2xl:gap-4 reveal">
+            <div className="flex items-start gap-3 min-w-0 md:flex-1 2xl:flex-none">
+              <MapPin size={19} strokeWidth={2} className="text-[#C4921B] mt-0.5 shrink-0" />
+              <span className="text-[16px] text-[#46565E] leading-relaxed">{contactInfo.address}</span>
+            </div>
+            <span aria-hidden className="hidden md:block 2xl:hidden w-px h-8 bg-[#33454E]/10" />
+            <span aria-hidden className="hidden 2xl:block w-full h-px bg-[#33454E]/10" />
+            <a href={`mailto:${contactInfo.email}`} className="flex items-center gap-3 text-[16.5px] font-bold text-[#243239] hover:text-[#9A7015] transition-colors">
+              <Mail size={19} strokeWidth={2} className="text-[#C4921B] shrink-0" />
+              {contactInfo.email}
+            </a>
+            <span aria-hidden className="hidden md:block 2xl:hidden w-px h-8 bg-[#33454E]/10" />
+            <a
+              href={`tel:${contactInfo.phoneTel}`}
+              className="flex items-center gap-3 text-[16.5px] font-bold text-[#243239] hover:text-[#9A7015] transition-colors whitespace-nowrap"
+            >
+              <Phone size={19} strokeWidth={2} className="text-[#C4921B] shrink-0" />
+              {contactInfo.phone}
+            </a>
+          </div>
         </div>
 
-        <div className="mt-12 grid gap-4 lg:gap-5 md:grid-cols-3 reveal-stagger">
+        <div className="2xl:col-span-8 grid gap-4 lg:gap-5 md:grid-cols-3 reveal-stagger">
           {DOORS.map(({ href, Icon, title, text, cta }) => (
             <Link
               key={href}
               href={href}
-              className="press group glass glass-interactive glass-edge rounded-[28px] p-7 lg:p-8 min-h-[280px] flex flex-col"
+              className="press group glass glass-interactive glass-edge rounded-[28px] p-7 lg:p-8 min-h-[280px] 2xl:min-h-[340px] flex flex-col"
             >
               <span className="grid place-items-center w-14 h-14 rounded-[18px] bg-gradient-to-b from-[#F8E3A3] to-[#F0C468] text-[#243239] depth-1">
                 <Icon size={24} strokeWidth={2} />
@@ -66,27 +90,6 @@ export default function WorkWithCube() {
               </span>
             </Link>
           ))}
-        </div>
-
-        {/* office details: one slim glass strip */}
-        <div className="mt-5 liquid-glass rounded-[24px] px-6 py-5 lg:px-8 flex flex-col lg:flex-row lg:items-center gap-4 lg:gap-8 reveal">
-          <div className="flex items-start gap-3 min-w-0 lg:flex-1">
-            <MapPin size={19} strokeWidth={2} className="text-[#C4921B] mt-0.5 shrink-0" />
-            <span className="text-[16px] text-[#46565E] leading-relaxed">{contactInfo.address}</span>
-          </div>
-          <span aria-hidden className="hidden lg:block w-px h-8 bg-[#33454E]/10" />
-          <a href={`mailto:${contactInfo.email}`} className="flex items-center gap-3 text-[16.5px] font-bold text-[#243239] hover:text-[#9A7015] transition-colors">
-            <Mail size={19} strokeWidth={2} className="text-[#C4921B] shrink-0" />
-            {contactInfo.email}
-          </a>
-          <span aria-hidden className="hidden lg:block w-px h-8 bg-[#33454E]/10" />
-          <a
-            href={`tel:${contactInfo.phoneTel}`}
-            className="flex items-center gap-3 text-[16.5px] font-bold text-[#243239] hover:text-[#9A7015] transition-colors whitespace-nowrap"
-          >
-            <Phone size={19} strokeWidth={2} className="text-[#C4921B] shrink-0" />
-            {contactInfo.phone}
-          </a>
         </div>
       </div>
     </section>

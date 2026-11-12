@@ -22,7 +22,7 @@ export default function PartnersSection({ clientCount }: { clientCount: number }
 
   return (
     <section id="partners" className="relative py-20 lg:py-24 band-mist">
-      <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12">
+      <div className="shell">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 reveal">
           <div className="max-w-2xl">
             <p className="label-mono">Partners</p>
