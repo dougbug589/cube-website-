@@ -49,6 +49,9 @@ export default function Navbar() {
   const [isMac, setIsMac] = useState(false);
   const drawerRef = useRef<HTMLDivElement>(null);
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const headerRef = useRef<HTMLElement>(null);
+  const itemRefs = useRef<Record<string, HTMLDivElement | null>>({});
+  const [dropdownX, setDropdownX] = useState(0);
 
   // Scroll state (rAF-throttled, passive)
   useEffect(() => {
@@ -117,12 +120,23 @@ export default function Navbar() {
   // Dropdown hover intent: small close delay so moving into the panel doesn't flicker
   const openDropdown = useCallback((title: string | null) => {
     if (closeTimer.current) clearTimeout(closeTimer.current);
+    if (title) {
+      const el = itemRefs.current[title];
+      const header = headerRef.current;
+      if (el && header) {
+        const r = el.getBoundingClientRect();
+        const h = header.getBoundingClientRect();
+        setDropdownX(r.left + r.width / 2 - h.left);
+      }
+    }
     setDropdown(title);
   }, []);
   const scheduleClose = useCallback(() => {
     if (closeTimer.current) clearTimeout(closeTimer.current);
-    closeTimer.current = setTimeout(() => setDropdown(null), 140);
+    closeTimer.current = setTimeout(() => setDropdown(null), 240);
   }, []);
+
+  const openItem = (MENU as Item[]).find((i) => i.title === dropdown);
 
   // Liquid glass; a touch more opaque once content scrolls underneath.
   const surface = scrolled || drawerOpen ? 'liquid-glass is-solid' : 'liquid-glass';
@@ -144,7 +158,7 @@ export default function Navbar() {
         )}
       </AnimatePresence>
 
-      <header className="fixed top-3 inset-x-3 sm:inset-x-4 lg:inset-x-6 z-50">
+      <header ref={headerRef} className="fixed top-3 inset-x-3 sm:inset-x-4 lg:inset-x-6 z-50">
         <div
           className={`relative mx-auto max-w-[1600px] h-16 xl:h-[76px] rounded-[24px] ${surface}`}
         >
@@ -181,6 +195,9 @@ export default function Navbar() {
                 return (
                   <div
                     key={item.title}
+                    ref={(el) => {
+                      itemRefs.current[item.title] = el;
+                    }}
                     className="relative"
                     onMouseEnter={() => openDropdown(hasChildren ? item.title : null)}
                   >
@@ -219,33 +236,6 @@ export default function Navbar() {
                       )}
                     </Link>
 
-                    <AnimatePresence>
-                      {hasChildren && open && (
-                        <motion.div
-                          initial={{ opacity: 0, y: 8, scale: 0.94, filter: 'blur(6px)' }}
-                          animate={{ opacity: 1, y: 0, scale: 1, filter: 'blur(0px)' }}
-                          exit={{ opacity: 0, y: 4, scale: 0.97, filter: 'blur(4px)', transition: { duration: 0.16 } }}
-                          transition={{ type: 'spring', stiffness: 520, damping: 30, mass: 0.7 }}
-                          className="absolute left-1/2 -translate-x-1/2 top-full pt-3 w-72"
-                          onMouseEnter={() => openDropdown(item.title)}
-                        >
-                          <div className="liquid-glass is-solid rounded-[22px] p-2 origin-top">
-                            <div aria-hidden className="absolute top-0 left-6 right-6 h-px bg-gradient-to-r from-transparent via-[#E9B215]/50 to-transparent" />
-                            <p className="label-mono px-3 pt-2 pb-1.5">{item.title}</p>
-                            {item.children!.map((sub) => (
-                              <Link
-                                key={sub.title}
-                                href={sub.href}
-                                className="group flex items-center justify-between gap-3 px-3 py-2.5 rounded-xl text-[15px] font-semibold text-[#33454E] hover:text-[#243239] hover:bg-[#33454E]/[0.08] transition-colors"
-                              >
-                                <span>{sub.title}</span>
-                                <ArrowUpRight size={13} strokeWidth={1.75} className="text-[#9A7015] opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all" />
-                              </Link>
-                            ))}
-                          </div>
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
                   </div>
                 );
               })}
@@ -296,6 +286,42 @@ export default function Navbar() {
           </div>
         </div>
 
+        {/*
+          Dropdown lives OUTSIDE the glass bar: a backdrop-filter nested in
+          another backdrop-filter (or under any CSS filter) can only blur its
+          parent, not the page, so it looked flat. As a sibling it blurs the page.
+        */}
+        <AnimatePresence>
+          {openItem?.children?.length ? (
+            <motion.div
+              key={openItem.title}
+              initial={{ opacity: 0, y: 10, scale: 0.94 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: 4, scale: 0.97, transition: { duration: 0.14 } }}
+              transition={{ type: 'spring', stiffness: 520, damping: 30, mass: 0.7 }}
+              style={{ left: dropdownX - 152, transformOrigin: '50% 0%' }}
+              className="hidden xl:block absolute top-full pt-3 w-[304px]"
+              onMouseEnter={() => openDropdown(openItem.title)}
+              onMouseLeave={scheduleClose}
+            >
+              <div className="liquid-glass is-menu rounded-[24px] p-2">
+                <div aria-hidden className="absolute top-0 left-6 right-6 h-px bg-gradient-to-r from-transparent via-[#E9B215]/60 to-transparent" />
+                <p className="label-mono px-3 pt-2 pb-1.5">{openItem.title}</p>
+                {openItem.children.map((sub) => (
+                  <Link
+                    key={sub.title}
+                    href={sub.href}
+                    className="press group flex items-center justify-between gap-3 px-3 py-2.5 rounded-2xl text-[15px] font-semibold text-[#33454E] hover:text-[#243239] hover:bg-white/55 transition-colors"
+                  >
+                    <span>{sub.title}</span>
+                    <ArrowUpRight size={14} strokeWidth={2} className="text-[#9A7015] opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all" />
+                  </Link>
+                ))}
+              </div>
+            </motion.div>
+          ) : null}
+        </AnimatePresence>
+
         {/* Drawer (below xl) */}
         <AnimatePresence>
           {drawerOpen && (
@@ -307,8 +333,8 @@ export default function Navbar() {
               aria-modal="true"
               aria-label="Site navigation"
               initial={{ opacity: 0, y: -12, scale: 0.94, filter: 'blur(8px)' }}
-              animate={{ opacity: 1, y: 0, scale: 1, filter: 'blur(0px)' }}
-              exit={{ opacity: 0, y: -8, scale: 0.97, filter: 'blur(6px)', transition: { duration: 0.18 } }}
+              animate={{ opacity: 1, y: 0, scale: 1, filter: 'blur(0px)', transitionEnd: { filter: 'none' } }}
+              exit={{ opacity: 0, y: -8, scale: 0.97, transition: { duration: 0.18 } }}
               transition={{ type: 'spring', stiffness: 460, damping: 32, mass: 0.8 }}
               className="xl:hidden liquid-glass is-solid origin-top mt-2 mx-auto max-w-md rounded-[26px] p-2.5 max-h-[calc(100dvh-96px)] overflow-y-auto overscroll-contain outline-none"
             >

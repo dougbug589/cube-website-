@@ -291,6 +291,13 @@
   -webkit-mask-composite: xor;
   mask-composite: exclude;
 }
+/* menus: clearer glass with a stronger blur so the page reads through */
+.liquid-glass.is-menu {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.58) 0%, rgba(246, 248, 249, 0.46) 100%);
+  backdrop-filter: blur(28px) saturate(190%) brightness(1.05);
+  -webkit-backdrop-filter: blur(28px) saturate(190%) brightness(1.05);
+  box-shadow: var(--depth-2), inset 0 1px 0 rgba(255, 255, 255, 0.95), inset 0 0 24px rgba(255, 255, 255, 0.3);
+}
 .liquid-glass.is-solid { background: linear-gradient(180deg, rgba(255, 255, 255, 0.86) 0%, rgba(255, 255, 255, 0.74) 100%); }
 /* zero-specificity default so Tailwind's absolute/fixed utilities still win */
 :where(.liquid-glass, .liquid-glass-dark, .glass-edge) { position: relative; }
