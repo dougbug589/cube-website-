@@ -3,10 +3,11 @@
 import React, { useMemo, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowUpRight, ChevronDown, Landmark, GraduationCap, Quote } from 'lucide-react';
+import { ArrowUpRight, ChevronDown, Landmark, GraduationCap } from 'lucide-react';
 import PageHeader from '@/components/common/PageHeader';
 import SectionHeading from '@/components/common/SectionHeading';
 import SectionNav from '@/components/common/SectionNav';
+import MessageSection from '@/components/about/MessageSection';
 import { aboutContent } from '@/data/about';
 import { boardMembers as fallbackBoard, advisoryPanel as fallbackAdvisory } from '@/data/leadership';
 import { teamMembers as fallbackTeam } from '@/data/team';
@@ -166,10 +167,10 @@ export default function AboutPage() {
       </section>
 
       {/* 4 · Chairman Message */}
-      <Message
+      <MessageSection
         id="chairman-message"
         label="Chairman Message"
-        image="/images/leadership/board_member_kamakoti.jpg"
+        image="/images/leadership/kamakoti_iitm.jpg"
         name="Prof. V Kamakoti"
         lines={['Director, IIT Madras']}
         paragraphs={aboutContent.chairmanMessage}
@@ -177,7 +178,7 @@ export default function AboutPage() {
       />
 
       {/* 5 · CEO Message */}
-      <Message
+      <MessageSection
         id="ceo-message"
         label="CEO Message"
         image="/images/leadership/ceo_padmanaban.jpg"
@@ -308,47 +309,3 @@ export default function AboutPage() {
 }
 
 /** Portrait + message, signed as on cubeiitm.org. */
-function Message({
-  id,
-  label,
-  image,
-  name,
-  lines,
-  paragraphs,
-  band = false,
-}: {
-  id: string;
-  label: string;
-  image: string;
-  name: string;
-  lines: string[];
-  paragraphs: string[];
-  band?: boolean;
-}) {
-  return (
-    <section id={id} className={`scroll-mt-40 py-16 lg:py-20 ${band ? 'band-mist' : ''}`}>
-      <div className="shell grid lg:grid-cols-12 gap-8 lg:gap-14 items-start">
-        <div className="lg:col-span-4 reveal lg:sticky lg:top-[calc(var(--nav-offset,93px)+5rem)]">
-          <div className="relative aspect-[4/5] max-w-sm rounded-[28px] overflow-hidden depth-3 bg-[#DCE4E8]">
-            <Image src={image} alt={name} fill sizes="(max-width: 1024px) 80vw, 30vw" className="object-cover object-top" />
-          </div>
-          <p className="mt-5 font-display text-2xl font-extrabold text-[#243239]">{name}</p>
-          {lines.map((l) => (
-            <p key={l} className="text-[15.5px] text-[#5B6A71]">{l}</p>
-          ))}
-        </div>
-        <div className="lg:col-span-8 reveal">
-          <p className="label-mono inline-flex items-center gap-2">
-            <Quote size={15} className="text-[#C4921B]" /> {label}
-          </p>
-          {paragraphs[0] && <p className="mt-4 text-[20px] sm:text-[21px] leading-relaxed text-[#243239] font-semibold">{paragraphs[0]}</p>}
-          <div className="mt-5 space-y-4 text-[17px] leading-relaxed text-[#46565E]">
-            {paragraphs.slice(1).map((p, i) => (
-              <p key={i}>{p}</p>
-            ))}
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}

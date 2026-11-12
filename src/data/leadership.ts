@@ -5,7 +5,7 @@ export const boardMembers: Leader[] = [
     "name": "Prof. V Kamakoti",
     "role": "Chairman",
     "category": "Board Member",
-    "image": "/images/leadership/board_member_kamakoti.jpg",
+    "image": "/images/leadership/kamakoti_iitm.jpg",
     "organization": "Director, IIT Madras"
   },
   {
@@ -279,7 +279,7 @@ export const executiveLeadership: Leader[] = [
     role: 'Chairman, CUBE & Director, IIT Madras',
     category: 'Executive',
     organization: 'Indian Institute of Technology Madras',
-    image: '/images/leadership/board_member_kamakoti.jpg',
+    image: '/images/leadership/kamakoti_iitm.jpg',
     bio: ''
   },
   {

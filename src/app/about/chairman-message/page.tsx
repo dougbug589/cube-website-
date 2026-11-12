@@ -29,7 +29,7 @@ export default function ChairmanMessagePage() {
             <div className="md:col-span-4 p-6 rounded-3xl bg-slate-50 border border-slate-200 shadow-cube text-center">
               <div className="relative h-44 w-44 mx-auto rounded-2xl overflow-hidden mb-4 border-2 border-[#E9D6A8] shadow-md">
                 <Image
-                  src="/images/leadership/board_member_kamakoti.jpg"
+                  src="/images/leadership/kamakoti_iitm.jpg"
                   alt="Prof. V. Kamakoti, Chairman CUBE & Director IIT Madras"
                   fill
                   className="object-cover"

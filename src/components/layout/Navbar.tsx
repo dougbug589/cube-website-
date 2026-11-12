@@ -48,7 +48,7 @@ const MEGA_PREVIEW: Record<string, string> = {
   '/about/vision-mission': '/images/life-at-cube/about_life.jpg',
   '/about/objectives': '/images/life-at-cube/about_life2.jpg',
   '/about/core-values': '/images/hero/slides_building-training-team.jpg',
-  '/about/chairman-message': '/images/leadership/board_member_kamakoti.jpg',
+  '/about/chairman-message': '/images/leadership/kamakoti_iitm.jpg',
   '/about/ceo-message': '/images/leadership/ceo_padmanaban.jpg',
   '/about/board-members': '/images/media/news/original/newsnew4.jpg',
   '/about/advisory-panel': '/images/life-at-cube/about_life1.jpg',
