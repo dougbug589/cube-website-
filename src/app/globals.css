@@ -604,3 +604,32 @@ input, textarea, select, button { font-family: inherit !important; }
   background: linear-gradient(90deg, #C4921B, #E9B215 60%, #F0C468);
   box-shadow: 0 0 12px rgba(233, 178, 21, 0.55);
 }
+
+/* search dialog aura: gold glow behind the glass panel. Blurred once (static
+   filter), then only opacity/transform animate, so it stays on the compositor. */
+.search-glow {
+  background:
+    radial-gradient(48% 42% at 50% 22%, rgba(248, 214, 130, 0.95), transparent 70%),
+    radial-gradient(70% 60% at 50% 40%, rgba(240, 196, 104, 0.6), rgba(233, 178, 21, 0.2) 60%, transparent 78%);
+  filter: blur(42px);
+  animation: searchGlow 4.5s ease-in-out infinite;
+}
+@keyframes searchGlow {
+  0%, 100% { transform: scale(0.97); }
+  50% { transform: scale(1.03); }
+}
+
+/* leadership message window: text fades in at the top and out at the bottom */
+.message-window {
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 28px, #000 calc(100% - 72px), transparent 100%);
+  mask-image: linear-gradient(to bottom, transparent 0, #000 28px, #000 calc(100% - 72px), transparent 100%);
+}
+
+/* search panel: liquid-glass body plus a thin gold rim and a warm under-glow */
+.liquid-glass.search-panel {
+  box-shadow:
+    0 0 0 1px rgba(233, 178, 21, 0.28),
+    0 0 40px -6px rgba(240, 196, 104, 0.55),
+    0 40px 90px -30px rgba(27, 38, 44, 0.55),
+    inset 0 1px 0 rgba(255, 255, 255, 0.95);
+}

@@ -1,8 +1,10 @@
 'use client';
 
-import React, { useState, useEffect, useMemo, useCallback } from 'react';
+import React, { useState, useEffect, useMemo, useCallback, useRef } from 'react';
+import { useRouter } from 'next/navigation';
+import { motion } from 'framer-motion';
 import Link from 'next/link';
-import { Search, X, ArrowRight, Building, Leaf, Cpu, Compass, FileText, FlaskConical, LayoutGrid } from 'lucide-react';
+import { Search, X, ArrowUpRight, Building, Leaf, Cpu, Compass, FileText, FlaskConical, LayoutGrid, CornerDownLeft } from 'lucide-react';
 import { navigationItems } from '@/data/navigation';
 import { projects as fallbackProjects } from '@/data/projects';
 import { verticals } from '@/data/verticals';
@@ -183,99 +185,220 @@ export default function GlobalSearchModal({ isOpen, onClose }: GlobalSearchModal
   }, [isOpen, query, reducedMotion, suggestions, sIdx, typed, deleting]);
   const currentSuggestion = suggestions.length ? suggestions[sIdx % suggestions.length] : '';
 
-  if (!isOpen) return null;
+  // Keyboard selection (↑ ↓ Enter); the pointer moves it too.
+  const router = useRouter();
+  const [active, setActive] = useState(0);
+  useEffect(() => setActive(0), [query]);
+  const listRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    listRef.current?.querySelector<HTMLElement>(`[data-idx="${active}"]`)?.scrollIntoView({ block: 'nearest' });
+  }, [active]);
+  // Close first and navigate on the next frame, so the close and the route
+  // transition never land in the same render.
+  const open = (href: string) => {
+    onClose();
+    requestAnimationFrame(() => router.push(href));
+  };
+
+  // Always mounted, hidden when closed: clicks pass through the moment it
+  // closes, and it is fully hidden once the fade has finished. (Unmounting via
+  // AnimatePresence left an invisible full-screen layer behind when a page
+  // change landed during the exit animation.)
+  const [visible, setVisible] = useState(false);
+  useEffect(() => {
+    if (isOpen) {
+      setVisible(true);
+      return;
+    }
+    const t = setTimeout(() => setVisible(false), 260);
+    return () => clearTimeout(t);
+  }, [isOpen]);
+  const inputRef = useRef<HTMLInputElement>(null);
+  // Focus once the panel is actually visible (a hidden input cannot take focus).
+  useEffect(() => {
+    if (isOpen && visible) inputRef.current?.focus();
+  }, [isOpen, visible]);
+  const layer = `${isOpen ? '' : 'pointer-events-none'} ${visible ? '' : 'invisible'}`;
+  const hasQuery = query.trim().length > 0;
+  const chips = suggestions.slice(0, 6);
 
   return (
-    <div className="fixed inset-0 z-50 flex items-start justify-center pt-16 px-4 bg-black/40 backdrop-blur-md animate-fade-in">
-      <div 
-        className="w-full max-w-2xl bg-white rounded-2xl shadow-2xl border border-slate-200 overflow-hidden"
-        onClick={(e) => e.stopPropagation()}
-      >
-        {/* Search Input Bar */}
-        <div className={`flex items-center px-5 py-4 ${query.trim() ? 'border-b border-slate-200' : ''}`}>
-          <Search className="w-5 h-5 text-[#9A7015] mr-3 flex-shrink-0" />
-          <div className="relative flex-1 min-w-0">
-            <input
-              type="text"
-              autoFocus
-              value={query}
+    <>
+      {/* Three independent layers (backdrop, glow, panel), each animating
+          itself: no shared wrapper, so (1) every backdrop-filter stays live
+          while fading and (2) nothing is left behind if a page change lands
+          mid-animation (a wrapper could stay mounted, invisible, over the page). */}
+        <motion.div
+          key="search-backdrop"
+          aria-hidden
+          className={`fixed inset-0 z-[80] bg-[#1B262C]/30 backdrop-blur-xl backdrop-saturate-150 ${layer}`}
+          initial={false}
+          animate={{ opacity: isOpen ? 1 : 0 }}
+          transition={{ duration: isOpen ? 0.22 : 0.18 }}
+          onClick={onClose}
+        />
+        <motion.div
+          key="search-glow"
+          aria-hidden
+          className={`fixed z-[80] left-1/2 top-[calc(16vh-70px)] sm:top-[calc(22vh-70px)] w-[min(1040px,calc(100vw-8px))] h-[420px] pointer-events-none ${visible ? '' : 'invisible'}`}
+          initial={false}
+          animate={{ x: '-50%', opacity: isOpen ? (hasQuery ? 1 : 0.8) : 0, scale: isOpen ? 1 : 0.9 }}
+          transition={{ duration: isOpen ? 0.5 : 0.16, ease: [0.22, 1, 0.36, 1] }}
+        >
+          {visible && <div className="search-glow w-full h-full rounded-[60px]" />}
+        </motion.div>
+            <motion.div
+              key="search-panel"
+              role="dialog"
+              aria-modal="true"
               aria-label="Search the site"
-              onChange={(e) => setQuery(e.target.value)}
-              onKeyDown={(e) => {
-                // Tab fills in the suggestion being typed
-                if (e.key === 'Tab' && !query && currentSuggestion) {
-                  e.preventDefault();
-                  setQuery(currentSuggestion);
-                }
-              }}
-              className="w-full bg-transparent text-[#243239] focus:outline-none text-[17px] font-medium"
-            />
-            {!query && (
-              <span aria-hidden className="pointer-events-none absolute inset-0 flex items-center text-[17px] text-[#7A888E] whitespace-nowrap overflow-hidden">
-                Search for&nbsp;<span className="text-[#46565E] font-semibold">{reducedMotion ? 'pages, projects, news…' : typed}</span>
-                {!reducedMotion && <span className="ml-0.5 inline-block w-[2px] h-[1.1em] rounded-full bg-[#C4921B] animate-caret" />}
-              </span>
-            )}
-          </div>
-          {query && (
-            <button
-              onClick={() => setQuery('')}
-              className="p-1 rounded-full text-slate-400 hover:text-slate-600 mr-2"
+              aria-hidden={!isOpen}
+              className={`liquid-glass is-solid fixed z-[81] left-1/2 top-[16vh] sm:top-[22vh] w-[min(880px,calc(100vw-32px))] rounded-[30px] overflow-hidden search-panel ${layer}`}
+              initial={{ x: '-50%', opacity: 0, y: 24, scale: 0.96 }}
+              animate={isOpen ? { x: '-50%', opacity: 1, y: 0, scale: 1 } : { x: '-50%', opacity: 0, y: 12, scale: 0.98 }}
+              transition={isOpen ? { type: 'spring', stiffness: 380, damping: 30, mass: 0.8 } : { duration: 0.16 }}
             >
-              <X className="w-4 h-4" />
-            </button>
-          )}
-          <button
-            onClick={onClose}
-            className="px-2.5 py-1 text-xs font-medium text-slate-500 bg-slate-200 hover:bg-slate-300 rounded-lg transition-colors"
-          >
-            ESC
-          </button>
-        </div>
-
-        {/* Results (only once something is typed) */}
-        {query.trim() && (
-        <div className="max-h-[60vh] overflow-y-auto p-4 space-y-2">
-          {query.trim() && searchResults.length === 0 && (
-            <div className="py-12 text-center text-slate-500">
-              <p className="text-base font-medium">No results found for &quot;{query}&quot;</p>
-              <p className="text-xs text-slate-400 mt-1">Try refining your search terms or browsing through the navigation menu.</p>
-            </div>
-          )}
-
-          {searchResults.map((item, idx) => {
-            const Icon = item.icon;
-            return (
-              <Link
-                key={idx}
-                href={item.href}
-                onClick={onClose}
-                className="group flex items-start p-3 rounded-xl hover:bg-slate-100/90 transition border border-transparent hover:border-slate-200"
-              >
-                <div className="p-2 rounded-lg bg-[#F7EDD3] group-hover:bg-[#F6DA86] text-[#9A7015] group-hover:text-[#243239] transition mr-3.5 flex-shrink-0 mt-0.5">
-                  <Icon className="w-4 h-4" />
-                </div>
-                <div className="flex-1 min-w-0">
-                  <div className="flex items-center justify-between">
-                    <h4 className="text-sm font-semibold text-slate-800 group-hover:text-[#9A7015] transition truncate">
-                      {item.title}
-                    </h4>
-                    <span className="text-[13.5px] font-medium px-2 py-0.5 rounded-full bg-slate-100 text-slate-600 ml-2 flex-shrink-0">
-                      {item.category}
+              {/* input row */}
+              <div className="relative flex items-center gap-4 px-6 sm:px-7 h-[76px]">
+                <span className="grid place-items-center w-11 h-11 rounded-2xl bg-gradient-to-b from-[#F8E3A3] to-[#F0C468] text-[#243239] depth-1 shrink-0">
+                  <Search size={20} strokeWidth={2.25} />
+                </span>
+                <div className="relative flex-1 min-w-0">
+                  <input
+                    type="text"
+                    ref={inputRef}
+                    tabIndex={isOpen ? 0 : -1}
+                    value={query}
+                    aria-label="Search the site"
+                    onChange={(e) => setQuery(e.target.value)}
+                    onKeyDown={(e) => {
+                      // Tab fills in the suggestion being typed
+                      if (e.key === 'Tab' && !query && currentSuggestion) {
+                        e.preventDefault();
+                        setQuery(currentSuggestion);
+                      } else if (e.key === 'ArrowDown' && searchResults.length) {
+                        e.preventDefault();
+                        setActive((i) => (i + 1) % searchResults.length);
+                      } else if (e.key === 'ArrowUp' && searchResults.length) {
+                        e.preventDefault();
+                        setActive((i) => (i - 1 + searchResults.length) % searchResults.length);
+                      } else if (e.key === 'Enter' && searchResults[active]) {
+                        e.preventDefault();
+                        open(searchResults[active].href);
+                      }
+                    }}
+                    className="w-full bg-transparent text-[#243239] focus:outline-none text-[20px] sm:text-[22px] font-semibold"
+                  />
+                  {!query && (
+                    <span aria-hidden className="pointer-events-none absolute inset-0 flex items-center text-[20px] sm:text-[22px] text-[#7A888E] whitespace-nowrap overflow-hidden">
+                      Search for&nbsp;<span className="text-[#46565E] font-semibold">{reducedMotion ? 'pages, projects, news…' : typed}</span>
+                      {!reducedMotion && <span className="ml-0.5 inline-block w-[2px] h-[1.1em] rounded-full bg-[#C4921B] animate-caret" />}
                     </span>
-                  </div>
-                  <p className="text-xs text-slate-500 line-clamp-1 mt-0.5">
-                    {item.description}
-                  </p>
+                  )}
                 </div>
-                <ArrowRight className="w-4 h-4 text-slate-300 group-hover:text-[#9A7015] transition ml-2 self-center flex-shrink-0 opacity-0 group-hover:opacity-100" />
-              </Link>
-            );
-          })}
-        </div>
-        )}
-      </div>
-    </div>
+                {query && (
+                  <button
+                    type="button"
+                    onClick={() => setQuery('')}
+                    aria-label="Clear search"
+                    className="press grid place-items-center w-9 h-9 rounded-full text-[#5B6A71] hover:text-[#243239] hover:bg-white/70 transition-colors"
+                  >
+                    <X size={17} />
+                  </button>
+                )}
+                <button
+                  type="button"
+                  onClick={onClose}
+                  className="press hidden sm:inline-flex h-9 px-3 items-center rounded-xl bg-white/80 border border-[#33454E]/10 text-[13.5px] font-bold text-[#5B6A71] hover:text-[#243239] transition-colors"
+                >
+                  Esc
+                </button>
+              </div>
+
+              {/* hairline that lights up gold while searching */}
+              <div aria-hidden className="relative h-px mx-6 bg-[#33454E]/10 overflow-hidden">
+                <motion.div
+                  className="absolute inset-0 bg-gradient-to-r from-transparent via-[#E9B215] to-transparent origin-center"
+                  initial={false}
+                  animate={{ scaleX: hasQuery ? 1 : 0, opacity: hasQuery ? 1 : 0 }}
+                  transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+                />
+              </div>
+
+              {/* body: suggestions when empty, results when typing */}
+              <div ref={listRef} className="max-h-[52vh] overflow-y-auto overscroll-contain p-3 sm:p-4">
+                {!hasQuery ? (
+                  <div className="px-2 py-2">
+                    <p className="label-mono">Try</p>
+                    <div className="mt-3 flex flex-wrap gap-2">
+                      {chips.map((c) => (
+                        <button
+                          key={c}
+                          type="button"
+                          onClick={() => setQuery(c)}
+                          className="press h-10 px-4 rounded-full bg-white/75 border border-[#33454E]/10 text-[15px] font-bold text-[#46565E] hover:text-[#243239] hover:bg-white hover:border-[#C4921B]/35 transition-colors"
+                        >
+                          {c}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                ) : searchResults.length === 0 ? (
+                  <div className="py-12 text-center">
+                    <p className="font-display text-[19px] font-bold text-[#243239]">No results for &ldquo;{query}&rdquo;</p>
+                    <p className="mt-1.5 text-[15px] text-[#5B6A71]">Try another word, or browse from the menu.</p>
+                  </div>
+                ) : (
+                  <ul className="space-y-1" role="listbox" aria-label="Results">
+                    {searchResults.map((item, idx) => {
+                      const Icon = item.icon;
+                      const on = idx === active;
+                      return (
+                        <li key={item.href + idx} data-idx={idx} role="option" aria-selected={on}>
+                          <Link
+                            href={item.href}
+                            onClick={onClose}
+                            onMouseMove={() => active !== idx && setActive(idx)}
+                            className="relative flex items-center gap-4 px-3.5 py-3 rounded-2xl"
+                          >
+                            {on && (
+                              <motion.span
+                                layoutId="search-highlight"
+                                transition={{ type: 'spring', stiffness: 520, damping: 40, mass: 0.7 }}
+                                className="absolute inset-0 rounded-2xl bg-white/85 border border-white shadow-[0_8px_22px_-14px_rgba(36,50,57,0.5),inset_0_1px_0_#fff]"
+                              />
+                            )}
+                            <span className={`relative grid place-items-center w-11 h-11 rounded-2xl shrink-0 transition-colors duration-300 ${on ? 'bg-gradient-to-b from-[#F8E3A3] to-[#F0C468] text-[#243239]' : 'bg-[#F7EDD3] text-[#9A7015]'}`}>
+                              <Icon size={19} strokeWidth={2} />
+                            </span>
+                            <span className="relative flex-1 min-w-0">
+                              <span className="flex items-center gap-2">
+                                <span className="font-display text-[16.5px] font-bold text-[#243239] truncate">{item.title}</span>
+                                <span className="shrink-0 rounded-full bg-[#33454E]/[0.06] px-2.5 py-0.5 text-[13.5px] font-bold text-[#5B6A71]">{item.category}</span>
+                              </span>
+                              {item.description && <span className="mt-0.5 block text-[14.5px] text-[#5B6A71] truncate">{item.description}</span>}
+                            </span>
+                            <span className={`relative shrink-0 transition-[opacity,transform] duration-300 ${on ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-1'}`}>
+                              {on ? <CornerDownLeft size={17} className="text-[#9A7015]" /> : <ArrowUpRight size={17} />}
+                            </span>
+                          </Link>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                )}
+              </div>
+
+              {/* key hints */}
+              <div className="hidden sm:flex items-center gap-5 px-6 py-3 border-t border-[#33454E]/10 bg-white/40 text-[13.5px] font-semibold text-[#5B6A71]">
+                {[['↑ ↓', 'move'], ['↵', 'open'], ['Tab', 'fill suggestion'], ['Esc', 'close']].map(([k, v]) => (
+                  <span key={k} className="inline-flex items-center gap-2">
+                    <kbd className="font-sans min-w-7 h-7 px-2 grid place-items-center rounded-lg bg-white border border-[#33454E]/12 text-[13.5px] font-bold text-[#243239] shadow-[0_1px_0_rgba(36,50,57,0.12)]">{k}</kbd>
+                    {v}
+                  </span>
+                ))}
+              </div>
+            </motion.div>
+    </>
   );
 }
-
