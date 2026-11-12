@@ -17,6 +17,7 @@ Two lines of work run through this repository:
 ### Redesign
 
 #### Added
+- Top bar morphing mega-menu: a single glass panel springs its width, height and position to whichever menu you hover (About, Projects, Verticals, Media), and the content slides across in the direction you moved, so switching menus is one continuous motion instead of a fade. Passing over items without a menu keeps the panel open. About and Media list their pages beside a photo that changes to the page under the pointer, with a sliding highlight. (`8fb8559`)
 - Search dialog: a minimal box whose placeholder types real things you can search (pages such as Board Members or Careers, the verticals, project clients such as IIT Tirupati, news and CEL), each checked to return results; Tab fills in the suggestion. The keyword hint and chip buttons were removed. Site pages are now searchable, and projects match on client and location. (`4b8a4b8`)
 - Home "Work with CUBE" rebuilt as three intent cards (start a project, bid on a tender, join the team), each with an icon, one line and an arrow, plus a slim glass strip with the office address, email and phone. (`12ea909`)
 - Home Partners section: the seven partner logo sheets in white tiles with a slow, staggered float, and a light-gold "Clients served" card that links to the clients page. (`12ea909`)
@@ -60,6 +61,7 @@ Two lines of work run through this repository:
 - Slate rail sidebar on desktop, photo hero, and stacked project carousel (Etihad-style layout). Superseded the same day by the top bar. (`75f0d52`)
 
 #### Fixed
+- Project and vertical titles in the top-bar menus overflowed their photo cards; they clamp to two lines again. (`8fb8559`)
 - Top bar: between 1280 and 1439px wide the Get in touch button was cut off at the right edge; the CUBE wordmark now hides in that range so everything fits. (`8145035`)
 - Production build restored: an unescaped apostrophe on the media page, introduced in the previous change, had failed the build. (`1e21f9b`)
 - Remaining content matched to the live site: hero and gallery captions, 56 clients without an invented "Public Sector" label, tenders marked closed, the careers email (office@cubeiitm.org) and copy, the core values, the full vision and a listed mission, and a cut-off news summary. Removed invented promises and claims, and seven unused components that contained them. (`424a67b`)
