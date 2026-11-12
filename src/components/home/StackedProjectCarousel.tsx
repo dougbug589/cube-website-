@@ -34,6 +34,7 @@ const SHORT_CATEGORY: Record<string, string> = {
 };
 
 const VISIBLE = 5; // odd number, centre = 2
+const AUTO_MS = 4000;
 
 export default function StackedProjectCarousel({ projects }: { projects: AnyProject[] }) {
   const items = useMemo(() => {
@@ -44,22 +45,53 @@ export default function StackedProjectCarousel({ projects }: { projects: AnyProj
   }, [projects]);
 
   const [center, setCenter] = useState(0);
-  const [paused, setPaused] = useState(false);
-  const timer = useRef<ReturnType<typeof setInterval> | null>(null);
+  // Pause only while a card is hovered or focused, or the carousel is not
+  // visible. (Pausing on the whole full-width section kept it frozen.)
+  const [cardHover, setCardHover] = useState(false);
+  const [cardFocus, setCardFocus] = useState(false);
+  const [onScreen, setOnScreen] = useState(false);
+  const [reduced, setReduced] = useState(false);
+  const rootRef = useRef<HTMLDivElement>(null);
 
   const n = items.length;
   const next = useCallback(() => setCenter((c) => (n ? (c + 1) % n : 0)), [n]);
   const prev = useCallback(() => setCenter((c) => (n ? (c - 1 + n) % n : 0)), [n]);
+  const paused = cardHover || cardFocus || !onScreen || reduced;
 
   useEffect(() => {
-    if (paused || n < 2) return;
-    timer.current = setInterval(next, 5000);
+    setReduced(window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+    const el = rootRef.current;
+    if (!el) return;
+    let visible = false;
+    const sync = () => setOnScreen(visible && document.visibilityState === 'visible');
+    const io = new IntersectionObserver(([e]) => {
+      visible = e.isIntersecting;
+      sync();
+    }, { threshold: 0.3 });
+    io.observe(el);
+    document.addEventListener('visibilitychange', sync);
     return () => {
-      if (timer.current) clearInterval(timer.current);
+      io.disconnect();
+      document.removeEventListener('visibilitychange', sync);
     };
-  }, [paused, n, next]);
+  }, []);
+
+  // Auto-scroll: one step every AUTO_MS. Keyed on `center`, so any manual
+  // step restarts the clock instead of double-stepping.
+  useEffect(() => {
+    if (paused || n < 2) return;
+    const t = setTimeout(next, AUTO_MS);
+    return () => clearTimeout(t);
+  }, [center, paused, n, next]);
 
   if (n === 0) return null;
+
+  const pauseHandlers = {
+    onMouseEnter: () => setCardHover(true),
+    onMouseLeave: () => setCardHover(false),
+    onFocus: () => setCardFocus(true),
+    onBlur: () => setCardFocus(false),
+  };
 
   const half = Math.floor(VISIBLE / 2);
   const visible = Array.from({ length: Math.min(VISIBLE, n) }, (_, i) => {
@@ -70,11 +102,8 @@ export default function StackedProjectCarousel({ projects }: { projects: AnyProj
 
   return (
     <div
+      ref={rootRef}
       className="relative"
-      onMouseEnter={() => setPaused(true)}
-      onMouseLeave={() => setPaused(false)}
-      onFocusCapture={() => setPaused(true)}
-      onBlurCapture={() => setPaused(false)}
       onKeyDown={(e) => {
         if (e.key === 'ArrowRight') next();
         if (e.key === 'ArrowLeft') prev();
@@ -136,12 +165,13 @@ export default function StackedProjectCarousel({ projects }: { projects: AnyProj
           );
 
           return isCenter ? (
-            <Link key={key} href={href} className="press relative focus:outline-none focus-visible:ring-2 focus-visible:ring-[#E9B215] rounded-[26px]" style={{ zIndex: z }}>
+            <Link key={key} href={href} {...pauseHandlers} className="press relative focus:outline-none focus-visible:ring-2 focus-visible:ring-[#E9B215] rounded-[26px]" style={{ zIndex: z }}>
               {card}
             </Link>
           ) : (
             <button
               key={key}
+              {...pauseHandlers}
               type="button"
               aria-label={`Show ${project.title}`}
               onClick={() => setCenter(index)}
