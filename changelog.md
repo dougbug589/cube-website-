@@ -35,6 +35,7 @@ Two lines of work run through this repository:
 - Etihad-inspired theme: slate and gold palette, scroll-reveal animations, gold scroll-progress bar. (`1977bf6`)
 
 #### Changed
+- Projects list redesigned: a sticky glass toolbar with a springing filter pill, live counts and search; cards reflow smoothly as you filter. Project cards are now image-led, with vertical and status chips, the title, client and location. (`1c84698`)
 - About page redesigned in the new design language, with content unchanged: a glass section navigator whose gold pill follows the section in view, an editorial overview, the mission as a list, numbered objectives, portrait-and-message layouts for the Chairman and CEO, and photo grids for the board, advisory panel and team. On the home page, the three About points no longer leave empty space beside the vision card. (`282ed43`)
 - Footer social icons are solid brand-colour circles (LinkedIn blue, X black, Facebook blue) with white marks and a brand-colour glow on hover. Twitter is now X: the link points to x.com/CUBEatIITM and shows the X mark. (`12ea909`)
 - Larger, more legible text across the site: the smallest text steps were raised (about 13 to 15 px, 15 to 17 px, 17 to 18 px) and hard-coded tiny sizes bumped; the smallest text left is 13.5 px section labels. Checked for overflow on seven pages at three widths. (`0b76f04`)
