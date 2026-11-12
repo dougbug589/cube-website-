@@ -173,7 +173,7 @@ export default function VerticalShowcase({ verticals }: { verticals: Vertical[] 
                   <h3 className="font-display text-[26px] lg:text-[30px] font-extrabold leading-tight">{v.title}</h3>
                   {v.tagline && <p className="mt-2 text-[16px] text-[#46565E] leading-relaxed">{v.tagline}</p>}
                 </div>
-                {typeof v.projectCount === 'number' && (
+                {typeof v.projectCount === 'number' && v.projectCount > 0 && (
                   <div className="text-right shrink-0">
                     <p className="font-display text-[34px] font-extrabold leading-none text-[#C4921B]">{v.projectCount}</p>
                     <p className="text-[15px] text-[#5B6A71] mt-1">projects</p>

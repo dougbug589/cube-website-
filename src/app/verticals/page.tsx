@@ -38,9 +38,9 @@ export default function CompleteVerticalsExperience() {
   return (
     <div className="bg-transparent text-[#243239] min-h-screen">
       <PageHeader
-        badge="Core Engineering Disciplines"
-        title="Four Core Applied Verticals"
-        description="Comprehensive technical capabilities spanning structural proof checking, environmental diagnostics (CEL), IoT urban telemetry, and multimodal transport planning."
+        badge="Verticals"
+        title="Our verticals"
+        description="Building & Construction, Environment & Sustainability, Smart Cities, and Urban Planning & Transportation."
         breadcrumbs={[{ label: 'Verticals' }]}
       />
 
@@ -139,7 +139,7 @@ export default function CompleteVerticalsExperience() {
                       </div>
 
                       <div className="flex items-center justify-between text-xs text-[#5B6A71] border-t border-[#DCE4E7] pt-4">
-                        <span className="font-semibold text-[#2B3B44]">{vert.projectCount ? `${vert.projectCount}+ Projects Assured` : '20+ Projects Completed'}</span>
+                        <span className="font-semibold text-[#2B3B44]">{vert.projectCount ? `${vert.projectCount} projects` : ''}</span>
                         <Link
                           href="/projects"
                           className="font-bold text-[#2B3B44] hover:text-[#C4921B] flex items-center gap-1 transition"

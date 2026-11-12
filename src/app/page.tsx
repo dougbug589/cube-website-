@@ -230,9 +230,8 @@ export default function HomePage() {
       <Section
         id="verticals"
         band
-        eyebrow="Four verticals"
-        title="One faculty bench, four engineering disciplines."
-        lead="Each vertical pairs IIT Madras faculty with field engineers for consultancy, assurance and applied research."
+        eyebrow="Verticals"
+        title="Four verticals."
         action={{ href: '/verticals', label: 'All verticals' }}
       >
         <div className="reveal">
