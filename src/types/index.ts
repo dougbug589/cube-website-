@@ -39,6 +39,12 @@ export interface Project {
   client?: string;
   status?: string;
   year?: string;
+  /** As shown on cubeiitm.org: Completed / Ongoing (separate from the CMS publish `status`) */
+  projectStatus?: string;
+  startDate?: string;
+  endDate?: string;
+  highlights?: string[];
+  services?: string[];
   description: string;
   heroImage: string;
   galleryImages: string[];

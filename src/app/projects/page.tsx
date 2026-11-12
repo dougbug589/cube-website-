@@ -49,7 +49,7 @@ function ProjectsPageInner() {
       <PageHeader
         badge="Applied Execution"
         title="Project Portfolio"
-        description="Explore over 40+ applied engineering consultancy, third-party quality assurance, and urban infrastructure projects delivered by CUBE."
+        description="Selected projects across Building & Construction, Environment & Sustainability and Urban Planning & Transportation."
         breadcrumbs={[{ label: 'Projects' }]}
       />
 

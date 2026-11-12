@@ -69,9 +69,20 @@ export default function PageHeader({ badge, title, description, breadcrumbs, bac
           </nav>
         </div>
 
-        <div className="max-w-3xl reveal-stagger revealed">
+        <div className="max-w-4xl reveal-stagger revealed">
           <p className="label-mono">{badge}</p>
-          <h1 className="headline-light text-4xl sm:text-5xl lg:text-[3.5rem] text-[#243239] mt-3">{title}</h1>
+          {/* long official titles (project pages) step down so they stay readable */}
+          <h1
+            className={`headline-light text-[#243239] mt-3 ${
+              title.length > 90
+                ? 'text-[1.75rem] sm:text-3xl lg:text-[2.4rem] leading-tight'
+                : title.length > 50
+                  ? 'text-3xl sm:text-4xl lg:text-[2.9rem]'
+                  : 'text-4xl sm:text-5xl lg:text-[3.5rem]'
+            }`}
+          >
+            {title}
+          </h1>
           <p className="mt-5 text-base sm:text-[17px] text-[#46565E] leading-relaxed max-w-2xl">{description}</p>
         </div>
       </div>

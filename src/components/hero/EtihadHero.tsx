@@ -28,7 +28,7 @@ const FALLBACK_SLIDES: Slide[] = [
   { id: 'iitt', image: '/images/hero/slides_iit-tirupathi.jpg', tag: 'IIT Tirupati Permanent Campus', location: 'Andhra Pradesh', href: '/projects/iit-tirupathi' },
   { id: 'cpcl', image: '/images/hero/slides_cpcl-arc.jpg', tag: 'CPCL ARHC Precast Housing', location: 'Chennai', href: '/projects/cpcl-arhc' },
   { id: 'pmay', image: '/images/hero/slides_ashiana.jpg', tag: 'PMAY Housing for All', location: 'Tamil Nadu', href: '/projects' },
-  { id: 'niche', image: '/images/hero/slides_niche.jpg', tag: 'NICHE Industrial Park', location: 'SIPCOT Irungattukottai', href: '/projects/upt2' },
+  { id: 'niche', image: '/images/hero/slides_niche.jpg', tag: 'NICHE Industrial Park', location: 'SIPCOT Irungattukottai', href: '/projects/upt6' },
 ];
 
 const SLIDE_MS = 7000;

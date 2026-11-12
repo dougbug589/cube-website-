@@ -155,7 +155,7 @@ export default function StackedProjectCarousel({ projects }: { projects: AnyProj
             const target = pose(offset, spacing);
             const href = `/projects/${project.slug || project.id || ''}`;
             const label = SHORT_CATEGORY[project.category || ''] || project.category || 'Project';
-            const sub = project.location || project.client || 'Tamil Nadu · IIT Madras';
+            const sub = [project.client, project.location].filter(Boolean).join(' · ');
 
             return (
               <motion.div

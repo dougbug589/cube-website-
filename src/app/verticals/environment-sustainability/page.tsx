@@ -144,7 +144,7 @@ export default async function EnvironmentSustainabilityPage() {
                 href="/projects"
                 className="text-xs font-bold text-[#9A7015] hover:text-[#9A7015] flex items-center"
               >
-                <span>View All 40+ Projects</span>
+                <span>View all projects</span>
                 <ArrowRight className="w-3.5 h-3.5 ml-1" />
               </Link>
             </div>

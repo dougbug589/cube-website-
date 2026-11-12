@@ -4,12 +4,8 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import PageHeader from '@/components/common/PageHeader';
 import ProjectCard from '@/components/cards/ProjectCard';
-import { 
-  Building2, CheckCircle2, Target, Wrench, 
-  ArrowLeft, ArrowRight, ShieldCheck, MapPin, ArrowUpRight, Sparkles
-} from 'lucide-react';
+import { ArrowUpRight, CheckCircle2 } from 'lucide-react';
 import { getProjectBySlug, getPublishedProjects } from '@/lib/db/queries';
-import { GlassPanel } from '@/components/common/AppleLiquidGlass';
 
 export const dynamic = 'force-dynamic';
 
@@ -19,8 +15,30 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   if (!project) return { title: 'Project Not Found | CUBE' };
   return {
     title: `${project.title} | CUBE Projects`,
-    description: project.description,
+    description: String(project.description || '').split('\n')[0].slice(0, 200),
   };
+}
+
+function Block({ title, children }: { title: string; children: React.ReactNode }) {
+  return (
+    <section className="space-y-4">
+      <h2 className="font-display text-2xl font-bold text-[#243239]">{title}</h2>
+      {children}
+    </section>
+  );
+}
+
+function Bullets({ items }: { items: string[] }) {
+  return (
+    <ul className="space-y-3">
+      {items.map((item, i) => (
+        <li key={i} className="flex items-start gap-3 text-[17px] text-[#46565E] leading-relaxed">
+          <CheckCircle2 className="w-5 h-5 text-[#C4921B] mt-1 shrink-0" />
+          <span>{item}</span>
+        </li>
+      ))}
+    </ul>
+  );
 }
 
 export default async function ProjectDetailPage({ params }: { params: Promise<{ slug: string }> }) {
@@ -30,6 +48,23 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
   if (!project) {
     notFound();
   }
+
+  const p = project as any;
+  const descriptionLines: string[] = String(p.description || '').split('\n').map((l: string) => l.trim()).filter(Boolean);
+  const services: string[] = Array.isArray(p.services) ? p.services : [];
+  const highlights: string[] = Array.isArray(p.highlights) ? p.highlights : [];
+  const gallery: string[] = (Array.isArray(p.galleryImages) ? p.galleryImages : []).filter((g: string) => g && g !== p.heroImage);
+  const facts: [string, string][] = (
+    [
+      ['Vertical', p.category],
+      ['Client', p.client],
+      ['Status', p.projectStatus],
+      ['Start date', p.startDate],
+      ['End date', p.endDate],
+      ['Location', p.location],
+      ['Scope of work', Array.isArray(p.scopeOfWork) ? p.scopeOfWork.join('\n') : ''],
+    ] as [string, string | undefined][]
+  ).filter((f): f is [string, string] => Boolean(f[1] && String(f[1]).trim()));
 
   const allProjects = await getPublishedProjects();
   const relatedProjects = allProjects
@@ -41,7 +76,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
       <PageHeader
         badge={project.category}
         title={project.title}
-        description={project.description}
+        description={[p.client, p.location, p.projectStatus].filter(Boolean).join(' · ')}
         backHref="/projects"
         breadcrumbs={[
           { label: 'Projects', href: '/projects' },
@@ -49,114 +84,55 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
         ]}
       />
 
-      <section className="py-20 bg-transparent border-b border-[#DCE4E7]">
+      <section className="py-16 lg:py-20 bg-transparent border-b border-[#DCE4E7]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
-            
-            {/* Left 8 Cols: Main Project Content */}
-            <div className="lg:col-span-8 space-y-12">
-              
-              {/* Hero Image with Apple Frosted Frame */}
-              <div className="relative h-96 sm:h-[480px] w-full rounded-3xl overflow-hidden shadow-[0_20px_50px_rgba(36,50,57,0.08)] border-2 border-white ring-1 ring-[#D3DDE1] bg-slate-100">
-                <Image
-                  src={project.heroImage || '/images/hero/slides_iit-tirupathi.jpg'}
-                  alt={project.title}
-                  fill
-                  className="object-cover"
-                  priority
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
-                
-                {/* Floating Inset Badge */}
-                <div className="absolute bottom-5 left-5 right-5 flex items-center justify-between text-white z-10">
-                  <div className="flex items-center gap-2">
-                    <MapPin className="w-4 h-4 text-[#C4921B]" />
-                    <span className="text-xs sm:text-sm font-semibold drop-shadow-sm">
-                      {project.location || 'Tamil Nadu, India'}
-                    </span>
-                  </div>
-                  <span className="text-[13.5px] font-bold uppercase tracking-wider px-3 py-1 rounded-full bg-white/90 text-[#2B3B44] backdrop-blur-md">
-                    Verified State Scheme
-                  </span>
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12">
+            {/* Main content: only what the project's page on cubeiitm.org states */}
+            <div className="lg:col-span-8 space-y-10">
+              {project.heroImage && (
+                <div className="relative h-80 sm:h-[460px] w-full rounded-[28px] overflow-hidden depth-2 bg-[#DCE4E8]">
+                  <Image src={project.heroImage} alt={project.title} fill sizes="(max-width: 1024px) 100vw, 66vw" className="object-cover" priority />
                 </div>
-              </div>
-
-              {/* Project Overview */}
-              <GlassPanel variant="card" className="p-8 space-y-4">
-                <div className="flex items-center gap-2">
-                  <Sparkles className="w-4 h-4 text-[#C4921B]" />
-                  <span className="text-xs font-bold uppercase tracking-widest text-[#2B3B44]">
-                    Comprehensive Case Study
-                  </span>
-                </div>
-                <h2 className="font-display text-2xl sm:text-3xl font-bold text-[#243239] tracking-tight">
-                  Project Overview &amp; Mandate
-                </h2>
-                <p className="text-xs sm:text-sm text-[#5B6A71] leading-relaxed">
-                  {project.description}
-                </p>
-              </GlassPanel>
-
-              {/* Objectives */}
-              {project.objectives && project.objectives.length > 0 && (
-                <GlassPanel variant="card" className="p-8 space-y-5">
-                  <div className="flex items-center space-x-2 text-[#2B3B44] font-bold text-sm tracking-wide uppercase">
-                    <Target className="w-4 h-4 text-[#C4921B]" />
-                    <span>Project Objectives &amp; Technical Mandate</span>
-                  </div>
-                  <ul className="space-y-3 pt-2">
-                    {project.objectives.map((obj: string, i: number) => (
-                      <li key={i} className="flex items-start text-xs sm:text-sm text-[#243239]">
-                        <CheckCircle2 className="w-4 h-4 text-[#C4921B] mr-2.5 flex-shrink-0 mt-0.5" />
-                        <span className="leading-relaxed">{obj}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </GlassPanel>
               )}
 
-              {/* Scope of Work */}
-              {project.scopeOfWork && project.scopeOfWork.length > 0 && (
+              {descriptionLines.length > 0 && (
+                <Block title="Description">
+                  {descriptionLines.length === 1 ? (
+                    <p className="text-[17px] text-[#46565E] leading-relaxed whitespace-pre-line">{descriptionLines[0]}</p>
+                  ) : (
+                    <Bullets items={descriptionLines} />
+                  )}
+                </Block>
+              )}
+
+              {services.length > 0 && (
+                <Block title="Services">
+                  <Bullets items={services} />
+                </Block>
+              )}
+
+              {highlights.length > 0 && (
+                <Block title="Key highlights">
+                  {highlights.length === 1 ? (
+                    <p className="text-[17px] text-[#46565E] leading-relaxed whitespace-pre-line">{highlights[0]}</p>
+                  ) : (
+                    <Bullets items={highlights} />
+                  )}
+                </Block>
+              )}
+
+              {gallery.length > 0 && (
                 <div className="space-y-4">
-                  <h3 className="font-display text-2xl font-bold text-[#243239] flex items-center">
-                    <Wrench className="w-5 h-5 text-[#2B3B44] mr-2" />
-                    <span>Scope of Engineering Work</span>
-                  </h3>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    {project.scopeOfWork.map((scope: string, i: number) => (
-                      <div 
-                        key={i} 
-                        className="p-5 rounded-2xl bg-white border border-[#D3DDE1] shadow-2xs hover:shadow-sm transition-all"
-                      >
-                        <span className="text-[13.5px] font-bold text-[#C4921B] uppercase tracking-wider block mb-1.5">
-                          0{i + 1}. Mandate Scope
-                        </span>
-                        <p className="text-xs text-[#243239] leading-relaxed">
-                          {scope}
-                        </p>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              )}
-
-              {/* Horizontal Project Gallery */}
-              {project.galleryImages && project.galleryImages.length > 0 && (
-                <div className="space-y-4 pt-4">
-                  <h3 className="font-display text-2xl font-bold text-[#243239]">
-                    Site &amp; Execution Photographs
-                  </h3>
+                  <h2 className="font-display text-2xl font-bold text-[#243239]">Image gallery</h2>
                   <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
-                    {project.galleryImages.map((img: string, i: number) => (
-                      <div 
-                        key={i} 
-                        className="relative h-48 rounded-2xl overflow-hidden shadow-xs border border-[#D3DDE1] group"
-                      >
+                    {gallery.map((img: string, i: number) => (
+                      <div key={img} className="relative h-48 rounded-2xl overflow-hidden depth-1 bg-[#DCE4E8] group">
                         <Image
                           src={img}
-                          alt={`${project.title} photo ${i + 1}`}
+                          alt={`${project.title}, photo ${i + 1}`}
                           fill
-                          className="object-cover group-hover:scale-108 transition-transform duration-500"
+                          sizes="(max-width: 640px) 50vw, 300px"
+                          className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.04]"
                         />
                       </div>
                     ))}
@@ -165,52 +141,26 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
               )}
             </div>
 
-            {/* Right 4 Cols: Project Metadata Sidebar in Apple Liquid Glass */}
-            <div className="lg:col-span-4 space-y-6">
-              <div className="p-7 rounded-3xl apple-glass-card border border-[#D3DDE1] shadow-sm space-y-5 sticky top-[calc(var(--nav-offset,84px)+1rem)] transition-[top] duration-500">
-                <h3 className="font-display text-lg font-medium text-[#243239] pb-3 border-b border-[#DCE4E7]">
-                  Project Specifications
-                </h3>
-
-                <div>
-                  <span className="text-[13.5px] font-bold text-[#5B6A71] uppercase tracking-wider block">
-                    Institutional Vertical
-                  </span>
-                  <span className="text-xs font-semibold text-[#2B3B44] mt-1 block">
-                    {project.category}
-                  </span>
-                </div>
-
-                <div>
-                  <span className="text-[13.5px] font-bold text-[#5B6A71] uppercase tracking-wider block">
-                    Execution Body
-                  </span>
-                  <span className="text-xs font-semibold text-[#243239] mt-1 block">
-                    CUBE IIT Madras
-                  </span>
-                </div>
-
-                <div>
-                  <span className="text-[13.5px] font-bold text-[#5B6A71] uppercase tracking-wider block">
-                    Quality Mandate
-                  </span>
-                  <span className="text-xs text-[#5B6A71] mt-1 block leading-relaxed">
-                    Independent Third-Party Quality Assurance (TPQA) &amp; Structural Proof Checking
-                  </span>
-                </div>
-
+            {/* Facts and figures, as listed on the live project page */}
+            <div className="lg:col-span-4">
+              <div className="glass rounded-[28px] p-7 space-y-5 lg:sticky lg:top-[calc(var(--nav-offset,93px)+1rem)]">
+                <h2 className="font-display text-xl font-bold text-[#243239] pb-3 border-b border-[#DCE4E7]">Facts and figures</h2>
+                {facts.map(([label, value]) => (
+                  <div key={label}>
+                    <span className="label-mono block">{label}</span>
+                    <span className="mt-1 block text-[16px] font-semibold text-[#243239] leading-snug whitespace-pre-line">{value}</span>
+                  </div>
+                ))}
                 <div className="pt-4 border-t border-[#DCE4E7]">
                   <Link
                     href="/contact"
-                    className="w-full flex items-center justify-center py-3 px-4 rounded-full text-xs font-semibold text-[#2B3B44] bg-[#F2F5F6] hover:bg-[#F6DA86] hover:text-[#243239] border border-[#D3DDE1] transition-all shadow-xs"
+                    className="press btn-soft w-full inline-flex items-center justify-center gap-1.5 h-12 rounded-full text-[15.5px] font-bold"
                   >
-                    <span>Enquire for Similar Projects</span>
-                    <ArrowUpRight className="w-3.5 h-3.5 ml-1.5" />
+                    Enquire about similar work <ArrowUpRight size={16} strokeWidth={2.25} />
                   </Link>
                 </div>
               </div>
             </div>
-
           </div>
         </div>
       </section>

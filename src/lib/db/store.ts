@@ -325,7 +325,7 @@ function buildInitialStore(): CMSStore {
         id: 'slide_4',
         projectTag: 'NICHE Industrial Park & Environmental Stormwater Engineering',
         location: 'SIPCOT Irungattukottai, Tamil Nadu',
-        projectLink: '/projects/upt2',
+        projectLink: '/projects/upt6',
         imageUrl: '/images/hero/slides_niche.jpg',
         status: 'published',
         displayOrder: 4,

@@ -63,7 +63,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
           {project.scopeOfWork && project.scopeOfWork.length > 0 && (
             <div className="mt-4 pt-3 border-t border-[#DCE4E7]/70 space-y-1.5">
               <div className="text-[13.5px] font-bold text-[#C4921B] uppercase tracking-wider">
-                Key Scope:
+                Scope of work
               </div>
               {project.scopeOfWork.slice(0, 2).map((item, i) => (
                 <div key={i} className="flex items-start text-xs text-[#46565E]">
@@ -79,7 +79,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
       {/* Footer Pill Action */}
       <div className="p-6 pt-0 flex items-center justify-between text-xs text-[#5B6A71] border-t border-transparent group-hover:border-[#DCE4E7]/50 transition-colors">
         <span className="text-[13.5px] font-medium text-[#5B6A71]">
-          {project.location || 'Tamil Nadu, India'}
+          {[project.client, project.location].filter(Boolean).join(' · ')}
         </span>
         <div className="flex items-center space-x-1 font-semibold text-[#2B3B44] group-hover:text-[#C4921B] transition-colors">
           <span>Overview</span>
