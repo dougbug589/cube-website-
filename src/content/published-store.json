@@ -1,11 +1,26 @@
 {
- "publishedAt": "2026-11-12T06:05:55.345Z",
+ "publishedAt": "2026-11-12T06:15:23.182Z",
  "store": {
   "users": [],
   "auditLogs": [],
   "enquiries": [],
   "jobApplications": [],
   "news": [
+   {
+    "id": "news_1794464107951",
+    "slug": "test-website-publishing-check-will-be-removed",
+    "title": "Test: website publishing check (will be removed)",
+    "excerpt": "Automated check that a change in the local admin reaches the live website.",
+    "content": "This test article is removed right after the check.",
+    "category": "Institutional",
+    "date": "2026-11-12",
+    "author": "CUBE Lead Administrator",
+    "image": "/images/hero/slides_building-training-team.jpg",
+    "featured": false,
+    "status": "published",
+    "createdAt": "2026-11-12T06:15:07.951Z",
+    "updatedAt": "2026-11-12T06:15:07.951Z"
+   },
    {
     "id": "news-agm-7",
     "title": "7th Annual General Meeting at CUBE",
