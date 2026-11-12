@@ -36,6 +36,7 @@ Two lines of work run through this repository:
 - Etihad-inspired theme: slate and gold palette, scroll-reveal animations, gold scroll-progress bar. (`1977bf6`)
 
 #### Changed
+- Leadership message boxes scroll faster still, pause for less time at the bottom, glide back to the top more quickly (still eased) and restart sooner. (`422f344`)
 - Leadership messages: the boxes scroll faster again and now glide back to the top with a gentle ease-in-out instead of jumping, then rest for a moment before starting again. The separate Chairman Message and CEO Message pages use the same portrait and scrolling box, with plain page headings in place of invented ones. (`9ced23a`)
 - The Chairman and CEO message boxes scroll a little faster (about a third quicker). (`e8a1915`)
 - About page: the Chairman's and CEO's messages now show the portrait on the left and the message on the right in a raised glass reading window that scrolls itself slowly. It starts when it comes into view, pauses while the pointer is over it or the reader scrolls it, and returns to the top after reaching the end. It has a gold progress rail and a Pause button, and stays still for visitors who prefer reduced motion. Prof. V Kamakoti's photo is now the official portrait from IIT Madras's Director page, everywhere it appears. (`7d68e15`)
