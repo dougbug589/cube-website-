@@ -6,7 +6,7 @@ import {
   Edit3, Archive, ArchiveRestore, X, Clock, Calendar,
   FileText, Download, User, Mail, Phone, ExternalLink, Eye
 } from 'lucide-react';
-import { createCareerAction, updateCareerAction, archiveCareerAction } from '@/app/admin/actions/cms';
+import { createCareerAction, updateCareerAction, archiveCareerAction, markApplicationReviewedAction } from '@/app/admin/actions/cms';
 import CareersPageEditor from './CareersPageEditor';
 import ApplicationViewer from './ApplicationViewer';
 import { DEFAULT_EMPLOYMENT_TYPES, EXTRA_CAREER_DEPARTMENTS } from '@/lib/careers-page';
@@ -229,6 +229,9 @@ export default function CareersManagerClient({
                     <div className="space-y-1">
                       <div className="flex items-center gap-2">
                         <span className="font-bold text-sm text-[#24272B]">{app.fullName}</span>
+                        {app.status === 'new' && (
+                          <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-[#D99A42] text-white">New</span>
+                        )}
                         <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-[#EAF2F8] text-[#070E5C] border border-[#BDD7E8]">
                           {app.domain || 'Engineering'}
                         </span>
@@ -262,7 +265,13 @@ export default function CareersManagerClient({
                     <div className="shrink-0 flex items-center gap-2">
                       <button
                         type="button"
-                        onClick={() => setViewingApp(app)}
+                        onClick={() => {
+                          setViewingApp(app);
+                          if (app.status === 'new') {
+                            setApplicationsList((list: any[]) => list.map((x) => (x.id === app.id ? { ...x, status: 'reviewed' } : x)));
+                            markApplicationReviewedAction(app.id).catch(() => {});
+                          }
+                        }}
                         className="px-3.5 py-1.5 rounded-lg bg-[#070E5C] text-white hover:bg-[#D99A42] text-xs font-bold transition flex items-center gap-1.5 shadow-xs"
                       >
                         <Eye className="w-3.5 h-3.5" />
