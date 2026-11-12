@@ -63,6 +63,7 @@ Two lines of work run through this repository:
 - Glass styles no longer override positioning utilities, which had stretched card chips and moved floating cards. (`09cb739`)
 
 #### Removed
+- Partner logos from the footer; they now appear once, in the home page Partners section. (`4c7c7fa`)
 - Hero search widget and slide indicator. (`23fa6d3`)
 - Unused hero component that depended on Git LFS video pointers. (`75f0d52`)
 
