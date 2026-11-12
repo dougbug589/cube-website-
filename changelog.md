@@ -6,6 +6,7 @@
 
 - Pinned transitive `minimatch` dependencies to `11.0.8`, clearing the npm audit findings.
 - Integrated the Home navigation item with the themed navigation styling and added matching icons across desktop and mobile menus.
+- Refined the active navigation state so Home and the other menu items use the shared glass theme without the separate animated indicator layer.
 - Added a Home navigation button beside About on desktop and mobile menus.
 - Added CI validation for linting, production builds, dependency audits, and repository data checks.
 - Added decoded image dimension validation for admin uploads to reject malformed or oversized images.

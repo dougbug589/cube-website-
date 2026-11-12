@@ -179,8 +179,8 @@ export default function Navbar() {
                       href={item.href}
                       className={`relative flex items-center whitespace-nowrap px-2.5 xl:px-4 py-2 text-[13px] xl:text-[15px] font-semibold tracking-wider transition-colors duration-300 rounded-full z-10 shrink-0 ${
                         isActive
-                          ? 'text-[#070E5C] font-bold'
-                          : 'text-[#24272B] hover:text-[#070E5C]'
+                          ? 'text-[#070E5C] font-bold bg-white/30 backdrop-blur-xl backdrop-saturate-150 border border-white/55 shadow-[0_4px_14px_rgba(255,255,255,0.16),inset_0_1px_1px_rgba(255,255,255,0.65)]'
+                          : 'text-[#24272B] border border-transparent hover:text-[#070E5C] hover:bg-white/20'
                       }`}
                     >
                       {item.title === 'Home' && <House aria-hidden className="w-3.5 h-3.5 mr-1.5" />}
@@ -194,15 +194,6 @@ export default function Navbar() {
                         <ChevronDown className="w-3.5 h-3.5 ml-1 text-[#747B83] transition-transform duration-300 group-hover:rotate-180" />
                       )}
                     </Link>
-
-                    {/* Sliding Morphing Active Pill Background */}
-                    {isActive && (
-                      <motion.div
-                        layoutId="navActiveIndicator"
-                        className="absolute inset-0 rounded-full bg-[#EAF2F8] border border-[#BDD7E8] shadow-xs -z-0"
-                        transition={{ type: 'spring', stiffness: 380, damping: 30 }}
-                      />
-                    )}
 
                     {/* Glass Dropdown Menu with Staggered Entrance */}
                     <AnimatePresence>
