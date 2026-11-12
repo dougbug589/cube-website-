@@ -6,50 +6,50 @@ export const boardMembers: Leader[] = [
     "role": "Chairman",
     "category": "Board Member",
     "image": "/images/leadership/board_member_kamakoti.jpg",
-    "organization": "IIT Madras / Govt of Tamil Nadu"
+    "organization": "Director, IIT Madras"
   },
   {
     "name": "Prof. U Saravanan",
     "role": "Secretary",
     "category": "Board Member",
     "image": "/images/leadership/board_member_Saravanan.jpg",
-    "organization": "IIT Madras / Govt of Tamil Nadu"
+    "organization": ""
   },
   {
     "name": "Thiru R. Kirlosh Kumar, IAS",
     "role": "Board Member",
     "category": "Board Member",
     "image": "/images/leadership/board_member_Thiru_R_Kirlosh_Kumar_IAS.jpg",
-    "organization": "IIT Madras / Govt of Tamil Nadu"
+    "organization": ""
   },
   {
     "name": "Thiru. M.A. Siddique IAS",
     "role": "Board Member",
     "category": "Board Member",
     "image": "/images/leadership/board_member_Thiru_MA_Siddique_IAS.jpg",
-    "organization": "IIT Madras / Govt of Tamil Nadu"
+    "organization": ""
   },
   {
     "name": "Thiru Gagandeep Singh Bedi, IAS",
     "role": "Board Member",
     "category": "Board Member",
     "image": "/images/leadership/board_member_Thiru_Gagandeep_Singh_Bedi.jpg",
-    "organization": "IIT Madras / Govt of Tamil Nadu"
+    "organization": ""
   },
   {
     "name": "Dr. P Alarmelmangai IAS",
     "role": "Board Member",
     "category": "Board Member",
     "image": "/images/leadership/board_member_Dr_P_Alarmelmangai_IAS.jpg",
-    "organization": "IIT Madras / Govt of Tamil Nadu"
+    "organization": ""
   },
   {
     "name": "Prof. Ashwin Mahalingam",
     "bio": "Dr. Ashwin Mahalingam is an Associate Professor of the Building Technology and Construction Management Division in the Department of Civil Engineering at IIT Madras. He completed his B. Tech in Civil Engineering from IIT Madras in 1998 and went on to do a Masters and Ph.D in Civil Engineering from Stanford University. Following a stint as the Graduate Teaching and Research Assistant at Stanford University and Product Development Lead at GlobeRanger Corporation, Texas, he joined the faculty of IIT Madras, his alma mater, in 2006.\n\nHis interest areas include Infrastructure planning and management, risk assessment and allocation, mechanisms for shaping successful infrastructure projects and cross-cultural issues in global infrastructure projects. His consultancy work includes varied assignments converging many varied subjects like sustainable development, social entrepreneurship, Public Private Partnerships in Infrastructure projects, Project Management, Organizational Behaviour, Disaster Management, and using cutting edge information technology in construction management.\n\nHis recent research work includes improving performance of Tsunami Housing Projects and developing a Databook for benchmarking Indian Water Utilities for the ADB. He is also a member of Engineers for a Sustainable World and American Society of Civil Engineers. He was awarded the Young Faculty Recognition Award from IIT Madras, Distinguished Service Award and Best paper Award from Engineering Project Organizational Society.\n\nDr. Ashwin brings his intense passion and unique expertise in blending technology and sustainability in infrastructure development and urbanization to add value to CUBE’s various domains of work.",
-    "role": "Board Member",
+    "role": "Faculty-in-Charge and Board Member",
     "category": "Board Member",
     "image": "/images/leadership/board_member_ashwin.jpg",
-    "organization": "IIT Madras / Govt of Tamil Nadu"
+    "organization": "Associate Professor, BTCM – Dept. of Civil Engineering, IIT Madras"
   },
   {
     "name": "Prof. Indumathi M Nambi",
@@ -57,7 +57,7 @@ export const boardMembers: Leader[] = [
     "role": "Board Member",
     "category": "Board Member",
     "image": "/images/leadership/board_member_indumathi.jpg",
-    "organization": "IIT Madras / Govt of Tamil Nadu"
+    "organization": "Associate Professor, Dept. of Civil Engineering, IIT Madras"
   },
   {
     "name": "Mr. K V Rangaswami",
@@ -65,7 +65,7 @@ export const boardMembers: Leader[] = [
     "role": "Board Member",
     "category": "Board Member",
     "image": "/images/leadership/board_member_rangaswami.jpg",
-    "organization": "IIT Madras / Govt of Tamil Nadu"
+    "organization": "Retired Former President, Larsen and Toubro ECC"
   },
   {
     "name": "Mr. B. Santhanam",
@@ -73,7 +73,7 @@ export const boardMembers: Leader[] = [
     "role": "Board Member",
     "category": "Board Member",
     "image": "/images/leadership/board_member_santhanam.jpg",
-    "organization": "IIT Madras / Govt of Tamil Nadu"
+    "organization": "President and Managing Director, Flat Glass South Asia, Egypt and Malaysia Saint-Gobain Glass, India"
   },
   {
     "name": "Mr. Sivaraman Krishnamurthy",
@@ -81,7 +81,7 @@ export const boardMembers: Leader[] = [
     "role": "Board Member",
     "category": "Board Member",
     "image": "/images/leadership/board_member_sivaraman-krishnamurthi.jpg",
-    "organization": "IIT Madras / Govt of Tamil Nadu"
+    "organization": "Advisor, Projects Industrial Waste Management Association"
   },
   {
     "name": "Mr. Srinivasa Raghavan Venkatachari",
@@ -89,7 +89,7 @@ export const boardMembers: Leader[] = [
     "role": "Board Member",
     "category": "Board Member",
     "image": "/images/leadership/board_member_srinivasa-raghavan.jpg",
-    "organization": "IIT Madras / Govt of Tamil Nadu"
+    "organization": "Sub-Practice Head for R&D-driven Business Solutions and Principal Consultant, Tata Consultancy"
   }
 ];
 
@@ -245,28 +245,28 @@ export const advisoryPanel: Leader[] = [
   },
   {
     "name": "A Mani",
-    "role": "Professor",
+    "role": "Professor, Mechanical Engineering",
     "category": "IIT Advisory Panel",
     "image": "/images/leadership/advisory_panel_a-mani.jpg",
     "organization": "Indian Institute of Technology Madras"
   },
   {
     "name": "S R Chakravarthy",
-    "role": "Professor",
+    "role": "Professor, Aerospace Engineering",
     "category": "IIT Advisory Panel",
     "image": "/images/leadership/advisory_panel_chakravarthy.jpg",
     "organization": "Indian Institute of Technology Madras"
   },
   {
     "name": "R Raghunathan",
-    "role": "Professor",
+    "role": "Professor, Chemical Engineering",
     "category": "IIT Advisory Panel",
     "image": "/images/leadership/advisory_panel_ragunathan.jpg",
     "organization": "Indian Institute of Technology Madras"
   },
   {
     "name": "R Ravikrishna",
-    "role": "Professor",
+    "role": "Professor, Chemical Engineering",
     "category": "IIT Advisory Panel",
     "image": "/images/leadership/advisory_panel_ravikrishna.jpg",
     "organization": "Indian Institute of Technology Madras"
@@ -280,7 +280,7 @@ export const executiveLeadership: Leader[] = [
     category: 'Executive',
     organization: 'Indian Institute of Technology Madras',
     image: '/images/leadership/board_member_kamakoti.jpg',
-    bio: 'Prof. V. Kamakoti is the Director of IIT Madras and Chairman of CUBE. A Centre of Excellence was conceived by IIT Madras to work towards an ideal habitat in our cities, keeping the core values of the historical development of our cities in mind and bringing to bear the rapid technological changes of these times. The Centre takes a holistic and multidisciplinary approach to resolving the many complex and diverse environmental, social and technological problems that human settlements face.'
+    bio: ''
   },
   {
     name: 'L. Padmanaban',
@@ -288,6 +288,6 @@ export const executiveLeadership: Leader[] = [
     category: 'Executive',
     organization: 'Centre for Urbanization, Buildings & Environment',
     image: '/images/leadership/ceo_padmanaban.jpg',
-    bio: 'L. Padmanaban (Major General, Retired) is the Chief Executive Officer of CUBE. CUBE was incorporated in May 2017 as a joint initiative of the Government of Tamil Nadu (GoTN) and IIT Madras, and GoTN has declared CUBE as one of its Centres of Excellence. He leads CUBE\'s aim to develop quality and viable tailor-made solutions for industry, government and civil society in the domain of sustainable urban development through collaborative partnerships between academia, government and the private sector.'
+    bio: ''
   }
 ];

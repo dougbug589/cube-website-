@@ -28,7 +28,7 @@ export default async function AdvisoryPanelPage() {
       <PageHeader
         badge="Academic Rigor"
         title="IIT Madras Faculty Advisory Panel"
-        description="Over 25 distinguished professors and subject-matter experts from the Indian Institute of Technology Madras guiding CUBE's applied engineering consultancy."
+        description="25 faculty from the Departments of Civil, Mechanical, Aerospace and Chemical Engineering at the Indian Institute of Technology Madras."
         breadcrumbs={[
           { label: 'About CUBE', href: '/about' },
           { label: 'IIT Advisory Panel' },
@@ -60,11 +60,6 @@ export default async function AdvisoryPanelPage() {
                 <p className="text-[13.5px] text-slate-500 mt-1 line-clamp-1">
                   IIT Madras
                 </p>
-                <div className="mt-auto pt-4">
-                  <span className="text-[13.5px] font-bold px-2 py-0.5 rounded-full bg-[#F7EDD3] text-[#9A7015] border border-[#E9D6A8]">
-                    Faculty Advisor
-                  </span>
-                </div>
               </div>
             ))}
           </div>

@@ -121,7 +121,7 @@ export default function CompleteAboutExperience() {
                     <span>Government of Tamil Nadu</span>
                   </div>
                   <p className="text-xs text-[#5B6A71] mt-2 leading-relaxed">
-                    Apex state sponsorship, regulatory alignment, and mandates across housing, transit terminals, and hydrology.
+                    Seed funding from CMDA, TNHB, TNPCB and MAWS; four State Government departments nominate members to the Governing Body.
                   </p>
                 </div>
 
@@ -131,7 +131,7 @@ export default function CompleteAboutExperience() {
                     <span>IIT Madras Research Excellence</span>
                   </div>
                   <p className="text-xs text-[#5B6A71] mt-2 leading-relaxed">
-                    Faculty mentorship, world-class civil testing laboratories, and independent structural proof checking rigor.
+                    Raised by IIT Madras with the Government of Tamil Nadu; the Governing Body is headed by the Director, IITM, with four members from IITM Faculty.
                   </p>
                 </div>
               </div>
@@ -300,10 +300,6 @@ export default function CompleteAboutExperience() {
                 <span>Executive Address from the Chairman</span>
               </div>
 
-              <h3 className="text-2xl sm:text-3xl font-display font-bold text-[#2B3B44] leading-tight">
-                Managing Sustainable Urbanization in an Era of High Growth
-              </h3>
-
               <div className="space-y-3.5 text-xs sm:text-sm text-[#243239]/85 leading-relaxed font-sans">
                 {aboutContent.chairmanMessage.map((p, idx) => (
                   <p key={idx}>{p}</p>
@@ -359,10 +355,6 @@ export default function CompleteAboutExperience() {
                 <span>Operational Leadership Address</span>
               </div>
 
-              <h3 className="text-2xl sm:text-3xl font-display font-bold text-[#2B3B44] leading-tight">
-                Multidisciplinary Engineering as a Force Multiplier for Public Good
-              </h3>
-
               <div className="space-y-3.5 text-xs sm:text-sm text-[#243239]/85 leading-relaxed font-sans">
                 {aboutContent.ceoMessage.map((p, idx) => (
                   <p key={idx}>{p}</p>
@@ -385,7 +377,7 @@ export default function CompleteAboutExperience() {
               Distinguished Governing Board
             </h2>
             <p className="text-xs sm:text-sm text-[#5B6A71] mt-2">
-              Comprising senior Secretaries of the Government of Tamil Nadu and eminent faculty leadership from IIT Madras.
+              Headed by the Director, IITM, with nominees from four Tamil Nadu State Government departments, four members from IITM Faculty and four members from prominent industries and organizations.
             </p>
           </div>
 
@@ -417,7 +409,7 @@ export default function CompleteAboutExperience() {
               IIT Madras Advisory Faculty Panel
             </h2>
             <p className="text-xs sm:text-sm text-[#5B6A71] mt-2">
-              Over 25 distinguished professors across Civil Engineering, Environmental Science, Hydrology, and Transportation.
+              25 faculty from the Departments of Civil, Mechanical, Aerospace and Chemical Engineering, IIT Madras.
             </p>
           </div>
 
@@ -447,7 +439,7 @@ export default function CompleteAboutExperience() {
               Our Applied Engineering Team (80+)
             </h2>
             <p className="text-xs sm:text-sm text-[#5B6A71] mt-2">
-              Professional structural engineers, hydrodynamic modelers, laboratory chemists, and project managers.
+              Staff across Building & Construction, Environment & Sustainability, Urban Planning & Transportation and Administration.
             </p>
           </div>
 
@@ -490,11 +482,8 @@ export default function CompleteAboutExperience() {
               Institutional Ecosystem
             </span>
             <h2 className="text-3xl sm:text-4xl font-display font-bold text-[#2B3B44] mt-3">
-              Over 50 State Agencies &amp; Industrial Partners
+              Clients &amp; Partners
             </h2>
-            <p className="text-xs sm:text-sm text-[#5B6A71] mt-2">
-              Trusted by government departments, urban local bodies, and leading developers across India.
-            </p>
           </div>
 
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">

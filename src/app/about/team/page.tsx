@@ -97,6 +97,8 @@ export default function TeamPage() {
         if (!matchName && !matchDesig) return;
       }
 
+      // Board, advisory panel and leadership have their own pages; staff only here.
+      if (['leadership', 'board', 'advisory'].includes(member.category)) return;
       const dept = member.department || member.category || 'Building & Construction';
       if (grouped[dept]) {
         grouped[dept].push(member);
@@ -115,7 +117,7 @@ export default function TeamPage() {
       <PageHeader
         badge="Multidisciplinary Talent"
         title="Our Team"
-        description="Over 80+ dedicated engineers, researchers, hydrologists, urban planners and technicians delivering marquee infrastructure from IIT Madras Research Park."
+        description="The CUBE team across Building & Construction, Environment & Sustainability, Urban Planning & Transportation and Administration."
         breadcrumbs={[
           { label: 'About CUBE', href: '/about' },
           { label: 'Our Team' },

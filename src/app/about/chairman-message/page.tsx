@@ -55,10 +55,6 @@ export default function ChairmanMessagePage() {
                 <Quote className="w-8 h-8" />
               </div>
 
-              <h2 className="text-2xl sm:text-3xl font-display font-extrabold text-navy-950">
-                Fostering Sustainable &amp; Technologically Advanced Urbanization
-              </h2>
-
               <div className="space-y-4 text-sm sm:text-base text-slate-700 leading-relaxed">
                 {aboutContent.chairmanMessage.map((p, idx) => (
                   <p key={idx}>{p}</p>
@@ -66,9 +62,8 @@ export default function ChairmanMessagePage() {
               </div>
 
               <div className="pt-6 border-t border-slate-200">
-                <div className="font-bold text-navy-950 text-base">Prof. V. Kamakoti</div>
-                <div className="text-xs text-slate-500">Director, Indian Institute of Technology Madras</div>
-                <div className="text-xs text-[#9A7015] font-semibold">Chairman, CUBE Governing Board</div>
+                <div className="font-bold text-navy-950 text-base">Prof. V Kamakoti</div>
+                <div className="text-xs text-slate-500">Director, IIT Madras</div>
               </div>
             </div>
           </div>
