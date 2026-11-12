@@ -9,15 +9,19 @@ import { Pause, Play, Quote } from 'lucide-react';
  * raised liquid-glass "reading window" that scrolls itself, slowly, like a
  * teleprompter. It starts once the box is on screen, pauses while the pointer
  * is over it or the reader scrolls it by hand (resumes a few seconds later),
- * holds at the end, glides back to the top and starts again. A pause button
+ * holds at the end, glides back to the top on an ease-in-out curve, rests,
+ * and starts again. A pause button
  * stops it for good (WCAG 2.2.2); reduced motion turns it off entirely.
  * Scrolling is driven by rAF writes to scrollTop (no React re-renders).
  */
 
-const SPEED = 32; // px per second
+const SPEED = 40; // px per second
 const START_DELAY = 1400; // ms after the box comes into view
 const END_HOLD = 2600; // ms at the end before rewinding
 const AFTER_USER = 3500; // ms of quiet after a manual scroll
+const TOP_HOLD = 1800; // ms at the top before the next pass
+// gentle start and finish for the glide back to the top
+const easeInOutSine = (k: number) => -(Math.cos(Math.PI * k) - 1) / 2;
 
 export default function MessageSection({
   id,
@@ -76,6 +80,9 @@ export default function MessageSection({
     let holdUntil = 0;
     let phase: 'run' | 'end' | 'rewind' = 'run';
     let selfScroll = false; // ignore scroll events we caused
+    let rewindFrom = 0;
+    let rewindDur = 0;
+    let rewindElapsed = 0; // only advances while active, so a pause resumes in place
 
     const io = new IntersectionObserver(
       ([e]) => {
@@ -118,17 +125,24 @@ export default function MessageSection({
       if (max <= 1) return;
 
       if (phase === 'end') {
-        // glide back to the top, then pause before the next pass
+        // start the glide back to the top (longer for longer messages)
         phase = 'rewind';
-        selfScroll = true;
-        box.scrollTo({ top: 0, behavior: 'smooth' });
-        holdUntil = t + 1600;
-        window.setTimeout(() => (selfScroll = false), 1400);
-        return;
+        rewindFrom = box.scrollTop;
+        rewindDur = Math.min(2800, Math.max(1600, 1100 + rewindFrom * 1.6));
+        rewindElapsed = 0;
       }
       if (phase === 'rewind') {
-        phase = 'run';
-        pos = box.scrollTop;
+        rewindElapsed += dt;
+        const k = Math.min(1, rewindElapsed / rewindDur);
+        selfScroll = true;
+        box.scrollTop = rewindFrom * (1 - easeInOutSine(k));
+        selfScroll = false;
+        if (k >= 1) {
+          phase = 'run';
+          pos = 0;
+          holdUntil = t + TOP_HOLD;
+        }
+        return;
       }
       pos = Math.min(max, pos + (SPEED * dt) / 1000);
       selfScroll = true;
