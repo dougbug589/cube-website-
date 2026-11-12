@@ -1,291 +1,285 @@
 'use client';
 
-import React, { useRef, useState } from 'react';
-import { useScrollSpy } from '@/lib/useScrollSpy';
+import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { ArrowUpRight, MapPin, FileText } from 'lucide-react';
 import PageHeader from '@/components/common/PageHeader';
+import SectionHeading from '@/components/common/SectionHeading';
+import SectionNav from '@/components/common/SectionNav';
 import DocumentRequestModal from '@/components/common/DocumentRequestModal';
-import { 
-  Newspaper, Calendar, Image as ImageIcon, BookOpen, 
-  ArrowRight, Sparkles, MapPin, ExternalLink, Download
-} from 'lucide-react';
 import { newsItems as fallbackNewsItems } from '@/data/news';
 import { useLiveList } from '@/lib/live';
 import { cubeEvents, cubeReports } from '@/data/media';
 
-export default function CompleteMediaExperience() {
+const SECTIONS = [
+  { id: 'news', label: 'News' },
+  { id: 'events', label: 'Events' },
+  { id: 'gallery', label: 'Gallery' },
+  { id: 'life-at-cube', label: 'Life at CUBE' },
+  { id: 'publications', label: 'Reports' },
+];
+
+// Captions match the project names on cubeiitm.org.
+const GALLERY = [
+  { src: '/images/hero/slides_iit-tirupathi.jpg', title: 'IIT Tirupati Permanent Campus – Third Party Quality Assurance' },
+  { src: '/images/hero/slides_cpcl-arc.jpg', title: 'PMC for Construction of ARHC, Manali' },
+  { src: '/images/hero/slides_ashiana.jpg', title: 'Surface Water Management and Flood Inundation Study, Ashiana Shubham' },
+  { src: '/images/hero/slides_design-engineering-consultancy.jpg', title: 'Design, Engineering & Consultancy for 40+ Housing for All schemes' },
+  { src: '/images/hero/slides_building-training-team.jpg', title: 'CUBE Team' },
+  { src: '/images/hero/slides_07-cat.jpg', title: 'Parayan Kuttai water body study, Caterpillar India' },
+];
+// Bento spans for the six gallery photos: one large, one tall, then two wide
+// in the last row, so the 4-column grid has no holes.
+const GALLERY_SPAN = [
+  'sm:col-span-2 sm:row-span-2',
+  '',
+  'row-span-2',
+  '',
+  'sm:col-span-2',
+  'sm:col-span-2',
+];
+
+const LIFE_PHOTOS = ['/images/life-at-cube/about_life.jpg', '/images/life-at-cube/about_life1.jpg', '/images/life-at-cube/about_life2.jpg'];
+const VERTICALS = ['Building & Construction', 'Environment & Sustainability', 'Smart Cities', 'Urban Planning & Transportation'];
+
+const newsHref = (item: any) => `/media/news/${item.slug || item.id}`;
+
+function DateChip({ date }: { date?: string }) {
+  if (!date) return null;
+  return <span className="liquid-glass-dark rounded-full px-3 py-1 text-[12.5px] font-bold text-white">{date}</span>;
+}
+
+export default function MediaPage() {
   // Live CMS news: published items only, updates instantly on admin changes.
   const newsItems = useLiveList<any>('/api/public/news', fallbackNewsItems as any[]);
   const [selectedDoc, setSelectedDoc] = useState<{ title: string; authors?: string } | null>(null);
-
-  const navAnchors = [
-    { id: 'news', label: 'News & Announcements' },
-    { id: 'events', label: 'Events & Milestones' },
-    { id: 'gallery', label: 'Project Photo Gallery' },
-    { id: 'life-at-cube', label: 'Life at CUBE' },
-    { id: 'publications', label: 'Reports & Publications' },
-  ];
-
-  // Highlight follows scrolling; tapping a pill still jumps to its section.
-  const anchorBarRef = useRef<HTMLDivElement>(null);
-  const [activeMediaTab, setActiveMediaTab] = useScrollSpy(navAnchors.map((a) => a.id), anchorBarRef);
-
-  const scrollTo = (id: string) => {
-    setActiveMediaTab(id);
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  };
-
-  const sampleEvents = cubeEvents;
-
-  const galleryImages = [
-    { src: '/images/hero/slides_iit-tirupathi.jpg', title: 'IIT Tirupati Permanent Campus – Third Party Quality Assurance' },
-    { src: '/images/hero/slides_cpcl-arc.jpg', title: 'PMC for Construction of ARHC, Manali' },
-    { src: '/images/hero/slides_ashiana.jpg', title: 'Surface Water Management and Flood Inundation Study, Ashiana Shubham' },
-    { src: '/images/hero/slides_design-engineering-consultancy.jpg', title: 'Design, Engineering & Consultancy for 40+ Housing for All schemes' },
-    { src: '/images/hero/slides_building-training-team.jpg', title: 'CUBE Team' },
-    { src: '/images/hero/slides_07-cat.jpg', title: 'Parayan Kuttai water body study, Caterpillar India' },
-  ];
-
-  const publications = cubeReports.map((r) => ({ title: r.title, authors: r.authors, date: r.year, desc: r.description }));
+  const [lead, ...rest] = newsItems.slice(0, 7);
 
   return (
-    <div className="bg-transparent text-[#243239] min-h-screen">
+    <div className="text-[#243239] min-h-screen">
       <PageHeader
-        badge="Media & Dispatches"
-        title="Institutional Media Centre"
+        badge="Media"
+        title="Media"
         description="News, events, photo gallery, reports and life at CUBE."
         breadcrumbs={[{ label: 'Media' }]}
       />
 
-      {/* Sticky Apple Glass Anchor Navigation Bar */}
-      <section className="sticky top-[var(--nav-offset,84px)] transition-[top] duration-500 z-40 bg-white/85 backdrop-blur-2xl border-y border-[#D3DDE1]/70 py-3.5 px-4 sm:px-6 shadow-xs">
-        <div ref={anchorBarRef} className="relative max-w-7xl mx-auto flex items-center justify-start gap-2 overflow-x-auto scrollbar-none no-scrollbar py-1">
-          <div className="flex items-center space-x-1.5 sm:space-x-2 shrink-0">
-            {navAnchors.map((item) => (
-              <button
-                key={item.id}
-                type="button"
-                data-anchor={item.id}
-                aria-current={activeMediaTab === item.id ? 'true' : undefined}
-                onClick={() => scrollTo(item.id)}
-                className={`px-4 py-2 rounded-full text-xs font-semibold tracking-wider transition-all duration-300 whitespace-nowrap ${
-                  activeMediaTab === item.id
-                    ? 'bg-[#F0C468] text-[#243239] shadow-xs'
-                    : 'bg-white/60 text-[#243239] hover:bg-[#F2F5F6] hover:text-[#2B3B44] border border-[#D3DDE1]/60'
-                }`}
-              >
-                {item.label}
-              </button>
-            ))}
-          </div>
-        </div>
-      </section>
+      <SectionNav id="media" sections={SECTIONS} />
 
-      {/* 1. NEWS & ANNOUNCEMENTS */}
-      <section id="news" className="py-20 sm:py-24 bg-transparent border-b border-[#DCE4E7]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-12">
-            <div>
-              <span className="text-xs font-bold uppercase tracking-wider text-[#2B3B44] bg-white px-3.5 py-1 rounded-full border border-[#D3DDE1]">
-                Press Dispatches
-              </span>
-              <h2 className="text-3xl sm:text-4xl font-display font-bold text-[#2B3B44] mt-2">
-                Latest News &amp; Announcements
-              </h2>
-            </div>
-            <p className="text-xs sm:text-sm text-[#5B6A71] mt-2 sm:mt-0">
-              Verified institutional reports and state project updates
-            </p>
-          </div>
+      {/* 1 · News: one lead story, then a grid */}
+      <section id="news" className="scroll-mt-40 py-16 lg:py-20">
+        <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12">
+          <SectionHeading eyebrow="News" title="Latest from CUBE" action={{ href: '/media/news', label: 'All news' }} />
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {newsItems.slice(0, 6).map((item) => (
-              <div
-                key={item.id}
-                className="rounded-3xl bg-white border border-[#D3DDE1] p-6 shadow-2xs hover:shadow-md hover:border-[#C4921B] transition-all flex flex-col justify-between"
-              >
-                <div>
-                  <div className="flex items-center justify-between text-[13.5px] font-semibold text-[#5B6A71] mb-3">
-                    <span className="px-2.5 py-0.5 rounded-full bg-[#F2F5F6] text-[#2B3B44] border border-[#D3DDE1]">
-                      {item.category || 'Press Release'}
-                    </span>
-                    <span>{item.date}</span>
-                  </div>
-
-                  <h3 className="font-display font-bold text-lg text-[#2B3B44] leading-snug">
-                    {item.title}
-                  </h3>
-
-                  <p className="text-xs text-[#243239]/80 mt-2 line-clamp-3 leading-relaxed">
-                    {item.summary || item.content}
-                  </p>
-                </div>
-
-                <div className="mt-6 pt-4 border-t border-[#DCE4E7] flex items-center justify-between text-xs">
-                  <span className="text-[#C4921B] font-semibold">IIT Madras &amp; GoTN</span>
-                  <Link href={`/media/news/${(item as any).slug || item.id}`} className="font-bold text-[#2B3B44] hover:underline flex items-center gap-1">
-                    <span>Read Full Story</span>
-                    <ArrowRight className="w-3.5 h-3.5" />
-                  </Link>
+          {lead && (
+            <Link
+              href={newsHref(lead)}
+              className="reveal press group glass glass-interactive glass-edge rounded-[30px] overflow-hidden grid lg:grid-cols-12"
+            >
+              <div className="relative lg:col-span-7 aspect-[16/10] lg:aspect-auto lg:min-h-[380px] overflow-hidden bg-[#DCE4E8]">
+                <Image
+                  src={lead.image || '/images/about/about_about.jpg'}
+                  alt={lead.title}
+                  fill
+                  priority
+                  sizes="(max-width: 1024px) 100vw, 58vw"
+                  className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.04]"
+                />
+                <div className="absolute top-4 left-4 flex gap-2">
+                  {lead.category && (
+                    <span className="liquid-glass-dark rounded-full px-3 py-1 text-[12.5px] font-bold text-white">{lead.category}</span>
+                  )}
+                  <DateChip date={lead.date} />
                 </div>
               </div>
+              <div className="lg:col-span-5 p-7 sm:p-9 lg:p-10 flex flex-col">
+                <p className="label-mono">Latest</p>
+                <h3 className="mt-3 font-display text-[26px] sm:text-[30px] font-extrabold text-[#243239] leading-tight">{lead.title}</h3>
+                <p className="mt-4 text-[17px] text-[#46565E] leading-relaxed line-clamp-5">
+                  {lead.summary || (Array.isArray(lead.content) ? lead.content[0] : lead.content)}
+                </p>
+                <span className="mt-auto pt-8 inline-flex items-center gap-2 text-[16px] font-bold text-[#243239]">
+                  Read the story
+                  <span className="grid place-items-center w-10 h-10 rounded-full bg-white border border-[#33454E]/10 depth-1 transition-[transform,background-color] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:bg-[#F0C468] group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
+                    <ArrowUpRight size={17} strokeWidth={2.25} />
+                  </span>
+                </span>
+              </div>
+            </Link>
+          )}
+
+          <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 reveal-stagger">
+            {rest.map((item) => (
+              <Link
+                key={item.id}
+                href={newsHref(item)}
+                className="press group glass glass-interactive glass-edge rounded-[26px] overflow-hidden flex flex-col h-full"
+              >
+                <div className="relative aspect-[16/10] overflow-hidden bg-[#DCE4E8]">
+                  <Image
+                    src={item.image || '/images/about/about_about.jpg'}
+                    alt={item.title}
+                    fill
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.05]"
+                  />
+                  <div aria-hidden className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
+                  <div className="absolute top-3 left-3">
+                    <DateChip date={item.date} />
+                  </div>
+                </div>
+                <div className="p-5 lg:p-6 flex-1 flex flex-col">
+                  {item.category && <p className="text-[13.5px] font-bold text-[#9A7015]">{item.category}</p>}
+                  <h3 className="mt-1.5 font-display text-[18px] font-bold text-[#243239] leading-snug line-clamp-3">{item.title}</h3>
+                  <p className="mt-2 text-[15px] text-[#5B6A71] leading-relaxed line-clamp-2">{item.summary}</p>
+                  <span className="mt-auto pt-4 inline-flex items-center gap-1.5 text-[15px] font-bold text-[#243239] group-hover:text-[#9A7015] transition-colors">
+                    Read more <ArrowUpRight size={15} strokeWidth={2.25} />
+                  </span>
+                </div>
+              </Link>
             ))}
           </div>
         </div>
       </section>
 
-      {/* 2. TECHNICAL EVENTS & WORKSHOPS */}
-      <section id="events" className="py-20 sm:py-24 bg-transparent border-b border-[#DCE4E7]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-2xl mx-auto mb-16">
-            <span className="text-xs font-bold uppercase tracking-wider text-[#2B3B44] bg-[#F2F5F6] px-3.5 py-1 rounded-full border border-[#D3DDE1]">
-              Events
-            </span>
-            <h2 className="text-3xl sm:text-4xl font-display font-bold text-[#2B3B44] mt-2">
-              Events &amp; Milestones
-            </h2>
-            <p className="text-xs sm:text-sm text-[#5B6A71] mt-2">
-              Meetings, project milestones and events at CUBE.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {sampleEvents.map((evt, idx) => (
-              <div key={idx} className="rounded-3xl bg-[#F6F8F9] border border-[#D3DDE1] p-6 shadow-2xs flex flex-col justify-between">
-                <div>
-                  <div className="relative h-48 w-full rounded-2xl overflow-hidden mb-4 border border-white ring-1 ring-[#D3DDE1]">
-                    <Image src={evt.image} alt={evt.title} fill className="object-cover" />
+      {/* 2 · Events: dated milestones, photo first */}
+      <section id="events" className="scroll-mt-40 py-16 lg:py-20">
+        <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12">
+          <SectionHeading eyebrow="Events" title="Events & milestones" action={{ href: '/media/events', label: 'All events' }} />
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 reveal-stagger">
+            {cubeEvents.map((evt) => (
+              <article key={evt.title} className="glass glass-interactive glass-edge rounded-[26px] overflow-hidden flex flex-col">
+                <div className="relative aspect-[4/3] overflow-hidden bg-[#DCE4E8]">
+                  <Image src={evt.image} alt={evt.title} fill sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw" className="object-cover" />
+                  <div className="absolute top-3 left-3">
+                    <DateChip date={evt.date} />
                   </div>
-                  <span className="text-[13.5px] font-bold uppercase tracking-wider text-[#C4921B]">{evt.category}{evt.date ? <> &bull; {evt.date}</> : null}</span>
-                  <h3 className="font-display font-bold text-base text-[#2B3B44] mt-1 leading-snug">{evt.title}</h3>
+                </div>
+                <div className="p-5 flex-1 flex flex-col">
+                  <p className="text-[13.5px] font-bold text-[#9A7015]">{evt.category}</p>
+                  <h3 className="mt-1.5 font-display text-[17px] font-bold text-[#243239] leading-snug">{evt.title}</h3>
+                  <p className="mt-2 text-[15px] text-[#5B6A71] leading-relaxed line-clamp-4">{evt.description}</p>
                   {evt.location && (
-                    <p className="text-xs text-[#5B6A71] mt-2 flex items-center gap-1">
-                      <MapPin className="w-3.5 h-3.5 text-[#C4921B]" />
-                      <span>{evt.location}</span>
+                    <p className="mt-auto pt-4 flex items-center gap-1.5 text-[14px] font-semibold text-[#46565E]">
+                      <MapPin size={15} className="text-[#C4921B] shrink-0" />
+                      {evt.location}
                     </p>
                   )}
-                  <p className="text-xs text-[#243239]/80 mt-3 line-clamp-3 leading-relaxed">{evt.description}</p>
                 </div>
-              </div>
+              </article>
             ))}
           </div>
         </div>
       </section>
 
-      {/* 3. PHOTO GALLERY */}
-      <section id="gallery" className="py-20 sm:py-24 bg-transparent border-b border-[#DCE4E7]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-2xl mx-auto mb-16">
-            <span className="text-xs font-bold uppercase tracking-wider text-[#2B3B44] bg-[#F2F5F6] px-3.5 py-1 rounded-full border border-[#D3DDE1]">
-              Site Documentation
-            </span>
-            <h2 className="text-3xl sm:text-4xl font-display font-bold text-[#2B3B44] mt-2">
-              Curated Project &amp; Laboratory Gallery
-            </h2>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {galleryImages.map((img, i) => (
-              <div key={i} className="group rounded-3xl overflow-hidden border border-[#D3DDE1] bg-white shadow-2xs hover:shadow-md transition-all">
-                <div className="relative h-60 w-full overflow-hidden">
-                  <Image
-                    src={img.src}
-                    alt={img.title}
-                    fill
-                    className="object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent flex items-end p-5">
-                    <p className="text-white text-xs font-semibold leading-snug">{img.title}</p>
-                  </div>
-                </div>
-              </div>
+      {/* 3 · Gallery: bento grid, caption rises on hover */}
+      <section id="gallery" className="scroll-mt-40 py-16 lg:py-20">
+        <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12">
+          <SectionHeading eyebrow="Gallery" title="Project photographs" action={{ href: '/media/gallery', label: 'Full gallery' }} />
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 auto-rows-[220px] lg:auto-rows-[240px] grid-flow-dense gap-4 reveal-stagger">
+            {GALLERY.map((img, i) => (
+              <figure
+                key={img.src}
+                className={`group relative rounded-[24px] overflow-hidden bg-[#DCE4E8] depth-1 ${GALLERY_SPAN[i]}`}
+              >
+                <Image
+                  src={img.src}
+                  alt={img.title}
+                  fill
+                  sizes={i === 0 ? '(max-width: 640px) 100vw, 50vw' : '(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw'}
+                  className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.05]"
+                />
+                <div aria-hidden className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/0 to-transparent" />
+                <figcaption className="absolute left-3 right-3 bottom-3 liquid-glass-dark rounded-2xl px-4 py-3 text-[14.5px] font-semibold text-white leading-snug transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:-translate-y-1">
+                  {img.title}
+                </figcaption>
+              </figure>
             ))}
           </div>
         </div>
       </section>
 
-      {/* 4. LIFE AT CUBE */}
-      <section id="life-at-cube" className="py-20 sm:py-24 bg-transparent border-b border-[#DCE4E7]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            <div className="lg:col-span-7 space-y-5">
-              <span className="text-xs font-bold uppercase tracking-wider text-[#2B3B44] bg-[#F2F5F6] px-3.5 py-1 rounded-full border border-[#D3DDE1]">
-                Workplace Culture
-              </span>
-              <h2 className="text-3xl sm:text-4xl font-display font-bold text-[#2B3B44]">
-                Life at CUBE: Applied Engineering Innovation at IITM Research Park
-              </h2>
-              <p className="text-sm text-[#243239]/85 leading-relaxed font-sans">
-                CUBE&apos;s office and its Environment Laboratory are at the IIT Madras Research Park, Taramani, Chennai.
-              </p>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
-                <div className="p-4 rounded-2xl bg-[#F6F8F9] border border-[#D3DDE1]">
-                  <h4 className="text-xs font-bold text-[#2B3B44] uppercase tracking-wider">Location</h4>
-                  <p className="text-xs text-[#5B6A71] mt-1">IIT Madras Research Park, Taramani, Chennai.</p>
-                </div>
-                <div className="p-4 rounded-2xl bg-[#F6F8F9] border border-[#D3DDE1]">
-                  <h4 className="text-xs font-bold text-[#2B3B44] uppercase tracking-wider">Verticals</h4>
-                  <p className="text-xs text-[#5B6A71] mt-1">Building & Construction, Environment & Sustainability, Smart Cities, Urban Planning & Transportation.</p>
+      {/* 4 · Life at CUBE */}
+      <section id="life-at-cube" className="scroll-mt-40 py-16 lg:py-20">
+        <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 grid lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+          <div className="lg:col-span-5 reveal">
+            <p className="label-mono">Workplace</p>
+            <h2 className="headline-light text-3xl sm:text-4xl lg:text-[2.6rem] text-[#243239] mt-3">Life at CUBE</h2>
+            <p className="mt-5 text-[17px] text-[#46565E] leading-relaxed">
+              CUBE&apos;s office and its Environment Laboratory are at the IIT Madras Research Park, Taramani, Chennai.
+            </p>
+            <div className="mt-7 space-y-3">
+              <div className="glass glass-edge rounded-[20px] p-5 flex items-start gap-4">
+                <span className="grid place-items-center w-11 h-11 rounded-2xl bg-[#F7EDD3] text-[#9A7015] depth-1 shrink-0">
+                  <MapPin size={19} strokeWidth={2} />
+                </span>
+                <span>
+                  <span className="block font-display text-[17px] font-bold text-[#243239]">Location</span>
+                  <span className="mt-0.5 block text-[15.5px] text-[#5B6A71]">IIT Madras Research Park, Taramani, Chennai</span>
+                </span>
+              </div>
+              <div className="glass glass-edge rounded-[20px] p-5">
+                <span className="block font-display text-[17px] font-bold text-[#243239]">Verticals</span>
+                <div className="mt-3 flex flex-wrap gap-2">
+                  {VERTICALS.map((v) => (
+                    <span key={v} className="rounded-full bg-white/80 border border-[#33454E]/10 px-3 py-1.5 text-[14px] font-semibold text-[#46565E]">
+                      {v}
+                    </span>
+                  ))}
                 </div>
               </div>
             </div>
-
-            <div className="lg:col-span-5">
-              <div className="relative h-80 w-full rounded-3xl overflow-hidden border border-[#D3DDE1] shadow-md">
-                <Image src="/images/hero/slides_building-training-team.jpg" alt="Team at CUBE" fill className="object-cover" />
-              </div>
-            </div>
           </div>
-        </div>
-      </section>
-
-      {/* 5. TECHNICAL PUBLICATIONS */}
-      <section id="publications" className="py-20 sm:py-24 bg-transparent">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-2xl mx-auto mb-16">
-            <span className="text-xs font-bold uppercase tracking-wider text-[#2B3B44] bg-[#F2F5F6] px-3.5 py-1 rounded-full border border-[#D3DDE1]">
-              Reports
-            </span>
-            <h2 className="text-3xl sm:text-4xl font-display font-bold text-[#2B3B44] mt-2">
-              Reports &amp; Publications
-            </h2>
-          </div>
-
-          <div className="space-y-6 max-w-4xl mx-auto">
-            {publications.map((pub, idx) => (
-              <div key={idx} className="p-6 sm:p-8 rounded-3xl bg-white border border-[#D3DDE1] shadow-2xs hover:shadow-xs transition">
-                <span className="text-[13.5px] font-bold uppercase tracking-wider text-[#C4921B]">{pub.authors} &bull; {pub.date}</span>
-                <h3 className="font-display font-bold text-lg sm:text-xl text-[#2B3B44] mt-1 leading-snug">{pub.title}</h3>
-                <p className="text-xs sm:text-sm text-[#243239]/80 mt-2 leading-relaxed">{pub.desc}</p>
-                <div className="mt-5 pt-3 border-t border-[#DCE4E7] flex items-center justify-between text-xs">
-                  <span className="text-[#5B6A71]">Published by CUBE IIT Madras</span>
-                  <button 
-                    type="button"
-                    onClick={() => setSelectedDoc({ title: pub.title, authors: pub.authors })}
-                    className="font-bold text-[#2B3B44] hover:text-[#C4921B] flex items-center gap-1.5 transition cursor-pointer"
-                  >
-                    <Download className="w-3.5 h-3.5 text-[#C4921B]" />
-                    <span>Request Technical Document</span>
-                  </button>
-                </div>
+          <div className="lg:col-span-7 grid grid-cols-2 grid-rows-2 gap-4 h-[420px] sm:h-[480px] reveal-stagger">
+            {LIFE_PHOTOS.map((src, i) => (
+              <div key={src} className={`relative rounded-[24px] overflow-hidden bg-[#DCE4E8] depth-1 ${i === 0 ? 'row-span-2' : ''}`}>
+                <Image src={src} alt="Life at CUBE" fill sizes="(max-width: 1024px) 50vw, 30vw" className="object-cover" />
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Interactive Modal for Document Requests */}
+      {/* 5 · Reports */}
+      <section id="publications" className="scroll-mt-40 py-16 lg:py-20 pb-24">
+        <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12">
+          <SectionHeading eyebrow="Reports" title="Reports & publications" action={{ href: '/media/publications', label: 'All reports' }} />
+          <div className="space-y-4 reveal-stagger">
+            {cubeReports.map((r) => (
+              <article key={r.title} className="glass glass-interactive glass-edge rounded-[26px] p-6 sm:p-7 flex flex-col md:flex-row md:items-center gap-5 md:gap-7">
+                <div className="flex md:flex-col items-center gap-3 md:w-20 shrink-0">
+                  <span className="grid place-items-center w-12 h-12 rounded-2xl bg-[#F7EDD3] text-[#9A7015] depth-1">
+                    <FileText size={21} strokeWidth={2} />
+                  </span>
+                  <span className="font-display text-[17px] font-extrabold text-[#243239]">{r.year}</span>
+                </div>
+                <div className="flex-1 min-w-0">
+                  <p className="text-[13.5px] font-bold text-[#9A7015]">{r.category}</p>
+                  <h3 className="mt-1.5 font-display text-[19px] sm:text-[20px] font-bold text-[#243239] leading-snug">{r.title}</h3>
+                  <p className="mt-2 text-[15.5px] text-[#5B6A71] leading-relaxed">{r.description}</p>
+                  <p className="mt-3 text-[14.5px] font-semibold text-[#46565E]">{r.authors}</p>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => setSelectedDoc({ title: r.title, authors: r.authors })}
+                  className="press btn-soft self-start md:self-center inline-flex items-center gap-2 h-11 px-5 rounded-full text-[15px] font-bold whitespace-nowrap shrink-0"
+                >
+                  Request document
+                  <ArrowUpRight size={16} strokeWidth={2.25} />
+                </button>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <DocumentRequestModal
         isOpen={!!selectedDoc}
         onClose={() => setSelectedDoc(null)}
         documentTitle={selectedDoc?.title || ''}
         documentAuthor={selectedDoc?.authors}
       />
-
     </div>
   );
 }

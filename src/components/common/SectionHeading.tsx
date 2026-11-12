@@ -36,7 +36,7 @@ export default function SectionHeading({
       {action && (
         <Link
           href={action.href}
-          className="group inline-flex items-center gap-2 text-[16px] font-bold text-[#243239] shrink-0 border-b-2 border-[#C4921B] pb-1 hover:text-[#9A7015] transition-colors"
+          className="group self-start md:self-auto inline-flex items-center gap-2 text-[16px] font-bold text-[#243239] shrink-0 border-b-2 border-[#C4921B] pb-1 hover:text-[#9A7015] transition-colors"
         >
           {action.label}
           <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
