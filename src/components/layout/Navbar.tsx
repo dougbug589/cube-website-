@@ -19,8 +19,10 @@ import GlobalSearchModal from '@/components/common/GlobalSearchModal';
  * 2. Sliding hover pill: a glass highlight springs between menu items under
  *    the pointer; the current page keeps a light-gold pill.
  * 3. Three capsules: brand · menu capsule · actions capsule.
- * 4. Mega-menus: About and Media list their pages in columns beside an intro
- *    card; Verticals and Projects show photo cards.
+ * 4. Morphing mega-menu: one glass panel springs its width, height and x
+ *    to the hovered menu while the content cross-slides; About and Media
+ *    list their pages beside a photo that swaps to the hovered page;
+ *    Verticals and Projects show photo cards.
  *
  * Glass correctness: a backdrop-filter only blurs the page if no ancestor is
  * fading (opacity < 1), filtered, or itself a backdrop-filter. So the band,
@@ -39,20 +41,29 @@ const DRAWER = [...navigationItems, { title: 'Contact Us', href: '/contact' }];
 
 type Item = (typeof DRAWER)[number] & { children?: { title: string; href: string; description?: string }[]; badge?: string };
 
-const MEGA_INTRO: Record<string, { image: string; title: string; text: string; href: string }> = {
-  About: {
-    image: '/images/hero/slides_building-training-team.jpg',
-    title: 'About CUBE',
-    text: 'Centre of Excellence of the Government of Tamil Nadu, with IIT Madras.',
-    href: '/about',
-  },
-  Media: {
-    image: '/images/media/news/images_newsnew2.jpg',
-    title: 'Media centre',
-    text: 'News, events, publications and life at CUBE.',
-    href: '/media',
-  },
+// Preview photo for each page in the About and Media menus (CUBE's own photos;
+// no captions beyond the page name). Hovering a page swaps the photo.
+const MEGA_PREVIEW: Record<string, string> = {
+  '/about': '/images/about/about_about.jpg',
+  '/about/vision-mission': '/images/life-at-cube/about_life.jpg',
+  '/about/objectives': '/images/life-at-cube/about_life2.jpg',
+  '/about/core-values': '/images/hero/slides_building-training-team.jpg',
+  '/about/chairman-message': '/images/leadership/board_member_kamakoti.jpg',
+  '/about/ceo-message': '/images/leadership/ceo_padmanaban.jpg',
+  '/about/board-members': '/images/media/news/original/newsnew4.jpg',
+  '/about/advisory-panel': '/images/life-at-cube/about_life1.jpg',
+  '/about/team': '/images/hero/slides_building-training-team.jpg',
+  '/about/clients': '/images/media/news/original/newsnew2.jpg',
+  '/media/news': '/images/media/news/original/newsnew.jpg',
+  '/media/gallery': '/images/hero/slides_iit-tirupathi.jpg',
+  '/media/events': '/images/media/news/original/newsnew3.jpg',
+  '/media/publications': '/images/media/news/images_newsnew2.jpg',
+  '/life-at-cube': '/images/life-at-cube/about_life2.jpg',
 };
+
+// Width of the morphing panel for each menu (content is laid out at this width).
+const MEGA_W: Record<string, number> = { About: 860, Projects: 1060, Verticals: 1060, Media: 700 };
+const MORPH_SPRING = { type: 'spring' as const, stiffness: 520, damping: 44, mass: 0.9 };
 
 function isItemActive(pathname: string, item: Item) {
   if (item.href === '/') return pathname === '/';
@@ -125,7 +136,10 @@ export default function Navbar() {
         e.preventDefault();
         setSearchOpen((o) => !o);
       }
-      if (e.key === 'Escape') setMega(null);
+      if (e.key === 'Escape') {
+        megaRef.current = null;
+        setMega(null);
+      }
     };
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
@@ -135,6 +149,7 @@ export default function Navbar() {
   useEffect(() => {
     setDrawerOpen(false);
     setExpanded(null);
+    megaRef.current = null;
     setMega(null);
     setHovered(null);
   }, [pathname]);
@@ -156,13 +171,33 @@ export default function Navbar() {
   }, [drawerOpen]);
 
   // Mega-menu hover intent: grace period so moving into the panel doesn't close it
+  // The panel morphs: it springs to the width of the new menu and slides under
+  // the hovered item; content slides in from the side the pointer came from.
+  const itemRefs = useRef<Record<string, HTMLAnchorElement | null>>({});
+  const [pos, setPos] = useState<{ left: number; w: number; dir: number } | null>(null);
+  const megaRef = useRef<string | null>(null);
   const openMega = useCallback((title: string | null) => {
     if (closeTimer.current) clearTimeout(closeTimer.current);
+    const prev = megaRef.current;
+    megaRef.current = title;
     setMega(title);
+    if (!title || title === prev) return;
+    const el = itemRefs.current[title];
+    const w = MEGA_W[title] ?? 900;
+    if (el) {
+      const r = el.getBoundingClientRect();
+      const left = Math.min(Math.max(r.left + r.width / 2 - w / 2, 24), window.innerWidth - w - 24);
+      const order = MENU.map((i) => i.title);
+      const dir = prev ? Math.sign(order.indexOf(title) - order.indexOf(prev)) || 1 : 0;
+      setPos({ left, w, dir });
+    }
   }, []);
   const scheduleClose = useCallback(() => {
     if (closeTimer.current) clearTimeout(closeTimer.current);
-    closeTimer.current = setTimeout(() => setMega(null), 220);
+    closeTimer.current = setTimeout(() => {
+      megaRef.current = null;
+      setMega(null);
+    }, 220);
   }, []);
 
   const hasMega = (title: string) => title === 'Verticals' || title === 'Projects' || Boolean((MENU as Item[]).find((i) => i.title === title)?.children?.length);
@@ -243,13 +278,19 @@ export default function Navbar() {
               return (
                 <Link
                   key={item.title}
+                  ref={(el) => {
+                    itemRefs.current[item.title] = el;
+                  }}
                   href={item.href}
                   aria-current={active ? 'page' : undefined}
                   aria-haspopup={mm || undefined}
                   aria-expanded={mm ? open : undefined}
                   onMouseEnter={() => {
                     setHovered(item.title);
-                    openMega(mm ? item.title : null);
+                    // passing over an item without a menu keeps the panel for a
+                    // moment, so gliding across it morphs instead of closing
+                    if (mm) openMega(item.title);
+                    else scheduleClose();
                   }}
                   onFocus={() => {
                     setHovered(item.title);
@@ -330,38 +371,26 @@ export default function Navbar() {
           </div>
         </div>
 
-        {/* 4 · mega-menu: sibling of the band; positioned by a static wrapper,
-               the glass panel animates itself so its blur is live from frame 1 */}
-        <div
-          className="hidden xl:flex absolute inset-x-0 top-full justify-center px-8"
-        >
+        {/* 4 · morphing mega-menu: one glass panel (sibling of the band, so its
+               blur is live from frame 1) that springs its width, height and x
+               between menus; the content cross-slides inside it. */}
+        <div className="hidden xl:block absolute inset-x-0 top-full h-0">
           <AnimatePresence>
-            {megaItem && (
-              <motion.div
+            {megaItem && pos && (
+              <MorphPanel
                 key="mega"
-                initial={{ opacity: 0, y: -10, scale: 0.98 }}
-                animate={{ opacity: 1, y: 0, scale: 1 }}
-                exit={{ opacity: 0, y: -6, scale: 0.99, transition: { duration: 0.16 } }}
-                transition={PANEL_SPRING}
-                onMouseEnter={() => openMega(megaItem.title)}
-                onMouseLeave={() => {
+                title={megaItem.title}
+                left={pos.left}
+                width={pos.w}
+                dir={pos.dir}
+                onEnter={() => openMega(megaItem.title)}
+                onLeave={() => {
                   setHovered(null);
                   scheduleClose();
                 }}
-                className="liquid-glass is-menu pointer-events-auto mt-2 w-full max-w-[1120px] rounded-[28px] p-3 origin-top"
               >
-                <AnimatePresence mode="wait" initial={false}>
-                  <motion.div
-                    key={megaItem.title}
-                    initial={{ opacity: 0, y: 6 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -4 }}
-                    transition={{ duration: 0.18, ease: [0.22, 1, 0.36, 1] }}
-                  >
-                    <MegaContent item={megaItem} featured={featuredProjects} />
-                  </motion.div>
-                </AnimatePresence>
-              </motion.div>
+                <MegaContent item={megaItem} featured={featuredProjects} />
+              </MorphPanel>
             )}
           </AnimatePresence>
         </div>
@@ -475,6 +504,149 @@ export default function Navbar() {
 
 /* ───────────────────────── mega-menu content ───────────────────────── */
 
+function MorphPanel({
+  title,
+  left,
+  width,
+  dir,
+  onEnter,
+  onLeave,
+  children,
+}: {
+  title: string;
+  left: number;
+  width: number;
+  dir: number;
+  onEnter: () => void;
+  onLeave: () => void;
+  children: React.ReactNode;
+}) {
+  // Height follows the content currently in flow (the outgoing content is
+  // popped out of layout), measured before paint by ResizeObserver.
+  const innerRef = useRef<HTMLDivElement>(null);
+  const [height, setHeight] = useState<number | 'auto'>('auto');
+  useEffect(() => {
+    const el = innerRef.current;
+    if (!el) return;
+    const ro = new ResizeObserver(() => setHeight(el.offsetHeight));
+    ro.observe(el);
+    return () => ro.disconnect();
+  }, []);
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: -10, scale: 0.98, x: left, width, height }}
+      animate={{ opacity: 1, y: 0, scale: 1, x: left, width, height }}
+      exit={{ opacity: 0, y: -6, scale: 0.99, transition: { duration: 0.16 } }}
+      transition={{ default: MORPH_SPRING, opacity: { duration: 0.18 } }}
+      onMouseEnter={onEnter}
+      onMouseLeave={onLeave}
+      className="liquid-glass is-menu pointer-events-auto absolute left-0 top-0 mt-2 rounded-[28px] overflow-hidden origin-top"
+    >
+      <div ref={innerRef} className="relative p-3" style={{ width }}>
+        <AnimatePresence mode="popLayout" initial={false} custom={dir}>
+          <motion.div
+            key={title}
+            custom={dir}
+            variants={{
+              enter: (d: number) => ({ opacity: 0, x: d * 36, filter: 'blur(4px)' }),
+              center: { opacity: 1, x: 0, filter: 'blur(0px)' },
+              exit: (d: number) => ({ opacity: 0, x: d * -36, filter: 'blur(4px)' }),
+            }}
+            initial="enter"
+            animate="center"
+            exit="exit"
+            transition={{ duration: 0.26, ease: [0.22, 1, 0.36, 1] }}
+          >
+            {children}
+          </motion.div>
+        </AnimatePresence>
+      </div>
+    </motion.div>
+  );
+}
+
+/** Page list beside a photo that swaps to the hovered page (About, Media). */
+function ListPreview({ item }: { item: Item }) {
+  const pages = item.children ?? [];
+  const [i, setI] = useState(0);
+  const current = pages[i] ?? pages[0];
+  const twoCol = pages.length > 6;
+  return (
+    <div className="grid gap-3" style={{ gridTemplateColumns: twoCol ? '1fr 340px' : '1fr 380px' }}>
+      <ul className={`grid gap-0.5 content-start p-1.5 ${twoCol ? 'grid-cols-2' : 'grid-cols-1'}`}>
+        {pages.map((sub, k) => {
+          const on = k === i;
+          return (
+            <li key={sub.href}>
+              <Link
+                href={sub.href}
+                onMouseEnter={() => setI(k)}
+                onFocus={() => setI(k)}
+                className={`press relative flex items-center justify-between gap-3 px-4 h-12 rounded-2xl text-[15.5px] transition-colors duration-200 ${
+                  on ? 'text-[#243239] font-bold' : 'text-[#46565E] font-semibold'
+                }`}
+              >
+                {on && (
+                  <motion.span
+                    layoutId={`mega-pill-${item.title}`}
+                    transition={{ type: 'spring', stiffness: 500, damping: 38, mass: 0.7 }}
+                    className="absolute inset-0 rounded-2xl bg-white/80 border border-white shadow-[0_6px_16px_-10px_rgba(36,50,57,0.45),inset_0_1px_0_#fff]"
+                  />
+                )}
+                <span className="relative">{sub.title}</span>
+                <ArrowUpRight
+                  size={15}
+                  strokeWidth={2.25}
+                  className={`relative text-[#C4921B] transition-[opacity,transform] duration-300 ${on ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-1'}`}
+                />
+              </Link>
+            </li>
+          );
+        })}
+      </ul>
+
+      <Link href={current?.href ?? item.href} className="press group relative overflow-hidden rounded-[20px] min-h-[250px] bg-[#DCE4E8]" tabIndex={-1} aria-hidden>
+        <AnimatePresence initial={false}>
+          <motion.span
+            key={current?.href}
+            className="absolute inset-0"
+            initial={{ opacity: 0, scale: 1.06 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+          >
+            <Image
+              src={MEGA_PREVIEW[current?.href ?? ''] ?? '/images/about/about_about.jpg'}
+              alt=""
+              fill
+              quality={85}
+              sizes="400px"
+              className="object-cover object-[50%_22%]"
+            />
+          </motion.span>
+        </AnimatePresence>
+        <span aria-hidden className="absolute inset-0 bg-gradient-to-t from-[#1B262C]/75 via-[#1B262C]/10 to-transparent" />
+        <span className="absolute inset-x-0 bottom-0 p-4 flex items-end justify-between gap-3 text-white">
+          {/* keyed fade-in only: an exit-then-enter sequence can lag on fast hovers */}
+          <motion.span
+            key={current?.title}
+            initial={{ opacity: 0, y: 6 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
+            className="font-display text-[19px] font-bold leading-snug"
+          >
+            {current?.title}
+          </motion.span>
+          <span className="grid place-items-center w-9 h-9 rounded-full bg-white/20 backdrop-blur-sm shrink-0 transition-transform duration-500 group-hover:rotate-45">
+            <ArrowUpRight size={16} strokeWidth={2.25} />
+          </span>
+        </span>
+      </Link>
+    </div>
+  );
+}
+
 function MegaContent({ item, featured }: { item: Item; featured: any[] }) {
   if (item.title === 'Verticals') {
     return (
@@ -507,28 +679,7 @@ function MegaContent({ item, featured }: { item: Item; featured: any[] }) {
     );
   }
 
-  const intro = MEGA_INTRO[item.title];
-  return (
-    <div className="grid grid-cols-[300px_1fr] gap-3">
-      {intro ? (
-        <PhotoCard href={intro.href} image={intro.image} title={intro.title} text={intro.text} tall />
-      ) : (
-        <div />
-      )}
-      <div className="grid grid-cols-2 gap-1 content-start p-2">
-        {item.children?.map((sub) => (
-          <Link
-            key={sub.title}
-            href={sub.href}
-            className="press group flex items-center justify-between gap-3 px-4 py-3 rounded-2xl text-[15.5px] font-semibold text-[#33454E] hover:text-[#243239] hover:bg-white/70 transition-colors"
-          >
-            <span>{sub.title}</span>
-            <ArrowUpRight size={15} strokeWidth={2} className="text-[#C4921B] opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300" />
-          </Link>
-        ))}
-      </div>
-    </div>
-  );
+  return <ListPreview item={item} />;
 }
 
 function PhotoCard({ href, image, title, text, tall = false }: { href: string; image: string; title: string; text?: string; tall?: boolean }) {
@@ -546,8 +697,8 @@ function PhotoCard({ href, image, title, text, tall = false }: { href: string; i
       />
       <span aria-hidden className="absolute inset-0 bg-gradient-to-t from-[#1B262C]/80 via-[#1B262C]/20 to-transparent" />
       <span className="absolute inset-x-0 bottom-0 p-4 text-white">
-        <span className="block font-display text-[18px] font-bold leading-snug line-clamp-2">{title}</span>
-        {text && <span className="mt-1 block text-[14.5px] text-white/85 leading-snug line-clamp-2">{text}</span>}
+        <span className="font-display text-[18px] font-bold leading-snug line-clamp-2">{title}</span>
+        {text && <span className="mt-1 text-[14.5px] text-white/85 leading-snug line-clamp-2">{text}</span>}
       </span>
       <ArrowUpRight size={18} className="absolute top-3 right-3 text-white opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300" />
     </Link>
