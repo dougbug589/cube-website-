@@ -206,7 +206,7 @@ export default function GlobalSearchModal({ isOpen, onClose }: GlobalSearchModal
                     <h4 className="text-sm font-semibold text-slate-800 group-hover:text-[#9A7015] transition truncate">
                       {item.title}
                     </h4>
-                    <span className="text-[11px] font-medium px-2 py-0.5 rounded-full bg-slate-100 text-slate-600 ml-2 flex-shrink-0">
+                    <span className="text-[13.5px] font-medium px-2 py-0.5 rounded-full bg-slate-100 text-slate-600 ml-2 flex-shrink-0">
                       {item.category}
                     </span>
                   </div>

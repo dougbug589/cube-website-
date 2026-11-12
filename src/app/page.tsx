@@ -192,7 +192,7 @@ export default function HomePage() {
                   <pt.Icon size={20} strokeWidth={2} />
                 </span>
                 <p className="mt-5 font-display text-[19px] font-bold text-[#243239] leading-snug">{pt.k}</p>
-                <p className="mt-2 text-[15px] text-[#5B6A71] leading-relaxed">{pt.v}</p>
+                <p className="mt-2 text-[16.5px] text-[#5B6A71] leading-relaxed">{pt.v}</p>
               </li>
             ))}
           </ul>
@@ -251,7 +251,7 @@ export default function HomePage() {
             <p className="text-[16px] leading-relaxed text-[#46565E]">{celOverview.description}</p>
             <ol className="mt-8 border-t border-[#33454E]/15">
               {celOverview.facilities.slice(0, 6).map((f, i) => (
-                <li key={f} className="flex items-baseline gap-4 py-3.5 border-b border-[#33454E]/15 text-[15px] text-[#33454E]">
+                <li key={f} className="flex items-baseline gap-4 py-3.5 border-b border-[#33454E]/15 text-[16.5px] text-[#33454E]">
                   <span className="label-mono w-6 shrink-0">{String(i + 1).padStart(2, '0')}</span>
                   <span>{f}</span>
                 </li>
@@ -263,9 +263,9 @@ export default function HomePage() {
               <Link key={s.id || s.title} href={s.id ? `/cel#${s.id}` : '/cel'} className="glass glass-interactive glass-edge p-5 lg:p-6 flex flex-col">
                 <p className="label-mono">{s.category}</p>
                 <h3 className="mt-2 text-base font-bold text-[#243239] leading-snug">{s.title}</h3>
-                <p className="mt-2 text-[14px] text-[#5B6A71] leading-relaxed line-clamp-3">{s.description}</p>
+                <p className="mt-2 text-[16px] text-[#5B6A71] leading-relaxed line-clamp-3">{s.description}</p>
                 {Array.isArray(s.parameters) && s.parameters.length > 0 && (
-                  <p className="mt-auto pt-4 border-t border-[#33454E]/15 text-[13px] text-[#46565E] line-clamp-1">
+                  <p className="mt-auto pt-4 border-t border-[#33454E]/15 text-[15px] text-[#46565E] line-clamp-1">
                     {s.parameters.slice(0, 2).join(' · ')}
                   </p>
                 )}
@@ -311,7 +311,7 @@ export default function HomePage() {
                 </Link>
               </div>
             </div>
-            <dl className="lg:col-span-5 space-y-5 text-[15px]">
+            <dl className="lg:col-span-5 space-y-5 text-[16.5px]">
               <div className="flex gap-3">
                 <MapPin size={16} strokeWidth={1.5} className="text-[#C4921B] mt-0.5 shrink-0" />
                 <dd className="text-[#46565E] leading-relaxed">{contactInfo.address}</dd>

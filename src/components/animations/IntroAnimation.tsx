@@ -57,7 +57,7 @@ export default function IntroAnimation() {
           <p className="text-xs sm:text-sm text-[#C4921B] font-medium">
             Centre for Urbanization, Buildings &amp; Environment
           </p>
-          <p className="text-[11px] text-slate-400">
+          <p className="text-[13.5px] text-slate-400">
             Centre of Excellence | IIT Madras &bull; Government of Tamil Nadu
           </p>
         </div>

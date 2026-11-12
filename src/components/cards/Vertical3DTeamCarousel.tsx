@@ -212,7 +212,7 @@ export default function Vertical3DTeamCarousel({
 
                       {/* Right Details inside Card */}
                       <div className="flex-1 min-w-0 pr-1">
-                        <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-white/90 backdrop-blur-md text-[#2B3B44] border border-[#D3DDE1]/80 shadow-xs mb-1.5">
+                        <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[13.5px] font-bold uppercase tracking-wider bg-white/90 backdrop-blur-md text-[#2B3B44] border border-[#D3DDE1]/80 shadow-xs mb-1.5">
                           <ShieldCheck className="w-3 h-3 text-[#C4921B]" />
                           <span className="truncate">{member.category || 'Board Member'}</span>
                         </span>
@@ -225,7 +225,7 @@ export default function Vertical3DTeamCarousel({
                           {member.role}
                         </p>
 
-                        <p className="text-[11px] text-[#5B6A71] mt-0.5 line-clamp-1">
+                        <p className="text-[13.5px] text-[#5B6A71] mt-0.5 line-clamp-1">
                           {member.organization || 'IIT Madras / Govt of Tamil Nadu'}
                         </p>
                       </div>
@@ -264,7 +264,7 @@ export default function Vertical3DTeamCarousel({
               >
                 <ChevronDown className="w-5 h-5 group-hover:translate-y-0.5 transition-transform" />
               </button>
-              <span className="text-[11px] font-semibold text-[#5B6A71] uppercase tracking-wider ml-2">
+              <span className="text-[13.5px] font-semibold text-[#5B6A71] uppercase tracking-wider ml-2">
                 {String(currentIndex + 1).padStart(2, '0')} / {String(total).padStart(2, '0')}
               </span>
             </div>
@@ -273,11 +273,11 @@ export default function Vertical3DTeamCarousel({
             <div className="w-full max-w-md p-6 sm:p-7 rounded-3xl apple-glass-card border border-[#D3DDE1]/80 text-left transition-all duration-500 shadow-[0_16px_36px_-12px_rgba(36,50,57,0.06)]">
               <div className="space-y-2">
                 <div className="flex items-center gap-2">
-                  <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-[#F2F5F6] text-[#2B3B44] border border-[#D3DDE1]">
+                  <span className="px-2.5 py-0.5 rounded-full text-[13.5px] font-bold uppercase tracking-wider bg-[#F2F5F6] text-[#2B3B44] border border-[#D3DDE1]">
                     {currentMember?.category || 'Leadership'}
                   </span>
                   {currentMember?.organization && (
-                    <span className="text-[11px] text-[#5B6A71] font-medium truncate">
+                    <span className="text-[13.5px] text-[#5B6A71] font-medium truncate">
                       {currentMember.organization}
                     </span>
                   )}

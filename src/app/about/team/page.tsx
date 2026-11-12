@@ -237,7 +237,7 @@ export default function TeamPage() {
                               <h3 className="text-xs sm:text-sm font-bold text-[#243239] font-display line-clamp-1 mt-1">
                                 {member.name}
                               </h3>
-                              <p className="text-[11px] text-[#2B3B44] font-semibold mt-1 line-clamp-2">
+                              <p className="text-[13.5px] text-[#2B3B44] font-semibold mt-1 line-clamp-2">
                                 {member.designation}
                               </p>
                             </div>

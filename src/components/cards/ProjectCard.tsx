@@ -30,14 +30,14 @@ export default function ProjectCard({ project }: ProjectCardProps) {
 
           {/* Frosted Glass Category Pill */}
           <div className="absolute top-3.5 left-3.5 z-10">
-            <span className="text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full border border-white/80 bg-white/80 text-[#2B3B44] backdrop-blur-xl shadow-xs">
+            <span className="text-[13.5px] font-bold uppercase tracking-wider px-3 py-1 rounded-full border border-white/80 bg-white/80 text-[#2B3B44] backdrop-blur-xl shadow-xs">
               {project.category}
             </span>
           </div>
 
           {project.featured && (
             <div className="absolute top-3.5 right-3.5 z-10">
-              <span className="text-[10px] font-extrabold px-3 py-1 rounded-full bg-[#F0C468] text-[#243239] shadow-xs">
+              <span className="text-[13.5px] font-extrabold px-3 py-1 rounded-full bg-[#F0C468] text-[#243239] shadow-xs">
                 Key Project
               </span>
             </div>
@@ -62,7 +62,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
 
           {project.scopeOfWork && project.scopeOfWork.length > 0 && (
             <div className="mt-4 pt-3 border-t border-[#DCE4E7]/70 space-y-1.5">
-              <div className="text-[10px] font-bold text-[#C4921B] uppercase tracking-wider">
+              <div className="text-[13.5px] font-bold text-[#C4921B] uppercase tracking-wider">
                 Key Scope:
               </div>
               {project.scopeOfWork.slice(0, 2).map((item, i) => (
@@ -78,7 +78,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
 
       {/* Footer Pill Action */}
       <div className="p-6 pt-0 flex items-center justify-between text-xs text-[#5B6A71] border-t border-transparent group-hover:border-[#DCE4E7]/50 transition-colors">
-        <span className="text-[11px] font-medium text-[#5B6A71]">
+        <span className="text-[13.5px] font-medium text-[#5B6A71]">
           {project.location || 'Tamil Nadu, India'}
         </span>
         <div className="flex items-center space-x-1 font-semibold text-[#2B3B44] group-hover:text-[#C4921B] transition-colors">

@@ -75,7 +75,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
                       {project.location || 'Tamil Nadu, India'}
                     </span>
                   </div>
-                  <span className="text-[11px] font-bold uppercase tracking-wider px-3 py-1 rounded-full bg-white/90 text-[#2B3B44] backdrop-blur-md">
+                  <span className="text-[13.5px] font-bold uppercase tracking-wider px-3 py-1 rounded-full bg-white/90 text-[#2B3B44] backdrop-blur-md">
                     Verified State Scheme
                   </span>
                 </div>
@@ -128,7 +128,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
                         key={i} 
                         className="p-5 rounded-2xl bg-white border border-[#D3DDE1] shadow-2xs hover:shadow-sm transition-all"
                       >
-                        <span className="text-[10px] font-bold text-[#C4921B] uppercase tracking-wider block mb-1.5">
+                        <span className="text-[13.5px] font-bold text-[#C4921B] uppercase tracking-wider block mb-1.5">
                           0{i + 1}. Mandate Scope
                         </span>
                         <p className="text-xs text-[#243239] leading-relaxed">
@@ -173,7 +173,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
                 </h3>
 
                 <div>
-                  <span className="text-[10px] font-bold text-[#5B6A71] uppercase tracking-wider block">
+                  <span className="text-[13.5px] font-bold text-[#5B6A71] uppercase tracking-wider block">
                     Institutional Vertical
                   </span>
                   <span className="text-xs font-semibold text-[#2B3B44] mt-1 block">
@@ -182,7 +182,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
                 </div>
 
                 <div>
-                  <span className="text-[10px] font-bold text-[#5B6A71] uppercase tracking-wider block">
+                  <span className="text-[13.5px] font-bold text-[#5B6A71] uppercase tracking-wider block">
                     Execution Body
                   </span>
                   <span className="text-xs font-semibold text-[#243239] mt-1 block">
@@ -191,7 +191,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
                 </div>
 
                 <div>
-                  <span className="text-[10px] font-bold text-[#5B6A71] uppercase tracking-wider block">
+                  <span className="text-[13.5px] font-bold text-[#5B6A71] uppercase tracking-wider block">
                     Quality Mandate
                   </span>
                   <span className="text-xs text-[#5B6A71] mt-1 block leading-relaxed">

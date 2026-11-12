@@ -64,7 +64,7 @@ export default function ContactPage() {
             {/* Left 5 Cols: Contact Coordinates & Google Map in Apple Liquid Glass */}
             <div className="lg:col-span-5 space-y-8">
               <div>
-                <span className="text-[10px] font-bold uppercase tracking-wider text-[#2B3B44] bg-[#F2F5F6] border border-[#D3DDE1] px-3 py-1 rounded-full shadow-2xs">
+                <span className="text-[13.5px] font-bold uppercase tracking-wider text-[#2B3B44] bg-[#F2F5F6] border border-[#D3DDE1] px-3 py-1 rounded-full shadow-2xs">
                   Institutional Secretariat
                 </span>
                 <h2 className="font-display text-3xl font-bold text-[#243239] tracking-tight mt-3">
@@ -139,7 +139,7 @@ export default function ContactPage() {
                   href={contactInfo.googleMapsLiveUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="absolute top-3 left-3 bg-white/90 backdrop-blur-md text-[#2B3B44] text-[11px] font-bold px-3 py-1.5 rounded-full shadow-sm border border-[#D3DDE1] flex items-center hover:bg-[#F2F5F6] transition"
+                  className="absolute top-3 left-3 bg-white/90 backdrop-blur-md text-[#2B3B44] text-[13.5px] font-bold px-3 py-1.5 rounded-full shadow-sm border border-[#D3DDE1] flex items-center hover:bg-[#F2F5F6] transition"
                 >
                   <span>Open in Maps</span>
                   <ExternalLink className="w-3 h-3 ml-1 text-[#C4921B]" />
@@ -150,7 +150,7 @@ export default function ContactPage() {
             {/* Right 7 Cols: Real-Time Technical Enquiry Form in Apple Liquid Glass */}
             <div className="lg:col-span-7">
               <GlassPanel variant="panel" className="p-8 sm:p-10 border border-[#D3DDE1]">
-                <span className="text-[10px] font-bold uppercase tracking-wider text-[#2B3B44] bg-[#F2F5F6] border border-[#D3DDE1] px-3 py-1 rounded-full shadow-2xs">
+                <span className="text-[13.5px] font-bold uppercase tracking-wider text-[#2B3B44] bg-[#F2F5F6] border border-[#D3DDE1] px-3 py-1 rounded-full shadow-2xs">
                   Real-Time Enquiry Dispatch
                 </span>
                 <h2 className="font-display text-3xl font-bold text-[#243239] tracking-tight mt-3 mb-2">

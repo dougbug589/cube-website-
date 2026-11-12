@@ -46,7 +46,7 @@ export default function Footer() {
                 <Image src="/images/branding/cube-live-logo.png" alt="" fill sizes="240px" className="object-contain object-left p-2.5" />
               </span>
             </Link>
-            <p className="mt-5 text-[15px] leading-relaxed max-w-sm">
+            <p className="mt-5 text-[16.5px] leading-relaxed max-w-sm">
               Centre for Urbanization, Buildings &amp; Environment. A Centre of Excellence of the Government of Tamil Nadu and IIT Madras.
             </p>
             <div className="mt-6 flex items-center gap-2">
@@ -68,7 +68,7 @@ export default function Footer() {
           {/* Verticals */}
           <nav aria-label="Verticals" className="lg:col-span-3">
             <p className="label-mono">Verticals</p>
-            <ul className="mt-4 space-y-2.5 text-[15px]">
+            <ul className="mt-4 space-y-2.5 text-[16.5px]">
               {verticals.map((v) => (
                 <li key={v.slug}>
                   <Link href={`/verticals/${v.slug}`} className="hover:text-[#243239] transition-colors">
@@ -85,7 +85,7 @@ export default function Footer() {
           {/* The Centre */}
           <nav aria-label="The Centre" className="lg:col-span-2">
             <p className="label-mono">The Centre</p>
-            <ul className="mt-4 space-y-2.5 text-[15px]">
+            <ul className="mt-4 space-y-2.5 text-[16.5px]">
               {CENTRE_LINKS.map((l) => (
                 <li key={l.href}>
                   <Link href={l.href} className="hover:text-[#243239] transition-colors">{l.label}</Link>
@@ -97,7 +97,7 @@ export default function Footer() {
           {/* Office */}
           <div className="lg:col-span-3">
             <p className="label-mono">Office</p>
-            <ul className="mt-4 space-y-3.5 text-[15px]">
+            <ul className="mt-4 space-y-3.5 text-[16.5px]">
               <li className="flex gap-3">
                 <MapPin size={17} strokeWidth={1.75} className="text-[#C4921B] shrink-0 mt-0.5" />
                 <span className="leading-relaxed">{contactInfo.address}</span>
@@ -117,7 +117,7 @@ export default function Footer() {
             </ul>
             <Link
               href="/contact"
-              className="gold-shimmer mt-6 inline-flex items-center gap-2 h-12 px-6 rounded-full text-[15px] font-bold btn-gold"
+              className="gold-shimmer mt-6 inline-flex items-center gap-2 h-12 px-6 rounded-full text-[16.5px] font-bold btn-gold"
             >
               Send an enquiry <ArrowUpRight size={16} strokeWidth={2.25} />
             </Link>
@@ -138,7 +138,7 @@ export default function Footer() {
           </div>
         )}
 
-        <div className="mt-14 pt-6 border-t border-[#33454E]/15 flex flex-col md:flex-row gap-4 md:items-center justify-between text-[13.5px] text-[#5B6A71]">
+        <div className="mt-14 pt-6 border-t border-[#33454E]/15 flex flex-col md:flex-row gap-4 md:items-center justify-between text-[15.5px] text-[#5B6A71]">
           <p>© {year} Centre for Urbanization, Buildings &amp; Environment (CUBE). All rights reserved.</p>
           <nav aria-label="Footer" className="flex flex-wrap gap-x-6 gap-y-2">
             <Link href="/tenders" className="hover:text-[#243239] transition-colors">Tenders</Link>

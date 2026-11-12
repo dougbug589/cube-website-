@@ -67,7 +67,7 @@ function useCycle(length: number, ms: number, running: boolean, startDelay = 0) 
 function TileHead({ label }: { label: string }) {
   return (
     <div className="absolute top-4 left-4 right-4 z-10 flex items-center justify-between">
-      <span className="liquid-glass-dark rounded-full px-3.5 py-1.5 text-[13px] font-extrabold text-white tracking-wide" style={{ background: 'rgba(20, 30, 36, 0.42)' }}>{label}</span>
+      <span className="liquid-glass-dark rounded-full px-3.5 py-1.5 text-[15px] font-extrabold text-white tracking-wide" style={{ background: 'rgba(20, 30, 36, 0.42)' }}>{label}</span>
       <span className="liquid-glass-dark grid place-items-center w-9 h-9 rounded-full text-white transition-transform duration-500 group-hover:rotate-45">
         <ArrowUpRight size={16} strokeWidth={2.25} />
       </span>
@@ -132,7 +132,7 @@ export default function HomeBento({
         <TileHead label="Life at CUBE" />
         <div className="absolute left-6 right-6 bottom-6 text-white">
           <p className="font-display text-2xl lg:text-[28px] font-extrabold leading-tight">Engineers, researchers and faculty, one team.</p>
-          <p className="mt-1.5 text-[15px] text-white/80">Training, site work and campus life at IIT Madras Research Park.</p>
+          <p className="mt-1.5 text-[16.5px] text-white/80">Training, site work and campus life at IIT Madras Research Park.</p>
         </div>
       </Link>
 
@@ -160,7 +160,7 @@ export default function HomeBento({
               className="absolute left-6 right-6 bottom-6 text-white"
             >
               <p className="font-display text-[22px] lg:text-2xl font-extrabold leading-tight">{person.name}</p>
-              {person.role && <p className="mt-1 text-[14.5px] text-white/80 leading-snug line-clamp-2">{person.role}</p>}
+              {person.role && <p className="mt-1 text-[16.5px] text-white/80 leading-snug line-clamp-2">{person.role}</p>}
             </motion.div>
           )}
         </AnimatePresence>
@@ -189,7 +189,7 @@ export default function HomeBento({
               transition={{ duration: 0.5, ease: EASE }}
               className="absolute left-6 right-6 bottom-6 text-white"
             >
-              {shot.date && <p className="text-[13px] font-bold text-[#F0C468]">{shot.date}</p>}
+              {shot.date && <p className="text-[15px] font-bold text-[#F0C468]">{shot.date}</p>}
               <p className="mt-1 font-display text-lg font-bold leading-snug line-clamp-2">{shot.title}</p>
             </motion.div>
           )}
@@ -203,7 +203,7 @@ export default function HomeBento({
         className="press group relative overflow-hidden rounded-[28px] depth-2 min-h-[300px] liquid-glass is-solid"
       >
         <div className="absolute top-4 left-4 right-4 z-10 flex items-center justify-between">
-          <span className="rounded-full bg-[#F7EDD3] px-3.5 py-1.5 text-[13px] font-extrabold text-[#243239] tracking-wide">Clients</span>
+          <span className="rounded-full bg-[#F7EDD3] px-3.5 py-1.5 text-[15px] font-extrabold text-[#243239] tracking-wide">Clients</span>
           <span className="grid place-items-center w-9 h-9 rounded-full bg-white text-[#243239] depth-1 transition-transform duration-500 group-hover:rotate-45">
             <ArrowUpRight size={16} strokeWidth={2.25} />
           </span>

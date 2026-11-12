@@ -87,21 +87,21 @@ export default function FlipCard({
             {/* Badges */}
             <div className="absolute top-3.5 left-3.5 right-3.5 flex justify-between items-center z-10">
               {category && (
-                <span className="text-[10px] font-bold tracking-wider uppercase px-3 py-1 bg-white/95 text-[#2B3B44] rounded-full shadow-sm backdrop-blur-sm border border-[#B9C5CA]">
+                <span className="text-[13.5px] font-bold tracking-wider uppercase px-3 py-1 bg-white/95 text-[#2B3B44] rounded-full shadow-sm backdrop-blur-sm border border-[#B9C5CA]">
                   {category}
                 </span>
               )}
               {badge && (
-                <span className="text-[10px] font-bold px-2.5 py-0.5 bg-[#F0C468] text-[#243239] rounded-full shadow-sm">
+                <span className="text-[13.5px] font-bold px-2.5 py-0.5 bg-[#F0C468] text-[#243239] rounded-full shadow-sm">
                   {badge}
                 </span>
               )}
             </div>
 
             {/* Flip Hint */}
-            <div className="absolute bottom-3 right-3 z-10 flex items-center space-x-1.5 px-3 py-1 rounded-full bg-white/95 text-[#2B3B44] text-[11px] shadow-sm backdrop-blur-sm border border-[#B9C5CA]">
+            <div className="absolute bottom-3 right-3 z-10 flex items-center space-x-1.5 px-3 py-1 rounded-full bg-white/95 text-[#2B3B44] text-[13.5px] shadow-sm backdrop-blur-sm border border-[#B9C5CA]">
               <RotateCw className="w-3 h-3 text-[#C4921B]" />
-              <span className="text-[10px] font-semibold"><span className="hidden [@media(hover:hover)]:inline">Hover to Flip</span><span className="[@media(hover:hover)]:hidden">Tap to Flip</span></span>
+              <span className="text-[13.5px] font-semibold"><span className="hidden [@media(hover:hover)]:inline">Hover to Flip</span><span className="[@media(hover:hover)]:hidden">Tap to Flip</span></span>
             </div>
           </div>
 
@@ -109,7 +109,7 @@ export default function FlipCard({
           <div className="p-6 flex-1 flex flex-col justify-between bg-transparent">
             <div>
               {subtitle && (
-                <span className="text-[11px] font-semibold text-[#C4921B] uppercase tracking-wider block mb-1">
+                <span className="text-[13.5px] font-semibold text-[#C4921B] uppercase tracking-wider block mb-1">
                   {subtitle}
                 </span>
               )}
@@ -141,7 +141,7 @@ export default function FlipCard({
         >
           <div>
             <div className="flex items-center justify-between pb-3 border-b border-[#B9C5CA]/80">
-              <span className="text-[10px] font-bold uppercase tracking-wider text-[#2B3B44]">
+              <span className="text-[13.5px] font-bold uppercase tracking-wider text-[#2B3B44]">
                 Key Mandates &amp; Capabilities
               </span>
               <button
@@ -167,7 +167,7 @@ export default function FlipCard({
 
             {keyPoints && keyPoints.length > 0 && (
               <div className="mt-4 space-y-2">
-                <div className="text-[11px] font-bold text-[#243239] uppercase tracking-wider">
+                <div className="text-[13.5px] font-bold text-[#243239] uppercase tracking-wider">
                   Highlights:
                 </div>
                 <div className="space-y-1.5">

@@ -23,7 +23,7 @@ export default function NewsTicker({ items }: { items: NewsLike[] }) {
       <div className="liquid-glass is-solid depth-1 rounded-[22px] h-14 flex items-center overflow-hidden">
         <Link
           href="/media/news"
-          className="press shrink-0 h-full flex items-center gap-2 pl-5 pr-4 font-display text-[15px] font-extrabold text-[#243239] border-r border-[#33454E]/10"
+          className="press shrink-0 h-full flex items-center gap-2 pl-5 pr-4 font-display text-[16.5px] font-extrabold text-[#243239] border-r border-[#33454E]/10"
         >
           <span className="w-2 h-2 rounded-full bg-[#E9B215] shadow-[0_0_10px_#E9B215] animate-pulse" />
           News
@@ -38,9 +38,9 @@ export default function NewsTicker({ items }: { items: NewsLike[] }) {
                 <Link
                   href={n.slug || n.id ? `/media/news/${n.slug || n.id}` : '/media/news'}
                   tabIndex={i >= list.length ? -1 : undefined}
-                  className="group inline-flex items-center gap-3 px-6 text-[15px] whitespace-nowrap"
+                  className="group inline-flex items-center gap-3 px-6 text-[16.5px] whitespace-nowrap"
                 >
-                  {n.date && <span className="text-[13px] font-bold text-[#9A7015] tabular-nums">{n.date}</span>}
+                  {n.date && <span className="text-[15px] font-bold text-[#9A7015] tabular-nums">{n.date}</span>}
                   <span className="font-semibold text-[#243239] group-hover:text-[#9A7015] transition-colors">{n.title}</span>
                   <ArrowUpRight size={14} className="text-[#C4921B] opacity-0 group-hover:opacity-100 transition-opacity" />
                   <span aria-hidden className="ml-3 w-1 h-1 rounded-full bg-[#33454E]/25" />
@@ -51,7 +51,7 @@ export default function NewsTicker({ items }: { items: NewsLike[] }) {
         </div>
         <Link
           href="/media/news"
-          className="press hidden sm:inline-flex shrink-0 items-center gap-1.5 h-9 mr-2.5 px-4 rounded-full btn-soft text-[14px] font-bold"
+          className="press hidden sm:inline-flex shrink-0 items-center gap-1.5 h-9 mr-2.5 px-4 rounded-full btn-soft text-[16px] font-bold"
         >
           All news
         </Link>

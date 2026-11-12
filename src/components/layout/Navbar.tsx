@@ -499,7 +499,7 @@ function MegaContent({ item, featured }: { item: Item; featured: any[] }) {
           <span className="label-mono">Portfolio</span>
           <span>
             <span className="block font-display text-[22px] font-extrabold text-[#243239] leading-tight">All projects</span>
-            <span className="mt-1 block text-[14px] text-[#5B6A71]">Search and filter the full record.</span>
+            <span className="mt-1 block text-[15.5px] text-[#5B6A71]">Search and filter the full record.</span>
           </span>
           <ArrowUpRight size={20} className="text-[#C4921B] transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
         </Link>
@@ -537,8 +537,8 @@ function PhotoCard({ href, image, title, text, tall = false }: { href: string; i
       <Image src={image} alt="" fill sizes="280px" className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.05]" />
       <span aria-hidden className="absolute inset-0 bg-gradient-to-t from-[#1B262C]/80 via-[#1B262C]/20 to-transparent" />
       <span className="absolute inset-x-0 bottom-0 p-4 text-white">
-        <span className="block font-display text-[17px] font-bold leading-snug line-clamp-2">{title}</span>
-        {text && <span className="mt-1 block text-[13px] text-white/80 leading-snug line-clamp-2">{text}</span>}
+        <span className="block font-display text-[18px] font-bold leading-snug line-clamp-2">{title}</span>
+        {text && <span className="mt-1 block text-[14.5px] text-white/85 leading-snug line-clamp-2">{text}</span>}
       </span>
       <ArrowUpRight size={18} className="absolute top-3 right-3 text-white opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300" />
     </Link>

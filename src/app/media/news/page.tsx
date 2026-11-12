@@ -41,7 +41,7 @@ export default async function NewsPage() {
                       className="object-cover group-hover:scale-105 transition-transform duration-500"
                     />
                     <div className="absolute top-3 left-3">
-                      <span className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-white/95 text-[#2B3B44] border border-[#B9C5CA] shadow-2xs backdrop-blur-md">
+                      <span className="text-[13.5px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-white/95 text-[#2B3B44] border border-[#B9C5CA] shadow-2xs backdrop-blur-md">
                         {item.category}
                       </span>
                     </div>

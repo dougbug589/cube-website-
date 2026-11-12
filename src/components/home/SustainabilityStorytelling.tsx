@@ -105,7 +105,7 @@ export default function SustainabilityStorytelling() {
                       <Icon className="w-5 h-5 text-[#2B3B44]" />
                     </div>
 
-                    <span className="text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full bg-white/80 border border-[#DCE4E7] text-[#5B6A71]">
+                    <span className="text-[13.5px] font-bold uppercase tracking-wider px-3 py-1 rounded-full bg-white/80 border border-[#DCE4E7] text-[#5B6A71]">
                       {pillar.category}
                     </span>
                   </div>
@@ -139,7 +139,7 @@ export default function SustainabilityStorytelling() {
                     <ArrowUpRight className="w-3.5 h-3.5" />
                   </Link>
 
-                  <span className="text-[10px] font-bold text-[#5B6A71] uppercase tracking-wider">
+                  <span className="text-[13.5px] font-bold text-[#5B6A71] uppercase tracking-wider">
                     IIT Madras Research
                   </span>
                 </div>

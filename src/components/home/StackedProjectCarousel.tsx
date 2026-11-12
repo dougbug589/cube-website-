@@ -209,7 +209,7 @@ export default function StackedProjectCarousel({ projects }: { projects: AnyProj
       </motion.div>
 
       <div className="flex justify-end px-5 sm:px-8 lg:px-16 -mt-2">
-        <Link href="/projects" className="text-[15px] font-bold text-[#243239] hover:text-[#9A7015] border-b-2 border-[#C4921B] pb-0.5 transition-colors">
+        <Link href="/projects" className="text-[16.5px] font-bold text-[#243239] hover:text-[#9A7015] border-b-2 border-[#C4921B] pb-0.5 transition-colors">
           View all projects
         </Link>
       </div>
@@ -228,12 +228,12 @@ function Card({ project, label, sub, isCenter }: { project: AnyProject; label: s
         sizes="(max-width: 640px) 330px, 440px"
         className="object-cover select-none pointer-events-none"
       />
-      <div className="liquid-glass-dark absolute top-4 left-4 rounded-full px-3.5 py-1.5 text-[12.5px] text-white font-bold">{label}</div>
+      <div className="liquid-glass-dark absolute top-4 left-4 rounded-full px-3.5 py-1.5 text-[14.5px] text-white font-bold">{label}</div>
       <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent pt-24 pb-5 px-5">
         <div className="font-display text-white font-bold leading-snug line-clamp-2 text-xl sm:text-[26px]">{project.title}</div>
-        <div className="text-[13.5px] text-[#F0C468] mt-1.5 font-semibold truncate">{sub}</div>
+        <div className="text-[15.5px] text-[#F0C468] mt-1.5 font-semibold truncate">{sub}</div>
         <div
-          className={`liquid-glass-dark mt-4 inline-flex items-center gap-1.5 h-9 px-4 rounded-full text-[14px] font-bold text-white transition-opacity duration-300 ${
+          className={`liquid-glass-dark mt-4 inline-flex items-center gap-1.5 h-9 px-4 rounded-full text-[16px] font-bold text-white transition-opacity duration-300 ${
             isCenter ? 'opacity-100' : 'opacity-0'
           }`}
         >

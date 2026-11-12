@@ -397,7 +397,7 @@ export default function CompleteAboutExperience() {
                 <div>
                   <h4 className="font-display font-bold text-[#2B3B44] text-base leading-snug">{member.name}</h4>
                   <p className="text-xs font-semibold text-[#C4921B] mt-0.5">{member.role}</p>
-                  <p className="text-[11px] text-[#5B6A71] mt-0.5 line-clamp-1">{member.organization}</p>
+                  <p className="text-[13.5px] text-[#5B6A71] mt-0.5 line-clamp-1">{member.organization}</p>
                 </div>
               </div>
             ))}
@@ -427,8 +427,8 @@ export default function CompleteAboutExperience() {
                   <Image src={advisor.image || '/images/leadership/about_leader.jpg'} alt={advisor.name} fill className="object-cover" />
                 </div>
                 <h4 className="font-display font-bold text-[#2B3B44] text-sm leading-snug">{advisor.name}</h4>
-                <p className="text-[11px] font-semibold text-[#C4921B] mt-0.5">{advisor.role}</p>
-                <p className="text-[10px] text-[#5B6A71] mt-0.5">{advisor.organization || 'IIT Madras'}</p>
+                <p className="text-[13.5px] font-semibold text-[#C4921B] mt-0.5">{advisor.role}</p>
+                <p className="text-[13.5px] text-[#5B6A71] mt-0.5">{advisor.organization || 'IIT Madras'}</p>
               </div>
             ))}
           </div>
@@ -461,8 +461,8 @@ export default function CompleteAboutExperience() {
                 </div>
                 <div className="min-w-0 flex-1">
                   <h4 className="font-display font-bold text-[#2B3B44] text-sm truncate">{tm.name}</h4>
-                  <p className="text-[11px] font-semibold text-[#C4921B] truncate">{tm.designation}</p>
-                  <p className="text-[10px] text-[#5B6A71] truncate">{tm.department || 'CUBE Applied Engineering'}</p>
+                  <p className="text-[13.5px] font-semibold text-[#C4921B] truncate">{tm.designation}</p>
+                  <p className="text-[13.5px] text-[#5B6A71] truncate">{tm.department || 'CUBE Applied Engineering'}</p>
                 </div>
               </div>
             ))}

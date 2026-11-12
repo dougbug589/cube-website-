@@ -176,14 +176,14 @@ export default function GalleryPage() {
                 <div className="absolute inset-0 bg-gradient-to-t from-[#2B3B44]/90 via-navy-950/20 to-transparent opacity-80 group-hover:opacity-95 transition-opacity" />
 
                 <div className="absolute top-3 left-3">
-                  <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-white/90 text-[#2B3B44] text-[#2B3B44] border border-[#D3DDE1]">
+                  <span className="text-[13.5px] font-bold px-2 py-0.5 rounded-full bg-white/90 text-[#2B3B44] text-[#2B3B44] border border-[#D3DDE1]">
                     {item.category}
                   </span>
                 </div>
 
                 <div className="absolute bottom-3 left-3 right-3 text-white">
                   <h4 className="text-sm font-bold line-clamp-1">{item.title}</h4>
-                  <p className="text-[11px] text-slate-300 line-clamp-1 mt-0.5">{item.description}</p>
+                  <p className="text-[13.5px] text-slate-300 line-clamp-1 mt-0.5">{item.description}</p>
                 </div>
 
                 <div className="absolute top-3 right-3 p-1.5 rounded-lg bg-white/90 text-[#2B3B44] text-white opacity-0 group-hover:opacity-100 transition-opacity">
@@ -246,7 +246,7 @@ export default function GalleryPage() {
               <div className="mt-4 px-10 text-center text-white">
                 <h3 className="text-lg font-bold font-display">{activeItem.title}</h3>
                 <p className="text-xs text-slate-300 mt-1">{activeItem.description}</p>
-                <span className="text-[11px] text-[#C4921B] mt-1 block">
+                <span className="text-[13.5px] text-[#C4921B] mt-1 block">
                   {(lightboxIndex ?? 0) + 1} of {filteredItems.length}
                 </span>
               </div>

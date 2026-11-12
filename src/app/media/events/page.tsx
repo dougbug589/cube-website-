@@ -40,7 +40,7 @@ export default function EventsPage() {
                     className="object-cover"
                   />
                   <div className="absolute top-3 left-3">
-                    <span className="text-[10px] font-bold px-3 py-1 rounded-full bg-white/90 text-[#2B3B44] text-[#2B3B44] backdrop-blur-md border border-[#D3DDE1]">
+                    <span className="text-[13.5px] font-bold px-3 py-1 rounded-full bg-white/90 text-[#2B3B44] text-[#2B3B44] backdrop-blur-md border border-[#D3DDE1]">
                       {evt.category}
                     </span>
                   </div>

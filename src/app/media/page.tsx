@@ -109,7 +109,7 @@ export default function CompleteMediaExperience() {
                 className="rounded-3xl bg-white border border-[#D3DDE1] p-6 shadow-2xs hover:shadow-md hover:border-[#C4921B] transition-all flex flex-col justify-between"
               >
                 <div>
-                  <div className="flex items-center justify-between text-[11px] font-semibold text-[#5B6A71] mb-3">
+                  <div className="flex items-center justify-between text-[13.5px] font-semibold text-[#5B6A71] mb-3">
                     <span className="px-2.5 py-0.5 rounded-full bg-[#F2F5F6] text-[#2B3B44] border border-[#D3DDE1]">
                       {item.category || 'Press Release'}
                     </span>
@@ -160,7 +160,7 @@ export default function CompleteMediaExperience() {
                   <div className="relative h-48 w-full rounded-2xl overflow-hidden mb-4 border border-white ring-1 ring-[#D3DDE1]">
                     <Image src={evt.image} alt={evt.title} fill className="object-cover" />
                   </div>
-                  <span className="text-[10px] font-bold uppercase tracking-wider text-[#C4921B]">{evt.category}{evt.date ? <> &bull; {evt.date}</> : null}</span>
+                  <span className="text-[13.5px] font-bold uppercase tracking-wider text-[#C4921B]">{evt.category}{evt.date ? <> &bull; {evt.date}</> : null}</span>
                   <h3 className="font-display font-bold text-base text-[#2B3B44] mt-1 leading-snug">{evt.title}</h3>
                   {evt.location && (
                     <p className="text-xs text-[#5B6A71] mt-2 flex items-center gap-1">
@@ -258,7 +258,7 @@ export default function CompleteMediaExperience() {
           <div className="space-y-6 max-w-4xl mx-auto">
             {publications.map((pub, idx) => (
               <div key={idx} className="p-6 sm:p-8 rounded-3xl bg-white border border-[#D3DDE1] shadow-2xs hover:shadow-xs transition">
-                <span className="text-[10px] font-bold uppercase tracking-wider text-[#C4921B]">{pub.authors} &bull; {pub.date}</span>
+                <span className="text-[13.5px] font-bold uppercase tracking-wider text-[#C4921B]">{pub.authors} &bull; {pub.date}</span>
                 <h3 className="font-display font-bold text-lg sm:text-xl text-[#2B3B44] mt-1 leading-snug">{pub.title}</h3>
                 <p className="text-xs sm:text-sm text-[#243239]/80 mt-2 leading-relaxed">{pub.desc}</p>
                 <div className="mt-5 pt-3 border-t border-[#DCE4E7] flex items-center justify-between text-xs">

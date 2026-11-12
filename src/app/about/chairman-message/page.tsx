@@ -44,7 +44,7 @@ export default function ChairmanMessagePage() {
               <p className="text-xs text-slate-500 mt-0.5">
                 Director, IIT Madras
               </p>
-              <div className="mt-4 pt-4 border-t border-slate-200 text-[11px] text-slate-500">
+              <div className="mt-4 pt-4 border-t border-slate-200 text-[13.5px] text-slate-500">
                 Centre for Urbanization, Buildings &amp; Environment
               </div>
             </div>

@@ -167,7 +167,7 @@ export default function EtihadHero() {
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-              className="inline-flex items-center gap-2 text-[14px] font-bold tracking-wide text-[#F2F5F6]/90"
+              className="inline-flex items-center gap-2 text-[16px] font-bold tracking-wide text-[#F2F5F6]/90"
             >
               <span className="w-1.5 h-1.5 rounded-full bg-[#E9B215] shadow-[0_0_10px_#E9B215]" />
               Centre of Excellence · IIT Madras × Govt of Tamil Nadu
@@ -222,7 +222,7 @@ export default function EtihadHero() {
               exit={{ opacity: 0, y: -6 }}
               transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
             >
-              <Link href={slide.href} className="group inline-flex items-center gap-2 text-[15px] text-white/85 hover:text-white transition-colors">
+              <Link href={slide.href} className="group inline-flex items-center gap-2 text-[16.5px] text-white/85 hover:text-white transition-colors">
                 <span className="font-semibold">{slide.tag}</span>
                 {slide.location && <span className="text-white/55">· {slide.location}</span>}
                 <ArrowUpRight size={15} className="opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all" />

@@ -103,7 +103,7 @@ export function GlassStat({
   return (
     <GlassPanel variant="card" interactive className={`p-6 ${className}`}>
       <div className="flex items-center justify-between mb-3">
-        <span className="text-[11px] uppercase tracking-widest text-[#8C9AA0] font-bold">
+        <span className="text-[13.5px] uppercase tracking-widest text-[#8C9AA0] font-bold">
           {label}
         </span>
         {Icon && <Icon className="w-4 h-4 text-[#E9B215]" />}

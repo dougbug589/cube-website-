@@ -124,7 +124,7 @@ export default function DocumentRequestModal({
                 <FileText className="w-5 h-5 text-[#C4921B]" />
               </div>
               <div>
-                <span className="text-[10px] font-bold uppercase tracking-wider text-[#C4921B]">Official Request</span>
+                <span className="text-[13.5px] font-bold uppercase tracking-wider text-[#C4921B]">Official Request</span>
                 <h3 className="font-display font-bold text-lg text-[#2B3B44] leading-tight">Request Technical Document</h3>
               </div>
             </div>
@@ -132,7 +132,7 @@ export default function DocumentRequestModal({
             <div className="bg-[#F6F8F9] p-3.5 rounded-2xl border border-[#D3DDE1]/70 mb-5 text-xs">
               <p className="font-semibold text-[#2B3B44] line-clamp-2">{documentTitle}</p>
               {documentAuthor && (
-                <p className="text-[11px] text-slate-500 mt-1">{documentAuthor}</p>
+                <p className="text-[13.5px] text-slate-500 mt-1">{documentAuthor}</p>
               )}
             </div>
 
@@ -145,7 +145,7 @@ export default function DocumentRequestModal({
             <form onSubmit={handleSubmit} className="space-y-3.5">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-[11px] font-semibold text-slate-700 mb-1">
+                  <label className="block text-[13.5px] font-semibold text-slate-700 mb-1">
                     Your Full Name <span className="text-red-500">*</span>
                   </label>
                   <input
@@ -158,7 +158,7 @@ export default function DocumentRequestModal({
                   />
                 </div>
                 <div>
-                  <label className="block text-[11px] font-semibold text-slate-700 mb-1">
+                  <label className="block text-[13.5px] font-semibold text-slate-700 mb-1">
                     Official Email <span className="text-red-500">*</span>
                   </label>
                   <input
@@ -174,7 +174,7 @@ export default function DocumentRequestModal({
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-[11px] font-semibold text-slate-700 mb-1">
+                  <label className="block text-[13.5px] font-semibold text-slate-700 mb-1">
                     Phone / Mobile <span className="text-red-500">*</span>
                   </label>
                   <input
@@ -187,7 +187,7 @@ export default function DocumentRequestModal({
                   />
                 </div>
                 <div>
-                  <label className="block text-[11px] font-semibold text-slate-700 mb-1">
+                  <label className="block text-[13.5px] font-semibold text-slate-700 mb-1">
                     Organization / Department <span className="text-red-500">*</span>
                   </label>
                   <input
@@ -202,7 +202,7 @@ export default function DocumentRequestModal({
               </div>
 
               <div>
-                <label className="block text-[11px] font-semibold text-slate-700 mb-1">
+                <label className="block text-[13.5px] font-semibold text-slate-700 mb-1">
                   Purpose / Intended Application (Optional)
                 </label>
                 <textarea

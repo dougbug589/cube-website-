@@ -76,7 +76,7 @@ export default async function TendersPage() {
                     </div>
 
                     <div className="pt-3 border-t border-slate-200/60 flex items-center justify-between">
-                      <span className="text-[11px] text-slate-400">
+                      <span className="text-[13.5px] text-slate-400">
                         Published: {tender.publishedDate || tender.createdAt?.split('T')[0] || 'Official CUBE Portal'}
                       </span>
                       {tender.documentUrl && tender.documentUrl !== '#' ? (

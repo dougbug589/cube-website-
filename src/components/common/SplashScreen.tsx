@@ -61,7 +61,7 @@ export default function SplashScreen() {
           <Image src="/images/branding/cube-live-logo.png" alt="" fill priority sizes="280px" className="object-contain" />
         </div>
         <p className="splash-word font-display text-[28px] sm:text-[34px] font-extrabold tracking-[0.12em] text-[#243239] mt-5">CUBE</p>
-        <p className="splash-tag text-[13px] font-bold uppercase tracking-[0.2em] text-[#5B6A71] mt-1.5">Centre of Excellence</p>
+        <p className="splash-tag text-[15px] font-bold uppercase tracking-[0.2em] text-[#5B6A71] mt-1.5">Centre of Excellence</p>
         <span className="splash-line mt-7" />
       </div>
     </div>

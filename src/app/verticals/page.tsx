@@ -169,7 +169,7 @@ export default function CompleteVerticalsExperience() {
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                       {vertProjects.map((proj, pIdx) => (
                         <div key={proj.slug || pIdx} className="p-5 rounded-3xl bg-white border border-[#D3DDE1] shadow-2xs hover:shadow-xs transition">
-                          <span className="text-[10px] font-bold text-[#2B3B44] uppercase tracking-wider">{proj.client}</span>
+                          <span className="text-[13.5px] font-bold text-[#2B3B44] uppercase tracking-wider">{proj.client}</span>
                           <h4 className="font-display font-bold text-base text-[#243239] mt-1 leading-snug">{proj.title}</h4>
                           <p className="text-xs text-[#5B6A71] mt-2 line-clamp-2">{proj.description}</p>
                           <div className="mt-4 pt-3 border-t border-[#DCE4E7] flex items-center justify-between text-xs">

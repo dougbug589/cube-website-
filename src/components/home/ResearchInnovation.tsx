@@ -75,7 +75,7 @@ export default function ResearchInnovation() {
                     <Icon className="w-5 h-5 text-[#2B3B44]" />
                   </div>
 
-                  <span className="text-[10px] font-bold uppercase tracking-wider text-[#2B3B44] bg-[#F2F5F6] px-2.5 py-0.5 rounded-full border border-[#D3DDE1]">
+                  <span className="text-[13.5px] font-bold uppercase tracking-wider text-[#2B3B44] bg-[#F2F5F6] px-2.5 py-0.5 rounded-full border border-[#D3DDE1]">
                     {domain.tag}
                   </span>
 
@@ -91,7 +91,7 @@ export default function ResearchInnovation() {
                 <div className="pt-4 mt-4 border-t border-[#DCE4E7]">
                   <div className="flex items-start gap-1.5">
                     <CheckCircle2 className="w-3.5 h-3.5 text-[#C4921B] flex-shrink-0 mt-0.5" />
-                    <p className="text-[11px] font-medium text-[#243239]/90 leading-tight">
+                    <p className="text-[13.5px] font-medium text-[#243239]/90 leading-tight">
                       {domain.deliverable}
                     </p>
                   </div>

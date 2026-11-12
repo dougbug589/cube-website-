@@ -110,7 +110,7 @@ export default async function EnvironmentSustainabilityPage() {
           {/* Connected CEL Environmental Laboratory Banner */}
           <div className="mt-16 p-8 rounded-3xl bg-gradient-to-r from-[#060F1E] to-[#0A1A33] text-white border border-[#E9D6A8]/30 flex flex-col md:flex-row items-center justify-between gap-6 shadow-xl">
             <div className="space-y-2 text-center md:text-left">
-              <span className="text-[11px] uppercase tracking-wider font-bold text-[#C4921B] bg-[#C4921B]/60 px-3 py-1 rounded-full border border-[#E9D6A8]/30">
+              <span className="text-[13.5px] uppercase tracking-wider font-bold text-[#C4921B] bg-[#C4921B]/60 px-3 py-1 rounded-full border border-[#E9D6A8]/30">
                 Co-Located Testing Laboratory
               </span>
               <h4 className="text-xl sm:text-2xl font-bold font-display">

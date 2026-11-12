@@ -112,7 +112,7 @@ export default function VerticalShowcase({ verticals }: { verticals: Vertical[] 
               )}
               <span className="relative flex items-center gap-4">
                 <span
-                  className={`grid place-items-center w-11 h-11 rounded-2xl font-display text-[15px] font-extrabold tabular-nums transition-colors duration-300 ${
+                  className={`grid place-items-center w-11 h-11 rounded-2xl font-display text-[16.5px] font-extrabold tabular-nums transition-colors duration-300 ${
                     on ? 'bg-[#F0C468] text-[#243239]' : 'bg-[#33454E]/[0.06] text-[#7A888E]'
                   }`}
                 >
@@ -176,7 +176,7 @@ export default function VerticalShowcase({ verticals }: { verticals: Vertical[] 
                 {typeof v.projectCount === 'number' && (
                   <div className="text-right shrink-0">
                     <p className="font-display text-[34px] font-extrabold leading-none text-[#C4921B]">{v.projectCount}</p>
-                    <p className="text-[13px] text-[#5B6A71] mt-1">projects</p>
+                    <p className="text-[15px] text-[#5B6A71] mt-1">projects</p>
                   </div>
                 )}
               </div>
@@ -184,7 +184,7 @@ export default function VerticalShowcase({ verticals }: { verticals: Vertical[] 
               {v.capabilities && v.capabilities.length > 0 && (
                 <ul className="mt-5 flex flex-wrap gap-2">
                   {v.capabilities.slice(0, 3).map((c) => (
-                    <li key={c} className="rounded-full bg-[#33454E]/[0.06] border border-[#33454E]/10 px-3.5 py-1.5 text-[13.5px] font-semibold text-[#243239]">
+                    <li key={c} className="rounded-full bg-[#33454E]/[0.06] border border-[#33454E]/10 px-3.5 py-1.5 text-[15.5px] font-semibold text-[#243239]">
                       {c.replace(/\s*\([^)]*\)/g, '')}
                     </li>
                   ))}

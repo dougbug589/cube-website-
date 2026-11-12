@@ -136,7 +136,7 @@ export default function CinematicImageStrip() {
                 
                 {/* Category Pill */}
                 <div className="absolute top-4 left-4">
-                  <span className="px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-white/95 text-[#243239] shadow-sm backdrop-blur-sm">
+                  <span className="px-3 py-1 rounded-full text-[13.5px] font-bold uppercase tracking-wider bg-white/95 text-[#243239] shadow-sm backdrop-blur-sm">
                     {item.category}
                   </span>
                 </div>

@@ -196,10 +196,10 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
               </button>
 
               <div className="flex flex-wrap items-center gap-2 pr-10">
-                <span className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-white text-[#2B3B44] border border-[#D3DDE1]">
+                <span className="text-[13.5px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-white text-[#2B3B44] border border-[#D3DDE1]">
                   {detailJob.department || 'Engineering Vertical'}
                 </span>
-                <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-[#F7EDD3] text-[#9A7015] border border-[#E9D6A8]">
+                <span className="text-[13.5px] font-bold px-2 py-0.5 rounded-full bg-[#F7EDD3] text-[#9A7015] border border-[#E9D6A8]">
                   {detailJob.employmentType || 'Full-Time'}
                 </span>
               </div>
@@ -405,10 +405,10 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
                     >
                       <div>
                         <div className="flex items-center justify-between gap-2 mb-3">
-                          <span className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-[#F2F5F6] text-[#2B3B44] border border-[#D3DDE1]">
+                          <span className="text-[13.5px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-[#F2F5F6] text-[#2B3B44] border border-[#D3DDE1]">
                             {job.department || 'Engineering Vertical'}
                           </span>
-                          <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-[#F7EDD3] text-[#9A7015] border border-[#E9D6A8]">
+                          <span className="text-[13.5px] font-bold px-2 py-0.5 rounded-full bg-[#F7EDD3] text-[#9A7015] border border-[#E9D6A8]">
                             {job.employmentType || 'Full-Time'}
                           </span>
                         </div>
@@ -426,14 +426,14 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
                           {job.description}
                         </p>
 
-                        <span className="mt-3 inline-flex items-center gap-1 text-[11px] font-semibold text-[#2B3B44] group-hover:text-[#C4921B] transition-colors">
+                        <span className="mt-3 inline-flex items-center gap-1 text-[13.5px] font-semibold text-[#2B3B44] group-hover:text-[#C4921B] transition-colors">
                           View full details
                           <ChevronRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5" />
                         </span>
                       </div>
 
                       <div className="pt-5 mt-5 border-t border-[#DCE4E7] flex items-center justify-between gap-3">
-                        <span className="text-[11px] text-[#5B6A71]">Exp: {job.experience || '3+ Yrs'}</span>
+                        <span className="text-[13.5px] text-[#5B6A71]">Exp: {job.experience || '3+ Yrs'}</span>
                         <button
                           onClick={(e) => { e.stopPropagation(); handleApplyClick(job); }}
                           className="shrink-0 px-4 py-2 rounded-full bg-[#F2F5F6] hover:bg-[#F6DA86] text-[#2B3B44] hover:text-[#243239] border border-[#D3DDE1] text-xs font-bold transition-all shadow-xs flex items-center gap-1.5"
@@ -622,7 +622,7 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
                           <p className="text-xs font-bold text-[#2B3B44]">
                             {resumeFile ? resumeFile.name : 'Click or Drag & Drop your Resume here'}
                           </p>
-                          <p className="text-[10px] text-[#5B6A71] mt-1">
+                          <p className="text-[13.5px] text-[#5B6A71] mt-1">
                             Supported formats: PDF, DOCX (up to 10MB)
                           </p>
                         </div>

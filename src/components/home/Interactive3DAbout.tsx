@@ -79,7 +79,7 @@ export default function Interactive3DAbout() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent flex items-end p-6">
                   <div className="text-white space-y-1">
-                    <span className="text-[10px] uppercase font-bold tracking-widest text-[#C4921B]">
+                    <span className="text-[13.5px] uppercase font-bold tracking-widest text-[#C4921B]">
                       HQ &bull; Chennai
                     </span>
                     <div className="text-sm font-display font-medium">
@@ -107,7 +107,7 @@ export default function Interactive3DAbout() {
                 
                 {/* Floating Badge */}
                 <div className="absolute top-3 left-3">
-                  <span className="px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-white/95 text-[#2B3B44] shadow-sm backdrop-blur-sm flex items-center gap-1.5">
+                  <span className="px-3 py-1 rounded-full text-[13.5px] font-bold uppercase tracking-wider bg-white/95 text-[#2B3B44] shadow-sm backdrop-blur-sm flex items-center gap-1.5">
                     <span className="w-1.5 h-1.5 rounded-full bg-[#F0C468] animate-pulse" />
                     <span>Academic Nexus</span>
                   </span>
@@ -134,7 +134,7 @@ export default function Interactive3DAbout() {
                   />
                 </div>
                 <div className="pr-2">
-                  <div className="text-[9px] uppercase font-bold text-[#C4921B] tracking-wider">
+                  <div className="text-[12px] uppercase font-bold text-[#C4921B] tracking-wider">
                     Established 2017
                   </div>
                   <div className="text-xs font-display font-semibold text-[#2B3B44]">
@@ -178,7 +178,7 @@ export default function Interactive3DAbout() {
                 <p className="text-xs text-[#5B6A71] mt-2 leading-relaxed">
                   Third-party audits, non-destructive testing (NDT), and concrete durability verification for mega public housing schemes.
                 </p>
-                <div className="mt-3 flex items-center text-[11px] font-semibold text-[#2B3B44] opacity-0 group-hover:opacity-100 transition-opacity">
+                <div className="mt-3 flex items-center text-[13.5px] font-semibold text-[#2B3B44] opacity-0 group-hover:opacity-100 transition-opacity">
                   <span>Explore TPQA Standards</span>
                   <ArrowUpRight className="w-3.5 h-3.5 ml-1" />
                 </div>
@@ -196,7 +196,7 @@ export default function Interactive3DAbout() {
                 <p className="text-xs text-[#5B6A71] mt-2 leading-relaxed">
                   Direct access to IIT Madras civil engineering faculty, advanced computational tools, and state environmental laboratories.
                 </p>
-                <div className="mt-3 flex items-center text-[11px] font-semibold text-[#2B3B44] opacity-0 group-hover:opacity-100 transition-opacity">
+                <div className="mt-3 flex items-center text-[13.5px] font-semibold text-[#2B3B44] opacity-0 group-hover:opacity-100 transition-opacity">
                   <span>Faculty Advisory Panel</span>
                   <ArrowUpRight className="w-3.5 h-3.5 ml-1" />
                 </div>

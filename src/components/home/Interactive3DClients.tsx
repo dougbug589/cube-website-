@@ -67,7 +67,7 @@ export default function Interactive3DClients({ clients }: Interactive3DClientsPr
                 />
               </div>
               {clientDisplayName(client.name) && (
-                <span className="text-[11px] text-[#243239] group-hover:text-[#2B3B44] font-bold mt-2 truncate max-w-full">
+                <span className="text-[13.5px] text-[#243239] group-hover:text-[#2B3B44] font-bold mt-2 truncate max-w-full">
                   {clientDisplayName(client.name)}
                 </span>
               )}
@@ -100,7 +100,7 @@ export default function Interactive3DClients({ clients }: Interactive3DClientsPr
                 />
               </div>
               {clientDisplayName(client.name) && (
-                <span className="text-[11px] text-[#243239] group-hover:text-[#2B3B44] font-bold mt-2 truncate max-w-full">
+                <span className="text-[13.5px] text-[#243239] group-hover:text-[#2B3B44] font-bold mt-2 truncate max-w-full">
                   {clientDisplayName(client.name)}
                 </span>
               )}

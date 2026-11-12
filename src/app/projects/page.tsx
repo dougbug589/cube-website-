@@ -94,7 +94,7 @@ function ProjectsPageInner() {
               Showing <span className="font-bold text-[#2B3B44]">{filteredProjects.length}</span> verified infrastructure projects
             </div>
             {selectedCategory !== 'All' && (
-              <span className="text-[11px] font-semibold text-[#C4921B]">
+              <span className="text-[13.5px] font-semibold text-[#C4921B]">
                 Filtered by: {selectedCategory}
               </span>
             )}

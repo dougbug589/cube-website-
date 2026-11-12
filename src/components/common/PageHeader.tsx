@@ -48,13 +48,13 @@ export default function PageHeader({ badge, title, description, breadcrumbs, bac
           <button
             type="button"
             onClick={handleBack}
-            className="inline-flex items-center gap-2 h-9 px-3.5 rounded-full glass glass-blur text-[14px] text-[#46565E] hover:text-[#243239] hover:border-[#C4921B]/40 transition-colors"
+            className="inline-flex items-center gap-2 h-9 px-3.5 rounded-full glass glass-blur text-[16px] text-[#46565E] hover:text-[#243239] hover:border-[#C4921B]/40 transition-colors"
           >
             <ArrowLeft size={14} strokeWidth={1.75} />
             Back
           </button>
 
-          <nav aria-label="Breadcrumb" className="flex items-center gap-1.5 text-[13px] text-[#7A888E]">
+          <nav aria-label="Breadcrumb" className="flex items-center gap-1.5 text-[15px] text-[#7A888E]">
             <Link href="/" className="hover:text-[#243239] transition-colors">Home</Link>
             {breadcrumbs.map((crumb, i) => (
               <React.Fragment key={`${crumb.label}-${i}`}>

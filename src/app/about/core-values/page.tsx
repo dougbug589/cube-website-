@@ -44,7 +44,7 @@ export default function CoreValuesPage() {
                       {val.description}
                     </p>
                   </div>
-                  <div className="mt-6 pt-4 border-t border-slate-200/80 text-[10px] font-bold text-[#9A7015] uppercase tracking-wider">
+                  <div className="mt-6 pt-4 border-t border-slate-200/80 text-[13.5px] font-bold text-[#9A7015] uppercase tracking-wider">
                     Core Value {(i + 1).toString().padStart(2, '0')}
                   </div>
                 </div>

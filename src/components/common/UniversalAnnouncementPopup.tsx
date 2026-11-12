@@ -108,7 +108,7 @@ export default function UniversalAnnouncementPopup() {
                   fill
                   className="object-cover"
                 />
-                <div className="absolute top-2.5 left-2.5 px-3 py-1 rounded-full bg-[#F0C468] text-[#243239] text-[10px] font-bold tracking-wider shadow-sm flex items-center gap-1.5">
+                <div className="absolute top-2.5 left-2.5 px-3 py-1 rounded-full bg-[#F0C468] text-[#243239] text-[13.5px] font-bold tracking-wider shadow-sm flex items-center gap-1.5">
                   <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
                   <span>{ann.badge || 'WE ARE HIRING'}</span>
                 </div>
@@ -118,7 +118,7 @@ export default function UniversalAnnouncementPopup() {
             <div className="flex items-start justify-between gap-3">
               <div className="flex items-center gap-2">
                 <span className="w-2 h-2 rounded-full bg-[#F0C468] animate-pulse" />
-                <span className="text-[10px] font-bold uppercase tracking-wider text-[#2B3B44] bg-[#F2F5F6] px-3 py-1 rounded-full border border-[#D3DDE1]">
+                <span className="text-[13.5px] font-bold uppercase tracking-wider text-[#2B3B44] bg-[#F2F5F6] px-3 py-1 rounded-full border border-[#D3DDE1]">
                   {ann.badge || ann.type || 'Announcement'}
                 </span>
               </div>
@@ -153,7 +153,7 @@ export default function UniversalAnnouncementPopup() {
                 </Link>
                 <button
                   onClick={() => dismiss(ann.id, ann.frequency)}
-                  className="text-[10px] font-semibold text-[#5B6A71] hover:text-[#2B3B44] uppercase tracking-wider cursor-pointer px-2 py-2.5 -my-2"
+                  className="text-[13.5px] font-semibold text-[#5B6A71] hover:text-[#2B3B44] uppercase tracking-wider cursor-pointer px-2 py-2.5 -my-2"
                 >
                   Dismiss
                 </button>

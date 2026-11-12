@@ -100,18 +100,18 @@ export default function CELCard({ service }: CELCardProps) {
 
           {/* Floating Badges */}
           <div className="absolute top-3.5 left-3.5 right-3.5 flex justify-between items-center z-10">
-            <span className="text-[10px] font-bold tracking-wider uppercase px-3 py-1 bg-white/95 text-[#2B3B44] rounded-full shadow-sm backdrop-blur-sm border border-[#B9C5CA]">
+            <span className="text-[13.5px] font-bold tracking-wider uppercase px-3 py-1 bg-white/95 text-[#2B3B44] rounded-full shadow-sm backdrop-blur-sm border border-[#B9C5CA]">
               {service.category}
             </span>
-            <span className="text-[10px] font-bold px-2.5 py-0.5 bg-[#F0C468] text-[#243239] rounded-full shadow-sm">
+            <span className="text-[13.5px] font-bold px-2.5 py-0.5 bg-[#F0C468] text-[#243239] rounded-full shadow-sm">
               CEL Certified
             </span>
           </div>
 
           {/* Dynamic 3D Drawer Pill */}
-          <div className="absolute bottom-3 right-3 z-10 flex items-center space-x-1.5 px-3 py-1 rounded-full bg-white/95 text-[#2B3B44] text-[11px] shadow-sm backdrop-blur-sm border border-[#B9C5CA]">
+          <div className="absolute bottom-3 right-3 z-10 flex items-center space-x-1.5 px-3 py-1 rounded-full bg-white/95 text-[#2B3B44] text-[13.5px] shadow-sm backdrop-blur-sm border border-[#B9C5CA]">
             <Sparkles className="w-3 h-3 text-[#C4921B]" />
-            <span className="text-[10px] font-semibold">
+            <span className="text-[13.5px] font-semibold">
               {isExpanded ? 'Testing Parameters' : (<><span className="hidden [@media(hover:hover)]:inline">Hover to Expand</span><span className="[@media(hover:hover)]:hidden">Tap to Expand</span></>)}
             </span>
             {isExpanded ? (
@@ -125,7 +125,7 @@ export default function CELCard({ service }: CELCardProps) {
         {/* CARD BODY CONTENT */}
         <div className="p-6 flex-1 flex flex-col justify-between bg-white relative z-10">
           <div className="space-y-1">
-            <span className="text-[11px] font-semibold text-[#C4921B] uppercase tracking-wider block">
+            <span className="text-[13.5px] font-semibold text-[#C4921B] uppercase tracking-wider block">
               CUBE Environmental Laboratory (CEL)
             </span>
             <h3 className="font-display text-lg font-bold text-[#2B3B44] leading-snug line-clamp-2">
@@ -157,7 +157,7 @@ export default function CELCard({ service }: CELCardProps) {
                 <div className="flex items-center justify-between pb-2 border-b border-[#DCE4E7]">
                   <div className="flex items-center space-x-1.5">
                     <FlaskConical className="w-3.5 h-3.5 text-[#2B3B44]" />
-                    <span className="text-[10px] font-bold uppercase tracking-wider text-[#2B3B44]">
+                    <span className="text-[13.5px] font-bold uppercase tracking-wider text-[#2B3B44]">
                       CEL Analytical Specifications
                     </span>
                   </div>
@@ -174,7 +174,7 @@ export default function CELCard({ service }: CELCardProps) {
 
                 {service.parameters && service.parameters.length > 0 && (
                   <div className="mt-3.5 space-y-2">
-                    <div className="text-[10px] font-bold text-[#243239] uppercase tracking-wider">
+                    <div className="text-[13.5px] font-bold text-[#243239] uppercase tracking-wider">
                       Tested Parameters:
                     </div>
                     <div className="space-y-1.5">
@@ -189,7 +189,7 @@ export default function CELCard({ service }: CELCardProps) {
                 )}
 
                 {service.equipment && service.equipment.length > 0 && (
-                  <div className="mt-2.5 text-[11px] text-[#5B6A71]">
+                  <div className="mt-2.5 text-[13.5px] text-[#5B6A71]">
                     <span className="font-semibold text-[#243239]">Key Instruments: </span>
                     <span>{service.equipment.slice(0, 2).join(', ')}</span>
                   </div>

@@ -57,11 +57,11 @@ export default async function AdvisoryPanelPage() {
                 <p className="text-xs text-[#9A7015] font-medium mt-1 line-clamp-2">
                   {member.role}
                 </p>
-                <p className="text-[10px] text-slate-500 mt-1 line-clamp-1">
+                <p className="text-[13.5px] text-slate-500 mt-1 line-clamp-1">
                   IIT Madras
                 </p>
                 <div className="mt-auto pt-4">
-                  <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-[#F7EDD3] text-[#9A7015] border border-[#E9D6A8]">
+                  <span className="text-[13.5px] font-bold px-2 py-0.5 rounded-full bg-[#F7EDD3] text-[#9A7015] border border-[#E9D6A8]">
                     Faculty Advisor
                   </span>
                 </div>

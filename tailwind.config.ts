@@ -63,6 +63,13 @@ const config: Config = {
           950: '#243239',
         }
       },
+      // Legibility: the two smallest steps are used for most body copy on
+      // inner pages, so they are raised (root is 17px): xs ≈ 15px, sm = 17px.
+      fontSize: {
+        xs: ['0.875rem', { lineHeight: '1.45rem' }],
+        sm: ['1rem', { lineHeight: '1.65rem' }],
+        base: ['1.0625rem', { lineHeight: '1.75rem' }],
+      },
       fontFamily: {
         sans: ["var(--font-sans)", "system-ui", "sans-serif"],
         display: ["var(--font-sans)", "system-ui", "sans-serif"],
