@@ -239,37 +239,37 @@ export default function HomePage() {
         </div>
       </Section>
 
-      {/* 06 · CEL laboratory */}
+      {/* 06 · CEL laboratory — the home page text from cubeiitm.org */}
       <Section
         id="cel"
-        eyebrow="CUBE Environmental Laboratory"
-        title={celOverview.subtitle}
-        action={{ href: '/cel', label: 'Testing services' }}
+        eyebrow="CEL"
+        title="CUBE Environmental Laboratory."
+        action={{ href: '/cel', label: 'About the laboratory' }}
       >
-        <div className="grid lg:grid-cols-12 gap-8 lg:gap-12">
-          <div className="lg:col-span-5 reveal">
-            <p className="text-[16px] leading-relaxed text-[#46565E]">{celOverview.description}</p>
-            <ol className="mt-8 border-t border-[#33454E]/15">
-              {celOverview.facilities.slice(0, 6).map((f, i) => (
-                <li key={f} className="flex items-baseline gap-4 py-3.5 border-b border-[#33454E]/15 text-[16.5px] text-[#33454E]">
-                  <span className="label-mono w-6 shrink-0">{String(i + 1).padStart(2, '0')}</span>
-                  <span>{f}</span>
-                </li>
+        <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+          <div className="lg:col-span-6 reveal">
+            <p className="text-[19px] leading-relaxed text-[#243239]">{celOverview.subtitle}</p>
+            <div className="mt-7 grid grid-cols-3 gap-3 reveal-stagger">
+              {celServiceList.slice(0, 3).map((s) => (
+                <div key={s.id || s.title} className="glass rounded-[20px] px-4 py-4 text-center">
+                  <span className="text-[16.5px] font-bold text-[#243239]">{s.title}</span>
+                </div>
               ))}
-            </ol>
+            </div>
+            <a
+              href={celOverview.website}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="press btn-soft mt-7 inline-flex items-center gap-2 h-12 px-6 rounded-full text-[16px] font-bold"
+            >
+              Visit the CEL website <ArrowUpRight size={16} />
+            </a>
           </div>
-          <div className="lg:col-span-7 grid sm:grid-cols-2 gap-4 reveal-stagger">
-            {celServiceList.slice(0, 4).map((s) => (
-              <Link key={s.id || s.title} href={s.id ? `/cel#${s.id}` : '/cel'} className="glass glass-interactive glass-edge p-5 lg:p-6 flex flex-col">
-                <p className="label-mono">{s.category}</p>
-                <h3 className="mt-2 text-base font-bold text-[#243239] leading-snug">{s.title}</h3>
-                <p className="mt-2 text-[16px] text-[#5B6A71] leading-relaxed line-clamp-3">{s.description}</p>
-                {Array.isArray(s.parameters) && s.parameters.length > 0 && (
-                  <p className="mt-auto pt-4 border-t border-[#33454E]/15 text-[15px] text-[#46565E] line-clamp-1">
-                    {s.parameters.slice(0, 2).join(' · ')}
-                  </p>
-                )}
-              </Link>
+          <div className="lg:col-span-6 grid grid-cols-2 gap-4 reveal">
+            {['/images/cel/about_cel.jpg', '/images/cel/about_cel1.jpg', '/images/cel/about_cel2.jpg'].map((src, i) => (
+              <div key={src} className={`relative rounded-[24px] overflow-hidden depth-2 bg-[#DCE4E8] ${i === 0 ? 'col-span-2 h-60' : 'h-40'}`}>
+                <Image src={src} alt="CUBE Environmental Laboratory" fill sizes="(max-width: 1024px) 100vw, 45vw" className="object-cover" />
+              </div>
             ))}
           </div>
         </div>

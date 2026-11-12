@@ -4,9 +4,8 @@ import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import PageHeader from '@/components/common/PageHeader';
-import CELCard from '@/components/cards/CELCard';
 import { 
-  FlaskConical, CheckCircle2, Waves, ArrowRight, 
+  FlaskConical, CheckCircle2, Waves, ArrowRight, ArrowUpRight,
   Send, Phone, Mail, MapPin, Microscope, Sparkles, Loader2
 } from 'lucide-react';
 import { celOverview } from '@/data/cel';
@@ -65,73 +64,55 @@ Parameters / Notes: ${formData.parametersNeeded || 'Standard Matrix Parameters'}
   return (
     <div className="bg-transparent min-h-screen">
       <PageHeader
-        badge="State-of-the-Art Analytical Facility"
-        title="CUBE Environmental Laboratory (CEL)"
-        description="Comprehensive physical, chemical, microbiological, and trace elemental characterization across water, wastewater, solid waste, and soil matrices under ISO-standard testing protocols."
+        badge="Laboratory"
+        title={celOverview.title}
+        description={celOverview.description}
         breadcrumbs={[{ label: 'CEL Laboratory' }]}
       />
 
-      {/* Overview Section */}
-      <section className="py-20 bg-transparent border-b border-[#C4CAD8]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            <div className="lg:col-span-7 space-y-6">
-              <span className="text-xs font-bold uppercase tracking-wider text-[#2B3B44] bg-[#F0C468] px-3 py-1 rounded-full shadow-sm">
-                IIT Madras Research Park Facility
-              </span>
-              <h2 className="text-3xl font-display font-extrabold text-[#2B3B44]">
-                Precision Analytical Diagnostics for Environmental Engineering
-              </h2>
-              <p className="text-sm sm:text-base text-slate-700 leading-relaxed font-normal">
-                {celOverview.description}
-              </p>
-
-              <div className="space-y-3 pt-2">
-                <h4 className="text-xs font-bold uppercase tracking-wider text-[#C4921B]">
-                  Laboratory Capabilities &amp; Clean Room Facilities:
-                </h4>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-                  {celOverview.facilities.map((fac, i) => (
-                    <div key={i} className="flex items-center text-xs font-semibold text-slate-800 bg-[#F6F8F9] p-2.5 rounded-xl border border-[#C4CAD8]">
-                      <CheckCircle2 className="w-4 h-4 text-[#C4921B] mr-2 flex-shrink-0" />
-                      <span>{fac}</span>
-                    </div>
-                  ))}
-                </div>
+      {/* Overview: only what cubeiitm.org states about CEL */}
+      <section className="py-16 lg:py-20">
+        <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 grid lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+          <div className="lg:col-span-6 space-y-5 reveal">
+            <p className="text-[19px] sm:text-xl text-[#243239] leading-relaxed">{celOverview.subtitle}</p>
+            <p className="text-[17px] text-[#46565E] leading-relaxed">{celOverview.location}</p>
+            <div className="pt-2 flex flex-wrap gap-3">
+              <a
+                href={celOverview.website}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="press btn-gold gold-shimmer inline-flex items-center gap-2 h-12 px-6 rounded-full text-[16px] font-extrabold"
+              >
+                Visit the CEL website <ArrowUpRight size={16} strokeWidth={2.25} />
+              </a>
+              <a href={`mailto:${contactInfo.email}`} className="press btn-soft inline-flex items-center gap-2 h-12 px-6 rounded-full text-[16px] font-bold">
+                <Mail size={16} /> {contactInfo.email}
+              </a>
+            </div>
+          </div>
+          <div className="lg:col-span-6 grid grid-cols-2 gap-4 reveal">
+            {['/images/cel/about_cel.jpg', '/images/cel/about_cel1.jpg', '/images/cel/about_cel2.jpg'].map((src, i) => (
+              <div key={src} className={`relative rounded-[24px] overflow-hidden depth-2 bg-[#DCE4E8] ${i === 0 ? 'col-span-2 h-64 sm:h-72' : 'h-44 sm:h-52'}`}>
+                <Image src={src} alt="CUBE Environmental Laboratory" fill sizes="(max-width: 1024px) 100vw, 45vw" className="object-cover" priority={i === 0} />
               </div>
-            </div>
-
-            <div className="lg:col-span-5 relative h-96 rounded-3xl overflow-hidden shadow-cube border border-[#C4CAD8]">
-              <Image
-                src="/images/cel/about_cel.jpg"
-                alt="CUBE Environmental Laboratory Interior"
-                fill
-                className="object-cover"
-                priority
-              />
-            </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Testing Services Cards */}
-      <section className="py-20 bg-transparent border-b border-[#C4CAD8]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-2xl mx-auto mb-14">
-            <span className="text-xs font-bold uppercase tracking-wider text-[#2B3B44] bg-[#F0C468] px-3 py-1 rounded-full shadow-sm">
-              Testing Parameters
-            </span>
-            <h2 className="text-3xl font-display font-extrabold text-[#2B3B44] mt-3">
-              CEL Testing Services &amp; Matrices
-            </h2>
-            <p className="text-sm text-slate-600 mt-2">
-              Hover or tap each 3D card to view testing parameters, analytical equipment, and compliance scopes.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {testingServices.map((service) => (
-              <CELCard key={service.id} service={service} />
+      {/* Testing domains */}
+      <section className="pb-16 lg:pb-20">
+        <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12">
+          <p className="label-mono reveal">Testing domains</p>
+          <div className="mt-5 grid md:grid-cols-3 gap-5 reveal-stagger">
+            {testingServices.map((service: any) => (
+              <div key={service.id || service.title} className="glass glass-interactive glass-edge rounded-[26px] p-7">
+                <span className="grid place-items-center w-12 h-12 rounded-2xl bg-[#F7EDD3] text-[#9A7015] depth-1">
+                  <FlaskConical size={22} strokeWidth={2} />
+                </span>
+                <h2 className="mt-5 font-display text-2xl font-extrabold text-[#243239]">{service.title}</h2>
+                {service.description && <p className="mt-2 text-[16.5px] text-[#46565E] leading-relaxed">{service.description}</p>}
+              </div>
             ))}
           </div>
         </div>
@@ -160,7 +141,7 @@ Parameters / Notes: ${formData.parametersNeeded || 'Standard Matrix Parameters'}
                   CEL Testing Enquiry Received in Real-Time
                 </h3>
                 <p className="text-xs text-slate-700 max-w-md mx-auto leading-relaxed">
-                  Thank you, <strong>{formData.name}</strong>. A laboratory coordinator from CUBE Environmental Laboratory will review your testing scope for <strong>{formData.matrix}</strong> and contact you at <strong>{formData.email}</strong> within one working day.
+                  Thank you, <strong>{formData.name}</strong>. A laboratory coordinator from CUBE Environmental Laboratory will review your testing scope for <strong>{formData.matrix}</strong> and contact you at <strong>{formData.email}</strong>.
                 </p>
                 <button
                   onClick={() => {
@@ -255,7 +236,7 @@ Parameters / Notes: ${formData.parametersNeeded || 'Standard Matrix Parameters'}
                       required
                       value={formData.matrix}
                       onChange={(e) => setFormData({ ...formData, matrix: e.target.value })}
-                      placeholder="Type sample category manually (e.g. Water Quality, Wastewater, Soil, Concrete...)"
+                      placeholder="e.g. Water, Wastewater or Solid Waste"
                       className="w-full px-4 py-2.5 rounded-xl bg-white border border-[#C4CAD8] text-xs focus:outline-none focus:border-[#C4921B] transition shadow-sm"
                     />
                   </div>
