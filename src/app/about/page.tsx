@@ -68,7 +68,7 @@ export default function AboutPage() {
 
       {/* 1 · Overview */}
       <section id="overview" className="scroll-mt-40 py-16 lg:py-20">
-        <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 grid lg:grid-cols-12 gap-10 lg:gap-14">
+        <div className="shell grid lg:grid-cols-12 gap-10 lg:gap-14">
           <div className="lg:col-span-7 reveal">
             <p className="label-mono">About CUBE</p>
             <p className="mt-4 text-[20px] sm:text-[22px] leading-relaxed text-[#243239] font-semibold">{aboutContent.overview[0]}</p>
@@ -116,7 +116,7 @@ export default function AboutPage() {
 
       {/* 2 · Vision & Mission */}
       <section id="vision-mission" className="scroll-mt-40 py-16 lg:py-20 band-mist">
-        <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12">
+        <div className="shell">
           <SectionHeading eyebrow="Vision & Mission" title="Vision & mission." />
           <div className="grid lg:grid-cols-12 gap-5 reveal-stagger">
             <div className="lg:col-span-5 liquid-glass rounded-[28px] p-8 lg:p-10">
@@ -140,7 +140,7 @@ export default function AboutPage() {
 
       {/* 3 · Objectives & Core Values */}
       <section id="objectives-values" className="scroll-mt-40 py-16 lg:py-20">
-        <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12">
+        <div className="shell">
           <SectionHeading eyebrow="Objectives" title="Objectives." />
           <ol className="grid sm:grid-cols-2 gap-4 reveal-stagger">
             {aboutContent.objectives.map((obj, i) => (
@@ -188,7 +188,7 @@ export default function AboutPage() {
 
       {/* 6 · Board Members */}
       <section id="governing-board" className="scroll-mt-40 py-16 lg:py-20 band-mist">
-        <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12">
+        <div className="shell">
           <SectionHeading
             eyebrow="Board Members"
             title="Governing Body."
@@ -214,7 +214,7 @@ export default function AboutPage() {
 
       {/* 7 · IIT Advisory Panel */}
       <section id="advisory-panel" className="scroll-mt-40 py-16 lg:py-20">
-        <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12">
+        <div className="shell">
           <SectionHeading
             eyebrow="IIT Advisory Panel"
             title="IIT Madras advisory panel."
@@ -237,7 +237,7 @@ export default function AboutPage() {
 
       {/* 8 · Our Team */}
       <section id="our-team" className="scroll-mt-40 py-16 lg:py-20 band-mist">
-        <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12">
+        <div className="shell">
           <SectionHeading
             eyebrow="Our Team"
             title={<>Our team <span className="text-[#C4921B]">({teamMembers.length})</span></>}
@@ -275,7 +275,7 @@ export default function AboutPage() {
 
       {/* 9 · Our Clients */}
       <section id="clients-partners" className="scroll-mt-40 py-16 lg:py-20">
-        <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12">
+        <div className="shell">
           <SectionHeading
             eyebrow="Our Clients"
             title={<>Clients <span className="text-[#C4921B]">({clients.length})</span></>}
@@ -327,7 +327,7 @@ function Message({
 }) {
   return (
     <section id={id} className={`scroll-mt-40 py-16 lg:py-20 ${band ? 'band-mist' : ''}`}>
-      <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 grid lg:grid-cols-12 gap-8 lg:gap-14 items-start">
+      <div className="shell grid lg:grid-cols-12 gap-8 lg:gap-14 items-start">
         <div className="lg:col-span-4 reveal lg:sticky lg:top-[calc(var(--nav-offset,93px)+5rem)]">
           <div className="relative aspect-[4/5] max-w-sm rounded-[28px] overflow-hidden depth-3 bg-[#DCE4E8]">
             <Image src={image} alt={name} fill sizes="(max-width: 1024px) 80vw, 30vw" className="object-cover object-top" />

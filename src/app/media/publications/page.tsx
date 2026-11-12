@@ -24,7 +24,7 @@ export default function PublicationsPage() {
       />
 
       <section className="py-20 bg-transparent">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="shell">
           <div className="space-y-6">
             {publications.map((pub, idx) => (
               <div

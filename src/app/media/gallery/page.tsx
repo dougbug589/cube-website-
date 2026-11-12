@@ -130,7 +130,7 @@ export default function GalleryPage() {
       />
 
       <section className="py-20 bg-transparent">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="shell">
           {/* Category Filter Pills */}
           <div className="flex flex-wrap justify-center gap-2 mb-12">
             {categories.map((cat) => (

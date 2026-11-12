@@ -23,7 +23,7 @@ export default function VisionMissionPage() {
       />
 
       <section className="py-20 bg-transparent">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="shell">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
             {/* Vision Card (Architectural Light Palette) */}
             <div className="p-8 sm:p-10 rounded-3xl bg-white text-[#243239] shadow-sm hover:shadow-xl border border-[#DCE4E7] transition-all flex flex-col justify-between">

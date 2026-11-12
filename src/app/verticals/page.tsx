@@ -46,7 +46,7 @@ export default function CompleteVerticalsExperience() {
 
       {/* Sticky Apple Glass Anchor Navigation Bar */}
       <section className="sticky top-[var(--nav-offset,84px)] transition-[top] duration-500 z-40 bg-white/85 backdrop-blur-2xl border-y border-[#D3DDE1]/70 py-3.5 px-4 sm:px-6 shadow-xs">
-        <div ref={anchorBarRef} className="relative max-w-7xl mx-auto flex items-center justify-start gap-2 overflow-x-auto scrollbar-none no-scrollbar py-1">
+        <div ref={anchorBarRef} className="relative shell flex items-center justify-start gap-2 overflow-x-auto scrollbar-none no-scrollbar py-1">
           <div className="flex items-center space-x-1.5 sm:space-x-2 shrink-0">
             {navAnchors.map((item) => (
               <button
@@ -86,7 +86,7 @@ export default function CompleteVerticalsExperience() {
                 isEven ? 'bg-gradient-to-b from-[#FFFFFF] to-[#F6F8F9]' : 'bg-[#FFFFFF]'
               }`}
             >
-              <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <div className="shell">
                 
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center mb-16">
                   

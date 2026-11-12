@@ -69,7 +69,7 @@ export default function MediaPage() {
 
       {/* 1 · News: one lead story, then a grid */}
       <section id="news" className="scroll-mt-40 py-16 lg:py-20">
-        <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12">
+        <div className="shell">
           <SectionHeading eyebrow="News" title="Latest from CUBE" action={{ href: '/media/news', label: 'All news' }} />
 
           {lead && (
@@ -145,7 +145,7 @@ export default function MediaPage() {
 
       {/* 2 · Events: dated milestones, photo first */}
       <section id="events" className="scroll-mt-40 py-16 lg:py-20">
-        <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12">
+        <div className="shell">
           <SectionHeading eyebrow="Events" title="Events & milestones" action={{ href: '/media/events', label: 'All events' }} />
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 reveal-stagger">
             {cubeEvents.map((evt) => (
@@ -175,7 +175,7 @@ export default function MediaPage() {
 
       {/* 3 · Gallery: bento grid, caption rises on hover */}
       <section id="gallery" className="scroll-mt-40 py-16 lg:py-20">
-        <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12">
+        <div className="shell">
           <SectionHeading eyebrow="Gallery" title="Project photographs" action={{ href: '/media/gallery', label: 'Full gallery' }} />
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 auto-rows-[220px] lg:auto-rows-[240px] grid-flow-dense gap-4 reveal-stagger">
             {GALLERY.map((img, i) => (
@@ -202,7 +202,7 @@ export default function MediaPage() {
 
       {/* 4 · Life at CUBE */}
       <section id="life-at-cube" className="scroll-mt-40 py-16 lg:py-20">
-        <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 grid lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+        <div className="shell grid lg:grid-cols-12 gap-10 lg:gap-14 items-center">
           <div className="lg:col-span-5 reveal">
             <p className="label-mono">Workplace</p>
             <h2 className="headline-light text-3xl sm:text-4xl lg:text-[2.6rem] text-[#243239] mt-3">Life at CUBE</h2>
@@ -243,7 +243,7 @@ export default function MediaPage() {
 
       {/* 5 · Reports */}
       <section id="publications" className="scroll-mt-40 py-16 lg:py-20 pb-24">
-        <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12">
+        <div className="shell">
           <SectionHeading eyebrow="Reports" title="Reports & publications" action={{ href: '/media/publications', label: 'All reports' }} />
           <div className="space-y-4 reveal-stagger">
             {cubeReports.map((r) => (

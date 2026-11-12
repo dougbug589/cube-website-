@@ -27,7 +27,7 @@ export default async function VerticalDetail({ id }: { id: string }) {
 
       {/* Introduction */}
       <section className="py-16 lg:py-20">
-        <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 grid lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+        <div className="shell grid lg:grid-cols-12 gap-10 lg:gap-14 items-center">
           <div className="lg:col-span-7 space-y-5 reveal">
             <p className="text-[19px] sm:text-xl text-[#243239] leading-relaxed">{vertical.description}</p>
             <p className="text-[17px] text-[#46565E] leading-relaxed">{vertical.longDescription}</p>
@@ -41,7 +41,7 @@ export default async function VerticalDetail({ id }: { id: string }) {
       {/* Services */}
       {vertical.capabilities.length > 0 && (
         <section className="pb-16 lg:pb-20">
-          <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12">
+          <div className="shell">
             <p className="label-mono reveal">Services</p>
             <ul className="mt-5 grid sm:grid-cols-2 lg:grid-cols-3 gap-4 reveal-stagger">
               {vertical.capabilities.map((c) => (
@@ -58,7 +58,7 @@ export default async function VerticalDetail({ id }: { id: string }) {
       {/* Expertise with figures (Building & Construction) */}
       {vertical.keyServices.length > 0 && (
         <section className="py-16 lg:py-20 band-mist">
-          <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12">
+          <div className="shell">
             <p className="label-mono reveal">Expertise</p>
             <div className="mt-6 grid md:grid-cols-2 gap-5 reveal-stagger">
               {vertical.keyServices.map((k) => (
@@ -85,7 +85,7 @@ export default async function VerticalDetail({ id }: { id: string }) {
       {/* Projects */}
       {projects.length > 0 && (
         <section className="py-16 lg:py-20">
-          <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12">
+          <div className="shell">
             <h2 className="headline-light text-3xl sm:text-4xl text-[#243239] reveal">
               Projects <span className="text-[#C4921B]">({projects.length})</span>
             </h2>
@@ -99,7 +99,7 @@ export default async function VerticalDetail({ id }: { id: string }) {
       )}
 
       <section className="pb-20">
-        <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 flex justify-center">
+        <div className="shell flex justify-center">
           <Link href="/contact" className="press btn-gold gold-shimmer inline-flex items-center gap-2 h-12 px-7 rounded-full text-[16px] font-extrabold">
             Contact CUBE <ArrowUpRight size={16} strokeWidth={2.25} />
           </Link>

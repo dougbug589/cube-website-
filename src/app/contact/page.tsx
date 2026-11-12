@@ -58,7 +58,7 @@ export default function ContactPage() {
       />
 
       <section className="py-16 sm:py-20 bg-transparent border-b border-[#DCE4E7]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="shell">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
             
             {/* Left 5 Cols: Contact Coordinates & Google Map in Apple Liquid Glass */}

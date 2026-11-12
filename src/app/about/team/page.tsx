@@ -125,7 +125,7 @@ export default function TeamPage() {
       />
 
       <section className="py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+        <div className="shell space-y-8">
           
           {/* Top Controls: Search & Expand/Collapse */}
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 bg-white p-5 rounded-2xl border border-slate-200 shadow-xs">

@@ -43,7 +43,7 @@ export default function PageHeader({ badge, title, description, breadcrumbs, bac
       <div aria-hidden className="absolute inset-0 constellation opacity-30 [mask-image:linear-gradient(to_bottom,black,transparent)]" />
       <div aria-hidden className="absolute -top-40 right-0 w-[520px] h-[520px] rounded-full bg-[#C4921B]/10 blur-[120px] pointer-events-none" />
 
-      <div className="relative max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 w-full">
+      <div className="relative shell w-full">
         <div className="flex flex-wrap items-center justify-between gap-4 mb-10">
           <button
             type="button"

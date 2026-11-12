@@ -338,7 +338,7 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
       />
 
       {/* Tab bar: liquid-glass capsule with a springing gold pill, contact on the right */}
-      <div ref={hubRef} className="scroll-mt-28 max-w-7xl mx-auto px-5 sm:px-8 lg:px-12">
+      <div ref={hubRef} className="scroll-mt-28 shell">
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
           <div role="tablist" aria-label="Careers" className="liquid-glass is-solid w-full sm:w-auto self-start rounded-[26px] sm:rounded-full p-1 flex items-stretch gap-0.5">
             {TABS.map(({ id, label, count, Icon }) => {
@@ -389,7 +389,7 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
       </div>
 
       <section className="py-12 lg:py-16">
-        <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12">
+        <div className="shell">
           <AnimatePresence mode="wait" initial={false}>
             {activeTab === 'openings' ? (
               <motion.div
@@ -763,7 +763,7 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
       {/* Benefits */}
       {c.benefits.items.length > 0 && (
         <section className="pb-24">
-          <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12">
+          <div className="shell">
             <SectionHeading eyebrow="Working at CUBE" title={c.benefits.heading} lead={c.benefits.subheading} />
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 reveal-stagger">
               {c.benefits.items.map((item, i) => {

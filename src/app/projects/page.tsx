@@ -118,7 +118,7 @@ function ProjectsPageInner() {
       </div>
 
       <section className="py-10 lg:py-14">
-        <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12">
+        <div className="shell">
           <p className="mb-6 text-[15.5px] text-[#5B6A71]">
             <span className="font-bold text-[#243239]">{filteredProjects.length}</span> {filteredProjects.length === 1 ? 'project' : 'projects'}
             {selectedCategory !== 'All' && <> in {selectedCategory}</>}

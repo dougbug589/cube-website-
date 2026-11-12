@@ -25,7 +25,7 @@ export default function EventsPage() {
       />
 
       <section className="py-20 bg-transparent">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="shell">
           <div className="space-y-12">
             {events.map((evt, idx) => (
               <div

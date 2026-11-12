@@ -85,7 +85,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
       />
 
       <section className="py-16 lg:py-20 bg-transparent border-b border-[#DCE4E7]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="shell">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12">
             {/* Main content: only what the project's page on cubeiitm.org states */}
             <div className="lg:col-span-8 space-y-10">
@@ -168,7 +168,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
       {/* Related Projects */}
       {relatedProjects.length > 0 && (
         <section className="py-20 bg-transparent border-b border-[#DCE4E7]">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="shell">
             <h2 className="font-display text-3xl font-bold text-[#243239] mb-8">
               Related Projects in {project.category}
             </h2>

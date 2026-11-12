@@ -72,7 +72,7 @@ Parameters / Notes: ${formData.parametersNeeded || 'Standard Matrix Parameters'}
 
       {/* Overview: only what cubeiitm.org states about CEL */}
       <section className="py-16 lg:py-20">
-        <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 grid lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+        <div className="shell grid lg:grid-cols-12 gap-10 lg:gap-14 items-center">
           <div className="lg:col-span-6 space-y-5 reveal">
             <p className="text-[19px] sm:text-xl text-[#243239] leading-relaxed">{celOverview.subtitle}</p>
             <p className="text-[17px] text-[#46565E] leading-relaxed">{celOverview.location}</p>
@@ -102,7 +102,7 @@ Parameters / Notes: ${formData.parametersNeeded || 'Standard Matrix Parameters'}
 
       {/* Testing domains */}
       <section className="pb-16 lg:pb-20">
-        <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12">
+        <div className="shell">
           <p className="label-mono reveal">Testing domains</p>
           <div className="mt-5 grid md:grid-cols-3 gap-5 reveal-stagger">
             {testingServices.map((service: any) => (

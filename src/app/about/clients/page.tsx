@@ -25,7 +25,7 @@ export default function ClientsPage() {
       />
 
       <section className="py-20 bg-transparent border-b border-slate-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="shell">
           <div className="text-center max-w-2xl mx-auto mb-14">
             <span className="text-xs font-bold uppercase tracking-wider text-[#9A7015] bg-[#F7EDD3] px-3 py-1 rounded-full border border-[#E9D6A8]">
               Government &amp; Public Sector
@@ -59,7 +59,7 @@ export default function ClientsPage() {
 
       {/* Partners Section */}
       <section className="py-20 bg-slate-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="shell">
           <div className="text-center max-w-2xl mx-auto mb-14">
             <span className="text-xs font-bold uppercase tracking-wider text-[#9A7015] bg-[#F7EDD3] px-3 py-1 rounded-full border border-[#E9D6A8]">
               Strategic Ecosystem
