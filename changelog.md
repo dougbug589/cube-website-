@@ -55,6 +55,7 @@ Two lines of work run through this repository:
 - Slate rail sidebar on desktop, photo hero, and stacked project carousel (Etihad-style layout). Superseded the same day by the top bar. (`75f0d52`)
 
 #### Fixed
+- Production build restored: an unescaped apostrophe on the media page, introduced in the previous change, had failed the build. (`1e21f9b`)
 - Remaining content matched to the live site: hero and gallery captions, 56 clients without an invented "Public Sector" label, tenders marked closed, the careers email (office@cubeiitm.org) and copy, the core values, the full vision and a listed mission, and a cut-off news summary. Removed invented promises and claims, and seven unused components that contained them. (`424a67b`)
 - People pages now match the live site. The team page no longer lists board and advisory members as staff, and 24 former staff hidden on the live site were removed (82 people, as live). Board members show their real organisations, four advisors their departments, and the Chairman and CEO messages their live sign-offs. Invented bios, headings and counts were removed. (`c849ec6`)
 - CEL laboratory content now limited to what the live site states: water, wastewater and solid waste testing, co-located with the office, with a link to the lab's own site, cube-el.org. Removed the invented facilities, equipment and parameter lists, soil testing, and the ISO, BIS and "CEL Certified" claims. (`5ce794e`)
