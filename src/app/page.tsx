@@ -3,11 +3,13 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowRight, ArrowUpRight, MapPin, Mail, Phone, Landmark, ShieldCheck, FlaskConical } from 'lucide-react';
+import { ArrowRight, ArrowUpRight, Landmark, ShieldCheck, FlaskConical } from 'lucide-react';
 
 import EtihadHero from '@/components/hero/EtihadHero';
 import StackedProjectCarousel from '@/components/home/StackedProjectCarousel';
 import VerticalShowcase from '@/components/home/VerticalShowcase';
+import WorkWithCube from '@/components/home/WorkWithCube';
+import PartnersSection from '@/components/home/PartnersSection';
 import NewsTicker from '@/components/home/NewsTicker';
 import HomeBento from '@/components/home/HomeBento';
 import { cubeEvents } from '@/data/media';
@@ -19,7 +21,6 @@ import { celOverview } from '@/data/cel';
 import { boardMembers as fallbackBoardMembers, executiveLeadership } from '@/data/leadership';
 import { newsItems as fallbackNewsItems } from '@/data/news';
 import { clients as fallbackClients } from '@/data/clients';
-import { contactInfo } from '@/data/contact';
 
 const LIFE_SHOTS = [
   { image: '/images/life-at-cube/about_life.jpg' },
@@ -292,46 +293,11 @@ export default function HomePage() {
         </div>
       </Section>
 
-      {/* 08 · Contact */}
-      <section className="relative py-20 lg:py-28">
-        <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12">
-          <div className="glass-strong glass-blur ambient-glow p-8 sm:p-10 lg:p-14 grid lg:grid-cols-12 gap-10 items-center reveal">
-            <div className="lg:col-span-7">
-              <p className="label-mono">Work with CUBE</p>
-              <h2 className="headline-light text-3xl sm:text-4xl lg:text-[2.75rem] text-[#243239] mt-3">
-                Bring a project, a tender, or a question.
-              </h2>
-              <p className="mt-4 text-[16px] text-[#46565E] leading-relaxed max-w-xl">{contactInfo.centerOfExcellence}</p>
-              <div className="mt-8 flex flex-wrap gap-3">
-                <Link href="/contact" className="inline-flex items-center gap-2 h-12 px-6 rounded-full text-[16px] font-extrabold gold-shimmer btn-gold">
-                  Contact the Centre <ArrowUpRight size={15} />
-                </Link>
-                <Link href="/tenders" className="inline-flex items-center gap-2 h-12 px-6 rounded-full btn-soft text-[16px] font-bold">
-                  Open tenders
-                </Link>
-              </div>
-            </div>
-            <dl className="lg:col-span-5 space-y-5 text-[16.5px]">
-              <div className="flex gap-3">
-                <MapPin size={16} strokeWidth={1.5} className="text-[#C4921B] mt-0.5 shrink-0" />
-                <dd className="text-[#46565E] leading-relaxed">{contactInfo.address}</dd>
-              </div>
-              <div className="flex gap-3">
-                <Mail size={16} strokeWidth={1.5} className="text-[#C4921B] mt-0.5 shrink-0" />
-                <dd>
-                  <a href={`mailto:${contactInfo.email}`} className="text-[#243239] hover:text-[#9A7015] transition-colors">{contactInfo.email}</a>
-                </dd>
-              </div>
-              <div className="flex gap-3">
-                <Phone size={16} strokeWidth={1.5} className="text-[#C4921B] mt-0.5 shrink-0" />
-                <dd>
-                  <a href={`tel:${String(contactInfo.phone).replace(/\s+/g, '')}`} className="text-[#243239] hover:text-[#9A7015] transition-colors">{contactInfo.phone}</a>
-                </dd>
-              </div>
-            </dl>
-          </div>
-        </div>
-      </section>
+      {/* 08 · Partners */}
+      <PartnersSection clientCount={logos.length} />
+
+      {/* 09 · Work with CUBE — three doors */}
+      <WorkWithCube />
     </div>
   );
 }

@@ -9,7 +9,7 @@ export const contactInfo = {
   googleMapsLiveUrl: 'https://maps.app.goo.gl/QzFmxZtR6Lh1Up2r6?g_st=aw',
   socialLinks: {
     linkedin: 'https://www.linkedin.com/company/center-for-urbanization-buildings-environment/',
-    twitter: 'https://twitter.com/CUBEatIITM',
+    x: 'https://x.com/CUBEatIITM',
     facebook: 'https://www.facebook.com/profile.php?id=100067783905143'
   }
 };

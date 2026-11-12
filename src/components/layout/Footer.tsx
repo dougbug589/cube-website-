@@ -3,7 +3,8 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { MapPin, Mail, Phone, Clock, ArrowUpRight, Linkedin, Twitter, Facebook } from 'lucide-react';
+import { MapPin, Mail, Phone, Clock, ArrowUpRight } from 'lucide-react';
+import { XIcon, LinkedInIcon, FacebookIcon } from '@/components/common/BrandIcons';
 import { contactInfo } from '@/data/contact';
 import { verticals } from '@/data/verticals';
 import { partners } from '@/data/partners';
@@ -23,10 +24,11 @@ const CENTRE_LINKS = [
 ];
 
 // CUBE's real profiles (same as the original site), from the contact data
+// Brand colours: LinkedIn blue, X black, Facebook blue (white marks on top).
 const SOCIAL = [
-  { label: 'LinkedIn', href: contactInfo.socialLinks.linkedin, Icon: Linkedin },
-  { label: 'Twitter', href: contactInfo.socialLinks.twitter, Icon: Twitter },
-  { label: 'Facebook', href: contactInfo.socialLinks.facebook, Icon: Facebook },
+  { label: 'CUBE on LinkedIn', href: contactInfo.socialLinks.linkedin, Icon: LinkedInIcon, bg: '#0A66C2', glow: 'rgba(10,102,194,0.45)' },
+  { label: 'CUBE on X', href: contactInfo.socialLinks.x, Icon: XIcon, bg: '#0F1419', glow: 'rgba(15,20,25,0.4)' },
+  { label: 'CUBE on Facebook', href: contactInfo.socialLinks.facebook, Icon: FacebookIcon, bg: '#1877F2', glow: 'rgba(24,119,242,0.45)' },
 ];
 
 export default function Footer() {
@@ -50,16 +52,18 @@ export default function Footer() {
               Centre for Urbanization, Buildings &amp; Environment. A Centre of Excellence of the Government of Tamil Nadu and IIT Madras.
             </p>
             <div className="mt-6 flex items-center gap-2">
-              {SOCIAL.map(({ label, href, Icon }) => (
+              {SOCIAL.map(({ label, href, Icon, bg, glow }) => (
                 <a
                   key={label}
                   href={href}
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={label}
-                  className="press jiggle grid place-items-center w-10 h-10 rounded-full bg-white/70 border border-[#33454E]/15 text-[#46565E] hover:bg-[#F6DA86] hover:border-[#C4921B] hover:text-[#1B262C] transition-colors"
+                  title={label}
+                  style={{ backgroundColor: bg, ['--glow' as string]: glow } as React.CSSProperties}
+                  className="social-chip press jiggle grid place-items-center w-11 h-11 rounded-full text-white"
                 >
-                  <Icon size={16} strokeWidth={1.75} />
+                  <Icon size={17} />
                 </a>
               ))}
             </div>
