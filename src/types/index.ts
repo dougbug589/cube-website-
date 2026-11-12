@@ -87,7 +87,7 @@ export interface TeamMember {
 
 export interface ClientPartner {
   name: string;
-  category: 'Government' | 'Public Sector' | 'Private' | 'Academic' | 'Partner';
+  category?: 'Government' | 'Public Sector' | 'Private' | 'Academic' | 'Partner';
   logo: string;
   description?: string;
 }

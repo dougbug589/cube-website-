@@ -35,15 +35,11 @@ export default function VisionMissionPage() {
                   Our Institutional Vision
                 </span>
                 <h2 className="text-2xl sm:text-3xl font-display font-bold text-[#243239] mt-2">
-                  World-Class Applied Urban Excellence
+                  Vision
                 </h2>
                 <p className="mt-6 text-sm sm:text-base text-[#5B6A71] leading-relaxed font-sans font-normal">
                   &ldquo;{aboutContent.vision}&rdquo;
                 </p>
-              </div>
-
-              <div className="mt-8 pt-6 border-t border-[#DCE4E7] text-xs text-[#5B6A71]">
-                Endorsed by the Governing Board &bull; IIT Madras &bull; Government of Tamil Nadu
               </div>
             </div>
 
@@ -57,11 +53,17 @@ export default function VisionMissionPage() {
                   Our Execution Mission
                 </span>
                 <h2 className="text-2xl sm:text-3xl font-display font-bold text-[#243239] mt-2">
-                  Applied Engineering for Public Good
+                  Mission
                 </h2>
-                <p className="mt-6 text-sm sm:text-base text-[#5B6A71] leading-relaxed font-sans font-normal">
-                  &ldquo;{aboutContent.mission}&rdquo;
-                </p>
+                {/* the live site lists the mission as separate points */}
+                <ul className="mt-6 space-y-3 text-left">
+                  {aboutContent.mission.split(';').map((m) => m.trim()).filter(Boolean).map((m) => (
+                    <li key={m} className="flex items-start gap-3 text-sm sm:text-base text-[#46565E] leading-relaxed">
+                      <span className="mt-2 w-1.5 h-1.5 rounded-full bg-[#C4921B] shrink-0" />
+                      <span>{m.charAt(0).toUpperCase() + m.slice(1).replace(/\.$/, '')}</span>
+                    </li>
+                  ))}
+                </ul>
               </div>
 
               <div className="mt-8 pt-6 border-t border-[#DCE4E7]">

@@ -205,7 +205,7 @@ function buildInitialStore(): CMSStore {
           'Knowledge of Codal Provisions (Mandatory: IS Codes; Preferable: American Codes)',
           'Innovation & Research',
         ],
-        applicationEmail: 'careers@cubeiitm.org',
+        applicationEmail: 'office@cubeiitm.org',
         isActive: true,
         status: 'published',
       },
@@ -296,7 +296,7 @@ function buildInitialStore(): CMSStore {
     heroSlides: [
       {
         id: 'slide_1',
-        projectTag: 'IIT Tirupati Permanent Campus Engineering & PMC',
+        projectTag: 'IIT Tirupati Permanent Campus – Third Party Quality Assurance',
         location: 'IIT Tirupati, Andhra Pradesh',
         projectLink: '/projects/iit-tirupathi',
         imageUrl: '/images/hero/slides_iit-tirupathi.jpg',
@@ -305,7 +305,7 @@ function buildInitialStore(): CMSStore {
       },
       {
         id: 'slide_2',
-        projectTag: 'CPCL ARHC Affordable Housing & Industrial Infrastructure',
+        projectTag: 'PMC for Construction of ARHC, Manali',
         location: 'Chennai, Tamil Nadu',
         projectLink: '/projects/cpcl-arhc',
         imageUrl: '/images/hero/slides_cpcl-arc.jpg',
@@ -314,7 +314,7 @@ function buildInitialStore(): CMSStore {
       },
       {
         id: 'slide_3',
-        projectTag: 'Pradhan Mantri Awas Yojana (PMAY) Structural Assurance',
+        projectTag: 'Design, Engineering & Consultancy for 40+ Housing for All schemes',
         location: 'Statewide, Tamil Nadu',
         projectLink: '/projects',
         imageUrl: '/images/hero/slides_design-engineering-consultancy.jpg',
@@ -323,7 +323,7 @@ function buildInitialStore(): CMSStore {
       },
       {
         id: 'slide_4',
-        projectTag: 'NICHE Industrial Park & Environmental Stormwater Engineering',
+        projectTag: 'NICHE Industrial Park, SIPCOT Irungattukottai',
         location: 'SIPCOT Irungattukottai, Tamil Nadu',
         projectLink: '/projects/upt6',
         imageUrl: '/images/hero/slides_niche.jpg',

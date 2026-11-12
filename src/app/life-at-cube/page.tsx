@@ -12,18 +12,18 @@ export const metadata = {
 export default function LifeAtCubePage() {
   const highlights = [
     {
-      title: 'Multidisciplinary Collaboration',
-      desc: 'Bringing together structural engineers, urban planners, environmental chemists, and hydrologists in one united campus at IIT Madras Research Park.',
+      title: 'Life at CUBE',
+      desc: '',
       image: '/images/life-at-cube/about_life.jpg'
     },
     {
-      title: 'Mentorship from IIT Madras Faculty',
-      desc: 'Direct interaction and technical review sessions with distinguished professors from the Indian Institute of Technology Madras.',
+      title: 'Life at CUBE',
+      desc: '',
       image: '/images/life-at-cube/about_life1.jpg'
     },
     {
-      title: 'High-Impact Public Engineering',
-      desc: 'Work on landmark government housing, state bus terminals, river restoration, and smart city infrastructure that directly transforms citizens\' lives.',
+      title: 'Life at CUBE',
+      desc: '',
       image: '/images/life-at-cube/about_life2.jpg'
     }
   ];

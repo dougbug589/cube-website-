@@ -17,7 +17,7 @@ export default function ClientsPage() {
       <PageHeader
         badge="Collaborative Network"
         title="Institutional Clients & Partners"
-        description="Over 50 government departments, state agencies, and industrial leaders who trust CUBE for applied engineering consultancy and quality assurance."
+        description="Organisations CUBE has worked with."
         breadcrumbs={[
           { label: 'About CUBE', href: '/about' },
           { label: 'Our Clients & Partners' },
@@ -34,7 +34,6 @@ export default function ClientsPage() {
               Valued Clients
             </h2>
             <p className="text-sm text-slate-600 mt-2">
-              All logos represent verified relationships across Tamil Nadu development authorities, metro rail, housing boards, and industrial corporations.
             </p>
           </div>
 

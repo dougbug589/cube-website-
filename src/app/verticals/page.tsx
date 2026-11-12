@@ -19,7 +19,7 @@ export default function CompleteVerticalsExperience() {
   const navAnchors = [
     { id: 'building-construction', label: 'Building & Construction' },
     { id: 'environment-sustainability', label: 'Environment & Sustainability' },
-    { id: 'smart-cities', label: 'Smart Cities & Urban Tech' },
+    { id: 'smart-cities', label: 'Smart Cities' },
     { id: 'urban-planning-transportation', label: 'Urban Planning & Transportation' },
   ];
 

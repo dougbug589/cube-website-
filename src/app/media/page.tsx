@@ -42,12 +42,12 @@ export default function CompleteMediaExperience() {
   const sampleEvents = cubeEvents;
 
   const galleryImages = [
-    { src: '/images/hero/slides_iit-tirupathi.jpg', title: 'IIT Tirupati Campus Structural PMC' },
-    { src: '/images/hero/slides_cpcl-arc.jpg', title: 'CPCL Industrial & ARHC Precast Housing' },
-    { src: '/images/hero/slides_ashiana.jpg', title: 'Affordable Housing Structural Assurance' },
-    { src: '/images/hero/slides_design-engineering-consultancy.jpg', title: 'Design Engineering & Hydrodynamic Modeling' },
+    { src: '/images/hero/slides_iit-tirupathi.jpg', title: 'IIT Tirupati Permanent Campus – Third Party Quality Assurance' },
+    { src: '/images/hero/slides_cpcl-arc.jpg', title: 'PMC for Construction of ARHC, Manali' },
+    { src: '/images/hero/slides_ashiana.jpg', title: 'Surface Water Management and Flood Inundation Study, Ashiana Shubham' },
+    { src: '/images/hero/slides_design-engineering-consultancy.jpg', title: 'Design, Engineering & Consultancy for 40+ Housing for All schemes' },
     { src: '/images/hero/slides_building-training-team.jpg', title: 'CUBE Team' },
-    { src: '/images/hero/slides_07-cat.jpg', title: 'Precast Quality Assurance & Field Testing' },
+    { src: '/images/hero/slides_07-cat.jpg', title: 'Parayan Kuttai water body study, Caterpillar India' },
   ];
 
   const publications = cubeReports.map((r) => ({ title: r.title, authors: r.authors, date: r.year, desc: r.description }));
@@ -220,16 +220,16 @@ export default function CompleteMediaExperience() {
                 Life at CUBE: Applied Engineering Innovation at IITM Research Park
               </h2>
               <p className="text-sm text-[#243239]/85 leading-relaxed font-sans">
-                Operating out of the premier IIT Madras Research Park in Chennai, CUBE brings together young engineering minds, seasoned state advisors, and world-renowned faculty in an open, vibrant research environment.
+                CUBE's office and its Environment Laboratory are at the IIT Madras Research Park, Taramani, Chennai.
               </p>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
                 <div className="p-4 rounded-2xl bg-[#F6F8F9] border border-[#D3DDE1]">
-                  <h4 className="text-xs font-bold text-[#2B3B44] uppercase tracking-wider">Faculty Collaboration</h4>
-                  <p className="text-xs text-[#5B6A71] mt-1">Direct daily liaison with IIT Madras departments and research labs.</p>
+                  <h4 className="text-xs font-bold text-[#2B3B44] uppercase tracking-wider">Location</h4>
+                  <p className="text-xs text-[#5B6A71] mt-1">IIT Madras Research Park, Taramani, Chennai.</p>
                 </div>
                 <div className="p-4 rounded-2xl bg-[#F6F8F9] border border-[#D3DDE1]">
-                  <h4 className="text-xs font-bold text-[#2B3B44] uppercase tracking-wider">Field Impact</h4>
-                  <p className="text-xs text-[#5B6A71] mt-1">Direct oversight of major infrastructure works shaping Tamil Nadu.</p>
+                  <h4 className="text-xs font-bold text-[#2B3B44] uppercase tracking-wider">Verticals</h4>
+                  <p className="text-xs text-[#5B6A71] mt-1">Building & Construction, Environment & Sustainability, Smart Cities, Urban Planning & Transportation.</p>
                 </div>
               </div>
             </div>

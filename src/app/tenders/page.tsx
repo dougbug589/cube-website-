@@ -33,10 +33,10 @@ export default async function TendersPage() {
               <div className="flex items-center justify-between pb-4 border-b border-slate-200">
                 <div>
                   <h2 className="text-xl font-bold font-display text-navy-950">
-                    Active Procurement Notices ({activeTenders.length})
+                    Tenders ({activeTenders.length})
                   </h2>
                   <p className="text-xs text-slate-500 mt-0.5">
-                    IIT Madras &amp; Government of Tamil Nadu sanctioned EOIs and Tenders
+                    Tender documents published by CUBE
                   </p>
                 </div>
                 <span className="px-3 py-1 rounded-full bg-[#F7EDD3] text-[#9A7015] text-xs font-bold border border-[#E9D6A8] flex items-center gap-1.5">

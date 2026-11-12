@@ -25,10 +25,10 @@ interface Slide {
 }
 
 const FALLBACK_SLIDES: Slide[] = [
-  { id: 'iitt', image: '/images/hero/slides_iit-tirupathi.jpg', tag: 'IIT Tirupati Permanent Campus', location: 'Andhra Pradesh', href: '/projects/iit-tirupathi' },
-  { id: 'cpcl', image: '/images/hero/slides_cpcl-arc.jpg', tag: 'CPCL ARHC Precast Housing', location: 'Chennai', href: '/projects/cpcl-arhc' },
-  { id: 'pmay', image: '/images/hero/slides_ashiana.jpg', tag: 'PMAY Housing for All', location: 'Tamil Nadu', href: '/projects' },
-  { id: 'niche', image: '/images/hero/slides_niche.jpg', tag: 'NICHE Industrial Park', location: 'SIPCOT Irungattukottai', href: '/projects/upt6' },
+  { id: 'iitt', image: '/images/hero/slides_iit-tirupathi.jpg', tag: 'IIT Tirupati Permanent Campus – Third Party Quality Assurance', location: 'Tirupati, Andhra Pradesh', href: '/projects/iit-tirupathi' },
+  { id: 'cpcl', image: '/images/hero/slides_cpcl-arc.jpg', tag: 'PMC for Construction of ARHC, Manali', location: 'Chennai', href: '/projects/cpcl-arhc' },
+  { id: 'pmay', image: '/images/hero/slides_design-engineering-consultancy.jpg', tag: 'Design, Engineering & Consultancy for 40+ Housing for All schemes', location: 'Tamil Nadu', href: '/projects/hfapmay' },
+  { id: 'niche', image: '/images/hero/slides_niche.jpg', tag: 'NICHE Industrial Park, SIPCOT Irungattukottai', location: 'Sriperumbudur', href: '/projects/upt6' },
 ];
 
 const SLIDE_MS = 7000;
@@ -188,7 +188,7 @@ export default function EtihadHero() {
               transition={{ duration: 0.8, delay: 0.14, ease: [0.16, 1, 0.3, 1] }}
               className="mt-5 text-[18px] sm:text-[19px] font-semibold text-[#F2F5F6]/90 leading-relaxed max-w-xl"
             >
-              Structural assurance, environmental testing and urban planning for India&apos;s public institutions.
+              Applied research, technology and consultancy, from a Centre of Excellence of IIT Madras and the Government of Tamil Nadu.
             </motion.p>
             <motion.div
               initial={{ opacity: 0, y: 12 }}

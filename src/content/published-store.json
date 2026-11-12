@@ -92,7 +92,7 @@
     "title": "CUBE Expert Team Visits Villupuram Govt. Medical College Hospital",
     "date": "12/05/2023",
     "category": "Environment & Sustainability",
-    "summary": "CUBE's expert team visits Villupuram Govt.",
+    "summary": "CUBE's expert team visits Villupuram Govt. Medical College Hospital to kickstart the prestigious project \"Conducting adequacy audit of existing liquid waste management facilities at 6 healthcare facilities in Tamil Nadu\" which was awarded…",
     "image": "/images/media/news/original/2-.jpg",
     "content": [
      "CUBE's expert team visits Villupuram Govt. Medical College Hospital to kickstart the prestigious project \"Conducting adequacy audit of existing liquid waste management facilities at 6 healthcare facilities in Tamil Nadu\" which was awarded by TNHSRP, a World Bank supported project implemented by Department of Health and Family Welfare of Tamil Nadu Government."
@@ -101,7 +101,7 @@
     "createdAt": "2026-11-03T10:20:20.462Z",
     "updatedAt": "2026-11-12T05:32:26.414Z",
     "slug": "news-3",
-    "excerpt": "CUBE's expert team visits Villupuram Govt."
+    "excerpt": "CUBE's expert team visits Villupuram Govt. Medical College Hospital to kickstart the prestigious project \"Conducting adequacy audit of existing liquid waste management facilities at 6 healthcare facilities in Tamil Nadu\" which was awarded…"
    },
    {
     "id": "news-cmda-inception",
@@ -1855,9 +1855,9 @@
   "announcements": [
    {
     "id": "ann_hiring_2026",
-    "title": "WE ARE HIRING: Senior Structural & Environmental Engineers",
+    "title": "We are hiring: Structural Design Head",
     "subtitle": "Centre of Excellence | IIT Madras & Govt of Tamil Nadu",
-    "description": "CUBE invites applications from passionate civil, structural, environmental engineers and urban planners to work on marquee state infrastructure projects.",
+    "description": "CUBE invites applications for the position of Structural Design Head.",
     "type": "hiring_popup",
     "badge": "WE ARE HIRING",
     "ctaText": "View Open Positions",
@@ -1879,8 +1879,8 @@
    {
     "id": "job_structural_design_head",
     "title": "Structural Design Head",
-    "department": "Building & Construction",
-    "employmentType": "Full-Time",
+    "department": "",
+    "employmentType": "",
     "experience": "15+ Years of experience in related discipline. Professional Engineer or Chartered Engineer preferable.",
     "location": "Taramani, Chennai",
     "description": "Qualification: M.E/M.Tech. Structures from a reputed institution. Lead structural design and analysis, project management, quality assurance and control, and client engagement for building and infrastructure projects. Mandatory software: STAAD, RCDE, ETABS, SAFE, AUTOCAD; preferable: TEKLA Structures.",
@@ -1895,7 +1895,7 @@
      "Knowledge of Codal Provisions (Mandatory: IS Codes; Preferable: American Codes)",
      "Innovation & Research"
     ],
-    "applicationEmail": "careers@cubeiitm.org",
+    "applicationEmail": "office@cubeiitm.org",
     "isActive": true,
     "status": "published"
    }
@@ -1909,7 +1909,7 @@
     "documentUrl": "/tenders/NIT_CSR_Poovathur_Final.pdf",
     "publishedDate": "2024-25",
     "closingDate": "Refer document",
-    "status": "Active"
+    "status": "Closed"
    },
    {
     "id": "tnd_jigani_de",
@@ -1919,7 +1919,7 @@
     "documentUrl": "/tenders/RFQ_JIGANI_DE_2_1_Revised.pdf",
     "publishedDate": "2024-25",
     "closingDate": "Refer document",
-    "status": "Active"
+    "status": "Closed"
    },
    {
     "id": "tnd_jigani_corrigendum_1",
@@ -1929,7 +1929,7 @@
     "documentUrl": "/tenders/CORRIGENDUM_CUBEADMRFPBC0232024-25.pdf",
     "publishedDate": "2024-25",
     "closingDate": "Refer document",
-    "status": "Active"
+    "status": "Closed"
    },
    {
     "id": "tnd_jigani_corrigendum_eot",
@@ -1939,7 +1939,7 @@
     "documentUrl": "/tenders/Corrigendum_Tender_EoT.pdf",
     "publishedDate": "2024-25",
     "closingDate": "Refer document",
-    "status": "Active"
+    "status": "Closed"
    }
   ],
   "celServices": [
@@ -3167,78 +3167,6 @@
   ],
   "clients": [
    {
-    "id": "client_1",
-    "name": "1",
-    "type": "client",
-    "logoUrl": "/images/clients/Clients1_1.jpg",
-    "websiteUrl": "#",
-    "isActive": true,
-    "displayOrder": 0
-   },
-   {
-    "id": "client_2",
-    "name": "2",
-    "type": "client",
-    "logoUrl": "/images/clients/Clients1_2.jpg",
-    "websiteUrl": "#",
-    "isActive": true,
-    "displayOrder": 1
-   },
-   {
-    "id": "client_3",
-    "name": "3",
-    "type": "client",
-    "logoUrl": "/images/clients/Clients1_3.jpg",
-    "websiteUrl": "#",
-    "isActive": true,
-    "displayOrder": 2
-   },
-   {
-    "id": "client_4",
-    "name": "4",
-    "type": "client",
-    "logoUrl": "/images/clients/Clients1_4.jpg",
-    "websiteUrl": "#",
-    "isActive": true,
-    "displayOrder": 3
-   },
-   {
-    "id": "client_5",
-    "name": "5",
-    "type": "client",
-    "logoUrl": "/images/clients/Clients1_5.jpg",
-    "websiteUrl": "#",
-    "isActive": true,
-    "displayOrder": 4
-   },
-   {
-    "id": "client_6",
-    "name": "6",
-    "type": "client",
-    "logoUrl": "/images/clients/Clients1_6.jpg",
-    "websiteUrl": "#",
-    "isActive": true,
-    "displayOrder": 5
-   },
-   {
-    "id": "client_7",
-    "name": "7",
-    "type": "client",
-    "logoUrl": "/images/clients/Clients1_7.jpg",
-    "websiteUrl": "#",
-    "isActive": true,
-    "displayOrder": 6
-   },
-   {
-    "id": "client_8",
-    "name": "8",
-    "type": "client",
-    "logoUrl": "/images/clients/Clients1_8.jpg",
-    "websiteUrl": "#",
-    "isActive": true,
-    "displayOrder": 7
-   },
-   {
     "id": "client_9",
     "name": "1",
     "type": "client",
@@ -3746,70 +3674,70 @@
   "gallery": [
    {
     "id": "gal_1",
-    "title": "CUBE Environmental Testing Facility Inauguration",
+    "title": "CUBE Environmental Laboratory",
     "category": "Laboratory",
     "imageUrl": "/images/cel/about_cel.jpg",
     "status": "published"
    },
    {
     "id": "gal_2",
-    "title": "Engineers Capacity Building Session at IITM",
+    "title": "Capacity Building Training Programme",
     "category": "Team",
     "imageUrl": "/images/hero/slides_building-training-team.jpg",
     "status": "published"
    },
    {
     "id": "gal_3",
-    "title": "Site Inspection of Marquee Precast Infrastructure",
+    "title": "PMC for Construction of ARHC, Manali",
     "category": "Projects",
     "imageUrl": "/images/hero/slides_cpcl-arc.jpg",
     "status": "published"
    },
    {
     "id": "asset_hero_1",
-    "title": "IIT Tirupati Permanent Campus Engineering & PMC",
+    "title": "IIT Tirupati Permanent Campus – Third Party Quality Assurance",
     "category": "Hero & Showcase",
     "imageUrl": "/images/hero/slides_iit-tirupathi.jpg",
     "status": "published"
    },
    {
     "id": "asset_hero_2",
-    "title": "Pradhan Mantri Awas Yojana (PMAY) Structural Assurance",
+    "title": "Design, Engineering & Consultancy for 40+ Housing for All schemes",
     "category": "Hero & Showcase",
     "imageUrl": "/images/hero/slides_design-engineering-consultancy.jpg",
     "status": "published"
    },
    {
     "id": "asset_hero_3",
-    "title": "NICHE Industrial Park & Environmental Stormwater Engineering",
+    "title": "NICHE Industrial Park, SIPCOT Irungattukottai",
     "category": "Hero & Showcase",
     "imageUrl": "/images/hero/slides_niche.jpg",
     "status": "published"
    },
    {
     "id": "photo_7",
-    "title": "Slides 07 Cat",
+    "title": "Parayan Kuttai water body study, Caterpillar India",
     "category": "Showcase & Hero",
     "imageUrl": "/images/hero/slides_07-cat.jpg",
     "status": "published"
    },
    {
     "id": "photo_8",
-    "title": "Slides Ashiana",
+    "title": "Surface Water Management and Flood Inundation Study, Ashiana Shubham",
     "category": "Showcase & Hero",
     "imageUrl": "/images/hero/slides_ashiana.jpg",
     "status": "published"
    },
    {
     "id": "photo_9",
-    "title": "Slides Mahindra",
+    "title": "Mahindra World City",
     "category": "Showcase & Hero",
     "imageUrl": "/images/hero/slides_mahindra.jpg",
     "status": "published"
    },
    {
     "id": "photo_10",
-    "title": "Slides Revaluation",
+    "title": "Re-evaluation of 33 tenemental schemes",
     "category": "Showcase & Hero",
     "imageUrl": "/images/hero/slides_revaluation.jpg",
     "status": "published"
@@ -4046,13 +3974,6 @@
     "status": "published"
    },
    {
-    "id": "photo_44",
-    "title": "Board Member Benny",
-    "category": "Leadership & Team",
-    "imageUrl": "/images/leadership/board_member_benny.jpg",
-    "status": "published"
-   },
-   {
     "id": "photo_45",
     "title": "Board Member Dr P Alarmelmangai Ias",
     "category": "Leadership & Team",
@@ -4067,31 +3988,10 @@
     "status": "published"
    },
    {
-    "id": "photo_47",
-    "title": "Board Member Kakarla",
-    "category": "Leadership & Team",
-    "imageUrl": "/images/leadership/board_member_kakarla.jpg",
-    "status": "published"
-   },
-   {
     "id": "photo_48",
     "title": "Board Member Kamakoti",
     "category": "Leadership & Team",
     "imageUrl": "/images/leadership/board_member_kamakoti.jpg",
-    "status": "published"
-   },
-   {
-    "id": "photo_49",
-    "title": "Board Member Kartikeyan",
-    "category": "Leadership & Team",
-    "imageUrl": "/images/leadership/board_member_kartikeyan.jpg",
-    "status": "published"
-   },
-   {
-    "id": "photo_50",
-    "title": "Board Member Muruganandam",
-    "category": "Leadership & Team",
-    "imageUrl": "/images/leadership/board_member_muruganandam.jpg",
     "status": "published"
    },
    {
@@ -4113,20 +4013,6 @@
     "title": "Board Member Saravanan",
     "category": "Leadership & Team",
     "imageUrl": "/images/leadership/board_member_Saravanan.jpg",
-    "status": "published"
-   },
-   {
-    "id": "photo_54",
-    "title": "Board Member Sathyamoorthy",
-    "category": "Leadership & Team",
-    "imageUrl": "/images/leadership/board_member_sathyamoorthy.jpg",
-    "status": "published"
-   },
-   {
-    "id": "photo_55",
-    "title": "Board Member Shiv Das",
-    "category": "Leadership & Team",
-    "imageUrl": "/images/leadership/board_member_shiv-das.jpg",
     "status": "published"
    },
    {
@@ -4165,13 +4051,6 @@
     "status": "published"
    },
    {
-    "id": "photo_61",
-    "title": "Board Member Udaya",
-    "category": "Leadership & Team",
-    "imageUrl": "/images/leadership/board_member_udaya.jpg",
-    "status": "published"
-   },
-   {
     "id": "photo_62",
     "title": "Images Leadership",
     "category": "Leadership & Team",
@@ -4182,8 +4061,8 @@
   "heroSlides": [
    {
     "id": "slide_1",
-    "projectTag": "IIT Tirupati Permanent Campus Engineering & PMC",
-    "location": "IIT Tirupati, Andhra Pradesh",
+    "projectTag": "IIT Tirupati Permanent Campus – Third Party Quality Assurance",
+    "location": "Tirupati, Andhra Pradesh",
     "projectLink": "/projects/iit-tirupathi",
     "imageUrl": "/images/hero/slides_iit-tirupathi.jpg",
     "status": "published",
@@ -4191,8 +4070,8 @@
    },
    {
     "id": "slide_2",
-    "projectTag": "CPCL ARHC Affordable Housing & Industrial Infrastructure",
-    "location": "Chennai, Tamil Nadu",
+    "projectTag": "PMC for Construction of ARHC, Manali",
+    "location": "Manali, Chennai",
     "projectLink": "/projects/cpcl-arhc",
     "imageUrl": "/images/hero/slides_cpcl-arc.jpg",
     "status": "published",
@@ -4200,8 +4079,8 @@
    },
    {
     "id": "slide_3",
-    "projectTag": "Pradhan Mantri Awas Yojana (PMAY) Structural Assurance",
-    "location": "Statewide, Tamil Nadu",
+    "projectTag": "Design, Engineering & Consultancy for 40+ Housing for All schemes",
+    "location": "Tamil Nadu",
     "projectLink": "/projects",
     "imageUrl": "/images/hero/slides_design-engineering-consultancy.jpg",
     "status": "published",
@@ -4209,8 +4088,8 @@
    },
    {
     "id": "slide_4",
-    "projectTag": "NICHE Industrial Park & Environmental Stormwater Engineering",
-    "location": "SIPCOT Irungattukottai, Tamil Nadu",
+    "projectTag": "NICHE Industrial Park, SIPCOT Irungattukottai",
+    "location": "SIPCOT Irungattukottai",
     "projectLink": "/projects/upt6",
     "imageUrl": "/images/hero/slides_niche.jpg",
     "status": "published",

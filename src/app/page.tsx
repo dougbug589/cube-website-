@@ -37,7 +37,7 @@ const MEDIA_SHOTS = cubeEvents
 const ABOUT_POINTS = [
   { Icon: Landmark, k: 'Est. 2017', v: 'Centre of Excellence of the Government of Tamil Nadu, with IIT Madras.' },
   { Icon: ShieldCheck, k: 'Independent', v: 'Governing body chaired by the IIT Madras Director, with state and industry members.' },
-  { Icon: FlaskConical, k: 'Applied', v: 'Consultancy, quality assurance and environmental testing for public projects.' },
+  { Icon: FlaskConical, k: 'Applied', v: 'Applied research, technology and consultancy, with its own environment laboratory (CEL).' },
 ];
 
 const fallbackCeo = executiveLeadership.find((l) => (l.role || '').toUpperCase().includes('CEO'));
@@ -136,7 +136,7 @@ export default function HomePage() {
       }
       if (Array.isArray(clientsData)) {
         setClientList(
-          clientsData.map((c: any) => ({ ...c, category: c.category || 'Public Sector', logo: c.logo || c.logoUrl || '' }))
+          clientsData.map((c: any) => ({ ...c, logo: c.logo || c.logoUrl || '' }))
         );
       }
       if (Array.isArray(newsData)) {
@@ -173,8 +173,8 @@ export default function HomePage() {
         <div className="grid lg:grid-cols-12 gap-6 lg:gap-8 items-stretch">
           <div className="lg:col-span-5 liquid-glass rounded-[28px] p-8 lg:p-10 flex flex-col reveal">
             <p className="label-mono">Our vision</p>
-            <p className="mt-4 font-display text-2xl lg:text-[28px] font-bold leading-snug text-[#243239]">
-              The most trusted provider of applied research, engineering and consultancy for India&apos;s built environment.
+            <p className="mt-4 font-display text-xl lg:text-[22px] font-bold leading-snug text-[#243239]">
+              To be the most acclaimed and trustworthy provider of Applied Research, Technology, Engineering &amp; Consultancy Services with National footprint, in association with IIT Madras, delivering effective and measurable value in built environment aiming at future equipped and sustainable human habitats.
             </p>
             <div className="mt-auto pt-8 flex flex-wrap gap-3">
               <Link href="/about#governing-board" className="press btn-gold gold-shimmer inline-flex items-center gap-2 h-12 px-6 rounded-full text-[16px] font-extrabold">

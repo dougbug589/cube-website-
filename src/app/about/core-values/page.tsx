@@ -5,7 +5,7 @@ import { aboutContent } from '@/data/about';
 
 export const metadata = {
   title: 'Core Values | CUBE IIT Madras',
-  description: 'Guiding values of CUBE – Integrity, Collaboration, Sustainability, Innovation, and Public Service.',
+  description: 'Guiding values of CUBE – Leadership, Excellence, Harmony, Intrepid, Innovation and Decisive.',
 };
 
 export default function CoreValuesPage() {

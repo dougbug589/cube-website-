@@ -159,7 +159,7 @@ export default function ContactPage() {
                       Enquiry Successfully Transmitted
                     </h3>
                     <p className="text-xs sm:text-sm text-[#5B6A71] leading-relaxed max-w-md mx-auto">
-                      Thank you. Your scope has been registered in the CUBE Technical Secretariat database. Our engineering division will reach out within 24-48 business hours.
+                      Thank you. Your scope has been registered in the CUBE Technical Secretariat database. Our team will get back to you.
                     </p>
                     <button
                       onClick={() => setSubmitted(false)}
