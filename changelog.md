@@ -40,6 +40,7 @@ Two lines of work run through this repository:
 - Etihad-inspired theme: slate and gold palette, scroll-reveal animations, gold scroll-progress bar. (`1977bf6`)
 
 #### Changed
+- Home Verticals: each vertical's photo now fills the whole section behind the glass list and info card, like the About section. (`f580f30`)
 - Home page: the About and CEL sections now sit on a full-width photo (the CUBE team and the laboratory) with liquid-glass cards and buttons; the Verticals section follows your scroll, stepping through the four verticals with a big photo of each; the project carousel changes every 2 seconds with a large, wide card in the centre; the Work with CUBE section was removed. (`683893f`)
 - Footer: the logo is no longer squeezed into a small white box; it is shown large enough to read, next to the CUBE wordmark. (`7d4d49d`)
 - Home page figures: after counting up, they briefly scramble every five seconds and lock back onto the real values; screen readers always get the real figures. (`1d63adc`)
@@ -91,6 +92,7 @@ Two lines of work run through this repository:
 - Slate rail sidebar on desktop, photo hero, and stacked project carousel (Etihad-style layout). Superseded the same day by the top bar. (`75f0d52`)
 
 #### Fixed
+- The laboratory photo in the CEL dropdown was blurry (a small version stretched to fit); it now loads a sharp, larger version. (`4c7fc7c`)
 - Gallery: portraits of board and advisory-panel members and stock pictures (a chess board, paper boats) no longer appear as gallery photos, and photos captioned with file names ("Slides Slide2", "About Cel1") now have real captions, including the project names from the original site's home page. (`6c07c6a`)
 - On the public read-only site (Vercel) the top bar no longer shows an admin sign-in icon that led to a "Not found" page. (`2c688f7`)
 - The home page section guide could overlap page content on screens between 1760 and 1900 px wide; it now only appears where it fits. (`bffed9b`)
