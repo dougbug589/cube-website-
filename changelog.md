@@ -39,6 +39,9 @@ Two lines of work run through this repository:
 - Etihad-inspired theme: slate and gold palette, scroll-reveal animations, gold scroll-progress bar. (`1977bf6`)
 
 #### Changed
+- Supporting text across the site is larger and darker again, matching the About overview. (`6a82a41`)
+- The home page figures now count up when you reach them (not before you get there) and count again each time you come back to them. (`230221d`)
+- The home project carousel moves more smoothly (a gentler glide, and cards are no longer rebuilt mid-move) and fades out softly at both edges. (`2be44b3`)
 - About overview paragraphs are larger again (20 px) in a near-black ink. (`9ba0b94`)
 - Easier to read everywhere: supporting text is darker and descriptions are larger across the site; page introductions and the About overview (for example "Established in May 2017…") are now 19 px. Menus and buttons keep their size. (`ac8536a`)
 - Redesigned the remaining pages with larger, easier-to-read text: Life at CUBE (a mosaic of CUBE's own photos and the team in CUBE's own words), project pages (a wide photo, facts one per line, and photos that open full screen), the Verticals overview, each vertical's page (figures for the numbers in each area of expertise) and the CEL laboratory page (a cleaner testing enquiry form). Made-up headings such as "Where Engineering Innovation Meets Public Purpose" and "Real-Time Sample Submission" were removed, and project cards have slightly larger text everywhere. (`8501a24`)
