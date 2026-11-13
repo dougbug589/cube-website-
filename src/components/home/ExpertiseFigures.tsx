@@ -22,6 +22,16 @@ const FIGURES: Figure[] = ((TPQA?.items as string[]) || []).map(parseFigure).fil
 const easeOutCubic = (k: number) => (k >= 1 ? 1 : 1 - Math.pow(1 - k, 3));
 const D = 2200; // ms per figure
 const STAGGER = 160; // ms between figures
+// After the count, the figures briefly scramble through random values every
+// 5 s and lock back onto the real figure, one after another.
+const SCRAMBLE_EVERY = 5000;
+const SCRAMBLE_LOCK = 650; // ms until the first figure locks
+const SCRAMBLE_STEP = 45; // ms between random values
+const randomLike = (v: number) => {
+  const digits = String(Math.round(v)).length;
+  const lo = digits > 1 ? 10 ** (digits - 1) : 0;
+  return lo + Math.floor(Math.random() * (10 ** digits - lo));
+};
 
 export default function ExpertiseFigures() {
   const rootRef = useRef<HTMLDivElement>(null);
@@ -39,13 +49,32 @@ export default function ExpertiseFigures() {
     }
     let raf = 0;
     let counting = false;
+    let timer = 0;
     const write = (k: (i: number) => number) =>
       FIGURES.forEach((f, i) => {
         const el = numRefs.current[i];
         if (el) el.textContent = fmtFigure(f.value * k(i), f.decimals);
       });
+    const scramble = () => {
+      const t0 = performance.now();
+      let last = 0;
+      const tick = (t: number) => {
+        const done = FIGURES.map((_, i) => t - t0 >= SCRAMBLE_LOCK + i * STAGGER);
+        if (t - last >= SCRAMBLE_STEP || done.every(Boolean)) {
+          last = t;
+          FIGURES.forEach((f, i) => {
+            const el = numRefs.current[i];
+            if (el) el.textContent = fmtFigure(done[i] ? f.value : randomLike(f.value), done[i] ? f.decimals : 0);
+          });
+        }
+        if (done.every(Boolean)) timer = window.setTimeout(scramble, SCRAMBLE_EVERY);
+        else raf = requestAnimationFrame(tick);
+      };
+      raf = requestAnimationFrame(tick);
+    };
     const reset = () => {
       cancelAnimationFrame(raf);
+      clearTimeout(timer);
       counting = false;
       setShown(false);
       write(() => 0);
@@ -58,6 +87,7 @@ export default function ExpertiseFigures() {
       const tick = (t: number) => {
         write((i) => easeOutCubic(Math.min(1, Math.max(0, (t - t0 - i * STAGGER) / D))));
         if (t - t0 < D + FIGURES.length * STAGGER) raf = requestAnimationFrame(tick);
+        else timer = window.setTimeout(scramble, SCRAMBLE_EVERY);
       };
       raf = requestAnimationFrame(tick);
     };
@@ -78,6 +108,7 @@ export default function ExpertiseFigures() {
       enter.disconnect();
       leave.disconnect();
       cancelAnimationFrame(raf);
+      clearTimeout(timer);
     };
   }, []);
 
@@ -109,12 +140,17 @@ export default function ExpertiseFigures() {
               className={`relative py-8 lg:py-10 px-4 sm:px-6 lg:px-8 ${i % 2 === 1 ? 'border-l' : ''} ${i > 0 ? 'lg:border-l' : ''} ${i > 1 ? 'border-t lg:border-t-0' : ''} border-[#33454E]/10`}
             >
               <dt className="text-[15px] font-semibold text-[#4B5A61]">{f.lead}</dt>
-              <dd className="mt-3 flex items-baseline gap-2 flex-wrap">
+              <dd
+                className="mt-3 flex items-baseline gap-2 flex-wrap"
+                // the visible digits count and scramble; assistive tech gets the real figure
+                aria-label={[f.prefix, fmtFigure(f.value, f.decimals), f.unit].filter(Boolean).join(' ')}
+              >
                 {f.prefix && <span className="font-display text-[22px] sm:text-[26px] font-extrabold text-[#9A7015]">{f.prefix}</span>}
                 <span
                   ref={(el) => {
                     numRefs.current[i] = el;
                   }}
+                  aria-hidden
                   className="font-display text-[44px] sm:text-[56px] xl:text-[64px] font-extrabold leading-none tracking-[-0.03em] text-[#243239] tabular-nums"
                 >
                   {fmtFigure(f.value, f.decimals)}
