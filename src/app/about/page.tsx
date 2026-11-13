@@ -12,6 +12,7 @@ import FocusCarousel from '@/components/common/FocusCarousel';
 import Marquee from '@/components/common/Marquee';
 import MessageSection from '@/components/about/MessageSection';
 import BoardDeck from '@/components/about/BoardDeck';
+import CoreValuesDial from '@/components/about/CoreValuesDial';
 import { Monogram } from '@/components/common/PersonCard';
 import { aboutContent } from '@/data/about';
 import { boardMembers as fallbackBoard, advisoryPanel as fallbackAdvisory } from '@/data/leadership';
@@ -174,21 +175,7 @@ export default function AboutPage() {
         <div className="relative shell">
           <SectionHeading eyebrow="Core Values" title="Core values." />
           <div>
-            <FocusCarousel
-              label="Core values"
-              items={aboutContent.coreValues}
-              keyOf={(v) => v.title}
-              variant="equal"
-              interval={1800}
-              heightClass="h-[380px] md:h-[400px] xl:h-[330px]"
-              render={(val) => (
-                <div className="liquid-glass h-full rounded-[30px] p-7 sm:p-8 flex flex-col">
-                  <p className="font-display text-[26px] sm:text-[28px] font-extrabold text-[#F3F5F6]">{val.title}</p>
-                  <span aria-hidden className="mt-3 block h-[3px] w-12 rounded-full bg-[#F6C22E]" />
-                  <p className="mt-5 text-[17.5px] sm:text-[18px] text-[#DDE3E6] leading-relaxed">{val.description}</p>
-                </div>
-              )}
-            />
+            <CoreValuesDial values={aboutContent.coreValues} interval={1800} />
           </div>
         </div>
       </section>
