@@ -771,3 +771,32 @@ li > .btn-gold.glass-interactive:hover { transform: translateY(-4px) scale(1.015
 @media (prefers-reduced-motion: reduce) {
   .press:hover, .press:active { scale: none !important; translate: none !important; }
 }
+
+/* ═══════════ HOVER BOUNCE FOR CLICKABLE CARDS ═══════════
+   Any link/button card (large radius: rounded-[1x-3x px] / 3xl) gets the
+   same back-out spring as buttons, scaled down for its size: 5px lift and
+   1.5% growth. scale/translate properties stack on framer-motion or reveal
+   transforms. Replaces glass-interactive's own translateY lift on links so
+   the two do not add up. */
+:is(a, button):is([class*="rounded-[1"], [class*="rounded-[2"], [class*="rounded-[3"], .rounded-3xl):not(.btn-gold, .btn-soft, .btn-liquid, .btn-liquid-gold, .liquid-glass-dark) {
+  transition:
+    scale 0.55s cubic-bezier(0.34, 1.56, 0.64, 1),
+    translate 0.55s cubic-bezier(0.34, 1.56, 0.64, 1),
+    transform 0.45s var(--spring),
+    box-shadow 0.4s ease, background-color 0.3s ease, border-color 0.3s ease, opacity 0.3s ease;
+}
+:is(a, button):is([class*="rounded-[1"], [class*="rounded-[2"], [class*="rounded-[3"], .rounded-3xl):not(.btn-gold, .btn-soft, .btn-liquid, .btn-liquid-gold, .liquid-glass-dark):hover {
+  scale: 1.015;
+  translate: 0 -5px;
+}
+:is(a, button):is([class*="rounded-[1"], [class*="rounded-[2"], [class*="rounded-[3"], .rounded-3xl):not(.btn-gold, .btn-soft, .btn-liquid, .btn-liquid-gold, .liquid-glass-dark):active {
+  scale: 0.985;
+  translate: 0 0;
+  transition-duration: 0.12s;
+}
+:is(a, button).glass-interactive:hover { transform: none; }
+/* the gold Clients tile: lift with the same spring, no growth */
+li > a.btn-gold.glass-interactive:hover { transform: translateY(-5px); }
+@media (prefers-reduced-motion: reduce) {
+  :is(a, button):hover, :is(a, button):active { scale: none !important; translate: none !important; }
+}
