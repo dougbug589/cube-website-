@@ -40,6 +40,7 @@ Two lines of work run through this repository:
 - Etihad-inspired theme: slate and gold palette, scroll-reveal animations, gold scroll-progress bar. (`1977bf6`)
 
 #### Changed
+- Heading blank space filled: inner-page headers show a slowly turning wireframe cube (yellow glowing edges, light strips) on wide screens; section headings get a line with a yellow diamond and a travelling glint up to their link.
 - Core Values and Objectives pages: the text card now grows and shrinks smoothly to fit each quote/objective instead of snapping.
 - Objectives page: number and sentence now switch at the same moment. Core Values page: vertical picker wheel (value names roll on a 3D drum, quote card slides up in step) replaces the flip cards.
 - Objectives page: rolling-number counter slideshow with jump pills; Core Values page: grid of flip cards turning over one by one to reveal each quote.
