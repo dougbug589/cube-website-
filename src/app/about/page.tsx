@@ -74,7 +74,7 @@ export default function AboutPage() {
           <div className="lg:col-span-7 reveal">
             <p className="label-mono">About CUBE</p>
             <p className="mt-4 text-[20px] sm:text-[22px] leading-relaxed text-[#243239] font-semibold">{aboutContent.overview[0]}</p>
-            <div className="mt-6 space-y-5 text-[19px] leading-[1.75] text-[#33454E]">
+            <div className="mt-6 space-y-5 text-[20px] leading-[1.75] text-[#2B3A41]">
               {aboutContent.overview.slice(1).map((para, i) => (
                 <p key={i}>{para}</p>
               ))}
