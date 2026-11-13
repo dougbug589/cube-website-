@@ -2,6 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import { ArrowUpRight, Compass, Target } from 'lucide-react';
 import PageHeader from '@/components/common/PageHeader';
+import SectionPhoto from '@/components/common/SectionPhoto';
 import { aboutContent } from '@/data/about';
 
 export const metadata = {
@@ -26,10 +27,12 @@ export default function VisionMissionPage() {
         breadcrumbs={[{ label: 'About CUBE', href: '/about' }, { label: 'Vision & Mission' }]}
       />
 
-      {/* Vision: one large statement in a raised glass panel */}
-      <section className="shell">
-        <div className="liquid-glass relative rounded-[34px] depth-3 p-8 sm:p-12 lg:p-16 overflow-hidden reveal">
-          <div aria-hidden className="absolute -top-24 -right-16 w-[420px] h-[420px] rounded-full bg-[radial-gradient(circle,rgba(246, 194, 46,0.28),transparent_70%)] blur-2xl pointer-events-none" />
+      {/* Vision: one large statement in a raised glass panel, over the IIT Tirupati
+          permanent campus (CUBE: third party quality assurance) */}
+      <section className="relative py-20 lg:py-28">
+        <SectionPhoto src="/images/hero/slides_iit-tirupathi.jpg" wash="bg-[#0B0D0E]/45" />
+        <div className="relative shell">
+        <div className="liquid-glass relative rounded-[34px] depth-3 p-8 sm:p-12 lg:p-16 overflow-hidden">
           <div className="relative flex items-center gap-3">
             <span className="grid place-items-center w-12 h-12 rounded-2xl pill-yellow text-[#0B0D0E] depth-1">
               <Compass size={22} strokeWidth={2} />
@@ -40,12 +43,16 @@ export default function VisionMissionPage() {
             {aboutContent.vision}
           </p>
         </div>
+        </div>
       </section>
 
-      {/* Mission: numbered points */}
-      <section className="shell py-14 lg:py-20 pb-24">
+      {/* Mission: numbered points on frosted glass, over the CPCL Manali
+          housing project (CUBE: design consultancy & PMC) */}
+      <section className="relative py-20 lg:py-28 pb-28">
+        <SectionPhoto src="/images/hero/slides_cpcl-arc.jpg" wash="bg-[#0B0D0E]/55" />
+        <div className="relative shell">
         <div className="flex items-center gap-3 mb-8 reveal">
-          <span className="grid place-items-center w-12 h-12 rounded-2xl bg-[#F6C22E]/15 text-[#F6C22E] depth-1">
+          <span className="grid place-items-center w-12 h-12 rounded-2xl pill-yellow text-[#0B0D0E] depth-1">
             <Target size={22} strokeWidth={2} />
           </span>
           <h2 className="headline-light text-3xl sm:text-[2.4rem] text-[#F3F5F6]">Mission</h2>
@@ -67,6 +74,7 @@ export default function VisionMissionPage() {
           <Link href="/about/core-values" className="press btn-soft inline-flex items-center gap-2 h-12 px-6 rounded-full text-[16px] font-bold">
             Core values <ArrowUpRight size={16} strokeWidth={2.25} />
           </Link>
+        </div>
         </div>
       </section>
     </div>
