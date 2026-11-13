@@ -12,6 +12,7 @@ import FocusCarousel from '@/components/common/FocusCarousel';
 import Marquee from '@/components/common/Marquee';
 import MessageSection from '@/components/about/MessageSection';
 import BoardSpotlight from '@/components/about/BoardSpotlight';
+import RingCarousel from '@/components/about/RingCarousel';
 import { Monogram } from '@/components/common/PersonCard';
 import { aboutContent } from '@/data/about';
 import { boardMembers as fallbackBoard, advisoryPanel as fallbackAdvisory } from '@/data/leadership';
@@ -179,7 +180,7 @@ export default function AboutPage() {
               items={aboutContent.coreValues}
               keyOf={(v) => v.title}
               variant="equal"
-              interval={2500}
+              interval={1800}
               heightClass="h-[380px] md:h-[400px] xl:h-[330px]"
               render={(val) => (
                 <div className="liquid-glass h-full rounded-[30px] p-7 sm:p-8 flex flex-col">
@@ -239,30 +240,7 @@ export default function AboutPage() {
             action={{ href: '/about/advisory-panel', label: 'Advisory panel' }}
           />
           <div className="reveal">
-            <FocusCarousel
-              label="IIT Madras advisory panel"
-              items={advisoryPanel}
-              keyOf={(a) => a.name}
-              heightClass="h-[500px] sm:h-[520px]"
-              maxCard={400}
-              interval={2200}
-              render={(a, active) => (
-                <article className={`glass h-full rounded-[30px] overflow-hidden flex flex-col ${active ? 'ring-1 ring-[#F6C22E]/40' : ''}`}>
-                  <div className="relative flex-1 min-h-0 bg-[#1A1F22]">
-                    {a.image ? (
-                      <Image src={a.image} alt={a.name} fill sizes="400px" className="object-cover object-[50%_20%]" draggable={false} />
-                    ) : (
-                      <Monogram name={a.name} className="absolute inset-0" />
-                    )}
-                  </div>
-                  <div className="p-5 sm:p-6">
-                    <h3 className="font-display text-[20px] sm:text-[22px] font-bold text-[#F3F5F6] leading-snug">{a.name}</h3>
-                    {a.role && <p className="mt-1 text-[15.5px] font-semibold text-[#F6C22E] leading-snug line-clamp-2">{a.role}</p>}
-                    {(a.organization || a.department) && <p className="mt-1 text-[16px] text-[#C2CCD1] leading-snug line-clamp-1">{a.organization || a.department}</p>}
-                  </div>
-                </article>
-              )}
-            />
+            <RingCarousel label="IIT Madras advisory panel" people={advisoryPanel} interval={2000} />
           </div>
         </div>
       </section>

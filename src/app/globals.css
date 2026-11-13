@@ -800,3 +800,13 @@ li > a.btn-gold.glass-interactive:hover { transform: translateY(-5px); }
 @media (prefers-reduced-motion: reduce) {
   :is(a, button):hover, :is(a, button):active { scale: none !important; translate: none !important; }
 }
+
+/* Glass over a section photo must be frosted, not merely tinted: .glass has
+   no live blur by default (it sits on big card grids over the plain canvas,
+   where a blur would not show), so inside a section that carries a photo
+   (SectionPhoto / home Section bgImage, marked data-section-photo) it gets
+   the same backdrop blur as liquid glass. */
+section:has([data-section-photo]) :is(.glass, .glass-strong) {
+  -webkit-backdrop-filter: var(--glass-filter);
+  backdrop-filter: var(--glass-filter);
+}
