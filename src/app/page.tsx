@@ -12,6 +12,9 @@ import WorkWithCube from '@/components/home/WorkWithCube';
 import PartnersSection from '@/components/home/PartnersSection';
 import NewsTicker from '@/components/home/NewsTicker';
 import HomeBento from '@/components/home/HomeBento';
+import ExpertiseFigures from '@/components/home/ExpertiseFigures';
+import InkText from '@/components/home/InkText';
+import SectionSpine from '@/components/home/SectionSpine';
 import { cubeEvents } from '@/data/media';
 
 import { CMS_UPDATED_EVENT } from '@/lib/live';
@@ -33,6 +36,17 @@ const MEDIA_SHOTS = cubeEvents
   .filter((e) => e.image)
   .slice(0, 6)
   .map((e) => ({ image: e.image, title: e.title, date: e.date }));
+
+const SPINE = [
+  { id: 'about', label: 'About' },
+  { id: 'expertise', label: 'Figures' },
+  { id: 'projects-showcase', label: 'Projects' },
+  { id: 'verticals', label: 'Verticals' },
+  { id: 'cel', label: 'CEL' },
+  { id: 'life-at-cube', label: 'Inside CUBE' },
+  { id: 'partners', label: 'Partners' },
+  { id: 'work-with-cube', label: 'Work with CUBE' },
+];
 
 const ABOUT_POINTS = [
   { Icon: Landmark, k: 'Est. 2017', v: 'Centre of Excellence of the Government of Tamil Nadu, with IIT Madras.' },
@@ -173,9 +187,10 @@ export default function HomePage() {
         <div className="grid lg:grid-cols-12 gap-6 lg:gap-8 items-stretch">
           <div className="lg:col-span-7 liquid-glass rounded-[28px] p-8 lg:p-10 flex flex-col reveal">
             <p className="label-mono">Our vision</p>
-            <p className="mt-4 font-display text-xl lg:text-[22px] 2xl:text-[27px] font-bold leading-snug text-[#243239]">
-              To be the most acclaimed and trustworthy provider of Applied Research, Technology, Engineering &amp; Consultancy Services with National footprint, in association with IIT Madras, delivering effective and measurable value in built environment aiming at future equipped and sustainable human habitats.
-            </p>
+            <InkText
+              className="mt-4 font-display text-xl lg:text-[22px] 2xl:text-[27px] font-bold leading-snug text-[#243239]"
+              text="To be the most acclaimed and trustworthy provider of Applied Research, Technology, Engineering & Consultancy Services with National footprint, in association with IIT Madras, delivering effective and measurable value in built environment aiming at future equipped and sustainable human habitats."
+            />
             <div className="mt-auto pt-8 flex flex-wrap gap-3">
               <Link href="/about#governing-board" className="press btn-gold gold-shimmer inline-flex items-center gap-2 h-12 px-6 rounded-full text-[16px] font-extrabold">
                 Governing board <ArrowUpRight size={16} strokeWidth={2.25} />
@@ -203,8 +218,11 @@ export default function HomePage() {
         </div>
       </Section>
 
+      {/* 03b · TPQA expertise highlights (figures from cubeiitm.org) */}
+      <ExpertiseFigures />
+
       {/* 04 · Featured projects (stacked carousel on constellation) */}
-      <section className="relative pb-16 lg:pb-24 overflow-hidden">
+      <section id="projects-showcase" className="relative pb-16 lg:pb-24 overflow-hidden">
         <svg aria-hidden className="absolute inset-x-0 top-0 w-full h-72 opacity-40 pointer-events-none" preserveAspectRatio="none" viewBox="0 0 1400 300">
           <g stroke="#C4921B" strokeWidth="0.6" fill="none" opacity="0.55">
             <path d="M 100 40 L 320 120 L 560 60 L 780 150" />
@@ -300,6 +318,9 @@ export default function HomePage() {
 
       {/* 09 · Work with CUBE — three doors */}
       <WorkWithCube />
+
+      {/* left-edge section guide (very wide screens only) */}
+      <SectionSpine sections={SPINE} />
     </div>
   );
 }
