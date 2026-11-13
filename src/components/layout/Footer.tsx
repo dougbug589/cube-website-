@@ -42,9 +42,21 @@ export default function Footer() {
         <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-12">
           {/* Identity */}
           <div className="lg:col-span-4">
-            <Link href="/" className="inline-block" aria-label="CUBE home">
-              <span className="relative block h-14 w-60 rounded-2xl bg-white border border-[#33454E]/15 shadow-sm">
-                <Image src="/images/branding/cube-live-logo.png" alt="" fill sizes="240px" className="object-contain object-left p-2.5" />
+            {/* logo on its own (no white chip), large enough to read the emblems */}
+            <Link href="/" className="inline-flex items-center gap-4" aria-label="CUBE home">
+              <Image
+                src="/images/branding/cube-live-logo.png"
+                alt=""
+                width={234}
+                height={96}
+                sizes="234px"
+                quality={90}
+                className="h-20 sm:h-24 w-auto object-contain"
+              />
+              <span aria-hidden className="hidden sm:block h-14 w-px bg-[#33454E]/15" />
+              <span className="hidden sm:flex flex-col leading-none whitespace-nowrap">
+                <span className="font-display text-[24px] font-extrabold tracking-[0.08em] text-[#243239]">CUBE</span>
+                <span className="mt-1.5 text-[12.5px] font-bold uppercase tracking-[0.14em] text-[#3B4B53]">Centre of Excellence</span>
               </span>
             </Link>
             <p className="mt-5 text-[16.5px] leading-relaxed max-w-sm">
