@@ -40,6 +40,7 @@ Two lines of work run through this repository:
 - Etihad-inspired theme: slate and gold palette, scroll-reveal animations, gold scroll-progress bar. (`1977bf6`)
 
 #### Changed
+- Home About: the vision is centred in one large glass card with the three points in a row beneath it. (`e93a1a6`)
 - Home page polish: sections now fade into each other instead of ending in hard lines; the project carousel moves in half a second; the glass buttons are more see-through; the Verticals card shows each vertical's full description (Smart Cities now has more to read). (`cbe5e16`)
 - Home hero: square bottom corners now that it runs edge to edge. (`2aa5ebc`)
 - Home hero: now runs the full width of the screen, right under the top bar, with rounded corners only at the bottom; its text and the news strip below line up with the logo and the page content. (`61c8167`)
