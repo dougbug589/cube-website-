@@ -101,6 +101,8 @@ function Section({
             <h2 className="headline-light text-3xl sm:text-4xl lg:text-[2.75rem] text-[#F3F5F6] mt-3">{title}</h2>
             {lead && <p className="mt-4 text-[19.5px] text-[#DDE3E6] leading-relaxed">{lead}</p>}
           </div>
+          {/* fills the gap between the title and its link (wide screens) */}
+          <span aria-hidden className="heading-rule hidden md:block flex-1 min-w-12 self-end mb-3 mx-2" />
           {action && (
             <Link
               href={action.href}

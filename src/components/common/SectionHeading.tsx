@@ -33,6 +33,8 @@ export default function SectionHeading({
         <h2 className="headline-light text-3xl sm:text-4xl lg:text-[2.6rem] text-[#F3F5F6] mt-3">{title}</h2>
         {lead && <p className="mt-4 text-[19px] text-[#C2CCD1] leading-relaxed">{lead}</p>}
       </div>
+      {/* fills the gap between the title and its link (wide screens) */}
+      {!center && <span aria-hidden className="heading-rule hidden md:block flex-1 min-w-12 self-end mb-3 mx-2" />}
       {action && (
         <Link
           href={action.href}

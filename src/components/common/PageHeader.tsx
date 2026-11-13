@@ -4,6 +4,7 @@ import React from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { ChevronRight, ArrowLeft } from 'lucide-react';
+import HeaderCube from '@/components/common/HeaderCube';
 
 interface PageHeaderProps {
   badge: string;
@@ -42,6 +43,8 @@ export default function PageHeader({ badge, title, description, breadcrumbs, bac
       {/* faint constellation + soft gold wash, both static */}
       <div aria-hidden className="absolute inset-0 constellation opacity-30 [mask-image:linear-gradient(to_bottom,black,transparent)]" />
       <div aria-hidden className="absolute -top-40 right-0 w-[520px] h-[520px] rounded-full bg-[#F6C22E]/10 blur-[120px] pointer-events-none" />
+      {/* fills the empty right side on wide screens */}
+      <HeaderCube />
 
       <div className="relative shell w-full">
         <div className="flex flex-wrap items-center justify-between gap-4 mb-10">
@@ -69,7 +72,8 @@ export default function PageHeader({ badge, title, description, breadcrumbs, bac
           </nav>
         </div>
 
-        <div className="max-w-4xl reveal-stagger revealed">
+        {/* from 1400px the header cube sits on the right: keep the text clear of it */}
+        <div className="max-w-4xl min-[1400px]:max-w-[min(56rem,calc(100%-470px))] reveal-stagger revealed">
           <p className="label-mono">{badge}</p>
           {/* long official titles (project pages) step down so they stay readable */}
           <h1
