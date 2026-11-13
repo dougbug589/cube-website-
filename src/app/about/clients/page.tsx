@@ -19,7 +19,7 @@ export default function ClientsPage() {
   const logos = clients.filter((c) => c.logo);
   const partnerLogos = partners.filter((p) => p.logo);
   return (
-    <div className="text-[#243239] min-h-screen">
+    <div className="text-[#F3F5F6] min-h-screen">
       <PageHeader
         badge="About"
         title="Our Clients"
@@ -28,10 +28,10 @@ export default function ClientsPage() {
       />
 
       <section className="shell pb-16 lg:pb-20">
-        <SectionHeading eyebrow="Clients" title={<>Clients <span className="text-[#C4921B]">({logos.length})</span></>} />
+        <SectionHeading eyebrow="Clients" title={<>Clients <span className="text-[#D89F03]">({logos.length})</span></>} />
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 xl:grid-cols-6 gap-4 reveal-stagger">
           {logos.map((c, i) => (
-            <div key={`${c.logo}-${i}`} className="group h-36 lg:h-40 rounded-[22px] bg-white border border-[#33454E]/[0.07] depth-1 px-6 py-5 transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-1">
+            <div key={`${c.logo}-${i}`} className="group h-36 lg:h-40 rounded-[22px] bg-white border border-white/[0.08] depth-1 px-6 py-5 transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-1">
               <div className="relative w-full h-full">
                 <Image
                   src={c.logo}
@@ -52,7 +52,7 @@ export default function ClientsPage() {
             <SectionHeading eyebrow="Partners" title="Partners and collaborators." />
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-5 reveal-stagger">
               {partnerLogos.map((p) => (
-                <div key={p.logo} className="h-52 rounded-[24px] bg-white border border-[#33454E]/[0.08] depth-1 grid place-items-center p-4">
+                <div key={p.logo} className="h-52 rounded-[24px] bg-white border border-white/[0.09] depth-1 grid place-items-center p-4">
                   <div className="relative w-full h-full">
                     <Image src={p.logo} alt={partnerAlt(p.name)} fill sizes="(max-width: 640px) 90vw, 340px" className="object-contain" />
                   </div>

@@ -11,7 +11,7 @@ export const metadata = {
 
 export default function ObjectivesPage() {
   return (
-    <div className="text-[#243239] min-h-screen">
+    <div className="text-[#F3F5F6] min-h-screen">
       <PageHeader
         badge="About"
         title="Objectives"
@@ -23,10 +23,10 @@ export default function ObjectivesPage() {
         <ol className="grid md:grid-cols-2 gap-4 lg:gap-5 reveal-stagger">
           {aboutContent.objectives.map((obj, i) => (
             <li key={i} className="glass glass-interactive glass-edge rounded-[26px] p-6 lg:p-8 flex items-start gap-5 lg:gap-6">
-              <span className="grid place-items-center w-14 h-14 rounded-[18px] bg-gradient-to-b from-[#F8E3A3] to-[#F0C468] text-[#243239] depth-1 font-display text-[20px] font-extrabold tabular-nums shrink-0">
+              <span className="grid place-items-center w-14 h-14 rounded-[18px] bg-gradient-to-b from-[#F1DB62]/35 to-[#D89F03]/20 text-[#F3F5F6] depth-1 font-display text-[20px] font-extrabold tabular-nums shrink-0">
                 {String(i + 1).padStart(2, '0')}
               </span>
-              <span className="pt-1.5 text-[18px] lg:text-[19px] leading-relaxed text-[#243239] font-medium">{obj}</span>
+              <span className="pt-1.5 text-[18px] lg:text-[19px] leading-relaxed text-[#F3F5F6] font-medium">{obj}</span>
             </li>
           ))}
         </ol>

@@ -49,15 +49,15 @@ Parameters / Notes: ${formData.parametersNeeded || 'Standard Matrix Parameters'}
   };
 
   return (
-    <div className="text-[#243239] min-h-screen">
+    <div className="text-[#F3F5F6] min-h-screen">
       <PageHeader badge="Laboratory" title={celOverview.title} description={celOverview.description} breadcrumbs={[{ label: 'CEL Laboratory' }]} />
 
       {/* overview: what cubeiitm.org states about CEL, beside a photo mosaic */}
       <section className="shell">
         <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-stretch">
           <div className="lg:col-span-5 liquid-glass rounded-[32px] depth-2 p-8 sm:p-10 flex flex-col reveal">
-            <p className="font-display text-[23px] sm:text-[26px] font-bold leading-[1.45] text-[#243239]">{celOverview.subtitle}</p>
-            <p className="mt-5 text-[19.5px] text-[#2B3A41] leading-relaxed">{celOverview.location}</p>
+            <p className="font-display text-[23px] sm:text-[26px] font-bold leading-[1.45] text-[#F3F5F6]">{celOverview.subtitle}</p>
+            <p className="mt-5 text-[19.5px] text-[#DDE3E6] leading-relaxed">{celOverview.location}</p>
             <div className="mt-auto pt-8 flex flex-wrap gap-3">
               <a href={celOverview.website} target="_blank" rel="noopener noreferrer" className="press btn-gold gold-shimmer inline-flex items-center gap-2 h-12 px-6 rounded-full text-[16px] font-extrabold">
                 Visit the CEL website <ArrowUpRight size={16} strokeWidth={2.25} />
@@ -69,7 +69,7 @@ Parameters / Notes: ${formData.parametersNeeded || 'Standard Matrix Parameters'}
           </div>
           <div className="lg:col-span-7 grid grid-cols-2 grid-rows-2 gap-4 min-h-[420px] lg:min-h-[520px] reveal-stagger">
             {PHOTOS.map((src, i) => (
-              <div key={src} className={`relative rounded-[26px] overflow-hidden depth-1 bg-[#DCE4E8] ${i === 0 ? 'row-span-2' : ''}`}>
+              <div key={src} className={`relative rounded-[26px] overflow-hidden depth-1 bg-[#1A1F22] ${i === 0 ? 'row-span-2' : ''}`}>
                 <Image src={src} alt="CUBE Environmental Laboratory" fill sizes="(max-width: 1024px) 50vw, 30vw" className="object-cover" priority={i === 0} />
               </div>
             ))}
@@ -85,11 +85,11 @@ Parameters / Notes: ${formData.parametersNeeded || 'Standard Matrix Parameters'}
             const Icon = ICON[service.id] || Droplets;
             return (
               <div key={service.id || service.title} className="glass glass-interactive glass-edge rounded-[28px] p-8">
-                <span className="grid place-items-center w-14 h-14 rounded-[18px] bg-gradient-to-b from-[#F8E3A3] to-[#F0C468] text-[#243239] depth-1">
+                <span className="grid place-items-center w-14 h-14 rounded-[18px] bg-gradient-to-b from-[#F1DB62]/35 to-[#D89F03]/20 text-[#F3F5F6] depth-1">
                   <Icon size={24} strokeWidth={2} />
                 </span>
-                <h2 className="mt-6 font-display text-[28px] font-extrabold text-[#243239]">{service.title}</h2>
-                {service.description && <p className="mt-2 text-[19px] text-[#2B3A41] leading-relaxed">{service.description}</p>}
+                <h2 className="mt-6 font-display text-[28px] font-extrabold text-[#F3F5F6]">{service.title}</h2>
+                {service.description && <p className="mt-2 text-[19px] text-[#DDE3E6] leading-relaxed">{service.description}</p>}
               </div>
             );
           })}
@@ -102,24 +102,24 @@ Parameters / Notes: ${formData.parametersNeeded || 'Standard Matrix Parameters'}
           <aside className="lg:col-span-4 space-y-4 reveal-stagger">
             <div className="glass glass-edge rounded-[26px] p-7">
               <p className="label-mono">Where</p>
-              <p className="mt-3 flex items-start gap-3 text-[17px] text-[#243239] leading-relaxed">
-                <MapPin size={19} className="text-[#C4921B] mt-1 shrink-0" />
+              <p className="mt-3 flex items-start gap-3 text-[17px] text-[#F3F5F6] leading-relaxed">
+                <MapPin size={19} className="text-[#D89F03] mt-1 shrink-0" />
                 {contactInfo.address}
               </p>
             </div>
             <div className="glass glass-edge rounded-[26px] p-7 space-y-3">
-              <a href={`mailto:${contactInfo.email}`} className="flex items-center gap-3 text-[17px] font-bold text-[#243239] hover:text-[#9A7015] transition-colors">
-                <Mail size={19} className="text-[#C4921B]" /> {contactInfo.email}
+              <a href={`mailto:${contactInfo.email}`} className="flex items-center gap-3 text-[17px] font-bold text-[#F3F5F6] hover:text-[#EBCB3B] transition-colors">
+                <Mail size={19} className="text-[#D89F03]" /> {contactInfo.email}
               </a>
-              <a href={`tel:${contactInfo.phoneTel}`} className="flex items-center gap-3 text-[17px] font-bold text-[#243239] hover:text-[#9A7015] transition-colors">
-                <Phone size={19} className="text-[#C4921B]" /> {contactInfo.phone}
+              <a href={`tel:${contactInfo.phoneTel}`} className="flex items-center gap-3 text-[17px] font-bold text-[#F3F5F6] hover:text-[#EBCB3B] transition-colors">
+                <Phone size={19} className="text-[#D89F03]" /> {contactInfo.phone}
               </a>
             </div>
           </aside>
 
           <div className="lg:col-span-8 glass glass-edge rounded-[30px] p-6 sm:p-9 reveal">
             <p className="label-mono">Testing enquiry</p>
-            <h2 className="mt-3 headline-light text-3xl sm:text-[2.4rem] text-[#243239]">Send sample details</h2>
+            <h2 className="mt-3 headline-light text-3xl sm:text-[2.4rem] text-[#F3F5F6]">Send sample details</h2>
 
             <AnimatePresence mode="wait" initial={false}>
               {formSubmitted ? (
@@ -128,12 +128,12 @@ Parameters / Notes: ${formData.parametersNeeded || 'Standard Matrix Parameters'}
                     initial={{ scale: 0.4, rotate: -12 }}
                     animate={{ scale: 1, rotate: 0 }}
                     transition={{ type: 'spring', stiffness: 380, damping: 14, delay: 0.05 }}
-                    className="grid place-items-center w-20 h-20 mx-auto rounded-full bg-gradient-to-b from-[#F8E3A3] to-[#F0C468] text-[#243239] depth-2"
+                    className="grid place-items-center w-20 h-20 mx-auto rounded-full bg-gradient-to-b from-[#F1DB62]/35 to-[#D89F03]/20 text-[#F3F5F6] depth-2"
                   >
                     <Check size={36} strokeWidth={2.5} />
                   </motion.span>
-                  <h3 className="mt-7 font-display text-[28px] font-extrabold text-[#243239]">Enquiry sent</h3>
-                  <p className="mt-3 text-[18.5px] text-[#3B4B53] max-w-md mx-auto leading-relaxed">Thank you. The team will get back to you at the email address you gave.</p>
+                  <h3 className="mt-7 font-display text-[28px] font-extrabold text-[#F3F5F6]">Enquiry sent</h3>
+                  <p className="mt-3 text-[18.5px] text-[#C2CCD1] max-w-md mx-auto leading-relaxed">Thank you. The team will get back to you at the email address you gave.</p>
                   <button
                     onClick={() => {
                       setFormSubmitted(false);
@@ -183,7 +183,7 @@ Parameters / Notes: ${formData.parametersNeeded || 'Standard Matrix Parameters'}
                             type="button"
                             onClick={() => setFormData((f) => ({ ...f, matrix: s.title }))}
                             className={`press h-9 px-3.5 rounded-full text-[14px] font-bold border transition-colors duration-300 ${
-                              on ? 'bg-gradient-to-b from-[#F8E3A3] to-[#F0C468] border-[#C4921B]/30 text-[#243239]' : 'bg-white/70 border-[#33454E]/10 text-[#3B4B53] hover:bg-white hover:text-[#243239]'
+                              on ? 'bg-gradient-to-b from-[#F1DB62]/35 to-[#D89F03]/20 border-[#D89F03]/30 text-[#F3F5F6]' : 'bg-white/[0.07] border-white/10 text-[#C2CCD1] hover:bg-white/[0.06] hover:text-[#F3F5F6]'
                             }`}
                           >
                             {s.title}

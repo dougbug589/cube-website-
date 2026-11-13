@@ -88,7 +88,7 @@ function ProjectsPageInner() {
   const filters = categories.filter((c) => c === 'All' || counts[c]);
 
   return (
-    <div className="text-[#243239] min-h-screen">
+    <div className="text-[#F3F5F6] min-h-screen">
       <Suspense fallback={null}>
         <SearchParamsSync
           onChange={(category, q) => {
@@ -117,31 +117,31 @@ function ProjectsPageInner() {
                   onClick={() => setSelectedCategory(cat)}
                   aria-pressed={on}
                   className={`press relative h-10 px-4 rounded-full text-[14.5px] whitespace-nowrap transition-colors duration-300 ${
-                    on ? 'text-[#243239] font-bold' : 'text-[#3B4B53] font-semibold hover:text-[#243239]'
+                    on ? 'text-[#F3F5F6] font-bold' : 'text-[#C2CCD1] font-semibold hover:text-[#F3F5F6]'
                   }`}
                 >
                   {on && (
                     <motion.span
                       layoutId="projects-filter-pill"
                       transition={{ type: 'spring', stiffness: 420, damping: 34, mass: 0.8 }}
-                      className="absolute inset-0 rounded-full bg-gradient-to-b from-[#F8E3A3] to-[#F0C468]/80 border border-[#C4921B]/25 shadow-[0_6px_16px_-10px_rgba(196,146,27,0.8)]"
+                      className="absolute inset-0 rounded-full bg-gradient-to-b from-[#D89F03]/45 to-[#D89F03]/20 border border-[#D89F03]/25 shadow-[0_6px_16px_-10px_rgba(196,146,27,0.8)]"
                     />
                   )}
                   <span className="relative">
-                    {SHORT_LABEL[cat] || cat} <span className="text-[#66767D] font-semibold">{counts[cat] || 0}</span>
+                    {SHORT_LABEL[cat] || cat} <span className="text-[#8E9AA0] font-semibold">{counts[cat] || 0}</span>
                   </span>
                 </button>
               );
             })}
           </div>
           <label className="relative flex-1 min-w-0 sm:ml-auto">
-            <Search className="w-4 h-4 text-[#66767D] absolute left-4 top-1/2 -translate-y-1/2" />
+            <Search className="w-4 h-4 text-[#8E9AA0] absolute left-4 top-1/2 -translate-y-1/2" />
             <input
               type="text"
               placeholder="Search title, client or place"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full h-10 pl-10 pr-4 rounded-full bg-white/80 border border-[#33454E]/10 text-[15.5px] text-[#243239] placeholder-[#7A888E] focus:outline-none focus:border-[#C4921B]/60 transition-colors"
+              className="w-full h-10 pl-10 pr-4 rounded-full bg-white/[0.08] border border-white/10 text-[15.5px] text-[#F3F5F6] placeholder-[#7A888E] focus:outline-none focus:border-[#D89F03]/60 transition-colors"
             />
           </label>
         </div>
@@ -149,8 +149,8 @@ function ProjectsPageInner() {
 
       <section className="py-10 lg:py-14">
         <div className="shell">
-          <p className="mb-6 text-[17.5px] text-[#3B4B53]">
-            <span className="font-bold text-[#243239]">{filteredProjects.length}</span> {filteredProjects.length === 1 ? 'project' : 'projects'}
+          <p className="mb-6 text-[17.5px] text-[#C2CCD1]">
+            <span className="font-bold text-[#F3F5F6]">{filteredProjects.length}</span> {filteredProjects.length === 1 ? 'project' : 'projects'}
             {selectedCategory !== 'All' && <> in {selectedCategory}</>}
             {searchQuery.trim() && <> matching &ldquo;{searchQuery.trim()}&rdquo;</>}
           </p>
@@ -175,7 +175,7 @@ function ProjectsPageInner() {
 
           {filteredProjects.length === 0 && (
             <div className="glass rounded-[26px] p-10 text-center">
-              <p className="font-display text-xl font-bold text-[#243239]">No projects match.</p>
+              <p className="font-display text-xl font-bold text-[#F3F5F6]">No projects match.</p>
               <button
                 type="button"
                 onClick={() => {

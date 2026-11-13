@@ -57,7 +57,7 @@ export default function MediaPage() {
   const [lead, ...rest] = newsItems.slice(0, 7);
 
   return (
-    <div className="text-[#243239] min-h-screen">
+    <div className="text-[#F3F5F6] min-h-screen">
       <PageHeader
         badge="Media"
         title="Media"
@@ -77,7 +77,7 @@ export default function MediaPage() {
               href={newsHref(lead)}
               className="reveal press group glass glass-interactive glass-edge rounded-[30px] overflow-hidden grid lg:grid-cols-12"
             >
-              <div className="relative lg:col-span-7 aspect-[16/10] lg:aspect-auto lg:min-h-[380px] overflow-hidden bg-[#DCE4E8]">
+              <div className="relative lg:col-span-7 aspect-[16/10] lg:aspect-auto lg:min-h-[380px] overflow-hidden bg-[#1A1F22]">
                 <Image
                   src={lead.image || '/images/about/about_about.jpg'}
                   alt={lead.title}
@@ -95,13 +95,13 @@ export default function MediaPage() {
               </div>
               <div className="lg:col-span-5 p-7 sm:p-9 lg:p-10 flex flex-col">
                 <p className="label-mono">Latest</p>
-                <h3 className="mt-3 font-display text-[26px] sm:text-[30px] font-extrabold text-[#243239] leading-tight">{lead.title}</h3>
-                <p className="mt-4 text-[19.5px] text-[#2B3A41] leading-relaxed line-clamp-5">
+                <h3 className="mt-3 font-display text-[26px] sm:text-[30px] font-extrabold text-[#F3F5F6] leading-tight">{lead.title}</h3>
+                <p className="mt-4 text-[19.5px] text-[#DDE3E6] leading-relaxed line-clamp-5">
                   {lead.summary || (Array.isArray(lead.content) ? lead.content[0] : lead.content)}
                 </p>
-                <span className="mt-auto pt-8 inline-flex items-center gap-2 text-[16px] font-bold text-[#243239]">
+                <span className="mt-auto pt-8 inline-flex items-center gap-2 text-[16px] font-bold text-[#F3F5F6]">
                   Read the story
-                  <span className="grid place-items-center w-10 h-10 rounded-full bg-white border border-[#33454E]/10 depth-1 transition-[transform,background-color] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:bg-[#F0C468] group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
+                  <span className="grid place-items-center w-10 h-10 rounded-full bg-white/[0.06] border border-white/10 depth-1 transition-[transform,background-color] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:bg-[#D89F03]/35 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
                     <ArrowUpRight size={17} strokeWidth={2.25} />
                   </span>
                 </span>
@@ -124,19 +124,19 @@ export default function MediaPage() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 reveal-stagger">
             {cubeEvents.map((evt) => (
               <article key={evt.title} className="glass glass-interactive glass-edge rounded-[26px] overflow-hidden flex flex-col">
-                <div className="relative aspect-[4/3] overflow-hidden bg-[#DCE4E8]">
+                <div className="relative aspect-[4/3] overflow-hidden bg-[#1A1F22]">
                   <Image src={evt.image} alt={evt.title} fill sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw" className="object-cover" />
                   <div className="absolute top-3 left-3">
                     <DateChip date={evt.date} />
                   </div>
                 </div>
                 <div className="p-5 flex-1 flex flex-col">
-                  <p className="text-[13.5px] font-bold text-[#9A7015]">{evt.category}</p>
-                  <h3 className="mt-1.5 font-display text-[17px] font-bold text-[#243239] leading-snug">{evt.title}</h3>
-                  <p className="mt-2 text-[17px] text-[#3B4B53] leading-relaxed line-clamp-4">{evt.description}</p>
+                  <p className="text-[13.5px] font-bold text-[#EBCB3B]">{evt.category}</p>
+                  <h3 className="mt-1.5 font-display text-[17px] font-bold text-[#F3F5F6] leading-snug">{evt.title}</h3>
+                  <p className="mt-2 text-[17px] text-[#C2CCD1] leading-relaxed line-clamp-4">{evt.description}</p>
                   {evt.location && (
-                    <p className="mt-auto pt-4 flex items-center gap-1.5 text-[14px] font-semibold text-[#3B4B53]">
-                      <MapPin size={15} className="text-[#C4921B] shrink-0" />
+                    <p className="mt-auto pt-4 flex items-center gap-1.5 text-[14px] font-semibold text-[#C2CCD1]">
+                      <MapPin size={15} className="text-[#D89F03] shrink-0" />
                       {evt.location}
                     </p>
                   )}
@@ -155,7 +155,7 @@ export default function MediaPage() {
             {GALLERY.map((img, i) => (
               <figure
                 key={img.src}
-                className={`group relative rounded-[24px] overflow-hidden bg-[#DCE4E8] depth-1 ${GALLERY_SPAN[i]}`}
+                className={`group relative rounded-[24px] overflow-hidden bg-[#1A1F22] depth-1 ${GALLERY_SPAN[i]}`}
               >
                 <Image
                   src={img.src}
@@ -179,25 +179,25 @@ export default function MediaPage() {
         <div className="shell grid lg:grid-cols-12 gap-10 lg:gap-14 items-center">
           <div className="lg:col-span-5 reveal">
             <p className="label-mono">Workplace</p>
-            <h2 className="headline-light text-3xl sm:text-4xl lg:text-[2.6rem] text-[#243239] mt-3">Life at CUBE</h2>
-            <p className="mt-5 text-[19.5px] text-[#2B3A41] leading-relaxed">
+            <h2 className="headline-light text-3xl sm:text-4xl lg:text-[2.6rem] text-[#F3F5F6] mt-3">Life at CUBE</h2>
+            <p className="mt-5 text-[19.5px] text-[#DDE3E6] leading-relaxed">
               CUBE&apos;s office and its Environment Laboratory are at the IIT Madras Research Park, Taramani, Chennai.
             </p>
             <div className="mt-7 space-y-3">
               <div className="glass glass-edge rounded-[20px] p-5 flex items-start gap-4">
-                <span className="grid place-items-center w-11 h-11 rounded-2xl bg-[#F7EDD3] text-[#9A7015] depth-1 shrink-0">
+                <span className="grid place-items-center w-11 h-11 rounded-2xl bg-[#D89F03]/15 text-[#EBCB3B] depth-1 shrink-0">
                   <MapPin size={19} strokeWidth={2} />
                 </span>
                 <span>
-                  <span className="block font-display text-[17px] font-bold text-[#243239]">Location</span>
-                  <span className="mt-0.5 block text-[17.5px] text-[#3B4B53]">IIT Madras Research Park, Taramani, Chennai</span>
+                  <span className="block font-display text-[17px] font-bold text-[#F3F5F6]">Location</span>
+                  <span className="mt-0.5 block text-[17.5px] text-[#C2CCD1]">IIT Madras Research Park, Taramani, Chennai</span>
                 </span>
               </div>
               <div className="glass glass-edge rounded-[20px] p-5">
-                <span className="block font-display text-[17px] font-bold text-[#243239]">Verticals</span>
+                <span className="block font-display text-[17px] font-bold text-[#F3F5F6]">Verticals</span>
                 <div className="mt-3 flex flex-wrap gap-2">
                   {VERTICALS.map((v) => (
-                    <span key={v} className="rounded-full bg-white/80 border border-[#33454E]/10 px-3 py-1.5 text-[14px] font-semibold text-[#3B4B53]">
+                    <span key={v} className="rounded-full bg-white/[0.08] border border-white/10 px-3 py-1.5 text-[14px] font-semibold text-[#C2CCD1]">
                       {v}
                     </span>
                   ))}
@@ -207,7 +207,7 @@ export default function MediaPage() {
           </div>
           <div className="lg:col-span-7 grid grid-cols-2 grid-rows-2 gap-4 h-[420px] sm:h-[480px] reveal-stagger">
             {LIFE_PHOTOS.map((src, i) => (
-              <div key={src} className={`relative rounded-[24px] overflow-hidden bg-[#DCE4E8] depth-1 ${i === 0 ? 'row-span-2' : ''}`}>
+              <div key={src} className={`relative rounded-[24px] overflow-hidden bg-[#1A1F22] depth-1 ${i === 0 ? 'row-span-2' : ''}`}>
                 <Image src={src} alt="Life at CUBE" fill sizes="(max-width: 1024px) 50vw, 30vw" className="object-cover" />
               </div>
             ))}

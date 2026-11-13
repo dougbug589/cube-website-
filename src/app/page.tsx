@@ -85,26 +85,26 @@ function Section({
         <div aria-hidden className="absolute inset-0 -z-0 pointer-events-none">
           <Image src={bgImage} alt="" fill sizes="100vw" quality={70} className="object-cover scale-[1.03]" />
           {/* wash: strong behind the heading, lighter in the middle so the photo shows through the glass */}
-          <div className="absolute inset-0 bg-gradient-to-b from-[#F6F8F9]/80 via-[#F6F8F9]/30 to-[#F6F8F9]/65" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#0B0D0E]/80 via-[#0B0D0E]/30 to-[#0B0D0E]/65" />
           {/* solid wash behind the heading so it never sits on a busy photo */}
-          <div className="absolute inset-x-0 top-0 h-[290px] lg:h-[330px] bg-gradient-to-b from-[#F6F8F9] via-[#F6F8F9]/90 to-transparent" />
+          <div className="absolute inset-x-0 top-0 h-[290px] lg:h-[330px] bg-gradient-to-b from-[#0B0D0E] via-[#0B0D0E]/90 to-transparent" />
           {/* and back into the page at the bottom: no hard edge where the photo ends */}
-          <div className="absolute inset-x-0 bottom-0 h-[180px] bg-gradient-to-t from-[#F6F8F9] via-[#F6F8F9]/70 to-transparent" />
+          <div className="absolute inset-x-0 bottom-0 h-[180px] bg-gradient-to-t from-[#0B0D0E] via-[#0B0D0E]/70 to-transparent" />
           {/* left margin, where the section guide sits on wide screens */}
-          <div className="absolute inset-y-0 left-0 w-[230px] bg-gradient-to-r from-[#F6F8F9] via-[#F6F8F9]/80 to-transparent hidden min-[1900px]:block" />
+          <div className="absolute inset-y-0 left-0 w-[230px] bg-gradient-to-r from-[#0B0D0E] via-[#0B0D0E]/80 to-transparent hidden min-[1900px]:block" />
         </div>
       )}
       <div className="shell relative">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 lg:mb-16 reveal">
           <div className="max-w-2xl">
             <p className="label-mono">{eyebrow}</p>
-            <h2 className="headline-light text-3xl sm:text-4xl lg:text-[2.75rem] text-[#243239] mt-3">{title}</h2>
-            {lead && <p className="mt-4 text-[19.5px] text-[#2B3A41] leading-relaxed">{lead}</p>}
+            <h2 className="headline-light text-3xl sm:text-4xl lg:text-[2.75rem] text-[#F3F5F6] mt-3">{title}</h2>
+            {lead && <p className="mt-4 text-[19.5px] text-[#DDE3E6] leading-relaxed">{lead}</p>}
           </div>
           {action && (
             <Link
               href={action.href}
-              className="group inline-flex items-center gap-2 text-sm text-[#243239] shrink-0 border-b border-[#C4921B] pb-1 hover:text-[#9A7015] transition-colors"
+              className="group inline-flex items-center gap-2 text-sm text-[#F3F5F6] shrink-0 border-b border-[#D89F03] pb-1 hover:text-[#EBCB3B] transition-colors"
             >
               {action.label}
               <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
@@ -184,7 +184,7 @@ export default function HomePage() {
   const logos = useMemo(() => clientList.filter((c) => c.logo), [clientList]);
 
   return (
-    <div className="flex flex-col min-h-screen text-[#243239]">
+    <div className="flex flex-col min-h-screen text-[#F3F5F6]">
       {/* 01 · Hero */}
       <EtihadHero />
 
@@ -203,7 +203,7 @@ export default function HomePage() {
         <div className="max-w-5xl mx-auto liquid-glass rounded-[32px] p-8 sm:p-12 lg:p-14 text-center reveal">
           <p className="label-mono">Our vision</p>
           <InkText
-            className="mt-5 font-display text-[22px] sm:text-[26px] lg:text-[30px] font-bold leading-[1.4] text-[#243239]"
+            className="mt-5 font-display text-[22px] sm:text-[26px] lg:text-[30px] font-bold leading-[1.4] text-[#F3F5F6]"
             text="To be the most acclaimed and trustworthy provider of Applied Research, Technology, Engineering & Consultancy Services with National footprint, in association with IIT Madras, delivering effective and measurable value in built environment aiming at future equipped and sustainable human habitats."
           />
           <div className="mt-9 flex flex-wrap justify-center gap-3">
@@ -220,12 +220,12 @@ export default function HomePage() {
         </div>
         <ul className="mt-6 lg:mt-8 grid md:grid-cols-3 gap-4 lg:gap-6 reveal-stagger">
           {ABOUT_POINTS.map((pt) => (
-            <li key={pt.k} className="liquid-glass is-solid rounded-[26px] p-6 lg:p-7 flex flex-col">
-              <span className="grid place-items-center w-12 h-12 rounded-2xl bg-[#F7EDD3] text-[#9A7015] depth-1">
+            <li key={pt.k} className="liquid-glass rounded-[26px] p-6 lg:p-7 flex flex-col">
+              <span className="grid place-items-center w-12 h-12 rounded-2xl bg-[#D89F03]/15 text-[#EBCB3B] depth-1">
                 <pt.Icon size={21} strokeWidth={2} />
               </span>
-              <span className="mt-4 block font-display text-[21px] font-bold text-[#243239] leading-snug">{pt.k}</span>
-              <span className="mt-1.5 block text-[18px] text-[#2B3A41] leading-relaxed">{pt.v}</span>
+              <span className="mt-4 block font-display text-[21px] font-bold text-[#F3F5F6] leading-snug">{pt.k}</span>
+              <span className="mt-1.5 block text-[18px] text-[#DDE3E6] leading-relaxed">{pt.v}</span>
             </li>
           ))}
         </ul>
@@ -237,12 +237,12 @@ export default function HomePage() {
       {/* 04 · Featured projects (stacked carousel on constellation) */}
       <section id="projects-showcase" className="relative pb-16 lg:pb-24 overflow-hidden">
         <svg aria-hidden className="absolute inset-x-0 top-0 w-full h-72 opacity-40 pointer-events-none" preserveAspectRatio="none" viewBox="0 0 1400 300">
-          <g stroke="#C4921B" strokeWidth="0.6" fill="none" opacity="0.55">
+          <g stroke="#D89F03" strokeWidth="0.6" fill="none" opacity="0.55">
             <path d="M 100 40 L 320 120 L 560 60 L 780 150" />
             <path d="M 320 120 L 460 200 L 700 160 L 980 80" />
             <path d="M 780 150 L 980 80 L 1200 140 L 1380 90" />
           </g>
-          <g fill="#C4921B" opacity="0.7">
+          <g fill="#D89F03" opacity="0.7">
             {[[100, 40], [320, 120], [560, 60], [780, 150], [460, 200], [700, 160], [980, 80], [1200, 140], [1380, 90]].map(([x, y], i) => (
               <circle key={i} cx={x} cy={y} r="1.8" />
             ))}
@@ -253,7 +253,7 @@ export default function HomePage() {
           <h2 className="headline-light text-3xl lg:text-4xl mt-3">
             Projects across <span className="gold-keyword">Tamil Nadu</span> &amp; beyond
           </h2>
-          <p className="text-sm text-[#3B4B53] mt-3">Third-party quality assurance, PMC and proof checking for public infrastructure.</p>
+          <p className="text-sm text-[#C2CCD1] mt-3">Third-party quality assurance, PMC and proof checking for public infrastructure.</p>
         </div>
         <div className="mt-6 reveal">
           <StackedProjectCarousel projects={projectList} />
@@ -282,7 +282,7 @@ export default function HomePage() {
         <div className="grid lg:grid-cols-12 gap-6 lg:gap-8 items-stretch">
           <div className="lg:col-span-7 liquid-glass rounded-[28px] p-8 lg:p-10 flex flex-col reveal">
             <p className="label-mono">The laboratory</p>
-            <p className="mt-4 font-display text-xl lg:text-[22px] 2xl:text-[27px] font-bold leading-snug text-[#243239]">{celOverview.subtitle}</p>
+            <p className="mt-4 font-display text-xl lg:text-[22px] 2xl:text-[27px] font-bold leading-snug text-[#F3F5F6]">{celOverview.subtitle}</p>
             <div className="mt-auto pt-8 flex flex-wrap gap-3">
               <Link href="/cel" className="press btn-liquid-gold inline-flex items-center gap-2 h-12 px-6 rounded-full text-[16px] font-extrabold">
                 About the laboratory <ArrowUpRight size={16} strokeWidth={2.25} />
@@ -298,12 +298,12 @@ export default function HomePage() {
           <ul className="lg:col-span-5 grid gap-4 lg:gap-5 content-between reveal-stagger">
             {celServiceList.slice(0, 3).map((sv) => (
               <li key={sv.id || sv.title} className="liquid-glass is-solid rounded-[24px] p-5 lg:p-6 flex items-start gap-4">
-                <span className="grid place-items-center w-12 h-12 rounded-2xl bg-[#F7EDD3] text-[#9A7015] depth-1 shrink-0">
+                <span className="grid place-items-center w-12 h-12 rounded-2xl bg-[#D89F03]/15 text-[#EBCB3B] depth-1 shrink-0">
                   <FlaskConical size={21} strokeWidth={2} />
                 </span>
                 <span>
-                  <span className="block font-display text-[21px] font-bold text-[#243239] leading-snug">{sv.title}</span>
-                  {sv.description && <span className="mt-1 block text-[18px] text-[#2B3A41] leading-relaxed">{sv.description}</span>}
+                  <span className="block font-display text-[21px] font-bold text-[#F3F5F6] leading-snug">{sv.title}</span>
+                  {sv.description && <span className="mt-1 block text-[18px] text-[#DDE3E6] leading-relaxed">{sv.description}</span>}
                 </span>
               </li>
             ))}

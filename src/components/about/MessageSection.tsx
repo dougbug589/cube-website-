@@ -174,7 +174,7 @@ export default function MessageSection({
         {/* portrait with a name plate, soft gold aura behind for depth */}
         <figure className="lg:col-span-4 relative reveal">
           <div aria-hidden className="absolute -inset-6 rounded-[48px] bg-[radial-gradient(60%_60%_at_40%_40%,rgba(240,196,104,0.35),transparent_70%)] blur-2xl pointer-events-none" />
-          <div className="relative h-[440px] sm:h-[520px] lg:h-[560px] rounded-[32px] overflow-hidden depth-3 bg-[#DCE4E8]">
+          <div className="relative h-[440px] sm:h-[520px] lg:h-[560px] rounded-[32px] overflow-hidden depth-3 bg-[#1A1F22]">
             <Image src={image} alt={name} fill sizes="(max-width: 1024px) 92vw, 34vw" className="object-cover object-[50%_25%]" />
             <div aria-hidden className="absolute inset-0 bg-gradient-to-t from-[#1B262C]/70 via-transparent to-transparent" />
             <figcaption className="chip-photo absolute left-4 right-4 bottom-4 rounded-[22px] px-5 py-4 text-white">
@@ -190,7 +190,7 @@ export default function MessageSection({
         <div className="lg:col-span-8 reveal">
           <div className="liquid-glass is-solid relative h-[460px] sm:h-[520px] lg:h-[560px] rounded-[32px] depth-3 flex flex-col overflow-hidden">
             <div className="relative flex items-center gap-3 px-6 sm:px-9 pt-6 sm:pt-7 pb-3">
-              <span className="grid place-items-center w-11 h-11 rounded-2xl bg-gradient-to-b from-[#F8E3A3] to-[#F0C468] text-[#243239] depth-1 shrink-0">
+              <span className="grid place-items-center w-11 h-11 rounded-2xl bg-gradient-to-b from-[#F1DB62]/35 to-[#D89F03]/20 text-[#F3F5F6] depth-1 shrink-0">
                 <Quote size={19} strokeWidth={2.25} />
               </span>
               <p className="label-mono">{label}</p>
@@ -200,7 +200,7 @@ export default function MessageSection({
                   onClick={() => setPlaying((p) => !p)}
                   aria-pressed={!playing}
                   aria-label={playing ? `Pause the ${label} auto-scroll` : `Play the ${label} auto-scroll`}
-                  className="press ml-auto inline-flex items-center gap-2 h-9 px-3.5 rounded-full bg-white/80 border border-[#33454E]/10 text-[14px] font-bold text-[#3B4B53] hover:text-[#243239] transition-colors"
+                  className="press ml-auto inline-flex items-center gap-2 h-9 px-3.5 rounded-full bg-white/[0.08] border border-white/10 text-[14px] font-bold text-[#C2CCD1] hover:text-[#F3F5F6] transition-colors"
                 >
                   {playing ? <Pause size={14} strokeWidth={2.5} /> : <Play size={14} strokeWidth={2.5} />}
                   {playing ? 'Pause' : 'Play'}
@@ -213,26 +213,26 @@ export default function MessageSection({
                 ref={boxRef}
                 tabIndex={0}
                 aria-label={`${label} from ${name}`}
-                className="message-window h-full overflow-y-auto overscroll-contain no-scrollbar px-6 sm:px-9 pr-10 sm:pr-14 focus:outline-none focus-visible:ring-4 focus-visible:ring-[#F0C468]/40 rounded-b-[32px]"
+                className="message-window h-full overflow-y-auto overscroll-contain no-scrollbar px-6 sm:px-9 pr-10 sm:pr-14 focus:outline-none focus-visible:ring-4 focus-visible:ring-[#D89F03]/40 rounded-b-[32px]"
               >
                 <div className="pt-4 pb-16">
                   {paragraphs[0] && (
-                    <p className="font-display text-[21px] sm:text-[24px] leading-[1.6] text-[#243239] font-semibold">{paragraphs[0]}</p>
+                    <p className="font-display text-[21px] sm:text-[24px] leading-[1.6] text-[#F3F5F6] font-semibold">{paragraphs[0]}</p>
                   )}
-                  <div className="mt-6 space-y-5 text-[17px] sm:text-[19px] leading-[1.75] text-[#3B4B53]">
+                  <div className="mt-6 space-y-5 text-[17px] sm:text-[19px] leading-[1.75] text-[#C2CCD1]">
                     {paragraphs.slice(1).map((p, i) => (
                       <p key={i}>{p}</p>
                     ))}
                   </div>
-                  <p className="mt-8 pt-6 border-t border-[#33454E]/10">
-                    <span className="block font-display text-[19px] font-extrabold text-[#243239]">{name}</span>
-                    <span className="block text-[17.5px] text-[#3B4B53]">{lines.join(' · ')}</span>
+                  <p className="mt-8 pt-6 border-t border-white/10">
+                    <span className="block font-display text-[19px] font-extrabold text-[#F3F5F6]">{name}</span>
+                    <span className="block text-[17.5px] text-[#C2CCD1]">{lines.join(' · ')}</span>
                   </p>
                 </div>
               </div>
               {/* progress rail */}
-              <div aria-hidden className="absolute right-4 sm:right-5 top-3 bottom-6 w-[3px] rounded-full bg-[#33454E]/[0.08] overflow-hidden">
-                <div ref={thumbRef} className="w-full rounded-full bg-gradient-to-b from-[#E9B215] to-[#C4921B] will-change-transform" style={{ height: '30%' }} />
+              <div aria-hidden className="absolute right-4 sm:right-5 top-3 bottom-6 w-[3px] rounded-full bg-white/[0.08] overflow-hidden">
+                <div ref={thumbRef} className="w-full rounded-full bg-gradient-to-b from-[#F1DB62] to-[#D89F03] will-change-transform" style={{ height: '30%' }} />
               </div>
             </div>
           </div>

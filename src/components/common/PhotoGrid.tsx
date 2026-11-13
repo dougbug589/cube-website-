@@ -54,7 +54,7 @@ export default function PhotoGrid({ photos, title }: { photos: string[]; title: 
               setIndex(i);
             }}
             aria-label={`Open photo ${i + 1} of ${photos.length}`}
-            className="group relative aspect-[4/3] rounded-[20px] overflow-hidden bg-[#DCE4E8] depth-1 focus:outline-none focus-visible:ring-4 focus-visible:ring-[#F0C468]/60"
+            className="group relative aspect-[4/3] rounded-[20px] overflow-hidden bg-[#1A1F22] depth-1 focus:outline-none focus-visible:ring-4 focus-visible:ring-[#D89F03]/60"
           >
             <Image
               src={src}
@@ -124,7 +124,7 @@ export default function PhotoGrid({ photos, title }: { photos: string[]; title: 
                     </AnimatePresence>
                   </div>
                   <p className="mt-4 text-[15px] font-semibold text-white/75 tabular-nums">
-                    <span className="text-[#F0C468]">{(index ?? 0) + 1}</span> / {photos.length}
+                    <span className="text-[#F1DB62]">{(index ?? 0) + 1}</span> / {photos.length}
                   </p>
                 </div>
               </motion.div>

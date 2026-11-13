@@ -138,7 +138,7 @@ export default function GalleryPage() {
   const activeItem = lightboxIndex !== null ? filteredItems[lightboxIndex] : null;
 
   return (
-    <div className="text-[#243239] min-h-screen">
+    <div className="text-[#F3F5F6] min-h-screen">
       <PageHeader
         badge="Media"
         title="Gallery"
@@ -158,18 +158,18 @@ export default function GalleryPage() {
                   type="button"
                   onClick={() => setSelectedCategory(cat)}
                   className={`press relative h-10 px-4 rounded-full text-[15px] whitespace-nowrap flex items-center gap-2 transition-colors duration-300 ${
-                    on ? 'text-[#243239] font-bold' : 'text-[#3B4B53] font-semibold hover:text-[#243239]'
+                    on ? 'text-[#F3F5F6] font-bold' : 'text-[#C2CCD1] font-semibold hover:text-[#F3F5F6]'
                   }`}
                 >
                   {on && (
                     <motion.span
                       layoutId="gallery-filter-pill"
                       transition={SPRING}
-                      className="absolute inset-0 rounded-full bg-gradient-to-b from-[#F8E3A3] to-[#F0C468]/80 border border-[#C4921B]/25 shadow-[0_6px_16px_-10px_rgba(196,146,27,0.8)]"
+                      className="absolute inset-0 rounded-full bg-gradient-to-b from-[#D89F03]/45 to-[#D89F03]/20 border border-[#D89F03]/25 shadow-[0_6px_16px_-10px_rgba(196,146,27,0.8)]"
                     />
                   )}
                   <span className="relative">{cat}</span>
-                  <span className={`relative grid place-items-center min-w-6 h-6 px-1.5 rounded-full text-[13.5px] font-extrabold tabular-nums ${on ? 'bg-white/70' : 'bg-[#33454E]/[0.07]'}`}>
+                  <span className={`relative grid place-items-center min-w-6 h-6 px-1.5 rounded-full text-[13.5px] font-extrabold tabular-nums ${on ? 'bg-white/[0.07]' : 'bg-white/[0.08]'}`}>
                     {counts[cat] || 0}
                   </span>
                 </button>
@@ -197,7 +197,7 @@ export default function GalleryPage() {
                   setLightboxIndex(idx);
                 }}
                 aria-label={`Open photo: ${item.title}`}
-                className={`group relative rounded-[24px] overflow-hidden bg-[#DCE4E8] depth-1 text-left focus:outline-none focus-visible:ring-4 focus-visible:ring-[#F0C468]/60 ${
+                className={`group relative rounded-[24px] overflow-hidden bg-[#1A1F22] depth-1 text-left focus:outline-none focus-visible:ring-4 focus-visible:ring-[#D89F03]/60 ${
                   idx % 6 === 0 ? 'sm:col-span-2 sm:row-span-2' : ''
                 }`}
               >
@@ -285,7 +285,7 @@ export default function GalleryPage() {
                   <div className="mt-5 px-12 text-center max-w-3xl">
                     <p className="font-display text-[19px] sm:text-[21px] font-bold leading-snug">{activeItem.title}</p>
                     <p className="mt-1.5 text-[15px] text-white/70 font-semibold">
-                      {activeItem.category} · <span className="tabular-nums text-[#F0C468]">{(lightboxIndex ?? 0) + 1} / {filteredItems.length}</span>
+                      {activeItem.category} · <span className="tabular-nums text-[#F1DB62]">{(lightboxIndex ?? 0) + 1} / {filteredItems.length}</span>
                     </p>
                   </div>
                 </div>

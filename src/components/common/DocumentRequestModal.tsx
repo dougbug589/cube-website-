@@ -88,31 +88,31 @@ export default function DocumentRequestModal({
       <div 
         role="dialog"
         aria-modal="true"
-        className="relative w-full max-w-lg bg-white rounded-3xl shadow-2xl border border-slate-200 p-6 sm:p-8 overflow-hidden max-h-[90vh] overflow-y-auto"
+        className="relative w-full max-w-lg bg-[#14181B] rounded-3xl shadow-2xl border border-white/10 p-6 sm:p-8 overflow-hidden max-h-[90vh] overflow-y-auto"
         onClick={(e) => e.stopPropagation()}
       >
         <button
           onClick={resetAndClose}
           aria-label="Close modal"
-          className="absolute top-5 right-5 h-8 w-8 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-500 hover:text-slate-800 flex items-center justify-center transition cursor-pointer"
+          className="absolute top-5 right-5 h-8 w-8 rounded-full bg-white/[0.05] hover:bg-white/10 text-[#A7B2B8] hover:text-[#E3E8EA] flex items-center justify-center transition cursor-pointer"
         >
           <X className="w-4 h-4" />
         </button>
 
         {submitted ? (
           <div className="text-center py-6">
-            <div className="w-14 h-14 bg-[#F7EDD3] text-[#9A7015] rounded-full flex items-center justify-center mx-auto mb-4 border border-[#E9D6A8]">
+            <div className="w-14 h-14 bg-[#D89F03]/15 text-[#EBCB3B] rounded-full flex items-center justify-center mx-auto mb-4 border border-[#D89F03]/30">
               <CheckCircle2 className="w-8 h-8" />
             </div>
-            <h3 className="text-xl font-bold font-display text-[#2B3B44] mb-2">
+            <h3 className="text-xl font-bold font-display text-[#E3E8EA] mb-2">
               Request Received Successfully
             </h3>
-            <p className="text-xs sm:text-sm text-slate-600 max-w-sm mx-auto mb-6">
-              Thank you for your interest in <span className="font-semibold text-[#2B3B44]">&ldquo;{documentTitle}&rdquo;</span>. Our technical research desk will dispatch the document copy to your registered official email address.
+            <p className="text-xs sm:text-sm text-[#B5C0C5] max-w-sm mx-auto mb-6">
+              Thank you for your interest in <span className="font-semibold text-[#E3E8EA]">&ldquo;{documentTitle}&rdquo;</span>. Our technical research desk will dispatch the document copy to your registered official email address.
             </p>
             <button
               onClick={resetAndClose}
-              className="px-6 py-2.5 rounded-full bg-[#F0C468] text-[#243239] text-xs font-semibold hover:bg-[#2B3B44]/90 transition cursor-pointer"
+              className="px-6 py-2.5 rounded-full bg-[#D89F03]/35 text-[#F3F5F6] text-xs font-semibold hover:bg-[#2B3B44]/90 transition cursor-pointer"
             >
               Done
             </button>
@@ -120,19 +120,19 @@ export default function DocumentRequestModal({
         ) : (
           <div>
             <div className="flex items-center gap-3 mb-4 pr-8">
-              <div className="w-10 h-10 rounded-2xl bg-[#F2F5F6] border border-[#D3DDE1] text-[#2B3B44] flex items-center justify-center shrink-0">
-                <FileText className="w-5 h-5 text-[#C4921B]" />
+              <div className="w-10 h-10 rounded-2xl bg-white/[0.05] border border-white/10 text-[#E3E8EA] flex items-center justify-center shrink-0">
+                <FileText className="w-5 h-5 text-[#D89F03]" />
               </div>
               <div>
-                <span className="text-[13.5px] font-bold uppercase tracking-wider text-[#C4921B]">Official Request</span>
-                <h3 className="font-display font-bold text-lg text-[#2B3B44] leading-tight">Request Technical Document</h3>
+                <span className="text-[13.5px] font-bold uppercase tracking-wider text-[#D89F03]">Official Request</span>
+                <h3 className="font-display font-bold text-lg text-[#E3E8EA] leading-tight">Request Technical Document</h3>
               </div>
             </div>
 
-            <div className="bg-[#F6F8F9] p-3.5 rounded-2xl border border-[#D3DDE1]/70 mb-5 text-xs">
-              <p className="font-semibold text-[#2B3B44] line-clamp-2">{documentTitle}</p>
+            <div className="bg-[#0B0D0E] p-3.5 rounded-2xl border border-white/10 mb-5 text-xs">
+              <p className="font-semibold text-[#E3E8EA] line-clamp-2">{documentTitle}</p>
               {documentAuthor && (
-                <p className="text-[13.5px] text-slate-500 mt-1">{documentAuthor}</p>
+                <p className="text-[13.5px] text-[#A7B2B8] mt-1">{documentAuthor}</p>
               )}
             </div>
 
@@ -145,7 +145,7 @@ export default function DocumentRequestModal({
             <form onSubmit={handleSubmit} className="space-y-3.5">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-[13.5px] font-semibold text-slate-700 mb-1">
+                  <label className="block text-[13.5px] font-semibold text-[#C2CCD1] mb-1">
                     Your Full Name <span className="text-red-500">*</span>
                   </label>
                   <input
@@ -154,11 +154,11 @@ export default function DocumentRequestModal({
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                     placeholder="e.g. Dr. Rajesh Kumar"
-                    className="w-full px-3.5 py-2 text-xs rounded-xl border border-slate-300 focus:outline-none focus:border-[#2B3B44] focus:ring-1 focus:ring-[#2B3B44]"
+                    className="w-full px-3.5 py-2 text-xs rounded-xl border border-white/15 focus:outline-none focus:border-white/20 focus:ring-1 focus:ring-[#D89F03]"
                   />
                 </div>
                 <div>
-                  <label className="block text-[13.5px] font-semibold text-slate-700 mb-1">
+                  <label className="block text-[13.5px] font-semibold text-[#C2CCD1] mb-1">
                     Official Email <span className="text-red-500">*</span>
                   </label>
                   <input
@@ -167,14 +167,14 @@ export default function DocumentRequestModal({
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                     placeholder="name@dept.gov.in"
-                    className="w-full px-3.5 py-2 text-xs rounded-xl border border-slate-300 focus:outline-none focus:border-[#2B3B44] focus:ring-1 focus:ring-[#2B3B44]"
+                    className="w-full px-3.5 py-2 text-xs rounded-xl border border-white/15 focus:outline-none focus:border-white/20 focus:ring-1 focus:ring-[#D89F03]"
                   />
                 </div>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-[13.5px] font-semibold text-slate-700 mb-1">
+                  <label className="block text-[13.5px] font-semibold text-[#C2CCD1] mb-1">
                     Phone / Mobile <span className="text-red-500">*</span>
                   </label>
                   <input
@@ -183,11 +183,11 @@ export default function DocumentRequestModal({
                     value={formData.phone}
                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                     placeholder="+91 98765 43210"
-                    className="w-full px-3.5 py-2 text-xs rounded-xl border border-slate-300 focus:outline-none focus:border-[#2B3B44] focus:ring-1 focus:ring-[#2B3B44]"
+                    className="w-full px-3.5 py-2 text-xs rounded-xl border border-white/15 focus:outline-none focus:border-white/20 focus:ring-1 focus:ring-[#D89F03]"
                   />
                 </div>
                 <div>
-                  <label className="block text-[13.5px] font-semibold text-slate-700 mb-1">
+                  <label className="block text-[13.5px] font-semibold text-[#C2CCD1] mb-1">
                     Organization / Department <span className="text-red-500">*</span>
                   </label>
                   <input
@@ -196,13 +196,13 @@ export default function DocumentRequestModal({
                     value={formData.organization}
                     onChange={(e) => setFormData({ ...formData, organization: e.target.value })}
                     placeholder="CMDA / GCC / Dept / Firm"
-                    className="w-full px-3.5 py-2 text-xs rounded-xl border border-slate-300 focus:outline-none focus:border-[#2B3B44] focus:ring-1 focus:ring-[#2B3B44]"
+                    className="w-full px-3.5 py-2 text-xs rounded-xl border border-white/15 focus:outline-none focus:border-white/20 focus:ring-1 focus:ring-[#D89F03]"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="block text-[13.5px] font-semibold text-slate-700 mb-1">
+                <label className="block text-[13.5px] font-semibold text-[#C2CCD1] mb-1">
                   Purpose / Intended Application (Optional)
                 </label>
                 <textarea
@@ -210,7 +210,7 @@ export default function DocumentRequestModal({
                   value={formData.purpose}
                   onChange={(e) => setFormData({ ...formData, purpose: e.target.value })}
                   placeholder="e.g., Reference for urban drainage DPR, academic research, quality audit study..."
-                  className="w-full px-3.5 py-2 text-xs rounded-xl border border-slate-300 focus:outline-none focus:border-[#2B3B44] focus:ring-1 focus:ring-[#2B3B44] resize-none"
+                  className="w-full px-3.5 py-2 text-xs rounded-xl border border-white/15 focus:outline-none focus:border-white/20 focus:ring-1 focus:ring-[#D89F03] resize-none"
                 />
               </div>
 
@@ -218,14 +218,14 @@ export default function DocumentRequestModal({
                 <button
                   type="button"
                   onClick={resetAndClose}
-                  className="px-4 py-2 text-xs font-semibold text-slate-600 hover:text-slate-900 transition cursor-pointer"
+                  className="px-4 py-2 text-xs font-semibold text-[#B5C0C5] hover:text-[#F3F5F6] transition cursor-pointer"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
                   disabled={loading}
-                  className="px-5 py-2 rounded-xl bg-[#F0C468] text-[#243239] text-xs font-semibold hover:bg-[#2B3B44]/90 transition flex items-center gap-1.5 shadow-sm disabled:opacity-50 cursor-pointer"
+                  className="px-5 py-2 rounded-xl bg-[#D89F03]/35 text-[#F3F5F6] text-xs font-semibold hover:bg-[#2B3B44]/90 transition flex items-center gap-1.5 shadow-sm disabled:opacity-50 cursor-pointer"
                 >
                   {loading ? (
                     <>

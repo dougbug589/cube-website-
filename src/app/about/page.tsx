@@ -58,7 +58,7 @@ export default function AboutPage() {
   );
 
   return (
-    <div className="text-[#243239] min-h-screen">
+    <div className="text-[#F3F5F6] min-h-screen">
       <PageHeader
         badge="About"
         title="About CUBE"
@@ -73,8 +73,8 @@ export default function AboutPage() {
         <div className="shell grid lg:grid-cols-12 gap-10 lg:gap-14">
           <div className="lg:col-span-7 reveal">
             <p className="label-mono">About CUBE</p>
-            <p className="mt-4 text-[20px] sm:text-[22px] leading-relaxed text-[#243239] font-semibold">{aboutContent.overview[0]}</p>
-            <div className="mt-6 space-y-5 text-[20px] leading-[1.75] text-[#2B3A41]">
+            <p className="mt-4 text-[20px] sm:text-[22px] leading-relaxed text-[#F3F5F6] font-semibold">{aboutContent.overview[0]}</p>
+            <div className="mt-6 space-y-5 text-[20px] leading-[1.75] text-[#DDE3E6]">
               {aboutContent.overview.slice(1).map((para, i) => (
                 <p key={i}>{para}</p>
               ))}
@@ -86,28 +86,28 @@ export default function AboutPage() {
               <div className="relative h-36 w-36 mx-auto">
                 <Image src="/images/branding/cube-primary-logo.png" alt="CUBE" fill sizes="144px" className="object-contain" />
               </div>
-              <p className="mt-5 font-display text-2xl font-extrabold text-[#243239]">Centre of Excellence</p>
+              <p className="mt-5 font-display text-2xl font-extrabold text-[#F3F5F6]">Centre of Excellence</p>
               <p className="mt-1 label-mono">IIT Madras · Government of Tamil Nadu</p>
-              <p className="mt-5 pt-5 border-t border-[#33454E]/10 text-[17px] text-[#3B4B53] leading-relaxed">{contactInfo.address}</p>
+              <p className="mt-5 pt-5 border-t border-white/10 text-[17px] text-[#C2CCD1] leading-relaxed">{contactInfo.address}</p>
             </div>
             <div className="glass glass-interactive glass-edge rounded-[24px] p-5 flex items-start gap-4">
-              <span className="grid place-items-center w-12 h-12 rounded-2xl bg-[#F7EDD3] text-[#9A7015] depth-1 shrink-0">
+              <span className="grid place-items-center w-12 h-12 rounded-2xl bg-[#D89F03]/15 text-[#EBCB3B] depth-1 shrink-0">
                 <Landmark size={21} strokeWidth={2} />
               </span>
               <span>
-                <span className="block font-display text-[18px] font-bold text-[#243239]">Government of Tamil Nadu</span>
-                <span className="mt-1 block text-[17.5px] text-[#3B4B53] leading-relaxed">
+                <span className="block font-display text-[18px] font-bold text-[#F3F5F6]">Government of Tamil Nadu</span>
+                <span className="mt-1 block text-[17.5px] text-[#C2CCD1] leading-relaxed">
                   Seed funding from CMDA, TNHB, TNPCB and MAWS; four State Government departments nominate members to the Governing Body.
                 </span>
               </span>
             </div>
             <div className="glass glass-interactive glass-edge rounded-[24px] p-5 flex items-start gap-4">
-              <span className="grid place-items-center w-12 h-12 rounded-2xl bg-[#F7EDD3] text-[#9A7015] depth-1 shrink-0">
+              <span className="grid place-items-center w-12 h-12 rounded-2xl bg-[#D89F03]/15 text-[#EBCB3B] depth-1 shrink-0">
                 <GraduationCap size={21} strokeWidth={2} />
               </span>
               <span>
-                <span className="block font-display text-[18px] font-bold text-[#243239]">IIT Madras</span>
-                <span className="mt-1 block text-[17.5px] text-[#3B4B53] leading-relaxed">
+                <span className="block font-display text-[18px] font-bold text-[#F3F5F6]">IIT Madras</span>
+                <span className="mt-1 block text-[17.5px] text-[#C2CCD1] leading-relaxed">
                   Raised by IIT Madras with the Government of Tamil Nadu; the Governing Body is headed by the Director, IITM, with four members from IITM Faculty.
                 </span>
               </span>
@@ -123,14 +123,14 @@ export default function AboutPage() {
           <div className="grid lg:grid-cols-12 gap-5 reveal-stagger">
             <div className="lg:col-span-5 liquid-glass rounded-[28px] p-8 lg:p-10">
               <p className="label-mono">Vision</p>
-              <p className="mt-4 font-display text-[22px] lg:text-[24px] font-bold leading-snug text-[#243239]">{aboutContent.vision}</p>
+              <p className="mt-4 font-display text-[22px] lg:text-[24px] font-bold leading-snug text-[#F3F5F6]">{aboutContent.vision}</p>
             </div>
             <div className="lg:col-span-7 glass rounded-[28px] p-8 lg:p-10">
               <p className="label-mono">Mission</p>
               <ul className="mt-4 grid sm:grid-cols-2 gap-x-6 gap-y-3">
                 {missionPoints.map((m) => (
-                  <li key={m} className="flex items-start gap-3 text-[19px] text-[#2B3A41] leading-relaxed">
-                    <span className="mt-2.5 w-1.5 h-1.5 rounded-full bg-[#C4921B] shrink-0" />
+                  <li key={m} className="flex items-start gap-3 text-[19px] text-[#DDE3E6] leading-relaxed">
+                    <span className="mt-2.5 w-1.5 h-1.5 rounded-full bg-[#D89F03] shrink-0" />
                     <span>{m.charAt(0).toUpperCase() + m.slice(1)}</span>
                   </li>
                 ))}
@@ -147,10 +147,10 @@ export default function AboutPage() {
           <ol className="grid sm:grid-cols-2 gap-4 reveal-stagger">
             {aboutContent.objectives.map((obj, i) => (
               <li key={i} className="glass glass-interactive rounded-[22px] p-5 flex items-start gap-4">
-                <span className="font-display text-[22px] font-extrabold text-[#C4921B] tabular-nums leading-none mt-0.5 w-9 shrink-0">
+                <span className="font-display text-[22px] font-extrabold text-[#D89F03] tabular-nums leading-none mt-0.5 w-9 shrink-0">
                   {String(i + 1).padStart(2, '0')}
                 </span>
-                <span className="text-[16.5px] text-[#243239] leading-relaxed">{obj}</span>
+                <span className="text-[16.5px] text-[#F3F5F6] leading-relaxed">{obj}</span>
               </li>
             ))}
           </ol>
@@ -159,8 +159,8 @@ export default function AboutPage() {
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 reveal-stagger">
             {aboutContent.coreValues.map((val, i) => (
               <div key={i} className="glass glass-interactive glass-edge rounded-[24px] p-6">
-                <p className="font-display text-[22px] font-extrabold text-[#243239]">{val.title}</p>
-                <p className="mt-2 text-[18px] text-[#3B4B53] leading-relaxed">{val.description}</p>
+                <p className="font-display text-[22px] font-extrabold text-[#F3F5F6]">{val.title}</p>
+                <p className="mt-2 text-[18px] text-[#C2CCD1] leading-relaxed">{val.description}</p>
               </div>
             ))}
           </div>
@@ -227,14 +227,14 @@ export default function AboutPage() {
         <div className="shell">
           <SectionHeading
             eyebrow="Our Team"
-            title={<>Our team <span className="text-[#C4921B]">({teamMembers.length})</span></>}
+            title={<>Our team <span className="text-[#D89F03]">({teamMembers.length})</span></>}
             lead="Staff across Building & Construction, Environment & Sustainability, Urban Planning & Transportation and Administration."
             action={{ href: '/about/team', label: 'Team by department' }}
           />
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3 reveal-stagger">
             {(showAllTeam ? teamMembers : teamMembers.slice(0, 12)).map((t, i) => (
               <div key={`${t.name}-${i}`} className="glass rounded-[22px] p-4 flex items-center gap-4">
-                <div className="relative w-16 h-16 rounded-2xl overflow-hidden bg-white shrink-0 depth-1">
+                <div className="relative w-16 h-16 rounded-2xl overflow-hidden bg-white/[0.06] shrink-0 depth-1">
                   {t.image && !/team_unknown/.test(t.image) ? (
                     <Image src={t.image} alt={t.name} fill sizes="64px" className="object-cover object-top" />
                   ) : (
@@ -242,9 +242,9 @@ export default function AboutPage() {
                   )}
                 </div>
                 <div className="min-w-0">
-                  <p className="font-display text-[17.5px] font-bold text-[#243239] truncate">{t.name}</p>
-                  <p className="text-[15.5px] font-semibold text-[#9A7015] truncate">{t.designation}</p>
-                  {t.department && <p className="text-[17px] text-[#3B4B53] truncate">{t.department}</p>}
+                  <p className="font-display text-[17.5px] font-bold text-[#F3F5F6] truncate">{t.name}</p>
+                  <p className="text-[15.5px] font-semibold text-[#EBCB3B] truncate">{t.designation}</p>
+                  {t.department && <p className="text-[17px] text-[#C2CCD1] truncate">{t.department}</p>}
                 </div>
               </div>
             ))}
@@ -269,12 +269,12 @@ export default function AboutPage() {
         <div className="shell">
           <SectionHeading
             eyebrow="Our Clients"
-            title={<>Clients <span className="text-[#C4921B]">({clients.length})</span></>}
+            title={<>Clients <span className="text-[#D89F03]">({clients.length})</span></>}
             action={{ href: '/about/clients', label: 'All clients' }}
           />
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 xl:grid-cols-6 gap-4 reveal-stagger">
             {clients.map((c, i) => (
-              <div key={`${c.logo}-${i}`} className="group h-32 lg:h-36 rounded-[22px] bg-white border border-[#33454E]/[0.07] depth-1 px-5 py-4 transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-1">
+              <div key={`${c.logo}-${i}`} className="group h-32 lg:h-36 rounded-[22px] bg-white border border-white/[0.08] depth-1 px-5 py-4 transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-1">
                 <div className="relative w-full h-full">
                   <Image
                     src={c.logo || '/images/clients/client_1.png'}

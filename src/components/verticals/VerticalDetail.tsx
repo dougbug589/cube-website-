@@ -20,7 +20,7 @@ export default async function VerticalDetail({ id }: { id: string }) {
   const others = verticals.filter((v) => v.id !== id);
 
   return (
-    <div className="text-[#243239] min-h-screen">
+    <div className="text-[#F3F5F6] min-h-screen">
       <PageHeader
         badge="Vertical"
         title={vertical.title}
@@ -30,7 +30,7 @@ export default async function VerticalDetail({ id }: { id: string }) {
 
       {/* wide photo */}
       <div className="shell">
-        <div className="relative aspect-[16/9] lg:aspect-[21/8] rounded-[32px] overflow-hidden depth-3 bg-[#DCE4E8] reveal">
+        <div className="relative aspect-[16/9] lg:aspect-[21/8] rounded-[32px] overflow-hidden depth-3 bg-[#1A1F22] reveal">
           <Image src={vertical.heroImage} alt={vertical.title} fill priority sizes="(max-width: 1600px) 100vw, 1536px" className="object-cover" />
         </div>
       </div>
@@ -38,16 +38,16 @@ export default async function VerticalDetail({ id }: { id: string }) {
       {/* introduction */}
       <section className="py-14 lg:py-20">
         <div className="shell grid lg:grid-cols-12 gap-8 lg:gap-14">
-          <p className="lg:col-span-6 font-display text-[23px] sm:text-[27px] font-bold leading-[1.45] text-[#243239] reveal">{vertical.description}</p>
+          <p className="lg:col-span-6 font-display text-[23px] sm:text-[27px] font-bold leading-[1.45] text-[#F3F5F6] reveal">{vertical.description}</p>
           <div className="lg:col-span-6 reveal">
-            <p className="text-[19.5px] text-[#2B3A41] leading-relaxed">{vertical.longDescription}</p>
+            <p className="text-[19.5px] text-[#DDE3E6] leading-relaxed">{vertical.longDescription}</p>
             {vertical.capabilities.length > 0 && (
               <>
                 <p className="mt-8 label-mono">Services</p>
                 <ul className="mt-4 flex flex-wrap gap-2.5">
                   {vertical.capabilities.map((c) => (
-                    <li key={c} className="inline-flex items-center gap-2 rounded-full bg-white border border-[#33454E]/10 px-4 py-2 text-[15.5px] font-semibold text-[#243239] depth-1">
-                      <CheckCircle2 size={16} className="text-[#C4921B]" />
+                    <li key={c} className="inline-flex items-center gap-2 rounded-full bg-white/[0.06] border border-white/10 px-4 py-2 text-[15.5px] font-semibold text-[#F3F5F6] depth-1">
+                      <CheckCircle2 size={16} className="text-[#D89F03]" />
                       {c}
                     </li>
                   ))}
@@ -71,16 +71,16 @@ export default async function VerticalDetail({ id }: { id: string }) {
                 const words = figures.filter((x) => !x.f);
                 return (
                   <article key={k.title} className="glass glass-edge rounded-[28px] p-7 lg:p-8 flex flex-col">
-                    <h2 className="font-display text-[26px] font-extrabold text-[#243239]">{k.title}</h2>
+                    <h2 className="font-display text-[26px] font-extrabold text-[#F3F5F6]">{k.title}</h2>
                     {nums.length > 0 && (
                       <dl className="mt-5 grid grid-cols-2 gap-3">
                         {nums.map(({ it, f }) => (
-                          <div key={it} className="rounded-[20px] bg-white/80 border border-[#33454E]/[0.08] p-4">
-                            {f!.lead && <dt className="text-[14.5px] font-semibold text-[#4B5A61] leading-snug">{f!.lead}</dt>}
+                          <div key={it} className="rounded-[20px] bg-white/[0.08] border border-white/[0.09] p-4">
+                            {f!.lead && <dt className="text-[14.5px] font-semibold text-[#A7B2B8] leading-snug">{f!.lead}</dt>}
                             <dd className="mt-1 flex items-baseline gap-1.5 flex-wrap">
-                              {f!.prefix && <span className="font-display text-[17px] font-extrabold text-[#9A7015]">{f!.prefix}</span>}
-                              <span className="font-display text-[34px] font-extrabold leading-none tracking-[-0.02em] text-[#243239] tabular-nums">{fmtFigure(f!.value, f!.decimals)}</span>
-                              <span className="font-display text-[16px] font-extrabold text-[#C4921B] leading-snug">{f!.unit}</span>
+                              {f!.prefix && <span className="font-display text-[17px] font-extrabold text-[#EBCB3B]">{f!.prefix}</span>}
+                              <span className="font-display text-[34px] font-extrabold leading-none tracking-[-0.02em] text-[#F3F5F6] tabular-nums">{fmtFigure(f!.value, f!.decimals)}</span>
+                              <span className="font-display text-[16px] font-extrabold text-[#D89F03] leading-snug">{f!.unit}</span>
                             </dd>
                           </div>
                         ))}
@@ -89,14 +89,14 @@ export default async function VerticalDetail({ id }: { id: string }) {
                     {words.length > 0 && (
                       <ul className="mt-5 space-y-2.5">
                         {words.map(({ it }) => (
-                          <li key={it} className="flex items-start gap-3 text-[17px] font-semibold text-[#243239] leading-snug">
-                            <span className="mt-2 w-2 h-2 rounded-full bg-[#C4921B] shrink-0" />
+                          <li key={it} className="flex items-start gap-3 text-[17px] font-semibold text-[#F3F5F6] leading-snug">
+                            <span className="mt-2 w-2 h-2 rounded-full bg-[#D89F03] shrink-0" />
                             {it}
                           </li>
                         ))}
                       </ul>
                     )}
-                    {k.description && <p className="mt-6 pt-5 border-t border-[#33454E]/10 text-[18.5px] text-[#3B4B53] leading-relaxed">{k.description}</p>}
+                    {k.description && <p className="mt-6 pt-5 border-t border-white/10 text-[18.5px] text-[#C2CCD1] leading-relaxed">{k.description}</p>}
                   </article>
                 );
               })}
@@ -110,10 +110,10 @@ export default async function VerticalDetail({ id }: { id: string }) {
         <section className="py-16 lg:py-20">
           <div className="shell">
             <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10 reveal">
-              <h2 className="headline-light text-3xl sm:text-[2.6rem] text-[#243239]">
-                Projects <span className="text-[#C4921B]">({projects.length})</span>
+              <h2 className="headline-light text-3xl sm:text-[2.6rem] text-[#F3F5F6]">
+                Projects <span className="text-[#D89F03]">({projects.length})</span>
               </h2>
-              <Link href="/projects" className="group self-start md:self-auto inline-flex items-center gap-2 text-[16px] font-bold text-[#243239] border-b-2 border-[#C4921B] pb-1 hover:text-[#9A7015] transition-colors">
+              <Link href="/projects" className="group self-start md:self-auto inline-flex items-center gap-2 text-[16px] font-bold text-[#F3F5F6] border-b-2 border-[#D89F03] pb-1 hover:text-[#EBCB3B] transition-colors">
                 All projects <ArrowUpRight size={16} />
               </Link>
             </div>
@@ -129,10 +129,10 @@ export default async function VerticalDetail({ id }: { id: string }) {
       {/* other verticals */}
       <section className="band-mist py-16 lg:py-20">
         <div className="shell">
-          <h2 className="headline-light text-3xl sm:text-[2.4rem] text-[#243239] mb-8">Other verticals</h2>
+          <h2 className="headline-light text-3xl sm:text-[2.4rem] text-[#F3F5F6] mb-8">Other verticals</h2>
           <div className="grid sm:grid-cols-3 gap-5 reveal-stagger">
             {others.map((o) => (
-              <Link key={o.id} href={`/verticals/${o.slug}`} className="press group relative h-64 rounded-[26px] overflow-hidden depth-2 bg-[#DCE4E8]">
+              <Link key={o.id} href={`/verticals/${o.slug}`} className="press group relative h-64 rounded-[26px] overflow-hidden depth-2 bg-[#1A1F22]">
                 <Image src={o.heroImage} alt="" fill sizes="(max-width: 640px) 100vw, 33vw" className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.05]" />
                 <span aria-hidden className="absolute inset-0 bg-gradient-to-t from-[#1B262C]/80 via-[#1B262C]/15 to-transparent" />
                 <span className="absolute inset-x-0 bottom-0 p-5 flex items-end justify-between gap-3 text-white">

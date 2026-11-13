@@ -46,7 +46,7 @@ export default function TeamPage() {
   const FILTERS = [{ id: 'all', label: 'All', count: total }, ...DEPARTMENTS.map((d) => ({ id: d.id, label: d.title, count: grouped[d.id].length }))];
 
   return (
-    <div className="text-[#243239] min-h-screen">
+    <div className="text-[#F3F5F6] min-h-screen">
       <PageHeader
         badge="About"
         title="Our Team"
@@ -67,18 +67,18 @@ export default function TeamPage() {
                     type="button"
                     onClick={() => setDept(f.id)}
                     className={`press relative h-10 px-4 rounded-full text-[15px] whitespace-nowrap flex items-center gap-2 transition-colors duration-300 ${
-                      on ? 'text-[#243239] font-bold' : 'text-[#3B4B53] font-semibold hover:text-[#243239]'
+                      on ? 'text-[#F3F5F6] font-bold' : 'text-[#C2CCD1] font-semibold hover:text-[#F3F5F6]'
                     }`}
                   >
                     {on && (
                       <motion.span
                         layoutId="team-filter-pill"
                         transition={SPRING}
-                        className="absolute inset-0 rounded-full bg-gradient-to-b from-[#F8E3A3] to-[#F0C468]/80 border border-[#C4921B]/25 shadow-[0_6px_16px_-10px_rgba(196,146,27,0.8)]"
+                        className="absolute inset-0 rounded-full bg-gradient-to-b from-[#D89F03]/45 to-[#D89F03]/20 border border-[#D89F03]/25 shadow-[0_6px_16px_-10px_rgba(196,146,27,0.8)]"
                       />
                     )}
                     <span className="relative">{f.label}</span>
-                    <span className={`relative grid place-items-center min-w-6 h-6 px-1.5 rounded-full text-[13.5px] font-extrabold tabular-nums ${on ? 'bg-white/70' : 'bg-[#33454E]/[0.07]'}`}>
+                    <span className={`relative grid place-items-center min-w-6 h-6 px-1.5 rounded-full text-[13.5px] font-extrabold tabular-nums ${on ? 'bg-white/[0.07]' : 'bg-white/[0.08]'}`}>
                       {f.count}
                     </span>
                   </button>
@@ -86,17 +86,17 @@ export default function TeamPage() {
               })}
             </div>
             <label className="relative flex-1 flex items-center xl:min-w-[280px]">
-              <Search size={17} className="absolute left-4 text-[#66767D] pointer-events-none" />
+              <Search size={17} className="absolute left-4 text-[#8E9AA0] pointer-events-none" />
               <input
                 type="search"
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 placeholder="Search by name or role"
                 aria-label="Search the team"
-                className="w-full h-10 pl-11 pr-10 rounded-full bg-white/80 border border-[#33454E]/10 text-[15.5px] text-[#243239] placeholder:text-[#8A979D] focus:outline-none focus:border-[#C4921B]/50 focus:ring-4 focus:ring-[#F0C468]/25 transition-[border-color,box-shadow]"
+                className="w-full h-10 pl-11 pr-10 rounded-full bg-white/[0.08] border border-white/10 text-[15.5px] text-[#F3F5F6] placeholder:text-[#6F7B81] focus:outline-none focus:border-[#D89F03]/50 focus:ring-4 focus:ring-[#D89F03]/25 transition-[border-color,box-shadow]"
               />
               {query && (
-                <button type="button" onClick={() => setQuery('')} aria-label="Clear search" className="press absolute right-2 grid place-items-center w-7 h-7 rounded-full text-[#4B5A61] hover:bg-[#33454E]/[0.07]">
+                <button type="button" onClick={() => setQuery('')} aria-label="Clear search" className="press absolute right-2 grid place-items-center w-7 h-7 rounded-full text-[#A7B2B8] hover:bg-white/[0.08]">
                   <X size={15} />
                 </button>
               )}
@@ -118,18 +118,18 @@ export default function TeamPage() {
               aria-labelledby={`dept-${id}`}
             >
               <div className="flex items-center gap-4 mb-6">
-                <span className="grid place-items-center w-12 h-12 rounded-2xl bg-gradient-to-b from-[#F8E3A3] to-[#F0C468] text-[#243239] depth-1">
+                <span className="grid place-items-center w-12 h-12 rounded-2xl bg-gradient-to-b from-[#F1DB62]/35 to-[#D89F03]/20 text-[#F3F5F6] depth-1">
                   <Icon size={21} strokeWidth={2} />
                 </span>
-                <h2 id={`dept-${id}`} className="font-display text-[24px] sm:text-[28px] font-extrabold text-[#243239]">
+                <h2 id={`dept-${id}`} className="font-display text-[24px] sm:text-[28px] font-extrabold text-[#F3F5F6]">
                   {title}
                 </h2>
-                <span className="rounded-full bg-[#33454E]/[0.07] px-3 py-1 text-[14.5px] font-extrabold text-[#3B4B53] tabular-nums">{grouped[id].length}</span>
+                <span className="rounded-full bg-white/[0.08] px-3 py-1 text-[14.5px] font-extrabold text-[#C2CCD1] tabular-nums">{grouped[id].length}</span>
               </div>
               <ul className="grid sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-3">
                 {grouped[id].map((m, i) => (
                   <li key={`${m.name}-${i}`} className="glass glass-interactive rounded-[22px] p-4 flex items-center gap-4">
-                    <div className="relative w-16 h-16 rounded-2xl overflow-hidden bg-white shrink-0 depth-1">
+                    <div className="relative w-16 h-16 rounded-2xl overflow-hidden bg-white/[0.06] shrink-0 depth-1">
                       {hasPhoto(m.image) ? (
                         <Image src={m.image} alt={m.name} fill sizes="64px" className="object-cover object-top" />
                       ) : (
@@ -137,8 +137,8 @@ export default function TeamPage() {
                       )}
                     </div>
                     <div className="min-w-0">
-                      <p className="font-display text-[17.5px] font-bold text-[#243239] leading-snug">{m.name}</p>
-                      {m.designation && <p className="mt-0.5 text-[15.5px] font-semibold text-[#9A7015] leading-snug">{m.designation}</p>}
+                      <p className="font-display text-[17.5px] font-bold text-[#F3F5F6] leading-snug">{m.name}</p>
+                      {m.designation && <p className="mt-0.5 text-[15.5px] font-semibold text-[#EBCB3B] leading-snug">{m.designation}</p>}
                     </div>
                   </li>
                 ))}
@@ -149,8 +149,8 @@ export default function TeamPage() {
 
         {total === 0 && (
           <div className="liquid-glass rounded-[28px] p-10 text-center">
-            <Users size={28} className="mx-auto text-[#C4921B]" />
-            <p className="mt-3 font-display text-[20px] font-bold text-[#243239]">No one matches &ldquo;{query}&rdquo;</p>
+            <Users size={28} className="mx-auto text-[#D89F03]" />
+            <p className="mt-3 font-display text-[20px] font-bold text-[#F3F5F6]">No one matches &ldquo;{query}&rdquo;</p>
             <button type="button" onClick={() => setQuery('')} className="press btn-soft mt-5 h-11 px-5 rounded-full text-[15px] font-bold">
               Clear search
             </button>

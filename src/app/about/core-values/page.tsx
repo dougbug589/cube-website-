@@ -18,7 +18,7 @@ const split = (d: string) => {
 
 export default function CoreValuesPage() {
   return (
-    <div className="text-[#243239] min-h-screen">
+    <div className="text-[#F3F5F6] min-h-screen">
       <PageHeader
         badge="About"
         title="Core Values"
@@ -34,17 +34,17 @@ export default function CoreValuesPage() {
             return (
               <article key={val.title} className="glass glass-interactive glass-edge rounded-[28px] p-7 lg:p-8 flex flex-col">
                 <div className="flex items-center justify-between">
-                  <span className="grid place-items-center w-14 h-14 rounded-[18px] bg-gradient-to-b from-[#F8E3A3] to-[#F0C468] text-[#243239] depth-1">
+                  <span className="grid place-items-center w-14 h-14 rounded-[18px] bg-gradient-to-b from-[#F1DB62]/35 to-[#D89F03]/20 text-[#F3F5F6] depth-1">
                     <Icon size={24} strokeWidth={2} />
                   </span>
-                  <span className="font-display text-[15px] font-extrabold text-[#C4921B] tabular-nums">{String(i + 1).padStart(2, '0')}</span>
+                  <span className="font-display text-[15px] font-extrabold text-[#D89F03] tabular-nums">{String(i + 1).padStart(2, '0')}</span>
                 </div>
-                <h2 className="mt-6 font-display text-[28px] font-extrabold text-[#243239] leading-tight">{val.title}</h2>
+                <h2 className="mt-6 font-display text-[28px] font-extrabold text-[#F3F5F6] leading-tight">{val.title}</h2>
                 <blockquote className="mt-4 flex-1">
-                  <Quote size={18} className="text-[#C4921B]/70" />
-                  <p className="mt-2 text-[19.5px] leading-relaxed text-[#2B3A41]">{quote}</p>
+                  <Quote size={18} className="text-[#D89F03]/70" />
+                  <p className="mt-2 text-[19.5px] leading-relaxed text-[#DDE3E6]">{quote}</p>
                 </blockquote>
-                {author && <p className="mt-5 pt-4 border-t border-[#33454E]/10 text-[15.5px] font-bold text-[#243239]">— {author}</p>}
+                {author && <p className="mt-5 pt-4 border-t border-white/10 text-[15.5px] font-bold text-[#F3F5F6]">— {author}</p>}
               </article>
             );
           })}

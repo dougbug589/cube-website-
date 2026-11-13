@@ -19,8 +19,8 @@ const initials = (name: string) =>
 
 export function Monogram({ name, className = '' }: { name: string; className?: string }) {
   return (
-    <div className={`grid place-items-center bg-gradient-to-br from-[#EEF2F4] to-[#DCE4E8] ${className}`}>
-      <span className="font-display text-[34px] font-extrabold text-[#4B5A61]/80 tracking-wide">{initials(name) || '·'}</span>
+    <div className={`grid place-items-center bg-gradient-to-br from-[#0B0D0E] to-[#1A1F22] ${className}`}>
+      <span className="font-display text-[34px] font-extrabold text-[#A7B2B8]/80 tracking-wide">{initials(name) || '·'}</span>
     </div>
   );
 }
@@ -40,7 +40,7 @@ export default function PersonCard({
 }) {
   return (
     <article className="glass glass-interactive glass-edge rounded-[24px] overflow-hidden flex flex-col h-full">
-      <div className="relative aspect-square bg-[#DCE4E8]">
+      <div className="relative aspect-square bg-[#1A1F22]">
         {image ? (
           <Image src={image} alt={name} fill sizes="(max-width: 640px) 50vw, (max-width: 1280px) 25vw, 17vw" className="object-cover object-[50%_20%]" />
         ) : (
@@ -48,9 +48,9 @@ export default function PersonCard({
         )}
       </div>
       <div className={compact ? 'p-4' : 'p-5'}>
-        <h3 className="font-display text-[18px] lg:text-[19px] font-bold text-[#243239] leading-snug">{name}</h3>
-        {role && <p className="mt-1 text-[15.5px] font-semibold text-[#9A7015] leading-snug">{role}</p>}
-        {organization && <p className="mt-1 text-[17px] text-[#3B4B53] leading-snug">{organization}</p>}
+        <h3 className="font-display text-[18px] lg:text-[19px] font-bold text-[#F3F5F6] leading-snug">{name}</h3>
+        {role && <p className="mt-1 text-[15.5px] font-semibold text-[#EBCB3B] leading-snug">{role}</p>}
+        {organization && <p className="mt-1 text-[17px] text-[#C2CCD1] leading-snug">{organization}</p>}
       </div>
     </article>
   );

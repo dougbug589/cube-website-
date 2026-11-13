@@ -30,13 +30,13 @@ export default function SectionHeading({
     >
       <div className={center ? 'max-w-2xl' : 'max-w-3xl'}>
         {eyebrow && <p className="label-mono">{eyebrow}</p>}
-        <h2 className="headline-light text-3xl sm:text-4xl lg:text-[2.6rem] text-[#243239] mt-3">{title}</h2>
-        {lead && <p className="mt-4 text-[19px] text-[#3B4B53] leading-relaxed">{lead}</p>}
+        <h2 className="headline-light text-3xl sm:text-4xl lg:text-[2.6rem] text-[#F3F5F6] mt-3">{title}</h2>
+        {lead && <p className="mt-4 text-[19px] text-[#C2CCD1] leading-relaxed">{lead}</p>}
       </div>
       {action && (
         <Link
           href={action.href}
-          className="group self-start md:self-auto inline-flex items-center gap-2 text-[16px] font-bold text-[#243239] shrink-0 border-b-2 border-[#C4921B] pb-1 hover:text-[#9A7015] transition-colors"
+          className="group self-start md:self-auto inline-flex items-center gap-2 text-[16px] font-bold text-[#F3F5F6] shrink-0 border-b-2 border-[#D89F03] pb-1 hover:text-[#EBCB3B] transition-colors"
         >
           {action.label}
           <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />

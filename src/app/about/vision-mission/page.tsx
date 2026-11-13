@@ -18,7 +18,7 @@ const MISSION = aboutContent.mission
 
 export default function VisionMissionPage() {
   return (
-    <div className="text-[#243239] min-h-screen">
+    <div className="text-[#F3F5F6] min-h-screen">
       <PageHeader
         badge="About"
         title="Vision & Mission"
@@ -31,12 +31,12 @@ export default function VisionMissionPage() {
         <div className="liquid-glass relative rounded-[34px] depth-3 p-8 sm:p-12 lg:p-16 overflow-hidden reveal">
           <div aria-hidden className="absolute -top-24 -right-16 w-[420px] h-[420px] rounded-full bg-[radial-gradient(circle,rgba(240,196,104,0.28),transparent_70%)] blur-2xl pointer-events-none" />
           <div className="relative flex items-center gap-3">
-            <span className="grid place-items-center w-12 h-12 rounded-2xl bg-gradient-to-b from-[#F8E3A3] to-[#F0C468] text-[#243239] depth-1">
+            <span className="grid place-items-center w-12 h-12 rounded-2xl bg-gradient-to-b from-[#F1DB62]/35 to-[#D89F03]/20 text-[#F3F5F6] depth-1">
               <Compass size={22} strokeWidth={2} />
             </span>
             <p className="label-mono">Vision</p>
           </div>
-          <p className="relative mt-7 font-display text-[26px] sm:text-[32px] lg:text-[38px] font-bold leading-[1.35] text-[#243239] max-w-5xl">
+          <p className="relative mt-7 font-display text-[26px] sm:text-[32px] lg:text-[38px] font-bold leading-[1.35] text-[#F3F5F6] max-w-5xl">
             {aboutContent.vision}
           </p>
         </div>
@@ -45,18 +45,18 @@ export default function VisionMissionPage() {
       {/* Mission: numbered points */}
       <section className="shell py-14 lg:py-20 pb-24">
         <div className="flex items-center gap-3 mb-8 reveal">
-          <span className="grid place-items-center w-12 h-12 rounded-2xl bg-[#F7EDD3] text-[#9A7015] depth-1">
+          <span className="grid place-items-center w-12 h-12 rounded-2xl bg-[#D89F03]/15 text-[#EBCB3B] depth-1">
             <Target size={22} strokeWidth={2} />
           </span>
-          <h2 className="headline-light text-3xl sm:text-[2.4rem] text-[#243239]">Mission</h2>
+          <h2 className="headline-light text-3xl sm:text-[2.4rem] text-[#F3F5F6]">Mission</h2>
         </div>
         <ol className="grid md:grid-cols-2 gap-4 lg:gap-5 reveal-stagger">
           {MISSION.map((m, i) => (
             <li key={m} className="glass glass-interactive glass-edge rounded-[26px] p-6 lg:p-7 flex items-start gap-5">
-              <span className="font-display text-[30px] font-extrabold leading-none text-[#C4921B] tabular-nums shrink-0 w-11">
+              <span className="font-display text-[30px] font-extrabold leading-none text-[#D89F03] tabular-nums shrink-0 w-11">
                 {String(i + 1).padStart(2, '0')}
               </span>
-              <span className="text-[18px] leading-relaxed text-[#243239] font-medium">{m}</span>
+              <span className="text-[18px] leading-relaxed text-[#F3F5F6] font-medium">{m}</span>
             </li>
           ))}
         </ol>

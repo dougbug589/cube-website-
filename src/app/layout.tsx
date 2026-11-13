@@ -58,7 +58,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${jakarta.variable} scroll-smooth`} suppressHydrationWarning>
-      <body className="min-h-screen flex flex-col bg-[#F6F8F9] text-[#243239] antialiased">
+      <body className="min-h-screen flex flex-col bg-[#0B0D0E] text-[#F3F5F6] antialiased">
         {/* decides splash vs no-splash before first paint (no flash on return visits) */}
         <script dangerouslySetInnerHTML={{ __html: SPLASH_BOOT_SCRIPT }} />
         <LegacyCacheCleanup />

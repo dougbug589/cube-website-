@@ -41,14 +41,14 @@ export default function SectionRail({
               <span
                 className={`absolute inset-y-0 left-0 w-4 rounded-full origin-left transition-[transform,background-color] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
                   on
-                    ? 'scale-x-100 bg-gradient-to-r from-[#E9B215] to-[#C4921B]'
-                    : 'scale-x-50 bg-[#33454E]/25 group-hover:scale-x-75 group-hover:bg-[#33454E]/45'
+                    ? 'scale-x-100 bg-gradient-to-r from-[#F1DB62] to-[#D89F03]'
+                    : 'scale-x-50 bg-white/20 group-hover:scale-x-75 group-hover:bg-[#33454E]/45'
                 }`}
               />
             </span>
             <span
               className={`whitespace-nowrap text-[13.5px] transition-colors duration-300 ${
-                on ? 'font-bold text-[#243239]' : 'font-semibold text-[#66767D] group-hover:text-[#243239]'
+                on ? 'font-bold text-[#F3F5F6]' : 'font-semibold text-[#8E9AA0] group-hover:text-[#F3F5F6]'
               }`}
             >
               {s.label}

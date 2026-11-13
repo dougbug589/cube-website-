@@ -28,7 +28,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
 
   return (
     <Link href={href} className="press group glass glass-interactive glass-edge rounded-[26px] overflow-hidden flex flex-col h-full">
-      <div className="relative aspect-[16/10] overflow-hidden bg-[#DCE4E8]">
+      <div className="relative aspect-[16/10] overflow-hidden bg-[#1A1F22]">
         <Image
           src={p.heroImage || '/images/about/about_about.jpg'}
           alt={p.title}
@@ -45,10 +45,10 @@ export default function ProjectCard({ project }: ProjectCardProps) {
         </div>
       </div>
       <div className="p-5 lg:p-6 flex-1 flex flex-col">
-        <h3 className="font-display text-[19px] lg:text-[20px] font-bold text-[#243239] leading-snug line-clamp-3">{p.title}</h3>
+        <h3 className="font-display text-[19px] lg:text-[20px] font-bold text-[#F3F5F6] leading-snug line-clamp-3">{p.title}</h3>
         <div className="mt-auto pt-4 flex items-end justify-between gap-3">
-          <span className="text-[15.5px] font-medium text-[#4B5A61] leading-snug line-clamp-2">{meta}</span>
-          <span className="grid place-items-center w-10 h-10 rounded-full bg-white border border-[#33454E]/10 text-[#243239] depth-1 shrink-0 transition-[transform,background-color] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:bg-[#F0C468] group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
+          <span className="text-[15.5px] font-medium text-[#A7B2B8] leading-snug line-clamp-2">{meta}</span>
+          <span className="grid place-items-center w-10 h-10 rounded-full bg-white/[0.06] border border-white/10 text-[#F3F5F6] depth-1 shrink-0 transition-[transform,background-color] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:bg-[#D89F03]/35 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
             <ArrowUpRight size={17} strokeWidth={2.25} />
           </span>
         </div>

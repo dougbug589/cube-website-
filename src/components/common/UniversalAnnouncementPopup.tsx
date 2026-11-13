@@ -113,21 +113,21 @@ export default function UniversalAnnouncementPopup() {
                 dismiss(ann.id, ann.frequency);
               }
             }}
-            className="pointer-events-auto rounded-3xl bg-white backdrop-blur-2xl border border-[#D3DDE1] shadow-[0_20px_50px_rgba(36,50,57,0.18),0_4px_16px_rgba(36,39,43,0.08)] p-4 sm:p-5 relative select-none max-h-[70vh] overflow-y-auto"
+            className="pointer-events-auto rounded-3xl bg-[#14181B]/95 backdrop-blur-2xl border border-white/10 shadow-[0_20px_50px_rgba(36,50,57,0.18),0_4px_16px_rgba(36,39,43,0.08)] p-4 sm:p-5 relative select-none max-h-[70vh] overflow-y-auto"
           >
             {/* Specular highlight line */}
-            <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#D3DDE1] to-transparent opacity-90" />
+            <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-white/15 to-transparent opacity-90" />
 
             {ann.imageUrl && (
-              <div className="relative hidden sm:block h-36 w-full rounded-2xl overflow-hidden mb-3.5 border border-[#D3DDE1]/80 shadow-xs">
+              <div className="relative hidden sm:block h-36 w-full rounded-2xl overflow-hidden mb-3.5 border border-white/10 shadow-xs">
                 <Image
                   src={ann.imageUrl}
                   alt={ann.title}
                   fill
                   className="object-cover"
                 />
-                <div className="absolute top-2.5 left-2.5 px-3 py-1 rounded-full bg-[#F0C468] text-[#243239] text-[13.5px] font-bold tracking-wider shadow-sm flex items-center gap-1.5">
-                  <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
+                <div className="absolute top-2.5 left-2.5 px-3 py-1 rounded-full bg-[#D89F03]/35 text-[#F3F5F6] text-[13.5px] font-bold tracking-wider shadow-sm flex items-center gap-1.5">
+                  <span className="w-1.5 h-1.5 rounded-full bg-white/[0.06] animate-pulse" />
                   <span>{ann.badge || 'WE ARE HIRING'}</span>
                 </div>
               </div>
@@ -135,15 +135,15 @@ export default function UniversalAnnouncementPopup() {
 
             <div className="flex items-start justify-between gap-3">
               <div className="flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-[#F0C468] animate-pulse" />
-                <span className="text-[13.5px] font-bold uppercase tracking-wider text-[#2B3B44] bg-[#F2F5F6] px-3 py-1 rounded-full border border-[#D3DDE1]">
+                <span className="w-2 h-2 rounded-full bg-[#D89F03]/35 animate-pulse" />
+                <span className="text-[13.5px] font-bold uppercase tracking-wider text-[#E3E8EA] bg-white/[0.05] px-3 py-1 rounded-full border border-white/10">
                   {ann.badge || ann.type || 'Announcement'}
                 </span>
               </div>
 
               <button
                 onClick={() => dismiss(ann.id, ann.frequency)}
-                className="text-[#4B5A61] hover:text-[#2B3B44] p-2.5 -m-1 rounded-full hover:bg-[#F2F5F6] transition-colors cursor-pointer"
+                className="text-[#A7B2B8] hover:text-[#E3E8EA] p-2.5 -m-1 rounded-full hover:bg-white/[0.05] transition-colors cursor-pointer"
                 aria-label="Dismiss announcement"
               >
                 <X className="w-4 h-4" />
@@ -151,27 +151,27 @@ export default function UniversalAnnouncementPopup() {
             </div>
 
             <div className="mt-3 space-y-1.5">
-              <h4 className="text-sm sm:text-base font-bold font-display text-[#2B3B44] tracking-tight line-clamp-2">
+              <h4 className="text-sm sm:text-base font-bold font-display text-[#E3E8EA] tracking-tight line-clamp-2">
                 {ann.title}
               </h4>
-              <p className="text-xs text-[#243239] font-medium leading-relaxed line-clamp-2 sm:line-clamp-3">
+              <p className="text-xs text-[#F3F5F6] font-medium leading-relaxed line-clamp-2 sm:line-clamp-3">
                 {ann.description}
               </p>
             </div>
 
             {ann.ctaUrl && (
-              <div className="mt-4 pt-3 border-t border-[#DCE4E7] flex items-center justify-between">
+              <div className="mt-4 pt-3 border-t border-white/10 flex items-center justify-between">
                 <Link
                   href={ann.ctaUrl}
                   onClick={() => dismiss(ann.id, ann.frequency)}
-                  className="inline-flex items-center gap-1.5 px-4 py-2 sm:py-1.5 rounded-full bg-[#F2F5F6] hover:bg-[#2B3B44] text-[#2B3B44] hover:text-white font-bold text-xs border border-[#D3DDE1] transition shadow-2xs hover:shadow-xs active:scale-95"
+                  className="inline-flex items-center gap-1.5 px-4 py-2 sm:py-1.5 rounded-full bg-white/[0.05] hover:bg-[#2B3B44] text-[#E3E8EA] hover:text-white font-bold text-xs border border-white/10 transition shadow-2xs hover:shadow-xs active:scale-95"
                 >
                   <span>{ann.ctaText || 'Learn More'}</span>
-                  <ArrowUpRight className="w-3.5 h-3.5 text-[#C4921B]" />
+                  <ArrowUpRight className="w-3.5 h-3.5 text-[#D89F03]" />
                 </Link>
                 <button
                   onClick={() => dismiss(ann.id, ann.frequency)}
-                  className="text-[13.5px] font-semibold text-[#4B5A61] hover:text-[#2B3B44] uppercase tracking-wider cursor-pointer px-2 py-2.5 -my-2"
+                  className="text-[13.5px] font-semibold text-[#A7B2B8] hover:text-[#E3E8EA] uppercase tracking-wider cursor-pointer px-2 py-2.5 -my-2"
                 >
                   Dismiss
                 </button>

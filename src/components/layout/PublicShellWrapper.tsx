@@ -23,7 +23,7 @@ export default function PublicShellWrapper({ children }: { children: React.React
   if (isAdmin) {
     // Admin interface must be completely separate from public website header/footer
     return (
-      <main className="min-h-screen bg-slate-100">
+      <main className="min-h-screen bg-white/[0.05]">
         {pathname !== '/admin/login' && <LiveSync />}
         {children}
       </main>
@@ -31,7 +31,7 @@ export default function PublicShellWrapper({ children }: { children: React.React
   }
 
   return (
-    <div className="relative min-h-screen bg-[#F6F8F9]">
+    <div className="relative min-h-screen bg-[#0B0D0E]">
       {/* Ambient canvas: fixed, transform-only animation, sits under everything */}
       <div aria-hidden className="canvas-field" />
       <div aria-hidden className="canvas-grain" />

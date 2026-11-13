@@ -121,7 +121,7 @@ export default function HomeBento({
       <Link
         href="/life-at-cube"
         {...lifeBind}
-        className="press group relative overflow-hidden rounded-[28px] depth-2 min-h-[300px] md:col-span-2 bg-[#DCE4E8]"
+        className="press group relative overflow-hidden rounded-[28px] depth-2 min-h-[300px] md:col-span-2 bg-[#1A1F22]"
       >
         {lifeShot && (
           <Crossfade id={`life-${li}`}>
@@ -140,7 +140,7 @@ export default function HomeBento({
       <Link
         href="/about/board-members"
         {...peopleBind}
-        className="press group relative overflow-hidden rounded-[28px] depth-2 min-h-[420px] lg:min-h-0 lg:row-span-2 bg-[#DCE4E8]"
+        className="press group relative overflow-hidden rounded-[28px] depth-2 min-h-[420px] lg:min-h-0 lg:row-span-2 bg-[#1A1F22]"
       >
         {person && (
           <Crossfade id={`p-${pi}`}>
@@ -170,7 +170,7 @@ export default function HomeBento({
       <Link
         href="/media"
         {...mediaBind}
-        className="press group relative overflow-hidden rounded-[28px] depth-2 min-h-[300px] bg-[#DCE4E8]"
+        className="press group relative overflow-hidden rounded-[28px] depth-2 min-h-[300px] bg-[#1A1F22]"
       >
         {shot && (
           <Crossfade id={`m-${mi}`}>
@@ -189,7 +189,7 @@ export default function HomeBento({
               transition={{ duration: 0.5, ease: EASE }}
               className="absolute left-6 right-6 bottom-6 text-white"
             >
-              {shot.date && <p className="text-[15px] font-bold text-[#F0C468]">{shot.date}</p>}
+              {shot.date && <p className="text-[15px] font-bold text-[#F1DB62]">{shot.date}</p>}
               <p className="mt-1 font-display text-lg font-bold leading-snug line-clamp-2">{shot.title}</p>
             </motion.div>
           )}
@@ -203,8 +203,8 @@ export default function HomeBento({
         className="press group relative overflow-hidden rounded-[28px] depth-2 min-h-[300px] liquid-glass is-solid"
       >
         <div className="absolute top-4 left-4 right-4 z-10 flex items-center justify-between">
-          <span className="rounded-full bg-[#F7EDD3] px-3.5 py-1.5 text-[15px] font-extrabold text-[#243239] tracking-wide">Clients</span>
-          <span className="grid place-items-center w-9 h-9 rounded-full bg-white text-[#243239] depth-1 transition-transform duration-500 group-hover:rotate-45">
+          <span className="rounded-full bg-[#D89F03]/15 px-3.5 py-1.5 text-[15px] font-extrabold text-[#F3F5F6] tracking-wide">Clients</span>
+          <span className="grid place-items-center w-9 h-9 rounded-full bg-white/[0.06] text-[#F3F5F6] depth-1 transition-transform duration-500 group-hover:rotate-45">
             <ArrowUpRight size={16} strokeWidth={2.25} />
           </span>
         </div>
@@ -224,7 +224,7 @@ export default function HomeBento({
                   hide: { opacity: 0, y: 10, scale: 0.92 },
                   show: { opacity: 1, y: 0, scale: 1, transition: { type: 'spring', stiffness: 380, damping: 24 } },
                 }}
-                className="relative rounded-2xl bg-white depth-1 border border-[#33454E]/[0.06]"
+                className="relative rounded-2xl bg-white depth-1 border border-white/[0.07]"
               >
                 <Image src={c.logo} alt={c.name} fill sizes="120px" className="object-contain p-3" />
               </motion.li>

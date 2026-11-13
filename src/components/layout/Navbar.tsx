@@ -279,13 +279,13 @@ export default function Navbar() {
             </span>
             <span
               aria-hidden
-              className="hidden sm:block xl:hidden min-[1440px]:block h-9 w-px bg-[#33454E]/15"
+              className="hidden sm:block xl:hidden min-[1440px]:block h-9 w-px bg-white/15"
             />
             <span
               className="hidden sm:flex xl:hidden min-[1440px]:flex flex-col leading-none"
             >
-              <span className="font-display text-[19px] font-extrabold tracking-[0.08em] text-[#243239]">CUBE</span>
-              <span className="font-sans text-[11px] font-bold uppercase tracking-[0.12em] text-[#4B5A61] mt-1">
+              <span className="font-display text-[19px] font-extrabold tracking-[0.08em] text-[#F3F5F6]">CUBE</span>
+              <span className="font-sans text-[11px] font-bold uppercase tracking-[0.12em] text-[#A7B2B8] mt-1">
                 Centre of Excellence
               </span>
             </span>
@@ -332,32 +332,32 @@ export default function Navbar() {
                     openMega(mm ? item.title : null);
                   }}
                   className={`press relative flex items-center gap-1.5 h-11 px-4 2xl:px-5 rounded-full text-[15.5px] whitespace-nowrap transition-colors duration-300 ${
-                    active ? 'text-[#243239] font-bold' : 'text-[#3B4B53] font-semibold hover:text-[#243239]'
+                    active ? 'text-[#F3F5F6] font-bold' : 'text-[#C2CCD1] font-semibold hover:text-[#F3F5F6]'
                   }`}
                 >
                   {active && (
                     <motion.span
                       layoutId="nav-active"
                       transition={SPRING}
-                      className="absolute inset-0 rounded-full bg-gradient-to-b from-[#F8E3A3] to-[#F0C468]/75 border border-[#C4921B]/25 shadow-[0_6px_18px_-10px_rgba(196,146,27,0.8)]"
+                      className="absolute inset-0 rounded-full bg-gradient-to-b from-[#D89F03]/45 to-[#D89F03]/20 border border-[#D89F03]/25 shadow-[0_6px_18px_-10px_rgba(196,146,27,0.8)]"
                     />
                   )}
                   {showHover && (
                     <motion.span
                       layoutId="nav-hover"
                       transition={SPRING}
-                      className="absolute inset-0 rounded-full bg-white/80 border border-white shadow-[0_6px_16px_-10px_rgba(36,50,57,0.45),inset_0_1px_0_#fff]"
+                      className="absolute inset-0 rounded-full bg-white/[0.08] border border-white shadow-[0_6px_16px_-10px_rgba(36,50,57,0.45),inset_0_1px_0_#fff]"
                     />
                   )}
                   <span className="relative">{item.title}</span>
                   {item.badge && (
-                    <span title={item.badge} aria-label={item.badge} className="relative w-1.5 h-1.5 rounded-full bg-[#E9B215] shadow-[0_0_8px_#E9B215]" />
+                    <span title={item.badge} aria-label={item.badge} className="relative w-1.5 h-1.5 rounded-full bg-[#F1DB62] shadow-[0_0_8px_#E9B215]" />
                   )}
                   {mm && (
                     <ChevronDown
                       size={14}
                       strokeWidth={2}
-                      className={`relative transition-transform duration-300 ${open ? 'rotate-180 text-[#9A7015]' : 'text-[#66767D]'}`}
+                      className={`relative transition-transform duration-300 ${open ? 'rotate-180 text-[#EBCB3B]' : 'text-[#8E9AA0]'}`}
                     />
                   )}
                 </Link>
@@ -372,10 +372,10 @@ export default function Navbar() {
               onClick={() => setSearchOpen(true)}
               aria-label="Search"
               title={`Search (${isMac ? '⌘K' : 'Ctrl+K'})`}
-              className="press jiggle h-10 w-10 2xl:w-auto 2xl:px-3.5 rounded-full grid 2xl:flex place-items-center items-center gap-2 text-[#3B4B53] hover:text-[#243239] hover:bg-white/80 transition-colors"
+              className="press jiggle h-10 w-10 2xl:w-auto 2xl:px-3.5 rounded-full grid 2xl:flex place-items-center items-center gap-2 text-[#C2CCD1] hover:text-[#F3F5F6] hover:bg-white/[0.08] transition-colors"
             >
               <Search size={18} strokeWidth={2} />
-              <kbd className="hidden 2xl:inline font-sans text-[10px] px-1.5 py-0.5 rounded-md bg-[#E6ECEF] text-[#4B5A61] border border-[#33454E]/10">
+              <kbd className="hidden 2xl:inline font-sans text-[10px] px-1.5 py-0.5 rounded-md bg-white/10 text-[#A7B2B8] border border-white/10">
                 {isMac ? '⌘K' : 'Ctrl K'}
               </kbd>
             </button>
@@ -385,7 +385,7 @@ export default function Navbar() {
                 prefetch={false}
                 aria-label="Admin sign in"
                 title="Admin"
-                className="press jiggle hidden xl:grid h-10 w-10 rounded-full place-items-center text-[#4B5A61] hover:text-[#243239] hover:bg-white/80 transition-colors"
+                className="press jiggle hidden xl:grid h-10 w-10 rounded-full place-items-center text-[#A7B2B8] hover:text-[#F3F5F6] hover:bg-white/[0.08] transition-colors"
               >
                 <User size={18} strokeWidth={2} />
               </Link>
@@ -399,7 +399,7 @@ export default function Navbar() {
             <button
               type="button"
               onClick={() => setDrawerOpen((o) => !o)}
-              className="press xl:hidden h-10 w-10 rounded-full grid place-items-center text-[#243239] hover:bg-white/80"
+              className="press xl:hidden h-10 w-10 rounded-full grid place-items-center text-[#F3F5F6] hover:bg-white/[0.08]"
               aria-label={drawerOpen ? 'Close menu' : 'Open menu'}
               aria-expanded={drawerOpen}
               aria-controls="site-drawer"
@@ -479,7 +479,7 @@ export default function Navbar() {
                   const active = isItemActive(pathname, item);
                   const panelId = `drawer-${item.title.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`;
                   const row = `press flex w-full items-center justify-between gap-3 px-4 py-3.5 rounded-2xl text-[17px] font-bold transition-colors ${
-                    active || isExpanded ? 'text-[#243239] bg-[#F0C468]/30' : 'text-[#33454E] active:bg-[#33454E]/[0.08]'
+                    active || isExpanded ? 'text-[#F3F5F6] bg-[#D89F03]/35/30' : 'text-[#D6DDE0] active:bg-white/[0.08]'
                   }`;
                   return (
                     <motion.div
@@ -497,12 +497,12 @@ export default function Navbar() {
                           onClick={() => setExpanded((c) => (c === item.title ? null : item.title))}
                         >
                           {item.title}
-                          <ChevronDown size={16} strokeWidth={1.75} className={`transition-transform duration-300 ${isExpanded ? 'rotate-180 text-[#9A7015]' : 'text-[#66767D]'}`} />
+                          <ChevronDown size={16} strokeWidth={1.75} className={`transition-transform duration-300 ${isExpanded ? 'rotate-180 text-[#EBCB3B]' : 'text-[#8E9AA0]'}`} />
                         </button>
                       ) : (
                         <Link href={item.href} className={row} onClick={() => setDrawerOpen(false)}>
                           {item.title}
-                          {item.badge && <span className="font-sans text-[10px] uppercase tracking-wider text-[#9A7015]">{item.badge}</span>}
+                          {item.badge && <span className="font-sans text-[10px] uppercase tracking-wider text-[#EBCB3B]">{item.badge}</span>}
                         </Link>
                       )}
                       <AnimatePresence initial={false}>
@@ -515,13 +515,13 @@ export default function Navbar() {
                             transition={{ duration: 0.24, ease: [0.16, 1, 0.3, 1] }}
                             className="overflow-hidden"
                           >
-                            <div className="ml-3.5 pl-3 my-1 border-l border-[#33454E]/15 space-y-0.5">
+                            <div className="ml-3.5 pl-3 my-1 border-l border-white/15 space-y-0.5">
                               {item.children!.map((sub) => (
                                 <Link
                                   key={sub.title}
                                   href={sub.href}
                                   onClick={() => setDrawerOpen(false)}
-                                  className="block px-3 py-2.5 rounded-xl text-[15.5px] font-semibold text-[#3B4B53] hover:text-[#243239] hover:bg-[#33454E]/[0.05] transition-colors"
+                                  className="block px-3 py-2.5 rounded-xl text-[15.5px] font-semibold text-[#C2CCD1] hover:text-[#F3F5F6] hover:bg-[#33454E]/[0.05] transition-colors"
                                 >
                                   {sub.title}
                                 </Link>
@@ -549,7 +549,7 @@ export default function Navbar() {
                     prefetch={false}
                     onClick={() => setDrawerOpen(false)}
                     aria-label="Admin sign in"
-                    className="h-12 w-12 rounded-2xl grid place-items-center text-[#4B5A61] bg-white/60 border border-[#33454E]/10"
+                    className="h-12 w-12 rounded-2xl grid place-items-center text-[#A7B2B8] bg-white/[0.06] border border-white/10"
                   >
                     <User size={18} strokeWidth={2} />
                   </Link>
@@ -647,21 +647,21 @@ function ListPreview({ item }: { item: Item }) {
                 onMouseEnter={() => setI(k)}
                 onFocus={() => setI(k)}
                 className={`press relative flex items-center justify-between gap-3 px-4 h-12 rounded-2xl text-[15.5px] transition-colors duration-200 ${
-                  on ? 'text-[#243239] font-bold' : 'text-[#3B4B53] font-semibold'
+                  on ? 'text-[#F3F5F6] font-bold' : 'text-[#C2CCD1] font-semibold'
                 }`}
               >
                 {on && (
                   <motion.span
                     layoutId={`mega-pill-${item.title}`}
                     transition={{ type: 'spring', stiffness: 500, damping: 38, mass: 0.7 }}
-                    className="absolute inset-0 rounded-2xl bg-white/80 border border-white shadow-[0_6px_16px_-10px_rgba(36,50,57,0.45),inset_0_1px_0_#fff]"
+                    className="absolute inset-0 rounded-2xl bg-white/[0.08] border border-white shadow-[0_6px_16px_-10px_rgba(36,50,57,0.45),inset_0_1px_0_#fff]"
                   />
                 )}
                 <span className="relative">{sub.title}</span>
                 <ArrowUpRight
                   size={15}
                   strokeWidth={2.25}
-                  className={`relative text-[#C4921B] transition-[opacity,transform] duration-300 ${on ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-1'}`}
+                  className={`relative text-[#D89F03] transition-[opacity,transform] duration-300 ${on ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-1'}`}
                 />
               </Link>
             </li>
@@ -669,7 +669,7 @@ function ListPreview({ item }: { item: Item }) {
         })}
       </ul>
 
-      <Link href={current?.href ?? item.href} className="press group relative overflow-hidden rounded-[20px] min-h-[250px] bg-[#DCE4E8]" tabIndex={-1} aria-hidden>
+      <Link href={current?.href ?? item.href} className="press group relative overflow-hidden rounded-[20px] min-h-[250px] bg-[#1A1F22]" tabIndex={-1} aria-hidden>
         <AnimatePresence initial={false}>
           <motion.span
             key={current?.href}
@@ -720,7 +720,7 @@ function CelPanel() {
   ];
   return (
     <div className="grid grid-cols-[340px_1fr] gap-3">
-      <Link href="/cel" className="press group relative overflow-hidden rounded-[20px] min-h-[280px] bg-[#DCE4E8]">
+      <Link href="/cel" className="press group relative overflow-hidden rounded-[20px] min-h-[280px] bg-[#1A1F22]">
         <Image
           src="/images/cel/about_cel.jpg"
           alt=""
@@ -739,13 +739,13 @@ function CelPanel() {
         </span>
       </Link>
       <div className="p-3 pl-4 flex flex-col">
-        <p className="text-[16.5px] leading-relaxed text-[#2B3A41]">{celOverview.subtitle}</p>
+        <p className="text-[16.5px] leading-relaxed text-[#DDE3E6]">{celOverview.subtitle}</p>
         <div className="mt-4 flex flex-wrap gap-2">
           {celOverview.testingServices.map((t) => (
             <Link
               key={t.id}
               href="/cel#domains"
-              className="press rounded-full bg-white/80 border border-[#33454E]/10 px-3.5 py-1.5 text-[14.5px] font-bold text-[#243239] hover:bg-[#F7EDD3] transition-colors"
+              className="press rounded-full bg-white/[0.08] border border-white/10 px-3.5 py-1.5 text-[14.5px] font-bold text-[#F3F5F6] hover:bg-[#D89F03]/15 transition-colors"
             >
               {t.title}
             </Link>
@@ -756,20 +756,20 @@ function CelPanel() {
             <Link
               key={l.href}
               href={l.href}
-              className="group flex items-center justify-between gap-3 px-4 h-11 rounded-2xl text-[15.5px] font-semibold text-[#3B4B53] hover:text-[#243239] hover:bg-white/70 transition-colors"
+              className="group flex items-center justify-between gap-3 px-4 h-11 rounded-2xl text-[15.5px] font-semibold text-[#C2CCD1] hover:text-[#F3F5F6] hover:bg-white/[0.07] transition-colors"
             >
               {l.label}
-              <ArrowUpRight size={15} strokeWidth={2.25} className="text-[#C4921B] opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-[opacity,transform] duration-300" />
+              <ArrowUpRight size={15} strokeWidth={2.25} className="text-[#D89F03] opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-[opacity,transform] duration-300" />
             </Link>
           ))}
           <a
             href={celOverview.website}
             target="_blank"
             rel="noopener noreferrer"
-            className="group flex items-center justify-between gap-3 px-4 h-11 rounded-2xl text-[15.5px] font-semibold text-[#3B4B53] hover:text-[#243239] hover:bg-white/70 transition-colors"
+            className="group flex items-center justify-between gap-3 px-4 h-11 rounded-2xl text-[15.5px] font-semibold text-[#C2CCD1] hover:text-[#F3F5F6] hover:bg-white/[0.07] transition-colors"
           >
             CEL website
-            <ArrowUpRight size={15} strokeWidth={2.25} className="text-[#C4921B]" />
+            <ArrowUpRight size={15} strokeWidth={2.25} className="text-[#D89F03]" />
           </a>
         </div>
       </div>
@@ -798,14 +798,14 @@ function MegaContent({ item, featured }: { item: Item; featured: any[] }) {
         ))}
         <Link
           href="/projects"
-          className="press group rounded-[20px] bg-white/55 border border-white/80 p-5 flex flex-col justify-between hover:bg-white/80 transition-colors"
+          className="press group rounded-[20px] bg-white/[0.05] border border-white/10 p-5 flex flex-col justify-between hover:bg-white/[0.09] transition-colors"
         >
           <span className="label-mono">Portfolio</span>
           <span>
-            <span className="block font-display text-[22px] font-extrabold text-[#243239] leading-tight">All projects</span>
-            <span className="mt-1 block text-[15.5px] text-[#4B5A61]">Search and filter the full record.</span>
+            <span className="block font-display text-[22px] font-extrabold text-[#F3F5F6] leading-tight">All projects</span>
+            <span className="mt-1 block text-[15.5px] text-[#A7B2B8]">Search and filter the full record.</span>
           </span>
-          <ArrowUpRight size={20} className="text-[#C4921B] transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+          <ArrowUpRight size={20} className="text-[#D89F03] transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
         </Link>
       </div>
     );
@@ -816,7 +816,7 @@ function MegaContent({ item, featured }: { item: Item; featured: any[] }) {
 
 function PhotoCard({ href, image, title, text, tall = false }: { href: string; image: string; title: string; text?: string; tall?: boolean }) {
   return (
-    <Link href={href} className={`press group relative overflow-hidden rounded-[20px] ${tall ? 'min-h-[260px]' : 'h-[230px]'} bg-[#DCE4E8]`}>
+    <Link href={href} className={`press group relative overflow-hidden rounded-[20px] ${tall ? 'min-h-[260px]' : 'h-[230px]'} bg-[#1A1F22]`}>
       {/* object-cover crops to the card: request enough pixels for the cropped
           width (card height x photo aspect) on sharp screens, not the card width */}
       <Image

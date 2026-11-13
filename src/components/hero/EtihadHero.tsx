@@ -167,9 +167,9 @@ export default function EtihadHero() {
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-              className="inline-flex items-center gap-2 text-[16px] font-bold tracking-wide text-[#F2F5F6]/90"
+              className="inline-flex items-center gap-2 text-[16px] font-bold tracking-wide text-[#F3F5F6]/90"
             >
-              <span className="w-1.5 h-1.5 rounded-full bg-[#E9B215] shadow-[0_0_10px_#E9B215]" />
+              <span className="w-1.5 h-1.5 rounded-full bg-[#F1DB62] shadow-[0_0_10px_#E9B215]" />
               Centre of Excellence · IIT Madras × Govt of Tamil Nadu
             </motion.p>
             <motion.div
@@ -186,7 +186,7 @@ export default function EtihadHero() {
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.14, ease: [0.16, 1, 0.3, 1] }}
-              className="mt-5 text-[18px] sm:text-[19px] font-semibold text-[#F2F5F6]/90 leading-relaxed max-w-xl"
+              className="mt-5 text-[18px] sm:text-[19px] font-semibold text-[#F3F5F6]/90 leading-relaxed max-w-xl"
             >
               Applied research, technology and consultancy, from a Centre of Excellence of IIT Madras and the Government of Tamil Nadu.
             </motion.p>

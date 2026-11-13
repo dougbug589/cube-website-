@@ -23,7 +23,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 function Block({ title, children }: { title: string; children: React.ReactNode }) {
   return (
     <section className="space-y-5">
-      <h2 className="font-display text-[26px] sm:text-[28px] font-extrabold text-[#243239]">{title}</h2>
+      <h2 className="font-display text-[26px] sm:text-[28px] font-extrabold text-[#F3F5F6]">{title}</h2>
       {children}
     </section>
   );
@@ -41,8 +41,8 @@ function Bullets({ items }: { items: string[] }) {
   return (
     <ul className="space-y-3">
       {items.map((item, i) => (
-        <li key={i} className="flex items-start gap-3.5 text-[18px] text-[#243239] leading-relaxed">
-          <CheckCircle2 className="w-5 h-5 text-[#C4921B] mt-1.5 shrink-0" />
+        <li key={i} className="flex items-start gap-3.5 text-[18px] text-[#F3F5F6] leading-relaxed">
+          <CheckCircle2 className="w-5 h-5 text-[#D89F03] mt-1.5 shrink-0" />
           <span>{item}</span>
         </li>
       ))}
@@ -81,7 +81,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
     .slice(0, 3);
 
   return (
-    <div className="text-[#243239] min-h-screen">
+    <div className="text-[#F3F5F6] min-h-screen">
       <PageHeader
         badge={project.category}
         title={project.title}
@@ -95,7 +95,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
 
       {project.heroImage && (
         <div className="shell">
-          <div className="relative aspect-[16/9] lg:aspect-[21/8] w-full rounded-[32px] overflow-hidden depth-3 bg-[#DCE4E8]">
+          <div className="relative aspect-[16/9] lg:aspect-[21/8] w-full rounded-[32px] overflow-hidden depth-3 bg-[#1A1F22]">
             <Image src={project.heroImage} alt={project.title} fill sizes="(max-width: 1600px) 100vw, 1536px" className="object-cover" priority />
           </div>
         </div>
@@ -110,7 +110,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
               {descriptionLines.length > 0 && (
                 <Block title="Description">
                   {descriptionLines.length === 1 && descriptionLines[0].length <= 160 ? (
-                    <p className="text-[19px] text-[#243239] leading-relaxed whitespace-pre-line">{descriptionLines[0]}</p>
+                    <p className="text-[19px] text-[#F3F5F6] leading-relaxed whitespace-pre-line">{descriptionLines[0]}</p>
                   ) : (
                     <Bullets items={asLines(descriptionLines)} />
                   )}
@@ -139,14 +139,14 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
             {/* Facts and figures, as listed on the live project page */}
             <div className="lg:col-span-4">
               <div className="glass rounded-[28px] p-7 space-y-5 lg:sticky lg:top-[calc(var(--nav-offset,93px)+1rem)]">
-                <h2 className="font-display text-[22px] font-extrabold text-[#243239] pb-3 border-b border-[#DCE4E7]">Facts and figures</h2>
+                <h2 className="font-display text-[22px] font-extrabold text-[#F3F5F6] pb-3 border-b border-white/10">Facts and figures</h2>
                 {facts.map(([label, value]) => (
                   <div key={label}>
                     <span className="label-mono block">{label}</span>
-                    <span className="mt-1 block text-[17px] font-semibold text-[#243239] leading-snug whitespace-pre-line">{value}</span>
+                    <span className="mt-1 block text-[17px] font-semibold text-[#F3F5F6] leading-snug whitespace-pre-line">{value}</span>
                   </div>
                 ))}
-                <div className="pt-4 border-t border-[#DCE4E7]">
+                <div className="pt-4 border-t border-white/10">
                   <Link
                     href="/contact"
                     className="press btn-soft w-full inline-flex items-center justify-center gap-1.5 h-12 rounded-full text-[15.5px] font-bold"
@@ -164,7 +164,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
       {relatedProjects.length > 0 && (
         <section className="band-mist py-16 lg:py-20">
           <div className="shell">
-            <h2 className="headline-light text-3xl sm:text-[2.4rem] text-[#243239] mb-8">
+            <h2 className="headline-light text-3xl sm:text-[2.4rem] text-[#F3F5F6] mb-8">
               More in {project.category}
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">

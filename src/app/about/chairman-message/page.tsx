@@ -10,7 +10,7 @@ export const metadata = {
 
 export default function ChairmanMessagePage() {
   return (
-    <div className="text-[#243239] min-h-screen">
+    <div className="text-[#F3F5F6] min-h-screen">
       <PageHeader
         badge="About"
         title="Chairman Message"

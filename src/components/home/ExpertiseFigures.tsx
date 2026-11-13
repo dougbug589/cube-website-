@@ -120,47 +120,47 @@ export default function ExpertiseFigures() {
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8 lg:mb-10">
           <div>
             <p className="label-mono">TPQA · Expertise highlights</p>
-            <h2 id="expertise-title" className="headline-light text-[1.9rem] sm:text-[2.2rem] text-[#243239] mt-2">
+            <h2 id="expertise-title" className="headline-light text-[1.9rem] sm:text-[2.2rem] text-[#F3F5F6] mt-2">
               Third-party quality assurance, by the numbers.
             </h2>
           </div>
           <Link
             href="/verticals/building-construction"
-            className="group self-start md:self-auto inline-flex items-center gap-2 text-[16px] font-bold text-[#243239] border-b-2 border-[#C4921B] pb-1 hover:text-[#9A7015] transition-colors"
+            className="group self-start md:self-auto inline-flex items-center gap-2 text-[16px] font-bold text-[#F3F5F6] border-b-2 border-[#D89F03] pb-1 hover:text-[#EBCB3B] transition-colors"
           >
             Building &amp; Construction
             <ArrowUpRight size={16} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
           </Link>
         </div>
 
-        <dl ref={rowRef} className="grid grid-cols-2 lg:grid-cols-4 border-y border-[#33454E]/10">
+        <dl ref={rowRef} className="grid grid-cols-2 lg:grid-cols-4 border-y border-white/10">
           {FIGURES.map((f, i) => (
             <div
               key={f.lead}
-              className={`relative py-8 lg:py-10 px-4 sm:px-6 lg:px-8 ${i % 2 === 1 ? 'border-l' : ''} ${i > 0 ? 'lg:border-l' : ''} ${i > 1 ? 'border-t lg:border-t-0' : ''} border-[#33454E]/10`}
+              className={`relative py-8 lg:py-10 px-4 sm:px-6 lg:px-8 ${i % 2 === 1 ? 'border-l' : ''} ${i > 0 ? 'lg:border-l' : ''} ${i > 1 ? 'border-t lg:border-t-0' : ''} border-white/10`}
             >
-              <dt className="text-[15px] font-semibold text-[#4B5A61]">{f.lead}</dt>
+              <dt className="text-[15px] font-semibold text-[#A7B2B8]">{f.lead}</dt>
               <dd
                 className="mt-3 flex items-baseline gap-2 flex-wrap"
                 // the visible digits count and scramble; assistive tech gets the real figure
                 aria-label={[f.prefix, fmtFigure(f.value, f.decimals), f.unit].filter(Boolean).join(' ')}
               >
-                {f.prefix && <span className="font-display text-[22px] sm:text-[26px] font-extrabold text-[#9A7015]">{f.prefix}</span>}
+                {f.prefix && <span className="font-display text-[22px] sm:text-[26px] font-extrabold text-[#EBCB3B]">{f.prefix}</span>}
                 <span
                   ref={(el) => {
                     numRefs.current[i] = el;
                   }}
                   aria-hidden
-                  className="font-display text-[44px] sm:text-[56px] xl:text-[64px] font-extrabold leading-none tracking-[-0.03em] text-[#243239] tabular-nums"
+                  className="font-display text-[44px] sm:text-[56px] xl:text-[64px] font-extrabold leading-none tracking-[-0.03em] text-[#F3F5F6] tabular-nums"
                 >
                   {fmtFigure(f.value, f.decimals)}
                 </span>
-                <span className="font-display text-[18px] sm:text-[22px] font-extrabold text-[#C4921B]">{f.unit}</span>
+                <span className="font-display text-[18px] sm:text-[22px] font-extrabold text-[#D89F03]">{f.unit}</span>
               </dd>
               {/* gold rule draws in under each figure (transform only) */}
               <span
                 aria-hidden
-                className="absolute left-4 sm:left-6 lg:left-8 bottom-0 h-[3px] w-16 rounded-full bg-gradient-to-r from-[#E9B215] to-[#C4921B] origin-left transition-transform duration-[1200ms] ease-[cubic-bezier(0.22,1,0.36,1)]"
+                className="absolute left-4 sm:left-6 lg:left-8 bottom-0 h-[3px] w-16 rounded-full bg-gradient-to-r from-[#F1DB62] to-[#D89F03] origin-left transition-transform duration-[1200ms] ease-[cubic-bezier(0.22,1,0.36,1)]"
                 style={{ transform: shown ? 'scaleX(1)' : 'scaleX(0)', transitionDelay: `${i * 140 + 300}ms` }}
               />
             </div>

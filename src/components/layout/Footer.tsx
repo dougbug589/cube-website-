@@ -34,8 +34,8 @@ export default function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="relative mt-10 text-[#3B4B53]">
-      <div aria-hidden className="absolute inset-0 bg-[#EEF2F4]" />
+    <footer className="relative mt-10 text-[#C2CCD1]">
+      <div aria-hidden className="absolute inset-0 bg-[#08090A]" />
       <div aria-hidden className="absolute top-0 inset-x-0 hairline" />
 
       <div className="relative shell pt-16 lg:pt-20 pb-10">
@@ -53,10 +53,10 @@ export default function Footer() {
                 quality={90}
                 className="h-20 sm:h-24 w-auto object-contain"
               />
-              <span aria-hidden className="hidden sm:block h-14 w-px bg-[#33454E]/15" />
+              <span aria-hidden className="hidden sm:block h-14 w-px bg-white/15" />
               <span className="hidden sm:flex flex-col leading-none whitespace-nowrap">
-                <span className="font-display text-[24px] font-extrabold tracking-[0.08em] text-[#243239]">CUBE</span>
-                <span className="mt-1.5 text-[12.5px] font-bold uppercase tracking-[0.14em] text-[#3B4B53]">Centre of Excellence</span>
+                <span className="font-display text-[24px] font-extrabold tracking-[0.08em] text-[#F3F5F6]">CUBE</span>
+                <span className="mt-1.5 text-[12.5px] font-bold uppercase tracking-[0.14em] text-[#C2CCD1]">Centre of Excellence</span>
               </span>
             </Link>
             <p className="mt-5 text-[16.5px] leading-relaxed max-w-sm">
@@ -86,13 +86,13 @@ export default function Footer() {
             <ul className="mt-4 space-y-2.5 text-[16.5px]">
               {verticals.map((v) => (
                 <li key={v.slug}>
-                  <Link href={`/verticals/${v.slug}`} className="hover:text-[#243239] transition-colors">
+                  <Link href={`/verticals/${v.slug}`} className="hover:text-[#F3F5F6] transition-colors">
                     {v.title}
                   </Link>
                 </li>
               ))}
               <li>
-                <Link href="/cel" className="hover:text-[#243239] transition-colors">CEL laboratory</Link>
+                <Link href="/cel" className="hover:text-[#F3F5F6] transition-colors">CEL laboratory</Link>
               </li>
             </ul>
           </nav>
@@ -103,7 +103,7 @@ export default function Footer() {
             <ul className="mt-4 space-y-2.5 text-[16.5px]">
               {CENTRE_LINKS.map((l) => (
                 <li key={l.href}>
-                  <Link href={l.href} className="hover:text-[#243239] transition-colors">{l.label}</Link>
+                  <Link href={l.href} className="hover:text-[#F3F5F6] transition-colors">{l.label}</Link>
                 </li>
               ))}
             </ul>
@@ -114,16 +114,16 @@ export default function Footer() {
             <p className="label-mono">Office</p>
             <ul className="mt-4 space-y-3.5 text-[16.5px]">
               <li className="flex gap-3">
-                <MapPin size={17} strokeWidth={1.75} className="text-[#C4921B] shrink-0 mt-0.5" />
+                <MapPin size={17} strokeWidth={1.75} className="text-[#D89F03] shrink-0 mt-0.5" />
                 <span className="leading-relaxed">{contactInfo.address}</span>
               </li>
               <li className="flex gap-3 items-center">
-                <Mail size={17} strokeWidth={1.75} className="text-[#C4921B] shrink-0" />
-                <a href={`mailto:${contactInfo.email}`} className="font-semibold text-[#243239] hover:text-[#9A7015] transition-colors">{contactInfo.email}</a>
+                <Mail size={17} strokeWidth={1.75} className="text-[#D89F03] shrink-0" />
+                <a href={`mailto:${contactInfo.email}`} className="font-semibold text-[#F3F5F6] hover:text-[#EBCB3B] transition-colors">{contactInfo.email}</a>
               </li>
               <li className="flex gap-3 items-center">
-                <Phone size={17} strokeWidth={1.75} className="text-[#C4921B] shrink-0" />
-                <a href={`tel:${contactInfo.phoneTel}`} className="font-semibold text-[#243239] hover:text-[#9A7015] transition-colors">{contactInfo.phone}</a>
+                <Phone size={17} strokeWidth={1.75} className="text-[#D89F03] shrink-0" />
+                <a href={`tel:${contactInfo.phoneTel}`} className="font-semibold text-[#F3F5F6] hover:text-[#EBCB3B] transition-colors">{contactInfo.phone}</a>
               </li>
             </ul>
             <Link
@@ -135,13 +135,13 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-14 pt-6 border-t border-[#33454E]/15 flex flex-col md:flex-row gap-4 md:items-center justify-between text-[15.5px] text-[#4B5A61]">
+        <div className="mt-14 pt-6 border-t border-white/15 flex flex-col md:flex-row gap-4 md:items-center justify-between text-[15.5px] text-[#A7B2B8]">
           <p>© {year} Centre for Urbanization, Buildings &amp; Environment (CUBE). All rights reserved.</p>
           <nav aria-label="Footer" className="flex flex-wrap gap-x-6 gap-y-2">
-            <Link href="/tenders" className="hover:text-[#243239] transition-colors">Tenders</Link>
-            <Link href="/careers" className="hover:text-[#243239] transition-colors">Careers</Link>
-            <Link href="/media" className="hover:text-[#243239] transition-colors">Media</Link>
-            <Link href="/contact" className="hover:text-[#243239] transition-colors">Contact</Link>
+            <Link href="/tenders" className="hover:text-[#F3F5F6] transition-colors">Tenders</Link>
+            <Link href="/careers" className="hover:text-[#F3F5F6] transition-colors">Careers</Link>
+            <Link href="/media" className="hover:text-[#F3F5F6] transition-colors">Media</Link>
+            <Link href="/contact" className="hover:text-[#F3F5F6] transition-colors">Contact</Link>
           </nav>
         </div>
       </div>

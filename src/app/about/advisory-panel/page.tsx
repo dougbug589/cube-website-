@@ -23,7 +23,7 @@ export default async function AdvisoryPanelPage() {
   const advisoryPanel = advisory;
 
   return (
-    <div className="text-[#243239] min-h-screen">
+    <div className="text-[#F3F5F6] min-h-screen">
       <PageHeader
         badge="About"
         title="IIT Advisory Panel"

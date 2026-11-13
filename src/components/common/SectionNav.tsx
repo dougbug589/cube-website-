@@ -37,14 +37,14 @@ export default function SectionNav({ sections, id }: { sections: { id: string; l
                 aria-current={on ? 'true' : undefined}
                 onClick={() => jump(s.id)}
                 className={`press relative h-10 px-4 rounded-full text-[14.5px] whitespace-nowrap transition-colors duration-300 ${
-                  on ? 'text-[#243239] font-bold' : 'text-[#3B4B53] font-semibold hover:text-[#243239]'
+                  on ? 'text-[#F3F5F6] font-bold' : 'text-[#C2CCD1] font-semibold hover:text-[#F3F5F6]'
                 }`}
               >
                 {on && (
                   <motion.span
                     layoutId={`${id}-section-pill`}
                     transition={{ type: 'spring', stiffness: 420, damping: 34, mass: 0.8 }}
-                    className="absolute inset-0 rounded-full bg-gradient-to-b from-[#F8E3A3] to-[#F0C468]/80 border border-[#C4921B]/25 shadow-[0_6px_16px_-10px_rgba(196,146,27,0.8)]"
+                    className="absolute inset-0 rounded-full bg-gradient-to-b from-[#D89F03]/45 to-[#D89F03]/20 border border-[#D89F03]/25 shadow-[0_6px_16px_-10px_rgba(196,146,27,0.8)]"
                   />
                 )}
                 <span className="relative">{s.label}</span>

@@ -41,7 +41,7 @@ function CopyRef({ value }: { value: string }) {
       }}
       aria-label={`Copy reference ${value}`}
       title="Copy reference"
-      className="press inline-flex items-center gap-2 h-8 pl-3 pr-2.5 rounded-full bg-white border border-[#33454E]/10 text-[13.5px] font-bold text-[#3B4B53] hover:text-[#243239] tabular-nums transition-colors"
+      className="press inline-flex items-center gap-2 h-8 pl-3 pr-2.5 rounded-full bg-white/[0.06] border border-white/10 text-[13.5px] font-bold text-[#C2CCD1] hover:text-[#F3F5F6] tabular-nums transition-colors"
     >
       <span className="truncate max-w-[16rem] sm:max-w-none">{value}</span>
       <AnimatePresence mode="popLayout" initial={false}>
@@ -137,18 +137,18 @@ export default function TenderRegister({ tenders }: { tenders: Tender[] }) {
                   type="button"
                   onClick={() => setFilter(f.id)}
                   className={`press relative h-10 px-4 rounded-full text-[15px] whitespace-nowrap flex items-center gap-2 transition-colors duration-300 ${
-                    on ? 'text-[#243239] font-bold' : 'text-[#3B4B53] font-semibold hover:text-[#243239]'
+                    on ? 'text-[#F3F5F6] font-bold' : 'text-[#C2CCD1] font-semibold hover:text-[#F3F5F6]'
                   }`}
                 >
                   {on && (
                     <motion.span
                       layoutId="tender-filter-pill"
                       transition={SPRING}
-                      className="absolute inset-0 rounded-full bg-gradient-to-b from-[#F8E3A3] to-[#F0C468]/80 border border-[#C4921B]/25 shadow-[0_6px_16px_-10px_rgba(196,146,27,0.8)]"
+                      className="absolute inset-0 rounded-full bg-gradient-to-b from-[#D89F03]/45 to-[#D89F03]/20 border border-[#D89F03]/25 shadow-[0_6px_16px_-10px_rgba(196,146,27,0.8)]"
                     />
                   )}
                   <span className="relative">{f.label}</span>
-                  <span className={`relative grid place-items-center min-w-6 h-6 px-1.5 rounded-full text-[13.5px] font-extrabold tabular-nums ${on ? 'bg-white/70' : 'bg-[#33454E]/[0.07]'}`}>
+                  <span className={`relative grid place-items-center min-w-6 h-6 px-1.5 rounded-full text-[13.5px] font-extrabold tabular-nums ${on ? 'bg-white/[0.07]' : 'bg-white/[0.08]'}`}>
                     {counts[f.id]}
                   </span>
                 </button>
@@ -156,17 +156,17 @@ export default function TenderRegister({ tenders }: { tenders: Tender[] }) {
             })}
           </div>
           <label className="relative flex-1 flex items-center">
-            <Search size={17} className="absolute left-4 text-[#66767D] pointer-events-none" />
+            <Search size={17} className="absolute left-4 text-[#8E9AA0] pointer-events-none" />
             <input
               type="search"
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               placeholder="Search by work, place or reference number"
               aria-label="Search tenders"
-              className="w-full h-10 pl-11 pr-10 rounded-full bg-white/80 border border-[#33454E]/10 text-[15.5px] text-[#243239] placeholder:text-[#8A979D] focus:outline-none focus:border-[#C4921B]/50 focus:ring-4 focus:ring-[#F0C468]/25 transition-[border-color,box-shadow]"
+              className="w-full h-10 pl-11 pr-10 rounded-full bg-white/[0.08] border border-white/10 text-[15.5px] text-[#F3F5F6] placeholder:text-[#6F7B81] focus:outline-none focus:border-[#D89F03]/50 focus:ring-4 focus:ring-[#D89F03]/25 transition-[border-color,box-shadow]"
             />
             {query && (
-              <button type="button" onClick={() => setQuery('')} aria-label="Clear search" className="press absolute right-2 grid place-items-center w-7 h-7 rounded-full text-[#4B5A61] hover:bg-[#33454E]/[0.07]">
+              <button type="button" onClick={() => setQuery('')} aria-label="Clear search" className="press absolute right-2 grid place-items-center w-7 h-7 rounded-full text-[#A7B2B8] hover:bg-white/[0.08]">
                 <X size={15} />
               </button>
             )}
@@ -191,14 +191,14 @@ export default function TenderRegister({ tenders }: { tenders: Tender[] }) {
                 className="glass glass-edge rounded-[28px] overflow-hidden"
               >
                 <div className="p-6 sm:p-8 grid md:grid-cols-[auto_1fr_auto] gap-5 md:gap-7 items-start">
-                  <span className="hidden md:grid place-items-center w-14 h-14 rounded-[18px] bg-[#F7EDD3] text-[#9A7015] depth-1 font-display text-[18px] font-extrabold tabular-nums">
+                  <span className="hidden md:grid place-items-center w-14 h-14 rounded-[18px] bg-[#D89F03]/15 text-[#EBCB3B] depth-1 font-display text-[18px] font-extrabold tabular-nums">
                     {String(i + 1).padStart(2, '0')}
                   </span>
                   <div className="min-w-0">
                     <div className="flex flex-wrap items-center gap-2">
                       <span
                         className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-[13.5px] font-bold border ${
-                          open ? 'bg-[#E9F3EC] border-[#2F7A4B]/15 text-[#2F6B45]' : 'bg-[#EEF1F3] border-[#33454E]/10 text-[#4B5A61]'
+                          open ? 'bg-[#2F9A5B]/15 border-[#2F9A5B]/35 text-[#8FE0AE]' : 'bg-white/[0.06] border-white/10 text-[#A7B2B8]'
                         }`}
                       >
                         <span className={`w-1.5 h-1.5 rounded-full ${open ? 'bg-[#2F9A5B]' : 'bg-[#8A979D]'}`} />
@@ -206,21 +206,21 @@ export default function TenderRegister({ tenders }: { tenders: Tender[] }) {
                       </span>
                       {t.referenceNumber && <CopyRef value={t.referenceNumber} />}
                     </div>
-                    <h3 className="mt-3 font-display text-[20px] sm:text-[23px] font-extrabold text-[#243239] leading-snug">{t.title}</h3>
+                    <h3 className="mt-3 font-display text-[20px] sm:text-[23px] font-extrabold text-[#F3F5F6] leading-snug">{t.title}</h3>
                     {t.description && t.description.trim() !== t.title.trim() && (
-                      <p className="mt-2 text-[18px] text-[#3B4B53] leading-relaxed">{t.description}</p>
+                      <p className="mt-2 text-[18px] text-[#C2CCD1] leading-relaxed">{t.description}</p>
                     )}
                     <dl className="mt-4 flex flex-wrap gap-x-7 gap-y-2 text-[14.5px]">
                       {(t.publishedDate || t.createdAt) && (
                         <div className="flex gap-1.5">
-                          <dt className="text-[#66767D] font-semibold">Published</dt>
-                          <dd className="text-[#243239] font-bold">{t.publishedDate || t.createdAt?.split('T')[0]}</dd>
+                          <dt className="text-[#8E9AA0] font-semibold">Published</dt>
+                          <dd className="text-[#F3F5F6] font-bold">{t.publishedDate || t.createdAt?.split('T')[0]}</dd>
                         </div>
                       )}
                       {t.closingDate && (
                         <div className="flex gap-1.5">
-                          <dt className="text-[#66767D] font-semibold">Closing</dt>
-                          <dd className="text-[#243239] font-bold">{t.closingDate}</dd>
+                          <dt className="text-[#8E9AA0] font-semibold">Closing</dt>
+                          <dd className="text-[#F3F5F6] font-bold">{t.closingDate}</dd>
                         </div>
                       )}
                     </dl>
@@ -231,17 +231,17 @@ export default function TenderRegister({ tenders }: { tenders: Tender[] }) {
                 </div>
 
                 {g.corrigenda.length > 0 && (
-                  <div className="border-t border-[#33454E]/10 bg-white/40 px-6 sm:px-8 py-4">
-                    <p className="text-[13.5px] font-extrabold tracking-[0.08em] uppercase text-[#9A7015]">
+                  <div className="border-t border-white/10 bg-white/[0.05] px-6 sm:px-8 py-4">
+                    <p className="text-[13.5px] font-extrabold tracking-[0.08em] uppercase text-[#EBCB3B]">
                       Corrigenda · {g.corrigenda.length}
                     </p>
-                    <ul className="mt-2 divide-y divide-[#33454E]/[0.08]">
+                    <ul className="mt-2 divide-y divide-white/[0.08]">
                       {g.corrigenda.map((c) => (
                         <li key={c.id} className="py-3 flex flex-col sm:flex-row sm:items-center gap-3">
-                          <CornerDownRight size={17} className="hidden sm:block text-[#C4921B] shrink-0" />
+                          <CornerDownRight size={17} className="hidden sm:block text-[#D89F03] shrink-0" />
                           <span className="flex-1 min-w-0">
-                            <span className="block text-[16px] font-bold text-[#243239] leading-snug">{c.title}</span>
-                            {c.description && <span className="block mt-0.5 text-[16.5px] text-[#3B4B53] leading-snug">{c.description}</span>}
+                            <span className="block text-[16px] font-bold text-[#F3F5F6] leading-snug">{c.title}</span>
+                            {c.description && <span className="block mt-0.5 text-[16.5px] text-[#C2CCD1] leading-snug">{c.description}</span>}
                           </span>
                           <DocButton tender={c} compact />
                         </li>
@@ -257,8 +257,8 @@ export default function TenderRegister({ tenders }: { tenders: Tender[] }) {
 
       {visible.length === 0 && (
         <div className="mt-6 liquid-glass rounded-[28px] p-10 text-center">
-          <FileText size={28} className="mx-auto text-[#C4921B]" />
-          <p className="mt-3 font-display text-[20px] font-bold text-[#243239]">No tenders match</p>
+          <FileText size={28} className="mx-auto text-[#D89F03]" />
+          <p className="mt-3 font-display text-[20px] font-bold text-[#F3F5F6]">No tenders match</p>
           <button type="button" onClick={() => { setQuery(''); setFilter('all'); }} className="press btn-soft mt-5 h-11 px-5 rounded-full text-[15px] font-bold">
             Show all tenders
           </button>

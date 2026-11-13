@@ -41,13 +41,13 @@ const SHORT_CATEGORY: Record<string, string> = {
   'Urban Planning & Transportation': 'Urban · Transport',
 };
 
-const AUTO_MS = 2000;
+const AUTO_MS = 1500;
 // No bounce: a smooth ease-out slide and fade (transform + opacity only, on
 // the compositor). Opacity settles a little sooner than position so cards
 // entering and leaving dissolve rather than pop.
 const BOUNCE = {
   type: 'tween' as const,
-  duration: 0.5,
+  duration: 0.42,
   ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
   opacity: { duration: 0.35, ease: 'easeOut' as const },
 };
@@ -215,7 +215,7 @@ export default function StackedProjectCarousel({ projects }: { projects: AnyProj
       </motion.div>
 
       <div className="flex justify-end px-5 sm:px-8 lg:px-16 -mt-2">
-        <Link href="/projects" className="text-[16.5px] font-bold text-[#243239] hover:text-[#9A7015] border-b-2 border-[#C4921B] pb-0.5 transition-colors">
+        <Link href="/projects" className="text-[16.5px] font-bold text-[#F3F5F6] hover:text-[#EBCB3B] border-b-2 border-[#D89F03] pb-0.5 transition-colors">
           View all projects
         </Link>
       </div>
@@ -225,7 +225,7 @@ export default function StackedProjectCarousel({ projects }: { projects: AnyProj
 
 function Card({ project, label, sub, isCenter }: { project: AnyProject; label: string; sub: string; isCenter: boolean }) {
   return (
-    <div className={`relative h-full rounded-[28px] overflow-hidden bg-[#DCE4E8] ring-1 ring-black/5 depth-3`}>
+    <div className={`relative h-full rounded-[28px] overflow-hidden bg-[#1A1F22] ring-1 ring-black/5 depth-3`}>
       <Image
         src={project.heroImage || '/images/about/about_about.jpg'}
         alt={project.title}
@@ -238,7 +238,7 @@ function Card({ project, label, sub, isCenter }: { project: AnyProject; label: s
       <div className="chip-photo absolute top-4 left-4 rounded-full px-3.5 py-1.5 text-[14.5px] text-white font-bold">{label}</div>
       <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent pt-24 pb-5 px-5">
         <div className="font-display text-white font-bold leading-snug line-clamp-2 text-xl sm:text-[26px] lg:text-[30px] max-w-[640px]">{project.title}</div>
-        <div className="text-[15.5px] text-[#F0C468] mt-1.5 font-semibold truncate">{sub}</div>
+        <div className="text-[15.5px] text-[#F1DB62] mt-1.5 font-semibold truncate">{sub}</div>
         <div
           className={`chip-photo mt-4 inline-flex items-center gap-1.5 h-9 px-4 rounded-full text-[16px] font-bold text-white transition-opacity duration-500 ease-out ${
             isCenter ? 'opacity-100' : 'opacity-0'
@@ -247,7 +247,7 @@ function Card({ project, label, sub, isCenter }: { project: AnyProject; label: s
           View project <ArrowRight size={14} />
         </div>
       </div>
-      {isCenter && <div aria-hidden className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#E9B215]/80 to-transparent" />}
+      {isCenter && <div aria-hidden className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#F1DB62]/80 to-transparent" />}
     </div>
   );
 }
