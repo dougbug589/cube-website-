@@ -11,7 +11,8 @@ import SectionNav from '@/components/common/SectionNav';
 import FocusCarousel from '@/components/common/FocusCarousel';
 import Marquee from '@/components/common/Marquee';
 import MessageSection from '@/components/about/MessageSection';
-import PersonCard, { Monogram } from '@/components/common/PersonCard';
+import BoardSpotlight from '@/components/about/BoardSpotlight';
+import { Monogram } from '@/components/common/PersonCard';
 import { aboutContent } from '@/data/about';
 import { boardMembers as fallbackBoard, advisoryPanel as fallbackAdvisory } from '@/data/leadership';
 import { teamMembers as fallbackTeam } from '@/data/team';
@@ -177,13 +178,14 @@ export default function AboutPage() {
               label="Core values"
               items={aboutContent.coreValues}
               keyOf={(v) => v.title}
-              heightClass="h-[420px] sm:h-[310px]"
-              maxCard={600}
-              render={(val, active) => (
-                <div className={`liquid-glass h-full rounded-[30px] p-7 sm:p-9 flex flex-col transition-shadow duration-500 ${active ? 'ring-1 ring-[#F6C22E]/40' : ''}`}>
-                  <p className="font-display text-[26px] sm:text-[30px] font-extrabold text-[#F3F5F6]">{val.title}</p>
+              variant="equal"
+              interval={2500}
+              heightClass="h-[380px] md:h-[400px] xl:h-[330px]"
+              render={(val) => (
+                <div className="liquid-glass h-full rounded-[30px] p-7 sm:p-8 flex flex-col">
+                  <p className="font-display text-[26px] sm:text-[28px] font-extrabold text-[#F3F5F6]">{val.title}</p>
                   <span aria-hidden className="mt-3 block h-[3px] w-12 rounded-full bg-[#F6C22E]" />
-                  <p className="mt-5 text-[17.5px] sm:text-[19px] text-[#DDE3E6] leading-relaxed">{val.description}</p>
+                  <p className="mt-5 text-[17.5px] sm:text-[18px] text-[#DDE3E6] leading-relaxed">{val.description}</p>
                 </div>
               )}
             />
@@ -221,10 +223,8 @@ export default function AboutPage() {
             lead="Headed by the Director, IITM, with nominees from four Tamil Nadu State Government departments, four members from IITM Faculty and four members from prominent industries and organizations."
             action={{ href: '/about/board-members', label: 'Board members' }}
           />
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4 reveal-stagger">
-            {boardMembers.map((m, i) => (
-              <PersonCard key={`${m.name}-${i}`} name={m.name} role={m.role} organization={m.organization} image={m.image} />
-            ))}
+          <div className="reveal">
+            <BoardSpotlight members={boardMembers} />
           </div>
         </div>
       </section>
@@ -245,7 +245,7 @@ export default function AboutPage() {
               keyOf={(a) => a.name}
               heightClass="h-[500px] sm:h-[520px]"
               maxCard={400}
-              interval={3500}
+              interval={2200}
               render={(a, active) => (
                 <article className={`glass h-full rounded-[30px] overflow-hidden flex flex-col ${active ? 'ring-1 ring-[#F6C22E]/40' : ''}`}>
                   <div className="relative flex-1 min-h-0 bg-[#1A1F22]">

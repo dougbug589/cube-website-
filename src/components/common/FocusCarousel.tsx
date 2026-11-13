@@ -27,6 +27,7 @@ export default function FocusCarousel<T>({
   heightClass = 'h-[300px]',
   maxCard = 560,
   keyOf,
+  variant = 'focus',
 }: {
   items: T[];
   render: (item: T, active: boolean) => React.ReactNode;
@@ -37,6 +38,9 @@ export default function FocusCarousel<T>({
   /** widest the middle card gets, px */
   maxCard?: number;
   keyOf?: (item: T, i: number) => string;
+  /** focus: middle card large, neighbours shrink/dim. equal: a row of identical
+   *  cards (1 on phones, 3 from 768px) that all slide along together */
+  variant?: 'focus' | 'equal';
 }) {
   const n = items.length;
   const [v, setV] = useState(0);
@@ -98,9 +102,14 @@ export default function FocusCarousel<T>({
 
   if (n === 0) return null;
 
-  const cardW = Math.min(maxCard, Math.max(260, width * (width < 640 ? 0.84 : 0.46)));
-  const step = cardW * 0.92 + 28; // neighbours (scaled 0.86) sit clear of the middle card
-  const span = width < 640 ? 1 : 2; // visible neighbours each side
+  const equal = variant === 'equal';
+  const perView = width < 768 ? 1 : 3;
+  const GAP = 20;
+  const cardW = equal
+    ? (width - GAP * (perView - 1)) / perView
+    : Math.min(maxCard, Math.max(260, width * (width < 640 ? 0.84 : 0.46)));
+  const step = equal ? cardW + GAP : cardW * 0.92 + 28; // focus: neighbours (scaled 0.86) sit clear of the middle card
+  const span = equal ? (perView - 1) / 2 : width < 640 ? 1 : 2; // visible cards each side
 
   const slots: number[] = [];
   for (let d = -(span + 1); d <= span + 1; d++) slots.push(v + d);
@@ -137,28 +146,33 @@ export default function FocusCarousel<T>({
             key={key}
             className="absolute top-0 bottom-0 left-1/2"
             style={{ width: cardW, marginLeft: -cardW / 2, zIndex: 10 - ad, pointerEvents: hidden ? 'none' : 'auto' }}
-            initial={{ x: d * step, scale: 0.78, opacity: 0 }}
-            animate={{
-              x: d * step,
-              scale: active ? 1 : ad === 1 ? 0.86 : 0.76,
-              opacity: hidden ? 0 : active ? 1 : ad === 1 ? 0.55 : 0.25,
-            }}
+            initial={equal ? { x: d * step, scale: 1, opacity: 1 } : { x: d * step, scale: 0.78, opacity: 0 }}
+            animate={
+              equal
+                ? // identical cards; ones outside the row are clipped by the stage, so they slide in/out
+                  { x: d * step, scale: 1, opacity: 1 }
+                : {
+                    x: d * step,
+                    scale: active ? 1 : ad === 1 ? 0.86 : 0.76,
+                    opacity: hidden ? 0 : active ? 1 : ad === 1 ? 0.55 : 0.25,
+                  }
+            }
             transition={SPRING}
-            aria-hidden={!active}
+            aria-hidden={equal ? hidden : !active}
             onClickCapture={(e) => {
               if (moved.current) {
                 e.preventDefault();
                 e.stopPropagation();
                 return;
               }
-              if (!active) {
+              if (!active && !equal) {
                 e.preventDefault();
                 e.stopPropagation();
                 go(d);
               }
             }}
           >
-            <div className={`h-full ${active ? '' : 'cursor-pointer'}`} key={keyOf ? keyOf(items[idx], idx) : idx}>
+            <div className={`h-full ${active || equal ? '' : 'cursor-pointer'}`} key={keyOf ? keyOf(items[idx], idx) : idx}>
               {render(items[idx], active)}
             </div>
           </motion.div>
