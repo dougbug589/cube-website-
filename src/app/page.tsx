@@ -88,6 +88,8 @@ function Section({
           <div className="absolute inset-0 bg-gradient-to-b from-[#F6F8F9]/80 via-[#F6F8F9]/30 to-[#F6F8F9]/65" />
           {/* solid wash behind the heading so it never sits on a busy photo */}
           <div className="absolute inset-x-0 top-0 h-[290px] lg:h-[330px] bg-gradient-to-b from-[#F6F8F9] via-[#F6F8F9]/90 to-transparent" />
+          {/* and back into the page at the bottom: no hard edge where the photo ends */}
+          <div className="absolute inset-x-0 bottom-0 h-[180px] bg-gradient-to-t from-[#F6F8F9] via-[#F6F8F9]/70 to-transparent" />
           {/* left margin, where the section guide sits on wide screens */}
           <div className="absolute inset-y-0 left-0 w-[230px] bg-gradient-to-r from-[#F6F8F9] via-[#F6F8F9]/80 to-transparent hidden min-[1900px]:block" />
         </div>

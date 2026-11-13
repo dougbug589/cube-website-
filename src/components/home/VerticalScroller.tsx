@@ -22,6 +22,8 @@ type Vertical = {
   title: string;
   shortTitle?: string;
   tagline?: string;
+  description?: string;
+  longDescription?: string;
   heroImage: string;
   projectCount?: number;
   capabilities?: string[];
@@ -165,7 +167,11 @@ export default function VerticalScroller({ verticals }: { verticals: Vertical[] 
                       </span>
                     )}
                   </div>
-                  {v.tagline && <p className="mt-3 text-[19.5px] text-[#2B3A41] leading-relaxed">{v.tagline}</p>}
+                  {v.tagline && <p className="mt-3 text-[19.5px] font-semibold text-[#243239] leading-snug">{v.tagline}</p>}
+                  {v.description && <p className="mt-3 text-[17px] text-[#2B3A41] leading-relaxed line-clamp-4">{v.description}</p>}
+                  {(!v.capabilities || v.capabilities.length === 0) && v.longDescription && (
+                    <p className="mt-3 text-[17px] text-[#2B3A41] leading-relaxed">{v.longDescription}</p>
+                  )}
                   {v.capabilities && v.capabilities.length > 0 && (
                     <ul className="mt-5 flex flex-wrap gap-2">
                       {v.capabilities.slice(0, 5).map((c) => (

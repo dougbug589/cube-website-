@@ -47,9 +47,9 @@ const AUTO_MS = 2000;
 // entering and leaving dissolve rather than pop.
 const BOUNCE = {
   type: 'tween' as const,
-  duration: 0.9,
+  duration: 0.5,
   ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
-  opacity: { duration: 0.6, ease: 'easeOut' as const },
+  opacity: { duration: 0.35, ease: 'easeOut' as const },
 };
 
 /** transform pose for a card `offset` slots away from the centre */
