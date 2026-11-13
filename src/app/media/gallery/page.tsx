@@ -1,44 +1,67 @@
 'use client';
-import { useCmsUpdates } from '@/lib/live';
 
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import { useCmsUpdates } from '@/lib/live';
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import Image from 'next/image';
 import { createPortal } from 'react-dom';
+import { AnimatePresence, motion } from 'framer-motion';
 import PageHeader from '@/components/common/PageHeader';
-import { X, ChevronLeft, ChevronRight, Maximize2 } from 'lucide-react';
+import { X, ChevronLeft, ChevronRight, Expand } from 'lucide-react';
 
 interface GalleryItem {
   id: number;
   src: string;
   title: string;
   category: 'Projects' | 'Laboratory' | 'Workplace' | 'Events';
-  description: string;
 }
 
 const GALLERY_ITEMS: GalleryItem[] = [
-  { id: 1, src: '/images/hero/slides_iit-tirupathi.jpg', title: 'IIT Tirupati Permanent Campus – Third Party Quality Assurance', category: 'Projects', description: '' },
-  { id: 2, src: '/images/hero/slides_cpcl-arc.jpg', title: 'PMC for Construction of ARHC, Manali', category: 'Projects', description: '' },
-  { id: 3, src: '/images/cel/about_cel.jpg', title: 'CUBE Environmental Laboratory (CEL)', category: 'Laboratory', description: '' },
-  { id: 4, src: '/images/cel/about_cel1.jpg', title: 'CUBE Environmental Laboratory (CEL)', category: 'Laboratory', description: '' },
-  { id: 5, src: '/images/life-at-cube/about_life.jpg', title: 'Life at CUBE', category: 'Workplace', description: '' },
-  { id: 6, src: '/images/life-at-cube/about_life1.jpg', title: 'Life at CUBE', category: 'Workplace', description: '' },
-  { id: 7, src: '/images/life-at-cube/about_life2.jpg', title: 'Life at CUBE', category: 'Workplace', description: '' },
-  { id: 8, src: '/images/hero/slides_building-training-team.jpg', title: 'Capacity Building Training Programme', category: 'Events', description: '' },
-  { id: 9, src: '/images/hero/slides_ashiana.jpg', title: 'Surface Water Management and Flood Inundation Study, Ashiana Shubham', category: 'Projects', description: '' },
-  { id: 10, src: '/images/hero/slides_mahindra.jpg', title: 'Mahindra World City', category: 'Projects', description: '' },
+  { id: 1, src: '/images/hero/slides_iit-tirupathi.jpg', title: 'IIT Tirupati Permanent Campus – Third Party Quality Assurance', category: 'Projects' },
+  { id: 2, src: '/images/hero/slides_cpcl-arc.jpg', title: 'PMC for Construction of ARHC, Manali', category: 'Projects' },
+  { id: 3, src: '/images/cel/about_cel.jpg', title: 'CUBE Environmental Laboratory (CEL)', category: 'Laboratory' },
+  { id: 4, src: '/images/cel/about_cel1.jpg', title: 'CUBE Environmental Laboratory (CEL)', category: 'Laboratory' },
+  { id: 5, src: '/images/life-at-cube/about_life.jpg', title: 'Life at CUBE', category: 'Workplace' },
+  { id: 6, src: '/images/life-at-cube/about_life1.jpg', title: 'Life at CUBE', category: 'Workplace' },
+  { id: 7, src: '/images/life-at-cube/about_life2.jpg', title: 'Life at CUBE', category: 'Workplace' },
+  { id: 8, src: '/images/hero/slides_building-training-team.jpg', title: 'Capacity Building Training Programme', category: 'Events' },
+  { id: 9, src: '/images/hero/slides_ashiana.jpg', title: 'Surface Water Management and Flood Inundation Study, Ashiana Shubham', category: 'Projects' },
+  { id: 10, src: '/images/hero/slides_mahindra.jpg', title: 'Mahindra World City', category: 'Projects' },
 ];
+
+/*
+ * Display rules for the CMS gallery list (the data itself is left as is):
+ * - portraits of the board and advisory panel (they have their own pages)
+ *   and stock pictures are not gallery photos, so they are not shown;
+ * - captions that were generated from file names get the real caption
+ *   (hero slide captions from cubeiitm.org's home page).
+ */
+const HIDE = [/\/images\/leadership\//, /images_about-bg\.jpg$/, /images_excellence\.jpg$/];
+const FIX: Record<string, { title: string; category: GalleryItem['category'] }> = {
+  '/images/hero/slides_slide2.jpg': { title: 'Surface Water Management Plan for IIT Jammu Campus', category: 'Projects' },
+  '/images/hero/slides_slide3.jpg': {
+    title: 'Engineering, Structural Assessment and Mitigation Strategies for Protection and Development of Naida Caves, Diu',
+    category: 'Projects',
+  },
+  '/images/cel/about_cel1.jpg': { title: 'CUBE Environmental Laboratory (CEL)', category: 'Laboratory' },
+  '/images/cel/about_cel2.jpg': { title: 'CUBE Environmental Laboratory (CEL)', category: 'Laboratory' },
+  '/images/cel/vertical2_lab.jpg': { title: 'CUBE Environmental Laboratory (CEL)', category: 'Laboratory' },
+  '/images/about/about_about.jpg': { title: 'Life at CUBE', category: 'Workplace' },
+};
 
 function mapGalleryCategory(category: string): GalleryItem['category'] {
   const value = (category || '').toLowerCase();
   if (value.includes('lab')) return 'Laboratory';
   if (value.includes('project') || value.includes('hero') || value.includes('showcase')) return 'Projects';
-  if (value.includes('team') || value.includes('leadership') || value.includes('workplace')) return 'Workplace';
+  if (value.includes('team') || value.includes('leadership') || value.includes('workplace') || value.includes('institutional')) return 'Workplace';
   return 'Events';
 }
+
+const SPRING = { type: 'spring' as const, stiffness: 420, damping: 34, mass: 0.8 };
 
 export default function GalleryPage() {
   const [selectedCategory, setSelectedCategory] = useState<string>('All');
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
+  const [dir, setDir] = useState(1);
   const [items, setItems] = useState<GalleryItem[]>(GALLERY_ITEMS);
 
   const loadGallery = useCallback(async () => {
@@ -49,13 +72,14 @@ export default function GalleryPage() {
       // Respect an empty list (everything archived) instead of showing stale fallback.
       if (!Array.isArray(data)) return;
       setItems(
-        data.map((item: any, index: number) => ({
-          id: index + 1,
-          src: item.imageUrl,
-          title: item.title || 'CUBE Gallery',
-          category: mapGalleryCategory(item.category),
-          description: item.description || item.category || 'CUBE institutional gallery',
-        }))
+        data
+          .filter((item: any) => item.imageUrl && !HIDE.some((re) => re.test(item.imageUrl)))
+          .map((item: any, index: number) => ({
+            id: index + 1,
+            src: item.imageUrl,
+            title: FIX[item.imageUrl]?.title || item.title || 'CUBE',
+            category: FIX[item.imageUrl]?.category || mapGalleryCategory(item.category),
+          }))
       );
     } catch {
       // Keep the curated fallback if the CMS is unreachable.
@@ -65,27 +89,25 @@ export default function GalleryPage() {
   useEffect(() => {
     loadGallery();
   }, [loadGallery]);
-
   // Refetch instantly whenever an admin changes the gallery.
   useCmsUpdates(loadGallery);
 
-  const categories = ['All', ...Array.from(new Set(items.map((item) => item.category)))];
+  const counts = useMemo(() => {
+    const c: Record<string, number> = { All: items.length };
+    items.forEach((i) => (c[i.category] = (c[i.category] || 0) + 1));
+    return c;
+  }, [items]);
+  const categories = ['All', ...(['Projects', 'Laboratory', 'Workplace', 'Events'] as const).filter((c) => counts[c])];
+  const filteredItems = selectedCategory === 'All' ? items : items.filter((item) => item.category === selectedCategory);
 
-  const filteredItems = selectedCategory === 'All'
-    ? items
-    : items.filter((item) => item.category === selectedCategory);
-
-  const openLightbox = (index: number) => setLightboxIndex(index);
   const closeLightbox = useCallback(() => setLightboxIndex(null), []);
-
   const nextLightbox = useCallback(() => {
+    setDir(1);
     setLightboxIndex((i) => (i === null || filteredItems.length === 0 ? i : (i + 1) % filteredItems.length));
   }, [filteredItems.length]);
-
   const prevLightbox = useCallback(() => {
-    setLightboxIndex((i) =>
-      i === null || filteredItems.length === 0 ? i : (i - 1 + filteredItems.length) % filteredItems.length
-    );
+    setDir(-1);
+    setLightboxIndex((i) => (i === null || filteredItems.length === 0 ? i : (i - 1 + filteredItems.length) % filteredItems.length));
   }, [filteredItems.length]);
 
   // If a live CMS update removes photos while the viewer is open, close it
@@ -111,159 +133,167 @@ export default function GalleryPage() {
     };
   }, [lightboxIndex, closeLightbox, nextLightbox, prevLightbox]);
 
-  // Swipe left/right on phones.
-  // A ref (not state) so a fast swipe's touchend always sees its touchstart.
+  // Swipe left/right on phones (a ref so a fast swipe's touchend sees its touchstart).
   const touchStartX = useRef<number | null>(null);
-
   const activeItem = lightboxIndex !== null ? filteredItems[lightboxIndex] : null;
 
   return (
-    <div>
+    <div className="text-[#243239] min-h-screen">
       <PageHeader
-        badge="Photographic Archive"
-        title="Institutional Photo Gallery"
-        description="A visual collection documenting project sites, research laboratories, technical seminars, and professional life at CUBE."
-        breadcrumbs={[
-          { label: 'Media', href: '/media' },
-          { label: 'Gallery' },
-        ]}
+        badge="Media"
+        title="Gallery"
+        description="Photographs of CUBE's projects, laboratory and workplace."
+        breadcrumbs={[{ label: 'Media', href: '/media' }, { label: 'Gallery' }]}
       />
 
-      <section className="py-20 bg-transparent">
+      {/* filter: springing gold pill with counts */}
+      <div className="sticky top-[var(--nav-offset,93px)] z-30 py-3">
         <div className="shell">
-          {/* Category Filter Pills */}
-          <div className="flex flex-wrap justify-center gap-2 mb-12">
-            {categories.map((cat) => (
-              <button
-                key={cat}
-                onClick={() => setSelectedCategory(cat)}
-                className={`px-4 py-2 rounded-xl text-xs font-semibold transition ${
-                  selectedCategory === cat
-                    ? 'bg-[#F2F5F6] text-[#2B3B44] border border-[#B9C5CA] shadow-md'
-                    : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
-                }`}
-              >
-                {cat}
-              </button>
-            ))}
+          <div className="liquid-glass is-solid mx-auto w-max max-w-full rounded-full p-1 flex items-center gap-0.5 overflow-x-auto no-scrollbar">
+            {categories.map((cat) => {
+              const on = selectedCategory === cat;
+              return (
+                <button
+                  key={cat}
+                  type="button"
+                  onClick={() => setSelectedCategory(cat)}
+                  className={`press relative h-10 px-4 rounded-full text-[15px] whitespace-nowrap flex items-center gap-2 transition-colors duration-300 ${
+                    on ? 'text-[#243239] font-bold' : 'text-[#46565E] font-semibold hover:text-[#243239]'
+                  }`}
+                >
+                  {on && (
+                    <motion.span
+                      layoutId="gallery-filter-pill"
+                      transition={SPRING}
+                      className="absolute inset-0 rounded-full bg-gradient-to-b from-[#F8E3A3] to-[#F0C468]/80 border border-[#C4921B]/25 shadow-[0_6px_16px_-10px_rgba(196,146,27,0.8)]"
+                    />
+                  )}
+                  <span className="relative">{cat}</span>
+                  <span className={`relative grid place-items-center min-w-6 h-6 px-1.5 rounded-full text-[13.5px] font-extrabold tabular-nums ${on ? 'bg-white/70' : 'bg-[#33454E]/[0.07]'}`}>
+                    {counts[cat] || 0}
+                  </span>
+                </button>
+              );
+            })}
           </div>
+        </div>
+      </div>
 
-          {/* Image Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+      {/* mosaic: every sixth photo large */}
+      <section className="shell pt-6 pb-24">
+        <motion.div layout className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 auto-rows-[240px] grid-flow-dense gap-4">
+          <AnimatePresence mode="popLayout" initial={false}>
             {filteredItems.map((item, idx) => (
-              <div
-                key={item.id}
-                role="button"
-                tabIndex={0}
-                aria-label={`Open photo: ${item.title}`}
-                onClick={() => openLightbox(idx)}
-                onKeyDown={(e) => {
-                  if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault();
-                    openLightbox(idx);
-                  }
+              <motion.button
+                key={item.src + item.id}
+                layout="position"
+                type="button"
+                initial={{ opacity: 0, scale: 0.96 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.96 }}
+                transition={SPRING}
+                onClick={() => {
+                  setDir(1);
+                  setLightboxIndex(idx);
                 }}
-                className="group relative h-64 rounded-2xl overflow-hidden shadow-sm hover:shadow-cube cursor-pointer border border-slate-200 bg-[#F0C468] transition duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#C4921B]"
+                aria-label={`Open photo: ${item.title}`}
+                className={`group relative rounded-[24px] overflow-hidden bg-[#DCE4E8] depth-1 text-left focus:outline-none focus-visible:ring-4 focus-visible:ring-[#F0C468]/60 ${
+                  idx % 6 === 0 ? 'sm:col-span-2 sm:row-span-2' : ''
+                }`}
               >
                 <Image
                   src={item.src}
                   alt={item.title}
                   fill
-                  className="object-cover group-hover:scale-108 transition-transform duration-500"
+                  sizes={idx % 6 === 0 ? '(max-width: 640px) 100vw, 50vw' : '(max-width: 640px) 100vw, (max-width: 1280px) 33vw, 25vw'}
+                  className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.05]"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#2B3B44]/90 via-navy-950/20 to-transparent opacity-80 group-hover:opacity-95 transition-opacity" />
-
-                <div className="absolute top-3 left-3">
-                  <span className="text-[13.5px] font-bold px-2 py-0.5 rounded-full bg-white/90 text-[#2B3B44] text-[#2B3B44] border border-[#D3DDE1]">
-                    {item.category}
-                  </span>
-                </div>
-
-                <div className="absolute bottom-3 left-3 right-3 text-white">
-                  <h4 className="text-sm font-bold line-clamp-1">{item.title}</h4>
-                  <p className="text-[13.5px] text-slate-300 line-clamp-1 mt-0.5">{item.description}</p>
-                </div>
-
-                <div className="absolute top-3 right-3 p-1.5 rounded-lg bg-white/90 text-[#2B3B44] text-white opacity-0 group-hover:opacity-100 transition-opacity">
-                  <Maximize2 className="w-3.5 h-3.5" />
-                </div>
-              </div>
+                <span aria-hidden className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/0 to-transparent" />
+                <span className="chip-photo absolute top-3 left-3 rounded-full px-3 py-1 text-[13.5px] font-bold text-white">{item.category}</span>
+                <span className="chip-photo absolute top-3 right-3 grid place-items-center w-9 h-9 rounded-full text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <Expand size={15} strokeWidth={2.25} />
+                </span>
+                <span className="chip-photo absolute left-3 right-3 bottom-3 rounded-2xl px-4 py-3 text-[15px] font-semibold text-white leading-snug line-clamp-2 transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:-translate-y-1">
+                  {item.title}
+                </span>
+              </motion.button>
             ))}
-          </div>
-        </div>
+          </AnimatePresence>
+        </motion.div>
       </section>
 
-      {/* Lightbox Modal: portaled to <body> so position:fixed always covers the
-          screen (the page frame applies a CSS filter, which breaks fixed). */}
-      {activeItem &&
+      {/* viewer: portaled to <body> so position:fixed always covers the screen */}
+      {typeof document !== 'undefined' &&
         createPortal(
-          <div
-            role="dialog"
-            aria-modal="true"
-            aria-label={`Photo viewer: ${activeItem.title}`}
-            className="fixed inset-0 z-[60] bg-[#050A2E]/95 text-white backdrop-blur-md flex items-center justify-center p-4"
-            onClick={(e) => e.target === e.currentTarget && closeLightbox()}
-            onTouchStart={(e) => { touchStartX.current = e.touches[0].clientX; }}
-            onTouchEnd={(e) => {
-              if (touchStartX.current === null) return;
-              const dx = e.changedTouches[0].clientX - touchStartX.current;
-              if (Math.abs(dx) > 50) (dx < 0 ? nextLightbox : prevLightbox)();
-              touchStartX.current = null;
-            }}
-          >
-            <button
-              type="button"
-              onClick={closeLightbox}
-              aria-label="Close photo viewer"
-              className="absolute top-[max(1rem,env(safe-area-inset-top))] right-4 sm:top-6 sm:right-6 p-3 rounded-full bg-white/15 text-white hover:bg-white/25 transition z-10"
-            >
-              <X className="w-6 h-6" />
-            </button>
-
-            {filteredItems.length > 1 && (
-              <button
-                type="button"
-                onClick={prevLightbox}
-                aria-label="Previous photo"
-                className="absolute left-2 sm:left-8 top-1/2 -translate-y-1/2 p-3 rounded-full bg-white/15 text-white hover:bg-white/25 transition z-10"
+          <AnimatePresence>
+            {activeItem && (
+              <motion.div
+                key="viewer"
+                role="dialog"
+                aria-modal="true"
+                aria-label={`Photo viewer: ${activeItem.title}`}
+                className="fixed inset-0 z-[90] bg-[#10181C]/92 text-white flex items-center justify-center p-4"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.22 }}
+                onClick={(e) => e.target === e.currentTarget && closeLightbox()}
+                onTouchStart={(e) => {
+                  touchStartX.current = e.touches[0].clientX;
+                }}
+                onTouchEnd={(e) => {
+                  if (touchStartX.current === null) return;
+                  const dx = e.changedTouches[0].clientX - touchStartX.current;
+                  if (Math.abs(dx) > 50) (dx < 0 ? nextLightbox : prevLightbox)();
+                  touchStartX.current = null;
+                }}
               >
-                <ChevronLeft className="w-6 h-6" />
-              </button>
+                <button
+                  type="button"
+                  onClick={closeLightbox}
+                  aria-label="Close photo viewer"
+                  className="press absolute top-[max(1rem,env(safe-area-inset-top))] right-4 sm:top-6 sm:right-6 grid place-items-center w-12 h-12 rounded-full bg-white/12 hover:bg-white/22 border border-white/15 transition-colors z-10"
+                >
+                  <X size={22} />
+                </button>
+                {filteredItems.length > 1 && (
+                  <>
+                    <button type="button" onClick={prevLightbox} aria-label="Previous photo" className="press absolute left-2 sm:left-8 top-1/2 -translate-y-1/2 grid place-items-center w-12 h-12 rounded-full bg-white/12 hover:bg-white/22 border border-white/15 transition-colors z-10">
+                      <ChevronLeft size={24} />
+                    </button>
+                    <button type="button" onClick={nextLightbox} aria-label="Next photo" className="press absolute right-2 sm:right-8 top-1/2 -translate-y-1/2 grid place-items-center w-12 h-12 rounded-full bg-white/12 hover:bg-white/22 border border-white/15 transition-colors z-10">
+                      <ChevronRight size={24} />
+                    </button>
+                  </>
+                )}
+                <div className="w-full max-w-6xl flex flex-col items-center pointer-events-none">
+                  <div className="relative w-full h-[62vh] sm:h-[72vh]">
+                    <AnimatePresence initial={false} custom={dir}>
+                      <motion.div
+                        key={activeItem.src}
+                        custom={dir}
+                        className="absolute inset-0"
+                        initial={{ opacity: 0, x: dir * 40 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        exit={{ opacity: 0, x: dir * -40 }}
+                        transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+                      >
+                        <Image src={activeItem.src} alt={activeItem.title} fill sizes="90vw" className="object-contain" />
+                      </motion.div>
+                    </AnimatePresence>
+                  </div>
+                  <div className="mt-5 px-12 text-center max-w-3xl">
+                    <p className="font-display text-[19px] sm:text-[21px] font-bold leading-snug">{activeItem.title}</p>
+                    <p className="mt-1.5 text-[15px] text-white/70 font-semibold">
+                      {activeItem.category} · <span className="tabular-nums text-[#F0C468]">{(lightboxIndex ?? 0) + 1} / {filteredItems.length}</span>
+                    </p>
+                  </div>
+                </div>
+              </motion.div>
             )}
-
-            <div className="max-w-4xl max-h-[85vh] flex flex-col items-center">
-              <div className="relative w-[90vw] max-w-4xl h-[60vh] sm:h-[70vh] rounded-2xl overflow-hidden shadow-2xl">
-                <Image
-                  src={activeItem.src}
-                  alt={activeItem.title}
-                  fill
-                  sizes="90vw"
-                  className="object-contain"
-                />
-              </div>
-              <div className="mt-4 px-10 text-center text-white">
-                <h3 className="text-lg font-bold font-display">{activeItem.title}</h3>
-                <p className="text-xs text-slate-300 mt-1">{activeItem.description}</p>
-                <span className="text-[13.5px] text-[#C4921B] mt-1 block">
-                  {(lightboxIndex ?? 0) + 1} of {filteredItems.length}
-                </span>
-              </div>
-            </div>
-
-            {filteredItems.length > 1 && (
-              <button
-                type="button"
-                onClick={nextLightbox}
-                aria-label="Next photo"
-                className="absolute right-2 sm:right-8 top-1/2 -translate-y-1/2 p-3 rounded-full bg-white/15 text-white hover:bg-white/25 transition z-10"
-              >
-                <ChevronRight className="w-6 h-6" />
-              </button>
-            )}
-          </div>,
+          </AnimatePresence>,
           document.body
         )}
     </div>
   );
 }
-

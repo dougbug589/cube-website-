@@ -1,13 +1,14 @@
 'use client';
 
-import React, { useState } from 'react';
+import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowUpRight, MapPin, FileText } from 'lucide-react';
+import { ArrowUpRight, MapPin } from 'lucide-react';
 import PageHeader from '@/components/common/PageHeader';
 import SectionHeading from '@/components/common/SectionHeading';
 import SectionNav from '@/components/common/SectionNav';
-import DocumentRequestModal from '@/components/common/DocumentRequestModal';
+import NewsCard from '@/components/cards/NewsCard';
+import ReportList from '@/components/cards/ReportList';
 import { newsItems as fallbackNewsItems } from '@/data/news';
 import { useLiveList } from '@/lib/live';
 import { cubeEvents, cubeReports } from '@/data/media';
@@ -53,7 +54,6 @@ function DateChip({ date }: { date?: string }) {
 export default function MediaPage() {
   // Live CMS news: published items only, updates instantly on admin changes.
   const newsItems = useLiveList<any>('/api/public/news', fallbackNewsItems as any[]);
-  const [selectedDoc, setSelectedDoc] = useState<{ title: string; authors?: string } | null>(null);
   const [lead, ...rest] = newsItems.slice(0, 7);
 
   return (
@@ -111,33 +111,7 @@ export default function MediaPage() {
 
           <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 reveal-stagger">
             {rest.map((item) => (
-              <Link
-                key={item.id}
-                href={newsHref(item)}
-                className="press group glass glass-interactive glass-edge rounded-[26px] overflow-hidden flex flex-col h-full"
-              >
-                <div className="relative aspect-[16/10] overflow-hidden bg-[#DCE4E8]">
-                  <Image
-                    src={item.image || '/images/about/about_about.jpg'}
-                    alt={item.title}
-                    fill
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                    className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.05]"
-                  />
-                  <div aria-hidden className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
-                  <div className="absolute top-3 left-3">
-                    <DateChip date={item.date} />
-                  </div>
-                </div>
-                <div className="p-5 lg:p-6 flex-1 flex flex-col">
-                  {item.category && <p className="text-[13.5px] font-bold text-[#9A7015]">{item.category}</p>}
-                  <h3 className="mt-1.5 font-display text-[18px] font-bold text-[#243239] leading-snug line-clamp-3">{item.title}</h3>
-                  <p className="mt-2 text-[15px] text-[#5B6A71] leading-relaxed line-clamp-2">{item.summary}</p>
-                  <span className="mt-auto pt-4 inline-flex items-center gap-1.5 text-[15px] font-bold text-[#243239] group-hover:text-[#9A7015] transition-colors">
-                    Read more <ArrowUpRight size={15} strokeWidth={2.25} />
-                  </span>
-                </div>
-              </Link>
+              <NewsCard key={item.id} item={item} />
             ))}
           </div>
         </div>
@@ -245,41 +219,10 @@ export default function MediaPage() {
       <section id="publications" className="scroll-mt-40 py-16 lg:py-20 pb-24">
         <div className="shell">
           <SectionHeading eyebrow="Reports" title="Reports & publications" action={{ href: '/media/publications', label: 'All reports' }} />
-          <div className="space-y-4 reveal-stagger">
-            {cubeReports.map((r) => (
-              <article key={r.title} className="glass glass-interactive glass-edge rounded-[26px] p-6 sm:p-7 flex flex-col md:flex-row md:items-center gap-5 md:gap-7">
-                <div className="flex md:flex-col items-center gap-3 md:w-20 shrink-0">
-                  <span className="grid place-items-center w-12 h-12 rounded-2xl bg-[#F7EDD3] text-[#9A7015] depth-1">
-                    <FileText size={21} strokeWidth={2} />
-                  </span>
-                  <span className="font-display text-[17px] font-extrabold text-[#243239]">{r.year}</span>
-                </div>
-                <div className="flex-1 min-w-0">
-                  <p className="text-[13.5px] font-bold text-[#9A7015]">{r.category}</p>
-                  <h3 className="mt-1.5 font-display text-[19px] sm:text-[20px] font-bold text-[#243239] leading-snug">{r.title}</h3>
-                  <p className="mt-2 text-[15.5px] text-[#5B6A71] leading-relaxed">{r.description}</p>
-                  <p className="mt-3 text-[14.5px] font-semibold text-[#46565E]">{r.authors}</p>
-                </div>
-                <button
-                  type="button"
-                  onClick={() => setSelectedDoc({ title: r.title, authors: r.authors })}
-                  className="press btn-soft self-start md:self-center inline-flex items-center gap-2 h-11 px-5 rounded-full text-[15px] font-bold whitespace-nowrap shrink-0"
-                >
-                  Request document
-                  <ArrowUpRight size={16} strokeWidth={2.25} />
-                </button>
-              </article>
-            ))}
-          </div>
+          <ReportList reports={cubeReports} />
         </div>
       </section>
 
-      <DocumentRequestModal
-        isOpen={!!selectedDoc}
-        onClose={() => setSelectedDoc(null)}
-        documentTitle={selectedDoc?.title || ''}
-        documentAuthor={selectedDoc?.authors}
-      />
     </div>
   );
 }

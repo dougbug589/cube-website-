@@ -1,7 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
+import { CalendarDays, MapPin } from 'lucide-react';
 import PageHeader from '@/components/common/PageHeader';
-import { Calendar, MapPin, Users, CheckCircle2 } from 'lucide-react';
 import { cubeEvents } from '@/data/media';
 
 export const metadata = {
@@ -10,87 +10,63 @@ export const metadata = {
 };
 
 export default function EventsPage() {
-  const events = cubeEvents;
-
   return (
-    <div>
+    <div className="text-[#243239] min-h-screen">
       <PageHeader
-        badge="Events"
+        badge="Media"
         title="Events & Milestones"
         description="Meetings, project milestones and events at CUBE."
-        breadcrumbs={[
-          { label: 'Media', href: '/media' },
-          { label: 'Events' },
-        ]}
+        breadcrumbs={[{ label: 'Media', href: '/media' }, { label: 'Events' }]}
       />
 
-      <section className="py-20 bg-transparent">
-        <div className="shell">
-          <div className="space-y-12">
-            {events.map((evt, idx) => (
-              <div
-                key={idx}
-                className="p-8 rounded-3xl bg-slate-50 border border-slate-200 shadow-sm hover:shadow-cube transition grid grid-cols-1 lg:grid-cols-12 gap-8 items-center"
-              >
-                <div className="lg:col-span-5 relative h-64 sm:h-72 rounded-2xl overflow-hidden bg-[#F0C468]">
-                  <Image
-                    src={evt.image}
-                    alt={evt.title}
-                    fill
-                    className="object-cover"
-                  />
-                  <div className="absolute top-3 left-3">
-                    <span className="text-[13.5px] font-bold px-3 py-1 rounded-full bg-white/90 text-[#2B3B44] text-[#2B3B44] backdrop-blur-md border border-[#D3DDE1]">
-                      {evt.category}
-                    </span>
+      {/* timeline: a gold rail with one dated marker per event; cards alternate sides on wide screens */}
+      <section className="shell pb-24">
+        <ol className="relative">
+          <span aria-hidden className="absolute left-[19px] lg:left-1/2 top-2 bottom-2 w-[3px] -translate-x-1/2 rounded-full bg-gradient-to-b from-[#E9B215] via-[#C4921B]/50 to-transparent" />
+          {cubeEvents.map((evt, i) => {
+            const right = i % 2 === 1;
+            return (
+              <li key={evt.title} className="relative pl-14 lg:pl-0 pb-12 last:pb-0 lg:grid lg:grid-cols-2 lg:gap-16">
+                {/* marker */}
+                <span aria-hidden className="absolute left-[19px] lg:left-1/2 top-7 -translate-x-1/2 grid place-items-center w-10 h-10 rounded-full bg-white border-[3px] border-[#F0C468] depth-1">
+                  <span className="w-3 h-3 rounded-full bg-[#C4921B]" />
+                </span>
+                <article className={`reveal glass glass-interactive glass-edge rounded-[28px] overflow-hidden ${right ? 'lg:col-start-2' : 'lg:col-start-1'}`}>
+                  <div className="relative aspect-[16/9] bg-[#DCE4E8]">
+                    <Image src={evt.image} alt={evt.title} fill sizes="(max-width: 1024px) 90vw, 45vw" className="object-cover" />
+                    <span className="chip-photo absolute top-3 left-3 rounded-full px-3 py-1 text-[13.5px] font-bold text-white">{evt.category}</span>
                   </div>
-                </div>
-
-                <div className="lg:col-span-7 space-y-4">
-                  <div className="flex flex-wrap items-center gap-4 text-xs text-slate-500">
-                    {evt.date && (
-                      <div className="flex items-center text-[#9A7015] font-semibold">
-                        <Calendar className="w-4 h-4 mr-1.5" />
-                        <span>{evt.date}</span>
-                      </div>
-                    )}
-                    {evt.location && (
-                      <div className="flex items-center">
-                        <MapPin className="w-4 h-4 mr-1.5 text-slate-400" />
-                        <span>{evt.location}</span>
-                      </div>
-                    )}
-                  </div>
-
-                  <h3 className="text-xl sm:text-2xl font-bold font-display text-navy-950 leading-snug">
-                    {evt.title}
-                  </h3>
-
-                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                    {evt.description}
-                  </p>
-
-                  {evt.highlights && evt.highlights.length > 0 && (
-                  <div className="pt-2">
-                    <div className="text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">
-                      Key Highlights:
-                    </div>
-                    <div className="flex flex-wrap gap-2">
-                      {evt.highlights.map((h, i) => (
-                        <span key={i} className="text-xs px-3 py-1 rounded-full bg-white border border-slate-200 text-slate-700 font-medium">
-                          &bull; {h}
+                  <div className="p-6 sm:p-8">
+                    <div className="flex flex-wrap gap-x-6 gap-y-2 text-[15.5px] font-semibold text-[#46565E]">
+                      {evt.date && (
+                        <span className="flex items-center gap-2 text-[#9A7015] font-bold tabular-nums">
+                          <CalendarDays size={17} /> {evt.date}
                         </span>
-                      ))}
+                      )}
+                      {evt.location && (
+                        <span className="flex items-center gap-2">
+                          <MapPin size={17} className="text-[#C4921B]" /> {evt.location}
+                        </span>
+                      )}
                     </div>
+                    <h2 className="mt-3 font-display text-[24px] sm:text-[27px] font-extrabold text-[#243239] leading-tight">{evt.title}</h2>
+                    <p className="mt-3 text-[17.5px] text-[#46565E] leading-relaxed">{evt.description}</p>
+                    {evt.highlights && evt.highlights.length > 0 && (
+                      <ul className="mt-5 flex flex-wrap gap-2">
+                        {evt.highlights.map((h) => (
+                          <li key={h} className="rounded-full bg-white border border-[#33454E]/10 px-3.5 py-1.5 text-[15px] font-semibold text-[#46565E]">
+                            {h}
+                          </li>
+                        ))}
+                      </ul>
+                    )}
                   </div>
-                  )}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
+                </article>
+              </li>
+            );
+          })}
+        </ol>
       </section>
     </div>
   );
 }
-

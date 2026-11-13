@@ -3,8 +3,9 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import PageHeader from '@/components/common/PageHeader';
-import { getNewsBySlug } from '@/lib/db/queries';
-import { Calendar, User, ArrowLeft } from 'lucide-react';
+import { getNewsBySlug, getPublishedNews } from '@/lib/db/queries';
+import NewsCard from '@/components/cards/NewsCard';
+import { ArrowLeft } from 'lucide-react';
 
 export const dynamic = 'force-dynamic';
 
@@ -13,7 +14,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const item = await getNewsBySlug(slug);
   return {
     title: item ? `${item.title} | CUBE News` : 'News | CUBE',
-    description: item?.excerpt || 'Official CUBE press release.',
+    description: item?.excerpt || 'News from CUBE.',
   };
 }
 
@@ -34,61 +35,79 @@ export default async function NewsDetailPage({ params }: { params: Promise<{ slu
   const { slug } = await params;
   const item = await getNewsBySlug(slug);
   if (!item) notFound();
-
   const paragraphs = toParagraphs(item.content);
+  const more = ((await getPublishedNews()) as any[]).filter((n) => (n.slug || n.id) !== (item.slug || item.id)).slice(0, 3);
 
   return (
-    <div className="bg-transparent min-h-screen">
+    <div className="text-[#243239] min-h-screen">
       <PageHeader
-        badge="Press Release"
+        badge={item.category || 'News'}
         title={item.title}
-        description={item.excerpt}
+        description={item.date || ''}
         breadcrumbs={[{ label: 'Media', href: '/media' }, { label: 'News', href: '/media/news' }]}
+        backHref="/media/news"
       />
 
-      <article className="py-12 sm:py-16 bg-white">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-          <Link
-            href="/media/news"
-            className="inline-flex items-center gap-1 text-xs font-semibold text-[#2B3B44] hover:text-[#C4921B] mb-6"
-          >
-            <ArrowLeft className="w-3.5 h-3.5" />
-            Back to all news
-          </Link>
+      <article className="shell pb-16">
+        <div className="relative aspect-[16/9] lg:aspect-[21/9] rounded-[32px] overflow-hidden bg-[#DCE4E8] depth-3 reveal">
+          <Image
+            src={item.image || '/images/about/about_about.jpg'}
+            alt={item.title}
+            fill
+            priority
+            sizes="(max-width: 1600px) 100vw, 1536px"
+            className="object-cover"
+          />
+        </div>
 
-          <div className="flex flex-wrap items-center gap-4 text-xs text-[#5B6A71] mb-6">
-            <span className="flex items-center">
-              <Calendar className="w-3.5 h-3.5 mr-1 text-[#2B3B44]" />
-              {item.date}
-            </span>
-            <span className="flex items-center">
-              <User className="w-3.5 h-3.5 mr-1" />
-              {item.author || 'CUBE Editorial'}
-            </span>
-            <span className="px-2.5 py-0.5 rounded-full bg-[#F2F5F6] text-[#2B3B44] font-semibold">
-              {item.category}
-            </span>
+        <div className="mt-10 lg:mt-14 grid lg:grid-cols-12 gap-10 lg:gap-14">
+          <div className="lg:col-span-8 xl:col-span-7 space-y-6 text-[18px] sm:text-[19px] leading-[1.8] text-[#243239] reveal">
+            {(paragraphs.length > 0 ? paragraphs : [item.excerpt]).map((p, i) => (
+              <p key={i} className={i === 0 ? 'text-[20px] sm:text-[22px] leading-[1.7] font-semibold' : 'text-[#46565E]'}>
+                {p}
+              </p>
+            ))}
           </div>
-
-          <div className="relative h-64 sm:h-80 w-full rounded-2xl overflow-hidden bg-[#EEF2F4] mb-8">
-            <Image
-              src={item.image || '/images/hero/slides_building-training-team.jpg'}
-              alt={item.title}
-              fill
-              className="object-cover"
-              priority
-            />
-          </div>
-
-          <div className="space-y-4 text-sm sm:text-base leading-relaxed text-[#3F4650] font-sans">
-            {paragraphs.length > 0 ? (
-              paragraphs.map((paragraph, index) => <p key={index}>{paragraph}</p>)
-            ) : (
-              <p>{item.excerpt}</p>
-            )}
-          </div>
+          <aside className="lg:col-span-4 xl:col-span-4 xl:col-start-9 lg:sticky lg:top-[calc(var(--nav-offset,93px)+1.5rem)] self-start reveal">
+            <div className="glass glass-edge rounded-[26px] p-6 space-y-4">
+              {item.date && (
+                <div>
+                  <p className="text-[14px] font-bold text-[#7A888E]">Date</p>
+                  <p className="mt-0.5 text-[17px] font-bold text-[#243239] tabular-nums">{item.date}</p>
+                </div>
+              )}
+              {item.category && (
+                <div>
+                  <p className="text-[14px] font-bold text-[#7A888E]">Category</p>
+                  <p className="mt-0.5 text-[17px] font-bold text-[#243239]">{item.category}</p>
+                </div>
+              )}
+              {item.author && (
+                <div>
+                  <p className="text-[14px] font-bold text-[#7A888E]">Author</p>
+                  <p className="mt-0.5 text-[17px] font-bold text-[#243239]">{item.author}</p>
+                </div>
+              )}
+              <Link href="/media/news" className="press btn-soft w-full h-11 rounded-full inline-flex items-center justify-center gap-2 text-[15px] font-bold">
+                <ArrowLeft size={16} strokeWidth={2.25} /> All news
+              </Link>
+            </div>
+          </aside>
         </div>
       </article>
+
+      {more.length > 0 && (
+        <section className="band-mist py-16 lg:py-20">
+          <div className="shell">
+            <h2 className="headline-light text-3xl sm:text-[2.4rem] text-[#243239] mb-8">More news</h2>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 reveal-stagger">
+              {more.map((n) => (
+                <NewsCard key={n.id} item={n} />
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
     </div>
   );
 }
