@@ -2,6 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import { ArrowUpRight } from 'lucide-react';
 import PageHeader from '@/components/common/PageHeader';
+import SectionPhoto from '@/components/common/SectionPhoto';
 import { aboutContent } from '@/data/about';
 
 export const metadata = {
@@ -19,7 +20,10 @@ export default function ObjectivesPage() {
         breadcrumbs={[{ label: 'About CUBE', href: '/about' }, { label: 'Objectives' }]}
       />
 
-      <section className="shell pb-24">
+      {/* over surface water management plan for the IIT Jammu campus (a CUBE project); glass cards turn frosted over the photo */}
+      <section className="relative py-16 lg:py-24 pb-28">
+        <SectionPhoto src="/images/hero/slides_slide2.jpg" wash="bg-[#0B0D0E]/55" />
+        <div className="relative shell">
         <ol className="grid md:grid-cols-2 gap-4 lg:gap-5 reveal-stagger">
           {aboutContent.objectives.map((obj, i) => (
             <li key={i} className="glass glass-interactive glass-edge rounded-[26px] p-6 lg:p-8 flex items-start gap-5 lg:gap-6">
@@ -37,6 +41,7 @@ export default function ObjectivesPage() {
           <Link href="/about/core-values" className="press btn-soft inline-flex items-center gap-2 h-12 px-6 rounded-full text-[16px] font-bold">
             Core values <ArrowUpRight size={16} strokeWidth={2.25} />
           </Link>
+        </div>
         </div>
       </section>
     </div>

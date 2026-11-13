@@ -1,6 +1,7 @@
 import React from 'react';
 import { ShieldCheck, Award, HeartHandshake, Mountain, Lightbulb, Target, Quote } from 'lucide-react';
 import PageHeader from '@/components/common/PageHeader';
+import SectionPhoto from '@/components/common/SectionPhoto';
 import { aboutContent } from '@/data/about';
 
 export const metadata = {
@@ -26,7 +27,10 @@ export default function CoreValuesPage() {
         breadcrumbs={[{ label: 'About CUBE', href: '/about' }, { label: 'Core Values' }]}
       />
 
-      <section className="shell pb-24">
+      {/* over the CUBE team; glass cards turn frosted over the photo */}
+      <section className="relative py-16 lg:py-24 pb-28">
+        <SectionPhoto src="/images/hero/slides_building-training-team.jpg" wash="bg-[#0B0D0E]/55" position="object-[50%_35%]" />
+        <div className="relative shell">
         <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-5 reveal-stagger">
           {aboutContent.coreValues.map((val, i) => {
             const Icon = ICONS[i % ICONS.length];
@@ -48,6 +52,7 @@ export default function CoreValuesPage() {
               </article>
             );
           })}
+        </div>
         </div>
       </section>
     </div>
