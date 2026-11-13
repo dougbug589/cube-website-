@@ -1,0 +1,343 @@
+{
+  "/about": {
+    "label": "CUBE at a glance",
+    "rows": [
+      [
+        "Established",
+        "May 2017"
+      ],
+      [
+        "Verticals",
+        "4"
+      ],
+      [
+        "Projects",
+        "55"
+      ],
+      [
+        "Team",
+        "82"
+      ]
+    ]
+  },
+  "/about/vision-mission": {
+    "label": "Guiding statements",
+    "rows": [
+      [
+        "Mission goals",
+        "7"
+      ],
+      [
+        "Objectives",
+        "10"
+      ],
+      [
+        "Core values",
+        "6"
+      ]
+    ]
+  },
+  "/about/objectives": {
+    "label": "Objectives",
+    "rows": [
+      [
+        "Objectives",
+        "10"
+      ],
+      [
+        "Verticals",
+        "4"
+      ],
+      [
+        "Established",
+        "May 2017"
+      ]
+    ]
+  },
+  "/about/core-values": {
+    "label": "Core values",
+    "rows": [
+      [
+        "Values",
+        "6"
+      ],
+      [
+        "Mission goals",
+        "7"
+      ],
+      [
+        "Objectives",
+        "10"
+      ]
+    ]
+  },
+  "/about/chairman-message": {
+    "label": "Chairman",
+    "rows": [
+      [
+        "Name",
+        "Prof. V Kamakoti"
+      ],
+      [
+        "Role",
+        "Director, IIT Madras"
+      ],
+      [
+        "Governing Body",
+        "12 members"
+      ]
+    ]
+  },
+  "/about/ceo-message": {
+    "label": "Chief Executive Officer",
+    "rows": [
+      [
+        "Name",
+        "L. Padmanaban"
+      ],
+      [
+        "Service",
+        "Major General (Retd.)"
+      ],
+      [
+        "Team",
+        "82 members"
+      ]
+    ]
+  },
+  "/about/advisory-panel": {
+    "label": "IIT Madras advisory panel",
+    "rows": [
+      [
+        "Faculty",
+        "25"
+      ],
+      [
+        "Departments",
+        "Civil, Mechanical, Aerospace, Chemical"
+      ]
+    ]
+  },
+  "/about/team": {
+    "label": "Our team",
+    "rows": [
+      [
+        "Members",
+        "82"
+      ],
+      [
+        "Departments",
+        "4"
+      ],
+      [
+        "Building & Construction",
+        "64"
+      ]
+    ]
+  },
+  "/about/clients": {
+    "label": "Clients",
+    "rows": [
+      [
+        "Clients",
+        "56"
+      ],
+      [
+        "Projects",
+        "55"
+      ],
+      [
+        "Verticals",
+        "4"
+      ]
+    ]
+  },
+  "/contact": {
+    "label": "Reach CUBE",
+    "rows": [
+      [
+        "Phone",
+        "044 6121 0901"
+      ],
+      [
+        "Email",
+        "office@cubeiitm.org"
+      ],
+      [
+        "Office",
+        "IIT Madras Research Park, Chennai"
+      ]
+    ]
+  },
+  "/life-at-cube": {
+    "label": "Life at CUBE",
+    "rows": [
+      [
+        "Team",
+        "82 members"
+      ],
+      [
+        "Workplace",
+        "IIT Madras Research Park"
+      ],
+      [
+        "On site",
+        "CUBE Environmental Laboratory"
+      ]
+    ]
+  },
+  "/media": {
+    "label": "Media centre",
+    "rows": [
+      [
+        "News stories",
+        "8"
+      ],
+      [
+        "Events",
+        "4"
+      ],
+      [
+        "Reports",
+        "3"
+      ]
+    ]
+  },
+  "/media/news": {
+    "label": "News",
+    "rows": [
+      [
+        "Stories",
+        "8"
+      ],
+      [
+        "Latest",
+        "9 February 2025"
+      ]
+    ]
+  },
+  "/media/events": {
+    "label": "Events",
+    "rows": [
+      [
+        "Events",
+        "4"
+      ],
+      [
+        "News stories",
+        "8"
+      ]
+    ]
+  },
+  "/media/gallery": {
+    "label": "Gallery",
+    "rows": [
+      [
+        "Albums",
+        "Projects, Laboratory, Workplace"
+      ],
+      [
+        "Projects",
+        "55"
+      ]
+    ]
+  },
+  "/media/publications": {
+    "label": "Reports",
+    "rows": [
+      [
+        "Reports",
+        "3"
+      ],
+      [
+        "News stories",
+        "8"
+      ]
+    ]
+  },
+  "/projects": {
+    "label": "Portfolio",
+    "rows": [
+      [
+        "Projects",
+        "55"
+      ],
+      [
+        "Building & Construction",
+        "26"
+      ],
+      [
+        "Environment & Sustainability",
+        "15"
+      ],
+      [
+        "Urban Planning & Transportation",
+        "14"
+      ]
+    ]
+  },
+  "/verticals": {
+    "label": "Verticals",
+    "rows": [
+      [
+        "Verticals",
+        "4"
+      ],
+      [
+        "Projects",
+        "55"
+      ],
+      [
+        "Clients",
+        "56"
+      ]
+    ]
+  },
+  "/tenders": {
+    "label": "Tenders",
+    "rows": [
+      [
+        "Tender notices",
+        "2"
+      ],
+      [
+        "Corrigenda",
+        "2"
+      ],
+      [
+        "Open now",
+        "0"
+      ],
+      [
+        "Queries",
+        "office@cubeiitm.org"
+      ]
+    ]
+  },
+  "/cel": {
+    "label": "CUBE Environmental Laboratory",
+    "rows": [
+      [
+        "Testing",
+        "Water, Wastewater, Solid Waste"
+      ],
+      [
+        "Located at",
+        "CUBE office, IIT Madras Research Park"
+      ]
+    ]
+  },
+  "/media/news/[slug]": {
+    "label": "News",
+    "rows": [
+      [
+        "Stories",
+        "8"
+      ],
+      [
+        "Latest",
+        "9 February 2025"
+      ]
+    ]
+  }
+}

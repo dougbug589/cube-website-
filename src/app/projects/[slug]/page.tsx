@@ -87,6 +87,17 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
         title={project.title}
         description={[p.client, p.location, p.projectStatus].filter(Boolean).join(' · ')}
         backHref="/projects"
+        facts={{
+          label: 'Project',
+          rows: (
+            [
+              ['Client', p.client],
+              ['Location', p.location],
+              ['Status', p.projectStatus],
+              ['Vertical', p.category],
+            ] as [string, string | undefined][]
+          ).filter((r): r is [string, string] => Boolean(r[1] && String(r[1]).trim())),
+        }}
         breadcrumbs={[
           { label: 'Projects', href: '/projects' },
           { label: project.title },

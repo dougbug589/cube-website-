@@ -4,7 +4,7 @@ import React from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { ChevronRight, ArrowLeft } from 'lucide-react';
-import HeaderFacts from '@/components/common/HeaderFacts';
+import HeaderFacts, { type HeaderFactsData } from '@/components/common/HeaderFacts';
 
 interface PageHeaderProps {
   badge: string;
@@ -12,13 +12,15 @@ interface PageHeaderProps {
   description: string;
   breadcrumbs: { label: string; href?: string }[];
   backHref?: string;
+  /** page-specific facts for the card on the right (default: generated per route) */
+  facts?: HeaderFactsData;
 }
 
 /**
  * Inner-page header, slate glass v2.
  * Quiet: mono eyebrow, light display headline, one hairline. No cards, no badges.
  */
-export default function PageHeader({ badge, title, description, breadcrumbs, backHref }: PageHeaderProps) {
+export default function PageHeader({ badge, title, description, breadcrumbs, backHref, facts }: PageHeaderProps) {
   const router = useRouter();
 
   const handleBack = () => {
@@ -39,7 +41,7 @@ export default function PageHeader({ badge, title, description, breadcrumbs, bac
   };
 
   return (
-    <header className="relative pt-32 sm:pt-36 xl:pt-40 pb-12 sm:pb-16 min-[1400px]:pb-20 overflow-hidden">
+    <header className="relative pt-32 sm:pt-36 xl:pt-40 pb-12 sm:pb-16 overflow-hidden">
       {/* faint constellation + soft gold wash, both static */}
       <div aria-hidden className="absolute inset-0 constellation opacity-30 [mask-image:linear-gradient(to_bottom,black,transparent)]" />
       <div aria-hidden className="absolute -top-40 right-0 w-[520px] h-[520px] rounded-full bg-[#F6C22E]/10 blur-[120px] pointer-events-none" />
@@ -70,9 +72,10 @@ export default function PageHeader({ badge, title, description, breadcrumbs, bac
           </nav>
         </div>
 
-        {/* from 1400px the facts card sits on the right: keep the text clear of it */}
-        <div className="relative">
-        <div className="max-w-4xl min-[1400px]:max-w-[min(56rem,calc(100%-430px))] reveal-stagger revealed">
+        {/* from 1400px the facts card is a second column, so the header grows to
+            fit whichever is taller (text or card) */}
+        <div className="min-[1400px]:grid min-[1400px]:grid-cols-[minmax(0,1fr)_380px] min-[1400px]:gap-14 min-[1400px]:items-start">
+        <div className="max-w-4xl reveal-stagger revealed">
           <p className="label-mono">{badge}</p>
           {/* long official titles (project pages) step down so they stay readable */}
           <h1
@@ -88,7 +91,7 @@ export default function PageHeader({ badge, title, description, breadcrumbs, bac
           </h1>
           <p className="mt-5 text-[19.5px] sm:text-[19px] text-[#DDE3E6] leading-relaxed max-w-3xl">{description}</p>
         </div>
-        <HeaderFacts />
+        <HeaderFacts facts={facts} />
         </div>
       </div>
 
