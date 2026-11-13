@@ -9,6 +9,7 @@ import { Menu, X, ChevronDown, Search, ArrowUpRight, User } from 'lucide-react';
 import { navigationItems } from '@/data/navigation';
 import { verticals } from '@/data/verticals';
 import { projects } from '@/data/projects';
+import { celOverview } from '@/data/cel';
 import GlobalSearchModal from '@/components/common/GlobalSearchModal';
 
 /**
@@ -66,7 +67,7 @@ const MEGA_PREVIEW: Record<string, string> = {
 };
 
 // Width of the morphing panel for each menu (content is laid out at this width).
-const MEGA_W: Record<string, number> = { About: 860, Projects: 1060, Verticals: 1060, Media: 700 };
+const MEGA_W: Record<string, number> = { About: 860, Projects: 1060, Verticals: 1060, CEL: 880, Media: 700 };
 const MORPH_SPRING = { type: 'spring' as const, stiffness: 520, damping: 44, mass: 0.9 };
 
 function isItemActive(pathname: string, item: Item) {
@@ -230,7 +231,7 @@ export default function Navbar() {
     }, 220);
   }, []);
 
-  const hasMega = (title: string) => title === 'Verticals' || title === 'Projects' || Boolean((MENU as Item[]).find((i) => i.title === title)?.children?.length);
+  const hasMega = (title: string) => title === 'Verticals' || title === 'Projects' || title === 'CEL' || Boolean((MENU as Item[]).find((i) => i.title === title)?.children?.length);
   const megaItem = (MENU as Item[]).find((i) => i.title === mega);
 
   return (
@@ -441,7 +442,7 @@ export default function Navbar() {
                 <Image src={src} alt="" fill quality={85} sizes="440px" loading="eager" />
               </span>
             ))}
-            {warm > 1 && Array.from(new Set(Object.values(MEGA_PREVIEW))).map((src) => (
+            {warm > 1 && Array.from(new Set([...Object.values(MEGA_PREVIEW), '/images/cel/about_cel.jpg'])).map((src) => (
               <span key={`p-${src}`} className="relative block w-px h-px">
                 <Image src={src} alt="" fill quality={85} sizes="400px" loading="eager" />
               </span>
@@ -705,7 +706,73 @@ function ListPreview({ item }: { item: Item }) {
   );
 }
 
+/** CEL: lab photo beside the description from cubeiitm.org and its links. */
+function CelPanel() {
+  const links = [
+    { href: '/cel', label: 'About the laboratory' },
+    { href: '/cel#domains', label: 'Testing domains' },
+    { href: '/cel#enquiry', label: 'Testing enquiry' },
+  ];
+  return (
+    <div className="grid grid-cols-[340px_1fr] gap-3">
+      <Link href="/cel" className="press group relative overflow-hidden rounded-[20px] min-h-[280px] bg-[#DCE4E8]">
+        <Image
+          src="/images/cel/about_cel.jpg"
+          alt=""
+          fill
+          quality={85}
+          sizes="400px"
+          loading="eager"
+          className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.05]"
+        />
+        <span aria-hidden className="absolute inset-0 bg-gradient-to-t from-[#1B262C]/75 via-[#1B262C]/10 to-transparent" />
+        <span className="absolute inset-x-0 bottom-0 p-4 text-white">
+          <span className="block font-display text-[19px] font-bold leading-snug">CUBE Environmental Laboratory</span>
+          <span className="mt-0.5 block text-[14.5px] text-white/85">IIT Madras Research Park, Chennai</span>
+        </span>
+      </Link>
+      <div className="p-3 pl-4 flex flex-col">
+        <p className="text-[16.5px] leading-relaxed text-[#2B3A41]">{celOverview.subtitle}</p>
+        <div className="mt-4 flex flex-wrap gap-2">
+          {celOverview.testingServices.map((t) => (
+            <Link
+              key={t.id}
+              href="/cel#domains"
+              className="press rounded-full bg-white/80 border border-[#33454E]/10 px-3.5 py-1.5 text-[14.5px] font-bold text-[#243239] hover:bg-[#F7EDD3] transition-colors"
+            >
+              {t.title}
+            </Link>
+          ))}
+        </div>
+        <div className="mt-auto pt-4 grid grid-cols-2 gap-1">
+          {links.map((l) => (
+            <Link
+              key={l.href}
+              href={l.href}
+              className="group flex items-center justify-between gap-3 px-4 h-11 rounded-2xl text-[15.5px] font-semibold text-[#3B4B53] hover:text-[#243239] hover:bg-white/70 transition-colors"
+            >
+              {l.label}
+              <ArrowUpRight size={15} strokeWidth={2.25} className="text-[#C4921B] opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-[opacity,transform] duration-300" />
+            </Link>
+          ))}
+          <a
+            href={celOverview.website}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group flex items-center justify-between gap-3 px-4 h-11 rounded-2xl text-[15.5px] font-semibold text-[#3B4B53] hover:text-[#243239] hover:bg-white/70 transition-colors"
+          >
+            CEL website
+            <ArrowUpRight size={15} strokeWidth={2.25} className="text-[#C4921B]" />
+          </a>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function MegaContent({ item, featured }: { item: Item; featured: any[] }) {
+  if (item.title === 'CEL') return <CelPanel />;
+
   if (item.title === 'Verticals') {
     return (
       <div className="grid grid-cols-4 gap-3">
