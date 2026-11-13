@@ -260,7 +260,7 @@ export default function GlobalSearchModal({ isOpen, onClose }: GlobalSearchModal
             >
               {/* input row */}
               <div className="relative flex items-center gap-4 px-6 sm:px-7 h-[76px]">
-                <span className="grid place-items-center w-11 h-11 rounded-2xl bg-gradient-to-b from-[#D89F03]/35 to-[#D89F03]/20 text-[#F3F5F6] depth-1 shrink-0">
+                <span className="grid place-items-center w-11 h-11 rounded-2xl bg-gradient-to-b from-[#F6C22E]/35 to-[#F6C22E]/20 text-[#F3F5F6] depth-1 shrink-0">
                   <Search size={20} strokeWidth={2.25} />
                 </span>
                 <div className="relative flex-1 min-w-0">
@@ -292,7 +292,7 @@ export default function GlobalSearchModal({ isOpen, onClose }: GlobalSearchModal
                   {!query && (
                     <span aria-hidden className="pointer-events-none absolute inset-0 flex items-center text-[20px] sm:text-[22px] text-[#8E9AA0] whitespace-nowrap overflow-hidden">
                       Search for&nbsp;<span className="text-[#C2CCD1] font-semibold">{reducedMotion ? 'pages, projects, news…' : typed}</span>
-                      {!reducedMotion && <span className="ml-0.5 inline-block w-[2px] h-[1.1em] rounded-full bg-[#D89F03] animate-caret" />}
+                      {!reducedMotion && <span className="ml-0.5 inline-block w-[2px] h-[1.1em] rounded-full bg-[#F6C22E] animate-caret" />}
                     </span>
                   )}
                 </div>
@@ -318,7 +318,7 @@ export default function GlobalSearchModal({ isOpen, onClose }: GlobalSearchModal
               {/* hairline that lights up gold while searching */}
               <div aria-hidden className="relative h-px mx-6 bg-white/10 overflow-hidden">
                 <motion.div
-                  className="absolute inset-0 bg-gradient-to-r from-transparent via-[#D89F03] to-transparent origin-center"
+                  className="absolute inset-0 bg-gradient-to-r from-transparent via-[#F6C22E] to-transparent origin-center"
                   initial={false}
                   animate={{ scaleX: hasQuery ? 1 : 0, opacity: hasQuery ? 1 : 0 }}
                   transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
@@ -336,7 +336,7 @@ export default function GlobalSearchModal({ isOpen, onClose }: GlobalSearchModal
                           key={c}
                           type="button"
                           onClick={() => setQuery(c)}
-                          className="press h-10 px-4 rounded-full bg-white/[0.08] border border-white/10 text-[15px] font-bold text-[#C2CCD1] hover:text-[#F3F5F6] hover:bg-white/[0.06] hover:border-[#D89F03]/35 transition-colors"
+                          className="press h-10 px-4 rounded-full bg-white/[0.08] border border-white/10 text-[15px] font-bold text-[#C2CCD1] hover:text-[#F3F5F6] hover:bg-white/[0.06] hover:border-[#F6C22E]/35 transition-colors"
                         >
                           {c}
                         </button>
@@ -368,7 +368,7 @@ export default function GlobalSearchModal({ isOpen, onClose }: GlobalSearchModal
                                 className="absolute inset-0 rounded-2xl bg-white/[0.09] border border-white shadow-[0_8px_22px_-14px_rgba(36,50,57,0.5),inset_0_1px_0_#fff]"
                               />
                             )}
-                            <span className={`relative grid place-items-center w-11 h-11 rounded-2xl shrink-0 transition-colors duration-300 ${on ? 'bg-gradient-to-b from-[#D89F03]/35 to-[#D89F03]/20 text-[#F3F5F6]' : 'bg-[#D89F03]/15 text-[#D89F03]'}`}>
+                            <span className={`relative grid place-items-center w-11 h-11 rounded-2xl shrink-0 transition-colors duration-300 ${on ? 'bg-gradient-to-b from-[#F6C22E]/35 to-[#F6C22E]/20 text-[#F3F5F6]' : 'bg-[#F6C22E]/15 text-[#F6C22E]'}`}>
                               <Icon size={19} strokeWidth={2} />
                             </span>
                             <span className="relative flex-1 min-w-0">
@@ -379,7 +379,7 @@ export default function GlobalSearchModal({ isOpen, onClose }: GlobalSearchModal
                               {item.description && <span className="mt-0.5 block text-[16.5px] text-[#C2CCD1] truncate">{item.description}</span>}
                             </span>
                             <span className={`relative shrink-0 transition-[opacity,transform] duration-300 ${on ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-1'}`}>
-                              {on ? <CornerDownLeft size={17} className="text-[#D89F03]" /> : <ArrowUpRight size={17} />}
+                              {on ? <CornerDownLeft size={17} className="text-[#F6C22E]" /> : <ArrowUpRight size={17} />}
                             </span>
                           </Link>
                         </li>

@@ -42,7 +42,7 @@ function Bullets({ items }: { items: string[] }) {
     <ul className="space-y-3">
       {items.map((item, i) => (
         <li key={i} className="flex items-start gap-3.5 text-[18px] text-[#F3F5F6] leading-relaxed">
-          <CheckCircle2 className="w-5 h-5 text-[#D89F03] mt-1.5 shrink-0" />
+          <CheckCircle2 className="w-5 h-5 text-[#F6C22E] mt-1.5 shrink-0" />
           <span>{item}</span>
         </li>
       ))}

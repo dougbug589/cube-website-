@@ -41,7 +41,7 @@ export default function SectionRail({
               <span
                 className={`absolute inset-y-0 left-0 w-4 rounded-full origin-left transition-[transform,background-color] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
                   on
-                    ? 'scale-x-100 bg-gradient-to-r from-[#D89F03] to-[#D89F03]'
+                    ? 'scale-x-100 bg-gradient-to-r from-[#F6C22E] to-[#F6C22E]'
                     : 'scale-x-50 bg-white/20 group-hover:scale-x-75 group-hover:bg-[#33454E]/45'
                 }`}
               />

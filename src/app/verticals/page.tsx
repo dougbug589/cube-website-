@@ -43,13 +43,13 @@ export default function VerticalsPage() {
                 </div>
                 <div className={`lg:col-span-6 reveal ${flip ? 'lg:order-1' : ''}`}>
                   <h2 className="headline-light text-[2.2rem] sm:text-[2.8rem] text-[#F3F5F6] leading-tight">{v.title}</h2>
-                  {v.tagline && <p className="mt-3 text-[19px] font-semibold text-[#D89F03] leading-snug">{v.tagline}</p>}
+                  {v.tagline && <p className="mt-3 text-[19px] font-semibold text-[#F6C22E] leading-snug">{v.tagline}</p>}
                   <p className="mt-5 text-[19.5px] text-[#DDE3E6] leading-relaxed">{v.longDescription || v.description}</p>
                   {v.capabilities.length > 0 && (
                     <ul className="mt-6 flex flex-wrap gap-2.5">
                       {v.capabilities.map((c) => (
                         <li key={c} className="inline-flex items-center gap-2 rounded-full bg-white/[0.06] border border-white/10 px-4 py-2 text-[15.5px] font-semibold text-[#F3F5F6] depth-1">
-                          <CheckCircle2 size={16} className="text-[#D89F03]" />
+                          <CheckCircle2 size={16} className="text-[#F6C22E]" />
                           {c}
                         </li>
                       ))}

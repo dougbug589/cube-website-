@@ -30,7 +30,7 @@ export default function PartnersSection({ clientCount }: { clientCount: number }
           </div>
           <Link
             href="/about/clients"
-            className="group inline-flex items-center gap-2 text-[16px] font-bold text-[#F3F5F6] shrink-0 border-b-2 border-[#D89F03] pb-1 hover:text-[#D89F03] transition-colors"
+            className="group inline-flex items-center gap-2 text-[16px] font-bold text-[#F3F5F6] shrink-0 border-b-2 border-[#F6C22E] pb-1 hover:text-[#F6C22E] transition-colors"
           >
             Clients &amp; partners
             <ArrowUpRight size={16} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
@@ -42,7 +42,7 @@ export default function PartnersSection({ clientCount }: { clientCount: number }
           <li>
             <Link
               href="/about/clients"
-              className="press group glass-interactive h-full min-h-[180px] rounded-[24px] p-6 flex flex-col justify-between bg-gradient-to-b from-[#D89F03]/35 to-[#D89F03]/20 border border-[#D89F03]/25 depth-1"
+              className="press group glass-interactive h-full min-h-[180px] rounded-[24px] p-6 flex flex-col justify-between bg-gradient-to-b from-[#F6C22E]/35 to-[#F6C22E]/20 border border-[#F6C22E]/25 depth-1"
             >
               <span className="text-[15px] font-bold text-[#F3F5F6]/80">Clients served</span>
               <span className="flex items-end justify-between">

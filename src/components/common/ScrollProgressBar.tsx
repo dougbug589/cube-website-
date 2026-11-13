@@ -36,7 +36,7 @@ export default function ScrollProgressBar() {
     <div aria-hidden className="fixed top-0 inset-x-0 h-[2px] z-[60] pointer-events-none">
       <div
         ref={barRef}
-        className="h-full origin-left bg-gradient-to-r from-[#D89F03] via-[#D89F03] to-[#D89F03] will-change-transform"
+        className="h-full origin-left bg-gradient-to-r from-[#F6C22E] via-[#F6C22E] to-[#F6C22E] will-change-transform"
         style={{ transform: 'scaleX(0)' }}
       />
     </div>

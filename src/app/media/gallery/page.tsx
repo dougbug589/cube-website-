@@ -165,7 +165,7 @@ export default function GalleryPage() {
                     <motion.span
                       layoutId="gallery-filter-pill"
                       transition={SPRING}
-                      className="absolute inset-0 rounded-full bg-gradient-to-b from-[#D89F03]/45 to-[#D89F03]/20 border border-[#D89F03]/25 shadow-[0_6px_16px_-10px_rgba(196,146,27,0.8)]"
+                      className="absolute inset-0 rounded-full bg-gradient-to-b from-[#F6C22E]/45 to-[#F6C22E]/20 border border-[#F6C22E]/25 shadow-[0_6px_16px_-10px_rgba(246, 194, 46,0.8)]"
                     />
                   )}
                   <span className="relative">{cat}</span>
@@ -197,7 +197,7 @@ export default function GalleryPage() {
                   setLightboxIndex(idx);
                 }}
                 aria-label={`Open photo: ${item.title}`}
-                className={`group relative rounded-[24px] overflow-hidden bg-[#1A1F22] depth-1 text-left focus:outline-none focus-visible:ring-4 focus-visible:ring-[#D89F03]/60 ${
+                className={`group relative rounded-[24px] overflow-hidden bg-[#1A1F22] depth-1 text-left focus:outline-none focus-visible:ring-4 focus-visible:ring-[#F6C22E]/60 ${
                   idx % 6 === 0 ? 'sm:col-span-2 sm:row-span-2' : ''
                 }`}
               >
@@ -285,7 +285,7 @@ export default function GalleryPage() {
                   <div className="mt-5 px-12 text-center max-w-3xl">
                     <p className="font-display text-[19px] sm:text-[21px] font-bold leading-snug">{activeItem.title}</p>
                     <p className="mt-1.5 text-[15px] text-white/70 font-semibold">
-                      {activeItem.category} · <span className="tabular-nums text-[#D89F03]">{(lightboxIndex ?? 0) + 1} / {filteredItems.length}</span>
+                      {activeItem.category} · <span className="tabular-nums text-[#F6C22E]">{(lightboxIndex ?? 0) + 1} / {filteredItems.length}</span>
                     </p>
                   </div>
                 </div>

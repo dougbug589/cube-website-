@@ -339,7 +339,7 @@ export default function Navbar() {
                     <motion.span
                       layoutId="nav-active"
                       transition={SPRING}
-                      className="absolute inset-0 rounded-full bg-gradient-to-b from-[#D89F03]/45 to-[#D89F03]/20 border border-[#D89F03]/25 shadow-[0_6px_18px_-10px_rgba(196,146,27,0.8)]"
+                      className="absolute inset-0 rounded-full bg-gradient-to-b from-[#F6C22E]/45 to-[#F6C22E]/20 border border-[#F6C22E]/25 shadow-[0_6px_18px_-10px_rgba(246, 194, 46,0.8)]"
                     />
                   )}
                   {showHover && (
@@ -351,13 +351,13 @@ export default function Navbar() {
                   )}
                   <span className="relative">{item.title}</span>
                   {item.badge && (
-                    <span title={item.badge} aria-label={item.badge} className="relative w-1.5 h-1.5 rounded-full bg-[#D89F03] shadow-[0_0_8px_#D89F03]" />
+                    <span title={item.badge} aria-label={item.badge} className="relative w-1.5 h-1.5 rounded-full bg-[#F6C22E] shadow-[0_0_8px_#F6C22E]" />
                   )}
                   {mm && (
                     <ChevronDown
                       size={14}
                       strokeWidth={2}
-                      className={`relative transition-transform duration-300 ${open ? 'rotate-180 text-[#D89F03]' : 'text-[#8E9AA0]'}`}
+                      className={`relative transition-transform duration-300 ${open ? 'rotate-180 text-[#F6C22E]' : 'text-[#8E9AA0]'}`}
                     />
                   )}
                 </Link>
@@ -479,7 +479,7 @@ export default function Navbar() {
                   const active = isItemActive(pathname, item);
                   const panelId = `drawer-${item.title.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`;
                   const row = `press flex w-full items-center justify-between gap-3 px-4 py-3.5 rounded-2xl text-[17px] font-bold transition-colors ${
-                    active || isExpanded ? 'text-[#F3F5F6] bg-[#D89F03]/35/30' : 'text-[#D6DDE0] active:bg-white/[0.08]'
+                    active || isExpanded ? 'text-[#F3F5F6] bg-[#F6C22E]/35/30' : 'text-[#D6DDE0] active:bg-white/[0.08]'
                   }`;
                   return (
                     <motion.div
@@ -497,12 +497,12 @@ export default function Navbar() {
                           onClick={() => setExpanded((c) => (c === item.title ? null : item.title))}
                         >
                           {item.title}
-                          <ChevronDown size={16} strokeWidth={1.75} className={`transition-transform duration-300 ${isExpanded ? 'rotate-180 text-[#D89F03]' : 'text-[#8E9AA0]'}`} />
+                          <ChevronDown size={16} strokeWidth={1.75} className={`transition-transform duration-300 ${isExpanded ? 'rotate-180 text-[#F6C22E]' : 'text-[#8E9AA0]'}`} />
                         </button>
                       ) : (
                         <Link href={item.href} className={row} onClick={() => setDrawerOpen(false)}>
                           {item.title}
-                          {item.badge && <span className="font-sans text-[10px] uppercase tracking-wider text-[#D89F03]">{item.badge}</span>}
+                          {item.badge && <span className="font-sans text-[10px] uppercase tracking-wider text-[#F6C22E]">{item.badge}</span>}
                         </Link>
                       )}
                       <AnimatePresence initial={false}>
@@ -661,7 +661,7 @@ function ListPreview({ item }: { item: Item }) {
                 <ArrowUpRight
                   size={15}
                   strokeWidth={2.25}
-                  className={`relative text-[#D89F03] transition-[opacity,transform] duration-300 ${on ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-1'}`}
+                  className={`relative text-[#F6C22E] transition-[opacity,transform] duration-300 ${on ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-1'}`}
                 />
               </Link>
             </li>
@@ -745,7 +745,7 @@ function CelPanel() {
             <Link
               key={t.id}
               href="/cel#domains"
-              className="press rounded-full bg-white/[0.08] border border-white/10 px-3.5 py-1.5 text-[14.5px] font-bold text-[#F3F5F6] hover:bg-[#D89F03]/15 transition-colors"
+              className="press rounded-full bg-white/[0.08] border border-white/10 px-3.5 py-1.5 text-[14.5px] font-bold text-[#F3F5F6] hover:bg-[#F6C22E]/15 transition-colors"
             >
               {t.title}
             </Link>
@@ -759,7 +759,7 @@ function CelPanel() {
               className="group flex items-center justify-between gap-3 px-4 h-11 rounded-2xl text-[15.5px] font-semibold text-[#C2CCD1] hover:text-[#F3F5F6] hover:bg-white/[0.07] transition-colors"
             >
               {l.label}
-              <ArrowUpRight size={15} strokeWidth={2.25} className="text-[#D89F03] opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-[opacity,transform] duration-300" />
+              <ArrowUpRight size={15} strokeWidth={2.25} className="text-[#F6C22E] opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-[opacity,transform] duration-300" />
             </Link>
           ))}
           <a
@@ -769,7 +769,7 @@ function CelPanel() {
             className="group flex items-center justify-between gap-3 px-4 h-11 rounded-2xl text-[15.5px] font-semibold text-[#C2CCD1] hover:text-[#F3F5F6] hover:bg-white/[0.07] transition-colors"
           >
             CEL website
-            <ArrowUpRight size={15} strokeWidth={2.25} className="text-[#D89F03]" />
+            <ArrowUpRight size={15} strokeWidth={2.25} className="text-[#F6C22E]" />
           </a>
         </div>
       </div>
@@ -805,7 +805,7 @@ function MegaContent({ item, featured }: { item: Item; featured: any[] }) {
             <span className="block font-display text-[22px] font-extrabold text-[#F3F5F6] leading-tight">All projects</span>
             <span className="mt-1 block text-[15.5px] text-[#A7B2B8]">Search and filter the full record.</span>
           </span>
-          <ArrowUpRight size={20} className="text-[#D89F03] transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+          <ArrowUpRight size={20} className="text-[#F6C22E] transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
         </Link>
       </div>
     );

@@ -117,7 +117,7 @@ export default function VerticalScroller({ verticals }: { verticals: Vertical[] 
             <div className="col-span-4 liquid-glass is-solid rounded-[30px] p-7 xl:p-8">
               <div className="relative pl-7">
                 <span aria-hidden className="absolute left-0 top-1 bottom-1 w-[3px] rounded-full bg-white/10 overflow-hidden">
-                  <span ref={railRef} className="block w-full h-full origin-top bg-gradient-to-b from-[#D89F03] to-[#D89F03]" style={{ transform: 'scaleY(0.02)' }} />
+                  <span ref={railRef} className="block w-full h-full origin-top bg-gradient-to-b from-[#F6C22E] to-[#F6C22E]" style={{ transform: 'scaleY(0.02)' }} />
                 </span>
                 <ol className="space-y-1.5">
                   {verticals.map((x, i) => {
@@ -130,7 +130,7 @@ export default function VerticalScroller({ verticals }: { verticals: Vertical[] 
                           aria-current={on ? 'true' : undefined}
                           className="group w-full text-left py-2.5 flex items-baseline gap-4"
                         >
-                          <span className={`font-display text-[17px] font-extrabold tabular-nums transition-colors duration-500 ${on ? 'text-[#D89F03]' : 'text-[#D6DDE0]/35'}`}>
+                          <span className={`font-display text-[17px] font-extrabold tabular-nums transition-colors duration-500 ${on ? 'text-[#F6C22E]' : 'text-[#D6DDE0]/35'}`}>
                             {String(i + 1).padStart(2, '0')}
                           </span>
                           <span
@@ -162,7 +162,7 @@ export default function VerticalScroller({ verticals }: { verticals: Vertical[] 
                     <h3 className="font-display text-[32px] xl:text-[38px] font-extrabold text-[#F3F5F6] leading-tight">{v.title}</h3>
                     {typeof v.projectCount === 'number' && v.projectCount > 0 && (
                       <span className="text-right shrink-0">
-                        <span className="block font-display text-[38px] font-extrabold leading-none text-[#D89F03] tabular-nums">{v.projectCount}</span>
+                        <span className="block font-display text-[38px] font-extrabold leading-none text-[#F6C22E] tabular-nums">{v.projectCount}</span>
                         <span className="block mt-1 text-[15px] font-semibold text-[#C2CCD1]">projects</span>
                       </span>
                     )}
@@ -176,7 +176,7 @@ export default function VerticalScroller({ verticals }: { verticals: Vertical[] 
                     <ul className="mt-5 flex flex-wrap gap-2">
                       {v.capabilities.slice(0, 5).map((c) => (
                         <li key={c} className="inline-flex items-center gap-1.5 rounded-full bg-white/[0.08] border border-white/10 px-3.5 py-1.5 text-[15px] font-semibold text-[#F3F5F6]">
-                          <CheckCircle2 size={15} className="text-[#D89F03]" />
+                          <CheckCircle2 size={15} className="text-[#F6C22E]" />
                           {c}
                         </li>
                       ))}

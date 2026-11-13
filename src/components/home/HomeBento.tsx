@@ -189,7 +189,7 @@ export default function HomeBento({
               transition={{ duration: 0.5, ease: EASE }}
               className="absolute left-6 right-6 bottom-6 text-white"
             >
-              {shot.date && <p className="text-[15px] font-bold text-[#D89F03]">{shot.date}</p>}
+              {shot.date && <p className="text-[15px] font-bold text-[#F6C22E]">{shot.date}</p>}
               <p className="mt-1 font-display text-lg font-bold leading-snug line-clamp-2">{shot.title}</p>
             </motion.div>
           )}
@@ -203,7 +203,7 @@ export default function HomeBento({
         className="press group relative overflow-hidden rounded-[28px] depth-2 min-h-[300px] liquid-glass is-solid"
       >
         <div className="absolute top-4 left-4 right-4 z-10 flex items-center justify-between">
-          <span className="rounded-full bg-[#D89F03]/15 px-3.5 py-1.5 text-[15px] font-extrabold text-[#F3F5F6] tracking-wide">Clients</span>
+          <span className="rounded-full bg-[#F6C22E]/15 px-3.5 py-1.5 text-[15px] font-extrabold text-[#F3F5F6] tracking-wide">Clients</span>
           <span className="grid place-items-center w-9 h-9 rounded-full bg-white/[0.06] text-[#F3F5F6] depth-1 transition-transform duration-500 group-hover:rotate-45">
             <ArrowUpRight size={16} strokeWidth={2.25} />
           </span>

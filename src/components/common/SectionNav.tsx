@@ -44,7 +44,7 @@ export default function SectionNav({ sections, id }: { sections: { id: string; l
                   <motion.span
                     layoutId={`${id}-section-pill`}
                     transition={{ type: 'spring', stiffness: 420, damping: 34, mass: 0.8 }}
-                    className="absolute inset-0 rounded-full bg-gradient-to-b from-[#D89F03]/45 to-[#D89F03]/20 border border-[#D89F03]/25 shadow-[0_6px_16px_-10px_rgba(196,146,27,0.8)]"
+                    className="absolute inset-0 rounded-full bg-gradient-to-b from-[#F6C22E]/45 to-[#F6C22E]/20 border border-[#F6C22E]/25 shadow-[0_6px_16px_-10px_rgba(246, 194, 46,0.8)]"
                   />
                 )}
                 <span className="relative">{s.label}</span>

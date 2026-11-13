@@ -124,7 +124,7 @@ function ProjectsPageInner() {
                     <motion.span
                       layoutId="projects-filter-pill"
                       transition={{ type: 'spring', stiffness: 420, damping: 34, mass: 0.8 }}
-                      className="absolute inset-0 rounded-full bg-gradient-to-b from-[#D89F03]/45 to-[#D89F03]/20 border border-[#D89F03]/25 shadow-[0_6px_16px_-10px_rgba(196,146,27,0.8)]"
+                      className="absolute inset-0 rounded-full bg-gradient-to-b from-[#F6C22E]/45 to-[#F6C22E]/20 border border-[#F6C22E]/25 shadow-[0_6px_16px_-10px_rgba(246, 194, 46,0.8)]"
                     />
                   )}
                   <span className="relative">
@@ -141,7 +141,7 @@ function ProjectsPageInner() {
               placeholder="Search title, client or place"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full h-10 pl-10 pr-4 rounded-full bg-white/[0.08] border border-white/10 text-[15.5px] text-[#F3F5F6] placeholder-[#7A888E] focus:outline-none focus:border-[#D89F03]/60 transition-colors"
+              className="w-full h-10 pl-10 pr-4 rounded-full bg-white/[0.08] border border-white/10 text-[15.5px] text-[#F3F5F6] placeholder-[#7A888E] focus:outline-none focus:border-[#F6C22E]/60 transition-colors"
             />
           </label>
         </div>

@@ -35,7 +35,7 @@ export function GlassPanel({
   };
 
   const interactiveStyles = interactive
-    ? 'transition duration-500 hover:-translate-y-1 hover:shadow-[0_20px_48px_rgba(15,25,32,0.6)] hover:border-[#D89F03]/45 active:scale-[0.99]'
+    ? 'transition duration-500 hover:-translate-y-1 hover:shadow-[0_20px_48px_rgba(15,25,32,0.6)] hover:border-[#F6C22E]/45 active:scale-[0.99]'
     : '';
 
   return (
@@ -44,7 +44,7 @@ export function GlassPanel({
       {...props}
     >
       {/* Gold Specular Edge Highlight Sheen */}
-      <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-[#D89F03]/50 to-transparent opacity-80 pointer-events-none" />
+      <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-[#F6C22E]/50 to-transparent opacity-80 pointer-events-none" />
       {children}
     </div>
   );
@@ -68,11 +68,11 @@ export function GlassButton({
 
   const variantStyles = {
     solid:
-      'bg-[#D89F03]/35 text-[#E3E8EA] border border-[#D89F03] hover:bg-[#D89F03] hover:shadow-[0_6px_20px_rgba(196,146,27,0.35)] hover:border-[#D89F03]',
+      'bg-[#F6C22E]/35 text-[#E3E8EA] border border-[#F6C22E] hover:bg-[#F6C22E] hover:shadow-[0_6px_20px_rgba(246, 194, 46,0.35)] hover:border-[#F6C22E]',
     outline:
-      'bg-transparent text-[#B9C5CA] border border-white/10 hover:bg-[#33454E]/80 hover:text-[#F3F5F6] hover:border-[#D89F03]/50',
+      'bg-transparent text-[#B9C5CA] border border-white/10 hover:bg-[#33454E]/80 hover:text-[#F3F5F6] hover:border-[#F6C22E]/50',
     pill:
-      'bg-[#33454E]/85 text-[#D89F03] border border-[#D89F03]/35 hover:bg-[#D89F03]/30 hover:text-[#E3E8EA] hover:border-transparent',
+      'bg-[#33454E]/85 text-[#F6C22E] border border-[#F6C22E]/35 hover:bg-[#F6C22E]/30 hover:text-[#E3E8EA] hover:border-transparent',
     ghost:
       'bg-transparent text-[#8E9AA0] hover:text-[#F3F5F6] hover:bg-white/[0.06] border border-transparent',
   }[variant];
@@ -106,7 +106,7 @@ export function GlassStat({
         <span className="text-[13.5px] uppercase tracking-widest text-[#8E9AA0] font-bold">
           {label}
         </span>
-        {Icon && <Icon className="w-4 h-4 text-[#D89F03]" />}
+        {Icon && <Icon className="w-4 h-4 text-[#F6C22E]" />}
       </div>
       <div className="font-display text-3xl sm:text-4xl font-semibold text-[#F3F5F6] tracking-tight">
         {value}

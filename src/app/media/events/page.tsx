@@ -22,14 +22,14 @@ export default function EventsPage() {
       {/* timeline: a gold rail with one dated marker per event; cards alternate sides on wide screens */}
       <section className="shell pb-24">
         <ol className="relative">
-          <span aria-hidden className="absolute left-[19px] lg:left-1/2 top-2 bottom-2 w-[3px] -translate-x-1/2 rounded-full bg-gradient-to-b from-[#D89F03] via-[#D89F03]/50 to-transparent" />
+          <span aria-hidden className="absolute left-[19px] lg:left-1/2 top-2 bottom-2 w-[3px] -translate-x-1/2 rounded-full bg-gradient-to-b from-[#F6C22E] via-[#F6C22E]/50 to-transparent" />
           {cubeEvents.map((evt, i) => {
             const right = i % 2 === 1;
             return (
               <li key={evt.title} className="relative pl-14 lg:pl-0 pb-12 last:pb-0 lg:grid lg:grid-cols-2 lg:gap-16">
                 {/* marker */}
-                <span aria-hidden className="absolute left-[19px] lg:left-1/2 top-7 -translate-x-1/2 grid place-items-center w-10 h-10 rounded-full bg-white/[0.06] border-[3px] border-[#D89F03] depth-1">
-                  <span className="w-3 h-3 rounded-full bg-[#D89F03]" />
+                <span aria-hidden className="absolute left-[19px] lg:left-1/2 top-7 -translate-x-1/2 grid place-items-center w-10 h-10 rounded-full bg-white/[0.06] border-[3px] border-[#F6C22E] depth-1">
+                  <span className="w-3 h-3 rounded-full bg-[#F6C22E]" />
                 </span>
                 <article className={`reveal glass glass-interactive glass-edge rounded-[28px] overflow-hidden ${right ? 'lg:col-start-2' : 'lg:col-start-1'}`}>
                   <div className="relative aspect-[16/9] bg-[#1A1F22]">
@@ -39,13 +39,13 @@ export default function EventsPage() {
                   <div className="p-6 sm:p-8">
                     <div className="flex flex-wrap gap-x-6 gap-y-2 text-[15.5px] font-semibold text-[#C2CCD1]">
                       {evt.date && (
-                        <span className="flex items-center gap-2 text-[#D89F03] font-bold tabular-nums">
+                        <span className="flex items-center gap-2 text-[#F6C22E] font-bold tabular-nums">
                           <CalendarDays size={17} /> {evt.date}
                         </span>
                       )}
                       {evt.location && (
                         <span className="flex items-center gap-2">
-                          <MapPin size={17} className="text-[#D89F03]" /> {evt.location}
+                          <MapPin size={17} className="text-[#F6C22E]" /> {evt.location}
                         </span>
                       )}
                     </div>

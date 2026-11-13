@@ -213,7 +213,7 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
               <button
                 onClick={() => setDetailJob(null)}
                 aria-label="Close job details"
-                className="press jiggle absolute top-5 right-5 h-10 w-10 rounded-full bg-white/[0.06] border border-white/10 text-[#F3F5F6] depth-1 grid place-items-center hover:bg-[#D89F03]/15 transition-colors"
+                className="press jiggle absolute top-5 right-5 h-10 w-10 rounded-full bg-white/[0.06] border border-white/10 text-[#F3F5F6] depth-1 grid place-items-center hover:bg-[#F6C22E]/15 transition-colors"
               >
                 <X size={18} strokeWidth={2.25} />
               </button>
@@ -225,7 +225,7 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
                   </span>
                 )}
                 {detailJob.employmentType && (
-                  <span className="rounded-full bg-[#D89F03]/15 border border-[#D89F03]/20 px-3 py-1 text-[13.5px] font-bold text-[#D89F03]">
+                  <span className="rounded-full bg-[#F6C22E]/15 border border-[#F6C22E]/20 px-3 py-1 text-[13.5px] font-bold text-[#F6C22E]">
                     {detailJob.employmentType}
                   </span>
                 )}
@@ -238,12 +238,12 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
               <div className="mt-4 flex flex-wrap gap-x-6 gap-y-2 text-[15px] text-[#C2CCD1] font-semibold">
                 {detailJob.location && (
                   <span className="flex items-center gap-2">
-                    <MapPin size={16} className="text-[#D89F03]" />
+                    <MapPin size={16} className="text-[#F6C22E]" />
                     {detailJob.location}
                   </span>
                 )}
                 <span className="flex items-center gap-2">
-                  <CalendarDays size={16} className="text-[#D89F03]" />
+                  <CalendarDays size={16} className="text-[#F6C22E]" />
                   {detailJob.closingDate ? `Apply by ${formatDate(detailJob.closingDate)}` : 'Open until filled'}
                 </span>
               </div>
@@ -253,7 +253,7 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
             <div className="flex-1 min-h-0 overflow-y-auto overscroll-contain px-6 sm:px-9 py-7 space-y-7 bg-white/[0.05]">
               {detailJob.experience && (
                 <div className="flex items-start gap-3 rounded-2xl bg-white/[0.06] border border-white/10 p-4">
-                  <Clock size={18} className="text-[#D89F03] mt-0.5 shrink-0" />
+                  <Clock size={18} className="text-[#F6C22E] mt-0.5 shrink-0" />
                   <p className="text-[16px] text-[#F3F5F6] leading-relaxed">{detailJob.experience}</p>
                 </div>
               )}
@@ -271,7 +271,7 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
                   <ul className="mt-4 grid sm:grid-cols-2 gap-2.5">
                     {detailQualifications.map((q, i) => (
                       <li key={i} className="flex items-start gap-2.5 rounded-2xl bg-white/[0.08] border border-white/[0.09] px-4 py-3 text-[15.5px] text-[#F3F5F6] leading-snug">
-                        <CheckCircle2 size={17} className="mt-0.5 shrink-0 text-[#D89F03]" />
+                        <CheckCircle2 size={17} className="mt-0.5 shrink-0 text-[#F6C22E]" />
                         <span>{q}</span>
                       </li>
                     ))}
@@ -280,19 +280,19 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
               )}
 
               {c.jobDetail.howToApplySteps.length > 0 && (
-                <div className="rounded-[22px] bg-[#D89F03]/10 border border-[#D89F03]/15 p-5 sm:p-6">
+                <div className="rounded-[22px] bg-[#F6C22E]/10 border border-[#F6C22E]/15 p-5 sm:p-6">
                   <p className="font-display text-[17px] font-bold text-[#F3F5F6]">{c.jobDetail.howToApplyTitle}</p>
                   <ol className="mt-3 space-y-2.5">
                     {c.jobDetail.howToApplySteps.map((step, i) => (
                       <li key={i} className="flex items-start gap-3 text-[18px] text-[#DDE3E6] leading-relaxed">
-                        <span className="grid place-items-center w-6 h-6 rounded-full bg-[#D89F03]/35 text-[13.5px] font-extrabold text-[#F3F5F6] shrink-0 mt-0.5">{i + 1}</span>
+                        <span className="grid place-items-center w-6 h-6 rounded-full bg-[#F6C22E]/35 text-[13.5px] font-extrabold text-[#F3F5F6] shrink-0 mt-0.5">{i + 1}</span>
                         <span>{step}</span>
                       </li>
                     ))}
                   </ol>
                   <p className="mt-4 text-[17px] text-[#C2CCD1]">
                     Questions? Write to{' '}
-                    <a href={`mailto:${detailEmail}`} className="font-bold text-[#F3F5F6] hover:text-[#D89F03] underline underline-offset-4 decoration-[#D89F03]/50">
+                    <a href={`mailto:${detailEmail}`} className="font-bold text-[#F3F5F6] hover:text-[#F6C22E] underline underline-offset-4 decoration-[#F6C22E]/50">
                       {detailEmail}
                     </a>
                   </p>
@@ -306,7 +306,7 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
                 href={`mailto:${detailEmail}?subject=${encodeURIComponent(`Application: ${detailJob.title}`)}`}
                 className="press btn-soft h-12 px-6 rounded-full text-[15.5px] font-bold inline-flex items-center justify-center gap-2"
               >
-                <Mail size={16} className="text-[#D89F03]" />
+                <Mail size={16} className="text-[#F6C22E]" />
                 Email application
               </a>
               <button
@@ -354,10 +354,10 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
                     <motion.span
                       layoutId="careers-tab-pill"
                       transition={SPRING}
-                      className="absolute inset-0 rounded-[22px] sm:rounded-full bg-gradient-to-b from-[#D89F03]/45 to-[#D89F03]/20 border border-[#D89F03]/25 shadow-[0_6px_16px_-10px_rgba(196,146,27,0.8)]"
+                      className="absolute inset-0 rounded-[22px] sm:rounded-full bg-gradient-to-b from-[#F6C22E]/45 to-[#F6C22E]/20 border border-[#F6C22E]/25 shadow-[0_6px_16px_-10px_rgba(246, 194, 46,0.8)]"
                     />
                   )}
-                  <Icon size={16} strokeWidth={2.25} className="relative text-[#D89F03] shrink-0" />
+                  <Icon size={16} strokeWidth={2.25} className="relative text-[#F6C22E] shrink-0" />
                   <span className="relative">{label}</span>
                   {typeof count === 'number' && (
                     <span className={`relative shrink-0 grid place-items-center min-w-6 h-6 px-1.5 rounded-full text-[13.5px] font-extrabold tabular-nums ${on ? 'bg-white/[0.07]' : 'bg-white/[0.08]'}`}>
@@ -374,11 +374,11 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
               href={`mailto:${c.contactEmail}`}
               className="group self-start md:self-auto inline-flex items-center gap-3 rounded-full glass glass-edge pl-2 pr-5 h-12 text-[15px]"
             >
-              <span className="grid place-items-center w-9 h-9 rounded-full bg-[#D89F03]/15 text-[#D89F03]">
+              <span className="grid place-items-center w-9 h-9 rounded-full bg-[#F6C22E]/15 text-[#F6C22E]">
                 <Mail size={16} strokeWidth={2.25} />
               </span>
               <span className="text-[#A7B2B8] font-semibold hidden sm:inline">{c.contactLabel}</span>
-              <span className="font-bold text-[#F3F5F6] group-hover:text-[#D89F03] transition-colors">{c.contactEmail}</span>
+              <span className="font-bold text-[#F3F5F6] group-hover:text-[#F6C22E] transition-colors">{c.contactEmail}</span>
             </a>
           )}
         </div>
@@ -398,7 +398,7 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
               >
                 {initialCareers.length === 0 ? (
                   <div className="liquid-glass rounded-[30px] p-10 sm:p-14 text-center max-w-3xl mx-auto">
-                    <span className="grid place-items-center w-16 h-16 mx-auto rounded-[20px] bg-[#D89F03]/15 text-[#D89F03] depth-1">
+                    <span className="grid place-items-center w-16 h-16 mx-auto rounded-[20px] bg-[#F6C22E]/15 text-[#F6C22E] depth-1">
                       <Briefcase size={28} strokeWidth={2} />
                     </span>
                     <h3 className="mt-6 font-display text-[26px] font-extrabold text-[#F3F5F6]">{c.emptyState.title}</h3>
@@ -430,7 +430,7 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
                               setDetailJob(job);
                             }
                           }}
-                          className={`press group cursor-pointer glass glass-interactive glass-edge rounded-[30px] p-7 sm:p-9 focus:outline-none focus-visible:ring-4 focus-visible:ring-[#D89F03]/50 ${
+                          className={`press group cursor-pointer glass glass-interactive glass-edge rounded-[30px] p-7 sm:p-9 focus:outline-none focus-visible:ring-4 focus-visible:ring-[#F6C22E]/50 ${
                             single ? 'grid lg:grid-cols-12 gap-8 lg:gap-12' : 'flex flex-col'
                           }`}
                         >
@@ -444,7 +444,7 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
                                 <span className="rounded-full bg-white/[0.08] border border-white/10 px-3 py-1 text-[13.5px] font-bold text-[#C2CCD1]">{job.department}</span>
                               )}
                               {job.employmentType && (
-                                <span className="rounded-full bg-[#D89F03]/15 border border-[#D89F03]/20 px-3 py-1 text-[13.5px] font-bold text-[#D89F03]">{job.employmentType}</span>
+                                <span className="rounded-full bg-[#F6C22E]/15 border border-[#F6C22E]/20 px-3 py-1 text-[13.5px] font-bold text-[#F6C22E]">{job.employmentType}</span>
                               )}
                             </div>
 
@@ -453,13 +453,13 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
                             <div className="mt-3 flex flex-wrap gap-x-6 gap-y-2 text-[15px] font-semibold text-[#C2CCD1]">
                               {job.location && (
                                 <span className="flex items-center gap-2">
-                                  <MapPin size={16} className="text-[#D89F03]" />
+                                  <MapPin size={16} className="text-[#F6C22E]" />
                                   {job.location}
                                 </span>
                               )}
                               {job.closingDate && (
                                 <span className="flex items-center gap-2">
-                                  <CalendarDays size={16} className="text-[#D89F03]" />
+                                  <CalendarDays size={16} className="text-[#F6C22E]" />
                                   Apply by {formatDate(job.closingDate)}
                                 </span>
                               )}
@@ -467,7 +467,7 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
 
                             {job.experience && (
                               <p className="mt-5 flex items-start gap-2.5 text-[16px] text-[#F3F5F6] leading-relaxed">
-                                <Clock size={17} className="text-[#D89F03] mt-1 shrink-0" />
+                                <Clock size={17} className="text-[#F6C22E] mt-1 shrink-0" />
                                 <span>{job.experience}</span>
                               </p>
                             )}
@@ -481,7 +481,7 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
                                 Apply &amp; upload CV
                                 <ArrowUpRight size={16} strokeWidth={2.25} />
                               </button>
-                              <span className="h-12 px-5 rounded-full inline-flex items-center gap-2 text-[15.5px] font-bold text-[#F3F5F6] group-hover:text-[#D89F03] transition-colors">
+                              <span className="h-12 px-5 rounded-full inline-flex items-center gap-2 text-[15.5px] font-bold text-[#F3F5F6] group-hover:text-[#F6C22E] transition-colors">
                                 View full details
                                 <ArrowUpRight size={16} strokeWidth={2.25} className="transition-transform duration-500 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                               </span>
@@ -498,7 +498,7 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
                                   </li>
                                 ))}
                                 {!single && quals.length > 4 && (
-                                  <li className="rounded-full bg-[#D89F03]/15 px-3 py-1.5 text-[14px] font-bold text-[#D89F03]">+{quals.length - 4} more</li>
+                                  <li className="rounded-full bg-[#F6C22E]/15 px-3 py-1.5 text-[14px] font-bold text-[#F6C22E]">+{quals.length - 4} more</li>
                                 )}
                               </ul>
                             </div>
@@ -510,9 +510,9 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
                 )}
 
                 {/* Talent network callout */}
-                <div className="rounded-[30px] bg-gradient-to-b from-[#D89F03]/20 to-[#D89F03]/5 border border-[#D89F03]/20 depth-1 p-7 sm:p-10 flex flex-col lg:flex-row lg:items-center justify-between gap-7">
+                <div className="rounded-[30px] bg-gradient-to-b from-[#F6C22E]/20 to-[#F6C22E]/5 border border-[#F6C22E]/20 depth-1 p-7 sm:p-10 flex flex-col lg:flex-row lg:items-center justify-between gap-7">
                   <div className="flex items-start gap-5 max-w-3xl">
-                    <span className="hidden sm:grid place-items-center w-14 h-14 rounded-[18px] bg-white/[0.08] text-[#D89F03] depth-1 shrink-0">
+                    <span className="hidden sm:grid place-items-center w-14 h-14 rounded-[18px] bg-white/[0.08] text-[#F6C22E] depth-1 shrink-0">
                       <Users size={24} strokeWidth={2} />
                     </span>
                     <div>
@@ -561,7 +561,7 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
                       </AnimatePresence>
                       {selectedJob?.location && (
                         <p className="mt-2 flex items-center gap-2 text-[17px] font-semibold text-[#DDE3E6]">
-                          <MapPin size={15} className="text-[#D89F03]" />
+                          <MapPin size={15} className="text-[#F6C22E]" />
                           {selectedJob.location}
                         </p>
                       )}
@@ -574,14 +574,14 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
                       <ol className="mt-4 space-y-3">
                         {c.jobDetail.howToApplySteps.map((step, i) => (
                           <li key={i} className="flex items-start gap-3 text-[17.5px] text-[#DDE3E6] leading-relaxed">
-                            <span className="grid place-items-center w-6 h-6 rounded-full bg-[#D89F03]/15 text-[13.5px] font-extrabold text-[#D89F03] shrink-0 mt-0.5">{i + 1}</span>
+                            <span className="grid place-items-center w-6 h-6 rounded-full bg-[#F6C22E]/15 text-[13.5px] font-extrabold text-[#F6C22E] shrink-0 mt-0.5">{i + 1}</span>
                             <span>{step}</span>
                           </li>
                         ))}
                       </ol>
                       {c.contactEmail && (
-                        <a href={`mailto:${c.contactEmail}`} className="mt-5 pt-4 border-t border-white/10 flex items-center gap-2.5 text-[15px] font-bold text-[#F3F5F6] hover:text-[#D89F03] transition-colors">
-                          <Mail size={16} className="text-[#D89F03]" />
+                        <a href={`mailto:${c.contactEmail}`} className="mt-5 pt-4 border-t border-white/10 flex items-center gap-2.5 text-[15px] font-bold text-[#F3F5F6] hover:text-[#F6C22E] transition-colors">
+                          <Mail size={16} className="text-[#F6C22E]" />
                           {c.contactEmail}
                         </a>
                       )}
@@ -604,7 +604,7 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
                           initial={{ scale: 0.4, rotate: -12 }}
                           animate={{ scale: 1, rotate: 0 }}
                           transition={{ type: 'spring', stiffness: 380, damping: 14, delay: 0.05 }}
-                          className="grid place-items-center w-20 h-20 mx-auto rounded-full bg-gradient-to-b from-[#D89F03]/35 to-[#D89F03]/20 text-[#F3F5F6] depth-2"
+                          className="grid place-items-center w-20 h-20 mx-auto rounded-full bg-gradient-to-b from-[#F6C22E]/35 to-[#F6C22E]/20 text-[#F3F5F6] depth-2"
                         >
                           <Check size={36} strokeWidth={2.5} />
                         </motion.span>
@@ -691,10 +691,10 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
                             onDrop={(e) => { e.preventDefault(); setDragging(false); acceptFile(e.dataTransfer.files?.[0]); }}
                             className={`relative block rounded-[22px] border-2 border-dashed p-7 text-center cursor-pointer transition-[background-color,border-color,transform] duration-300 ${
                               dragging
-                                ? 'border-[#D89F03] bg-[#D89F03]/15 scale-[1.01]'
+                                ? 'border-[#F6C22E] bg-[#F6C22E]/15 scale-[1.01]'
                                 : resumeFile
-                                  ? 'border-[#D89F03]/50 bg-[#D89F03]/10'
-                                  : 'border-white/20 bg-white/[0.06] hover:bg-white/[0.06] hover:border-[#D89F03]/40'
+                                  ? 'border-[#F6C22E]/50 bg-[#F6C22E]/10'
+                                  : 'border-white/20 bg-white/[0.06] hover:bg-white/[0.06] hover:border-[#F6C22E]/40'
                             }`}
                           >
                             <input
@@ -704,7 +704,7 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
                               onChange={handleFileChange}
                               className="sr-only"
                             />
-                            <span className={`grid place-items-center w-12 h-12 mx-auto rounded-2xl depth-1 ${resumeFile ? 'bg-[#D89F03]/35 text-[#F3F5F6]' : 'bg-[#D89F03]/15 text-[#D89F03]'}`}>
+                            <span className={`grid place-items-center w-12 h-12 mx-auto rounded-2xl depth-1 ${resumeFile ? 'bg-[#F6C22E]/35 text-[#F3F5F6]' : 'bg-[#F6C22E]/15 text-[#F6C22E]'}`}>
                               {resumeFile ? <FileText size={22} strokeWidth={2} /> : <Upload size={22} strokeWidth={2} />}
                             </span>
                             <span className="mt-3 block text-[16px] font-bold text-[#F3F5F6] break-all">
@@ -766,7 +766,7 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
                 const Icon = BENEFIT_ICONS[item.icon] || Award;
                 return (
                   <div key={i} className="glass glass-interactive glass-edge rounded-[26px] p-7">
-                    <span className="grid place-items-center w-14 h-14 rounded-[18px] bg-gradient-to-b from-[#D89F03]/35 to-[#D89F03]/20 text-[#F3F5F6] depth-1">
+                    <span className="grid place-items-center w-14 h-14 rounded-[18px] bg-gradient-to-b from-[#F6C22E]/35 to-[#F6C22E]/20 text-[#F3F5F6] depth-1">
                       <Icon size={24} strokeWidth={2} />
                     </span>
                     <h4 className="mt-6 font-display text-[20px] font-extrabold text-[#F3F5F6] leading-snug">{item.title}</h4>

@@ -47,7 +47,7 @@ export default async function VerticalDetail({ id }: { id: string }) {
                 <ul className="mt-4 flex flex-wrap gap-2.5">
                   {vertical.capabilities.map((c) => (
                     <li key={c} className="inline-flex items-center gap-2 rounded-full bg-white/[0.06] border border-white/10 px-4 py-2 text-[15.5px] font-semibold text-[#F3F5F6] depth-1">
-                      <CheckCircle2 size={16} className="text-[#D89F03]" />
+                      <CheckCircle2 size={16} className="text-[#F6C22E]" />
                       {c}
                     </li>
                   ))}
@@ -78,9 +78,9 @@ export default async function VerticalDetail({ id }: { id: string }) {
                           <div key={it} className="rounded-[20px] bg-white/[0.08] border border-white/[0.09] p-4">
                             {f!.lead && <dt className="text-[14.5px] font-semibold text-[#A7B2B8] leading-snug">{f!.lead}</dt>}
                             <dd className="mt-1 flex items-baseline gap-1.5 flex-wrap">
-                              {f!.prefix && <span className="font-display text-[17px] font-extrabold text-[#D89F03]">{f!.prefix}</span>}
+                              {f!.prefix && <span className="font-display text-[17px] font-extrabold text-[#F6C22E]">{f!.prefix}</span>}
                               <span className="font-display text-[34px] font-extrabold leading-none tracking-[-0.02em] text-[#F3F5F6] tabular-nums">{fmtFigure(f!.value, f!.decimals)}</span>
-                              <span className="font-display text-[16px] font-extrabold text-[#D89F03] leading-snug">{f!.unit}</span>
+                              <span className="font-display text-[16px] font-extrabold text-[#F6C22E] leading-snug">{f!.unit}</span>
                             </dd>
                           </div>
                         ))}
@@ -90,7 +90,7 @@ export default async function VerticalDetail({ id }: { id: string }) {
                       <ul className="mt-5 space-y-2.5">
                         {words.map(({ it }) => (
                           <li key={it} className="flex items-start gap-3 text-[17px] font-semibold text-[#F3F5F6] leading-snug">
-                            <span className="mt-2 w-2 h-2 rounded-full bg-[#D89F03] shrink-0" />
+                            <span className="mt-2 w-2 h-2 rounded-full bg-[#F6C22E] shrink-0" />
                             {it}
                           </li>
                         ))}
@@ -111,9 +111,9 @@ export default async function VerticalDetail({ id }: { id: string }) {
           <div className="shell">
             <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10 reveal">
               <h2 className="headline-light text-3xl sm:text-[2.6rem] text-[#F3F5F6]">
-                Projects <span className="text-[#D89F03]">({projects.length})</span>
+                Projects <span className="text-[#F6C22E]">({projects.length})</span>
               </h2>
-              <Link href="/projects" className="group self-start md:self-auto inline-flex items-center gap-2 text-[16px] font-bold text-[#F3F5F6] border-b-2 border-[#D89F03] pb-1 hover:text-[#D89F03] transition-colors">
+              <Link href="/projects" className="group self-start md:self-auto inline-flex items-center gap-2 text-[16px] font-bold text-[#F3F5F6] border-b-2 border-[#F6C22E] pb-1 hover:text-[#F6C22E] transition-colors">
                 All projects <ArrowUpRight size={16} />
               </Link>
             </div>

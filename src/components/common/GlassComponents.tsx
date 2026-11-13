@@ -55,9 +55,9 @@ export function GlassButton({
   let btnStyles = '';
 
   if (variant === 'gold') {
-    btnStyles = 'bg-[#D89F03]/35 hover:bg-[#C77B60] text-[#F3F5F6] shadow-[0_4px_20px_rgba(217,154,66,0.3)] hover:shadow-[0_6px_25px_rgba(217,154,66,0.4)]';
+    btnStyles = 'bg-[#F6C22E]/35 hover:bg-[#C77B60] text-[#F3F5F6] shadow-[0_4px_20px_rgba(217,154,66,0.3)] hover:shadow-[0_6px_25px_rgba(217,154,66,0.4)]';
   } else if (variant === 'primary') {
-    btnStyles = 'bg-[#2B3B44] hover:bg-[#D89F03]/30 text-white shadow-[0_4px_20px_rgba(36,50,57,0.2)] hover:shadow-[0_8px_30px_rgba(36,50,57,0.3)]';
+    btnStyles = 'bg-[#2B3B44] hover:bg-[#F6C22E]/30 text-white shadow-[0_4px_20px_rgba(36,50,57,0.2)] hover:shadow-[0_8px_30px_rgba(36,50,57,0.3)]';
   } else {
     btnStyles = 'bg-white/[0.07] hover:bg-white/[0.1] text-[#F3F5F6] hover:text-[#E3E8EA] backdrop-blur-xl border border-white/12 shadow-[0_4px_20px_rgba(0,0,0,0.04)]';
   }

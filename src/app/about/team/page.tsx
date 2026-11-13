@@ -74,7 +74,7 @@ export default function TeamPage() {
                       <motion.span
                         layoutId="team-filter-pill"
                         transition={SPRING}
-                        className="absolute inset-0 rounded-full bg-gradient-to-b from-[#D89F03]/45 to-[#D89F03]/20 border border-[#D89F03]/25 shadow-[0_6px_16px_-10px_rgba(196,146,27,0.8)]"
+                        className="absolute inset-0 rounded-full bg-gradient-to-b from-[#F6C22E]/45 to-[#F6C22E]/20 border border-[#F6C22E]/25 shadow-[0_6px_16px_-10px_rgba(246, 194, 46,0.8)]"
                       />
                     )}
                     <span className="relative">{f.label}</span>
@@ -93,7 +93,7 @@ export default function TeamPage() {
                 onChange={(e) => setQuery(e.target.value)}
                 placeholder="Search by name or role"
                 aria-label="Search the team"
-                className="w-full h-10 pl-11 pr-10 rounded-full bg-white/[0.08] border border-white/10 text-[15.5px] text-[#F3F5F6] placeholder:text-[#6F7B81] focus:outline-none focus:border-[#D89F03]/50 focus:ring-4 focus:ring-[#D89F03]/25 transition-[border-color,box-shadow]"
+                className="w-full h-10 pl-11 pr-10 rounded-full bg-white/[0.08] border border-white/10 text-[15.5px] text-[#F3F5F6] placeholder:text-[#6F7B81] focus:outline-none focus:border-[#F6C22E]/50 focus:ring-4 focus:ring-[#F6C22E]/25 transition-[border-color,box-shadow]"
               />
               {query && (
                 <button type="button" onClick={() => setQuery('')} aria-label="Clear search" className="press absolute right-2 grid place-items-center w-7 h-7 rounded-full text-[#A7B2B8] hover:bg-white/[0.08]">
@@ -118,7 +118,7 @@ export default function TeamPage() {
               aria-labelledby={`dept-${id}`}
             >
               <div className="flex items-center gap-4 mb-6">
-                <span className="grid place-items-center w-12 h-12 rounded-2xl bg-gradient-to-b from-[#D89F03]/35 to-[#D89F03]/20 text-[#F3F5F6] depth-1">
+                <span className="grid place-items-center w-12 h-12 rounded-2xl bg-gradient-to-b from-[#F6C22E]/35 to-[#F6C22E]/20 text-[#F3F5F6] depth-1">
                   <Icon size={21} strokeWidth={2} />
                 </span>
                 <h2 id={`dept-${id}`} className="font-display text-[24px] sm:text-[28px] font-extrabold text-[#F3F5F6]">
@@ -138,7 +138,7 @@ export default function TeamPage() {
                     </div>
                     <div className="min-w-0">
                       <p className="font-display text-[17.5px] font-bold text-[#F3F5F6] leading-snug">{m.name}</p>
-                      {m.designation && <p className="mt-0.5 text-[15.5px] font-semibold text-[#D89F03] leading-snug">{m.designation}</p>}
+                      {m.designation && <p className="mt-0.5 text-[15.5px] font-semibold text-[#F6C22E] leading-snug">{m.designation}</p>}
                     </div>
                   </li>
                 ))}
@@ -149,7 +149,7 @@ export default function TeamPage() {
 
         {total === 0 && (
           <div className="liquid-glass rounded-[28px] p-10 text-center">
-            <Users size={28} className="mx-auto text-[#D89F03]" />
+            <Users size={28} className="mx-auto text-[#F6C22E]" />
             <p className="mt-3 font-display text-[20px] font-bold text-[#F3F5F6]">No one matches &ldquo;{query}&rdquo;</p>
             <button type="button" onClick={() => setQuery('')} className="press btn-soft mt-5 h-11 px-5 rounded-full text-[15px] font-bold">
               Clear search

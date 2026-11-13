@@ -28,7 +28,7 @@ export default function ClientsPage() {
       />
 
       <section className="shell pb-16 lg:pb-20">
-        <SectionHeading eyebrow="Clients" title={<>Clients <span className="text-[#D89F03]">({logos.length})</span></>} />
+        <SectionHeading eyebrow="Clients" title={<>Clients <span className="text-[#F6C22E]">({logos.length})</span></>} />
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 xl:grid-cols-6 gap-4 reveal-stagger">
           {logos.map((c, i) => (
             <div key={`${c.logo}-${i}`} className="group h-36 lg:h-40 rounded-[22px] bg-white border border-white/[0.08] depth-1 px-6 py-5 transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-1">

@@ -114,16 +114,16 @@ export default function Footer() {
             <p className="label-mono">Office</p>
             <ul className="mt-4 space-y-3.5 text-[16.5px]">
               <li className="flex gap-3">
-                <MapPin size={17} strokeWidth={1.75} className="text-[#D89F03] shrink-0 mt-0.5" />
+                <MapPin size={17} strokeWidth={1.75} className="text-[#F6C22E] shrink-0 mt-0.5" />
                 <span className="leading-relaxed">{contactInfo.address}</span>
               </li>
               <li className="flex gap-3 items-center">
-                <Mail size={17} strokeWidth={1.75} className="text-[#D89F03] shrink-0" />
-                <a href={`mailto:${contactInfo.email}`} className="font-semibold text-[#F3F5F6] hover:text-[#D89F03] transition-colors">{contactInfo.email}</a>
+                <Mail size={17} strokeWidth={1.75} className="text-[#F6C22E] shrink-0" />
+                <a href={`mailto:${contactInfo.email}`} className="font-semibold text-[#F3F5F6] hover:text-[#F6C22E] transition-colors">{contactInfo.email}</a>
               </li>
               <li className="flex gap-3 items-center">
-                <Phone size={17} strokeWidth={1.75} className="text-[#D89F03] shrink-0" />
-                <a href={`tel:${contactInfo.phoneTel}`} className="font-semibold text-[#F3F5F6] hover:text-[#D89F03] transition-colors">{contactInfo.phone}</a>
+                <Phone size={17} strokeWidth={1.75} className="text-[#F6C22E] shrink-0" />
+                <a href={`tel:${contactInfo.phoneTel}`} className="font-semibold text-[#F3F5F6] hover:text-[#F6C22E] transition-colors">{contactInfo.phone}</a>
               </li>
             </ul>
             <Link

@@ -54,7 +54,7 @@ export default function IntroAnimation() {
           <h2 className="text-xl sm:text-2xl font-display font-extrabold text-white tracking-wider">
             CUBE
           </h2>
-          <p className="text-xs sm:text-sm text-[#D89F03] font-medium">
+          <p className="text-xs sm:text-sm text-[#F6C22E] font-medium">
             Centre for Urbanization, Buildings &amp; Environment
           </p>
           <p className="text-[13.5px] text-[#8E9AA0]">
@@ -64,7 +64,7 @@ export default function IntroAnimation() {
 
         {/* Subtle Loading Pulse Bar */}
         <div className="mt-6 w-32 h-1 bg-white/10 rounded-full overflow-hidden">
-          <div className="h-full bg-[#D89F03]/30 rounded-full animate-pulse-subtle" />
+          <div className="h-full bg-[#F6C22E]/30 rounded-full animate-pulse-subtle" />
         </div>
       </div>
     </div>

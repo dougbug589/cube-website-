@@ -126,7 +126,7 @@ export default function ExpertiseFigures() {
           </div>
           <Link
             href="/verticals/building-construction"
-            className="group self-start md:self-auto inline-flex items-center gap-2 text-[16px] font-bold text-[#F3F5F6] border-b-2 border-[#D89F03] pb-1 hover:text-[#D89F03] transition-colors"
+            className="group self-start md:self-auto inline-flex items-center gap-2 text-[16px] font-bold text-[#F3F5F6] border-b-2 border-[#F6C22E] pb-1 hover:text-[#F6C22E] transition-colors"
           >
             Building &amp; Construction
             <ArrowUpRight size={16} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
@@ -145,7 +145,7 @@ export default function ExpertiseFigures() {
                 // the visible digits count and scramble; assistive tech gets the real figure
                 aria-label={[f.prefix, fmtFigure(f.value, f.decimals), f.unit].filter(Boolean).join(' ')}
               >
-                {f.prefix && <span className="font-display text-[22px] sm:text-[26px] font-extrabold text-[#D89F03]">{f.prefix}</span>}
+                {f.prefix && <span className="font-display text-[22px] sm:text-[26px] font-extrabold text-[#F6C22E]">{f.prefix}</span>}
                 <span
                   ref={(el) => {
                     numRefs.current[i] = el;
@@ -155,12 +155,12 @@ export default function ExpertiseFigures() {
                 >
                   {fmtFigure(f.value, f.decimals)}
                 </span>
-                <span className="font-display text-[18px] sm:text-[22px] font-extrabold text-[#D89F03]">{f.unit}</span>
+                <span className="font-display text-[18px] sm:text-[22px] font-extrabold text-[#F6C22E]">{f.unit}</span>
               </dd>
               {/* gold rule draws in under each figure (transform only) */}
               <span
                 aria-hidden
-                className="absolute left-4 sm:left-6 lg:left-8 bottom-0 h-[3px] w-16 rounded-full bg-gradient-to-r from-[#D89F03] to-[#D89F03] origin-left transition-transform duration-[1200ms] ease-[cubic-bezier(0.22,1,0.36,1)]"
+                className="absolute left-4 sm:left-6 lg:left-8 bottom-0 h-[3px] w-16 rounded-full bg-gradient-to-r from-[#F6C22E] to-[#F6C22E] origin-left transition-transform duration-[1200ms] ease-[cubic-bezier(0.22,1,0.36,1)]"
                 style={{ transform: shown ? 'scaleX(1)' : 'scaleX(0)', transitionDelay: `${i * 140 + 300}ms` }}
               />
             </div>

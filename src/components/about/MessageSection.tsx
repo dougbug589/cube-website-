@@ -173,7 +173,7 @@ export default function MessageSection({
       <div className="shell grid lg:grid-cols-12 gap-6 lg:gap-10 items-stretch">
         {/* portrait with a name plate, soft gold aura behind for depth */}
         <figure className="lg:col-span-4 relative reveal">
-          <div aria-hidden className="absolute -inset-6 rounded-[48px] bg-[radial-gradient(60%_60%_at_40%_40%,rgba(216, 159, 3,0.35),transparent_70%)] blur-2xl pointer-events-none" />
+          <div aria-hidden className="absolute -inset-6 rounded-[48px] bg-[radial-gradient(60%_60%_at_40%_40%,rgba(246, 194, 46,0.35),transparent_70%)] blur-2xl pointer-events-none" />
           <div className="relative h-[440px] sm:h-[520px] lg:h-[560px] rounded-[32px] overflow-hidden depth-3 bg-[#1A1F22]">
             <Image src={image} alt={name} fill sizes="(max-width: 1024px) 92vw, 34vw" className="object-cover object-[50%_25%]" />
             <div aria-hidden className="absolute inset-0 bg-gradient-to-t from-[#1B262C]/70 via-transparent to-transparent" />
@@ -190,7 +190,7 @@ export default function MessageSection({
         <div className="lg:col-span-8 reveal">
           <div className="liquid-glass is-solid relative h-[460px] sm:h-[520px] lg:h-[560px] rounded-[32px] depth-3 flex flex-col overflow-hidden">
             <div className="relative flex items-center gap-3 px-6 sm:px-9 pt-6 sm:pt-7 pb-3">
-              <span className="grid place-items-center w-11 h-11 rounded-2xl bg-gradient-to-b from-[#D89F03]/35 to-[#D89F03]/20 text-[#F3F5F6] depth-1 shrink-0">
+              <span className="grid place-items-center w-11 h-11 rounded-2xl bg-gradient-to-b from-[#F6C22E]/35 to-[#F6C22E]/20 text-[#F3F5F6] depth-1 shrink-0">
                 <Quote size={19} strokeWidth={2.25} />
               </span>
               <p className="label-mono">{label}</p>
@@ -213,7 +213,7 @@ export default function MessageSection({
                 ref={boxRef}
                 tabIndex={0}
                 aria-label={`${label} from ${name}`}
-                className="message-window h-full overflow-y-auto overscroll-contain no-scrollbar px-6 sm:px-9 pr-10 sm:pr-14 focus:outline-none focus-visible:ring-4 focus-visible:ring-[#D89F03]/40 rounded-b-[32px]"
+                className="message-window h-full overflow-y-auto overscroll-contain no-scrollbar px-6 sm:px-9 pr-10 sm:pr-14 focus:outline-none focus-visible:ring-4 focus-visible:ring-[#F6C22E]/40 rounded-b-[32px]"
               >
                 <div className="pt-4 pb-16">
                   {paragraphs[0] && (
@@ -232,7 +232,7 @@ export default function MessageSection({
               </div>
               {/* progress rail */}
               <div aria-hidden className="absolute right-4 sm:right-5 top-3 bottom-6 w-[3px] rounded-full bg-white/[0.08] overflow-hidden">
-                <div ref={thumbRef} className="w-full rounded-full bg-gradient-to-b from-[#D89F03] to-[#D89F03] will-change-transform" style={{ height: '30%' }} />
+                <div ref={thumbRef} className="w-full rounded-full bg-gradient-to-b from-[#F6C22E] to-[#F6C22E] will-change-transform" style={{ height: '30%' }} />
               </div>
             </div>
           </div>

@@ -104,7 +104,7 @@ function Section({
           {action && (
             <Link
               href={action.href}
-              className="group inline-flex items-center gap-2 text-sm text-[#F3F5F6] shrink-0 border-b border-[#D89F03] pb-1 hover:text-[#D89F03] transition-colors"
+              className="group inline-flex items-center gap-2 text-sm text-[#F3F5F6] shrink-0 border-b border-[#F6C22E] pb-1 hover:text-[#F6C22E] transition-colors"
             >
               {action.label}
               <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
@@ -221,7 +221,7 @@ export default function HomePage() {
         <ul className="mt-6 lg:mt-8 grid md:grid-cols-3 gap-4 lg:gap-6 reveal-stagger">
           {ABOUT_POINTS.map((pt) => (
             <li key={pt.k} className="liquid-glass rounded-[26px] p-6 lg:p-7 flex flex-col">
-              <span className="grid place-items-center w-12 h-12 rounded-2xl bg-[#D89F03]/15 text-[#D89F03] depth-1">
+              <span className="grid place-items-center w-12 h-12 rounded-2xl bg-[#F6C22E]/15 text-[#F6C22E] depth-1">
                 <pt.Icon size={21} strokeWidth={2} />
               </span>
               <span className="mt-4 block font-display text-[21px] font-bold text-[#F3F5F6] leading-snug">{pt.k}</span>
@@ -237,12 +237,12 @@ export default function HomePage() {
       {/* 04 · Featured projects (stacked carousel on constellation) */}
       <section id="projects-showcase" className="relative pb-16 lg:pb-24 overflow-hidden">
         <svg aria-hidden className="absolute inset-x-0 top-0 w-full h-72 opacity-40 pointer-events-none" preserveAspectRatio="none" viewBox="0 0 1400 300">
-          <g stroke="#D89F03" strokeWidth="0.6" fill="none" opacity="0.55">
+          <g stroke="#F6C22E" strokeWidth="0.6" fill="none" opacity="0.55">
             <path d="M 100 40 L 320 120 L 560 60 L 780 150" />
             <path d="M 320 120 L 460 200 L 700 160 L 980 80" />
             <path d="M 780 150 L 980 80 L 1200 140 L 1380 90" />
           </g>
-          <g fill="#D89F03" opacity="0.7">
+          <g fill="#F6C22E" opacity="0.7">
             {[[100, 40], [320, 120], [560, 60], [780, 150], [460, 200], [700, 160], [980, 80], [1200, 140], [1380, 90]].map(([x, y], i) => (
               <circle key={i} cx={x} cy={y} r="1.8" />
             ))}
@@ -298,7 +298,7 @@ export default function HomePage() {
           <ul className="lg:col-span-5 grid gap-4 lg:gap-5 content-between reveal-stagger">
             {celServiceList.slice(0, 3).map((sv) => (
               <li key={sv.id || sv.title} className="liquid-glass is-solid rounded-[24px] p-5 lg:p-6 flex items-start gap-4">
-                <span className="grid place-items-center w-12 h-12 rounded-2xl bg-[#D89F03]/15 text-[#D89F03] depth-1 shrink-0">
+                <span className="grid place-items-center w-12 h-12 rounded-2xl bg-[#F6C22E]/15 text-[#F6C22E] depth-1 shrink-0">
                   <FlaskConical size={21} strokeWidth={2} />
                 </span>
                 <span>

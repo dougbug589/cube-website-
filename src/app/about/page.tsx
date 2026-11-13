@@ -91,7 +91,7 @@ export default function AboutPage() {
               <p className="mt-5 pt-5 border-t border-white/10 text-[17px] text-[#C2CCD1] leading-relaxed">{contactInfo.address}</p>
             </div>
             <div className="glass glass-interactive glass-edge rounded-[24px] p-5 flex items-start gap-4">
-              <span className="grid place-items-center w-12 h-12 rounded-2xl bg-[#D89F03]/15 text-[#D89F03] depth-1 shrink-0">
+              <span className="grid place-items-center w-12 h-12 rounded-2xl bg-[#F6C22E]/15 text-[#F6C22E] depth-1 shrink-0">
                 <Landmark size={21} strokeWidth={2} />
               </span>
               <span>
@@ -102,7 +102,7 @@ export default function AboutPage() {
               </span>
             </div>
             <div className="glass glass-interactive glass-edge rounded-[24px] p-5 flex items-start gap-4">
-              <span className="grid place-items-center w-12 h-12 rounded-2xl bg-[#D89F03]/15 text-[#D89F03] depth-1 shrink-0">
+              <span className="grid place-items-center w-12 h-12 rounded-2xl bg-[#F6C22E]/15 text-[#F6C22E] depth-1 shrink-0">
                 <GraduationCap size={21} strokeWidth={2} />
               </span>
               <span>
@@ -130,7 +130,7 @@ export default function AboutPage() {
               <ul className="mt-4 grid sm:grid-cols-2 gap-x-6 gap-y-3">
                 {missionPoints.map((m) => (
                   <li key={m} className="flex items-start gap-3 text-[19px] text-[#DDE3E6] leading-relaxed">
-                    <span className="mt-2.5 w-1.5 h-1.5 rounded-full bg-[#D89F03] shrink-0" />
+                    <span className="mt-2.5 w-1.5 h-1.5 rounded-full bg-[#F6C22E] shrink-0" />
                     <span>{m.charAt(0).toUpperCase() + m.slice(1)}</span>
                   </li>
                 ))}
@@ -147,7 +147,7 @@ export default function AboutPage() {
           <ol className="grid sm:grid-cols-2 gap-4 reveal-stagger">
             {aboutContent.objectives.map((obj, i) => (
               <li key={i} className="glass glass-interactive rounded-[22px] p-5 flex items-start gap-4">
-                <span className="font-display text-[22px] font-extrabold text-[#D89F03] tabular-nums leading-none mt-0.5 w-9 shrink-0">
+                <span className="font-display text-[22px] font-extrabold text-[#F6C22E] tabular-nums leading-none mt-0.5 w-9 shrink-0">
                   {String(i + 1).padStart(2, '0')}
                 </span>
                 <span className="text-[16.5px] text-[#F3F5F6] leading-relaxed">{obj}</span>
@@ -227,7 +227,7 @@ export default function AboutPage() {
         <div className="shell">
           <SectionHeading
             eyebrow="Our Team"
-            title={<>Our team <span className="text-[#D89F03]">({teamMembers.length})</span></>}
+            title={<>Our team <span className="text-[#F6C22E]">({teamMembers.length})</span></>}
             lead="Staff across Building & Construction, Environment & Sustainability, Urban Planning & Transportation and Administration."
             action={{ href: '/about/team', label: 'Team by department' }}
           />
@@ -243,7 +243,7 @@ export default function AboutPage() {
                 </div>
                 <div className="min-w-0">
                   <p className="font-display text-[17.5px] font-bold text-[#F3F5F6] truncate">{t.name}</p>
-                  <p className="text-[15.5px] font-semibold text-[#D89F03] truncate">{t.designation}</p>
+                  <p className="text-[15.5px] font-semibold text-[#F6C22E] truncate">{t.designation}</p>
                   {t.department && <p className="text-[17px] text-[#C2CCD1] truncate">{t.department}</p>}
                 </div>
               </div>
@@ -269,7 +269,7 @@ export default function AboutPage() {
         <div className="shell">
           <SectionHeading
             eyebrow="Our Clients"
-            title={<>Clients <span className="text-[#D89F03]">({clients.length})</span></>}
+            title={<>Clients <span className="text-[#F6C22E]">({clients.length})</span></>}
             action={{ href: '/about/clients', label: 'All clients' }}
           />
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 xl:grid-cols-6 gap-4 reveal-stagger">
