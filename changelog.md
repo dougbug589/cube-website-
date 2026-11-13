@@ -40,6 +40,7 @@ Two lines of work run through this repository:
 - Etihad-inspired theme: slate and gold palette, scroll-reveal animations, gold scroll-progress bar. (`1977bf6`)
 
 #### Changed
+- Board Members deck: removed the Up next hint.
 - About page: Board Members is now a fanned deck of full portrait cards - the top card flicks away every 2.2 s (or swipe it) and the details slide in on glass beside it.
 - About page: Board Members is now expanding panels - all 12 portraits as tall strips; the open one widens to the full portrait with name and role and moves along every 2.2 s (hover/click to open; vertical accordion on phones).
 - About page: the 3D rotating drum is now on Board Members (replacing the spotlight); IIT Advisory Panel back to its previous carousel; Core Values glass is frosted immediately instead of after a delay.
