@@ -705,15 +705,15 @@ svg[class~="text-[#F6C22E]"],
    On hover a button springs up a little and settles with a small overshoot
    (back-out curve); its icon does a quick pop. Pressing squashes it. Only
    transform animates (compositor-only, no layout). Off for reduced motion. */
-.btn-gold, .btn-soft, .btn-liquid, .btn-liquid-gold {
+.btn-gold, .btn-soft, .btn-liquid, .btn-liquid-gold, .liquid-glass-dark {
   transition:
     transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1),
     background 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease, color 0.3s ease;
 }
-.btn-gold:hover, .btn-soft:hover, .btn-liquid:hover, .btn-liquid-gold:hover {
+.btn-gold:hover, .btn-soft:hover, .btn-liquid:hover, .btn-liquid-gold:hover, .liquid-glass-dark:hover {
   transform: translateY(-2px) scale(1.04);
 }
-.btn-gold:active, .btn-soft:active, .btn-liquid:active, .btn-liquid-gold:active {
+.btn-gold:active, .btn-soft:active, .btn-liquid:active, .btn-liquid-gold:active, .liquid-glass-dark:active {
   transform: translateY(0) scale(0.95);
   transition: transform 0.12s var(--ease-out);
 }
@@ -723,12 +723,12 @@ svg[class~="text-[#F6C22E]"],
   65% { transform: translate(1px, -1px) scale(0.94); }
   100% { transform: translate(1px, -1px) scale(1); }
 }
-:is(.btn-gold, .btn-soft, .btn-liquid, .btn-liquid-gold):hover svg {
+:is(.btn-gold, .btn-soft, .btn-liquid, .btn-liquid-gold, .liquid-glass-dark):hover svg {
   animation: iconPop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) both;
 }
 /* big tiles that borrow the gold fill should only lift, not grow */
 li > .btn-gold.glass-interactive:hover { transform: translateY(-4px) scale(1.015); }
 @media (prefers-reduced-motion: reduce) {
-  .btn-gold:hover, .btn-soft:hover, .btn-liquid:hover, .btn-liquid-gold:hover, li > .btn-gold.glass-interactive:hover { transform: none; }
-  :is(.btn-gold, .btn-soft, .btn-liquid, .btn-liquid-gold):hover svg { animation: none; }
+  .btn-gold:hover, .btn-soft:hover, .btn-liquid:hover, .btn-liquid-gold:hover, .liquid-glass-dark:hover, li > .btn-gold.glass-interactive:hover { transform: none; }
+  :is(.btn-gold, .btn-soft, .btn-liquid, .btn-liquid-gold, .liquid-glass-dark):hover svg { animation: none; }
 }
