@@ -40,12 +40,15 @@
     --sand: #B9C5CA;
     --sand-dim: #8C9AA0;
 
-    /* glass on light */
-    --glass-bg: linear-gradient(180deg, rgba(255, 255, 255, 0.075) 0%, rgba(255, 255, 255, 0.035) 100%);
-    --glass-bg-strong: rgba(255, 255, 255, 0.09);
-    --glass-line: rgba(255, 255, 255, 0.10);
+    /* black glass (the verticals panel look): smoky tint, top-left sheen, bright rim */
+    --glass-tint: linear-gradient(180deg, rgba(30, 36, 40, 0.5) 0%, rgba(18, 22, 25, 0.42) 100%);
+    --glass-sheen: radial-gradient(120% 80% at 12% -10%, rgba(255, 255, 255, 0.09) 0%, rgba(255, 255, 255, 0) 45%);
+    --glass-bg: var(--glass-sheen), var(--glass-tint);
+    --glass-bg-strong: var(--glass-sheen), linear-gradient(180deg, rgba(30, 36, 40, 0.6) 0%, rgba(18, 22, 25, 0.52) 100%);
+    --glass-filter: blur(28px) saturate(180%) brightness(0.75);
+    --glass-line: rgba(255, 255, 255, 0.12);
     --glass-line-strong: rgba(255, 255, 255, 0.16);
-    --glass-highlight: rgba(255, 255, 255, 0.10);
+    --glass-highlight: rgba(255, 255, 255, 0.2);
 
     /* depth: layered ambient + key shadows (contact, near, mid, far) */
     --depth-1: 0 1px 2px rgba(0, 0, 0, 0.25), 0 8px 18px -6px rgba(0, 0, 0, 0.35), 0 20px 40px -18px rgba(0, 0, 0, 0.45);
@@ -157,10 +160,13 @@
 
 /* ═══════════ GLASS SURFACES ═══════════ */
 /* Rule: one blur layer per surface, never nested blur inside blur. */
+/* .glass = the black glass look WITHOUT a live blur: it sits on big card grids
+   (team, projects, news) where dozens of backdrop-filters would cost scroll
+   frames; over the plain canvas a blur would not show anyway. */
 .glass {
   background: var(--glass-bg);
   border: 1px solid var(--glass-line);
-  box-shadow: var(--glass-shadow), inset 0 1px 0 var(--glass-highlight);
+  box-shadow: var(--glass-shadow), inset 0 1px 0 var(--glass-highlight), inset 1px 0 0 rgba(255, 255, 255, 0.06);
   border-radius: 20px;
 }
 .glass-strong {
@@ -170,8 +176,8 @@
   border-radius: 24px;
 }
 .glass-blur {
-  backdrop-filter: blur(18px) saturate(150%);
-  -webkit-backdrop-filter: blur(18px) saturate(150%);
+  backdrop-filter: var(--glass-filter);
+  -webkit-backdrop-filter: var(--glass-filter);
 }
 /* ═══════════ CARD HOVER: lift + glow ═══════════
    One smooth curve and one duration for every part, so lift, shadow and
@@ -301,9 +307,9 @@
    never nest one liquid-glass surface inside another. */
 .liquid-glass {
   isolation: isolate;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.11) 0%, rgba(255, 255, 255, 0.04) 100%);
-  backdrop-filter: blur(24px) saturate(170%);
-  -webkit-backdrop-filter: blur(24px) saturate(170%);
+  background: var(--glass-tint);
+  backdrop-filter: var(--glass-filter);
+  -webkit-backdrop-filter: var(--glass-filter);
   box-shadow:
     0 24px 54px -26px rgba(0, 0, 0, 0.7),
     0 2px 6px -2px rgba(0, 0, 0, 0.3),
@@ -369,11 +375,9 @@
   -webkit-backdrop-filter: blur(30px) saturate(180%) brightness(0.75);
   box-shadow: var(--depth-2), inset 0 1px 0 rgba(255, 255, 255, 0.12), inset 0 0 24px rgba(255, 255, 255, 0.03);
 }
-.liquid-glass.is-solid {
-  background: linear-gradient(180deg, rgba(30, 36, 40, 0.5) 0%, rgba(18, 22, 25, 0.42) 100%);
-  backdrop-filter: blur(28px) saturate(180%) brightness(0.75);
-  -webkit-backdrop-filter: blur(28px) saturate(180%) brightness(0.75);
-}
+/* is-solid used to be a denser variant; every liquid glass now shares the
+   verticals look, so it is kept only as an alias */
+.liquid-glass.is-solid { background: var(--glass-tint); }
 /* zero-specificity default so Tailwind's absolute/fixed utilities still win */
 :where(.liquid-glass, .liquid-glass-dark, .glass-edge) { position: relative; }
 /* Tinted chip for text over photos, repeated many times per page (project
@@ -548,19 +552,19 @@ html.splash-pending.splash-done .page-shell {
 /* ═══════════ LEGACY SURFACE ALIASES → warm glass ═══════════
    Components across 40+ pages still use these names. */
 .apple-liquid-glass, .apple-glass, .apple-glass-pill, .glass-panel, .glass-panel-pill {
-  background: var(--glass-bg-strong);
-  backdrop-filter: blur(18px) saturate(150%);
-  -webkit-backdrop-filter: blur(18px) saturate(150%);
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-filter);
+  -webkit-backdrop-filter: var(--glass-filter);
   border: 1px solid var(--glass-line);
   box-shadow: var(--glass-shadow), inset 0 1px 0 var(--glass-highlight);
 }
 .glass-panel-dark {
-  background: rgba(18, 22, 25, 0.92);
+  background: var(--glass-bg-strong);
   border: 1px solid rgba(216, 159, 3, 0.3);
   color: #F2F5F6;
 }
 .apple-liquid-glass-card, .apple-glass-card, .cube-gradient-card, .cube-gradient-glass, .glass-panel-elevated {
-  background: var(--glass-bg-strong);
+  background: var(--glass-bg);
   border: 1px solid var(--glass-line);
   box-shadow: var(--glass-shadow), inset 0 1px 0 var(--glass-highlight);
   transition: transform var(--hover-ms) var(--ease-smooth), box-shadow var(--hover-ms) var(--ease-smooth);
