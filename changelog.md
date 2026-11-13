@@ -40,6 +40,7 @@ Two lines of work run through this repository:
 - Etihad-inspired theme: slate and gold palette, scroll-reveal animations, gold scroll-progress bar. (`1977bf6`)
 
 #### Changed
+- Buttons bounce on hover: a small springy lift with overshoot, and the arrow/icon inside pops (off for reduced motion).
 - Home partners: the Clients served tile is now solid light yellow with dark text instead of a muddy yellow tint.
 - Soft glow on everything yellow (like Canva's Glow effect): text, labels, icons, dots, progress rails and gold buttons.
 - One light yellow everywhere (#F6C22E): arrows, icons, labels, dots, rails, progress bars and filter pills now match the hero phrase and buttons.
