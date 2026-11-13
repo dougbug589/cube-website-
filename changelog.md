@@ -40,6 +40,7 @@ Two lines of work run through this repository:
 - Etihad-inspired theme: slate and gold palette, scroll-reveal animations, gold scroll-progress bar. (`1977bf6`)
 
 #### Changed
+- Home page: the About and CEL sections now sit on a full-width photo (the CUBE team and the laboratory) with liquid-glass cards and buttons; the Verticals section follows your scroll, stepping through the four verticals with a big photo of each; the project carousel changes every 2 seconds with a large, wide card in the centre; the Work with CUBE section was removed. (`683893f`)
 - Footer: the logo is no longer squeezed into a small white box; it is shown large enough to read, next to the CUBE wordmark. (`7d4d49d`)
 - Home page figures: after counting up, they briefly scramble every five seconds and lock back onto the real values; screen readers always get the real figures. (`1d63adc`)
 - Home project carousel: no bounce any more; cards glide and fade smoothly. (`5c69e12`)
