@@ -77,27 +77,42 @@ Parameters / Notes: ${formData.parametersNeeded || 'Standard Matrix Parameters'}
         </div>
       </section>
 
-      {/* testing domains */}
-      <section id="domains" className="scroll-mt-32 shell py-16 lg:py-20">
-        <p className="label-mono reveal">Testing domains</p>
-        <div className="mt-5 grid md:grid-cols-3 gap-5 reveal-stagger">
-          {testingServices.map((service: any) => {
-            const Icon = ICON[service.id] || Droplets;
-            return (
-              <div key={service.id || service.title} className="glass glass-interactive glass-edge rounded-[28px] p-8">
-                <span className="grid place-items-center w-14 h-14 rounded-[18px] bg-gradient-to-b from-[#F1DB62]/35 to-[#D89F03]/20 text-[#F3F5F6] depth-1">
-                  <Icon size={24} strokeWidth={2} />
-                </span>
-                <h2 className="mt-6 font-display text-[28px] font-extrabold text-[#F3F5F6]">{service.title}</h2>
-                {service.description && <p className="mt-2 text-[19px] text-[#DDE3E6] leading-relaxed">{service.description}</p>}
-              </div>
-            );
-          })}
+      {/* testing domains: clear glass cards over a photo of the lab */}
+      <section id="domains" className="scroll-mt-32 relative overflow-hidden mt-16 lg:mt-20 py-16 lg:py-24">
+        {/* the photo fades out at its edges (mask), so it melts into the page gradient with no seam */}
+        <div
+          aria-hidden
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            WebkitMaskImage: 'linear-gradient(to bottom, transparent 0%, #000 28%, #000 72%, transparent 100%)',
+            maskImage: 'linear-gradient(to bottom, transparent 0%, #000 28%, #000 72%, transparent 100%)',
+          }}
+        >
+          <Image src="/images/cel/vertical2_lab.jpg" alt="" fill sizes="100vw" quality={75} className="object-cover scale-[1.04] blur-[2px]" />
+          <div className="absolute inset-0 bg-[#0B0D0E]/35" />
+          <div className="absolute inset-y-0 left-0 w-[230px] bg-gradient-to-r from-[#0B0D0E] via-[#0B0D0E]/80 to-transparent hidden min-[1900px]:block" />
+        </div>
+        <div className="shell relative">
+          <p className="label-mono reveal">Testing domains</p>
+          <div className="mt-6 grid md:grid-cols-3 gap-5 reveal-stagger">
+            {testingServices.map((service: any) => {
+              const Icon = ICON[service.id] || Droplets;
+              return (
+                <div key={service.id || service.title} className="liquid-glass rounded-[28px] p-8 transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-1">
+                  <span className="grid place-items-center w-14 h-14 rounded-[18px] bg-gradient-to-b from-[#F1DB62]/35 to-[#D89F03]/20 text-[#F3F5F6] depth-1">
+                    <Icon size={24} strokeWidth={2} />
+                  </span>
+                  <h2 className="mt-6 font-display text-[28px] font-extrabold text-[#F3F5F6]">{service.title}</h2>
+                  {service.description && <p className="mt-2 text-[19px] text-[#DDE3E6] leading-relaxed">{service.description}</p>}
+                </div>
+              );
+            })}
+          </div>
         </div>
       </section>
 
       {/* testing enquiry */}
-      <section id="enquiry" className="scroll-mt-32 shell pb-24">
+      <section id="enquiry" className="scroll-mt-32 shell pt-4 pb-24">
         <div className="grid lg:grid-cols-12 gap-6 lg:gap-8 items-start">
           <aside className="lg:col-span-4 space-y-4 reveal-stagger">
             <div className="glass glass-edge rounded-[26px] p-7">
