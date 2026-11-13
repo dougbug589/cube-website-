@@ -48,7 +48,7 @@ export default function PageHeader({ badge, title, description, breadcrumbs, bac
           <button
             type="button"
             onClick={handleBack}
-            className="inline-flex items-center gap-2 h-9 px-3.5 rounded-full glass glass-blur text-[16px] text-[#C2CCD1] hover:text-[#F3F5F6] hover:border-[#F6C22E]/40 transition-colors"
+            className="press inline-flex items-center gap-2 h-9 px-3.5 rounded-full glass glass-blur text-[16px] text-[#C2CCD1] hover:text-[#F3F5F6] hover:border-[#F6C22E]/40 transition-colors"
           >
             <ArrowLeft size={14} strokeWidth={1.75} />
             Back

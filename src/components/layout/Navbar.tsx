@@ -521,7 +521,7 @@ export default function Navbar() {
                                   key={sub.title}
                                   href={sub.href}
                                   onClick={() => setDrawerOpen(false)}
-                                  className="block px-3 py-2.5 rounded-xl text-[15.5px] font-semibold text-[#C2CCD1] hover:text-[#F3F5F6] hover:bg-[#33454E]/[0.05] transition-colors"
+                                  className="press block px-3 py-2.5 rounded-xl text-[15.5px] font-semibold text-[#C2CCD1] hover:text-[#F3F5F6] hover:bg-[#33454E]/[0.05] transition-colors"
                                 >
                                   {sub.title}
                                 </Link>
@@ -756,7 +756,7 @@ function CelPanel() {
             <Link
               key={l.href}
               href={l.href}
-              className="group flex items-center justify-between gap-3 px-4 h-11 rounded-2xl text-[15.5px] font-semibold text-[#C2CCD1] hover:text-[#F3F5F6] hover:bg-white/[0.07] transition-colors"
+              className="press group flex items-center justify-between gap-3 px-4 h-11 rounded-2xl text-[15.5px] font-semibold text-[#C2CCD1] hover:text-[#F3F5F6] hover:bg-white/[0.07] transition-colors"
             >
               {l.label}
               <ArrowUpRight size={15} strokeWidth={2.25} className="text-[#F6C22E] opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-[opacity,transform] duration-300" />
@@ -766,7 +766,7 @@ function CelPanel() {
             href={celOverview.website}
             target="_blank"
             rel="noopener noreferrer"
-            className="group flex items-center justify-between gap-3 px-4 h-11 rounded-2xl text-[15.5px] font-semibold text-[#C2CCD1] hover:text-[#F3F5F6] hover:bg-white/[0.07] transition-colors"
+            className="press group flex items-center justify-between gap-3 px-4 h-11 rounded-2xl text-[15.5px] font-semibold text-[#C2CCD1] hover:text-[#F3F5F6] hover:bg-white/[0.07] transition-colors"
           >
             CEL website
             <ArrowUpRight size={15} strokeWidth={2.25} className="text-[#F6C22E]" />

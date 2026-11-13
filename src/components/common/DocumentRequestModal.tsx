@@ -94,7 +94,7 @@ export default function DocumentRequestModal({
         <button
           onClick={resetAndClose}
           aria-label="Close modal"
-          className="absolute top-5 right-5 h-8 w-8 rounded-full bg-white/[0.05] hover:bg-white/10 text-[#A7B2B8] hover:text-[#E3E8EA] flex items-center justify-center transition cursor-pointer"
+          className="press absolute top-5 right-5 h-8 w-8 rounded-full bg-white/[0.05] hover:bg-white/10 text-[#A7B2B8] hover:text-[#E3E8EA] flex items-center justify-center transition cursor-pointer"
         >
           <X className="w-4 h-4" />
         </button>
@@ -112,7 +112,7 @@ export default function DocumentRequestModal({
             </p>
             <button
               onClick={resetAndClose}
-              className="px-6 py-2.5 rounded-full bg-[#F6C22E]/35 text-[#F3F5F6] text-xs font-semibold hover:bg-[#2B3B44]/90 transition cursor-pointer"
+              className="press px-6 py-2.5 rounded-full pill-yellow text-[#0B0D0E] text-xs font-semibold transition cursor-pointer"
             >
               Done
             </button>
@@ -225,7 +225,7 @@ export default function DocumentRequestModal({
                 <button
                   type="submit"
                   disabled={loading}
-                  className="px-5 py-2 rounded-xl bg-[#F6C22E]/35 text-[#F3F5F6] text-xs font-semibold hover:bg-[#2B3B44]/90 transition flex items-center gap-1.5 shadow-sm disabled:opacity-50 cursor-pointer"
+                  className="press px-5 py-2 rounded-xl pill-yellow text-[#0B0D0E] text-xs font-semibold transition flex items-center gap-1.5 shadow-sm disabled:opacity-50 cursor-pointer"
                 >
                   {loading ? (
                     <>

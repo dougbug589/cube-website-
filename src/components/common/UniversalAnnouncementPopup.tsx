@@ -143,7 +143,7 @@ export default function UniversalAnnouncementPopup() {
 
               <button
                 onClick={() => dismiss(ann.id, ann.frequency)}
-                className="text-[#A7B2B8] hover:text-[#E3E8EA] p-2.5 -m-1 rounded-full hover:bg-white/[0.05] transition-colors cursor-pointer"
+                className="press text-[#A7B2B8] hover:text-[#E3E8EA] p-2.5 -m-1 rounded-full hover:bg-white/[0.05] transition-colors cursor-pointer"
                 aria-label="Dismiss announcement"
               >
                 <X className="w-4 h-4" />
@@ -164,7 +164,7 @@ export default function UniversalAnnouncementPopup() {
                 <Link
                   href={ann.ctaUrl}
                   onClick={() => dismiss(ann.id, ann.frequency)}
-                  className="inline-flex items-center gap-1.5 px-4 py-2 sm:py-1.5 rounded-full bg-white/[0.05] hover:bg-[#2B3B44] text-[#E3E8EA] hover:text-white font-bold text-xs border border-white/10 transition shadow-2xs hover:shadow-xs active:scale-95"
+                  className="press inline-flex items-center gap-1.5 px-4 py-2 sm:py-1.5 rounded-full bg-white/[0.05] hover:bg-white/[0.1] text-[#E3E8EA] hover:text-white font-bold text-xs border border-white/10 transition shadow-2xs hover:shadow-xs active:scale-95"
                 >
                   <span>{ann.ctaText || 'Learn More'}</span>
                   <ArrowUpRight className="w-3.5 h-3.5 text-[#F6C22E]" />
