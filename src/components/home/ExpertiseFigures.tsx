@@ -18,46 +18,65 @@ const BC = verticals.find((v: any) => v.slug === 'building-construction') as any
 const TPQA = BC?.keyServices?.find((k: any) => /tpqa/i.test(k.title));
 const FIGURES: Figure[] = ((TPQA?.items as string[]) || []).map(parseFigure).filter(Boolean) as Figure[];
 
-const easeOutExpo = (k: number) => (k >= 1 ? 1 : 1 - Math.pow(2, -10 * k));
+// eases out gently, so the climb stays visible right up to the final value
+const easeOutCubic = (k: number) => (k >= 1 ? 1 : 1 - Math.pow(1 - k, 3));
+const D = 2200; // ms per figure
+const STAGGER = 160; // ms between figures
 
 export default function ExpertiseFigures() {
   const rootRef = useRef<HTMLDivElement>(null);
+  const rowRef = useRef<HTMLDListElement>(null);
   const numRefs = useRef<(HTMLSpanElement | null)[]>([]);
   const [shown, setShown] = useState(false);
 
   useEffect(() => {
-    const root = rootRef.current;
-    if (!root || FIGURES.length === 0) return;
-    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    let raf = 0;
-    const run = () => {
+    const row = rowRef.current;
+    if (!row || FIGURES.length === 0) return;
+    // Server HTML shows the final figures (crawlers, no-JS, reduced motion).
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       setShown(true);
-      if (reduce) return;
+      return;
+    }
+    let raf = 0;
+    let counting = false;
+    const write = (k: (i: number) => number) =>
+      FIGURES.forEach((f, i) => {
+        const el = numRefs.current[i];
+        if (el) el.textContent = fmtFigure(f.value * k(i), f.decimals);
+      });
+    const reset = () => {
+      cancelAnimationFrame(raf);
+      counting = false;
+      setShown(false);
+      write(() => 0);
+    };
+    const run = () => {
+      if (counting) return;
+      counting = true;
+      setShown(true);
       const t0 = performance.now();
-      const D = 1700;
       const tick = (t: number) => {
-        FIGURES.forEach((f, i) => {
-          // a short stagger so the figures land one after another
-          const k = Math.min(1, Math.max(0, (t - t0 - i * 140) / D));
-          const el = numRefs.current[i];
-          if (el) el.textContent = fmtFigure(f.value * easeOutExpo(k), f.decimals);
-        });
-        if (t - t0 < D + FIGURES.length * 140) raf = requestAnimationFrame(tick);
+        write((i) => easeOutCubic(Math.min(1, Math.max(0, (t - t0 - i * STAGGER) / D))));
+        if (t - t0 < D + FIGURES.length * STAGGER) raf = requestAnimationFrame(tick);
       };
       raf = requestAnimationFrame(tick);
     };
-    const io = new IntersectionObserver(
-      ([e]) => {
-        if (e.isIntersecting) {
-          io.disconnect();
-          run();
-        }
-      },
-      { threshold: 0.35 }
-    );
-    io.observe(root);
+    // Start at zero until the reader reaches the row.
+    reset();
+    // Count once the row is well into view (most of it visible, above the
+    // bottom fifth of the screen)...
+    const enter = new IntersectionObserver(([e]) => e.isIntersecting && run(), {
+      threshold: 0.6,
+      rootMargin: '0px 0px -20% 0px',
+    });
+    // ...and go back to zero when it has left the screen, so it counts again
+    // the next time the reader comes back to it.
+    const leave = new IntersectionObserver(([e]) => !e.isIntersecting && counting && reset(), { threshold: 0 });
+    enter.observe(row);
+    leave.observe(row);
     return () => {
-      io.disconnect();
+      enter.disconnect();
+      leave.disconnect();
       cancelAnimationFrame(raf);
     };
   }, []);
@@ -83,7 +102,7 @@ export default function ExpertiseFigures() {
           </Link>
         </div>
 
-        <dl className="grid grid-cols-2 lg:grid-cols-4 border-y border-[#33454E]/10">
+        <dl ref={rowRef} className="grid grid-cols-2 lg:grid-cols-4 border-y border-[#33454E]/10">
           {FIGURES.map((f, i) => (
             <div
               key={f.lead}
