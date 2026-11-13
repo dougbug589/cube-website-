@@ -17,6 +17,7 @@ Two lines of work run through this repository:
 ### Redesign
 
 #### Added
+- The CEL item in the top bar now opens a dropdown like About and Projects: a laboratory photo, a short description of CEL, its three testing domains and links to the laboratory page, the testing enquiry and the CEL website. (`249afca`)
 - Home page "by the numbers" row: CUBE's quality-assurance track record from the original Building & Construction page (services across 15 states, plot coverage over 10,000 acres, built-up area over 50 million sq ft, value over Rs. 25,000 crore), with figures that count up when the row comes into view and a link to the Building & Construction page. (`ad4a201`)
 - The vision statement on the home page inks in word by word as you scroll to it. (`ad4a201`)
 - On very wide screens, a slim guide on the left edge of the home page shows which section you are in and jumps to any section when clicked. (`ad4a201`)
