@@ -33,7 +33,7 @@ type Vertical = {
 const BIG: Record<string, string> = {
   'building-construction': '/images/hero/slides_design-engineering-consultancy.jpg',
   'environment-sustainability': '/images/hero/slides_ashiana.jpg',
-  'smart-cities': '/images/projects/smart-cities/images_smartcity.jpg',
+  'smart-cities': '/images/projects/smart-cities/tidel_park_02.jpg', // TIDEL Park (NEO), Tiruppur
   'urban-planning-transportation': '/images/hero/slides_niche.jpg',
 };
 const STEP_VH = 85; // scroll distance per vertical
