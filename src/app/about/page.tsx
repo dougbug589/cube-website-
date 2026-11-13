@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { ArrowUpRight, ChevronDown, Landmark, GraduationCap } from 'lucide-react';
 import PageHeader from '@/components/common/PageHeader';
 import SectionHeading from '@/components/common/SectionHeading';
+import SectionPhoto from '@/components/common/SectionPhoto';
 import SectionNav from '@/components/common/SectionNav';
 import MessageSection from '@/components/about/MessageSection';
 import PersonCard, { Monogram } from '@/components/common/PersonCard';
@@ -29,7 +30,8 @@ const withRole = (list: any[]) => list.map((m) => ({ ...m, role: m.role || m.des
 const SECTIONS = [
   { id: 'overview', label: 'About CUBE' },
   { id: 'vision-mission', label: 'Vision & Mission' },
-  { id: 'objectives-values', label: 'Objectives & Values' },
+  { id: 'objectives-values', label: 'Objectives' },
+  { id: 'core-values', label: 'Core Values' },
   { id: 'chairman-message', label: 'Chairman Message' },
   { id: 'ceo-message', label: 'CEO Message' },
   { id: 'governing-board', label: 'Board Members' },
@@ -69,8 +71,10 @@ export default function AboutPage() {
       <SectionNav id="about" sections={SECTIONS} />
 
       {/* 1 · Overview */}
-      <section id="overview" className="scroll-mt-40 py-16 lg:py-20">
-        <div className="shell grid lg:grid-cols-12 gap-10 lg:gap-14">
+      <section id="overview" className="relative scroll-mt-40 py-20 lg:py-28">
+        {/* the CUBE office at the IIT Madras Research Park; darker on the left where the text runs */}
+        <SectionPhoto src="/images/about/about_about.jpg" wash="bg-gradient-to-r from-[#0B0D0E]/85 via-[#0B0D0E]/70 to-[#0B0D0E]/50" />
+        <div className="relative shell grid lg:grid-cols-12 gap-10 lg:gap-14">
           <div className="lg:col-span-7 reveal">
             <p className="label-mono">About CUBE</p>
             <p className="mt-4 text-[20px] sm:text-[22px] leading-relaxed text-[#F3F5F6] font-semibold">{aboutContent.overview[0]}</p>
@@ -91,7 +95,7 @@ export default function AboutPage() {
               <p className="mt-5 pt-5 border-t border-white/10 text-[17px] text-[#C2CCD1] leading-relaxed">{contactInfo.address}</p>
             </div>
             <div className="glass glass-interactive glass-edge rounded-[24px] p-5 flex items-start gap-4">
-              <span className="grid place-items-center w-12 h-12 rounded-2xl bg-[#F6C22E]/15 text-[#F6C22E] depth-1 shrink-0">
+              <span className="grid place-items-center w-12 h-12 rounded-2xl pill-yellow text-[#0B0D0E] depth-1 shrink-0">
                 <Landmark size={21} strokeWidth={2} />
               </span>
               <span>
@@ -102,7 +106,7 @@ export default function AboutPage() {
               </span>
             </div>
             <div className="glass glass-interactive glass-edge rounded-[24px] p-5 flex items-start gap-4">
-              <span className="grid place-items-center w-12 h-12 rounded-2xl bg-[#F6C22E]/15 text-[#F6C22E] depth-1 shrink-0">
+              <span className="grid place-items-center w-12 h-12 rounded-2xl pill-yellow text-[#0B0D0E] depth-1 shrink-0">
                 <GraduationCap size={21} strokeWidth={2} />
               </span>
               <span>
@@ -117,8 +121,10 @@ export default function AboutPage() {
       </section>
 
       {/* 2 · Vision & Mission */}
-      <section id="vision-mission" className="scroll-mt-40 py-16 lg:py-20 band-mist">
-        <div className="shell">
+      <section id="vision-mission" className="relative scroll-mt-40 py-20 lg:py-28">
+        {/* IIT Tirupati permanent campus (CUBE: third party quality assurance) */}
+        <SectionPhoto src="/images/hero/slides_iit-tirupathi.jpg" wash="bg-[#0B0D0E]/50" />
+        <div className="relative shell">
           <SectionHeading eyebrow="Vision & Mission" title="Vision & mission." />
           <div className="grid lg:grid-cols-12 gap-5 reveal-stagger">
             <div className="lg:col-span-5 liquid-glass rounded-[28px] p-8 lg:p-10">
@@ -141,8 +147,10 @@ export default function AboutPage() {
       </section>
 
       {/* 3 · Objectives & Core Values */}
-      <section id="objectives-values" className="scroll-mt-40 py-16 lg:py-20">
-        <div className="shell">
+      <section id="objectives-values" className="relative scroll-mt-40 py-20 lg:py-28">
+        {/* surface water management plan for the IIT Jammu campus (a CUBE project) */}
+        <SectionPhoto src="/images/hero/slides_slide2.jpg" wash="bg-[#0B0D0E]/55" />
+        <div className="relative shell">
           <SectionHeading eyebrow="Objectives" title="Objectives." />
           <ol className="grid sm:grid-cols-2 gap-4 reveal-stagger">
             {aboutContent.objectives.map((obj, i) => (
@@ -155,7 +163,14 @@ export default function AboutPage() {
             ))}
           </ol>
 
-          <SectionHeading eyebrow="Core Values" title="Core values." className="mt-16 lg:mt-20" />
+        </div>
+      </section>
+
+      <section id="core-values" className="relative scroll-mt-40 py-20 lg:py-28">
+        {/* the CUBE team */}
+        <SectionPhoto src="/images/hero/slides_building-training-team.jpg" wash="bg-[#0B0D0E]/55" position="object-[50%_35%]" />
+        <div className="relative shell">
+          <SectionHeading eyebrow="Core Values" title="Core values." />
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 reveal-stagger">
             {aboutContent.coreValues.map((val, i) => (
               <div key={i} className="glass glass-interactive glass-edge rounded-[24px] p-6">
