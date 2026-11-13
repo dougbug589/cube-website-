@@ -666,12 +666,16 @@ input, textarea, select, button { font-family: inherit !important; }
 }
 .btn-liquid:hover { background: linear-gradient(180deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.08) 100%); transform: translateY(-1px); }
 .btn-liquid-gold {
-  background: linear-gradient(180deg, rgba(246, 194, 46, 0.34) 0%, rgba(246, 194, 46, 0.2) 100%);
-  border: 1px solid rgba(246, 194, 46, 0.5);
-  color: #FBF1C4;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25), 0 12px 26px -14px rgba(246, 194, 46, 0.7);
+  /* same solid light yellow as .btn-gold (was a dull translucent tint) */
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.16) 0%, rgba(255, 255, 255, 0) 60%), #F6C22E;
+  border: 1px solid rgba(246, 194, 46, 0.6);
+  color: #0B0D0E;
+  box-shadow: 0 0 18px -2px rgba(246, 194, 46, 0.45), 0 12px 28px -14px rgba(246, 194, 46, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.45);
 }
-.btn-liquid-gold:hover { background: linear-gradient(180deg, rgba(246, 194, 46, 0.46) 0%, rgba(246, 194, 46, 0.3) 100%); transform: translateY(-1px); }
+.btn-liquid-gold:hover {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.26) 0%, rgba(255, 255, 255, 0.04) 70%), #F6C22E;
+  box-shadow: 0 0 26px 0 rgba(246, 194, 46, 0.55), 0 18px 34px -14px rgba(246, 194, 46, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.55);
+}
 .btn-liquid:active, .btn-liquid-gold:active { transform: scale(0.96); transition-duration: 0.12s; }
 
 /* ═══════════ YELLOW GLOW (Canva-style "Glow" effect) ═══════════
@@ -698,7 +702,6 @@ svg[class~="text-[#F6C22E]"],
 .btn-gold:hover {
   box-shadow: 0 0 26px 0 rgba(246, 194, 46, 0.55), 0 18px 34px -14px rgba(246, 194, 46, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.55);
 }
-.btn-liquid-gold { text-shadow: 0 0 10px rgba(246, 194, 46, 0.35); }
 
 /* ═══════════ BUTTON HOVER BOUNCE ═══════════
    On hover a button springs up a little and settles with a small overshoot
