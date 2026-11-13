@@ -1,20 +1,12 @@
 import React from 'react';
-import { ShieldCheck, Award, HeartHandshake, Mountain, Lightbulb, Target, Quote } from 'lucide-react';
 import PageHeader from '@/components/common/PageHeader';
 import SectionPhoto from '@/components/common/SectionPhoto';
+import CoreValuesFlip from '@/components/about/CoreValuesFlip';
 import { aboutContent } from '@/data/about';
 
 export const metadata = {
   title: 'Core Values | CUBE IIT Madras',
   description: 'Core values of CUBE – Leadership, Excellence, Harmony, Intrepid, Innovation and Decisive.',
-};
-
-const ICONS = [ShieldCheck, Award, HeartHandshake, Mountain, Lightbulb, Target];
-
-// "“quote” — Author" -> { quote, author }
-const split = (d: string) => {
-  const m = d.match(/^\s*[“"]?([\s\S]*?)[”"]?\s*[—–-]\s*([^—–-]+)$/);
-  return m ? { quote: m[1].trim(), author: m[2].trim() } : { quote: d, author: '' };
 };
 
 export default function CoreValuesPage() {
@@ -31,28 +23,7 @@ export default function CoreValuesPage() {
       <section className="relative py-16 lg:py-24 pb-28">
         <SectionPhoto src="/images/hero/slides_building-training-team.jpg" wash="bg-[#0B0D0E]/55" position="object-[50%_35%]" />
         <div className="relative shell">
-        <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-5 reveal-stagger">
-          {aboutContent.coreValues.map((val, i) => {
-            const Icon = ICONS[i % ICONS.length];
-            const { quote, author } = split(val.description);
-            return (
-              <article key={val.title} className="glass glass-interactive glass-edge rounded-[28px] p-7 lg:p-8 flex flex-col">
-                <div className="flex items-center justify-between">
-                  <span className="grid place-items-center w-14 h-14 rounded-[18px] pill-yellow text-[#0B0D0E] depth-1">
-                    <Icon size={24} strokeWidth={2} />
-                  </span>
-                  <span className="font-display text-[15px] font-extrabold text-[#F6C22E] tabular-nums">{String(i + 1).padStart(2, '0')}</span>
-                </div>
-                <h2 className="mt-6 font-display text-[28px] font-extrabold text-[#F3F5F6] leading-tight">{val.title}</h2>
-                <blockquote className="mt-4 flex-1">
-                  <Quote size={18} className="text-[#F6C22E]/70" />
-                  <p className="mt-2 text-[19.5px] leading-relaxed text-[#DDE3E6]">{quote}</p>
-                </blockquote>
-                {author && <p className="mt-5 pt-4 border-t border-white/10 text-[15.5px] font-bold text-[#F3F5F6]">— {author}</p>}
-              </article>
-            );
-          })}
-        </div>
+        <CoreValuesFlip values={aboutContent.coreValues} interval={1800} />
         </div>
       </section>
     </div>
