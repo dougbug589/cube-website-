@@ -220,7 +220,6 @@ export default function GlobalSearchModal({ isOpen, onClose }: GlobalSearchModal
   }, [isOpen, visible]);
   const layer = `${isOpen ? '' : 'pointer-events-none'} ${visible ? '' : 'invisible'}`;
   const hasQuery = query.trim().length > 0;
-  const chips = suggestions.slice(0, 6);
 
   return (
     <>
@@ -315,35 +314,21 @@ export default function GlobalSearchModal({ isOpen, onClose }: GlobalSearchModal
                 </button>
               </div>
 
-              {/* hairline that lights up gold while searching */}
+              {/* hairline and results only once something is typed; empty, the
+                  panel is just the wide search bar */}
+              {hasQuery && (
+              <>
               <div aria-hidden className="relative h-px mx-6 bg-white/10 overflow-hidden">
                 <motion.div
                   className="absolute inset-0 bg-gradient-to-r from-transparent via-[#F6C22E] to-transparent origin-center"
-                  initial={false}
-                  animate={{ scaleX: hasQuery ? 1 : 0, opacity: hasQuery ? 1 : 0 }}
+                  initial={{ scaleX: 0, opacity: 0 }}
+                  animate={{ scaleX: 1, opacity: 1 }}
                   transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
                 />
               </div>
 
-              {/* body: suggestions when empty, results when typing */}
               <div ref={listRef} className="max-h-[52vh] overflow-y-auto overscroll-contain p-3 sm:p-4">
-                {!hasQuery ? (
-                  <div className="px-2 py-2">
-                    <p className="label-mono">Try</p>
-                    <div className="mt-3 flex flex-wrap gap-2">
-                      {chips.map((c) => (
-                        <button
-                          key={c}
-                          type="button"
-                          onClick={() => setQuery(c)}
-                          className="press h-10 px-4 rounded-full bg-white/[0.08] border border-white/10 text-[15px] font-bold text-[#C2CCD1] hover:text-[#F3F5F6] hover:bg-white/[0.06] hover:border-[#F6C22E]/35 transition-colors"
-                        >
-                          {c}
-                        </button>
-                      ))}
-                    </div>
-                  </div>
-                ) : searchResults.length === 0 ? (
+                {searchResults.length === 0 ? (
                   <div className="py-12 text-center">
                     <p className="font-display text-[19px] font-bold text-[#F3F5F6]">No results for &ldquo;{query}&rdquo;</p>
                     <p className="mt-1.5 text-[17px] text-[#C2CCD1]">Try another word, or browse from the menu.</p>
@@ -365,10 +350,10 @@ export default function GlobalSearchModal({ isOpen, onClose }: GlobalSearchModal
                               <motion.span
                                 layoutId="search-highlight"
                                 transition={{ type: 'spring', stiffness: 520, damping: 40, mass: 0.7 }}
-                                className="absolute inset-0 rounded-2xl bg-white/[0.09] border border-white shadow-[0_8px_22px_-14px_rgba(36,50,57,0.5),inset_0_1px_0_#fff]"
+                                className="absolute inset-0 rounded-2xl bg-white/[0.09] border border-white/15 shadow-[inset_0_1px_0_rgba(255,255,255,0.12)]"
                               />
                             )}
-                            <span className={`relative grid place-items-center w-11 h-11 rounded-2xl shrink-0 transition-colors duration-300 ${on ? 'pill-yellow text-[#0B0D0E]' : 'bg-[#F6C22E]/15 text-[#F6C22E]'}`}>
+                            <span className={`relative grid place-items-center w-11 h-11 rounded-2xl shrink-0 transition-colors duration-300 ${on ? 'pill-yellow text-[#0B0D0E]' : 'bg-white/[0.07] border border-white/10 text-[#F6C22E]'}`}>
                               <Icon size={19} strokeWidth={2} />
                             </span>
                             <span className="relative flex-1 min-w-0">
@@ -389,15 +374,8 @@ export default function GlobalSearchModal({ isOpen, onClose }: GlobalSearchModal
                 )}
               </div>
 
-              {/* key hints */}
-              <div className="hidden sm:flex items-center gap-5 px-6 py-3 border-t border-white/10 bg-white/[0.05] text-[13.5px] font-semibold text-[#A7B2B8]">
-                {[['↑ ↓', 'move'], ['↵', 'open'], ['Tab', 'fill suggestion'], ['Esc', 'close']].map(([k, v]) => (
-                  <span key={k} className="inline-flex items-center gap-2">
-                    <kbd className="font-sans min-w-7 h-7 px-2 grid place-items-center rounded-lg bg-white/[0.06] border border-white/12 text-[13.5px] font-bold text-[#F3F5F6] shadow-[0_1px_0_rgba(36,50,57,0.12)]">{k}</kbd>
-                    {v}
-                  </span>
-                ))}
-              </div>
+              </>
+              )}
             </motion.div>
     </>
   );
