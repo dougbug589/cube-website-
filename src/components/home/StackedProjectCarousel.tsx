@@ -41,8 +41,10 @@ const SHORT_CATEGORY: Record<string, string> = {
   'Urban Planning & Transportation': 'Urban · Transport',
 };
 
-const AUTO_MS = 2800;
-const BOUNCE = { type: 'spring' as const, stiffness: 260, damping: 19, mass: 0.8 };
+const AUTO_MS = 3200;
+// Smooth glide with only a hint of settle: an under-damped spring wobbles and
+// reads as jitter on high-refresh screens.
+const BOUNCE = { type: 'spring' as const, stiffness: 150, damping: 24, mass: 1, restDelta: 0.001 };
 
 /** transform pose for a card `offset` slots away from the centre */
 function pose(offset: number, spacing: number) {
@@ -51,7 +53,7 @@ function pose(offset: number, spacing: number) {
     x: offset * spacing,
     scale: abs === 0 ? 1 : abs === 1 ? 0.8 : 0.64,
     y: abs === 0 ? -12 : abs === 1 ? 26 : 52,
-    opacity: abs >= 3 ? 0 : abs === 2 ? 0.55 : 1,
+    opacity: abs >= 3 ? 0 : abs === 2 ? 0.5 : 0.92,
   };
 }
 
@@ -134,7 +136,7 @@ export default function StackedProjectCarousel({ projects }: { projects: AnyProj
   return (
     <div ref={rootRef} className="relative">
       <motion.div
-        className="relative h-[480px] sm:h-[580px] overflow-hidden touch-pan-y cursor-grab active:cursor-grabbing"
+        className="relative h-[480px] sm:h-[580px] overflow-hidden touch-pan-y cursor-grab active:cursor-grabbing [mask-image:linear-gradient(to_right,transparent,#000_9%,#000_91%,transparent)] [-webkit-mask-image:linear-gradient(to_right,transparent,#000_9%,#000_91%,transparent)]"
         drag="x"
         dragConstraints={{ left: 0, right: 0 }}
         dragElastic={0.18}
@@ -175,33 +177,29 @@ export default function StackedProjectCarousel({ projects }: { projects: AnyProj
                   Math.abs(offset) === 2 ? 'hidden md:block' : ''
                 }`}
               >
-                {isCenter ? (
-                  <Link
-                    href={href}
-                    draggable={false}
-                    onClick={(e) => dragging && e.preventDefault()}
-                    onMouseEnter={() => setCardHover(true)}
-                    onMouseLeave={() => setCardHover(false)}
-                    onFocus={() => setCardFocus(true)}
-                    onBlur={() => setCardFocus(false)}
-                    className="press block h-full rounded-[28px] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#E9B215]"
-                  >
-                    <Card project={project} label={label} sub={sub} isCenter />
-                  </Link>
-                ) : (
-                  <button
-                    type="button"
-                    aria-label={`Show ${project.title}`}
-                    onClick={() => !dragging && go(offset)}
-                    onMouseEnter={() => setCardHover(true)}
-                    onMouseLeave={() => setCardHover(false)}
-                    onFocus={() => setCardFocus(true)}
-                    onBlur={() => setCardFocus(false)}
-                    className="press block w-full h-full text-left rounded-[28px] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#E9B215]"
-                  >
-                    <Card project={project} label={label} sub={sub} isCenter={false} />
-                  </button>
-                )}
+                {/* One element type for every slot: switching between a link and a
+                    button when a card reaches the centre made React rebuild the
+                    card (and its photo) mid-animation. */}
+                <Link
+                  href={href}
+                  draggable={false}
+                  tabIndex={isCenter ? 0 : -1}
+                  aria-label={isCenter ? undefined : `Show ${project.title}`}
+                  onClick={(e) => {
+                    if (dragging) return e.preventDefault();
+                    if (!isCenter) {
+                      e.preventDefault();
+                      go(offset);
+                    }
+                  }}
+                  onMouseEnter={() => setCardHover(true)}
+                  onMouseLeave={() => setCardHover(false)}
+                  onFocus={() => setCardFocus(true)}
+                  onBlur={() => setCardFocus(false)}
+                  className="press block h-full rounded-[28px] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#E9B215]"
+                >
+                  <Card project={project} label={label} sub={sub} isCenter={isCenter} />
+                </Link>
               </motion.div>
             );
           })}
@@ -219,12 +217,13 @@ export default function StackedProjectCarousel({ projects }: { projects: AnyProj
 
 function Card({ project, label, sub, isCenter }: { project: AnyProject; label: string; sub: string; isCenter: boolean }) {
   return (
-    <div className={`relative h-full rounded-[28px] overflow-hidden bg-[#DCE4E8] ring-1 ring-black/5 ${isCenter ? 'depth-3' : 'depth-2'}`}>
+    <div className={`relative h-full rounded-[28px] overflow-hidden bg-[#DCE4E8] ring-1 ring-black/5 depth-3`}>
       <Image
         src={project.heroImage || '/images/about/about_about.jpg'}
         alt={project.title}
         fill
         draggable={false}
+        loading="eager"
         sizes="(max-width: 640px) 330px, 440px"
         className="object-cover select-none pointer-events-none"
       />
@@ -233,7 +232,7 @@ function Card({ project, label, sub, isCenter }: { project: AnyProject; label: s
         <div className="font-display text-white font-bold leading-snug line-clamp-2 text-xl sm:text-[26px]">{project.title}</div>
         <div className="text-[15.5px] text-[#F0C468] mt-1.5 font-semibold truncate">{sub}</div>
         <div
-          className={`chip-photo mt-4 inline-flex items-center gap-1.5 h-9 px-4 rounded-full text-[16px] font-bold text-white transition-opacity duration-300 ${
+          className={`chip-photo mt-4 inline-flex items-center gap-1.5 h-9 px-4 rounded-full text-[16px] font-bold text-white transition-opacity duration-500 ease-out ${
             isCenter ? 'opacity-100' : 'opacity-0'
           }`}
         >
