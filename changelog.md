@@ -39,6 +39,7 @@ Two lines of work run through this repository:
 - Etihad-inspired theme: slate and gold palette, scroll-reveal animations, gold scroll-progress bar. (`1977bf6`)
 
 #### Changed
+- Deployments on Vercel ask search engines not to index the site (robots.txt and a noindex header), so a redesign copy never competes with cubeiitm.org in search results; setting ALLOW_INDEXING=true lifts this. Self-hosted servers are unaffected. (`29d50f6`)
 - On very wide screens (1900 px and up) the About and Media section bars move into the empty left margin as a labelled guide, freeing reading space at the top; the home page guide now uses the same design. Narrower screens keep the bar at the top. (`bffed9b`)
 - Leadership message boxes scroll slower again (loop timings unchanged). (`7fa6166`)
 - Leadership message boxes scroll a little slower again (the quicker pause and glide back to the top stay). (`f0911f2`)
