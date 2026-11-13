@@ -11,7 +11,7 @@ import SectionNav from '@/components/common/SectionNav';
 import FocusCarousel from '@/components/common/FocusCarousel';
 import Marquee from '@/components/common/Marquee';
 import MessageSection from '@/components/about/MessageSection';
-import RingCarousel from '@/components/about/RingCarousel';
+import ExpandingPanels from '@/components/about/ExpandingPanels';
 import { Monogram } from '@/components/common/PersonCard';
 import { aboutContent } from '@/data/about';
 import { boardMembers as fallbackBoard, advisoryPanel as fallbackAdvisory } from '@/data/leadership';
@@ -224,7 +224,7 @@ export default function AboutPage() {
             action={{ href: '/about/board-members', label: 'Board members' }}
           />
           {/* no .reveal wrapper: an animating ancestor would hold back the glass blur */}
-          <RingCarousel label="Governing Body" people={boardMembers} interval={2200} />
+          <ExpandingPanels label="Governing Body" members={boardMembers} interval={2200} />
         </div>
       </section>
 
