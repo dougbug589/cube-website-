@@ -191,7 +191,7 @@ export default function TenderRegister({ tenders }: { tenders: Tender[] }) {
                 className="glass glass-edge rounded-[28px] overflow-hidden"
               >
                 <div className="p-6 sm:p-8 grid md:grid-cols-[auto_1fr_auto] gap-5 md:gap-7 items-start">
-                  <span className="hidden md:grid place-items-center w-14 h-14 rounded-[18px] bg-[#D89F03]/15 text-[#EBCB3B] depth-1 font-display text-[18px] font-extrabold tabular-nums">
+                  <span className="hidden md:grid place-items-center w-14 h-14 rounded-[18px] bg-[#D89F03]/15 text-[#D89F03] depth-1 font-display text-[18px] font-extrabold tabular-nums">
                     {String(i + 1).padStart(2, '0')}
                   </span>
                   <div className="min-w-0">
@@ -232,7 +232,7 @@ export default function TenderRegister({ tenders }: { tenders: Tender[] }) {
 
                 {g.corrigenda.length > 0 && (
                   <div className="border-t border-white/10 bg-white/[0.05] px-6 sm:px-8 py-4">
-                    <p className="text-[13.5px] font-extrabold tracking-[0.08em] uppercase text-[#EBCB3B]">
+                    <p className="text-[13.5px] font-extrabold tracking-[0.08em] uppercase text-[#D89F03]">
                       Corrigenda · {g.corrigenda.length}
                     </p>
                     <ul className="mt-2 divide-y divide-white/[0.08]">

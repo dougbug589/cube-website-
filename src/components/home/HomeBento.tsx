@@ -189,7 +189,7 @@ export default function HomeBento({
               transition={{ duration: 0.5, ease: EASE }}
               className="absolute left-6 right-6 bottom-6 text-white"
             >
-              {shot.date && <p className="text-[15px] font-bold text-[#F1DB62]">{shot.date}</p>}
+              {shot.date && <p className="text-[15px] font-bold text-[#D89F03]">{shot.date}</p>}
               <p className="mt-1 font-display text-lg font-bold leading-snug line-clamp-2">{shot.title}</p>
             </motion.div>
           )}

@@ -351,13 +351,13 @@ export default function Navbar() {
                   )}
                   <span className="relative">{item.title}</span>
                   {item.badge && (
-                    <span title={item.badge} aria-label={item.badge} className="relative w-1.5 h-1.5 rounded-full bg-[#F1DB62] shadow-[0_0_8px_#E9B215]" />
+                    <span title={item.badge} aria-label={item.badge} className="relative w-1.5 h-1.5 rounded-full bg-[#D89F03] shadow-[0_0_8px_#D89F03]" />
                   )}
                   {mm && (
                     <ChevronDown
                       size={14}
                       strokeWidth={2}
-                      className={`relative transition-transform duration-300 ${open ? 'rotate-180 text-[#EBCB3B]' : 'text-[#8E9AA0]'}`}
+                      className={`relative transition-transform duration-300 ${open ? 'rotate-180 text-[#D89F03]' : 'text-[#8E9AA0]'}`}
                     />
                   )}
                 </Link>
@@ -497,12 +497,12 @@ export default function Navbar() {
                           onClick={() => setExpanded((c) => (c === item.title ? null : item.title))}
                         >
                           {item.title}
-                          <ChevronDown size={16} strokeWidth={1.75} className={`transition-transform duration-300 ${isExpanded ? 'rotate-180 text-[#EBCB3B]' : 'text-[#8E9AA0]'}`} />
+                          <ChevronDown size={16} strokeWidth={1.75} className={`transition-transform duration-300 ${isExpanded ? 'rotate-180 text-[#D89F03]' : 'text-[#8E9AA0]'}`} />
                         </button>
                       ) : (
                         <Link href={item.href} className={row} onClick={() => setDrawerOpen(false)}>
                           {item.title}
-                          {item.badge && <span className="font-sans text-[10px] uppercase tracking-wider text-[#EBCB3B]">{item.badge}</span>}
+                          {item.badge && <span className="font-sans text-[10px] uppercase tracking-wider text-[#D89F03]">{item.badge}</span>}
                         </Link>
                       )}
                       <AnimatePresence initial={false}>

@@ -131,7 +131,7 @@ export default function MediaPage() {
                   </div>
                 </div>
                 <div className="p-5 flex-1 flex flex-col">
-                  <p className="text-[13.5px] font-bold text-[#EBCB3B]">{evt.category}</p>
+                  <p className="text-[13.5px] font-bold text-[#D89F03]">{evt.category}</p>
                   <h3 className="mt-1.5 font-display text-[17px] font-bold text-[#F3F5F6] leading-snug">{evt.title}</h3>
                   <p className="mt-2 text-[17px] text-[#C2CCD1] leading-relaxed line-clamp-4">{evt.description}</p>
                   {evt.location && (
@@ -185,7 +185,7 @@ export default function MediaPage() {
             </p>
             <div className="mt-7 space-y-3">
               <div className="glass glass-edge rounded-[20px] p-5 flex items-start gap-4">
-                <span className="grid place-items-center w-11 h-11 rounded-2xl bg-[#D89F03]/15 text-[#EBCB3B] depth-1 shrink-0">
+                <span className="grid place-items-center w-11 h-11 rounded-2xl bg-[#D89F03]/15 text-[#D89F03] depth-1 shrink-0">
                   <MapPin size={19} strokeWidth={2} />
                 </span>
                 <span>

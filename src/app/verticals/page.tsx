@@ -43,7 +43,7 @@ export default function VerticalsPage() {
                 </div>
                 <div className={`lg:col-span-6 reveal ${flip ? 'lg:order-1' : ''}`}>
                   <h2 className="headline-light text-[2.2rem] sm:text-[2.8rem] text-[#F3F5F6] leading-tight">{v.title}</h2>
-                  {v.tagline && <p className="mt-3 text-[19px] font-semibold text-[#EBCB3B] leading-snug">{v.tagline}</p>}
+                  {v.tagline && <p className="mt-3 text-[19px] font-semibold text-[#D89F03] leading-snug">{v.tagline}</p>}
                   <p className="mt-5 text-[19.5px] text-[#DDE3E6] leading-relaxed">{v.longDescription || v.description}</p>
                   {v.capabilities.length > 0 && (
                     <ul className="mt-6 flex flex-wrap gap-2.5">

@@ -32,7 +32,7 @@ export default async function TendersPage() {
             <TenderRegister tenders={activeTenders} />
           ) : (
             <div className="liquid-glass rounded-[30px] p-10 sm:p-14 text-center max-w-3xl mx-auto">
-              <span className="grid place-items-center w-16 h-16 mx-auto rounded-[20px] bg-[#D89F03]/15 text-[#EBCB3B] depth-1">
+              <span className="grid place-items-center w-16 h-16 mx-auto rounded-[20px] bg-[#D89F03]/15 text-[#D89F03] depth-1">
                 <FileText size={28} strokeWidth={2} />
               </span>
               <h2 className="mt-6 font-display text-[26px] font-extrabold text-[#F3F5F6]">No tenders are open at the moment</h2>

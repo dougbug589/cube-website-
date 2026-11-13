@@ -169,7 +169,7 @@ export default function EtihadHero() {
               transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
               className="inline-flex items-center gap-2 text-[16px] font-bold tracking-wide text-[#F3F5F6]/90"
             >
-              <span className="w-1.5 h-1.5 rounded-full bg-[#F1DB62] shadow-[0_0_10px_#E9B215]" />
+              <span className="w-1.5 h-1.5 rounded-full bg-[#D89F03] shadow-[0_0_10px_#D89F03]" />
               Centre of Excellence · IIT Madras × Govt of Tamil Nadu
             </motion.p>
             <motion.div

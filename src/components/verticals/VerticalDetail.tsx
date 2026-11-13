@@ -78,7 +78,7 @@ export default async function VerticalDetail({ id }: { id: string }) {
                           <div key={it} className="rounded-[20px] bg-white/[0.08] border border-white/[0.09] p-4">
                             {f!.lead && <dt className="text-[14.5px] font-semibold text-[#A7B2B8] leading-snug">{f!.lead}</dt>}
                             <dd className="mt-1 flex items-baseline gap-1.5 flex-wrap">
-                              {f!.prefix && <span className="font-display text-[17px] font-extrabold text-[#EBCB3B]">{f!.prefix}</span>}
+                              {f!.prefix && <span className="font-display text-[17px] font-extrabold text-[#D89F03]">{f!.prefix}</span>}
                               <span className="font-display text-[34px] font-extrabold leading-none tracking-[-0.02em] text-[#F3F5F6] tabular-nums">{fmtFigure(f!.value, f!.decimals)}</span>
                               <span className="font-display text-[16px] font-extrabold text-[#D89F03] leading-snug">{f!.unit}</span>
                             </dd>
@@ -113,7 +113,7 @@ export default async function VerticalDetail({ id }: { id: string }) {
               <h2 className="headline-light text-3xl sm:text-[2.6rem] text-[#F3F5F6]">
                 Projects <span className="text-[#D89F03]">({projects.length})</span>
               </h2>
-              <Link href="/projects" className="group self-start md:self-auto inline-flex items-center gap-2 text-[16px] font-bold text-[#F3F5F6] border-b-2 border-[#D89F03] pb-1 hover:text-[#EBCB3B] transition-colors">
+              <Link href="/projects" className="group self-start md:self-auto inline-flex items-center gap-2 text-[16px] font-bold text-[#F3F5F6] border-b-2 border-[#D89F03] pb-1 hover:text-[#D89F03] transition-colors">
                 All projects <ArrowUpRight size={16} />
               </Link>
             </div>

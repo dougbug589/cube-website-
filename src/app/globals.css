@@ -27,10 +27,10 @@
     --faint: #8E9AA0;
 
     /* accent: existing Etihad golds (core for text/fills on light, bright for glow) */
-    /* the original cubeiitm.org yellows: deep #D89F03, base #F1DB62, mid #EBCB3B */
+    /* one yellow: #D89F03, the cubeiitm.org splash screen colour */
     --gold-core: #D89F03;
-    --gold-deep: #EBCB3B;
-    --gold-bright: #F1DB62;
+    --gold-deep: #D89F03;
+    --gold-bright: #D89F03;
 
     /* legacy names some components read */
     --slate-rail: #33454E;
@@ -105,7 +105,7 @@
   /* global black gradient, with a faint warm glow of the original yellow */
   background:
     radial-gradient(1100px 700px at 12% -8%, rgba(216, 159, 3, 0.07), transparent 60%),
-    radial-gradient(900px 600px at 100% 100%, rgba(241, 219, 98, 0.04), transparent 60%),
+    radial-gradient(900px 600px at 100% 100%, rgba(216, 159, 3, 0.04), transparent 60%),
     linear-gradient(180deg, #0B0D0E 0%, #12171A 48%, #08090A 100%);
 }
 /* faint paper grain so large flat areas don't look digital */
@@ -200,7 +200,7 @@
   pointer-events: none;
   box-shadow:
     inset 0 0 0 1px rgba(216, 159, 3, 0.55),
-    inset 0 0 36px rgba(241, 219, 98, 0.10);
+    inset 0 0 36px rgba(216, 159, 3, 0.10);
   opacity: 0;
   transition: opacity var(--hover-ms) var(--ease-smooth);
 }
@@ -231,7 +231,7 @@
   right: 12%;
   height: 2px;
   border-radius: 2px;
-  background: linear-gradient(90deg, transparent, rgba(241, 219, 98, 0.9), transparent);
+  background: linear-gradient(90deg, transparent, rgba(216, 159, 3, 0.9), transparent);
   opacity: 0;
   transform: scaleX(0.4);
   transition: opacity var(--hover-ms, 0.6s) var(--ease-smooth, ease), transform var(--hover-ms, 0.6s) var(--ease-smooth, ease);
@@ -243,14 +243,15 @@
 
 /* ═══════════ BUTTONS: light shades ═══════════ */
 .btn-gold {
-  background: linear-gradient(180deg, #F1DB62 0%, #D89F03 100%);
+  /* the cubeiitm.org splash yellow, with a faint sheen so it is not flat */
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.16) 0%, rgba(255, 255, 255, 0) 60%), #D89F03;
   color: #0B0D0E;
-  border: 1px solid rgba(241, 219, 98, 0.6);
+  border: 1px solid rgba(216, 159, 3, 0.6);
   box-shadow: 0 12px 28px -14px rgba(216, 159, 3, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.45);
   transition: background 0.3s ease, box-shadow 0.3s ease, transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .btn-gold:hover {
-  background: linear-gradient(180deg, #F6E37E 0%, #E3AA10 100%);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.26) 0%, rgba(255, 255, 255, 0.04) 70%), #D89F03;
   box-shadow: 0 18px 34px -14px rgba(216, 159, 3, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.55);
   transform: translateY(-1px);
 }
@@ -294,7 +295,7 @@
   right: -10%;
   width: 480px;
   height: 480px;
-  background: radial-gradient(circle, rgba(233, 178, 21, 0.10) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(216, 159, 3, 0.10) 0%, transparent 70%);
   filter: blur(60px);
   pointer-events: none;
 }
@@ -470,7 +471,7 @@ html.no-splash .splash { display: none; }
   width: 120px;
   height: 3px;
   border-radius: 3px;
-  background: linear-gradient(90deg, #F1DB62, #D89F03);
+  background: linear-gradient(90deg, #D89F03, #D89F03);
   transform-origin: left center;
   animation: splashLine 0.9s var(--ease-out) 0.2s both;
 }
@@ -617,8 +618,8 @@ input, textarea, select, button { font-family: inherit !important; }
   transform-origin: left;
   transform: scaleX(0);
   opacity: 0;
-  background: linear-gradient(90deg, #D89F03, #EBCB3B 60%, #F1DB62);
-  box-shadow: 0 0 12px rgba(233, 178, 21, 0.55);
+  background: linear-gradient(90deg, #D89F03, #D89F03 60%, #D89F03);
+  box-shadow: 0 0 12px rgba(216, 159, 3, 0.55);
 }
 
 /* search dialog aura: gold glow behind the glass panel. Blurred once (static
@@ -626,7 +627,7 @@ input, textarea, select, button { font-family: inherit !important; }
 .search-glow {
   background:
     radial-gradient(48% 42% at 50% 22%, rgba(248, 214, 130, 0.95), transparent 70%),
-    radial-gradient(70% 60% at 50% 40%, rgba(240, 196, 104, 0.6), rgba(233, 178, 21, 0.2) 60%, transparent 78%);
+    radial-gradient(70% 60% at 50% 40%, rgba(216, 159, 3, 0.6), rgba(216, 159, 3, 0.2) 60%, transparent 78%);
   filter: blur(42px);
   animation: searchGlow 4.5s ease-in-out infinite;
 }
@@ -644,8 +645,8 @@ input, textarea, select, button { font-family: inherit !important; }
 /* search panel: liquid-glass body plus a thin gold rim and a warm under-glow */
 .liquid-glass.search-panel {
   box-shadow:
-    0 0 0 1px rgba(233, 178, 21, 0.28),
-    0 0 40px -6px rgba(240, 196, 104, 0.55),
+    0 0 0 1px rgba(216, 159, 3, 0.28),
+    0 0 40px -6px rgba(216, 159, 3, 0.55),
     0 40px 90px -30px rgba(27, 38, 44, 0.55),
     inset 0 1px 0 rgba(255, 255, 255, 0.95);
 }
@@ -666,10 +667,10 @@ input, textarea, select, button { font-family: inherit !important; }
 }
 .btn-liquid:hover { background: linear-gradient(180deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.08) 100%); transform: translateY(-1px); }
 .btn-liquid-gold {
-  background: linear-gradient(180deg, rgba(241, 219, 98, 0.34) 0%, rgba(216, 159, 3, 0.2) 100%);
-  border: 1px solid rgba(241, 219, 98, 0.5);
+  background: linear-gradient(180deg, rgba(216, 159, 3, 0.34) 0%, rgba(216, 159, 3, 0.2) 100%);
+  border: 1px solid rgba(216, 159, 3, 0.5);
   color: #FBF1C4;
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25), 0 12px 26px -14px rgba(216, 159, 3, 0.7);
 }
-.btn-liquid-gold:hover { background: linear-gradient(180deg, rgba(241, 219, 98, 0.46) 0%, rgba(216, 159, 3, 0.3) 100%); transform: translateY(-1px); }
+.btn-liquid-gold:hover { background: linear-gradient(180deg, rgba(216, 159, 3, 0.46) 0%, rgba(216, 159, 3, 0.3) 100%); transform: translateY(-1px); }
 .btn-liquid:active, .btn-liquid-gold:active { transform: scale(0.96); transition-duration: 0.12s; }

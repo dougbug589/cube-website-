@@ -25,7 +25,7 @@ export default function NewsTicker({ items }: { items: NewsLike[] }) {
           href="/media/news"
           className="press shrink-0 h-full flex items-center gap-2 pl-5 pr-4 font-display text-[16.5px] font-extrabold text-[#F3F5F6] border-r border-white/10"
         >
-          <span className="w-2 h-2 rounded-full bg-[#F1DB62] shadow-[0_0_10px_#E9B215] animate-pulse" />
+          <span className="w-2 h-2 rounded-full bg-[#D89F03] shadow-[0_0_10px_#D89F03] animate-pulse" />
           News
         </Link>
         <div className="relative flex-1 overflow-hidden [mask-image:linear-gradient(90deg,transparent,black_4%,black_96%,transparent)]">
@@ -40,8 +40,8 @@ export default function NewsTicker({ items }: { items: NewsLike[] }) {
                   tabIndex={i >= list.length ? -1 : undefined}
                   className="group inline-flex items-center gap-3 px-6 text-[16.5px] whitespace-nowrap"
                 >
-                  {n.date && <span className="text-[15px] font-bold text-[#EBCB3B] tabular-nums">{n.date}</span>}
-                  <span className="font-semibold text-[#F3F5F6] group-hover:text-[#EBCB3B] transition-colors">{n.title}</span>
+                  {n.date && <span className="text-[15px] font-bold text-[#D89F03] tabular-nums">{n.date}</span>}
+                  <span className="font-semibold text-[#F3F5F6] group-hover:text-[#D89F03] transition-colors">{n.title}</span>
                   <ArrowUpRight size={14} className="text-[#D89F03] opacity-0 group-hover:opacity-100 transition-opacity" />
                   <span aria-hidden className="ml-3 w-1 h-1 rounded-full bg-white/20" />
                 </Link>

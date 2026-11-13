@@ -225,7 +225,7 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
                   </span>
                 )}
                 {detailJob.employmentType && (
-                  <span className="rounded-full bg-[#D89F03]/15 border border-[#D89F03]/20 px-3 py-1 text-[13.5px] font-bold text-[#EBCB3B]">
+                  <span className="rounded-full bg-[#D89F03]/15 border border-[#D89F03]/20 px-3 py-1 text-[13.5px] font-bold text-[#D89F03]">
                     {detailJob.employmentType}
                   </span>
                 )}
@@ -292,7 +292,7 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
                   </ol>
                   <p className="mt-4 text-[17px] text-[#C2CCD1]">
                     Questions? Write to{' '}
-                    <a href={`mailto:${detailEmail}`} className="font-bold text-[#F3F5F6] hover:text-[#EBCB3B] underline underline-offset-4 decoration-[#D89F03]/50">
+                    <a href={`mailto:${detailEmail}`} className="font-bold text-[#F3F5F6] hover:text-[#D89F03] underline underline-offset-4 decoration-[#D89F03]/50">
                       {detailEmail}
                     </a>
                   </p>
@@ -357,7 +357,7 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
                       className="absolute inset-0 rounded-[22px] sm:rounded-full bg-gradient-to-b from-[#D89F03]/45 to-[#D89F03]/20 border border-[#D89F03]/25 shadow-[0_6px_16px_-10px_rgba(196,146,27,0.8)]"
                     />
                   )}
-                  <Icon size={16} strokeWidth={2.25} className="relative text-[#EBCB3B] shrink-0" />
+                  <Icon size={16} strokeWidth={2.25} className="relative text-[#D89F03] shrink-0" />
                   <span className="relative">{label}</span>
                   {typeof count === 'number' && (
                     <span className={`relative shrink-0 grid place-items-center min-w-6 h-6 px-1.5 rounded-full text-[13.5px] font-extrabold tabular-nums ${on ? 'bg-white/[0.07]' : 'bg-white/[0.08]'}`}>
@@ -374,11 +374,11 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
               href={`mailto:${c.contactEmail}`}
               className="group self-start md:self-auto inline-flex items-center gap-3 rounded-full glass glass-edge pl-2 pr-5 h-12 text-[15px]"
             >
-              <span className="grid place-items-center w-9 h-9 rounded-full bg-[#D89F03]/15 text-[#EBCB3B]">
+              <span className="grid place-items-center w-9 h-9 rounded-full bg-[#D89F03]/15 text-[#D89F03]">
                 <Mail size={16} strokeWidth={2.25} />
               </span>
               <span className="text-[#A7B2B8] font-semibold hidden sm:inline">{c.contactLabel}</span>
-              <span className="font-bold text-[#F3F5F6] group-hover:text-[#EBCB3B] transition-colors">{c.contactEmail}</span>
+              <span className="font-bold text-[#F3F5F6] group-hover:text-[#D89F03] transition-colors">{c.contactEmail}</span>
             </a>
           )}
         </div>
@@ -398,7 +398,7 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
               >
                 {initialCareers.length === 0 ? (
                   <div className="liquid-glass rounded-[30px] p-10 sm:p-14 text-center max-w-3xl mx-auto">
-                    <span className="grid place-items-center w-16 h-16 mx-auto rounded-[20px] bg-[#D89F03]/15 text-[#EBCB3B] depth-1">
+                    <span className="grid place-items-center w-16 h-16 mx-auto rounded-[20px] bg-[#D89F03]/15 text-[#D89F03] depth-1">
                       <Briefcase size={28} strokeWidth={2} />
                     </span>
                     <h3 className="mt-6 font-display text-[26px] font-extrabold text-[#F3F5F6]">{c.emptyState.title}</h3>
@@ -444,7 +444,7 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
                                 <span className="rounded-full bg-white/[0.08] border border-white/10 px-3 py-1 text-[13.5px] font-bold text-[#C2CCD1]">{job.department}</span>
                               )}
                               {job.employmentType && (
-                                <span className="rounded-full bg-[#D89F03]/15 border border-[#D89F03]/20 px-3 py-1 text-[13.5px] font-bold text-[#EBCB3B]">{job.employmentType}</span>
+                                <span className="rounded-full bg-[#D89F03]/15 border border-[#D89F03]/20 px-3 py-1 text-[13.5px] font-bold text-[#D89F03]">{job.employmentType}</span>
                               )}
                             </div>
 
@@ -481,7 +481,7 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
                                 Apply &amp; upload CV
                                 <ArrowUpRight size={16} strokeWidth={2.25} />
                               </button>
-                              <span className="h-12 px-5 rounded-full inline-flex items-center gap-2 text-[15.5px] font-bold text-[#F3F5F6] group-hover:text-[#EBCB3B] transition-colors">
+                              <span className="h-12 px-5 rounded-full inline-flex items-center gap-2 text-[15.5px] font-bold text-[#F3F5F6] group-hover:text-[#D89F03] transition-colors">
                                 View full details
                                 <ArrowUpRight size={16} strokeWidth={2.25} className="transition-transform duration-500 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                               </span>
@@ -498,7 +498,7 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
                                   </li>
                                 ))}
                                 {!single && quals.length > 4 && (
-                                  <li className="rounded-full bg-[#D89F03]/15 px-3 py-1.5 text-[14px] font-bold text-[#EBCB3B]">+{quals.length - 4} more</li>
+                                  <li className="rounded-full bg-[#D89F03]/15 px-3 py-1.5 text-[14px] font-bold text-[#D89F03]">+{quals.length - 4} more</li>
                                 )}
                               </ul>
                             </div>
@@ -512,7 +512,7 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
                 {/* Talent network callout */}
                 <div className="rounded-[30px] bg-gradient-to-b from-[#D89F03]/20 to-[#D89F03]/5 border border-[#D89F03]/20 depth-1 p-7 sm:p-10 flex flex-col lg:flex-row lg:items-center justify-between gap-7">
                   <div className="flex items-start gap-5 max-w-3xl">
-                    <span className="hidden sm:grid place-items-center w-14 h-14 rounded-[18px] bg-white/[0.08] text-[#EBCB3B] depth-1 shrink-0">
+                    <span className="hidden sm:grid place-items-center w-14 h-14 rounded-[18px] bg-white/[0.08] text-[#D89F03] depth-1 shrink-0">
                       <Users size={24} strokeWidth={2} />
                     </span>
                     <div>
@@ -574,13 +574,13 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
                       <ol className="mt-4 space-y-3">
                         {c.jobDetail.howToApplySteps.map((step, i) => (
                           <li key={i} className="flex items-start gap-3 text-[17.5px] text-[#DDE3E6] leading-relaxed">
-                            <span className="grid place-items-center w-6 h-6 rounded-full bg-[#D89F03]/15 text-[13.5px] font-extrabold text-[#EBCB3B] shrink-0 mt-0.5">{i + 1}</span>
+                            <span className="grid place-items-center w-6 h-6 rounded-full bg-[#D89F03]/15 text-[13.5px] font-extrabold text-[#D89F03] shrink-0 mt-0.5">{i + 1}</span>
                             <span>{step}</span>
                           </li>
                         ))}
                       </ol>
                       {c.contactEmail && (
-                        <a href={`mailto:${c.contactEmail}`} className="mt-5 pt-4 border-t border-white/10 flex items-center gap-2.5 text-[15px] font-bold text-[#F3F5F6] hover:text-[#EBCB3B] transition-colors">
+                        <a href={`mailto:${c.contactEmail}`} className="mt-5 pt-4 border-t border-white/10 flex items-center gap-2.5 text-[15px] font-bold text-[#F3F5F6] hover:text-[#D89F03] transition-colors">
                           <Mail size={16} className="text-[#D89F03]" />
                           {c.contactEmail}
                         </a>
@@ -604,7 +604,7 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
                           initial={{ scale: 0.4, rotate: -12 }}
                           animate={{ scale: 1, rotate: 0 }}
                           transition={{ type: 'spring', stiffness: 380, damping: 14, delay: 0.05 }}
-                          className="grid place-items-center w-20 h-20 mx-auto rounded-full bg-gradient-to-b from-[#F1DB62]/35 to-[#D89F03]/20 text-[#F3F5F6] depth-2"
+                          className="grid place-items-center w-20 h-20 mx-auto rounded-full bg-gradient-to-b from-[#D89F03]/35 to-[#D89F03]/20 text-[#F3F5F6] depth-2"
                         >
                           <Check size={36} strokeWidth={2.5} />
                         </motion.span>
@@ -704,7 +704,7 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
                               onChange={handleFileChange}
                               className="sr-only"
                             />
-                            <span className={`grid place-items-center w-12 h-12 mx-auto rounded-2xl depth-1 ${resumeFile ? 'bg-[#D89F03]/35 text-[#F3F5F6]' : 'bg-[#D89F03]/15 text-[#EBCB3B]'}`}>
+                            <span className={`grid place-items-center w-12 h-12 mx-auto rounded-2xl depth-1 ${resumeFile ? 'bg-[#D89F03]/35 text-[#F3F5F6]' : 'bg-[#D89F03]/15 text-[#D89F03]'}`}>
                               {resumeFile ? <FileText size={22} strokeWidth={2} /> : <Upload size={22} strokeWidth={2} />}
                             </span>
                             <span className="mt-3 block text-[16px] font-bold text-[#F3F5F6] break-all">
@@ -766,7 +766,7 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
                 const Icon = BENEFIT_ICONS[item.icon] || Award;
                 return (
                   <div key={i} className="glass glass-interactive glass-edge rounded-[26px] p-7">
-                    <span className="grid place-items-center w-14 h-14 rounded-[18px] bg-gradient-to-b from-[#F1DB62]/35 to-[#D89F03]/20 text-[#F3F5F6] depth-1">
+                    <span className="grid place-items-center w-14 h-14 rounded-[18px] bg-gradient-to-b from-[#D89F03]/35 to-[#D89F03]/20 text-[#F3F5F6] depth-1">
                       <Icon size={24} strokeWidth={2} />
                     </span>
                     <h4 className="mt-6 font-display text-[20px] font-extrabold text-[#F3F5F6] leading-snug">{item.title}</h4>

@@ -117,12 +117,12 @@ export default function ContactPage() {
             rel="noopener noreferrer"
             className="press group glass glass-interactive glass-edge rounded-[28px] p-7 flex flex-col md:col-span-2 xl:col-span-1 xl:row-span-1"
           >
-            <span className="grid place-items-center w-14 h-14 rounded-[18px] bg-gradient-to-b from-[#F1DB62]/35 to-[#D89F03]/20 text-[#F3F5F6] depth-1">
+            <span className="grid place-items-center w-14 h-14 rounded-[18px] bg-gradient-to-b from-[#D89F03]/35 to-[#D89F03]/20 text-[#F3F5F6] depth-1">
               <MapPin size={24} strokeWidth={2} />
             </span>
             <span className="mt-6 label-mono">Meet us</span>
             <span className="mt-2 text-[16.5px] text-[#F3F5F6] font-semibold leading-relaxed">{contactInfo.address}</span>
-            <span className="mt-auto pt-6 inline-flex items-center gap-2 text-[15.5px] font-bold text-[#F3F5F6] group-hover:text-[#EBCB3B] transition-colors">
+            <span className="mt-auto pt-6 inline-flex items-center gap-2 text-[15.5px] font-bold text-[#F3F5F6] group-hover:text-[#D89F03] transition-colors">
               Open in Google Maps
               <ArrowUpRight size={16} strokeWidth={2.25} className="transition-transform duration-500 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </span>
@@ -130,14 +130,14 @@ export default function ContactPage() {
 
           {/* Drop a mail */}
           <div className="group relative glass glass-interactive glass-edge rounded-[28px] p-7 flex flex-col">
-            <span className="grid place-items-center w-14 h-14 rounded-[18px] bg-gradient-to-b from-[#F1DB62]/35 to-[#D89F03]/20 text-[#F3F5F6] depth-1">
+            <span className="grid place-items-center w-14 h-14 rounded-[18px] bg-gradient-to-b from-[#D89F03]/35 to-[#D89F03]/20 text-[#F3F5F6] depth-1">
               <Mail size={24} strokeWidth={2} />
             </span>
             <span className="mt-6 label-mono">Drop a mail</span>
             <span className="mt-2 font-display text-[22px] font-extrabold text-[#F3F5F6] break-all">{contactInfo.email}</span>
             <span className="mt-auto pt-6 flex items-center justify-between gap-3">
               {/* stretched link: the whole card opens the mail app */}
-              <a href={`mailto:${contactInfo.email}`} className="inline-flex items-center gap-2 text-[15.5px] font-bold text-[#F3F5F6] group-hover:text-[#EBCB3B] transition-colors after:absolute after:inset-0 after:rounded-[28px]">
+              <a href={`mailto:${contactInfo.email}`} className="inline-flex items-center gap-2 text-[15.5px] font-bold text-[#F3F5F6] group-hover:text-[#D89F03] transition-colors after:absolute after:inset-0 after:rounded-[28px]">
                 Write to us
                 <ArrowUpRight size={16} strokeWidth={2.25} />
               </a>
@@ -147,13 +147,13 @@ export default function ContactPage() {
 
           {/* Let's talk */}
           <div className="group relative glass glass-interactive glass-edge rounded-[28px] p-7 flex flex-col">
-            <span className="grid place-items-center w-14 h-14 rounded-[18px] bg-gradient-to-b from-[#F1DB62]/35 to-[#D89F03]/20 text-[#F3F5F6] depth-1">
+            <span className="grid place-items-center w-14 h-14 rounded-[18px] bg-gradient-to-b from-[#D89F03]/35 to-[#D89F03]/20 text-[#F3F5F6] depth-1">
               <Phone size={24} strokeWidth={2} />
             </span>
             <span className="mt-6 label-mono">Let&apos;s talk</span>
             <span className="mt-2 font-display text-[26px] font-extrabold text-[#F3F5F6] tabular-nums">{contactInfo.phone}</span>
             <span className="mt-auto pt-6 flex items-center justify-between gap-3">
-              <a href={`tel:${contactInfo.phoneTel}`} className="inline-flex items-center gap-2 text-[15.5px] font-bold text-[#F3F5F6] group-hover:text-[#EBCB3B] transition-colors after:absolute after:inset-0 after:rounded-[28px]">
+              <a href={`tel:${contactInfo.phoneTel}`} className="inline-flex items-center gap-2 text-[15.5px] font-bold text-[#F3F5F6] group-hover:text-[#D89F03] transition-colors after:absolute after:inset-0 after:rounded-[28px]">
                 Call the office
                 <ArrowUpRight size={16} strokeWidth={2.25} />
               </a>
@@ -209,7 +209,7 @@ export default function ContactPage() {
                     initial={{ scale: 0.4, rotate: -12 }}
                     animate={{ scale: 1, rotate: 0 }}
                     transition={{ type: 'spring', stiffness: 380, damping: 14, delay: 0.05 }}
-                    className="grid place-items-center w-20 h-20 mx-auto rounded-full bg-gradient-to-b from-[#F1DB62]/35 to-[#D89F03]/20 text-[#F3F5F6] depth-2"
+                    className="grid place-items-center w-20 h-20 mx-auto rounded-full bg-gradient-to-b from-[#D89F03]/35 to-[#D89F03]/20 text-[#F3F5F6] depth-2"
                   >
                     <Check size={36} strokeWidth={2.5} />
                   </motion.span>
@@ -280,7 +280,7 @@ export default function ContactPage() {
                             onClick={() => setFormData((f) => ({ ...f, enquiryCategory: t }))}
                             className={`press h-9 px-3.5 rounded-full text-[14px] font-bold border transition-colors duration-300 ${
                               on
-                                ? 'bg-gradient-to-b from-[#F1DB62]/35 to-[#D89F03]/20 border-[#D89F03]/30 text-[#F3F5F6]'
+                                ? 'bg-gradient-to-b from-[#D89F03]/35 to-[#D89F03]/20 border-[#D89F03]/30 text-[#F3F5F6]'
                                 : 'bg-white/[0.07] border-white/10 text-[#C2CCD1] hover:bg-white/[0.06] hover:text-[#F3F5F6]'
                             }`}
                           >
@@ -340,7 +340,7 @@ export default function ContactPage() {
               referrerPolicy="no-referrer-when-downgrade"
             />
             <div className="absolute left-4 right-4 bottom-4 liquid-glass is-solid rounded-[22px] p-4 flex items-center gap-4">
-              <span className="grid place-items-center w-11 h-11 rounded-2xl bg-[#D89F03]/15 text-[#EBCB3B] shrink-0">
+              <span className="grid place-items-center w-11 h-11 rounded-2xl bg-[#D89F03]/15 text-[#D89F03] shrink-0">
                 <MapPin size={19} strokeWidth={2} />
               </span>
               <span className="min-w-0">

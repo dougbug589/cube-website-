@@ -34,7 +34,7 @@ export default function CoreValuesPage() {
             return (
               <article key={val.title} className="glass glass-interactive glass-edge rounded-[28px] p-7 lg:p-8 flex flex-col">
                 <div className="flex items-center justify-between">
-                  <span className="grid place-items-center w-14 h-14 rounded-[18px] bg-gradient-to-b from-[#F1DB62]/35 to-[#D89F03]/20 text-[#F3F5F6] depth-1">
+                  <span className="grid place-items-center w-14 h-14 rounded-[18px] bg-gradient-to-b from-[#D89F03]/35 to-[#D89F03]/20 text-[#F3F5F6] depth-1">
                     <Icon size={24} strokeWidth={2} />
                   </span>
                   <span className="font-display text-[15px] font-extrabold text-[#D89F03] tabular-nums">{String(i + 1).padStart(2, '0')}</span>

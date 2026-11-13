@@ -285,7 +285,7 @@ export default function GalleryPage() {
                   <div className="mt-5 px-12 text-center max-w-3xl">
                     <p className="font-display text-[19px] sm:text-[21px] font-bold leading-snug">{activeItem.title}</p>
                     <p className="mt-1.5 text-[15px] text-white/70 font-semibold">
-                      {activeItem.category} · <span className="tabular-nums text-[#F1DB62]">{(lightboxIndex ?? 0) + 1} / {filteredItems.length}</span>
+                      {activeItem.category} · <span className="tabular-nums text-[#D89F03]">{(lightboxIndex ?? 0) + 1} / {filteredItems.length}</span>
                     </p>
                   </div>
                 </div>

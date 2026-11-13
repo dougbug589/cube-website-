@@ -117,7 +117,7 @@ export default function VerticalScroller({ verticals }: { verticals: Vertical[] 
             <div className="col-span-4 liquid-glass is-solid rounded-[30px] p-7 xl:p-8">
               <div className="relative pl-7">
                 <span aria-hidden className="absolute left-0 top-1 bottom-1 w-[3px] rounded-full bg-white/10 overflow-hidden">
-                  <span ref={railRef} className="block w-full h-full origin-top bg-gradient-to-b from-[#F1DB62] to-[#D89F03]" style={{ transform: 'scaleY(0.02)' }} />
+                  <span ref={railRef} className="block w-full h-full origin-top bg-gradient-to-b from-[#D89F03] to-[#D89F03]" style={{ transform: 'scaleY(0.02)' }} />
                 </span>
                 <ol className="space-y-1.5">
                   {verticals.map((x, i) => {

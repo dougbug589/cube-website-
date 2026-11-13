@@ -118,7 +118,7 @@ export default function TeamPage() {
               aria-labelledby={`dept-${id}`}
             >
               <div className="flex items-center gap-4 mb-6">
-                <span className="grid place-items-center w-12 h-12 rounded-2xl bg-gradient-to-b from-[#F1DB62]/35 to-[#D89F03]/20 text-[#F3F5F6] depth-1">
+                <span className="grid place-items-center w-12 h-12 rounded-2xl bg-gradient-to-b from-[#D89F03]/35 to-[#D89F03]/20 text-[#F3F5F6] depth-1">
                   <Icon size={21} strokeWidth={2} />
                 </span>
                 <h2 id={`dept-${id}`} className="font-display text-[24px] sm:text-[28px] font-extrabold text-[#F3F5F6]">
@@ -138,7 +138,7 @@ export default function TeamPage() {
                     </div>
                     <div className="min-w-0">
                       <p className="font-display text-[17.5px] font-bold text-[#F3F5F6] leading-snug">{m.name}</p>
-                      {m.designation && <p className="mt-0.5 text-[15.5px] font-semibold text-[#EBCB3B] leading-snug">{m.designation}</p>}
+                      {m.designation && <p className="mt-0.5 text-[15.5px] font-semibold text-[#D89F03] leading-snug">{m.designation}</p>}
                     </div>
                   </li>
                 ))}

@@ -66,7 +66,7 @@ export default function LifeAtCubePage() {
             <p className="mt-2 text-[19.5px] font-semibold text-[#DDE3E6]">people in the CUBE team</p>
           </div>
           <div className="glass glass-edge rounded-[26px] p-7 flex items-start gap-4">
-            <span className="grid place-items-center w-12 h-12 rounded-2xl bg-[#D89F03]/15 text-[#EBCB3B] depth-1 shrink-0">
+            <span className="grid place-items-center w-12 h-12 rounded-2xl bg-[#D89F03]/15 text-[#D89F03] depth-1 shrink-0">
               <MapPin size={21} strokeWidth={2} />
             </span>
             <span>
@@ -86,7 +86,7 @@ export default function LifeAtCubePage() {
               <span className="mt-2 block font-display text-[26px] font-extrabold text-[#F3F5F6]">Join the team</span>
               <span className="mt-1 block text-[18px] text-[#A7B2B8]">See current openings and apply online.</span>
             </span>
-            <span className="grid place-items-center w-12 h-12 rounded-full bg-gradient-to-b from-[#F1DB62]/35 to-[#D89F03]/20 text-[#F3F5F6] depth-1 shrink-0 transition-transform duration-500 group-hover:translate-x-1 group-hover:-translate-y-1">
+            <span className="grid place-items-center w-12 h-12 rounded-full bg-gradient-to-b from-[#D89F03]/35 to-[#D89F03]/20 text-[#F3F5F6] depth-1 shrink-0 transition-transform duration-500 group-hover:translate-x-1 group-hover:-translate-y-1">
               <ArrowUpRight size={20} strokeWidth={2.25} />
             </span>
           </Link>

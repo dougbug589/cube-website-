@@ -22,7 +22,7 @@ export default function EventsPage() {
       {/* timeline: a gold rail with one dated marker per event; cards alternate sides on wide screens */}
       <section className="shell pb-24">
         <ol className="relative">
-          <span aria-hidden className="absolute left-[19px] lg:left-1/2 top-2 bottom-2 w-[3px] -translate-x-1/2 rounded-full bg-gradient-to-b from-[#F1DB62] via-[#D89F03]/50 to-transparent" />
+          <span aria-hidden className="absolute left-[19px] lg:left-1/2 top-2 bottom-2 w-[3px] -translate-x-1/2 rounded-full bg-gradient-to-b from-[#D89F03] via-[#D89F03]/50 to-transparent" />
           {cubeEvents.map((evt, i) => {
             const right = i % 2 === 1;
             return (
@@ -39,7 +39,7 @@ export default function EventsPage() {
                   <div className="p-6 sm:p-8">
                     <div className="flex flex-wrap gap-x-6 gap-y-2 text-[15.5px] font-semibold text-[#C2CCD1]">
                       {evt.date && (
-                        <span className="flex items-center gap-2 text-[#EBCB3B] font-bold tabular-nums">
+                        <span className="flex items-center gap-2 text-[#D89F03] font-bold tabular-nums">
                           <CalendarDays size={17} /> {evt.date}
                         </span>
                       )}

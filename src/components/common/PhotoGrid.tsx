@@ -124,7 +124,7 @@ export default function PhotoGrid({ photos, title }: { photos: string[]; title: 
                     </AnimatePresence>
                   </div>
                   <p className="mt-4 text-[15px] font-semibold text-white/75 tabular-nums">
-                    <span className="text-[#F1DB62]">{(index ?? 0) + 1}</span> / {photos.length}
+                    <span className="text-[#D89F03]">{(index ?? 0) + 1}</span> / {photos.length}
                   </p>
                 </div>
               </motion.div>

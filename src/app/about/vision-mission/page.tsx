@@ -29,9 +29,9 @@ export default function VisionMissionPage() {
       {/* Vision: one large statement in a raised glass panel */}
       <section className="shell">
         <div className="liquid-glass relative rounded-[34px] depth-3 p-8 sm:p-12 lg:p-16 overflow-hidden reveal">
-          <div aria-hidden className="absolute -top-24 -right-16 w-[420px] h-[420px] rounded-full bg-[radial-gradient(circle,rgba(240,196,104,0.28),transparent_70%)] blur-2xl pointer-events-none" />
+          <div aria-hidden className="absolute -top-24 -right-16 w-[420px] h-[420px] rounded-full bg-[radial-gradient(circle,rgba(216, 159, 3,0.28),transparent_70%)] blur-2xl pointer-events-none" />
           <div className="relative flex items-center gap-3">
-            <span className="grid place-items-center w-12 h-12 rounded-2xl bg-gradient-to-b from-[#F1DB62]/35 to-[#D89F03]/20 text-[#F3F5F6] depth-1">
+            <span className="grid place-items-center w-12 h-12 rounded-2xl bg-gradient-to-b from-[#D89F03]/35 to-[#D89F03]/20 text-[#F3F5F6] depth-1">
               <Compass size={22} strokeWidth={2} />
             </span>
             <p className="label-mono">Vision</p>
@@ -45,7 +45,7 @@ export default function VisionMissionPage() {
       {/* Mission: numbered points */}
       <section className="shell py-14 lg:py-20 pb-24">
         <div className="flex items-center gap-3 mb-8 reveal">
-          <span className="grid place-items-center w-12 h-12 rounded-2xl bg-[#D89F03]/15 text-[#EBCB3B] depth-1">
+          <span className="grid place-items-center w-12 h-12 rounded-2xl bg-[#D89F03]/15 text-[#D89F03] depth-1">
             <Target size={22} strokeWidth={2} />
           </span>
           <h2 className="headline-light text-3xl sm:text-[2.4rem] text-[#F3F5F6]">Mission</h2>

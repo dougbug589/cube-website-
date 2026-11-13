@@ -99,7 +99,7 @@ Parameters / Notes: ${formData.parametersNeeded || 'Standard Matrix Parameters'}
               const Icon = ICON[service.id] || Droplets;
               return (
                 <div key={service.id || service.title} className="liquid-glass rounded-[28px] p-8 transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-1">
-                  <span className="grid place-items-center w-14 h-14 rounded-[18px] bg-gradient-to-b from-[#F1DB62]/35 to-[#D89F03]/20 text-[#F3F5F6] depth-1">
+                  <span className="grid place-items-center w-14 h-14 rounded-[18px] bg-gradient-to-b from-[#D89F03]/35 to-[#D89F03]/20 text-[#F3F5F6] depth-1">
                     <Icon size={24} strokeWidth={2} />
                   </span>
                   <h2 className="mt-6 font-display text-[28px] font-extrabold text-[#F3F5F6]">{service.title}</h2>
@@ -123,10 +123,10 @@ Parameters / Notes: ${formData.parametersNeeded || 'Standard Matrix Parameters'}
               </p>
             </div>
             <div className="glass glass-edge rounded-[26px] p-7 space-y-3">
-              <a href={`mailto:${contactInfo.email}`} className="flex items-center gap-3 text-[17px] font-bold text-[#F3F5F6] hover:text-[#EBCB3B] transition-colors">
+              <a href={`mailto:${contactInfo.email}`} className="flex items-center gap-3 text-[17px] font-bold text-[#F3F5F6] hover:text-[#D89F03] transition-colors">
                 <Mail size={19} className="text-[#D89F03]" /> {contactInfo.email}
               </a>
-              <a href={`tel:${contactInfo.phoneTel}`} className="flex items-center gap-3 text-[17px] font-bold text-[#F3F5F6] hover:text-[#EBCB3B] transition-colors">
+              <a href={`tel:${contactInfo.phoneTel}`} className="flex items-center gap-3 text-[17px] font-bold text-[#F3F5F6] hover:text-[#D89F03] transition-colors">
                 <Phone size={19} className="text-[#D89F03]" /> {contactInfo.phone}
               </a>
             </div>
@@ -143,7 +143,7 @@ Parameters / Notes: ${formData.parametersNeeded || 'Standard Matrix Parameters'}
                     initial={{ scale: 0.4, rotate: -12 }}
                     animate={{ scale: 1, rotate: 0 }}
                     transition={{ type: 'spring', stiffness: 380, damping: 14, delay: 0.05 }}
-                    className="grid place-items-center w-20 h-20 mx-auto rounded-full bg-gradient-to-b from-[#F1DB62]/35 to-[#D89F03]/20 text-[#F3F5F6] depth-2"
+                    className="grid place-items-center w-20 h-20 mx-auto rounded-full bg-gradient-to-b from-[#D89F03]/35 to-[#D89F03]/20 text-[#F3F5F6] depth-2"
                   >
                     <Check size={36} strokeWidth={2.5} />
                   </motion.span>
@@ -198,7 +198,7 @@ Parameters / Notes: ${formData.parametersNeeded || 'Standard Matrix Parameters'}
                             type="button"
                             onClick={() => setFormData((f) => ({ ...f, matrix: s.title }))}
                             className={`press h-9 px-3.5 rounded-full text-[14px] font-bold border transition-colors duration-300 ${
-                              on ? 'bg-gradient-to-b from-[#F1DB62]/35 to-[#D89F03]/20 border-[#D89F03]/30 text-[#F3F5F6]' : 'bg-white/[0.07] border-white/10 text-[#C2CCD1] hover:bg-white/[0.06] hover:text-[#F3F5F6]'
+                              on ? 'bg-gradient-to-b from-[#D89F03]/35 to-[#D89F03]/20 border-[#D89F03]/30 text-[#F3F5F6]' : 'bg-white/[0.07] border-white/10 text-[#C2CCD1] hover:bg-white/[0.06] hover:text-[#F3F5F6]'
                             }`}
                           >
                             {s.title}

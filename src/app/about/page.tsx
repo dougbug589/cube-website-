@@ -91,7 +91,7 @@ export default function AboutPage() {
               <p className="mt-5 pt-5 border-t border-white/10 text-[17px] text-[#C2CCD1] leading-relaxed">{contactInfo.address}</p>
             </div>
             <div className="glass glass-interactive glass-edge rounded-[24px] p-5 flex items-start gap-4">
-              <span className="grid place-items-center w-12 h-12 rounded-2xl bg-[#D89F03]/15 text-[#EBCB3B] depth-1 shrink-0">
+              <span className="grid place-items-center w-12 h-12 rounded-2xl bg-[#D89F03]/15 text-[#D89F03] depth-1 shrink-0">
                 <Landmark size={21} strokeWidth={2} />
               </span>
               <span>
@@ -102,7 +102,7 @@ export default function AboutPage() {
               </span>
             </div>
             <div className="glass glass-interactive glass-edge rounded-[24px] p-5 flex items-start gap-4">
-              <span className="grid place-items-center w-12 h-12 rounded-2xl bg-[#D89F03]/15 text-[#EBCB3B] depth-1 shrink-0">
+              <span className="grid place-items-center w-12 h-12 rounded-2xl bg-[#D89F03]/15 text-[#D89F03] depth-1 shrink-0">
                 <GraduationCap size={21} strokeWidth={2} />
               </span>
               <span>
@@ -243,7 +243,7 @@ export default function AboutPage() {
                 </div>
                 <div className="min-w-0">
                   <p className="font-display text-[17.5px] font-bold text-[#F3F5F6] truncate">{t.name}</p>
-                  <p className="text-[15.5px] font-semibold text-[#EBCB3B] truncate">{t.designation}</p>
+                  <p className="text-[15.5px] font-semibold text-[#D89F03] truncate">{t.designation}</p>
                   {t.department && <p className="text-[17px] text-[#C2CCD1] truncate">{t.department}</p>}
                 </div>
               </div>
