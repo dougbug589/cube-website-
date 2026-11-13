@@ -42,12 +42,12 @@ export default function PartnersSection({ clientCount }: { clientCount: number }
           <li>
             <Link
               href="/about/clients"
-              className="press group glass-interactive h-full min-h-[180px] rounded-[24px] p-6 flex flex-col justify-between bg-gradient-to-b from-[#F6C22E]/35 to-[#F6C22E]/20 border border-[#F6C22E]/25 depth-1"
+              className="press group glass-interactive h-full min-h-[180px] rounded-[24px] p-6 flex flex-col justify-between btn-gold"
             >
-              <span className="text-[15px] font-bold text-[#F3F5F6]/80">Clients served</span>
+              <span className="text-[15px] font-bold text-[#0B0D0E]/75">Clients served</span>
               <span className="flex items-end justify-between">
-                <span className="font-display text-[44px] font-extrabold leading-none text-[#F3F5F6]">{clientCount}</span>
-                <ArrowUpRight size={22} strokeWidth={2.25} className="text-[#F3F5F6] transition-transform duration-500 group-hover:translate-x-1 group-hover:-translate-y-1" />
+                <span className="font-display text-[44px] font-extrabold leading-none text-[#0B0D0E]">{clientCount}</span>
+                <ArrowUpRight size={22} strokeWidth={2.25} className="text-[#0B0D0E] transition-transform duration-500 group-hover:translate-x-1 group-hover:-translate-y-1" />
               </span>
             </Link>
           </li>
