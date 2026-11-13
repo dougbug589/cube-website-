@@ -243,16 +243,16 @@
 
 /* ═══════════ BUTTONS: light shades ═══════════ */
 .btn-gold {
-  /* the cubeiitm.org splash yellow, with a faint sheen so it is not flat */
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.16) 0%, rgba(255, 255, 255, 0) 60%), #D89F03;
+  /* lighter amber #F6C22E (same as the hero phrase), with a faint sheen so it is not flat */
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.16) 0%, rgba(255, 255, 255, 0) 60%), #F6C22E;
   color: #0B0D0E;
-  border: 1px solid rgba(216, 159, 3, 0.6);
-  box-shadow: 0 12px 28px -14px rgba(216, 159, 3, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.45);
+  border: 1px solid rgba(246, 194, 46, 0.6);
+  box-shadow: 0 12px 28px -14px rgba(246, 194, 46, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.45);
   transition: background 0.3s ease, box-shadow 0.3s ease, transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .btn-gold:hover {
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.26) 0%, rgba(255, 255, 255, 0.04) 70%), #D89F03;
-  box-shadow: 0 18px 34px -14px rgba(216, 159, 3, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.55);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.26) 0%, rgba(255, 255, 255, 0.04) 70%), #F6C22E;
+  box-shadow: 0 18px 34px -14px rgba(246, 194, 46, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.55);
   transform: translateY(-1px);
 }
 .btn-soft {
@@ -667,10 +667,10 @@ input, textarea, select, button { font-family: inherit !important; }
 }
 .btn-liquid:hover { background: linear-gradient(180deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.08) 100%); transform: translateY(-1px); }
 .btn-liquid-gold {
-  background: linear-gradient(180deg, rgba(216, 159, 3, 0.34) 0%, rgba(216, 159, 3, 0.2) 100%);
-  border: 1px solid rgba(216, 159, 3, 0.5);
+  background: linear-gradient(180deg, rgba(246, 194, 46, 0.34) 0%, rgba(246, 194, 46, 0.2) 100%);
+  border: 1px solid rgba(246, 194, 46, 0.5);
   color: #FBF1C4;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25), 0 12px 26px -14px rgba(216, 159, 3, 0.7);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25), 0 12px 26px -14px rgba(246, 194, 46, 0.7);
 }
-.btn-liquid-gold:hover { background: linear-gradient(180deg, rgba(216, 159, 3, 0.46) 0%, rgba(216, 159, 3, 0.3) 100%); transform: translateY(-1px); }
+.btn-liquid-gold:hover { background: linear-gradient(180deg, rgba(246, 194, 46, 0.46) 0%, rgba(246, 194, 46, 0.3) 100%); transform: translateY(-1px); }
 .btn-liquid:active, .btn-liquid-gold:active { transform: scale(0.96); transition-duration: 0.12s; }
