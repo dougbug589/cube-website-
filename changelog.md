@@ -78,6 +78,7 @@ Two lines of work run through this repository:
 - Slate rail sidebar on desktop, photo hero, and stacked project carousel (Etihad-style layout). Superseded the same day by the top bar. (`75f0d52`)
 
 #### Fixed
+- On the public read-only site (Vercel) the top bar no longer shows an admin sign-in icon that led to a "Not found" page. (`2c688f7`)
 - The home page section guide could overlap page content on screens between 1760 and 1900 px wide; it now only appears where it fits. (`bffed9b`)
 - After opening a search result, the search dialog could stay on the page invisibly and block every click until reload; it now always gets out of the way when it closes, and the search box always receives the cursor when it opens. (`8f30a4e`)
 - Top-bar menus could open with blank photo cards because their photos only started downloading when the panel opened. They are now fetched in the background once the page is idle, or as soon as the pointer reaches the menu, so they are ready on first open. (`4252581`)
