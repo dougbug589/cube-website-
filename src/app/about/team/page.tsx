@@ -1,260 +1,162 @@
 'use client';
 
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useMemo, useState } from 'react';
 import Image from 'next/image';
+import { AnimatePresence, motion } from 'framer-motion';
+import { Search, X, Building2, Trees, Navigation as NavigationIcon, Briefcase, Users } from 'lucide-react';
 import PageHeader from '@/components/common/PageHeader';
-import { Search, Plus, Minus, Users, Briefcase, Building2, Trees, Navigation as NavigationIcon, ChevronDown, ChevronUp } from 'lucide-react';
+import { Monogram } from '@/components/common/PersonCard';
 import { teamMembers as fallbackTeamMembers } from '@/data/team';
 import { useLiveList } from '@/lib/live';
 
-interface DepartmentSection {
-  id: string;
-  title: string;
-  icon: any;
-  defaultOpen: boolean;
-  accent: string;
-}
+const DEPARTMENTS = [
+  { id: 'Building & Construction', title: 'Building & Construction', Icon: Building2 },
+  { id: 'Environment & Sustainability', title: 'Environment & Sustainability', Icon: Trees },
+  { id: 'Urban Planning & Transportation', title: 'Urban Planning & Transportation', Icon: NavigationIcon },
+  { id: 'Admin', title: 'Admin & Operations', Icon: Briefcase },
+] as const;
 
-const DEPARTMENTS: DepartmentSection[] = [
-  {
-    id: 'Building & Construction',
-    title: 'Building & Construction',
-    icon: Building2,
-    defaultOpen: true,
-    accent: 'border-l-4 border-l-[#C4921B]',
-  },
-  {
-    id: 'Environment & Sustainability',
-    title: 'Environment & Sustainability',
-    icon: Trees,
-    defaultOpen: false,
-    accent: 'border-l-4 border-l-[#008080]',
-  },
-  {
-    id: 'Urban Planning & Transportation',
-    title: 'Urban Planning & Transportation',
-    icon: NavigationIcon,
-    defaultOpen: false,
-    accent: 'border-l-4 border-l-[#2B3B44]',
-  },
-  {
-    id: 'Admin',
-    title: 'Admin & Operations',
-    icon: Briefcase,
-    defaultOpen: false,
-    accent: 'border-l-4 border-l-slate-600',
-  },
-];
+const SPRING = { type: 'spring' as const, stiffness: 420, damping: 34, mass: 0.8 };
+const hasPhoto = (src?: string) => !!src && !/team_unknown/.test(src);
 
 export default function TeamPage() {
   // Live CMS data (published members only); updates instantly on admin changes.
   const teamList = useLiveList<any>('/api/public/team', fallbackTeamMembers);
-  const [searchQuery, setSearchQuery] = useState('');
-  const [openSections, setOpenSections] = useState<Record<string, boolean>>({
-    'Building & Construction': true,
-    'Environment & Sustainability': false,
-    'Urban Planning & Transportation': false,
-    'Admin': false,
-  });
+  const [query, setQuery] = useState('');
+  const [dept, setDept] = useState<string>('all');
 
-  const toggleSection = (id: string) => {
-    setOpenSections((prev) => ({
-      ...prev,
-      [id]: !prev[id],
-    }));
-  };
+  // Staff only (board, advisory panel and leadership have their own pages),
+  // grouped by department; archived records never show.
+  const grouped = useMemo(() => {
+    const q = query.toLowerCase().trim();
+    const out: Record<string, any[]> = Object.fromEntries(DEPARTMENTS.map((d) => [d.id, []]));
+    teamList
+      .filter((m) => m.status !== 'archived')
+      .filter((m) => !['leadership', 'board', 'advisory'].includes(m.category))
+      .filter((m) => !q || (m.name || '').toLowerCase().includes(q) || (m.designation || '').toLowerCase().includes(q))
+      .forEach((m) => {
+        const d = m.department || m.category || 'Building & Construction';
+        (out[d] || out['Building & Construction']).push(m);
+      });
+    return out;
+  }, [teamList, query]);
 
-  const expandAll = () => {
-    const allOpen: Record<string, boolean> = {};
-    DEPARTMENTS.forEach((d) => (allOpen[d.id] = true));
-    setOpenSections(allOpen);
-  };
-
-  const collapseAll = () => {
-    const allClosed: Record<string, boolean> = {};
-    DEPARTMENTS.forEach((d) => (allClosed[d.id] = false));
-    setOpenSections(allClosed);
-  };
-
-  // Group active team members by department
-  const filteredAndGrouped = useMemo(() => {
-    const query = searchQuery.toLowerCase().trim();
-    const grouped: Record<string, any[]> = {
-      'Building & Construction': [],
-      'Environment & Sustainability': [],
-      'Urban Planning & Transportation': [],
-      'Admin': [],
-    };
-
-    // Filter out any archived records strictly
-    const activeMembers = teamList.filter((m) => m.status !== 'archived');
-
-    activeMembers.forEach((member) => {
-      // If search query active, check match
-      if (query) {
-        const matchName = (member.name || '').toLowerCase().includes(query);
-        const matchDesig = (member.designation || '').toLowerCase().includes(query);
-        if (!matchName && !matchDesig) return;
-      }
-
-      // Board, advisory panel and leadership have their own pages; staff only here.
-      if (['leadership', 'board', 'advisory'].includes(member.category)) return;
-      const dept = member.department || member.category || 'Building & Construction';
-      if (grouped[dept]) {
-        grouped[dept].push(member);
-      } else {
-        grouped['Building & Construction'].push(member);
-      }
-    });
-
-    return grouped;
-  }, [teamList, searchQuery]);
-
-  const totalMatches = Object.values(filteredAndGrouped).reduce((acc, curr) => acc + curr.length, 0);
+  const total = DEPARTMENTS.reduce((n, d) => n + grouped[d.id].length, 0);
+  const shown = DEPARTMENTS.filter((d) => (dept === 'all' || dept === d.id) && grouped[d.id].length > 0);
+  const FILTERS = [{ id: 'all', label: 'All', count: total }, ...DEPARTMENTS.map((d) => ({ id: d.id, label: d.title, count: grouped[d.id].length }))];
 
   return (
-    <div className="bg-[#FAF9F5] min-h-screen">
+    <div className="text-[#243239] min-h-screen">
       <PageHeader
-        badge="Multidisciplinary Talent"
+        badge="About"
         title="Our Team"
         description="The CUBE team across Building & Construction, Environment & Sustainability, Urban Planning & Transportation and Administration."
-        breadcrumbs={[
-          { label: 'About CUBE', href: '/about' },
-          { label: 'Our Team' },
-        ]}
+        breadcrumbs={[{ label: 'About CUBE', href: '/about' }, { label: 'Our Team' }]}
       />
 
-      <section className="py-16">
-        <div className="shell space-y-8">
-          
-          {/* Top Controls: Search & Expand/Collapse */}
-          <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 bg-white p-5 rounded-2xl border border-slate-200 shadow-xs">
-            {/* Search Filter Bar */}
-            <div className="relative flex-1 max-w-md">
-              <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
+      {/* toolbar: department filter with a springing pill, and search */}
+      <div className="sticky top-[var(--nav-offset,93px)] z-30 py-3">
+        <div className="shell">
+          <div className="liquid-glass is-solid rounded-[26px] p-1.5 flex flex-col xl:flex-row gap-1.5 xl:items-center">
+            <div className="flex items-center gap-0.5 overflow-x-auto no-scrollbar">
+              {FILTERS.map((f) => {
+                const on = dept === f.id;
+                return (
+                  <button
+                    key={f.id}
+                    type="button"
+                    onClick={() => setDept(f.id)}
+                    className={`press relative h-10 px-4 rounded-full text-[15px] whitespace-nowrap flex items-center gap-2 transition-colors duration-300 ${
+                      on ? 'text-[#243239] font-bold' : 'text-[#46565E] font-semibold hover:text-[#243239]'
+                    }`}
+                  >
+                    {on && (
+                      <motion.span
+                        layoutId="team-filter-pill"
+                        transition={SPRING}
+                        className="absolute inset-0 rounded-full bg-gradient-to-b from-[#F8E3A3] to-[#F0C468]/80 border border-[#C4921B]/25 shadow-[0_6px_16px_-10px_rgba(196,146,27,0.8)]"
+                      />
+                    )}
+                    <span className="relative">{f.label}</span>
+                    <span className={`relative grid place-items-center min-w-6 h-6 px-1.5 rounded-full text-[13.5px] font-extrabold tabular-nums ${on ? 'bg-white/70' : 'bg-[#33454E]/[0.07]'}`}>
+                      {f.count}
+                    </span>
+                  </button>
+                );
+              })}
+            </div>
+            <label className="relative flex-1 flex items-center xl:min-w-[280px]">
+              <Search size={17} className="absolute left-4 text-[#7A888E] pointer-events-none" />
               <input
-                type="text"
-                placeholder="Search team member by name or role..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-xs sm:text-sm focus:outline-none focus:border-[#2B3B44] transition"
+                type="search"
+                value={query}
+                onChange={(e) => setQuery(e.target.value)}
+                placeholder="Search by name or role"
+                aria-label="Search the team"
+                className="w-full h-10 pl-11 pr-10 rounded-full bg-white/80 border border-[#33454E]/10 text-[15.5px] text-[#243239] placeholder:text-[#8A979D] focus:outline-none focus:border-[#C4921B]/50 focus:ring-4 focus:ring-[#F0C468]/25 transition-[border-color,box-shadow]"
               />
-              {searchQuery && (
-                <button
-                  onClick={() => setSearchQuery('')}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 text-xs font-semibold"
-                >
-                  Clear
+              {query && (
+                <button type="button" onClick={() => setQuery('')} aria-label="Clear search" className="press absolute right-2 grid place-items-center w-7 h-7 rounded-full text-[#5B6A71] hover:bg-[#33454E]/[0.07]">
+                  <X size={15} />
                 </button>
               )}
-            </div>
-
-            <div className="flex items-center justify-between sm:justify-end gap-3 text-xs text-slate-500">
-              <span>
-                Showing <b>{totalMatches}</b> active professionals
-              </span>
-              <div className="flex items-center space-x-1 border-l border-slate-200 pl-3">
-                <button
-                  onClick={expandAll}
-                  className="px-2.5 py-1 rounded-lg hover:bg-slate-100 text-slate-600 font-medium transition"
-                >
-                  Expand All
-                </button>
-                <span>&bull;</span>
-                <button
-                  onClick={collapseAll}
-                  className="px-2.5 py-1 rounded-lg hover:bg-slate-100 text-slate-600 font-medium transition"
-                >
-                  Collapse All
-                </button>
-              </div>
-            </div>
+            </label>
           </div>
-
-          {/* Department Accordions */}
-          <div className="space-y-6">
-            {DEPARTMENTS.map((dept) => {
-              const membersInDept = filteredAndGrouped[dept.id] || [];
-              const isOpen = searchQuery.trim() ? true : !!openSections[dept.id];
-              const DeptIcon = dept.icon;
-
-              return (
-                <div
-                  key={dept.id}
-                  className={`bg-white rounded-2xl border border-slate-200/90 shadow-2xs overflow-hidden transition duration-300 ${dept.accent}`}
-                >
-                  {/* Accordion Header */}
-                  <button
-                    onClick={() => toggleSection(dept.id)}
-                    className="w-full py-4 px-6 flex items-center justify-between bg-white hover:bg-slate-50/80 transition-colors text-left select-none group"
-                    aria-expanded={isOpen}
-                  >
-                    <div className="flex items-center space-x-3.5">
-                      <div className="p-2 rounded-xl bg-[#F2F5F6] text-[#2B3B44] group-hover:scale-105 transition-transform">
-                        <DeptIcon className="w-5 h-5" />
-                      </div>
-                      <div>
-                        <h2 className="text-base sm:text-lg font-bold text-[#243239] font-display">
-                          {dept.title}
-                        </h2>
-                        <p className="text-xs text-slate-400 font-medium">
-                          {membersInDept.length} Specialized Staff Member{membersInDept.length === 1 ? '' : 's'}
-                        </p>
-                      </div>
-                    </div>
-
-                    {/* Expand/Collapse Indicator matching the original website screenshot */}
-                    <div className="h-8 w-8 rounded-lg bg-slate-100 text-slate-600 group-hover:bg-[#F2F5F6] group-hover:text-[#2B3B44] flex items-center justify-center transition-colors">
-                      {isOpen ? (
-                        <Minus className="w-4 h-4 stroke-[2.5]" />
-                      ) : (
-                        <Plus className="w-4 h-4 stroke-[2.5]" />
-                      )}
-                    </div>
-                  </button>
-
-                  {/* Accordion Content */}
-                  {isOpen && (
-                    <div className="p-6 pt-2 border-t border-slate-100">
-                      {membersInDept.length === 0 ? (
-                        <div className="py-8 text-center text-xs text-slate-400">
-                          No team members match the search query in this vertical.
-                        </div>
-                      ) : (
-                        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-5 pt-4">
-                          {membersInDept.map((member, idx) => (
-                            <div
-                              key={member.name + idx}
-                              className="p-4 rounded-2xl bg-[#FAFAFA] border border-slate-200/70 hover:border-[#2B3B44]/30 hover:bg-white hover:shadow-md transition flex flex-col items-center text-center group"
-                            >
-                              {/* Circular Avatar matching original website */}
-                              <div className="relative h-24 w-24 rounded-full overflow-hidden mb-3 border-2 border-slate-200 group-hover:border-[#2B3B44] shadow-sm transition bg-white shrink-0">
-                                <Image
-                                  src={member.image || '/images/team/team_unknown.png'}
-                                  alt={member.name}
-                                  fill
-                                  className="object-cover group-hover:scale-105 transition-transform duration-300"
-                                />
-                              </div>
-                              <h3 className="text-xs sm:text-sm font-bold text-[#243239] font-display line-clamp-1 mt-1">
-                                {member.name}
-                              </h3>
-                              <p className="text-[13.5px] text-[#2B3B44] font-semibold mt-1 line-clamp-2">
-                                {member.designation}
-                              </p>
-                            </div>
-                          ))}
-                        </div>
-                      )}
-                    </div>
-                  )}
-                </div>
-              );
-            })}
-          </div>
-
         </div>
-      </section>
+      </div>
+
+      <div className="shell pt-6 pb-24 space-y-14">
+        <AnimatePresence mode="popLayout" initial={false}>
+          {shown.map(({ id, title, Icon }) => (
+            <motion.section
+              key={id}
+              layout="position"
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+              aria-labelledby={`dept-${id}`}
+            >
+              <div className="flex items-center gap-4 mb-6">
+                <span className="grid place-items-center w-12 h-12 rounded-2xl bg-gradient-to-b from-[#F8E3A3] to-[#F0C468] text-[#243239] depth-1">
+                  <Icon size={21} strokeWidth={2} />
+                </span>
+                <h2 id={`dept-${id}`} className="font-display text-[24px] sm:text-[28px] font-extrabold text-[#243239]">
+                  {title}
+                </h2>
+                <span className="rounded-full bg-[#33454E]/[0.07] px-3 py-1 text-[14.5px] font-extrabold text-[#46565E] tabular-nums">{grouped[id].length}</span>
+              </div>
+              <ul className="grid sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-3">
+                {grouped[id].map((m, i) => (
+                  <li key={`${m.name}-${i}`} className="glass glass-interactive rounded-[22px] p-4 flex items-center gap-4">
+                    <div className="relative w-16 h-16 rounded-2xl overflow-hidden bg-white shrink-0 depth-1">
+                      {hasPhoto(m.image) ? (
+                        <Image src={m.image} alt={m.name} fill sizes="64px" className="object-cover object-top" />
+                      ) : (
+                        <Monogram name={m.name} className="absolute inset-0 [&>span]:text-[20px]" />
+                      )}
+                    </div>
+                    <div className="min-w-0">
+                      <p className="font-display text-[17.5px] font-bold text-[#243239] leading-snug">{m.name}</p>
+                      {m.designation && <p className="mt-0.5 text-[15.5px] font-semibold text-[#9A7015] leading-snug">{m.designation}</p>}
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </motion.section>
+          ))}
+        </AnimatePresence>
+
+        {total === 0 && (
+          <div className="liquid-glass rounded-[28px] p-10 text-center">
+            <Users size={28} className="mx-auto text-[#C4921B]" />
+            <p className="mt-3 font-display text-[20px] font-bold text-[#243239]">No one matches &ldquo;{query}&rdquo;</p>
+            <button type="button" onClick={() => setQuery('')} className="press btn-soft mt-5 h-11 px-5 rounded-full text-[15px] font-bold">
+              Clear search
+            </button>
+          </div>
+        )}
+      </div>
     </div>
   );
 }

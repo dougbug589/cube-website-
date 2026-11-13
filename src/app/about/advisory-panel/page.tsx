@@ -1,14 +1,13 @@
 import React from 'react';
-import Image from 'next/image';
 import PageHeader from '@/components/common/PageHeader';
-import { Award, BookOpen } from 'lucide-react';
+import PersonCard from '@/components/common/PersonCard';
 import { getPublishedTeamMembers } from '@/lib/db/queries';
 
 export const dynamic = 'force-dynamic';
 
 export const metadata = {
   title: 'IIT Madras Advisory Panel | CUBE',
-  description: 'Distinguished faculty panel from IIT Madras providing technical advisory across CUBE engineering verticals.',
+  description: 'The IIT Madras faculty advisory panel of CUBE.',
 };
 
 export default async function AdvisoryPanelPage() {
@@ -24,48 +23,20 @@ export default async function AdvisoryPanelPage() {
   const advisoryPanel = advisory;
 
   return (
-    <div>
+    <div className="text-[#243239] min-h-screen">
       <PageHeader
-        badge="Academic Rigor"
-        title="IIT Madras Faculty Advisory Panel"
-        description="25 faculty from the Departments of Civil, Mechanical, Aerospace and Chemical Engineering at the Indian Institute of Technology Madras."
-        breadcrumbs={[
-          { label: 'About CUBE', href: '/about' },
-          { label: 'IIT Advisory Panel' },
-        ]}
+        badge="About"
+        title="IIT Advisory Panel"
+        description="Faculty from the Departments of Civil, Mechanical, Aerospace and Chemical Engineering, IIT Madras."
+        breadcrumbs={[{ label: 'About CUBE', href: '/about' }, { label: 'IIT Advisory Panel' }]}
       />
-
-      <section className="py-20 bg-transparent">
-        <div className="shell">
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-            {advisoryPanel.map((member, idx) => (
-              <div
-                key={idx}
-                className="p-6 rounded-3xl bg-slate-50 border border-slate-200/90 shadow-sm hover:shadow-cube hover:border-[#E9D6A8] transition flex flex-col items-center text-center group"
-              >
-                <div className="relative h-28 w-28 rounded-full overflow-hidden mb-4 border-2 border-slate-200 group-hover:border-[#E9D6A8] shadow-sm transition">
-                  <Image
-                    src={member.image || '/images/leadership/about_leader.jpg'}
-                    alt={member.name}
-                    fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-300"
-                  />
-                </div>
-                <h3 className="text-sm font-bold text-navy-950 font-display line-clamp-1">
-                  {member.name}
-                </h3>
-                <p className="text-xs text-[#9A7015] font-medium mt-1 line-clamp-2">
-                  {member.role}
-                </p>
-                <p className="text-[13.5px] text-slate-500 mt-1 line-clamp-1">
-                  IIT Madras
-                </p>
-              </div>
-            ))}
-          </div>
+      <section className="shell pb-24">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 lg:gap-5 reveal-stagger">
+          {advisoryPanel.map((m: any, i: number) => (
+            <PersonCard key={`${m.name}-${i}`} name={m.name} role={m.role} organization={m.organization} image={m.image} />
+          ))}
         </div>
       </section>
     </div>
   );
 }
-

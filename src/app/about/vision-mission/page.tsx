@@ -1,7 +1,7 @@
 import React from 'react';
-import PageHeader from '@/components/common/PageHeader';
-import { Target, Compass, CheckCircle2, ArrowUpRight } from 'lucide-react';
 import Link from 'next/link';
+import { ArrowUpRight, Compass, Target } from 'lucide-react';
+import PageHeader from '@/components/common/PageHeader';
 import { aboutContent } from '@/data/about';
 
 export const metadata = {
@@ -9,74 +9,64 @@ export const metadata = {
   description: 'Vision and mission of CUBE – Centre for Urbanization, Buildings & Environment (IIT Madras & Govt of Tamil Nadu).',
 };
 
+// The original site lists the mission as separate points.
+const MISSION = aboutContent.mission
+  .split(';')
+  .map((m) => m.trim().replace(/\.$/, ''))
+  .filter(Boolean)
+  .map((m) => m.charAt(0).toUpperCase() + m.slice(1));
+
 export default function VisionMissionPage() {
   return (
-    <div className="bg-[#FFFFFF]">
+    <div className="text-[#243239] min-h-screen">
       <PageHeader
-        badge="Strategic Direction"
+        badge="About"
         title="Vision & Mission"
-        description="Our institutional roadmap for pioneering sustainable urbanization, resilient public infrastructure, and environmental stewardship."
-        breadcrumbs={[
-          { label: 'About CUBE', href: '/about' },
-          { label: 'Vision & Mission' },
-        ]}
+        description="CUBE's vision and the mission that guides its work."
+        breadcrumbs={[{ label: 'About CUBE', href: '/about' }, { label: 'Vision & Mission' }]}
       />
 
-      <section className="py-20 bg-transparent">
-        <div className="shell">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-            {/* Vision Card (Architectural Light Palette) */}
-            <div className="p-8 sm:p-10 rounded-3xl bg-white text-[#243239] shadow-sm hover:shadow-xl border border-[#DCE4E7] transition flex flex-col justify-between">
-              <div>
-                <div className="p-3 bg-[#F2F5F6] text-[#2B3B44] rounded-2xl w-fit mb-6 border border-[#B9C5CA]">
-                  <Compass className="w-8 h-8 text-[#C4921B]" />
-                </div>
-                <span className="text-xs font-bold uppercase tracking-widest text-[#C4921B]">
-                  Our Institutional Vision
-                </span>
-                <h2 className="text-2xl sm:text-3xl font-display font-bold text-[#243239] mt-2">
-                  Vision
-                </h2>
-                <p className="mt-6 text-sm sm:text-base text-[#5B6A71] leading-relaxed font-sans font-normal">
-                  &ldquo;{aboutContent.vision}&rdquo;
-                </p>
-              </div>
-            </div>
-
-            {/* Mission Card (Architectural Light Sky Palette) */}
-            <div className="p-8 sm:p-10 rounded-3xl bg-white text-[#243239] border border-[#DCE4E7] shadow-sm hover:shadow-xl transition flex flex-col justify-between">
-              <div>
-                <div className="p-3 bg-[#F2F5F6] text-[#2B3B44] rounded-2xl w-fit mb-6 border border-[#B9C5CA]">
-                  <Target className="w-8 h-8 text-[#C4921B]" />
-                </div>
-                <span className="text-xs font-bold uppercase tracking-widest text-[#C4921B]">
-                  Our Execution Mission
-                </span>
-                <h2 className="text-2xl sm:text-3xl font-display font-bold text-[#243239] mt-2">
-                  Mission
-                </h2>
-                {/* the live site lists the mission as separate points */}
-                <ul className="mt-6 space-y-3 text-left">
-                  {aboutContent.mission.split(';').map((m) => m.trim()).filter(Boolean).map((m) => (
-                    <li key={m} className="flex items-start gap-3 text-sm sm:text-base text-[#46565E] leading-relaxed">
-                      <span className="mt-2 w-1.5 h-1.5 rounded-full bg-[#C4921B] shrink-0" />
-                      <span>{m.charAt(0).toUpperCase() + m.slice(1).replace(/\.$/, '')}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              <div className="mt-8 pt-6 border-t border-[#DCE4E7]">
-                <Link
-                  href="/about/objectives"
-                  className="inline-flex items-center text-xs font-semibold text-[#2B3B44] hover:text-[#C4921B] transition-colors"
-                >
-                  <span>Explore 10 Institutional Objectives</span>
-                  <ArrowUpRight className="w-3.5 h-3.5 ml-1" />
-                </Link>
-              </div>
-            </div>
+      {/* Vision: one large statement in a raised glass panel */}
+      <section className="shell">
+        <div className="liquid-glass relative rounded-[34px] depth-3 p-8 sm:p-12 lg:p-16 overflow-hidden reveal">
+          <div aria-hidden className="absolute -top-24 -right-16 w-[420px] h-[420px] rounded-full bg-[radial-gradient(circle,rgba(240,196,104,0.28),transparent_70%)] blur-2xl pointer-events-none" />
+          <div className="relative flex items-center gap-3">
+            <span className="grid place-items-center w-12 h-12 rounded-2xl bg-gradient-to-b from-[#F8E3A3] to-[#F0C468] text-[#243239] depth-1">
+              <Compass size={22} strokeWidth={2} />
+            </span>
+            <p className="label-mono">Vision</p>
           </div>
+          <p className="relative mt-7 font-display text-[26px] sm:text-[32px] lg:text-[38px] font-bold leading-[1.35] text-[#243239] max-w-5xl">
+            {aboutContent.vision}
+          </p>
+        </div>
+      </section>
+
+      {/* Mission: numbered points */}
+      <section className="shell py-14 lg:py-20 pb-24">
+        <div className="flex items-center gap-3 mb-8 reveal">
+          <span className="grid place-items-center w-12 h-12 rounded-2xl bg-[#F7EDD3] text-[#9A7015] depth-1">
+            <Target size={22} strokeWidth={2} />
+          </span>
+          <h2 className="headline-light text-3xl sm:text-[2.4rem] text-[#243239]">Mission</h2>
+        </div>
+        <ol className="grid md:grid-cols-2 gap-4 lg:gap-5 reveal-stagger">
+          {MISSION.map((m, i) => (
+            <li key={m} className="glass glass-interactive glass-edge rounded-[26px] p-6 lg:p-7 flex items-start gap-5">
+              <span className="font-display text-[30px] font-extrabold leading-none text-[#C4921B] tabular-nums shrink-0 w-11">
+                {String(i + 1).padStart(2, '0')}
+              </span>
+              <span className="text-[18px] leading-relaxed text-[#243239] font-medium">{m}</span>
+            </li>
+          ))}
+        </ol>
+        <div className="mt-10 flex flex-wrap gap-3 reveal">
+          <Link href="/about/objectives" className="press btn-gold gold-shimmer inline-flex items-center gap-2 h-12 px-6 rounded-full text-[16px] font-extrabold">
+            Objectives <ArrowUpRight size={16} strokeWidth={2.25} />
+          </Link>
+          <Link href="/about/core-values" className="press btn-soft inline-flex items-center gap-2 h-12 px-6 rounded-full text-[16px] font-bold">
+            Core values <ArrowUpRight size={16} strokeWidth={2.25} />
+          </Link>
         </div>
       </section>
     </div>

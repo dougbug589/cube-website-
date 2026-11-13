@@ -1,59 +1,55 @@
 import React from 'react';
+import { ShieldCheck, Award, HeartHandshake, Mountain, Lightbulb, Target, Quote } from 'lucide-react';
 import PageHeader from '@/components/common/PageHeader';
-import { ShieldCheck, HeartHandshake, Leaf, Sparkles, Award, BookOpen } from 'lucide-react';
 import { aboutContent } from '@/data/about';
 
 export const metadata = {
   title: 'Core Values | CUBE IIT Madras',
-  description: 'Guiding values of CUBE – Leadership, Excellence, Harmony, Intrepid, Innovation and Decisive.',
+  description: 'Core values of CUBE – Leadership, Excellence, Harmony, Intrepid, Innovation and Decisive.',
+};
+
+const ICONS = [ShieldCheck, Award, HeartHandshake, Mountain, Lightbulb, Target];
+
+// "“quote” — Author" -> { quote, author }
+const split = (d: string) => {
+  const m = d.match(/^\s*[“"]?([\s\S]*?)[”"]?\s*[—–-]\s*([^—–-]+)$/);
+  return m ? { quote: m[1].trim(), author: m[2].trim() } : { quote: d, author: '' };
 };
 
 export default function CoreValuesPage() {
-  const icons = [ShieldCheck, HeartHandshake, Leaf, Sparkles, Award, BookOpen];
-
   return (
-    <div>
+    <div className="text-[#243239] min-h-screen">
       <PageHeader
-        badge="Ethical Foundation"
-        title="Core Institutional Values"
-        description="The principles that govern our engineering methodologies, quality audits, faculty collaborations, and public mandates."
-        breadcrumbs={[
-          { label: 'About CUBE', href: '/about' },
-          { label: 'Core Values' },
-        ]}
+        badge="About"
+        title="Core Values"
+        description={aboutContent.coreValues.map((v) => v.title).join(' · ')}
+        breadcrumbs={[{ label: 'About CUBE', href: '/about' }, { label: 'Core Values' }]}
       />
 
-      <section className="py-20 bg-transparent">
-        <div className="shell">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {aboutContent.coreValues.map((val, i) => {
-              const Icon = icons[i % icons.length];
-              return (
-                <div
-                  key={i}
-                  className="p-8 rounded-3xl bg-slate-50 border border-slate-200 shadow-sm hover:shadow-cube hover:border-[#E9D6A8] transition flex flex-col justify-between"
-                >
-                  <div>
-                    <div className="p-3 bg-[#F7EDD3] text-[#9A7015] rounded-2xl w-fit mb-4 border border-[#E9D6A8]">
-                      <Icon className="w-6 h-6" />
-                    </div>
-                    <h3 className="text-xl font-bold font-display text-navy-950">
-                      {val.title}
-                    </h3>
-                    <p className="text-xs sm:text-sm text-slate-600 mt-3 leading-relaxed">
-                      {val.description}
-                    </p>
-                  </div>
-                  <div className="mt-6 pt-4 border-t border-slate-200/80 text-[13.5px] font-bold text-[#9A7015] uppercase tracking-wider">
-                    Core Value {(i + 1).toString().padStart(2, '0')}
-                  </div>
+      <section className="shell pb-24">
+        <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-5 reveal-stagger">
+          {aboutContent.coreValues.map((val, i) => {
+            const Icon = ICONS[i % ICONS.length];
+            const { quote, author } = split(val.description);
+            return (
+              <article key={val.title} className="glass glass-interactive glass-edge rounded-[28px] p-7 lg:p-8 flex flex-col">
+                <div className="flex items-center justify-between">
+                  <span className="grid place-items-center w-14 h-14 rounded-[18px] bg-gradient-to-b from-[#F8E3A3] to-[#F0C468] text-[#243239] depth-1">
+                    <Icon size={24} strokeWidth={2} />
+                  </span>
+                  <span className="font-display text-[15px] font-extrabold text-[#C4921B] tabular-nums">{String(i + 1).padStart(2, '0')}</span>
                 </div>
-              );
-            })}
-          </div>
+                <h2 className="mt-6 font-display text-[28px] font-extrabold text-[#243239] leading-tight">{val.title}</h2>
+                <blockquote className="mt-4 flex-1">
+                  <Quote size={18} className="text-[#C4921B]/70" />
+                  <p className="mt-2 text-[18px] leading-relaxed text-[#46565E]">{quote}</p>
+                </blockquote>
+                {author && <p className="mt-5 pt-4 border-t border-[#33454E]/10 text-[15.5px] font-bold text-[#243239]">— {author}</p>}
+              </article>
+            );
+          })}
         </div>
       </section>
     </div>
   );
 }
-

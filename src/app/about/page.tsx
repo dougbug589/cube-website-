@@ -8,6 +8,7 @@ import PageHeader from '@/components/common/PageHeader';
 import SectionHeading from '@/components/common/SectionHeading';
 import SectionNav from '@/components/common/SectionNav';
 import MessageSection from '@/components/about/MessageSection';
+import PersonCard, { Monogram } from '@/components/common/PersonCard';
 import { aboutContent } from '@/data/about';
 import { boardMembers as fallbackBoard, advisoryPanel as fallbackAdvisory } from '@/data/leadership';
 import { teamMembers as fallbackTeam } from '@/data/team';
@@ -198,16 +199,7 @@ export default function AboutPage() {
           />
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4 reveal-stagger">
             {boardMembers.map((m, i) => (
-              <div key={`${m.name}-${i}`} className="glass glass-interactive glass-edge rounded-[24px] overflow-hidden flex flex-col">
-                <div className="relative aspect-square bg-[#DCE4E8]">
-                  <Image src={m.image || '/images/leadership/about_leader.jpg'} alt={m.name} fill sizes="(max-width: 640px) 50vw, 17vw" className="object-cover object-top" />
-                </div>
-                <div className="p-4 lg:p-5">
-                  <p className="font-display text-[17px] font-bold text-[#243239] leading-snug">{m.name}</p>
-                  {m.role && <p className="mt-1 text-[14.5px] font-semibold text-[#9A7015]">{m.role}</p>}
-                  {m.organization && <p className="mt-1 text-[14px] text-[#5B6A71] leading-snug line-clamp-3">{m.organization}</p>}
-                </div>
-              </div>
+              <PersonCard key={`${m.name}-${i}`} name={m.name} role={m.role} organization={m.organization} image={m.image} />
             ))}
           </div>
         </div>
@@ -222,15 +214,9 @@ export default function AboutPage() {
             lead="25 faculty from the Departments of Civil, Mechanical, Aerospace and Chemical Engineering, IIT Madras."
             action={{ href: '/about/advisory-panel', label: 'Advisory panel' }}
           />
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 reveal-stagger">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4 reveal-stagger">
             {advisoryPanel.map((a, i) => (
-              <div key={`${a.name}-${i}`} className="glass glass-interactive rounded-[22px] p-4 text-center">
-                <div className="relative w-20 h-20 mx-auto rounded-full overflow-hidden bg-[#DCE4E8] depth-1">
-                  <Image src={a.image || '/images/leadership/about_leader.jpg'} alt={a.name} fill sizes="80px" className="object-cover object-top" />
-                </div>
-                <p className="mt-3 font-display text-[16px] font-bold text-[#243239] leading-snug">{a.name}</p>
-                {a.role && <p className="mt-1 text-[13.5px] text-[#5B6A71] leading-snug line-clamp-2">{a.role}</p>}
-              </div>
+              <PersonCard key={`${a.name}-${i}`} name={a.name} role={a.role} organization={a.organization || a.department} image={a.image} compact />
             ))}
           </div>
         </div>
@@ -247,14 +233,18 @@ export default function AboutPage() {
           />
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3 reveal-stagger">
             {(showAllTeam ? teamMembers : teamMembers.slice(0, 12)).map((t, i) => (
-              <div key={`${t.name}-${i}`} className="glass rounded-[20px] p-3.5 flex items-center gap-3.5">
-                <div className="relative w-14 h-14 rounded-2xl overflow-hidden bg-white shrink-0 depth-1">
-                  <Image src={t.image || '/images/team/team_unknown.png'} alt={t.name} fill sizes="56px" className="object-cover" />
+              <div key={`${t.name}-${i}`} className="glass rounded-[22px] p-4 flex items-center gap-4">
+                <div className="relative w-16 h-16 rounded-2xl overflow-hidden bg-white shrink-0 depth-1">
+                  {t.image && !/team_unknown/.test(t.image) ? (
+                    <Image src={t.image} alt={t.name} fill sizes="64px" className="object-cover object-top" />
+                  ) : (
+                    <Monogram name={t.name} className="absolute inset-0 [&>span]:text-[20px]" />
+                  )}
                 </div>
                 <div className="min-w-0">
-                  <p className="font-display text-[16px] font-bold text-[#243239] truncate">{t.name}</p>
-                  <p className="text-[14px] font-semibold text-[#9A7015] truncate">{t.designation}</p>
-                  {t.department && <p className="text-[13.5px] text-[#5B6A71] truncate">{t.department}</p>}
+                  <p className="font-display text-[17.5px] font-bold text-[#243239] truncate">{t.name}</p>
+                  <p className="text-[15.5px] font-semibold text-[#9A7015] truncate">{t.designation}</p>
+                  {t.department && <p className="text-[15px] text-[#5B6A71] truncate">{t.department}</p>}
                 </div>
               </div>
             ))}
@@ -282,16 +272,16 @@ export default function AboutPage() {
             title={<>Clients <span className="text-[#C4921B]">({clients.length})</span></>}
             action={{ href: '/about/clients', label: 'All clients' }}
           />
-          <div className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-7 gap-3 reveal-stagger">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 xl:grid-cols-6 gap-4 reveal-stagger">
             {clients.map((c, i) => (
-              <div key={`${c.logo}-${i}`} className="group h-24 rounded-[18px] bg-white border border-[#33454E]/[0.07] depth-1 p-3 transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-1">
+              <div key={`${c.logo}-${i}`} className="group h-32 lg:h-36 rounded-[22px] bg-white border border-[#33454E]/[0.07] depth-1 px-5 py-4 transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-1">
                 <div className="relative w-full h-full">
                   <Image
                     src={c.logo || '/images/clients/client_1.png'}
                     alt={clientLogoAlt(c.name)}
                     fill
-                    sizes="150px"
-                    className="object-contain grayscale opacity-80 transition-[filter,opacity] duration-500 group-hover:grayscale-0 group-hover:opacity-100"
+                    sizes="(max-width: 640px) 45vw, 260px"
+                    className="object-contain transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.04]"
                   />
                 </div>
               </div>

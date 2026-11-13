@@ -1,97 +1,67 @@
 import React from 'react';
 import Image from 'next/image';
 import PageHeader from '@/components/common/PageHeader';
-import { Building2, ShieldCheck, Handshake } from 'lucide-react';
+import SectionHeading from '@/components/common/SectionHeading';
 import { clients } from '@/data/clients';
 import { clientLogoAlt } from '@/lib/content';
 import { partners } from '@/data/partners';
 
 export const metadata = {
-  title: 'Our Clients & Partners | CUBE IIT Madras',
-  description: 'Government departments, municipal bodies, and industrial partners collaborating with CUBE.',
+  title: 'Our Clients | CUBE IIT Madras',
+  description: 'Government departments, public bodies and companies CUBE has worked with, and its partners.',
 };
 
+// Placeholder names in the partner data ("Partner Organization 1") are not
+// real organisation names, so they are not announced as such.
+const partnerAlt = (name: string) => (/^partner organi[sz]ation\s*\d+$/i.test(name.trim()) ? 'Partner logo' : name);
+
 export default function ClientsPage() {
+  const logos = clients.filter((c) => c.logo);
+  const partnerLogos = partners.filter((p) => p.logo);
   return (
-    <div>
+    <div className="text-[#243239] min-h-screen">
       <PageHeader
-        badge="Collaborative Network"
-        title="Institutional Clients & Partners"
+        badge="About"
+        title="Our Clients"
         description="Organisations CUBE has worked with."
-        breadcrumbs={[
-          { label: 'About CUBE', href: '/about' },
-          { label: 'Our Clients & Partners' },
-        ]}
+        breadcrumbs={[{ label: 'About CUBE', href: '/about' }, { label: 'Our Clients' }]}
       />
 
-      <section className="py-20 bg-transparent border-b border-slate-200">
-        <div className="shell">
-          <div className="text-center max-w-2xl mx-auto mb-14">
-            <span className="text-xs font-bold uppercase tracking-wider text-[#9A7015] bg-[#F7EDD3] px-3 py-1 rounded-full border border-[#E9D6A8]">
-              Government &amp; Public Sector
-            </span>
-            <h2 className="text-3xl font-display font-extrabold text-navy-950 mt-3">
-              Valued Clients
-            </h2>
-            <p className="text-sm text-slate-600 mt-2">
-            </p>
-          </div>
-
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
-            {clients.map((client, idx) => (
-              <div
-                key={idx}
-                className="h-28 p-4 bg-slate-50 hover:bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-cube hover:border-[#E9D6A8] transition flex flex-col items-center justify-center text-center group"
-              >
-                <div className="relative h-14 w-full">
-                  <Image
-                    src={client.logo}
-                    alt={clientLogoAlt(client.name)}
-                    fill
-                    className="object-contain filter grayscale group-hover:grayscale-0 transition duration-300"
-                  />
-                </div>
+      <section className="shell pb-16 lg:pb-20">
+        <SectionHeading eyebrow="Clients" title={<>Clients <span className="text-[#C4921B]">({logos.length})</span></>} />
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 xl:grid-cols-6 gap-4 reveal-stagger">
+          {logos.map((c, i) => (
+            <div key={`${c.logo}-${i}`} className="group h-36 lg:h-40 rounded-[22px] bg-white border border-[#33454E]/[0.07] depth-1 px-6 py-5 transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-1">
+              <div className="relative w-full h-full">
+                <Image
+                  src={c.logo}
+                  alt={clientLogoAlt(c.name)}
+                  fill
+                  sizes="(max-width: 640px) 45vw, 280px"
+                  className="object-contain transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.04]"
+                />
               </div>
-            ))}
-          </div>
+            </div>
+          ))}
         </div>
       </section>
 
-      {/* Partners Section */}
-      <section className="py-20 bg-slate-50">
-        <div className="shell">
-          <div className="text-center max-w-2xl mx-auto mb-14">
-            <span className="text-xs font-bold uppercase tracking-wider text-[#9A7015] bg-[#F7EDD3] px-3 py-1 rounded-full border border-[#E9D6A8]">
-              Strategic Ecosystem
-            </span>
-            <h2 className="text-3xl font-display font-extrabold text-navy-950 mt-3">
-              Institutional Partners
-            </h2>
-            <p className="text-sm text-slate-600 mt-2">
-              Collaborating research foundations, academic institutions, and technology partners.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
-            {partners.map((partner, idx) => (
-              <div
-                key={idx}
-                className="h-28 p-4 bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-cube hover:border-[#E9D6A8] transition flex flex-col items-center justify-center text-center group"
-              >
-                <div className="relative h-14 w-full">
-                  <Image
-                    src={partner.logo}
-                    alt={partner.name}
-                    fill
-                    className="object-contain filter grayscale group-hover:grayscale-0 transition duration-300"
-                  />
+      {partnerLogos.length > 0 && (
+        <section className="band-mist py-16 lg:py-20 pb-24">
+          <div className="shell">
+            <SectionHeading eyebrow="Partners" title="Partners and collaborators." />
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-5 reveal-stagger">
+              {partnerLogos.map((p) => (
+                <div key={p.logo} className="h-52 rounded-[24px] bg-white border border-[#33454E]/[0.08] depth-1 grid place-items-center p-4">
+                  <div className="relative w-full h-full">
+                    <Image src={p.logo} alt={partnerAlt(p.name)} fill sizes="(max-width: 640px) 90vw, 340px" className="object-contain" />
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
     </div>
   );
 }
-
