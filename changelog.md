@@ -40,6 +40,7 @@ Two lines of work run through this repository:
 - Etihad-inspired theme: slate and gold palette, scroll-reveal animations, gold scroll-progress bar. (`1977bf6`)
 
 #### Changed
+- Headers kept formal: the turning cube is replaced by a static facts card (CUBE logo, Centre of Excellence, IIT Madras · Govt of Tamil Nadu, Est. May 2017, IIT Madras Research Park, Chennai); the section heading line is a plain hairline.
 - Heading blank space filled: inner-page headers show a slowly turning wireframe cube (yellow glowing edges, light strips) on wide screens; section headings get a line with a yellow diamond and a travelling glint up to their link.
 - Core Values and Objectives pages: the text card now grows and shrinks smoothly to fit each quote/objective instead of snapping.
 - Objectives page: number and sentence now switch at the same moment. Core Values page: vertical picker wheel (value names roll on a 3D drum, quote card slides up in step) replaces the flip cards.
