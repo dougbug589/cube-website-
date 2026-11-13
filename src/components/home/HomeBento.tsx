@@ -203,8 +203,8 @@ export default function HomeBento({
         className="press group relative overflow-hidden rounded-[28px] depth-2 min-h-[300px] liquid-glass is-solid"
       >
         <div className="absolute top-4 left-4 right-4 z-10 flex items-center justify-between">
-          <span className="rounded-full bg-[#F6C22E]/15 px-3.5 py-1.5 text-[15px] font-extrabold text-[#F3F5F6] tracking-wide">Clients</span>
-          <span className="grid place-items-center w-9 h-9 rounded-full bg-white/[0.06] text-[#F3F5F6] depth-1 transition-transform duration-500 group-hover:rotate-45">
+          <span className="chip-photo rounded-full px-3.5 py-1.5 text-[15px] font-extrabold text-white tracking-wide" style={{ background: 'rgba(20, 30, 36, 0.42)' }}>Clients</span>
+          <span className="chip-photo grid place-items-center w-9 h-9 rounded-full text-white transition-transform duration-500 group-hover:rotate-45">
             <ArrowUpRight size={16} strokeWidth={2.25} />
           </span>
         </div>
