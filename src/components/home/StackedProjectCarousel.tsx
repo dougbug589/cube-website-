@@ -41,7 +41,7 @@ const SHORT_CATEGORY: Record<string, string> = {
   'Urban Planning & Transportation': 'Urban · Transport',
 };
 
-const AUTO_MS = 3200;
+const AUTO_MS = 2000;
 // No bounce: a smooth ease-out slide and fade (transform + opacity only, on
 // the compositor). Opacity settles a little sooner than position so cards
 // entering and leaving dissolve rather than pop.
@@ -55,10 +55,12 @@ const BOUNCE = {
 /** transform pose for a card `offset` slots away from the centre */
 function pose(offset: number, spacing: number) {
   const abs = Math.abs(offset);
+  // the current card is big and wide; neighbours are smaller copies of the same box
+  const x = abs === 0 ? 0 : Math.sign(offset) * (abs === 1 ? spacing : abs === 2 ? spacing * 1.62 : spacing * 2.2);
   return {
-    x: offset * spacing,
-    scale: abs === 0 ? 1 : abs === 1 ? 0.8 : 0.64,
-    y: abs === 0 ? -12 : abs === 1 ? 26 : 52,
+    x,
+    scale: abs === 0 ? 1 : abs === 1 ? 0.6 : 0.44,
+    y: 0,
     opacity: abs >= 3 ? 0 : abs === 2 ? 0.5 : 0.92,
   };
 }
@@ -97,7 +99,7 @@ export default function StackedProjectCarousel({ projects }: { projects: AnyProj
     setReduced(mq.matches);
     const sm = window.matchMedia('(min-width: 640px)');
     const lg = window.matchMedia('(min-width: 1024px)');
-    const applySpacing = () => setSpacing(lg.matches ? 350 : sm.matches ? 270 : 190);
+    const applySpacing = () => setSpacing(lg.matches ? 640 : sm.matches ? 440 : 250);
     applySpacing();
     sm.addEventListener('change', applySpacing);
     lg.addEventListener('change', applySpacing);
@@ -142,7 +144,7 @@ export default function StackedProjectCarousel({ projects }: { projects: AnyProj
   return (
     <div ref={rootRef} className="relative">
       <motion.div
-        className="relative h-[480px] sm:h-[580px] overflow-hidden touch-pan-y cursor-grab active:cursor-grabbing [mask-image:linear-gradient(to_right,transparent,#000_9%,#000_91%,transparent)] [-webkit-mask-image:linear-gradient(to_right,transparent,#000_9%,#000_91%,transparent)]"
+        className="relative h-[320px] sm:h-[440px] lg:h-[560px] overflow-hidden touch-pan-y cursor-grab active:cursor-grabbing [mask-image:linear-gradient(to_right,transparent,#000_9%,#000_91%,transparent)] [-webkit-mask-image:linear-gradient(to_right,transparent,#000_9%,#000_91%,transparent)]"
         drag="x"
         dragConstraints={{ left: 0, right: 0 }}
         dragElastic={0.18}
@@ -179,7 +181,7 @@ export default function StackedProjectCarousel({ projects }: { projects: AnyProj
                 exit="leave"
                 transition={reduced ? { duration: 0 } : BOUNCE}
                 style={{ zIndex: 10 - Math.abs(offset) }}
-                className={`absolute left-1/2 top-8 sm:top-10 -ml-[165px] sm:-ml-[220px] w-[330px] sm:w-[440px] h-[420px] sm:h-[500px] will-change-transform ${
+                className={`absolute left-1/2 top-1/2 -mt-[130px] sm:-mt-[180px] lg:-mt-[240px] -ml-[170px] sm:-ml-[290px] lg:-ml-[400px] w-[340px] sm:w-[580px] lg:w-[800px] h-[260px] sm:h-[360px] lg:h-[480px] will-change-transform ${
                   Math.abs(offset) === 2 ? 'hidden md:block' : ''
                 }`}
               >
@@ -230,12 +232,12 @@ function Card({ project, label, sub, isCenter }: { project: AnyProject; label: s
         fill
         draggable={false}
         loading="eager"
-        sizes="(max-width: 640px) 330px, 440px"
+        sizes="(max-width: 640px) 340px, (max-width: 1024px) 580px, 800px"
         className="object-cover select-none pointer-events-none"
       />
       <div className="chip-photo absolute top-4 left-4 rounded-full px-3.5 py-1.5 text-[14.5px] text-white font-bold">{label}</div>
       <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent pt-24 pb-5 px-5">
-        <div className="font-display text-white font-bold leading-snug line-clamp-2 text-xl sm:text-[26px]">{project.title}</div>
+        <div className="font-display text-white font-bold leading-snug line-clamp-2 text-xl sm:text-[26px] lg:text-[30px] max-w-[640px]">{project.title}</div>
         <div className="text-[15.5px] text-[#F0C468] mt-1.5 font-semibold truncate">{sub}</div>
         <div
           className={`chip-photo mt-4 inline-flex items-center gap-1.5 h-9 px-4 rounded-full text-[16px] font-bold text-white transition-opacity duration-500 ease-out ${

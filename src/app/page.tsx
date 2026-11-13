@@ -7,8 +7,7 @@ import { ArrowRight, ArrowUpRight, Landmark, ShieldCheck, FlaskConical } from 'l
 
 import EtihadHero from '@/components/hero/EtihadHero';
 import StackedProjectCarousel from '@/components/home/StackedProjectCarousel';
-import VerticalShowcase from '@/components/home/VerticalShowcase';
-import WorkWithCube from '@/components/home/WorkWithCube';
+import VerticalScroller from '@/components/home/VerticalScroller';
 import PartnersSection from '@/components/home/PartnersSection';
 import NewsTicker from '@/components/home/NewsTicker';
 import HomeBento from '@/components/home/HomeBento';
@@ -45,7 +44,6 @@ const SPINE = [
   { id: 'cel', label: 'CEL' },
   { id: 'life-at-cube', label: 'Inside CUBE' },
   { id: 'partners', label: 'Partners' },
-  { id: 'work-with-cube', label: 'Work with CUBE' },
 ];
 
 const ABOUT_POINTS = [
@@ -69,8 +67,11 @@ function Section({
   action,
   children,
   band = false,
+  bgImage,
 }: {
   band?: boolean;
+  /** optional photo behind the whole section, washed for legibility */
+  bgImage?: string;
   id?: string;
   eyebrow: string;
   title: React.ReactNode;
@@ -79,8 +80,19 @@ function Section({
   children: React.ReactNode;
 }) {
   return (
-    <section id={id} className={`relative py-20 lg:py-28 ${band ? 'band-mist' : ''}`}>
-      <div className="shell">
+    <section id={id} className={`relative py-20 lg:py-28 ${band ? 'band-mist' : ''} ${bgImage ? 'overflow-hidden' : ''}`}>
+      {bgImage && (
+        <div aria-hidden className="absolute inset-0 -z-0 pointer-events-none">
+          <Image src={bgImage} alt="" fill sizes="100vw" quality={70} className="object-cover scale-[1.03]" />
+          {/* wash: strong behind the heading, lighter in the middle so the photo shows through the glass */}
+          <div className="absolute inset-0 bg-gradient-to-b from-[#F6F8F9]/80 via-[#F6F8F9]/30 to-[#F6F8F9]/65" />
+          {/* solid wash behind the heading so it never sits on a busy photo */}
+          <div className="absolute inset-x-0 top-0 h-[290px] lg:h-[330px] bg-gradient-to-b from-[#F6F8F9] via-[#F6F8F9]/90 to-transparent" />
+          {/* left margin, where the section guide sits on wide screens */}
+          <div className="absolute inset-y-0 left-0 w-[230px] bg-gradient-to-r from-[#F6F8F9] via-[#F6F8F9]/80 to-transparent hidden min-[1900px]:block" />
+        </div>
+      )}
+      <div className="shell relative">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 lg:mb-16 reveal">
           <div className="max-w-2xl">
             <p className="label-mono">{eyebrow}</p>
@@ -180,6 +192,7 @@ export default function HomePage() {
       {/* 03 · About — essentials only; the full story lives on /about */}
       <Section
         id="about"
+        bgImage="/images/hero/slides_building-training-team.jpg"
         eyebrow="About CUBE"
         title="Academic depth, delivered as public infrastructure."
         action={{ href: '/about', label: 'About the Centre' }}
@@ -192,11 +205,14 @@ export default function HomePage() {
               text="To be the most acclaimed and trustworthy provider of Applied Research, Technology, Engineering & Consultancy Services with National footprint, in association with IIT Madras, delivering effective and measurable value in built environment aiming at future equipped and sustainable human habitats."
             />
             <div className="mt-auto pt-8 flex flex-wrap gap-3">
-              <Link href="/about#governing-board" className="press btn-gold gold-shimmer inline-flex items-center gap-2 h-12 px-6 rounded-full text-[16px] font-extrabold">
+              <Link href="/about#governing-board" className="press btn-liquid-gold inline-flex items-center gap-2 h-12 px-6 rounded-full text-[16px] font-extrabold">
                 Governing board <ArrowUpRight size={16} strokeWidth={2.25} />
               </Link>
-              <Link href="/about#our-team" className="press btn-soft inline-flex items-center gap-2 h-12 px-6 rounded-full text-[16px] font-bold">
+              <Link href="/about#our-team" className="press btn-liquid inline-flex items-center gap-2 h-12 px-6 rounded-full text-[16px] font-bold">
                 Our team
+              </Link>
+              <Link href="/about" className="press btn-liquid inline-flex items-center gap-2 h-12 px-6 rounded-full text-[16px] font-bold">
+                About the Centre <ArrowUpRight size={16} strokeWidth={2.25} />
               </Link>
             </div>
           </div>
@@ -204,7 +220,7 @@ export default function HomePage() {
           {/* compact rows stacked beside the vision card: no empty card bottoms */}
           <ul className="lg:col-span-5 grid gap-4 lg:gap-5 content-between reveal-stagger">
             {ABOUT_POINTS.map((pt) => (
-              <li key={pt.k} className="glass glass-interactive glass-edge rounded-[24px] p-5 lg:p-6 flex items-start gap-4">
+              <li key={pt.k} className="liquid-glass is-solid rounded-[24px] p-5 lg:p-6 flex items-start gap-4">
                 <span className="grid place-items-center w-12 h-12 rounded-2xl bg-[#F7EDD3] text-[#9A7015] depth-1 shrink-0">
                   <pt.Icon size={21} strokeWidth={2} />
                 </span>
@@ -255,44 +271,46 @@ export default function HomePage() {
         title="Four verticals."
         action={{ href: '/verticals', label: 'All verticals' }}
       >
-        <div className="reveal">
-          <VerticalShowcase verticals={verticalList} />
-        </div>
+        <VerticalScroller verticals={verticalList} />
       </Section>
 
-      {/* 06 · CEL laboratory — the home page text from cubeiitm.org */}
+      {/* 06 · CEL laboratory — the home page text from cubeiitm.org, over a lab photo */}
       <Section
         id="cel"
+        bgImage="/images/cel/about_cel1.jpg"
         eyebrow="CEL"
         title="CUBE Environmental Laboratory."
         action={{ href: '/cel', label: 'About the laboratory' }}
       >
-        <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-          <div className="lg:col-span-6 reveal">
-            <p className="text-[19px] 2xl:text-[23px] leading-relaxed text-[#243239] font-semibold">{celOverview.subtitle}</p>
-            <div className="mt-7 grid grid-cols-3 gap-3 reveal-stagger">
-              {celServiceList.slice(0, 3).map((s) => (
-                <div key={s.id || s.title} className="glass rounded-[20px] px-4 py-4 2xl:py-6 text-center">
-                  <span className="text-[16.5px] font-bold text-[#243239]">{s.title}</span>
-                </div>
-              ))}
+        <div className="grid lg:grid-cols-12 gap-6 lg:gap-8 items-stretch">
+          <div className="lg:col-span-7 liquid-glass rounded-[28px] p-8 lg:p-10 flex flex-col reveal">
+            <p className="label-mono">The laboratory</p>
+            <p className="mt-4 font-display text-xl lg:text-[22px] 2xl:text-[27px] font-bold leading-snug text-[#243239]">{celOverview.subtitle}</p>
+            <div className="mt-auto pt-8 flex flex-wrap gap-3">
+              <Link href="/cel" className="press btn-liquid-gold inline-flex items-center gap-2 h-12 px-6 rounded-full text-[16px] font-extrabold">
+                About the laboratory <ArrowUpRight size={16} strokeWidth={2.25} />
+              </Link>
+              <Link href="/cel#enquiry" className="press btn-liquid inline-flex items-center gap-2 h-12 px-6 rounded-full text-[16px] font-bold">
+                Testing enquiry
+              </Link>
+              <a href={celOverview.website} target="_blank" rel="noopener noreferrer" className="press btn-liquid inline-flex items-center gap-2 h-12 px-6 rounded-full text-[16px] font-bold">
+                CEL website <ArrowUpRight size={16} strokeWidth={2.25} />
+              </a>
             </div>
-            <a
-              href={celOverview.website}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="press btn-soft mt-7 inline-flex items-center gap-2 h-12 px-6 rounded-full text-[16px] font-bold"
-            >
-              Visit the CEL website <ArrowUpRight size={16} />
-            </a>
           </div>
-          <div className="lg:col-span-6 grid grid-cols-2 gap-4 reveal">
-            {['/images/cel/about_cel.jpg', '/images/cel/about_cel1.jpg', '/images/cel/about_cel2.jpg'].map((src, i) => (
-              <div key={src} className={`relative rounded-[24px] overflow-hidden depth-2 bg-[#DCE4E8] ${i === 0 ? 'col-span-2 h-60 2xl:h-72' : 'h-40 2xl:h-52'}`}>
-                <Image src={src} alt="CUBE Environmental Laboratory" fill sizes="(max-width: 1024px) 100vw, 45vw" className="object-cover" />
-              </div>
+          <ul className="lg:col-span-5 grid gap-4 lg:gap-5 content-between reveal-stagger">
+            {celServiceList.slice(0, 3).map((sv) => (
+              <li key={sv.id || sv.title} className="liquid-glass is-solid rounded-[24px] p-5 lg:p-6 flex items-start gap-4">
+                <span className="grid place-items-center w-12 h-12 rounded-2xl bg-[#F7EDD3] text-[#9A7015] depth-1 shrink-0">
+                  <FlaskConical size={21} strokeWidth={2} />
+                </span>
+                <span>
+                  <span className="block font-display text-[21px] font-bold text-[#243239] leading-snug">{sv.title}</span>
+                  {sv.description && <span className="mt-1 block text-[18px] text-[#2B3A41] leading-relaxed">{sv.description}</span>}
+                </span>
+              </li>
             ))}
-          </div>
+          </ul>
         </div>
       </Section>
 
@@ -315,9 +333,6 @@ export default function HomePage() {
 
       {/* 08 · Partners */}
       <PartnersSection clientCount={logos.length} />
-
-      {/* 09 · Work with CUBE — three doors */}
-      <WorkWithCube />
 
       {/* left-edge section guide (very wide screens only) */}
       <SectionSpine sections={SPINE} />
