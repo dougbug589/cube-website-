@@ -40,6 +40,7 @@ Two lines of work run through this repository:
 - Etihad-inspired theme: slate and gold palette, scroll-reveal animations, gold scroll-progress bar. (`1977bf6`)
 
 #### Changed
+- Objectives page: number and sentence now switch at the same moment. Core Values page: vertical picker wheel (value names roll on a 3D drum, quote card slides up in step) replaces the flip cards.
 - Objectives page: rolling-number counter slideshow with jump pills; Core Values page: grid of flip cards turning over one by one to reveal each quote.
 - About page: Core Values is now a round dial - the values circle a ring that turns every 1.8 s, the top one lit yellow with its quote on a frosted disc in the middle (click any value to turn to it).
 - Objectives and Core Values pages: faded CUBE photos behind the cards (IIT Jammu campus project; the CUBE team), frosted glass cards.
