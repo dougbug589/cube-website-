@@ -40,6 +40,7 @@ Two lines of work run through this repository:
 - Etihad-inspired theme: slate and gold palette, scroll-reveal animations, gold scroll-progress bar. (`1977bf6`)
 
 #### Changed
+- Dark theme across the public site: black gradient background with the original cubeiitm.org yellows (#F1DB62, #D89F03, #EBCB3B); text, glass, buttons, forms, menus and modals recoloured; client logos kept on white tiles. Home About cards made see-through glass; Applied execution carousel now switches every 1.5 s.
 - Home About: the vision is centred in one large glass card with the three points in a row beneath it. (`e93a1a6`)
 - Home page polish: sections now fade into each other instead of ending in hard lines; the project carousel moves in half a second; the glass buttons are more see-through; the Verticals card shows each vertical's full description (Smart Cities now has more to read). (`cbe5e16`)
 - Home hero: square bottom corners now that it runs edge to edge. (`2aa5ebc`)
