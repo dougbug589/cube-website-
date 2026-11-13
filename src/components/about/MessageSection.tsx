@@ -226,7 +226,7 @@ export default function MessageSection({
                   </div>
                   <p className="mt-8 pt-6 border-t border-[#33454E]/10">
                     <span className="block font-display text-[19px] font-extrabold text-[#243239]">{name}</span>
-                    <span className="block text-[16.5px] text-[#4B5A61]">{lines.join(' · ')}</span>
+                    <span className="block text-[17.5px] text-[#3B4B53]">{lines.join(' · ')}</span>
                   </p>
                 </div>
               </div>

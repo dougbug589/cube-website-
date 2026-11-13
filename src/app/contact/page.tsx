@@ -214,7 +214,7 @@ export default function ContactPage() {
                     <Check size={36} strokeWidth={2.5} />
                   </motion.span>
                   <h3 className="mt-7 font-display text-[28px] font-extrabold text-[#243239]">Message sent</h3>
-                  <p className="mt-3 text-[17.5px] text-[#4B5A61] max-w-md mx-auto leading-relaxed">
+                  <p className="mt-3 text-[18.5px] text-[#3B4B53] max-w-md mx-auto leading-relaxed">
                     Thank you for writing to CUBE. Our team will get back to you at the email address you gave.
                   </p>
                   <button

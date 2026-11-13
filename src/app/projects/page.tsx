@@ -149,7 +149,7 @@ function ProjectsPageInner() {
 
       <section className="py-10 lg:py-14">
         <div className="shell">
-          <p className="mb-6 text-[16.5px] text-[#4B5A61]">
+          <p className="mb-6 text-[17.5px] text-[#3B4B53]">
             <span className="font-bold text-[#243239]">{filteredProjects.length}</span> {filteredProjects.length === 1 ? 'project' : 'projects'}
             {selectedCategory !== 'All' && <> in {selectedCategory}</>}
             {searchQuery.trim() && <> matching &ldquo;{searchQuery.trim()}&rdquo;</>}

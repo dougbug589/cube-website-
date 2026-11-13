@@ -96,7 +96,7 @@ export default function MediaPage() {
               <div className="lg:col-span-5 p-7 sm:p-9 lg:p-10 flex flex-col">
                 <p className="label-mono">Latest</p>
                 <h3 className="mt-3 font-display text-[26px] sm:text-[30px] font-extrabold text-[#243239] leading-tight">{lead.title}</h3>
-                <p className="mt-4 text-[18px] text-[#3B4B53] leading-relaxed line-clamp-5">
+                <p className="mt-4 text-[19.5px] text-[#2B3A41] leading-relaxed line-clamp-5">
                   {lead.summary || (Array.isArray(lead.content) ? lead.content[0] : lead.content)}
                 </p>
                 <span className="mt-auto pt-8 inline-flex items-center gap-2 text-[16px] font-bold text-[#243239]">
@@ -133,7 +133,7 @@ export default function MediaPage() {
                 <div className="p-5 flex-1 flex flex-col">
                   <p className="text-[13.5px] font-bold text-[#9A7015]">{evt.category}</p>
                   <h3 className="mt-1.5 font-display text-[17px] font-bold text-[#243239] leading-snug">{evt.title}</h3>
-                  <p className="mt-2 text-[16px] text-[#4B5A61] leading-relaxed line-clamp-4">{evt.description}</p>
+                  <p className="mt-2 text-[17px] text-[#3B4B53] leading-relaxed line-clamp-4">{evt.description}</p>
                   {evt.location && (
                     <p className="mt-auto pt-4 flex items-center gap-1.5 text-[14px] font-semibold text-[#3B4B53]">
                       <MapPin size={15} className="text-[#C4921B] shrink-0" />
@@ -180,7 +180,7 @@ export default function MediaPage() {
           <div className="lg:col-span-5 reveal">
             <p className="label-mono">Workplace</p>
             <h2 className="headline-light text-3xl sm:text-4xl lg:text-[2.6rem] text-[#243239] mt-3">Life at CUBE</h2>
-            <p className="mt-5 text-[18px] text-[#3B4B53] leading-relaxed">
+            <p className="mt-5 text-[19.5px] text-[#2B3A41] leading-relaxed">
               CUBE&apos;s office and its Environment Laboratory are at the IIT Madras Research Park, Taramani, Chennai.
             </p>
             <div className="mt-7 space-y-3">
@@ -190,7 +190,7 @@ export default function MediaPage() {
                 </span>
                 <span>
                   <span className="block font-display text-[17px] font-bold text-[#243239]">Location</span>
-                  <span className="mt-0.5 block text-[16.5px] text-[#4B5A61]">IIT Madras Research Park, Taramani, Chennai</span>
+                  <span className="mt-0.5 block text-[17.5px] text-[#3B4B53]">IIT Madras Research Park, Taramani, Chennai</span>
                 </span>
               </div>
               <div className="glass glass-edge rounded-[20px] p-5">

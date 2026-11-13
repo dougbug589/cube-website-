@@ -63,7 +63,7 @@ export default function LifeAtCubePage() {
         <div className="lg:col-span-4 grid gap-4 reveal-stagger">
           <div className="glass glass-edge rounded-[26px] p-7">
             <p className="font-display text-[56px] font-extrabold leading-none text-[#243239] tabular-nums">{staff}</p>
-            <p className="mt-2 text-[18px] font-semibold text-[#3B4B53]">people in the CUBE team</p>
+            <p className="mt-2 text-[19.5px] font-semibold text-[#2B3A41]">people in the CUBE team</p>
           </div>
           <div className="glass glass-edge rounded-[26px] p-7 flex items-start gap-4">
             <span className="grid place-items-center w-12 h-12 rounded-2xl bg-[#F7EDD3] text-[#9A7015] depth-1 shrink-0">
@@ -71,7 +71,7 @@ export default function LifeAtCubePage() {
             </span>
             <span>
               <span className="block font-display text-[19px] font-bold text-[#243239]">IIT Madras Research Park</span>
-              <span className="mt-1 block text-[17px] text-[#4B5A61]">Office and CUBE Environmental Laboratory, Taramani, Chennai</span>
+              <span className="mt-1 block text-[18px] text-[#3B4B53]">Office and CUBE Environmental Laboratory, Taramani, Chennai</span>
             </span>
           </div>
         </div>

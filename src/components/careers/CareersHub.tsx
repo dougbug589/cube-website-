@@ -261,7 +261,7 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
               {detailJob.description && (
                 <div>
                   <p className="label-mono">Role</p>
-                  <p className="mt-3 text-[17.5px] text-[#3B4B53] leading-relaxed whitespace-pre-line">{detailJob.description}</p>
+                  <p className="mt-3 text-[19px] text-[#2B3A41] leading-relaxed whitespace-pre-line">{detailJob.description}</p>
                 </div>
               )}
 
@@ -284,13 +284,13 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
                   <p className="font-display text-[17px] font-bold text-[#243239]">{c.jobDetail.howToApplyTitle}</p>
                   <ol className="mt-3 space-y-2.5">
                     {c.jobDetail.howToApplySteps.map((step, i) => (
-                      <li key={i} className="flex items-start gap-3 text-[16.5px] text-[#3B4B53] leading-relaxed">
+                      <li key={i} className="flex items-start gap-3 text-[18px] text-[#2B3A41] leading-relaxed">
                         <span className="grid place-items-center w-6 h-6 rounded-full bg-[#F0C468] text-[13.5px] font-extrabold text-[#243239] shrink-0 mt-0.5">{i + 1}</span>
                         <span>{step}</span>
                       </li>
                     ))}
                   </ol>
-                  <p className="mt-4 text-[16px] text-[#4B5A61]">
+                  <p className="mt-4 text-[17px] text-[#3B4B53]">
                     Questions? Write to{' '}
                     <a href={`mailto:${detailEmail}`} className="font-bold text-[#243239] hover:text-[#9A7015] underline underline-offset-4 decoration-[#C4921B]/50">
                       {detailEmail}
@@ -402,7 +402,7 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
                       <Briefcase size={28} strokeWidth={2} />
                     </span>
                     <h3 className="mt-6 font-display text-[26px] font-extrabold text-[#243239]">{c.emptyState.title}</h3>
-                    <p className="mt-3 text-[17.5px] text-[#4B5A61] max-w-lg mx-auto leading-relaxed">{c.emptyState.description}</p>
+                    <p className="mt-3 text-[18.5px] text-[#3B4B53] max-w-lg mx-auto leading-relaxed">{c.emptyState.description}</p>
                     <button
                       onClick={openPortal}
                       className="press btn-gold gold-shimmer mt-7 h-12 px-7 rounded-full text-[15.5px] font-extrabold inline-flex items-center gap-2"
@@ -471,7 +471,7 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
                                 <span>{job.experience}</span>
                               </p>
                             )}
-                            <p className="mt-3 text-[17px] text-[#4B5A61] leading-relaxed line-clamp-3">{job.description}</p>
+                            <p className="mt-3 text-[18px] text-[#3B4B53] leading-relaxed line-clamp-3">{job.description}</p>
 
                             <div className="mt-auto pt-7 flex flex-wrap items-center gap-3">
                               <button
@@ -518,7 +518,7 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
                     <div>
                       <p className="label-mono">{c.talentCallout.badge}</p>
                       <h3 className="mt-2 font-display text-[24px] sm:text-[28px] font-extrabold text-[#243239] leading-tight">{c.talentCallout.heading}</h3>
-                      <p className="mt-2 text-[17.5px] text-[#3B4B53] leading-relaxed">{c.talentCallout.description}</p>
+                      <p className="mt-2 text-[19px] text-[#2B3A41] leading-relaxed">{c.talentCallout.description}</p>
                     </div>
                   </div>
                   <button
@@ -560,7 +560,7 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
                         </motion.p>
                       </AnimatePresence>
                       {selectedJob?.location && (
-                        <p className="mt-2 flex items-center gap-2 text-[15.5px] font-semibold text-[#3B4B53]">
+                        <p className="mt-2 flex items-center gap-2 text-[17px] font-semibold text-[#2B3A41]">
                           <MapPin size={15} className="text-[#C4921B]" />
                           {selectedJob.location}
                         </p>
@@ -573,7 +573,7 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
                       <p className="font-display text-[17px] font-bold text-[#243239]">{c.jobDetail.howToApplyTitle}</p>
                       <ol className="mt-4 space-y-3">
                         {c.jobDetail.howToApplySteps.map((step, i) => (
-                          <li key={i} className="flex items-start gap-3 text-[16px] text-[#3B4B53] leading-relaxed">
+                          <li key={i} className="flex items-start gap-3 text-[17.5px] text-[#2B3A41] leading-relaxed">
                             <span className="grid place-items-center w-6 h-6 rounded-full bg-[#F7EDD3] text-[13.5px] font-extrabold text-[#9A7015] shrink-0 mt-0.5">{i + 1}</span>
                             <span>{step}</span>
                           </li>
@@ -609,7 +609,7 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
                           <Check size={36} strokeWidth={2.5} />
                         </motion.span>
                         <h3 className="mt-7 font-display text-[28px] font-extrabold text-[#243239]">{form.successTitle}</h3>
-                        <p className="mt-3 text-[17.5px] text-[#4B5A61] max-w-md mx-auto leading-relaxed">{form.successMessage}</p>
+                        <p className="mt-3 text-[18.5px] text-[#3B4B53] max-w-md mx-auto leading-relaxed">{form.successMessage}</p>
                         <button
                           onClick={() => { setSubmitSuccess(false); setActiveTab('openings'); }}
                           className="press btn-soft mt-8 h-12 px-6 rounded-full text-[15.5px] font-bold inline-flex items-center gap-2"
@@ -770,7 +770,7 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
                       <Icon size={24} strokeWidth={2} />
                     </span>
                     <h4 className="mt-6 font-display text-[20px] font-extrabold text-[#243239] leading-snug">{item.title}</h4>
-                    <p className="mt-2 text-[17px] text-[#4B5A61] leading-relaxed">{item.description}</p>
+                    <p className="mt-2 text-[18px] text-[#3B4B53] leading-relaxed">{item.description}</p>
                   </div>
                 );
               })}

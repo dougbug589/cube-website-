@@ -83,7 +83,7 @@ export default function PageHeader({ badge, title, description, breadcrumbs, bac
           >
             {title}
           </h1>
-          <p className="mt-5 text-[18px] sm:text-[19px] text-[#3B4B53] leading-relaxed max-w-3xl">{description}</p>
+          <p className="mt-5 text-[19.5px] sm:text-[19px] text-[#2B3A41] leading-relaxed max-w-3xl">{description}</p>
         </div>
       </div>
 

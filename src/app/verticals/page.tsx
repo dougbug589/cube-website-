@@ -44,7 +44,7 @@ export default function VerticalsPage() {
                 <div className={`lg:col-span-6 reveal ${flip ? 'lg:order-1' : ''}`}>
                   <h2 className="headline-light text-[2.2rem] sm:text-[2.8rem] text-[#243239] leading-tight">{v.title}</h2>
                   {v.tagline && <p className="mt-3 text-[19px] font-semibold text-[#9A7015] leading-snug">{v.tagline}</p>}
-                  <p className="mt-5 text-[18px] text-[#3B4B53] leading-relaxed">{v.longDescription || v.description}</p>
+                  <p className="mt-5 text-[19.5px] text-[#2B3A41] leading-relaxed">{v.longDescription || v.description}</p>
                   {v.capabilities.length > 0 && (
                     <ul className="mt-6 flex flex-wrap gap-2.5">
                       {v.capabilities.map((c) => (

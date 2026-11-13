@@ -57,7 +57,7 @@ Parameters / Notes: ${formData.parametersNeeded || 'Standard Matrix Parameters'}
         <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-stretch">
           <div className="lg:col-span-5 liquid-glass rounded-[32px] depth-2 p-8 sm:p-10 flex flex-col reveal">
             <p className="font-display text-[23px] sm:text-[26px] font-bold leading-[1.45] text-[#243239]">{celOverview.subtitle}</p>
-            <p className="mt-5 text-[18px] text-[#3B4B53] leading-relaxed">{celOverview.location}</p>
+            <p className="mt-5 text-[19.5px] text-[#2B3A41] leading-relaxed">{celOverview.location}</p>
             <div className="mt-auto pt-8 flex flex-wrap gap-3">
               <a href={celOverview.website} target="_blank" rel="noopener noreferrer" className="press btn-gold gold-shimmer inline-flex items-center gap-2 h-12 px-6 rounded-full text-[16px] font-extrabold">
                 Visit the CEL website <ArrowUpRight size={16} strokeWidth={2.25} />
@@ -89,7 +89,7 @@ Parameters / Notes: ${formData.parametersNeeded || 'Standard Matrix Parameters'}
                   <Icon size={24} strokeWidth={2} />
                 </span>
                 <h2 className="mt-6 font-display text-[28px] font-extrabold text-[#243239]">{service.title}</h2>
-                {service.description && <p className="mt-2 text-[17.5px] text-[#3B4B53] leading-relaxed">{service.description}</p>}
+                {service.description && <p className="mt-2 text-[19px] text-[#2B3A41] leading-relaxed">{service.description}</p>}
               </div>
             );
           })}
@@ -133,7 +133,7 @@ Parameters / Notes: ${formData.parametersNeeded || 'Standard Matrix Parameters'}
                     <Check size={36} strokeWidth={2.5} />
                   </motion.span>
                   <h3 className="mt-7 font-display text-[28px] font-extrabold text-[#243239]">Enquiry sent</h3>
-                  <p className="mt-3 text-[17.5px] text-[#4B5A61] max-w-md mx-auto leading-relaxed">Thank you. The team will get back to you at the email address you gave.</p>
+                  <p className="mt-3 text-[18.5px] text-[#3B4B53] max-w-md mx-auto leading-relaxed">Thank you. The team will get back to you at the email address you gave.</p>
                   <button
                     onClick={() => {
                       setFormSubmitted(false);

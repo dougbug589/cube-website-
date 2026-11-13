@@ -208,7 +208,7 @@ export default function TenderRegister({ tenders }: { tenders: Tender[] }) {
                     </div>
                     <h3 className="mt-3 font-display text-[20px] sm:text-[23px] font-extrabold text-[#243239] leading-snug">{t.title}</h3>
                     {t.description && t.description.trim() !== t.title.trim() && (
-                      <p className="mt-2 text-[17px] text-[#4B5A61] leading-relaxed">{t.description}</p>
+                      <p className="mt-2 text-[18px] text-[#3B4B53] leading-relaxed">{t.description}</p>
                     )}
                     <dl className="mt-4 flex flex-wrap gap-x-7 gap-y-2 text-[14.5px]">
                       {(t.publishedDate || t.createdAt) && (
@@ -241,7 +241,7 @@ export default function TenderRegister({ tenders }: { tenders: Tender[] }) {
                           <CornerDownRight size={17} className="hidden sm:block text-[#C4921B] shrink-0" />
                           <span className="flex-1 min-w-0">
                             <span className="block text-[16px] font-bold text-[#243239] leading-snug">{c.title}</span>
-                            {c.description && <span className="block mt-0.5 text-[15.5px] text-[#4B5A61] leading-snug">{c.description}</span>}
+                            {c.description && <span className="block mt-0.5 text-[16.5px] text-[#3B4B53] leading-snug">{c.description}</span>}
                           </span>
                           <DocButton tender={c} compact />
                         </li>

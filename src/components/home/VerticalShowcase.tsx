@@ -171,12 +171,12 @@ export default function VerticalShowcase({ verticals }: { verticals: Vertical[] 
               <div className="flex items-start justify-between gap-6">
                 <div>
                   <h3 className="font-display text-[26px] lg:text-[30px] font-extrabold leading-tight">{v.title}</h3>
-                  {v.tagline && <p className="mt-2 text-[17px] text-[#3B4B53] leading-relaxed">{v.tagline}</p>}
+                  {v.tagline && <p className="mt-2 text-[18.5px] text-[#2B3A41] leading-relaxed">{v.tagline}</p>}
                 </div>
                 {typeof v.projectCount === 'number' && v.projectCount > 0 && (
                   <div className="text-right shrink-0">
                     <p className="font-display text-[34px] font-extrabold leading-none text-[#C4921B]">{v.projectCount}</p>
-                    <p className="text-[16px] text-[#4B5A61] mt-1">projects</p>
+                    <p className="text-[17px] text-[#3B4B53] mt-1">projects</p>
                   </div>
                 )}
               </div>

@@ -50,7 +50,7 @@ export default function PersonCard({
       <div className={compact ? 'p-4' : 'p-5'}>
         <h3 className="font-display text-[18px] lg:text-[19px] font-bold text-[#243239] leading-snug">{name}</h3>
         {role && <p className="mt-1 text-[15.5px] font-semibold text-[#9A7015] leading-snug">{role}</p>}
-        {organization && <p className="mt-1 text-[16px] text-[#4B5A61] leading-snug">{organization}</p>}
+        {organization && <p className="mt-1 text-[17px] text-[#3B4B53] leading-snug">{organization}</p>}
       </div>
     </article>
   );

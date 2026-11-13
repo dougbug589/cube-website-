@@ -40,7 +40,7 @@ export default async function VerticalDetail({ id }: { id: string }) {
         <div className="shell grid lg:grid-cols-12 gap-8 lg:gap-14">
           <p className="lg:col-span-6 font-display text-[23px] sm:text-[27px] font-bold leading-[1.45] text-[#243239] reveal">{vertical.description}</p>
           <div className="lg:col-span-6 reveal">
-            <p className="text-[18px] text-[#3B4B53] leading-relaxed">{vertical.longDescription}</p>
+            <p className="text-[19.5px] text-[#2B3A41] leading-relaxed">{vertical.longDescription}</p>
             {vertical.capabilities.length > 0 && (
               <>
                 <p className="mt-8 label-mono">Services</p>
@@ -96,7 +96,7 @@ export default async function VerticalDetail({ id }: { id: string }) {
                         ))}
                       </ul>
                     )}
-                    {k.description && <p className="mt-6 pt-5 border-t border-[#33454E]/10 text-[17.5px] text-[#4B5A61] leading-relaxed">{k.description}</p>}
+                    {k.description && <p className="mt-6 pt-5 border-t border-[#33454E]/10 text-[18.5px] text-[#3B4B53] leading-relaxed">{k.description}</p>}
                   </article>
                 );
               })}

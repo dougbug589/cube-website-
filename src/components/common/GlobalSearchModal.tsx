@@ -346,7 +346,7 @@ export default function GlobalSearchModal({ isOpen, onClose }: GlobalSearchModal
                 ) : searchResults.length === 0 ? (
                   <div className="py-12 text-center">
                     <p className="font-display text-[19px] font-bold text-[#243239]">No results for &ldquo;{query}&rdquo;</p>
-                    <p className="mt-1.5 text-[16px] text-[#4B5A61]">Try another word, or browse from the menu.</p>
+                    <p className="mt-1.5 text-[17px] text-[#3B4B53]">Try another word, or browse from the menu.</p>
                   </div>
                 ) : (
                   <ul className="space-y-1" role="listbox" aria-label="Results">
@@ -376,7 +376,7 @@ export default function GlobalSearchModal({ isOpen, onClose }: GlobalSearchModal
                                 <span className="font-display text-[16.5px] font-bold text-[#243239] truncate">{item.title}</span>
                                 <span className="shrink-0 rounded-full bg-[#33454E]/[0.06] px-2.5 py-0.5 text-[13.5px] font-bold text-[#4B5A61]">{item.category}</span>
                               </span>
-                              {item.description && <span className="mt-0.5 block text-[15.5px] text-[#4B5A61] truncate">{item.description}</span>}
+                              {item.description && <span className="mt-0.5 block text-[16.5px] text-[#3B4B53] truncate">{item.description}</span>}
                             </span>
                             <span className={`relative shrink-0 transition-[opacity,transform] duration-300 ${on ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-1'}`}>
                               {on ? <CornerDownLeft size={17} className="text-[#9A7015]" /> : <ArrowUpRight size={17} />}
