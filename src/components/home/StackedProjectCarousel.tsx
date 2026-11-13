@@ -42,9 +42,15 @@ const SHORT_CATEGORY: Record<string, string> = {
 };
 
 const AUTO_MS = 3200;
-// Smooth glide with only a hint of settle: an under-damped spring wobbles and
-// reads as jitter on high-refresh screens.
-const BOUNCE = { type: 'spring' as const, stiffness: 150, damping: 24, mass: 1, restDelta: 0.001 };
+// No bounce: a smooth ease-out slide and fade (transform + opacity only, on
+// the compositor). Opacity settles a little sooner than position so cards
+// entering and leaving dissolve rather than pop.
+const BOUNCE = {
+  type: 'tween' as const,
+  duration: 0.9,
+  ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
+  opacity: { duration: 0.6, ease: 'easeOut' as const },
+};
 
 /** transform pose for a card `offset` slots away from the centre */
 function pose(offset: number, spacing: number) {
