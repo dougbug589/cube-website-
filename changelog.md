@@ -39,6 +39,7 @@ Two lines of work run through this repository:
 - Etihad-inspired theme: slate and gold palette, scroll-reveal animations, gold scroll-progress bar. (`1977bf6`)
 
 #### Changed
+- On very wide screens (1900 px and up) the About and Media section bars move into the empty left margin as a labelled guide, freeing reading space at the top; the home page guide now uses the same design. Narrower screens keep the bar at the top. (`bffed9b`)
 - Leadership message boxes scroll slower again (loop timings unchanged). (`7fa6166`)
 - Leadership message boxes scroll a little slower again (the quicker pause and glide back to the top stay). (`f0911f2`)
 - Leadership message boxes scroll faster still, pause for less time at the bottom, glide back to the top more quickly (still eased) and restart sooner. (`422f344`)
@@ -76,6 +77,7 @@ Two lines of work run through this repository:
 - Slate rail sidebar on desktop, photo hero, and stacked project carousel (Etihad-style layout). Superseded the same day by the top bar. (`75f0d52`)
 
 #### Fixed
+- The home page section guide could overlap page content on screens between 1760 and 1900 px wide; it now only appears where it fits. (`bffed9b`)
 - After opening a search result, the search dialog could stay on the page invisibly and block every click until reload; it now always gets out of the way when it closes, and the search box always receives the cursor when it opens. (`8f30a4e`)
 - Top-bar menus could open with blank photo cards because their photos only started downloading when the panel opened. They are now fetched in the background once the page is idle, or as soon as the pointer reaches the menu, so they are ready on first open. (`4252581`)
 - Project and vertical titles in the top-bar menus overflowed their photo cards; they clamp to two lines again. (`8fb8559`)
