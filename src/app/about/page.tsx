@@ -11,7 +11,6 @@ import SectionNav from '@/components/common/SectionNav';
 import FocusCarousel from '@/components/common/FocusCarousel';
 import Marquee from '@/components/common/Marquee';
 import MessageSection from '@/components/about/MessageSection';
-import BoardSpotlight from '@/components/about/BoardSpotlight';
 import RingCarousel from '@/components/about/RingCarousel';
 import { Monogram } from '@/components/common/PersonCard';
 import { aboutContent } from '@/data/about';
@@ -174,7 +173,7 @@ export default function AboutPage() {
         <SectionPhoto src="/images/hero/slides_building-training-team.jpg" wash="bg-[#0B0D0E]/55" position="object-[50%_35%]" />
         <div className="relative shell">
           <SectionHeading eyebrow="Core Values" title="Core values." />
-          <div className="reveal">
+          <div>
             <FocusCarousel
               label="Core values"
               items={aboutContent.coreValues}
@@ -224,9 +223,8 @@ export default function AboutPage() {
             lead="Headed by the Director, IITM, with nominees from four Tamil Nadu State Government departments, four members from IITM Faculty and four members from prominent industries and organizations."
             action={{ href: '/about/board-members', label: 'Board members' }}
           />
-          <div className="reveal">
-            <BoardSpotlight members={boardMembers} />
-          </div>
+          {/* no .reveal wrapper: an animating ancestor would hold back the glass blur */}
+          <RingCarousel label="Governing Body" people={boardMembers} interval={2200} />
         </div>
       </section>
 
@@ -239,8 +237,31 @@ export default function AboutPage() {
             lead="25 faculty from the Departments of Civil, Mechanical, Aerospace and Chemical Engineering, IIT Madras."
             action={{ href: '/about/advisory-panel', label: 'Advisory panel' }}
           />
-          <div className="reveal">
-            <RingCarousel label="IIT Madras advisory panel" people={advisoryPanel} interval={2000} />
+          <div>
+            <FocusCarousel
+              label="IIT Madras advisory panel"
+              items={advisoryPanel}
+              keyOf={(a) => a.name}
+              heightClass="h-[500px] sm:h-[520px]"
+              maxCard={400}
+              interval={2200}
+              render={(a, active) => (
+                <article className={`glass h-full rounded-[30px] overflow-hidden flex flex-col ${active ? 'ring-1 ring-[#F6C22E]/40' : ''}`}>
+                  <div className="relative flex-1 min-h-0 bg-[#1A1F22]">
+                    {a.image ? (
+                      <Image src={a.image} alt={a.name} fill sizes="400px" className="object-cover object-[50%_20%]" draggable={false} />
+                    ) : (
+                      <Monogram name={a.name} className="absolute inset-0" />
+                    )}
+                  </div>
+                  <div className="p-5 sm:p-6">
+                    <h3 className="font-display text-[20px] sm:text-[22px] font-bold text-[#F3F5F6] leading-snug">{a.name}</h3>
+                    {a.role && <p className="mt-1 text-[15.5px] font-semibold text-[#F6C22E] leading-snug line-clamp-2">{a.role}</p>}
+                    {(a.organization || a.department) && <p className="mt-1 text-[16px] text-[#C2CCD1] leading-snug line-clamp-1">{a.organization || a.department}</p>}
+                  </div>
+                </article>
+              )}
+            />
           </div>
         </div>
       </section>

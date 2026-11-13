@@ -66,11 +66,12 @@ export default function RingCarousel({ people, interval = 2000, label }: { peopl
   if (n === 0) return null;
 
   const phone = w < 640;
-  const cardW = phone ? 210 : 250;
-  const cardH = phone ? 330 : 380;
+  const cardW = phone ? 210 : 270;
+  const cardH = phone ? 330 : 400;
   const gap = phone ? 14 : 22;
   const theta = 360 / n;
-  const radius = ((cardW + gap) * n) / (2 * Math.PI);
+  // small groups get a wider drum so it spans the section instead of huddling in the middle
+  const radius = Math.max(((cardW + gap) * n) / (2 * Math.PI), phone ? 330 : Math.min(760, w * 0.42));
   const active = ((v % n) + n) % n;
 
   return (

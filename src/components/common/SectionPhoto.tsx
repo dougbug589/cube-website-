@@ -22,7 +22,7 @@ export default function SectionPhoto({
   const mask = 'linear-gradient(to bottom, transparent 0%, #000 18%, #000 82%, transparent 100%)';
   return (
     <div aria-hidden data-section-photo className="absolute inset-0 overflow-hidden pointer-events-none" style={{ WebkitMaskImage: mask, maskImage: mask }}>
-      <Image src={src} alt="" fill sizes="100vw" quality={75} className={`object-cover ${position} scale-[1.04] blur-[2px]`} />
+      <Image src={src} alt="" fill sizes="100vw" quality={75} loading="eager" className={`object-cover ${position} scale-[1.04] blur-[2px]`} />
       <div className={`absolute inset-0 ${wash}`} />
       {/* left margin, where the section guide sits on very wide screens */}
       <div className="absolute inset-y-0 left-0 w-[230px] bg-gradient-to-r from-[#0B0D0E] via-[#0B0D0E]/80 to-transparent hidden min-[1900px]:block" />
