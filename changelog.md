@@ -39,6 +39,7 @@ Two lines of work run through this repository:
 - Etihad-inspired theme: slate and gold palette, scroll-reveal animations, gold scroll-progress bar. (`1977bf6`)
 
 #### Changed
+- About sub-pages redesigned with larger, easier-to-read text: Vision & Mission (the vision as one large statement, the mission as numbered points), Objectives, Core Values (each quote with its author), Our Team (department filters and search instead of collapsed lists), IIT Advisory Panel and Our Clients. Client logos now show in full colour in larger tiles, and people without a photo show their initials instead of a grey silhouette or a stock image. Made-up headings such as "Strategic Direction" and "Academic Rigor" were replaced with plain labels. (`49a5b40`)
 - Deployments on Vercel ask search engines not to index the site (robots.txt and a noindex header), so a redesign copy never competes with cubeiitm.org in search results; setting ALLOW_INDEXING=true lifts this. Self-hosted servers are unaffected. (`29d50f6`)
 - On very wide screens (1900 px and up) the About and Media section bars move into the empty left margin as a labelled guide, freeing reading space at the top; the home page guide now uses the same design. Narrower screens keep the bar at the top. (`bffed9b`)
 - Leadership message boxes scroll slower again (loop timings unchanged). (`7fa6166`)
