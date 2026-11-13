@@ -3,8 +3,16 @@ import { fileURLToPath } from 'url';
 
 const projectRoot = path.dirname(fileURLToPath(import.meta.url));
 
+// Read-only public build: no admin (same rule as src/middleware.ts). Exposed to
+// the browser so the top bar can drop its admin link instead of pointing
+// visitors at a "Not found" page.
+const READ_ONLY_SITE =
+  process.env.CMS_BACKEND === 'published' ||
+  (!!process.env.VERCEL && !process.env.SUPABASE_SERVICE_ROLE_KEY && process.env.CMS_BACKEND !== 'file');
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  env: { NEXT_PUBLIC_READ_ONLY_SITE: READ_ONLY_SITE ? '1' : '' },
   reactStrictMode: true,
   outputFileTracingRoot: projectRoot,
   // Lets a production preview build live beside the dev server's .next

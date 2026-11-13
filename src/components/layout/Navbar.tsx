@@ -34,6 +34,10 @@ import GlobalSearchModal from '@/components/common/GlobalSearchModal';
  * menu button opens a drawer. Publishes --nav-offset for sticky in-page bars.
  */
 
+// The admin only exists on the local CUBE computer; the public (read-only)
+// build hides its link (see next.config.mjs).
+const SHOW_ADMIN = process.env.NEXT_PUBLIC_READ_ONLY_SITE !== '1';
+
 const BAR_H = { desktop: 85, mobile: 68 }; // fallbacks only; real height is measured
 
 const MENU = navigationItems.filter((i) => i.title !== 'Home');
@@ -374,14 +378,17 @@ export default function Navbar() {
                 {isMac ? '⌘K' : 'Ctrl K'}
               </kbd>
             </button>
-            <Link
-              href="/admin/login"
-              aria-label="Admin sign in"
-              title="Admin"
-              className="press jiggle hidden xl:grid h-10 w-10 rounded-full place-items-center text-[#5B6A71] hover:text-[#243239] hover:bg-white/80 transition-colors"
-            >
-              <User size={18} strokeWidth={2} />
-            </Link>
+            {SHOW_ADMIN && (
+              <Link
+                href="/admin/login"
+                prefetch={false}
+                aria-label="Admin sign in"
+                title="Admin"
+                className="press jiggle hidden xl:grid h-10 w-10 rounded-full place-items-center text-[#5B6A71] hover:text-[#243239] hover:bg-white/80 transition-colors"
+              >
+                <User size={18} strokeWidth={2} />
+              </Link>
+            )}
             <Link
               href="/contact"
               className="hidden sm:inline-flex btn-gold gold-shimmer items-center gap-1.5 h-10 px-5 rounded-full text-[15px] font-extrabold"
@@ -522,7 +529,7 @@ export default function Navbar() {
                 })}
               </nav>
               <div className="hairline my-2.5" />
-              <div className="grid grid-cols-[1fr_auto] gap-2">
+              <div className={`grid gap-2 ${SHOW_ADMIN ? 'grid-cols-[1fr_auto]' : 'grid-cols-1'}`}>
                 <Link
                   href="/contact"
                   onClick={() => setDrawerOpen(false)}
@@ -530,14 +537,17 @@ export default function Navbar() {
                 >
                   Get in touch <ArrowUpRight size={15} />
                 </Link>
-                <Link
-                  href="/admin/login"
-                  onClick={() => setDrawerOpen(false)}
-                  aria-label="Admin sign in"
-                  className="h-12 w-12 rounded-2xl grid place-items-center text-[#5B6A71] bg-white/60 border border-[#33454E]/10"
-                >
-                  <User size={18} strokeWidth={2} />
-                </Link>
+                {SHOW_ADMIN && (
+                  <Link
+                    href="/admin/login"
+                    prefetch={false}
+                    onClick={() => setDrawerOpen(false)}
+                    aria-label="Admin sign in"
+                    className="h-12 w-12 rounded-2xl grid place-items-center text-[#5B6A71] bg-white/60 border border-[#33454E]/10"
+                  >
+                    <User size={18} strokeWidth={2} />
+                  </Link>
+                )}
               </div>
             </motion.div>
           )}
