@@ -17,6 +17,9 @@ Two lines of work run through this repository:
 ### Redesign
 
 #### Added
+- Home page "by the numbers" row: CUBE's quality-assurance track record from the original Building & Construction page (services across 15 states, plot coverage over 10,000 acres, built-up area over 50 million sq ft, value over Rs. 25,000 crore), with figures that count up when the row comes into view and a link to the Building & Construction page. (`ad4a201`)
+- The vision statement on the home page inks in word by word as you scroll to it. (`ad4a201`)
+- On very wide screens, a slim guide on the left edge of the home page shows which section you are in and jumps to any section when clicked. (`ad4a201`)
 - Top bar morphing mega-menu: a single glass panel springs its width, height and position to whichever menu you hover (About, Projects, Verticals, Media), and the content slides across in the direction you moved, so switching menus is one continuous motion instead of a fade. Passing over items without a menu keeps the panel open. About and Media list their pages beside a photo that changes to the page under the pointer, with a sliding highlight. (`8fb8559`)
 - Search dialog: a minimal box whose placeholder types real things you can search (pages such as Board Members or Careers, the verticals, project clients such as IIT Tirupati, news and CEL), each checked to return results; Tab fills in the suggestion. The keyword hint and chip buttons were removed. Site pages are now searchable, and projects match on client and location. (`4b8a4b8`)
 - Home "Work with CUBE" rebuilt as three intent cards (start a project, bid on a tender, join the team), each with an icon, one line and an arrow, plus a slim glass strip with the office address, email and phone. (`12ea909`)
