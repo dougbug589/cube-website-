@@ -40,6 +40,7 @@ Two lines of work run through this repository:
 - Etihad-inspired theme: slate and gold palette, scroll-reveal animations, gold scroll-progress bar. (`1977bf6`)
 
 #### Changed
+- Clickable cards (projects, news, gallery, Inside CUBE tiles, menu photo cards) get the same springy hover bounce as buttons, scaled for their size.
 - Governing board, Explore <vertical> and About the laboratory buttons now use the same solid light yellow as the other gold buttons (were a dull tint).
 - Hover bounce on every selectable (top-bar tabs, filter pills, chips, icon buttons, menu rows, Back), same spring as the buttons; positioned controls keep their placement.
 - Home Inside CUBE: the Clients tile label and arrow now match the other tiles (dark glass chip instead of a gold tint).
