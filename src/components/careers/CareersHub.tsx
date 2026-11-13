@@ -347,20 +347,20 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
                   aria-selected={on}
                   onClick={() => (id === 'portal' ? openPortal() : setActiveTab('openings'))}
                   className={`press relative flex-1 sm:flex-none min-h-11 py-2 px-4 sm:px-5 rounded-[22px] sm:rounded-full text-[15px] leading-tight text-left sm:whitespace-nowrap flex items-center gap-2 transition-colors duration-300 ${
-                    on ? 'text-[#F3F5F6] font-bold' : 'text-[#C2CCD1] font-semibold hover:text-[#F3F5F6]'
+                    on ? 'text-[#0B0D0E] font-bold' : 'text-[#C2CCD1] font-semibold hover:text-[#F3F5F6]'
                   }`}
                 >
                   {on && (
                     <motion.span
                       layoutId="careers-tab-pill"
                       transition={SPRING}
-                      className="absolute inset-0 rounded-[22px] sm:rounded-full bg-gradient-to-b from-[#F6C22E]/45 to-[#F6C22E]/20 border border-[#F6C22E]/25 shadow-[0_6px_16px_-10px_rgba(246, 194, 46,0.8)]"
+                      className="absolute inset-0 rounded-[22px] sm:rounded-full pill-yellow"
                     />
                   )}
-                  <Icon size={16} strokeWidth={2.25} className="relative text-[#F6C22E] shrink-0" />
+                  <Icon size={16} strokeWidth={2.25} className={`relative shrink-0 ${on ? 'text-[#0B0D0E]' : 'text-[#F6C22E]'}`} />
                   <span className="relative">{label}</span>
                   {typeof count === 'number' && (
-                    <span className={`relative shrink-0 grid place-items-center min-w-6 h-6 px-1.5 rounded-full text-[13.5px] font-extrabold tabular-nums ${on ? 'bg-white/[0.07]' : 'bg-white/[0.08]'}`}>
+                    <span className={`relative shrink-0 grid place-items-center min-w-6 h-6 px-1.5 rounded-full text-[13.5px] font-extrabold tabular-nums ${on ? 'bg-black/10' : 'bg-white/[0.08]'}`}>
                       {count}
                     </span>
                   )}
@@ -604,7 +604,7 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
                           initial={{ scale: 0.4, rotate: -12 }}
                           animate={{ scale: 1, rotate: 0 }}
                           transition={{ type: 'spring', stiffness: 380, damping: 14, delay: 0.05 }}
-                          className="grid place-items-center w-20 h-20 mx-auto rounded-full bg-gradient-to-b from-[#F6C22E]/35 to-[#F6C22E]/20 text-[#F3F5F6] depth-2"
+                          className="grid place-items-center w-20 h-20 mx-auto rounded-full pill-yellow text-[#0B0D0E] depth-2"
                         >
                           <Check size={36} strokeWidth={2.5} />
                         </motion.span>
@@ -766,7 +766,7 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
                 const Icon = BENEFIT_ICONS[item.icon] || Award;
                 return (
                   <div key={i} className="glass glass-interactive glass-edge rounded-[26px] p-7">
-                    <span className="grid place-items-center w-14 h-14 rounded-[18px] bg-gradient-to-b from-[#F6C22E]/35 to-[#F6C22E]/20 text-[#F3F5F6] depth-1">
+                    <span className="grid place-items-center w-14 h-14 rounded-[18px] pill-yellow text-[#0B0D0E] depth-1">
                       <Icon size={24} strokeWidth={2} />
                     </span>
                     <h4 className="mt-6 font-display text-[20px] font-extrabold text-[#F3F5F6] leading-snug">{item.title}</h4>

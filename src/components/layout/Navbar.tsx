@@ -332,32 +332,32 @@ export default function Navbar() {
                     openMega(mm ? item.title : null);
                   }}
                   className={`press relative flex items-center gap-1.5 h-11 px-4 2xl:px-5 rounded-full text-[15.5px] whitespace-nowrap transition-colors duration-300 ${
-                    active ? 'text-[#F3F5F6] font-bold' : 'text-[#C2CCD1] font-semibold hover:text-[#F3F5F6]'
+                    active ? 'text-[#0B0D0E] font-bold' : 'text-[#C2CCD1] font-semibold hover:text-[#F3F5F6]'
                   }`}
                 >
                   {active && (
                     <motion.span
                       layoutId="nav-active"
                       transition={SPRING}
-                      className="absolute inset-0 rounded-full bg-gradient-to-b from-[#F6C22E]/45 to-[#F6C22E]/20 border border-[#F6C22E]/25 shadow-[0_6px_18px_-10px_rgba(246, 194, 46,0.8)]"
+                      className="absolute inset-0 rounded-full pill-yellow"
                     />
                   )}
                   {showHover && (
                     <motion.span
                       layoutId="nav-hover"
                       transition={SPRING}
-                      className="absolute inset-0 rounded-full bg-white/[0.08] border border-white shadow-[0_6px_16px_-10px_rgba(36,50,57,0.45),inset_0_1px_0_#fff]"
+                      className="absolute inset-0 rounded-full bg-white/[0.08] border border-white/15 shadow-[inset_0_1px_0_rgba(255,255,255,0.12)]"
                     />
                   )}
                   <span className="relative">{item.title}</span>
                   {item.badge && (
-                    <span title={item.badge} aria-label={item.badge} className="relative w-1.5 h-1.5 rounded-full bg-[#F6C22E] shadow-[0_0_8px_#F6C22E]" />
+                    <span title={item.badge} aria-label={item.badge} className={`relative w-1.5 h-1.5 rounded-full ${active ? 'bg-[#0B0D0E]' : 'bg-[#F6C22E] shadow-[0_0_8px_#F6C22E]'}`} />
                   )}
                   {mm && (
                     <ChevronDown
                       size={14}
                       strokeWidth={2}
-                      className={`relative transition-transform duration-300 ${open ? 'rotate-180 text-[#F6C22E]' : 'text-[#8E9AA0]'}`}
+                      className={`relative transition-transform duration-300 ${active ? 'text-[#0B0D0E]/70' : open ? 'text-[#F6C22E]' : 'text-[#8E9AA0]'} ${open ? 'rotate-180' : ''}`}
                     />
                   )}
                 </Link>
@@ -479,7 +479,7 @@ export default function Navbar() {
                   const active = isItemActive(pathname, item);
                   const panelId = `drawer-${item.title.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`;
                   const row = `press flex w-full items-center justify-between gap-3 px-4 py-3.5 rounded-2xl text-[17px] font-bold transition-colors ${
-                    active || isExpanded ? 'text-[#F3F5F6] bg-[#F6C22E]/35/30' : 'text-[#D6DDE0] active:bg-white/[0.08]'
+                    active ? 'pill-yellow text-[#0B0D0E]' : isExpanded ? 'text-[#F3F5F6] bg-white/[0.08]' : 'text-[#D6DDE0] active:bg-white/[0.08]'
                   }`;
                   return (
                     <motion.div
@@ -497,7 +497,7 @@ export default function Navbar() {
                           onClick={() => setExpanded((c) => (c === item.title ? null : item.title))}
                         >
                           {item.title}
-                          <ChevronDown size={16} strokeWidth={1.75} className={`transition-transform duration-300 ${isExpanded ? 'rotate-180 text-[#F6C22E]' : 'text-[#8E9AA0]'}`} />
+                          <ChevronDown size={16} strokeWidth={1.75} className={`transition-transform duration-300 ${active ? 'text-[#0B0D0E]/70' : isExpanded ? 'text-[#F6C22E]' : 'text-[#8E9AA0]'} ${isExpanded ? 'rotate-180' : ''}`} />
                         </button>
                       ) : (
                         <Link href={item.href} className={row} onClick={() => setDrawerOpen(false)}>
@@ -654,7 +654,7 @@ function ListPreview({ item }: { item: Item }) {
                   <motion.span
                     layoutId={`mega-pill-${item.title}`}
                     transition={{ type: 'spring', stiffness: 500, damping: 38, mass: 0.7 }}
-                    className="absolute inset-0 rounded-2xl bg-white/[0.08] border border-white shadow-[0_6px_16px_-10px_rgba(36,50,57,0.45),inset_0_1px_0_#fff]"
+                    className="absolute inset-0 rounded-2xl bg-white/[0.08] border border-white/15 shadow-[inset_0_1px_0_rgba(255,255,255,0.12)]"
                   />
                 )}
                 <span className="relative">{sub.title}</span>

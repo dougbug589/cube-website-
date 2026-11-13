@@ -732,3 +732,13 @@ li > .btn-gold.glass-interactive:hover { transform: translateY(-4px) scale(1.015
   .btn-gold:hover, .btn-soft:hover, .btn-liquid:hover, .btn-liquid-gold:hover, .liquid-glass-dark:hover, li > .btn-gold.glass-interactive:hover { transform: none; }
   :is(.btn-gold, .btn-soft, .btn-liquid, .btn-liquid-gold, .liquid-glass-dark):hover svg { animation: none; }
 }
+
+/* solid light-yellow fill for selected tabs/pills and icon squares (same
+   look as the gold buttons: sheen, inner highlight, soft glow); text on it
+   is dark #0B0D0E */
+.pill-yellow {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.18) 0%, rgba(255, 255, 255, 0) 60%), #F6C22E;
+  border-color: rgba(246, 194, 46, 0.6);
+  box-shadow: 0 0 14px -2px rgba(246, 194, 46, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.45);
+}
+.pill-yellow svg { filter: none; }

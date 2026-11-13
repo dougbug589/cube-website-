@@ -31,7 +31,7 @@ export default function VisionMissionPage() {
         <div className="liquid-glass relative rounded-[34px] depth-3 p-8 sm:p-12 lg:p-16 overflow-hidden reveal">
           <div aria-hidden className="absolute -top-24 -right-16 w-[420px] h-[420px] rounded-full bg-[radial-gradient(circle,rgba(246, 194, 46,0.28),transparent_70%)] blur-2xl pointer-events-none" />
           <div className="relative flex items-center gap-3">
-            <span className="grid place-items-center w-12 h-12 rounded-2xl bg-gradient-to-b from-[#F6C22E]/35 to-[#F6C22E]/20 text-[#F3F5F6] depth-1">
+            <span className="grid place-items-center w-12 h-12 rounded-2xl pill-yellow text-[#0B0D0E] depth-1">
               <Compass size={22} strokeWidth={2} />
             </span>
             <p className="label-mono">Vision</p>

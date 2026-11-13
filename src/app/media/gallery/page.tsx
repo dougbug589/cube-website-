@@ -158,18 +158,18 @@ export default function GalleryPage() {
                   type="button"
                   onClick={() => setSelectedCategory(cat)}
                   className={`press relative h-10 px-4 rounded-full text-[15px] whitespace-nowrap flex items-center gap-2 transition-colors duration-300 ${
-                    on ? 'text-[#F3F5F6] font-bold' : 'text-[#C2CCD1] font-semibold hover:text-[#F3F5F6]'
+                    on ? 'text-[#0B0D0E] font-bold' : 'text-[#C2CCD1] font-semibold hover:text-[#F3F5F6]'
                   }`}
                 >
                   {on && (
                     <motion.span
                       layoutId="gallery-filter-pill"
                       transition={SPRING}
-                      className="absolute inset-0 rounded-full bg-gradient-to-b from-[#F6C22E]/45 to-[#F6C22E]/20 border border-[#F6C22E]/25 shadow-[0_6px_16px_-10px_rgba(246, 194, 46,0.8)]"
+                      className="absolute inset-0 rounded-full pill-yellow"
                     />
                   )}
                   <span className="relative">{cat}</span>
-                  <span className={`relative grid place-items-center min-w-6 h-6 px-1.5 rounded-full text-[13.5px] font-extrabold tabular-nums ${on ? 'bg-white/[0.07]' : 'bg-white/[0.08]'}`}>
+                  <span className={`relative grid place-items-center min-w-6 h-6 px-1.5 rounded-full text-[13.5px] font-extrabold tabular-nums ${on ? 'bg-black/10' : 'bg-white/[0.08]'}`}>
                     {counts[cat] || 0}
                   </span>
                 </button>

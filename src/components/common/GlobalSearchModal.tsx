@@ -260,7 +260,7 @@ export default function GlobalSearchModal({ isOpen, onClose }: GlobalSearchModal
             >
               {/* input row */}
               <div className="relative flex items-center gap-4 px-6 sm:px-7 h-[76px]">
-                <span className="grid place-items-center w-11 h-11 rounded-2xl bg-gradient-to-b from-[#F6C22E]/35 to-[#F6C22E]/20 text-[#F3F5F6] depth-1 shrink-0">
+                <span className="grid place-items-center w-11 h-11 rounded-2xl pill-yellow text-[#0B0D0E] depth-1 shrink-0">
                   <Search size={20} strokeWidth={2.25} />
                 </span>
                 <div className="relative flex-1 min-w-0">
@@ -368,7 +368,7 @@ export default function GlobalSearchModal({ isOpen, onClose }: GlobalSearchModal
                                 className="absolute inset-0 rounded-2xl bg-white/[0.09] border border-white shadow-[0_8px_22px_-14px_rgba(36,50,57,0.5),inset_0_1px_0_#fff]"
                               />
                             )}
-                            <span className={`relative grid place-items-center w-11 h-11 rounded-2xl shrink-0 transition-colors duration-300 ${on ? 'bg-gradient-to-b from-[#F6C22E]/35 to-[#F6C22E]/20 text-[#F3F5F6]' : 'bg-[#F6C22E]/15 text-[#F6C22E]'}`}>
+                            <span className={`relative grid place-items-center w-11 h-11 rounded-2xl shrink-0 transition-colors duration-300 ${on ? 'pill-yellow text-[#0B0D0E]' : 'bg-[#F6C22E]/15 text-[#F6C22E]'}`}>
                               <Icon size={19} strokeWidth={2} />
                             </span>
                             <span className="relative flex-1 min-w-0">

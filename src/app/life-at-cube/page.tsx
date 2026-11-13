@@ -86,7 +86,7 @@ export default function LifeAtCubePage() {
               <span className="mt-2 block font-display text-[26px] font-extrabold text-[#F3F5F6]">Join the team</span>
               <span className="mt-1 block text-[18px] text-[#A7B2B8]">See current openings and apply online.</span>
             </span>
-            <span className="grid place-items-center w-12 h-12 rounded-full bg-gradient-to-b from-[#F6C22E]/35 to-[#F6C22E]/20 text-[#F3F5F6] depth-1 shrink-0 transition-transform duration-500 group-hover:translate-x-1 group-hover:-translate-y-1">
+            <span className="grid place-items-center w-12 h-12 rounded-full pill-yellow text-[#0B0D0E] depth-1 shrink-0 transition-transform duration-500 group-hover:translate-x-1 group-hover:-translate-y-1">
               <ArrowUpRight size={20} strokeWidth={2.25} />
             </span>
           </Link>

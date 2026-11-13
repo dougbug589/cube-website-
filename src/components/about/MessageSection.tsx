@@ -190,7 +190,7 @@ export default function MessageSection({
         <div className="lg:col-span-8 reveal">
           <div className="liquid-glass is-solid relative h-[460px] sm:h-[520px] lg:h-[560px] rounded-[32px] depth-3 flex flex-col overflow-hidden">
             <div className="relative flex items-center gap-3 px-6 sm:px-9 pt-6 sm:pt-7 pb-3">
-              <span className="grid place-items-center w-11 h-11 rounded-2xl bg-gradient-to-b from-[#F6C22E]/35 to-[#F6C22E]/20 text-[#F3F5F6] depth-1 shrink-0">
+              <span className="grid place-items-center w-11 h-11 rounded-2xl pill-yellow text-[#0B0D0E] depth-1 shrink-0">
                 <Quote size={19} strokeWidth={2.25} />
               </span>
               <p className="label-mono">{label}</p>

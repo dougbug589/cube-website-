@@ -117,7 +117,7 @@ export default function ContactPage() {
             rel="noopener noreferrer"
             className="press group glass glass-interactive glass-edge rounded-[28px] p-7 flex flex-col md:col-span-2 xl:col-span-1 xl:row-span-1"
           >
-            <span className="grid place-items-center w-14 h-14 rounded-[18px] bg-gradient-to-b from-[#F6C22E]/35 to-[#F6C22E]/20 text-[#F3F5F6] depth-1">
+            <span className="grid place-items-center w-14 h-14 rounded-[18px] pill-yellow text-[#0B0D0E] depth-1">
               <MapPin size={24} strokeWidth={2} />
             </span>
             <span className="mt-6 label-mono">Meet us</span>
@@ -130,7 +130,7 @@ export default function ContactPage() {
 
           {/* Drop a mail */}
           <div className="group relative glass glass-interactive glass-edge rounded-[28px] p-7 flex flex-col">
-            <span className="grid place-items-center w-14 h-14 rounded-[18px] bg-gradient-to-b from-[#F6C22E]/35 to-[#F6C22E]/20 text-[#F3F5F6] depth-1">
+            <span className="grid place-items-center w-14 h-14 rounded-[18px] pill-yellow text-[#0B0D0E] depth-1">
               <Mail size={24} strokeWidth={2} />
             </span>
             <span className="mt-6 label-mono">Drop a mail</span>
@@ -147,7 +147,7 @@ export default function ContactPage() {
 
           {/* Let's talk */}
           <div className="group relative glass glass-interactive glass-edge rounded-[28px] p-7 flex flex-col">
-            <span className="grid place-items-center w-14 h-14 rounded-[18px] bg-gradient-to-b from-[#F6C22E]/35 to-[#F6C22E]/20 text-[#F3F5F6] depth-1">
+            <span className="grid place-items-center w-14 h-14 rounded-[18px] pill-yellow text-[#0B0D0E] depth-1">
               <Phone size={24} strokeWidth={2} />
             </span>
             <span className="mt-6 label-mono">Let&apos;s talk</span>
@@ -209,7 +209,7 @@ export default function ContactPage() {
                     initial={{ scale: 0.4, rotate: -12 }}
                     animate={{ scale: 1, rotate: 0 }}
                     transition={{ type: 'spring', stiffness: 380, damping: 14, delay: 0.05 }}
-                    className="grid place-items-center w-20 h-20 mx-auto rounded-full bg-gradient-to-b from-[#F6C22E]/35 to-[#F6C22E]/20 text-[#F3F5F6] depth-2"
+                    className="grid place-items-center w-20 h-20 mx-auto rounded-full pill-yellow text-[#0B0D0E] depth-2"
                   >
                     <Check size={36} strokeWidth={2.5} />
                   </motion.span>
@@ -280,7 +280,7 @@ export default function ContactPage() {
                             onClick={() => setFormData((f) => ({ ...f, enquiryCategory: t }))}
                             className={`press h-9 px-3.5 rounded-full text-[14px] font-bold border transition-colors duration-300 ${
                               on
-                                ? 'bg-gradient-to-b from-[#F6C22E]/35 to-[#F6C22E]/20 border-[#F6C22E]/30 text-[#F3F5F6]'
+                                ? 'pill-yellow border-transparent text-[#0B0D0E]'
                                 : 'bg-white/[0.07] border-white/10 text-[#C2CCD1] hover:bg-white/[0.06] hover:text-[#F3F5F6]'
                             }`}
                           >

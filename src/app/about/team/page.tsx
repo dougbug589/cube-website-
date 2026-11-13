@@ -67,18 +67,18 @@ export default function TeamPage() {
                     type="button"
                     onClick={() => setDept(f.id)}
                     className={`press relative h-10 px-4 rounded-full text-[15px] whitespace-nowrap flex items-center gap-2 transition-colors duration-300 ${
-                      on ? 'text-[#F3F5F6] font-bold' : 'text-[#C2CCD1] font-semibold hover:text-[#F3F5F6]'
+                      on ? 'text-[#0B0D0E] font-bold' : 'text-[#C2CCD1] font-semibold hover:text-[#F3F5F6]'
                     }`}
                   >
                     {on && (
                       <motion.span
                         layoutId="team-filter-pill"
                         transition={SPRING}
-                        className="absolute inset-0 rounded-full bg-gradient-to-b from-[#F6C22E]/45 to-[#F6C22E]/20 border border-[#F6C22E]/25 shadow-[0_6px_16px_-10px_rgba(246, 194, 46,0.8)]"
+                        className="absolute inset-0 rounded-full pill-yellow"
                       />
                     )}
                     <span className="relative">{f.label}</span>
-                    <span className={`relative grid place-items-center min-w-6 h-6 px-1.5 rounded-full text-[13.5px] font-extrabold tabular-nums ${on ? 'bg-white/[0.07]' : 'bg-white/[0.08]'}`}>
+                    <span className={`relative grid place-items-center min-w-6 h-6 px-1.5 rounded-full text-[13.5px] font-extrabold tabular-nums ${on ? 'bg-black/10' : 'bg-white/[0.08]'}`}>
                       {f.count}
                     </span>
                   </button>
@@ -118,7 +118,7 @@ export default function TeamPage() {
               aria-labelledby={`dept-${id}`}
             >
               <div className="flex items-center gap-4 mb-6">
-                <span className="grid place-items-center w-12 h-12 rounded-2xl bg-gradient-to-b from-[#F6C22E]/35 to-[#F6C22E]/20 text-[#F3F5F6] depth-1">
+                <span className="grid place-items-center w-12 h-12 rounded-2xl pill-yellow text-[#0B0D0E] depth-1">
                   <Icon size={21} strokeWidth={2} />
                 </span>
                 <h2 id={`dept-${id}`} className="font-display text-[24px] sm:text-[28px] font-extrabold text-[#F3F5F6]">

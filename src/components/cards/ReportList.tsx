@@ -14,7 +14,7 @@ export default function ReportList({ reports }: { reports: CubeReport[] }) {
         {reports.map((r) => (
           <article key={r.title} className="glass glass-interactive glass-edge rounded-[28px] p-6 sm:p-8 flex flex-col md:flex-row md:items-center gap-5 md:gap-8">
             <div className="flex md:flex-col items-center gap-3 md:w-24 shrink-0">
-              <span className="grid place-items-center w-14 h-14 rounded-[18px] bg-gradient-to-b from-[#F6C22E]/35 to-[#F6C22E]/20 text-[#F3F5F6] depth-1">
+              <span className="grid place-items-center w-14 h-14 rounded-[18px] pill-yellow text-[#0B0D0E] depth-1">
                 <FileText size={24} strokeWidth={2} />
               </span>
               <span className="font-display text-[20px] font-extrabold text-[#F3F5F6] tabular-nums">{r.year}</span>

@@ -117,18 +117,18 @@ function ProjectsPageInner() {
                   onClick={() => setSelectedCategory(cat)}
                   aria-pressed={on}
                   className={`press relative h-10 px-4 rounded-full text-[14.5px] whitespace-nowrap transition-colors duration-300 ${
-                    on ? 'text-[#F3F5F6] font-bold' : 'text-[#C2CCD1] font-semibold hover:text-[#F3F5F6]'
+                    on ? 'text-[#0B0D0E] font-bold' : 'text-[#C2CCD1] font-semibold hover:text-[#F3F5F6]'
                   }`}
                 >
                   {on && (
                     <motion.span
                       layoutId="projects-filter-pill"
                       transition={{ type: 'spring', stiffness: 420, damping: 34, mass: 0.8 }}
-                      className="absolute inset-0 rounded-full bg-gradient-to-b from-[#F6C22E]/45 to-[#F6C22E]/20 border border-[#F6C22E]/25 shadow-[0_6px_16px_-10px_rgba(246, 194, 46,0.8)]"
+                      className="absolute inset-0 rounded-full pill-yellow"
                     />
                   )}
                   <span className="relative">
-                    {SHORT_LABEL[cat] || cat} <span className="text-[#8E9AA0] font-semibold">{counts[cat] || 0}</span>
+                    {SHORT_LABEL[cat] || cat} <span className={`font-semibold ${on ? 'text-[#0B0D0E]/60' : 'text-[#8E9AA0]'}`}>{counts[cat] || 0}</span>
                   </span>
                 </button>
               );
