@@ -40,6 +40,7 @@ Two lines of work run through this repository:
 - Etihad-inspired theme: slate and gold palette, scroll-reveal animations, gold scroll-progress bar. (`1977bf6`)
 
 #### Changed
+- Vision & Mission page: faded CUBE project photos behind Vision (IIT Tirupati campus) and Mission (CPCL Manali housing), frosted glass cards, solid yellow Mission icon.
 - Sharper official logos for 7 clients (IIT Madras, Tamil Nadu emblem, NHAI, IIT Tirupati, TNUIFSL, Asahi Kasei, Rathinam), same size and position as before.
 - Sharper portraits for 12 IIT Advisory Panel / board members, taken from their official IIT Madras civil engineering faculty pages and checked against the old photos (same file names).
 - Board Members deck: removed the Up next hint.
