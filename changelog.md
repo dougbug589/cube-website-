@@ -40,6 +40,7 @@ Two lines of work run through this repository:
 - Etihad-inspired theme: slate and gold palette, scroll-reveal animations, gold scroll-progress bar. (`1977bf6`)
 
 #### Changed
+- One light yellow everywhere (#F6C22E): arrows, icons, labels, dots, rails, progress bars and filter pills now match the hero phrase and buttons.
 - Gold buttons (solid and tinted glass) now use the lighter amber #F6C22E, matching the hero phrase.
 - Hero headline: the rotating yellow phrase is a lighter amber (#F6C22E) so it reads brighter over the film.
 - One yellow across the site: #D89F03, the colour of the cubeiitm.org splash screen, replaces the paler #F1DB62 / #EBCB3B in headings, buttons, highlights and progress bars.
