@@ -1,107 +1,107 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { ArrowUpRight, MapPin, Quote } from 'lucide-react';
 import PageHeader from '@/components/common/PageHeader';
-import { Users, Sparkles, Building2, Award, ArrowRight } from 'lucide-react';
+import { teamMembers } from '@/data/team';
 
 export const metadata = {
-  title: 'Life at CUBE | Workplace Culture & Environment',
-  description: 'Experience professional life, team culture, and the collaborative research ecosystem at CUBE IIT Madras Research Park.',
+  title: 'Life at CUBE | CUBE IIT Madras',
+  description: "CUBE's office and laboratory at the IIT Madras Research Park, Chennai.",
 };
 
+// CUBE's own photos of its office and team.
+const PHOTOS = [
+  { src: '/images/hero/slides_building-training-team.jpg', alt: 'The CUBE team' },
+  { src: '/images/life-at-cube/about_life.jpg', alt: 'The CUBE office' },
+  { src: '/images/life-at-cube/about_life1.jpg', alt: 'A meeting at CUBE' },
+  { src: '/images/life-at-cube/about_life2.jpg', alt: 'The CUBE office' },
+  { src: '/images/about/about_about.jpg', alt: 'The CUBE office at the IIT Madras Research Park' },
+];
+const SPAN = ['md:col-span-2 md:row-span-2', '', '', '', ''];
+
+// From the Career page of cubeiitm.org.
+const ABOUT_TEAM =
+  'What sets us apart is what brings us together – a shared passion for solving business challenges through strategy, design, and engineering. We are the sum total of our team, their unique perspectives, capabilities, and our ability to collaborate from ideation to deployment.';
+
 export default function LifeAtCubePage() {
-  const highlights = [
-    {
-      title: 'Life at CUBE',
-      desc: '',
-      image: '/images/life-at-cube/about_life.jpg'
-    },
-    {
-      title: 'Life at CUBE',
-      desc: '',
-      image: '/images/life-at-cube/about_life1.jpg'
-    },
-    {
-      title: 'Life at CUBE',
-      desc: '',
-      image: '/images/life-at-cube/about_life2.jpg'
-    }
-  ];
+  const staff = teamMembers.filter((m: any) => !['leadership', 'board', 'advisory'].includes((m as any).category)).length;
 
   return (
-    <div>
+    <div className="text-[#243239] min-h-screen">
       <PageHeader
-        badge="Workplace & Culture"
+        badge="Life at CUBE"
         title="Life at CUBE"
-        description="A vibrant, mission-driven ecosystem where academic rigor meets impactful public infrastructure engineering."
-        breadcrumbs={[{ label: 'Life at CUBE' }]}
+        description="CUBE's office and laboratory at the IIT Madras Research Park, Chennai."
+        breadcrumbs={[{ label: 'Media', href: '/media' }, { label: 'Life at CUBE' }]}
       />
 
-      <section className="py-20 bg-transparent border-b border-slate-200">
-        <div className="shell">
-          <div className="max-w-3xl mx-auto text-center mb-16">
-            <span className="text-xs font-bold uppercase tracking-wider text-[#9A7015] bg-[#F7EDD3] px-3 py-1 rounded-full border border-[#E9D6A8]">
-              Our Collaborative Culture
-            </span>
-            <h2 className="text-3xl sm:text-4xl font-display font-extrabold text-navy-950 mt-3">
-              Where Engineering Innovation Meets Public Purpose
-            </h2>
-            <p className="text-sm text-slate-600 mt-4 leading-relaxed">
-              Situated in the premier innovation ecosystem of IIT Madras Research Park in Chennai, CUBE offers a distinctive work culture blending academic curiosity with rigorous field engineering.
-            </p>
-          </div>
+      {/* photo mosaic */}
+      <section className="shell">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 auto-rows-[220px] lg:auto-rows-[260px] grid-flow-dense gap-4 reveal-stagger">
+          {PHOTOS.map((p, i) => (
+            <figure key={p.src} className={`group relative rounded-[26px] overflow-hidden bg-[#DCE4E8] depth-1 ${SPAN[i]}`}>
+              <Image
+                src={p.src}
+                alt={p.alt}
+                fill
+                priority={i === 0}
+                sizes={i === 0 ? '(max-width: 768px) 100vw, 50vw' : '(max-width: 768px) 100vw, 25vw'}
+                className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.04]"
+              />
+            </figure>
+          ))}
+        </div>
+      </section>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {highlights.map((h, i) => (
-              <div key={i} className="rounded-3xl bg-slate-50 border border-slate-200 overflow-hidden shadow-sm hover:shadow-cube transition flex flex-col justify-between">
-                <div className="relative h-64 w-full bg-slate-900">
-                  <Image
-                    src={h.image}
-                    alt={h.title}
-                    fill
-                    className="object-cover"
-                  />
-                </div>
-                <div className="p-6">
-                  <h3 className="text-lg font-bold font-display text-navy-950 mb-2">
-                    {h.title}
-                  </h3>
-                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                    {h.desc}
-                  </p>
-                </div>
-              </div>
-            ))}
+      {/* the team, in CUBE's words */}
+      <section className="shell py-16 lg:py-20 grid lg:grid-cols-12 gap-6 lg:gap-8 items-stretch">
+        <blockquote className="lg:col-span-8 liquid-glass rounded-[30px] depth-2 p-8 sm:p-12 reveal">
+          <Quote size={28} className="text-[#C4921B]" />
+          <p className="mt-5 font-display text-[22px] sm:text-[27px] font-bold leading-[1.45] text-[#243239]">{ABOUT_TEAM}</p>
+        </blockquote>
+        <div className="lg:col-span-4 grid gap-4 reveal-stagger">
+          <div className="glass glass-edge rounded-[26px] p-7">
+            <p className="font-display text-[56px] font-extrabold leading-none text-[#243239] tabular-nums">{staff}</p>
+            <p className="mt-2 text-[17px] font-semibold text-[#46565E]">people in the CUBE team</p>
+          </div>
+          <div className="glass glass-edge rounded-[26px] p-7 flex items-start gap-4">
+            <span className="grid place-items-center w-12 h-12 rounded-2xl bg-[#F7EDD3] text-[#9A7015] depth-1 shrink-0">
+              <MapPin size={21} strokeWidth={2} />
+            </span>
+            <span>
+              <span className="block font-display text-[19px] font-bold text-[#243239]">IIT Madras Research Park</span>
+              <span className="mt-1 block text-[16px] text-[#5B6A71]">Office and CUBE Environmental Laboratory, Taramani, Chennai</span>
+            </span>
           </div>
         </div>
       </section>
 
-      {/* Join the Team CTA */}
-      <section className="py-16 bg-transparent text-[#2B3B44] border border-[#B9C5CA] text-center">
-        <div className="max-w-3xl mx-auto px-4">
-          <h2 className="text-2xl sm:text-3xl font-display font-bold">
-            Interested in Joining the CUBE Team?
-          </h2>
-          <p className="mt-3 text-xs sm:text-sm text-slate-300">
-            Explore career opportunities in structural design, environmental modeling, GIS planning, and laboratory analysis.
-          </p>
-          <div className="mt-6 flex justify-center gap-4">
-            <Link
-              href="/careers"
-              className="px-6 py-3 rounded-xl text-xs font-bold text-navy-950 bg-[#EFD9A6] hover:bg-[#EFD9A6] transition"
-            >
-              <span>View Career Openings</span>
-            </Link>
-            <Link
-              href="/about/team"
-              className="px-6 py-3 rounded-xl text-xs font-bold text-white bg-white/10 hover:bg-white/20 border border-white/20 transition"
-            >
-              <span>Meet the Team (80+)</span>
-            </Link>
-          </div>
+      {/* next steps */}
+      <section className="shell pb-24">
+        <div className="grid md:grid-cols-2 gap-4 lg:gap-5 reveal-stagger">
+          <Link href="/careers" className="press group glass glass-interactive glass-edge rounded-[28px] p-8 flex items-center justify-between gap-6">
+            <span>
+              <span className="label-mono">Careers</span>
+              <span className="mt-2 block font-display text-[26px] font-extrabold text-[#243239]">Join the team</span>
+              <span className="mt-1 block text-[17px] text-[#5B6A71]">See current openings and apply online.</span>
+            </span>
+            <span className="grid place-items-center w-12 h-12 rounded-full bg-gradient-to-b from-[#F8E3A3] to-[#F0C468] text-[#243239] depth-1 shrink-0 transition-transform duration-500 group-hover:translate-x-1 group-hover:-translate-y-1">
+              <ArrowUpRight size={20} strokeWidth={2.25} />
+            </span>
+          </Link>
+          <Link href="/about/team" className="press group glass glass-interactive glass-edge rounded-[28px] p-8 flex items-center justify-between gap-6">
+            <span>
+              <span className="label-mono">Our Team</span>
+              <span className="mt-2 block font-display text-[26px] font-extrabold text-[#243239]">Meet the team</span>
+              <span className="mt-1 block text-[17px] text-[#5B6A71]">Staff across every vertical and administration.</span>
+            </span>
+            <span className="grid place-items-center w-12 h-12 rounded-full bg-white border border-[#33454E]/10 text-[#243239] depth-1 shrink-0 transition-[transform,background-color] duration-500 group-hover:bg-[#F0C468] group-hover:translate-x-1 group-hover:-translate-y-1">
+              <ArrowUpRight size={20} strokeWidth={2.25} />
+            </span>
+          </Link>
         </div>
       </section>
     </div>
   );
 }
-

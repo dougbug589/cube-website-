@@ -1,32 +1,26 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image';
-import Link from 'next/link';
+import { AnimatePresence, motion } from 'framer-motion';
+import { ArrowLeft, ArrowUpRight, Check, Droplets, Loader2, Mail, MapPin, Phone, Recycle, Send, Waves } from 'lucide-react';
 import PageHeader from '@/components/common/PageHeader';
-import { 
-  FlaskConical, CheckCircle2, Waves, ArrowRight, ArrowUpRight,
-  Send, Phone, Mail, MapPin, Microscope, Sparkles, Loader2
-} from 'lucide-react';
 import { celOverview } from '@/data/cel';
 import { contactInfo } from '@/data/contact';
 import { submitEnquiryAction } from '@/app/actions/enquiries';
 import { useLiveList } from '@/lib/live';
+import { FIELD, LABEL } from '@/components/common/formStyles';
+
+const PHOTOS = ['/images/cel/about_cel.jpg', '/images/cel/about_cel1.jpg', '/images/cel/about_cel2.jpg'];
+const ICON: Record<string, React.ElementType> = { water: Droplets, wastewater: Waves, 'solid-waste': Recycle };
 
 export default function CELPage() {
   // Live CMS data: updates instantly when an admin edits/archives a service.
   const testingServices = useLiveList<any>('/api/public/cel', celOverview.testingServices);
 
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    organization: '',
-    matrix: '',
-    sampleCount: '',
-    parametersNeeded: '',
-  });
-
+  const [formData, setFormData] = useState({ name: '', email: '', phone: '', organization: '', matrix: '', sampleCount: '', parametersNeeded: '' });
+  const set = (k: keyof typeof formData) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
+    setFormData((f) => ({ ...f, [k]: e.target.value }));
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
@@ -35,12 +29,10 @@ export default function CELPage() {
     e.preventDefault();
     setLoading(true);
     setErrorMsg(null);
-
     const message = `CEL Laboratory Testing Request:
 Matrix: ${formData.matrix}
 Estimated Samples: ${formData.sampleCount}
 Parameters / Notes: ${formData.parametersNeeded || 'Standard Matrix Parameters'}`;
-
     const res = await submitEnquiryAction({
       name: formData.name,
       email: formData.email,
@@ -51,245 +43,179 @@ Parameters / Notes: ${formData.parametersNeeded || 'Standard Matrix Parameters'}
       message,
       sourcePage: '/cel',
     });
-
-    if (res.success) {
-      setFormSubmitted(true);
-      setLoading(false);
-    } else {
-      setErrorMsg(res.error || 'Failed to submit laboratory enquiry.');
-      setLoading(false);
-    }
+    if (res.success) setFormSubmitted(true);
+    else setErrorMsg(res.error || 'Failed to submit laboratory enquiry.');
+    setLoading(false);
   };
 
   return (
-    <div className="bg-transparent min-h-screen">
-      <PageHeader
-        badge="Laboratory"
-        title={celOverview.title}
-        description={celOverview.description}
-        breadcrumbs={[{ label: 'CEL Laboratory' }]}
-      />
+    <div className="text-[#243239] min-h-screen">
+      <PageHeader badge="Laboratory" title={celOverview.title} description={celOverview.description} breadcrumbs={[{ label: 'CEL Laboratory' }]} />
 
-      {/* Overview: only what cubeiitm.org states about CEL */}
-      <section className="py-16 lg:py-20">
-        <div className="shell grid lg:grid-cols-12 gap-10 lg:gap-14 items-center">
-          <div className="lg:col-span-6 space-y-5 reveal">
-            <p className="text-[19px] sm:text-xl text-[#243239] leading-relaxed">{celOverview.subtitle}</p>
-            <p className="text-[17px] text-[#46565E] leading-relaxed">{celOverview.location}</p>
-            <div className="pt-2 flex flex-wrap gap-3">
-              <a
-                href={celOverview.website}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="press btn-gold gold-shimmer inline-flex items-center gap-2 h-12 px-6 rounded-full text-[16px] font-extrabold"
-              >
+      {/* overview: what cubeiitm.org states about CEL, beside a photo mosaic */}
+      <section className="shell">
+        <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-stretch">
+          <div className="lg:col-span-5 liquid-glass rounded-[32px] depth-2 p-8 sm:p-10 flex flex-col reveal">
+            <p className="font-display text-[23px] sm:text-[26px] font-bold leading-[1.45] text-[#243239]">{celOverview.subtitle}</p>
+            <p className="mt-5 text-[18px] text-[#46565E] leading-relaxed">{celOverview.location}</p>
+            <div className="mt-auto pt-8 flex flex-wrap gap-3">
+              <a href={celOverview.website} target="_blank" rel="noopener noreferrer" className="press btn-gold gold-shimmer inline-flex items-center gap-2 h-12 px-6 rounded-full text-[16px] font-extrabold">
                 Visit the CEL website <ArrowUpRight size={16} strokeWidth={2.25} />
               </a>
-              <a href={`mailto:${contactInfo.email}`} className="press btn-soft inline-flex items-center gap-2 h-12 px-6 rounded-full text-[16px] font-bold">
-                <Mail size={16} /> {contactInfo.email}
+              <a href="#enquiry" className="press btn-soft inline-flex items-center gap-2 h-12 px-6 rounded-full text-[16px] font-bold">
+                Testing enquiry
               </a>
             </div>
           </div>
-          <div className="lg:col-span-6 grid grid-cols-2 gap-4 reveal">
-            {['/images/cel/about_cel.jpg', '/images/cel/about_cel1.jpg', '/images/cel/about_cel2.jpg'].map((src, i) => (
-              <div key={src} className={`relative rounded-[24px] overflow-hidden depth-2 bg-[#DCE4E8] ${i === 0 ? 'col-span-2 h-64 sm:h-72' : 'h-44 sm:h-52'}`}>
-                <Image src={src} alt="CUBE Environmental Laboratory" fill sizes="(max-width: 1024px) 100vw, 45vw" className="object-cover" priority={i === 0} />
+          <div className="lg:col-span-7 grid grid-cols-2 grid-rows-2 gap-4 min-h-[420px] lg:min-h-[520px] reveal-stagger">
+            {PHOTOS.map((src, i) => (
+              <div key={src} className={`relative rounded-[26px] overflow-hidden depth-1 bg-[#DCE4E8] ${i === 0 ? 'row-span-2' : ''}`}>
+                <Image src={src} alt="CUBE Environmental Laboratory" fill sizes="(max-width: 1024px) 50vw, 30vw" className="object-cover" priority={i === 0} />
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Testing domains */}
-      <section className="pb-16 lg:pb-20">
-        <div className="shell">
-          <p className="label-mono reveal">Testing domains</p>
-          <div className="mt-5 grid md:grid-cols-3 gap-5 reveal-stagger">
-            {testingServices.map((service: any) => (
-              <div key={service.id || service.title} className="glass glass-interactive glass-edge rounded-[26px] p-7">
-                <span className="grid place-items-center w-12 h-12 rounded-2xl bg-[#F7EDD3] text-[#9A7015] depth-1">
-                  <FlaskConical size={22} strokeWidth={2} />
+      {/* testing domains */}
+      <section className="shell py-16 lg:py-20">
+        <p className="label-mono reveal">Testing domains</p>
+        <div className="mt-5 grid md:grid-cols-3 gap-5 reveal-stagger">
+          {testingServices.map((service: any) => {
+            const Icon = ICON[service.id] || Droplets;
+            return (
+              <div key={service.id || service.title} className="glass glass-interactive glass-edge rounded-[28px] p-8">
+                <span className="grid place-items-center w-14 h-14 rounded-[18px] bg-gradient-to-b from-[#F8E3A3] to-[#F0C468] text-[#243239] depth-1">
+                  <Icon size={24} strokeWidth={2} />
                 </span>
-                <h2 className="mt-5 font-display text-2xl font-extrabold text-[#243239]">{service.title}</h2>
-                {service.description && <p className="mt-2 text-[16.5px] text-[#46565E] leading-relaxed">{service.description}</p>}
+                <h2 className="mt-6 font-display text-[28px] font-extrabold text-[#243239]">{service.title}</h2>
+                {service.description && <p className="mt-2 text-[17.5px] text-[#46565E] leading-relaxed">{service.description}</p>}
               </div>
-            ))}
-          </div>
+            );
+          })}
         </div>
       </section>
 
-      {/* Laboratory Real-Time Booking Form */}
-      <section id="enquiry" className="py-20 bg-transparent">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="p-8 sm:p-12 rounded-3xl bg-[#F6F8F9] border border-[#C4CAD8] shadow-cube">
-            <div className="text-center max-w-xl mx-auto mb-10">
-              <span className="text-xs font-bold uppercase tracking-wider text-[#2B3B44] bg-[#F0C468] px-3 py-1 rounded-full shadow-sm">
-                Real-Time Sample Submission
-              </span>
-              <h2 className="text-2xl sm:text-3xl font-display font-extrabold text-[#2B3B44] mt-2">
-                Laboratory Test Enquiry &amp; Booking
-              </h2>
-              <p className="text-xs sm:text-sm text-slate-600 mt-2">
-                Submit sample details for commercial testing, baseline environmental audits, or university research support. Directly synced with the CUBE administrative registry.
+      {/* testing enquiry */}
+      <section id="enquiry" className="scroll-mt-32 shell pb-24">
+        <div className="grid lg:grid-cols-12 gap-6 lg:gap-8 items-start">
+          <aside className="lg:col-span-4 space-y-4 reveal-stagger">
+            <div className="glass glass-edge rounded-[26px] p-7">
+              <p className="label-mono">Where</p>
+              <p className="mt-3 flex items-start gap-3 text-[17px] text-[#243239] leading-relaxed">
+                <MapPin size={19} className="text-[#C4921B] mt-1 shrink-0" />
+                {contactInfo.address}
               </p>
             </div>
+            <div className="glass glass-edge rounded-[26px] p-7 space-y-3">
+              <a href={`mailto:${contactInfo.email}`} className="flex items-center gap-3 text-[17px] font-bold text-[#243239] hover:text-[#9A7015] transition-colors">
+                <Mail size={19} className="text-[#C4921B]" /> {contactInfo.email}
+              </a>
+              <a href={`tel:${contactInfo.phoneTel}`} className="flex items-center gap-3 text-[17px] font-bold text-[#243239] hover:text-[#9A7015] transition-colors">
+                <Phone size={19} className="text-[#C4921B]" /> {contactInfo.phone}
+              </a>
+            </div>
+          </aside>
 
-            {formSubmitted ? (
-              <div className="p-8 rounded-2xl bg-white border border-[#C4921B] text-center space-y-3 shadow-md">
-                <CheckCircle2 className="w-12 h-12 text-[#C4921B] mx-auto" />
-                <h3 className="text-lg font-bold text-[#2B3B44] font-display">
-                  CEL Testing Enquiry Received in Real-Time
-                </h3>
-                <p className="text-xs text-slate-700 max-w-md mx-auto leading-relaxed">
-                  Thank you, <strong>{formData.name}</strong>. A laboratory coordinator from CUBE Environmental Laboratory will review your testing scope for <strong>{formData.matrix}</strong> and contact you at <strong>{formData.email}</strong>.
-                </p>
-                <button
-                  onClick={() => {
-                    setFormSubmitted(false);
-                    setFormData({
-                      name: '',
-                      email: '',
-                      phone: '',
-                      organization: '',
-                      matrix: 'Water Quality Testing',
-                      sampleCount: '1-5',
-                      parametersNeeded: '',
-                    });
-                  }}
-                  className="mt-4 px-5 py-2.5 rounded-xl text-xs font-bold bg-[#F2F5F6] text-[#2B3B44] border border-[#B9C5CA] hover:bg-[#F6DA86] hover:text-[#2B3B44] transition shadow-md"
-                >
-                  Submit Another Sample Scope
-                </button>
-              </div>
-            ) : (
-              <form onSubmit={handleEnquirySubmit} className="space-y-5">
-                {errorMsg && (
-                  <div className="p-3 bg-red-100 text-red-800 text-xs rounded-xl font-medium border border-red-200">
-                    {errorMsg}
-                  </div>
-                )}
+          <div className="lg:col-span-8 glass glass-edge rounded-[30px] p-6 sm:p-9 reveal">
+            <p className="label-mono">Testing enquiry</p>
+            <h2 className="mt-3 headline-light text-3xl sm:text-[2.4rem] text-[#243239]">Send sample details</h2>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                  <div>
-                    <label className="text-xs font-bold text-[#2B3B44] block mb-1">
-                      Contact Person *
-                    </label>
-                    <input
-                      type="text"
-                      required
-                      placeholder="Your Full Name"
-                      value={formData.name}
-                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      className="w-full px-4 py-2.5 rounded-xl bg-white border border-[#C4CAD8] text-xs focus:outline-none focus:border-[#C4921B] transition shadow-sm"
-                    />
-                  </div>
-
-                  <div>
-                    <label className="text-xs font-bold text-[#2B3B44] block mb-1">
-                      Official Email Address *
-                    </label>
-                    <input
-                      type="email"
-                      required
-                      placeholder="name@organization.com"
-                      value={formData.email}
-                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      className="w-full px-4 py-2.5 rounded-xl bg-white border border-[#C4CAD8] text-xs focus:outline-none focus:border-[#C4921B] transition shadow-sm"
-                    />
-                  </div>
-
-                  <div>
-                    <label className="text-xs font-bold text-[#2B3B44] block mb-1">
-                      Phone Number *
-                    </label>
-                    <input
-                      type="tel"
-                      required
-                      placeholder="+91 Contact Number"
-                      value={formData.phone}
-                      onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                      className="w-full px-4 py-2.5 rounded-xl bg-white border border-[#C4CAD8] text-xs focus:outline-none focus:border-[#C4921B] transition shadow-sm"
-                    />
-                  </div>
-
-                  <div>
-                    <label className="text-xs font-bold text-[#2B3B44] block mb-1">
-                      Organization / University
-                    </label>
-                    <input
-                      type="text"
-                      placeholder="e.g. TNPCB / Industry / IITM"
-                      value={formData.organization}
-                      onChange={(e) => setFormData({ ...formData, organization: e.target.value })}
-                      className="w-full px-4 py-2.5 rounded-xl bg-white border border-[#C4CAD8] text-xs focus:outline-none focus:border-[#C4921B] transition shadow-sm"
-                    />
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                  <div>
-                    <label className="text-xs font-bold text-[#2B3B44] block mb-1">
-                      Sample Matrix / Category *
-                    </label>
-                    <input
-                      type="text"
-                      required
-                      value={formData.matrix}
-                      onChange={(e) => setFormData({ ...formData, matrix: e.target.value })}
-                      placeholder="e.g. Water, Wastewater or Solid Waste"
-                      className="w-full px-4 py-2.5 rounded-xl bg-white border border-[#C4CAD8] text-xs focus:outline-none focus:border-[#C4921B] transition shadow-sm"
-                    />
-                  </div>
-
-                  <div>
-                    <label className="text-xs font-bold text-[#2B3B44] block mb-1">
-                      Estimated Sample Volume *
-                    </label>
-                    <input
-                      type="text"
-                      required
-                      value={formData.sampleCount}
-                      onChange={(e) => setFormData({ ...formData, sampleCount: e.target.value })}
-                      placeholder="Type volume manually (e.g. 5 Samples, 20 Samples, 50 Litres...)"
-                      className="w-full px-4 py-2.5 rounded-xl bg-white border border-[#C4CAD8] text-xs focus:outline-none focus:border-[#C4921B] transition shadow-sm"
-                    />
-                  </div>
-                </div>
-
-                <div>
-                  <label className="text-xs font-bold text-[#2B3B44] block mb-1">
-                    Specific Parameters / Project Notes
-                  </label>
-                  <textarea
-                    rows={4}
-                    placeholder="List specific testing parameters (BOD, COD, Heavy metals, Pathogens, etc.) and project location..."
-                    value={formData.parametersNeeded}
-                    onChange={(e) => setFormData({ ...formData, parametersNeeded: e.target.value })}
-                    className="w-full px-4 py-2.5 rounded-xl bg-white border border-[#C4CAD8] text-xs focus:outline-none focus:border-[#C4921B] transition shadow-sm"
-                  />
-                </div>
-
-                <div className="flex justify-end">
-                  <button
-                    type="submit"
-                    disabled={loading}
-                    className="w-full sm:w-auto px-8 py-3 rounded-xl text-xs font-bold text-[#2B3B44] bg-[#F0C468] hover:bg-[#B07F14] transition shadow-cube-glow flex items-center justify-center disabled:opacity-50"
+            <AnimatePresence mode="wait" initial={false}>
+              {formSubmitted ? (
+                <motion.div key="done" initial={{ opacity: 0, scale: 0.97 }} animate={{ opacity: 1, scale: 1 }} transition={{ type: 'spring', stiffness: 320, damping: 26 }} className="py-12 text-center">
+                  <motion.span
+                    initial={{ scale: 0.4, rotate: -12 }}
+                    animate={{ scale: 1, rotate: 0 }}
+                    transition={{ type: 'spring', stiffness: 380, damping: 14, delay: 0.05 }}
+                    className="grid place-items-center w-20 h-20 mx-auto rounded-full bg-gradient-to-b from-[#F8E3A3] to-[#F0C468] text-[#243239] depth-2"
                   >
-                    {loading ? (
-                      <>
-                        <Loader2 className="w-4 h-4 mr-2 animate-spin" />
-                        <span>Logging Laboratory Scope...</span>
-                      </>
-                    ) : (
-                      <>
-                        <Send className="w-4 h-4 mr-2" />
-                        <span>Dispatch Laboratory Enquiry</span>
-                      </>
-                    )}
+                    <Check size={36} strokeWidth={2.5} />
+                  </motion.span>
+                  <h3 className="mt-7 font-display text-[28px] font-extrabold text-[#243239]">Enquiry sent</h3>
+                  <p className="mt-3 text-[16.5px] text-[#5B6A71] max-w-md mx-auto leading-relaxed">Thank you. The team will get back to you at the email address you gave.</p>
+                  <button
+                    onClick={() => {
+                      setFormSubmitted(false);
+                      setFormData({ name: '', email: '', phone: '', organization: '', matrix: '', sampleCount: '', parametersNeeded: '' });
+                    }}
+                    className="press btn-soft mt-8 h-12 px-6 rounded-full text-[15.5px] font-bold inline-flex items-center gap-2"
+                  >
+                    <ArrowLeft size={16} strokeWidth={2.25} /> Send another enquiry
                   </button>
-                </div>
-              </form>
-            )}
+                </motion.div>
+              ) : (
+                <motion.form key="form" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onSubmit={handleEnquirySubmit} className="mt-8 space-y-5">
+                  <AnimatePresence>
+                    {errorMsg && (
+                      <motion.div initial={{ opacity: 0, y: -6 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }} className="rounded-2xl bg-rose-50 border border-rose-200 px-4 py-3 text-[15px] font-semibold text-rose-800">
+                        {errorMsg}
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                  <div className="grid sm:grid-cols-2 gap-5">
+                    <div>
+                      <label htmlFor="cel-name" className={LABEL}>Name *</label>
+                      <input id="cel-name" type="text" required autoComplete="name" value={formData.name} onChange={set('name')} className={FIELD} placeholder="Your full name" />
+                    </div>
+                    <div>
+                      <label htmlFor="cel-email" className={LABEL}>Email *</label>
+                      <input id="cel-email" type="email" required autoComplete="email" value={formData.email} onChange={set('email')} className={FIELD} placeholder="name@organisation.in" />
+                    </div>
+                    <div>
+                      <label htmlFor="cel-phone" className={LABEL}>Phone *</label>
+                      <input id="cel-phone" type="tel" required autoComplete="tel" value={formData.phone} onChange={set('phone')} className={FIELD} placeholder="+91 98765 43210" />
+                    </div>
+                    <div>
+                      <label htmlFor="cel-org" className={LABEL}>Organisation</label>
+                      <input id="cel-org" type="text" autoComplete="organization" value={formData.organization} onChange={set('organization')} className={FIELD} placeholder="Company, department or institution" />
+                    </div>
+                  </div>
+                  <div>
+                    <label htmlFor="cel-matrix" className={LABEL}>Sample type *</label>
+                    <input id="cel-matrix" type="text" required value={formData.matrix} onChange={set('matrix')} className={FIELD} placeholder="Water, wastewater or solid waste" />
+                    <div className="mt-3 flex flex-wrap gap-2">
+                      {testingServices.map((s: any) => {
+                        const on = formData.matrix === s.title;
+                        return (
+                          <button
+                            key={s.title}
+                            type="button"
+                            onClick={() => setFormData((f) => ({ ...f, matrix: s.title }))}
+                            className={`press h-9 px-3.5 rounded-full text-[14px] font-bold border transition-colors duration-300 ${
+                              on ? 'bg-gradient-to-b from-[#F8E3A3] to-[#F0C468] border-[#C4921B]/30 text-[#243239]' : 'bg-white/70 border-[#33454E]/10 text-[#46565E] hover:bg-white hover:text-[#243239]'
+                            }`}
+                          >
+                            {s.title}
+                          </button>
+                        );
+                      })}
+                    </div>
+                  </div>
+                  <div>
+                    <label htmlFor="cel-count" className={LABEL}>Number of samples *</label>
+                    <input id="cel-count" type="text" required value={formData.sampleCount} onChange={set('sampleCount')} className={FIELD} placeholder="For example, 5 samples" />
+                  </div>
+                  <div>
+                    <label htmlFor="cel-notes" className={LABEL}>Parameters and notes</label>
+                    <textarea id="cel-notes" rows={4} value={formData.parametersNeeded} onChange={set('parametersNeeded')} className={`${FIELD} h-auto py-3 leading-relaxed resize-y`} placeholder="Parameters you need tested and where the samples are from" />
+                  </div>
+                  <div className="pt-1 flex justify-end">
+                    <button type="submit" disabled={loading} className="press btn-gold gold-shimmer w-full sm:w-auto h-12 px-8 rounded-full text-[15.5px] font-extrabold inline-flex items-center justify-center gap-2 disabled:opacity-60">
+                      {loading ? (
+                        <>
+                          <Loader2 size={16} className="animate-spin" /> Sending…
+                        </>
+                      ) : (
+                        <>
+                          Send enquiry <Send size={16} strokeWidth={2.25} />
+                        </>
+                      )}
+                    </button>
+                  </div>
+                </motion.form>
+              )}
+            </AnimatePresence>
           </div>
         </div>
       </section>

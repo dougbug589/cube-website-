@@ -4,6 +4,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import { ArrowUpRight } from 'lucide-react';
 import { verticals } from '@/data/verticals';
+import { parseFigure, fmtFigure, type Figure } from '@/lib/figures';
 
 /**
  * "TPQA – Expertise Highlights" from the Building & Construction page of
@@ -13,26 +14,10 @@ import { verticals } from '@/data/verticals';
  * Text updates go straight to the DOM in rAF (no React re-render per frame).
  */
 
-type Figure = { lead: string; prefix: string; value: number; unit: string; decimals: number };
-
-const parse = (line: string): Figure | null => {
-  const m = line.match(/^(.*?)\s*(Rs\.?\s*)?([\d,]+(?:\.\d+)?)\s*(.*)$/i);
-  if (!m) return null;
-  const raw = m[3].replace(/,/g, '');
-  return {
-    lead: m[1].trim(),
-    prefix: m[2] ? 'Rs.' : '',
-    value: Number(raw),
-    unit: m[4].trim(),
-    decimals: raw.includes('.') ? raw.split('.')[1].length : 0,
-  };
-};
-
 const BC = verticals.find((v: any) => v.slug === 'building-construction') as any;
 const TPQA = BC?.keyServices?.find((k: any) => /tpqa/i.test(k.title));
-const FIGURES: Figure[] = ((TPQA?.items as string[]) || []).map(parse).filter(Boolean) as Figure[];
+const FIGURES: Figure[] = ((TPQA?.items as string[]) || []).map(parseFigure).filter(Boolean) as Figure[];
 
-const fmt = (n: number, d: number) => n.toLocaleString('en-IN', { minimumFractionDigits: d, maximumFractionDigits: d });
 const easeOutExpo = (k: number) => (k >= 1 ? 1 : 1 - Math.pow(2, -10 * k));
 
 export default function ExpertiseFigures() {
@@ -55,7 +40,7 @@ export default function ExpertiseFigures() {
           // a short stagger so the figures land one after another
           const k = Math.min(1, Math.max(0, (t - t0 - i * 140) / D));
           const el = numRefs.current[i];
-          if (el) el.textContent = fmt(f.value * easeOutExpo(k), f.decimals);
+          if (el) el.textContent = fmtFigure(f.value * easeOutExpo(k), f.decimals);
         });
         if (t - t0 < D + FIGURES.length * 140) raf = requestAnimationFrame(tick);
       };
@@ -113,7 +98,7 @@ export default function ExpertiseFigures() {
                   }}
                   className="font-display text-[44px] sm:text-[56px] xl:text-[64px] font-extrabold leading-none tracking-[-0.03em] text-[#243239] tabular-nums"
                 >
-                  {fmt(f.value, f.decimals)}
+                  {fmtFigure(f.value, f.decimals)}
                 </span>
                 <span className="font-display text-[18px] sm:text-[22px] font-extrabold text-[#C4921B]">{f.unit}</span>
               </dd>
