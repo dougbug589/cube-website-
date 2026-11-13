@@ -40,6 +40,7 @@ Two lines of work run through this repository:
 - Etihad-inspired theme: slate and gold palette, scroll-reveal animations, gold scroll-progress bar. (`1977bf6`)
 
 #### Changed
+- About page: Core Values is now a round dial - the values circle a ring that turns every 1.8 s, the top one lit yellow with its quote on a frosted disc in the middle (click any value to turn to it).
 - Objectives and Core Values pages: faded CUBE photos behind the cards (IIT Jammu campus project; the CUBE team), frosted glass cards.
 - Vision & Mission page: faded CUBE project photos behind Vision (IIT Tirupati campus) and Mission (CPCL Manali housing), frosted glass cards, solid yellow Mission icon.
 - Sharper official logos for 7 clients (IIT Madras, Tamil Nadu emblem, NHAI, IIT Tirupati, TNUIFSL, Asahi Kasei, Rathinam), same size and position as before.
