@@ -1,13 +1,15 @@
 'use client';
 
-import React, { useMemo, useState } from 'react';
+import React, { useMemo } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowUpRight, ChevronDown, Landmark, GraduationCap } from 'lucide-react';
+import { ArrowUpRight, Landmark, GraduationCap } from 'lucide-react';
 import PageHeader from '@/components/common/PageHeader';
 import SectionHeading from '@/components/common/SectionHeading';
 import SectionPhoto from '@/components/common/SectionPhoto';
 import SectionNav from '@/components/common/SectionNav';
+import FocusCarousel from '@/components/common/FocusCarousel';
+import Marquee from '@/components/common/Marquee';
 import MessageSection from '@/components/about/MessageSection';
 import PersonCard, { Monogram } from '@/components/common/PersonCard';
 import { aboutContent } from '@/data/about';
@@ -53,7 +55,6 @@ export default function AboutPage() {
     }),
     [people]
   );
-  const [showAllTeam, setShowAllTeam] = useState(false);
   const missionPoints = useMemo(
     () => aboutContent.mission.split(';').map((m) => m.trim().replace(/\.$/, '')).filter(Boolean),
     []
@@ -171,13 +172,21 @@ export default function AboutPage() {
         <SectionPhoto src="/images/hero/slides_building-training-team.jpg" wash="bg-[#0B0D0E]/55" position="object-[50%_35%]" />
         <div className="relative shell">
           <SectionHeading eyebrow="Core Values" title="Core values." />
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 reveal-stagger">
-            {aboutContent.coreValues.map((val, i) => (
-              <div key={i} className="glass glass-interactive glass-edge rounded-[24px] p-6">
-                <p className="font-display text-[22px] font-extrabold text-[#F3F5F6]">{val.title}</p>
-                <p className="mt-2 text-[18px] text-[#C2CCD1] leading-relaxed">{val.description}</p>
-              </div>
-            ))}
+          <div className="reveal">
+            <FocusCarousel
+              label="Core values"
+              items={aboutContent.coreValues}
+              keyOf={(v) => v.title}
+              heightClass="h-[420px] sm:h-[310px]"
+              maxCard={600}
+              render={(val, active) => (
+                <div className={`liquid-glass h-full rounded-[30px] p-7 sm:p-9 flex flex-col transition-shadow duration-500 ${active ? 'ring-1 ring-[#F6C22E]/40' : ''}`}>
+                  <p className="font-display text-[26px] sm:text-[30px] font-extrabold text-[#F3F5F6]">{val.title}</p>
+                  <span aria-hidden className="mt-3 block h-[3px] w-12 rounded-full bg-[#F6C22E]" />
+                  <p className="mt-5 text-[17.5px] sm:text-[19px] text-[#DDE3E6] leading-relaxed">{val.description}</p>
+                </div>
+              )}
+            />
           </div>
         </div>
       </section>
@@ -229,10 +238,31 @@ export default function AboutPage() {
             lead="25 faculty from the Departments of Civil, Mechanical, Aerospace and Chemical Engineering, IIT Madras."
             action={{ href: '/about/advisory-panel', label: 'Advisory panel' }}
           />
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4 reveal-stagger">
-            {advisoryPanel.map((a, i) => (
-              <PersonCard key={`${a.name}-${i}`} name={a.name} role={a.role} organization={a.organization || a.department} image={a.image} compact />
-            ))}
+          <div className="reveal">
+            <FocusCarousel
+              label="IIT Madras advisory panel"
+              items={advisoryPanel}
+              keyOf={(a) => a.name}
+              heightClass="h-[500px] sm:h-[520px]"
+              maxCard={400}
+              interval={3500}
+              render={(a, active) => (
+                <article className={`glass h-full rounded-[30px] overflow-hidden flex flex-col ${active ? 'ring-1 ring-[#F6C22E]/40' : ''}`}>
+                  <div className="relative flex-1 min-h-0 bg-[#1A1F22]">
+                    {a.image ? (
+                      <Image src={a.image} alt={a.name} fill sizes="400px" className="object-cover object-[50%_20%]" draggable={false} />
+                    ) : (
+                      <Monogram name={a.name} className="absolute inset-0" />
+                    )}
+                  </div>
+                  <div className="p-5 sm:p-6">
+                    <h3 className="font-display text-[20px] sm:text-[22px] font-bold text-[#F3F5F6] leading-snug">{a.name}</h3>
+                    {a.role && <p className="mt-1 text-[15.5px] font-semibold text-[#F6C22E] leading-snug line-clamp-2">{a.role}</p>}
+                    {(a.organization || a.department) && <p className="mt-1 text-[16px] text-[#C2CCD1] leading-snug line-clamp-1">{a.organization || a.department}</p>}
+                  </div>
+                </article>
+              )}
+            />
           </div>
         </div>
       </section>
@@ -246,36 +276,31 @@ export default function AboutPage() {
             lead="Staff across Building & Construction, Environment & Sustainability, Urban Planning & Transportation and Administration."
             action={{ href: '/about/team', label: 'Team by department' }}
           />
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3 reveal-stagger">
-            {(showAllTeam ? teamMembers : teamMembers.slice(0, 12)).map((t, i) => (
-              <div key={`${t.name}-${i}`} className="glass rounded-[22px] p-4 flex items-center gap-4">
-                <div className="relative w-16 h-16 rounded-2xl overflow-hidden bg-white/[0.06] shrink-0 depth-1">
-                  {t.image && !/team_unknown/.test(t.image) ? (
-                    <Image src={t.image} alt={t.name} fill sizes="64px" className="object-cover object-top" />
-                  ) : (
-                    <Monogram name={t.name} className="absolute inset-0 [&>span]:text-[20px]" />
-                  )}
-                </div>
-                <div className="min-w-0">
-                  <p className="font-display text-[17.5px] font-bold text-[#F3F5F6] truncate">{t.name}</p>
-                  <p className="text-[15.5px] font-semibold text-[#F6C22E] truncate">{t.designation}</p>
-                  {t.department && <p className="text-[17px] text-[#C2CCD1] truncate">{t.department}</p>}
-                </div>
-              </div>
-            ))}
+          <div className="reveal">
+            <Marquee
+              label="CUBE team"
+              rows={[0, 1].map((r) =>
+                teamMembers
+                  .filter((_, i) => i % 2 === r)
+                  .map((t, i) => (
+                    <div key={`${t.name}-${i}`} className="glass w-[300px] sm:w-[330px] rounded-[22px] p-4 flex items-center gap-4">
+                      <div className="relative w-16 h-16 rounded-2xl overflow-hidden bg-white/[0.06] shrink-0 depth-1">
+                        {t.image && !/team_unknown/.test(t.image) ? (
+                          <Image src={t.image} alt={t.name} fill sizes="64px" className="object-cover object-top" draggable={false} />
+                        ) : (
+                          <Monogram name={t.name} className="absolute inset-0 [&>span]:text-[20px]" />
+                        )}
+                      </div>
+                      <div className="min-w-0">
+                        <p className="font-display text-[17.5px] font-bold text-[#F3F5F6] truncate">{t.name}</p>
+                        <p className="text-[15.5px] font-semibold text-[#F6C22E] truncate">{t.designation}</p>
+                        {t.department && <p className="text-[16px] text-[#C2CCD1] truncate">{t.department}</p>}
+                      </div>
+                    </div>
+                  ))
+              )}
+            />
           </div>
-          {teamMembers.length > 12 && (
-            <div className="mt-8 text-center">
-              <button
-                type="button"
-                onClick={() => setShowAllTeam((v) => !v)}
-                className="press btn-soft inline-flex items-center gap-2 h-12 px-6 rounded-full text-[16px] font-bold"
-              >
-                {showAllTeam ? 'Show fewer' : `Show all ${teamMembers.length}`}
-                <ChevronDown size={17} className={`transition-transform duration-300 ${showAllTeam ? 'rotate-180' : ''}`} />
-              </button>
-            </div>
-          )}
         </div>
       </section>
 
@@ -287,20 +312,22 @@ export default function AboutPage() {
             title={<>Clients <span className="text-[#F6C22E]">({clients.length})</span></>}
             action={{ href: '/about/clients', label: 'All clients' }}
           />
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 xl:grid-cols-6 gap-4 reveal-stagger">
-            {clients.map((c, i) => (
-              <div key={`${c.logo}-${i}`} className="group h-32 lg:h-36 rounded-[22px] bg-white border border-white/[0.08] depth-1 px-5 py-4 transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-1">
-                <div className="relative w-full h-full">
-                  <Image
-                    src={c.logo || '/images/clients/client_1.png'}
-                    alt={clientLogoAlt(c.name)}
-                    fill
-                    sizes="(max-width: 640px) 45vw, 260px"
-                    className="object-contain transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.04]"
-                  />
-                </div>
-              </div>
-            ))}
+          <div className="reveal">
+            <Marquee
+              label="CUBE clients"
+              speed={40}
+              rows={[0, 1].map((r) =>
+                clients
+                  .filter((_, i) => i % 2 === r)
+                  .map((c, i) => (
+                    <div key={`${c.logo}-${i}`} className="w-[200px] sm:w-[230px] h-32 lg:h-36 rounded-[22px] bg-white border border-white/[0.08] depth-1 px-5 py-4">
+                      <div className="relative w-full h-full">
+                        <Image src={c.logo || '/images/clients/client_1.png'} alt={clientLogoAlt(c.name)} fill sizes="230px" className="object-contain" draggable={false} />
+                      </div>
+                    </div>
+                  ))
+              )}
+            />
           </div>
           <div className="mt-12 flex justify-center">
             <Link href="/contact" className="press btn-gold gold-shimmer inline-flex items-center gap-2 h-12 px-7 rounded-full text-[16px] font-extrabold">
