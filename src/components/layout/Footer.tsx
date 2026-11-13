@@ -34,7 +34,7 @@ export default function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="relative mt-10 text-[#46565E]">
+    <footer className="relative mt-10 text-[#3B4B53]">
       <div aria-hidden className="absolute inset-0 bg-[#EEF2F4]" />
       <div aria-hidden className="absolute top-0 inset-x-0 hairline" />
 
@@ -123,7 +123,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-14 pt-6 border-t border-[#33454E]/15 flex flex-col md:flex-row gap-4 md:items-center justify-between text-[15.5px] text-[#5B6A71]">
+        <div className="mt-14 pt-6 border-t border-[#33454E]/15 flex flex-col md:flex-row gap-4 md:items-center justify-between text-[15.5px] text-[#4B5A61]">
           <p>© {year} Centre for Urbanization, Buildings &amp; Environment (CUBE). All rights reserved.</p>
           <nav aria-label="Footer" className="flex flex-wrap gap-x-6 gap-y-2">
             <Link href="/tenders" className="hover:text-[#243239] transition-colors">Tenders</Link>

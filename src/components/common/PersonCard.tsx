@@ -20,7 +20,7 @@ const initials = (name: string) =>
 export function Monogram({ name, className = '' }: { name: string; className?: string }) {
   return (
     <div className={`grid place-items-center bg-gradient-to-br from-[#EEF2F4] to-[#DCE4E8] ${className}`}>
-      <span className="font-display text-[34px] font-extrabold text-[#5B6A71]/80 tracking-wide">{initials(name) || '·'}</span>
+      <span className="font-display text-[34px] font-extrabold text-[#4B5A61]/80 tracking-wide">{initials(name) || '·'}</span>
     </div>
   );
 }
@@ -50,7 +50,7 @@ export default function PersonCard({
       <div className={compact ? 'p-4' : 'p-5'}>
         <h3 className="font-display text-[18px] lg:text-[19px] font-bold text-[#243239] leading-snug">{name}</h3>
         {role && <p className="mt-1 text-[15.5px] font-semibold text-[#9A7015] leading-snug">{role}</p>}
-        {organization && <p className="mt-1 text-[15px] text-[#5B6A71] leading-snug">{organization}</p>}
+        {organization && <p className="mt-1 text-[16px] text-[#4B5A61] leading-snug">{organization}</p>}
       </div>
     </article>
   );

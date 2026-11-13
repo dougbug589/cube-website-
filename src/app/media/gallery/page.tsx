@@ -158,7 +158,7 @@ export default function GalleryPage() {
                   type="button"
                   onClick={() => setSelectedCategory(cat)}
                   className={`press relative h-10 px-4 rounded-full text-[15px] whitespace-nowrap flex items-center gap-2 transition-colors duration-300 ${
-                    on ? 'text-[#243239] font-bold' : 'text-[#46565E] font-semibold hover:text-[#243239]'
+                    on ? 'text-[#243239] font-bold' : 'text-[#3B4B53] font-semibold hover:text-[#243239]'
                   }`}
                 >
                   {on && (

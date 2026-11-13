@@ -42,7 +42,7 @@ export default function CoreValuesPage() {
                 <h2 className="mt-6 font-display text-[28px] font-extrabold text-[#243239] leading-tight">{val.title}</h2>
                 <blockquote className="mt-4 flex-1">
                   <Quote size={18} className="text-[#C4921B]/70" />
-                  <p className="mt-2 text-[18px] leading-relaxed text-[#46565E]">{quote}</p>
+                  <p className="mt-2 text-[18px] leading-relaxed text-[#3B4B53]">{quote}</p>
                 </blockquote>
                 {author && <p className="mt-5 pt-4 border-t border-[#33454E]/10 text-[15.5px] font-bold text-[#243239]">— {author}</p>}
               </article>

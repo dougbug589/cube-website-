@@ -41,7 +41,7 @@ function CopyRef({ value }: { value: string }) {
       }}
       aria-label={`Copy reference ${value}`}
       title="Copy reference"
-      className="press inline-flex items-center gap-2 h-8 pl-3 pr-2.5 rounded-full bg-white border border-[#33454E]/10 text-[13.5px] font-bold text-[#46565E] hover:text-[#243239] tabular-nums transition-colors"
+      className="press inline-flex items-center gap-2 h-8 pl-3 pr-2.5 rounded-full bg-white border border-[#33454E]/10 text-[13.5px] font-bold text-[#3B4B53] hover:text-[#243239] tabular-nums transition-colors"
     >
       <span className="truncate max-w-[16rem] sm:max-w-none">{value}</span>
       <AnimatePresence mode="popLayout" initial={false}>
@@ -137,7 +137,7 @@ export default function TenderRegister({ tenders }: { tenders: Tender[] }) {
                   type="button"
                   onClick={() => setFilter(f.id)}
                   className={`press relative h-10 px-4 rounded-full text-[15px] whitespace-nowrap flex items-center gap-2 transition-colors duration-300 ${
-                    on ? 'text-[#243239] font-bold' : 'text-[#46565E] font-semibold hover:text-[#243239]'
+                    on ? 'text-[#243239] font-bold' : 'text-[#3B4B53] font-semibold hover:text-[#243239]'
                   }`}
                 >
                   {on && (
@@ -156,7 +156,7 @@ export default function TenderRegister({ tenders }: { tenders: Tender[] }) {
             })}
           </div>
           <label className="relative flex-1 flex items-center">
-            <Search size={17} className="absolute left-4 text-[#7A888E] pointer-events-none" />
+            <Search size={17} className="absolute left-4 text-[#66767D] pointer-events-none" />
             <input
               type="search"
               value={query}
@@ -166,7 +166,7 @@ export default function TenderRegister({ tenders }: { tenders: Tender[] }) {
               className="w-full h-10 pl-11 pr-10 rounded-full bg-white/80 border border-[#33454E]/10 text-[15.5px] text-[#243239] placeholder:text-[#8A979D] focus:outline-none focus:border-[#C4921B]/50 focus:ring-4 focus:ring-[#F0C468]/25 transition-[border-color,box-shadow]"
             />
             {query && (
-              <button type="button" onClick={() => setQuery('')} aria-label="Clear search" className="press absolute right-2 grid place-items-center w-7 h-7 rounded-full text-[#5B6A71] hover:bg-[#33454E]/[0.07]">
+              <button type="button" onClick={() => setQuery('')} aria-label="Clear search" className="press absolute right-2 grid place-items-center w-7 h-7 rounded-full text-[#4B5A61] hover:bg-[#33454E]/[0.07]">
                 <X size={15} />
               </button>
             )}
@@ -198,7 +198,7 @@ export default function TenderRegister({ tenders }: { tenders: Tender[] }) {
                     <div className="flex flex-wrap items-center gap-2">
                       <span
                         className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-[13.5px] font-bold border ${
-                          open ? 'bg-[#E9F3EC] border-[#2F7A4B]/15 text-[#2F6B45]' : 'bg-[#EEF1F3] border-[#33454E]/10 text-[#5B6A71]'
+                          open ? 'bg-[#E9F3EC] border-[#2F7A4B]/15 text-[#2F6B45]' : 'bg-[#EEF1F3] border-[#33454E]/10 text-[#4B5A61]'
                         }`}
                       >
                         <span className={`w-1.5 h-1.5 rounded-full ${open ? 'bg-[#2F9A5B]' : 'bg-[#8A979D]'}`} />
@@ -208,18 +208,18 @@ export default function TenderRegister({ tenders }: { tenders: Tender[] }) {
                     </div>
                     <h3 className="mt-3 font-display text-[20px] sm:text-[23px] font-extrabold text-[#243239] leading-snug">{t.title}</h3>
                     {t.description && t.description.trim() !== t.title.trim() && (
-                      <p className="mt-2 text-[16px] text-[#5B6A71] leading-relaxed">{t.description}</p>
+                      <p className="mt-2 text-[17px] text-[#4B5A61] leading-relaxed">{t.description}</p>
                     )}
                     <dl className="mt-4 flex flex-wrap gap-x-7 gap-y-2 text-[14.5px]">
                       {(t.publishedDate || t.createdAt) && (
                         <div className="flex gap-1.5">
-                          <dt className="text-[#7A888E] font-semibold">Published</dt>
+                          <dt className="text-[#66767D] font-semibold">Published</dt>
                           <dd className="text-[#243239] font-bold">{t.publishedDate || t.createdAt?.split('T')[0]}</dd>
                         </div>
                       )}
                       {t.closingDate && (
                         <div className="flex gap-1.5">
-                          <dt className="text-[#7A888E] font-semibold">Closing</dt>
+                          <dt className="text-[#66767D] font-semibold">Closing</dt>
                           <dd className="text-[#243239] font-bold">{t.closingDate}</dd>
                         </div>
                       )}
@@ -241,7 +241,7 @@ export default function TenderRegister({ tenders }: { tenders: Tender[] }) {
                           <CornerDownRight size={17} className="hidden sm:block text-[#C4921B] shrink-0" />
                           <span className="flex-1 min-w-0">
                             <span className="block text-[16px] font-bold text-[#243239] leading-snug">{c.title}</span>
-                            {c.description && <span className="block mt-0.5 text-[14.5px] text-[#5B6A71] leading-snug">{c.description}</span>}
+                            {c.description && <span className="block mt-0.5 text-[15.5px] text-[#4B5A61] leading-snug">{c.description}</span>}
                           </span>
                           <DocButton tender={c} compact />
                         </li>

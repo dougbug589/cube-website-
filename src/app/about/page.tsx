@@ -74,7 +74,7 @@ export default function AboutPage() {
           <div className="lg:col-span-7 reveal">
             <p className="label-mono">About CUBE</p>
             <p className="mt-4 text-[20px] sm:text-[22px] leading-relaxed text-[#243239] font-semibold">{aboutContent.overview[0]}</p>
-            <div className="mt-6 space-y-5 text-[17px] leading-relaxed text-[#46565E]">
+            <div className="mt-6 space-y-5 text-[19px] leading-[1.75] text-[#33454E]">
               {aboutContent.overview.slice(1).map((para, i) => (
                 <p key={i}>{para}</p>
               ))}
@@ -88,7 +88,7 @@ export default function AboutPage() {
               </div>
               <p className="mt-5 font-display text-2xl font-extrabold text-[#243239]">Centre of Excellence</p>
               <p className="mt-1 label-mono">IIT Madras · Government of Tamil Nadu</p>
-              <p className="mt-5 pt-5 border-t border-[#33454E]/10 text-[15px] text-[#5B6A71] leading-relaxed">{contactInfo.address}</p>
+              <p className="mt-5 pt-5 border-t border-[#33454E]/10 text-[16px] text-[#4B5A61] leading-relaxed">{contactInfo.address}</p>
             </div>
             <div className="glass glass-interactive glass-edge rounded-[24px] p-5 flex items-start gap-4">
               <span className="grid place-items-center w-12 h-12 rounded-2xl bg-[#F7EDD3] text-[#9A7015] depth-1 shrink-0">
@@ -96,7 +96,7 @@ export default function AboutPage() {
               </span>
               <span>
                 <span className="block font-display text-[18px] font-bold text-[#243239]">Government of Tamil Nadu</span>
-                <span className="mt-1 block text-[15.5px] text-[#5B6A71] leading-relaxed">
+                <span className="mt-1 block text-[16.5px] text-[#4B5A61] leading-relaxed">
                   Seed funding from CMDA, TNHB, TNPCB and MAWS; four State Government departments nominate members to the Governing Body.
                 </span>
               </span>
@@ -107,7 +107,7 @@ export default function AboutPage() {
               </span>
               <span>
                 <span className="block font-display text-[18px] font-bold text-[#243239]">IIT Madras</span>
-                <span className="mt-1 block text-[15.5px] text-[#5B6A71] leading-relaxed">
+                <span className="mt-1 block text-[16.5px] text-[#4B5A61] leading-relaxed">
                   Raised by IIT Madras with the Government of Tamil Nadu; the Governing Body is headed by the Director, IITM, with four members from IITM Faculty.
                 </span>
               </span>
@@ -129,7 +129,7 @@ export default function AboutPage() {
               <p className="label-mono">Mission</p>
               <ul className="mt-4 grid sm:grid-cols-2 gap-x-6 gap-y-3">
                 {missionPoints.map((m) => (
-                  <li key={m} className="flex items-start gap-3 text-[16.5px] text-[#46565E] leading-relaxed">
+                  <li key={m} className="flex items-start gap-3 text-[17.5px] text-[#3B4B53] leading-relaxed">
                     <span className="mt-2.5 w-1.5 h-1.5 rounded-full bg-[#C4921B] shrink-0" />
                     <span>{m.charAt(0).toUpperCase() + m.slice(1)}</span>
                   </li>
@@ -160,7 +160,7 @@ export default function AboutPage() {
             {aboutContent.coreValues.map((val, i) => (
               <div key={i} className="glass glass-interactive glass-edge rounded-[24px] p-6">
                 <p className="font-display text-[22px] font-extrabold text-[#243239]">{val.title}</p>
-                <p className="mt-2 text-[16px] text-[#5B6A71] leading-relaxed">{val.description}</p>
+                <p className="mt-2 text-[17px] text-[#4B5A61] leading-relaxed">{val.description}</p>
               </div>
             ))}
           </div>
@@ -244,7 +244,7 @@ export default function AboutPage() {
                 <div className="min-w-0">
                   <p className="font-display text-[17.5px] font-bold text-[#243239] truncate">{t.name}</p>
                   <p className="text-[15.5px] font-semibold text-[#9A7015] truncate">{t.designation}</p>
-                  {t.department && <p className="text-[15px] text-[#5B6A71] truncate">{t.department}</p>}
+                  {t.department && <p className="text-[16px] text-[#4B5A61] truncate">{t.department}</p>}
                 </div>
               </div>
             ))}

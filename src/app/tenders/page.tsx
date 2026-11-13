@@ -36,7 +36,7 @@ export default async function TendersPage() {
                 <FileText size={28} strokeWidth={2} />
               </span>
               <h2 className="mt-6 font-display text-[26px] font-extrabold text-[#243239]">No tenders are open at the moment</h2>
-              <p className="mt-3 text-[16.5px] text-[#5B6A71] leading-relaxed">New tender notices will be published on this page.</p>
+              <p className="mt-3 text-[17.5px] text-[#4B5A61] leading-relaxed">New tender notices will be published on this page.</p>
               <a
                 href="mailto:office@cubeiitm.org"
                 className="press btn-soft mt-7 h-12 px-6 rounded-full text-[15.5px] font-bold inline-flex items-center gap-2"

@@ -22,8 +22,8 @@ export default function ReportList({ reports }: { reports: CubeReport[] }) {
             <div className="flex-1 min-w-0">
               <p className="text-[15px] font-bold text-[#9A7015]">{r.category}</p>
               <h3 className="mt-1.5 font-display text-[21px] sm:text-[23px] font-bold text-[#243239] leading-snug">{r.title}</h3>
-              <p className="mt-2.5 text-[17px] text-[#46565E] leading-relaxed">{r.description}</p>
-              <p className="mt-3 text-[15.5px] font-semibold text-[#5B6A71]">{r.authors}</p>
+              <p className="mt-2.5 text-[18px] text-[#3B4B53] leading-relaxed">{r.description}</p>
+              <p className="mt-3 text-[16.5px] font-semibold text-[#4B5A61]">{r.authors}</p>
             </div>
             <button
               type="button"

@@ -63,7 +63,7 @@ export default async function NewsDetailPage({ params }: { params: Promise<{ slu
         <div className="mt-10 lg:mt-14 grid lg:grid-cols-12 gap-10 lg:gap-14">
           <div className="lg:col-span-8 xl:col-span-7 space-y-6 text-[18px] sm:text-[19px] leading-[1.8] text-[#243239] reveal">
             {(paragraphs.length > 0 ? paragraphs : [item.excerpt]).map((p, i) => (
-              <p key={i} className={i === 0 ? 'text-[20px] sm:text-[22px] leading-[1.7] font-semibold' : 'text-[#46565E]'}>
+              <p key={i} className={i === 0 ? 'text-[20px] sm:text-[22px] leading-[1.7] font-semibold' : 'text-[#3B4B53]'}>
                 {p}
               </p>
             ))}
@@ -72,19 +72,19 @@ export default async function NewsDetailPage({ params }: { params: Promise<{ slu
             <div className="glass glass-edge rounded-[26px] p-6 space-y-4">
               {item.date && (
                 <div>
-                  <p className="text-[14px] font-bold text-[#7A888E]">Date</p>
+                  <p className="text-[14px] font-bold text-[#66767D]">Date</p>
                   <p className="mt-0.5 text-[17px] font-bold text-[#243239] tabular-nums">{item.date}</p>
                 </div>
               )}
               {item.category && (
                 <div>
-                  <p className="text-[14px] font-bold text-[#7A888E]">Category</p>
+                  <p className="text-[14px] font-bold text-[#66767D]">Category</p>
                   <p className="mt-0.5 text-[17px] font-bold text-[#243239]">{item.category}</p>
                 </div>
               )}
               {item.author && (
                 <div>
-                  <p className="text-[14px] font-bold text-[#7A888E]">Author</p>
+                  <p className="text-[14px] font-bold text-[#66767D]">Author</p>
                   <p className="mt-0.5 text-[17px] font-bold text-[#243239]">{item.author}</p>
                 </div>
               )}

@@ -200,7 +200,7 @@ export default function MessageSection({
                   onClick={() => setPlaying((p) => !p)}
                   aria-pressed={!playing}
                   aria-label={playing ? `Pause the ${label} auto-scroll` : `Play the ${label} auto-scroll`}
-                  className="press ml-auto inline-flex items-center gap-2 h-9 px-3.5 rounded-full bg-white/80 border border-[#33454E]/10 text-[14px] font-bold text-[#46565E] hover:text-[#243239] transition-colors"
+                  className="press ml-auto inline-flex items-center gap-2 h-9 px-3.5 rounded-full bg-white/80 border border-[#33454E]/10 text-[14px] font-bold text-[#3B4B53] hover:text-[#243239] transition-colors"
                 >
                   {playing ? <Pause size={14} strokeWidth={2.5} /> : <Play size={14} strokeWidth={2.5} />}
                   {playing ? 'Pause' : 'Play'}
@@ -219,14 +219,14 @@ export default function MessageSection({
                   {paragraphs[0] && (
                     <p className="font-display text-[21px] sm:text-[24px] leading-[1.6] text-[#243239] font-semibold">{paragraphs[0]}</p>
                   )}
-                  <div className="mt-6 space-y-5 text-[17px] sm:text-[19px] leading-[1.75] text-[#46565E]">
+                  <div className="mt-6 space-y-5 text-[17px] sm:text-[19px] leading-[1.75] text-[#3B4B53]">
                     {paragraphs.slice(1).map((p, i) => (
                       <p key={i}>{p}</p>
                     ))}
                   </div>
                   <p className="mt-8 pt-6 border-t border-[#33454E]/10">
                     <span className="block font-display text-[19px] font-extrabold text-[#243239]">{name}</span>
-                    <span className="block text-[15.5px] text-[#5B6A71]">{lines.join(' · ')}</span>
+                    <span className="block text-[16.5px] text-[#4B5A61]">{lines.join(' · ')}</span>
                   </p>
                 </div>
               </div>

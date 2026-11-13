@@ -117,7 +117,7 @@ function ProjectsPageInner() {
                   onClick={() => setSelectedCategory(cat)}
                   aria-pressed={on}
                   className={`press relative h-10 px-4 rounded-full text-[14.5px] whitespace-nowrap transition-colors duration-300 ${
-                    on ? 'text-[#243239] font-bold' : 'text-[#46565E] font-semibold hover:text-[#243239]'
+                    on ? 'text-[#243239] font-bold' : 'text-[#3B4B53] font-semibold hover:text-[#243239]'
                   }`}
                 >
                   {on && (
@@ -128,14 +128,14 @@ function ProjectsPageInner() {
                     />
                   )}
                   <span className="relative">
-                    {SHORT_LABEL[cat] || cat} <span className="text-[#7A888E] font-semibold">{counts[cat] || 0}</span>
+                    {SHORT_LABEL[cat] || cat} <span className="text-[#66767D] font-semibold">{counts[cat] || 0}</span>
                   </span>
                 </button>
               );
             })}
           </div>
           <label className="relative flex-1 min-w-0 sm:ml-auto">
-            <Search className="w-4 h-4 text-[#7A888E] absolute left-4 top-1/2 -translate-y-1/2" />
+            <Search className="w-4 h-4 text-[#66767D] absolute left-4 top-1/2 -translate-y-1/2" />
             <input
               type="text"
               placeholder="Search title, client or place"
@@ -149,7 +149,7 @@ function ProjectsPageInner() {
 
       <section className="py-10 lg:py-14">
         <div className="shell">
-          <p className="mb-6 text-[15.5px] text-[#5B6A71]">
+          <p className="mb-6 text-[16.5px] text-[#4B5A61]">
             <span className="font-bold text-[#243239]">{filteredProjects.length}</span> {filteredProjects.length === 1 ? 'project' : 'projects'}
             {selectedCategory !== 'All' && <> in {selectedCategory}</>}
             {searchQuery.trim() && <> matching &ldquo;{searchQuery.trim()}&rdquo;</>}

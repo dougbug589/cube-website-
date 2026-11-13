@@ -51,7 +51,7 @@ export default function WorkWithCube() {
           <div className="mt-8 liquid-glass rounded-[24px] px-6 py-5 lg:px-7 flex flex-col md:flex-row 2xl:flex-col md:items-center 2xl:items-start gap-4 md:gap-8 2xl:gap-4 reveal">
             <div className="flex items-start gap-3 min-w-0 md:flex-1 2xl:flex-none">
               <MapPin size={19} strokeWidth={2} className="text-[#C4921B] mt-0.5 shrink-0" />
-              <span className="text-[16px] text-[#46565E] leading-relaxed">{contactInfo.address}</span>
+              <span className="text-[16px] text-[#3B4B53] leading-relaxed">{contactInfo.address}</span>
             </div>
             <span aria-hidden className="hidden md:block 2xl:hidden w-px h-8 bg-[#33454E]/10" />
             <span aria-hidden className="hidden 2xl:block w-full h-px bg-[#33454E]/10" />
@@ -81,7 +81,7 @@ export default function WorkWithCube() {
                 <Icon size={24} strokeWidth={2} />
               </span>
               <span className="mt-6 font-display text-[24px] font-extrabold text-[#243239] leading-tight">{title}</span>
-              <span className="mt-2 text-[16.5px] text-[#46565E] leading-relaxed">{text}</span>
+              <span className="mt-2 text-[16.5px] text-[#3B4B53] leading-relaxed">{text}</span>
               <span className="mt-auto pt-8 flex items-center justify-between">
                 <span className="text-[16px] font-bold text-[#243239] group-hover:text-[#9A7015] transition-colors duration-500">{cta}</span>
                 <span className="grid place-items-center w-11 h-11 rounded-full bg-white border border-[#33454E]/10 text-[#243239] depth-1 transition-[transform,background-color] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:bg-[#F0C468] group-hover:translate-x-1 group-hover:-translate-y-1">

@@ -48,13 +48,13 @@ export default function PageHeader({ badge, title, description, breadcrumbs, bac
           <button
             type="button"
             onClick={handleBack}
-            className="inline-flex items-center gap-2 h-9 px-3.5 rounded-full glass glass-blur text-[16px] text-[#46565E] hover:text-[#243239] hover:border-[#C4921B]/40 transition-colors"
+            className="inline-flex items-center gap-2 h-9 px-3.5 rounded-full glass glass-blur text-[16px] text-[#3B4B53] hover:text-[#243239] hover:border-[#C4921B]/40 transition-colors"
           >
             <ArrowLeft size={14} strokeWidth={1.75} />
             Back
           </button>
 
-          <nav aria-label="Breadcrumb" className="flex items-center gap-1.5 text-[15px] text-[#7A888E]">
+          <nav aria-label="Breadcrumb" className="flex items-center gap-1.5 text-[15px] text-[#66767D]">
             <Link href="/" className="hover:text-[#243239] transition-colors">Home</Link>
             {breadcrumbs.map((crumb, i) => (
               <React.Fragment key={`${crumb.label}-${i}`}>
@@ -62,7 +62,7 @@ export default function PageHeader({ badge, title, description, breadcrumbs, bac
                 {crumb.href ? (
                   <Link href={crumb.href} className="hover:text-[#243239] transition-colors">{crumb.label}</Link>
                 ) : (
-                  <span className="text-[#46565E]" aria-current="page">{crumb.label}</span>
+                  <span className="text-[#3B4B53]" aria-current="page">{crumb.label}</span>
                 )}
               </React.Fragment>
             ))}
@@ -83,7 +83,7 @@ export default function PageHeader({ badge, title, description, breadcrumbs, bac
           >
             {title}
           </h1>
-          <p className="mt-5 text-base sm:text-[17px] text-[#46565E] leading-relaxed max-w-2xl">{description}</p>
+          <p className="mt-5 text-[18px] sm:text-[19px] text-[#3B4B53] leading-relaxed max-w-3xl">{description}</p>
         </div>
       </div>
 

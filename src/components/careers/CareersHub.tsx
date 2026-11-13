@@ -220,7 +220,7 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
 
               <div className="flex flex-wrap items-center gap-2 pr-12">
                 {detailJob.department && (
-                  <span className="rounded-full bg-white border border-[#33454E]/10 px-3 py-1 text-[13.5px] font-bold text-[#46565E]">
+                  <span className="rounded-full bg-white border border-[#33454E]/10 px-3 py-1 text-[13.5px] font-bold text-[#3B4B53]">
                     {detailJob.department}
                   </span>
                 )}
@@ -235,7 +235,7 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
                 {detailJob.title}
               </h2>
 
-              <div className="mt-4 flex flex-wrap gap-x-6 gap-y-2 text-[15px] text-[#46565E] font-semibold">
+              <div className="mt-4 flex flex-wrap gap-x-6 gap-y-2 text-[15px] text-[#3B4B53] font-semibold">
                 {detailJob.location && (
                   <span className="flex items-center gap-2">
                     <MapPin size={16} className="text-[#C4921B]" />
@@ -261,7 +261,7 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
               {detailJob.description && (
                 <div>
                   <p className="label-mono">Role</p>
-                  <p className="mt-3 text-[16.5px] text-[#46565E] leading-relaxed whitespace-pre-line">{detailJob.description}</p>
+                  <p className="mt-3 text-[17.5px] text-[#3B4B53] leading-relaxed whitespace-pre-line">{detailJob.description}</p>
                 </div>
               )}
 
@@ -284,13 +284,13 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
                   <p className="font-display text-[17px] font-bold text-[#243239]">{c.jobDetail.howToApplyTitle}</p>
                   <ol className="mt-3 space-y-2.5">
                     {c.jobDetail.howToApplySteps.map((step, i) => (
-                      <li key={i} className="flex items-start gap-3 text-[15.5px] text-[#46565E] leading-relaxed">
+                      <li key={i} className="flex items-start gap-3 text-[16.5px] text-[#3B4B53] leading-relaxed">
                         <span className="grid place-items-center w-6 h-6 rounded-full bg-[#F0C468] text-[13.5px] font-extrabold text-[#243239] shrink-0 mt-0.5">{i + 1}</span>
                         <span>{step}</span>
                       </li>
                     ))}
                   </ol>
-                  <p className="mt-4 text-[15px] text-[#5B6A71]">
+                  <p className="mt-4 text-[16px] text-[#4B5A61]">
                     Questions? Write to{' '}
                     <a href={`mailto:${detailEmail}`} className="font-bold text-[#243239] hover:text-[#9A7015] underline underline-offset-4 decoration-[#C4921B]/50">
                       {detailEmail}
@@ -347,7 +347,7 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
                   aria-selected={on}
                   onClick={() => (id === 'portal' ? openPortal() : setActiveTab('openings'))}
                   className={`press relative flex-1 sm:flex-none min-h-11 py-2 px-4 sm:px-5 rounded-[22px] sm:rounded-full text-[15px] leading-tight text-left sm:whitespace-nowrap flex items-center gap-2 transition-colors duration-300 ${
-                    on ? 'text-[#243239] font-bold' : 'text-[#46565E] font-semibold hover:text-[#243239]'
+                    on ? 'text-[#243239] font-bold' : 'text-[#3B4B53] font-semibold hover:text-[#243239]'
                   }`}
                 >
                   {on && (
@@ -377,7 +377,7 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
               <span className="grid place-items-center w-9 h-9 rounded-full bg-[#F7EDD3] text-[#9A7015]">
                 <Mail size={16} strokeWidth={2.25} />
               </span>
-              <span className="text-[#5B6A71] font-semibold hidden sm:inline">{c.contactLabel}</span>
+              <span className="text-[#4B5A61] font-semibold hidden sm:inline">{c.contactLabel}</span>
               <span className="font-bold text-[#243239] group-hover:text-[#9A7015] transition-colors">{c.contactEmail}</span>
             </a>
           )}
@@ -402,7 +402,7 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
                       <Briefcase size={28} strokeWidth={2} />
                     </span>
                     <h3 className="mt-6 font-display text-[26px] font-extrabold text-[#243239]">{c.emptyState.title}</h3>
-                    <p className="mt-3 text-[16.5px] text-[#5B6A71] max-w-lg mx-auto leading-relaxed">{c.emptyState.description}</p>
+                    <p className="mt-3 text-[17.5px] text-[#4B5A61] max-w-lg mx-auto leading-relaxed">{c.emptyState.description}</p>
                     <button
                       onClick={openPortal}
                       className="press btn-gold gold-shimmer mt-7 h-12 px-7 rounded-full text-[15.5px] font-extrabold inline-flex items-center gap-2"
@@ -441,7 +441,7 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
                                 Open
                               </span>
                               {job.department && (
-                                <span className="rounded-full bg-white/80 border border-[#33454E]/10 px-3 py-1 text-[13.5px] font-bold text-[#46565E]">{job.department}</span>
+                                <span className="rounded-full bg-white/80 border border-[#33454E]/10 px-3 py-1 text-[13.5px] font-bold text-[#3B4B53]">{job.department}</span>
                               )}
                               {job.employmentType && (
                                 <span className="rounded-full bg-[#F7EDD3] border border-[#C4921B]/20 px-3 py-1 text-[13.5px] font-bold text-[#9A7015]">{job.employmentType}</span>
@@ -450,7 +450,7 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
 
                             <h3 className="mt-4 font-display text-[26px] sm:text-[32px] font-extrabold text-[#243239] leading-tight">{job.title}</h3>
 
-                            <div className="mt-3 flex flex-wrap gap-x-6 gap-y-2 text-[15px] font-semibold text-[#46565E]">
+                            <div className="mt-3 flex flex-wrap gap-x-6 gap-y-2 text-[15px] font-semibold text-[#3B4B53]">
                               {job.location && (
                                 <span className="flex items-center gap-2">
                                   <MapPin size={16} className="text-[#C4921B]" />
@@ -471,7 +471,7 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
                                 <span>{job.experience}</span>
                               </p>
                             )}
-                            <p className="mt-3 text-[16px] text-[#5B6A71] leading-relaxed line-clamp-3">{job.description}</p>
+                            <p className="mt-3 text-[17px] text-[#4B5A61] leading-relaxed line-clamp-3">{job.description}</p>
 
                             <div className="mt-auto pt-7 flex flex-wrap items-center gap-3">
                               <button
@@ -493,7 +493,7 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
                               <p className="label-mono">Skills &amp; requirements</p>
                               <ul className="mt-4 flex flex-wrap gap-2">
                                 {(single ? quals : quals.slice(0, 4)).map((q) => (
-                                  <li key={q} className="rounded-full bg-white border border-[#33454E]/10 px-3 py-1.5 text-[14px] font-semibold text-[#46565E] leading-snug">
+                                  <li key={q} className="rounded-full bg-white border border-[#33454E]/10 px-3 py-1.5 text-[14px] font-semibold text-[#3B4B53] leading-snug">
                                     {q}
                                   </li>
                                 ))}
@@ -518,7 +518,7 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
                     <div>
                       <p className="label-mono">{c.talentCallout.badge}</p>
                       <h3 className="mt-2 font-display text-[24px] sm:text-[28px] font-extrabold text-[#243239] leading-tight">{c.talentCallout.heading}</h3>
-                      <p className="mt-2 text-[16.5px] text-[#46565E] leading-relaxed">{c.talentCallout.description}</p>
+                      <p className="mt-2 text-[17.5px] text-[#3B4B53] leading-relaxed">{c.talentCallout.description}</p>
                     </div>
                   </div>
                   <button
@@ -546,7 +546,7 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
                     <p className="label-mono">{form.badge}</p>
                     <h2 className="mt-3 font-display text-[26px] font-extrabold text-[#243239] leading-tight">{form.heading}</h2>
                     <div className="mt-6 rounded-[20px] bg-white/80 border border-[#33454E]/10 p-5">
-                      <p className="text-[14px] font-bold text-[#5B6A71]">Applying for</p>
+                      <p className="text-[14px] font-bold text-[#4B5A61]">Applying for</p>
                       <AnimatePresence mode="wait" initial={false}>
                         <motion.p
                           key={jobTitle}
@@ -560,7 +560,7 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
                         </motion.p>
                       </AnimatePresence>
                       {selectedJob?.location && (
-                        <p className="mt-2 flex items-center gap-2 text-[14.5px] font-semibold text-[#46565E]">
+                        <p className="mt-2 flex items-center gap-2 text-[15.5px] font-semibold text-[#3B4B53]">
                           <MapPin size={15} className="text-[#C4921B]" />
                           {selectedJob.location}
                         </p>
@@ -573,7 +573,7 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
                       <p className="font-display text-[17px] font-bold text-[#243239]">{c.jobDetail.howToApplyTitle}</p>
                       <ol className="mt-4 space-y-3">
                         {c.jobDetail.howToApplySteps.map((step, i) => (
-                          <li key={i} className="flex items-start gap-3 text-[15px] text-[#46565E] leading-relaxed">
+                          <li key={i} className="flex items-start gap-3 text-[16px] text-[#3B4B53] leading-relaxed">
                             <span className="grid place-items-center w-6 h-6 rounded-full bg-[#F7EDD3] text-[13.5px] font-extrabold text-[#9A7015] shrink-0 mt-0.5">{i + 1}</span>
                             <span>{step}</span>
                           </li>
@@ -609,7 +609,7 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
                           <Check size={36} strokeWidth={2.5} />
                         </motion.span>
                         <h3 className="mt-7 font-display text-[28px] font-extrabold text-[#243239]">{form.successTitle}</h3>
-                        <p className="mt-3 text-[16.5px] text-[#5B6A71] max-w-md mx-auto leading-relaxed">{form.successMessage}</p>
+                        <p className="mt-3 text-[17.5px] text-[#4B5A61] max-w-md mx-auto leading-relaxed">{form.successMessage}</p>
                         <button
                           onClick={() => { setSubmitSuccess(false); setActiveTab('openings'); }}
                           className="press btn-soft mt-8 h-12 px-6 rounded-full text-[15.5px] font-bold inline-flex items-center gap-2"
@@ -710,7 +710,7 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
                             <span className="mt-3 block text-[16px] font-bold text-[#243239] break-all">
                               {resumeFile ? resumeFile.name : 'Drop your resume here, or click to browse'}
                             </span>
-                            <span className="mt-1 block text-[14px] text-[#5B6A71]">
+                            <span className="mt-1 block text-[14px] text-[#4B5A61]">
                               {resumeFile ? `${(resumeFile.size / 1024 / 1024).toFixed(2)} MB · click to replace` : 'PDF or DOCX, up to 10 MB'}
                             </span>
                           </label>
@@ -732,7 +732,7 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
                           <button
                             type="button"
                             onClick={() => setActiveTab('openings')}
-                            className="inline-flex items-center gap-2 text-[15.5px] font-bold text-[#5B6A71] hover:text-[#243239] transition-colors"
+                            className="inline-flex items-center gap-2 text-[15.5px] font-bold text-[#4B5A61] hover:text-[#243239] transition-colors"
                           >
                             <ArrowLeft size={16} strokeWidth={2.25} />
                             Back to openings
@@ -770,7 +770,7 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
                       <Icon size={24} strokeWidth={2} />
                     </span>
                     <h4 className="mt-6 font-display text-[20px] font-extrabold text-[#243239] leading-snug">{item.title}</h4>
-                    <p className="mt-2 text-[16px] text-[#5B6A71] leading-relaxed">{item.description}</p>
+                    <p className="mt-2 text-[17px] text-[#4B5A61] leading-relaxed">{item.description}</p>
                   </div>
                 );
               })}

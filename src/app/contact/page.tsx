@@ -39,7 +39,7 @@ function CopyButton({ value, label }: { value: string; label: string }) {
         }
       }}
       aria-label={`Copy ${label}`}
-      className="press relative z-10 inline-flex items-center gap-1.5 h-9 px-3.5 rounded-full bg-white border border-[#33454E]/10 text-[14px] font-bold text-[#46565E] hover:text-[#243239] depth-1 transition-colors"
+      className="press relative z-10 inline-flex items-center gap-1.5 h-9 px-3.5 rounded-full bg-white border border-[#33454E]/10 text-[14px] font-bold text-[#3B4B53] hover:text-[#243239] depth-1 transition-colors"
     >
       <AnimatePresence mode="popLayout" initial={false}>
         <motion.span
@@ -214,7 +214,7 @@ export default function ContactPage() {
                     <Check size={36} strokeWidth={2.5} />
                   </motion.span>
                   <h3 className="mt-7 font-display text-[28px] font-extrabold text-[#243239]">Message sent</h3>
-                  <p className="mt-3 text-[16.5px] text-[#5B6A71] max-w-md mx-auto leading-relaxed">
+                  <p className="mt-3 text-[17.5px] text-[#4B5A61] max-w-md mx-auto leading-relaxed">
                     Thank you for writing to CUBE. Our team will get back to you at the email address you gave.
                   </p>
                   <button
@@ -281,7 +281,7 @@ export default function ContactPage() {
                             className={`press h-9 px-3.5 rounded-full text-[14px] font-bold border transition-colors duration-300 ${
                               on
                                 ? 'bg-gradient-to-b from-[#F8E3A3] to-[#F0C468] border-[#C4921B]/30 text-[#243239]'
-                                : 'bg-white/70 border-[#33454E]/10 text-[#46565E] hover:bg-white hover:text-[#243239]'
+                                : 'bg-white/70 border-[#33454E]/10 text-[#3B4B53] hover:bg-white hover:text-[#243239]'
                             }`}
                           >
                             {t}
@@ -345,7 +345,7 @@ export default function ContactPage() {
               </span>
               <span className="min-w-0">
                 <span className="block font-display text-[16.5px] font-bold text-[#243239]">IIT Madras Research Park</span>
-                <span className="block text-[14px] text-[#5B6A71] truncate">Kanagam Road, Taramani, Chennai 600 113</span>
+                <span className="block text-[14px] text-[#4B5A61] truncate">Kanagam Road, Taramani, Chennai 600 113</span>
               </span>
               <a
                 href={contactInfo.googleMapsLiveUrl}

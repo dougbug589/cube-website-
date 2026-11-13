@@ -89,7 +89,7 @@ export default function ExpertiseFigures() {
               key={f.lead}
               className={`relative py-8 lg:py-10 px-4 sm:px-6 lg:px-8 ${i % 2 === 1 ? 'border-l' : ''} ${i > 0 ? 'lg:border-l' : ''} ${i > 1 ? 'border-t lg:border-t-0' : ''} border-[#33454E]/10`}
             >
-              <dt className="text-[15px] font-semibold text-[#5B6A71]">{f.lead}</dt>
+              <dt className="text-[15px] font-semibold text-[#4B5A61]">{f.lead}</dt>
               <dd className="mt-3 flex items-baseline gap-2 flex-wrap">
                 {f.prefix && <span className="font-display text-[22px] sm:text-[26px] font-extrabold text-[#9A7015]">{f.prefix}</span>}
                 <span

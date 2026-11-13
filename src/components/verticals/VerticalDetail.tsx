@@ -40,7 +40,7 @@ export default async function VerticalDetail({ id }: { id: string }) {
         <div className="shell grid lg:grid-cols-12 gap-8 lg:gap-14">
           <p className="lg:col-span-6 font-display text-[23px] sm:text-[27px] font-bold leading-[1.45] text-[#243239] reveal">{vertical.description}</p>
           <div className="lg:col-span-6 reveal">
-            <p className="text-[18px] text-[#46565E] leading-relaxed">{vertical.longDescription}</p>
+            <p className="text-[18px] text-[#3B4B53] leading-relaxed">{vertical.longDescription}</p>
             {vertical.capabilities.length > 0 && (
               <>
                 <p className="mt-8 label-mono">Services</p>
@@ -76,7 +76,7 @@ export default async function VerticalDetail({ id }: { id: string }) {
                       <dl className="mt-5 grid grid-cols-2 gap-3">
                         {nums.map(({ it, f }) => (
                           <div key={it} className="rounded-[20px] bg-white/80 border border-[#33454E]/[0.08] p-4">
-                            {f!.lead && <dt className="text-[14.5px] font-semibold text-[#5B6A71] leading-snug">{f!.lead}</dt>}
+                            {f!.lead && <dt className="text-[14.5px] font-semibold text-[#4B5A61] leading-snug">{f!.lead}</dt>}
                             <dd className="mt-1 flex items-baseline gap-1.5 flex-wrap">
                               {f!.prefix && <span className="font-display text-[17px] font-extrabold text-[#9A7015]">{f!.prefix}</span>}
                               <span className="font-display text-[34px] font-extrabold leading-none tracking-[-0.02em] text-[#243239] tabular-nums">{fmtFigure(f!.value, f!.decimals)}</span>
@@ -96,7 +96,7 @@ export default async function VerticalDetail({ id }: { id: string }) {
                         ))}
                       </ul>
                     )}
-                    {k.description && <p className="mt-6 pt-5 border-t border-[#33454E]/10 text-[16.5px] text-[#5B6A71] leading-relaxed">{k.description}</p>}
+                    {k.description && <p className="mt-6 pt-5 border-t border-[#33454E]/10 text-[17.5px] text-[#4B5A61] leading-relaxed">{k.description}</p>}
                   </article>
                 );
               })}

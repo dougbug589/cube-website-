@@ -63,7 +63,7 @@ export default function LifeAtCubePage() {
         <div className="lg:col-span-4 grid gap-4 reveal-stagger">
           <div className="glass glass-edge rounded-[26px] p-7">
             <p className="font-display text-[56px] font-extrabold leading-none text-[#243239] tabular-nums">{staff}</p>
-            <p className="mt-2 text-[17px] font-semibold text-[#46565E]">people in the CUBE team</p>
+            <p className="mt-2 text-[18px] font-semibold text-[#3B4B53]">people in the CUBE team</p>
           </div>
           <div className="glass glass-edge rounded-[26px] p-7 flex items-start gap-4">
             <span className="grid place-items-center w-12 h-12 rounded-2xl bg-[#F7EDD3] text-[#9A7015] depth-1 shrink-0">
@@ -71,7 +71,7 @@ export default function LifeAtCubePage() {
             </span>
             <span>
               <span className="block font-display text-[19px] font-bold text-[#243239]">IIT Madras Research Park</span>
-              <span className="mt-1 block text-[16px] text-[#5B6A71]">Office and CUBE Environmental Laboratory, Taramani, Chennai</span>
+              <span className="mt-1 block text-[17px] text-[#4B5A61]">Office and CUBE Environmental Laboratory, Taramani, Chennai</span>
             </span>
           </div>
         </div>
@@ -84,7 +84,7 @@ export default function LifeAtCubePage() {
             <span>
               <span className="label-mono">Careers</span>
               <span className="mt-2 block font-display text-[26px] font-extrabold text-[#243239]">Join the team</span>
-              <span className="mt-1 block text-[17px] text-[#5B6A71]">See current openings and apply online.</span>
+              <span className="mt-1 block text-[18px] text-[#4B5A61]">See current openings and apply online.</span>
             </span>
             <span className="grid place-items-center w-12 h-12 rounded-full bg-gradient-to-b from-[#F8E3A3] to-[#F0C468] text-[#243239] depth-1 shrink-0 transition-transform duration-500 group-hover:translate-x-1 group-hover:-translate-y-1">
               <ArrowUpRight size={20} strokeWidth={2.25} />
@@ -94,7 +94,7 @@ export default function LifeAtCubePage() {
             <span>
               <span className="label-mono">Our Team</span>
               <span className="mt-2 block font-display text-[26px] font-extrabold text-[#243239]">Meet the team</span>
-              <span className="mt-1 block text-[17px] text-[#5B6A71]">Staff across every vertical and administration.</span>
+              <span className="mt-1 block text-[18px] text-[#4B5A61]">Staff across every vertical and administration.</span>
             </span>
             <span className="grid place-items-center w-12 h-12 rounded-full bg-white border border-[#33454E]/10 text-[#243239] depth-1 shrink-0 transition-[transform,background-color] duration-500 group-hover:bg-[#F0C468] group-hover:translate-x-1 group-hover:-translate-y-1">
               <ArrowUpRight size={20} strokeWidth={2.25} />

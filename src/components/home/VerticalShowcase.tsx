@@ -113,12 +113,12 @@ export default function VerticalShowcase({ verticals }: { verticals: Vertical[] 
               <span className="relative flex items-center gap-4">
                 <span
                   className={`grid place-items-center w-11 h-11 rounded-2xl font-display text-[16.5px] font-extrabold tabular-nums transition-colors duration-300 ${
-                    on ? 'bg-[#F0C468] text-[#243239]' : 'bg-[#33454E]/[0.06] text-[#7A888E]'
+                    on ? 'bg-[#F0C468] text-[#243239]' : 'bg-[#33454E]/[0.06] text-[#66767D]'
                   }`}
                 >
                   {String(i + 1).padStart(2, '0')}
                 </span>
-                <span className={`font-display text-[19px] lg:text-xl font-bold leading-snug whitespace-nowrap transition-colors duration-300 ${on ? 'text-[#243239]' : 'text-[#5B6A71]'}`}>
+                <span className={`font-display text-[19px] lg:text-xl font-bold leading-snug whitespace-nowrap transition-colors duration-300 ${on ? 'text-[#243239]' : 'text-[#4B5A61]'}`}>
                   {item.shortTitle || item.title}
                 </span>
               </span>
@@ -171,12 +171,12 @@ export default function VerticalShowcase({ verticals }: { verticals: Vertical[] 
               <div className="flex items-start justify-between gap-6">
                 <div>
                   <h3 className="font-display text-[26px] lg:text-[30px] font-extrabold leading-tight">{v.title}</h3>
-                  {v.tagline && <p className="mt-2 text-[16px] text-[#46565E] leading-relaxed">{v.tagline}</p>}
+                  {v.tagline && <p className="mt-2 text-[17px] text-[#3B4B53] leading-relaxed">{v.tagline}</p>}
                 </div>
                 {typeof v.projectCount === 'number' && v.projectCount > 0 && (
                   <div className="text-right shrink-0">
                     <p className="font-display text-[34px] font-extrabold leading-none text-[#C4921B]">{v.projectCount}</p>
-                    <p className="text-[15px] text-[#5B6A71] mt-1">projects</p>
+                    <p className="text-[16px] text-[#4B5A61] mt-1">projects</p>
                   </div>
                 )}
               </div>

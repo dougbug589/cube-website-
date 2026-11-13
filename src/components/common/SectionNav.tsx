@@ -37,7 +37,7 @@ export default function SectionNav({ sections, id }: { sections: { id: string; l
                 aria-current={on ? 'true' : undefined}
                 onClick={() => jump(s.id)}
                 className={`press relative h-10 px-4 rounded-full text-[14.5px] whitespace-nowrap transition-colors duration-300 ${
-                  on ? 'text-[#243239] font-bold' : 'text-[#46565E] font-semibold hover:text-[#243239]'
+                  on ? 'text-[#243239] font-bold' : 'text-[#3B4B53] font-semibold hover:text-[#243239]'
                 }`}
               >
                 {on && (

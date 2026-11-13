@@ -116,7 +116,7 @@ export default function FlipCard({
               <h3 className="font-display text-lg font-medium text-[#243239] leading-snug line-clamp-2">
                 {title}
               </h3>
-              <p className="text-xs text-[#5B6A71] mt-2 line-clamp-3 leading-relaxed font-sans">
+              <p className="text-xs text-[#4B5A61] mt-2 line-clamp-3 leading-relaxed font-sans">
                 {description}
               </p>
             </div>
@@ -146,7 +146,7 @@ export default function FlipCard({
               </span>
               <button
                 type="button"
-                className="p-1 text-[#5B6A71] hover:text-[#2B3B44]"
+                className="p-1 text-[#4B5A61] hover:text-[#2B3B44]"
                 onClick={(e) => {
                   e.stopPropagation();
                   setIsFlipped(false);
@@ -161,7 +161,7 @@ export default function FlipCard({
               {backTitle || title}
             </h4>
 
-            <p className="text-xs text-[#5B6A71] mt-2 leading-relaxed line-clamp-3">
+            <p className="text-xs text-[#4B5A61] mt-2 leading-relaxed line-clamp-3">
               {backDescription || description}
             </p>
 

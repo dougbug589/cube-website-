@@ -290,8 +290,8 @@ export default function GlobalSearchModal({ isOpen, onClose }: GlobalSearchModal
                     className="w-full bg-transparent text-[#243239] focus:outline-none text-[20px] sm:text-[22px] font-semibold"
                   />
                   {!query && (
-                    <span aria-hidden className="pointer-events-none absolute inset-0 flex items-center text-[20px] sm:text-[22px] text-[#7A888E] whitespace-nowrap overflow-hidden">
-                      Search for&nbsp;<span className="text-[#46565E] font-semibold">{reducedMotion ? 'pages, projects, news…' : typed}</span>
+                    <span aria-hidden className="pointer-events-none absolute inset-0 flex items-center text-[20px] sm:text-[22px] text-[#66767D] whitespace-nowrap overflow-hidden">
+                      Search for&nbsp;<span className="text-[#3B4B53] font-semibold">{reducedMotion ? 'pages, projects, news…' : typed}</span>
                       {!reducedMotion && <span className="ml-0.5 inline-block w-[2px] h-[1.1em] rounded-full bg-[#C4921B] animate-caret" />}
                     </span>
                   )}
@@ -301,7 +301,7 @@ export default function GlobalSearchModal({ isOpen, onClose }: GlobalSearchModal
                     type="button"
                     onClick={() => setQuery('')}
                     aria-label="Clear search"
-                    className="press grid place-items-center w-9 h-9 rounded-full text-[#5B6A71] hover:text-[#243239] hover:bg-white/70 transition-colors"
+                    className="press grid place-items-center w-9 h-9 rounded-full text-[#4B5A61] hover:text-[#243239] hover:bg-white/70 transition-colors"
                   >
                     <X size={17} />
                   </button>
@@ -309,7 +309,7 @@ export default function GlobalSearchModal({ isOpen, onClose }: GlobalSearchModal
                 <button
                   type="button"
                   onClick={onClose}
-                  className="press hidden sm:inline-flex h-9 px-3 items-center rounded-xl bg-white/80 border border-[#33454E]/10 text-[13.5px] font-bold text-[#5B6A71] hover:text-[#243239] transition-colors"
+                  className="press hidden sm:inline-flex h-9 px-3 items-center rounded-xl bg-white/80 border border-[#33454E]/10 text-[13.5px] font-bold text-[#4B5A61] hover:text-[#243239] transition-colors"
                 >
                   Esc
                 </button>
@@ -336,7 +336,7 @@ export default function GlobalSearchModal({ isOpen, onClose }: GlobalSearchModal
                           key={c}
                           type="button"
                           onClick={() => setQuery(c)}
-                          className="press h-10 px-4 rounded-full bg-white/75 border border-[#33454E]/10 text-[15px] font-bold text-[#46565E] hover:text-[#243239] hover:bg-white hover:border-[#C4921B]/35 transition-colors"
+                          className="press h-10 px-4 rounded-full bg-white/75 border border-[#33454E]/10 text-[15px] font-bold text-[#3B4B53] hover:text-[#243239] hover:bg-white hover:border-[#C4921B]/35 transition-colors"
                         >
                           {c}
                         </button>
@@ -346,7 +346,7 @@ export default function GlobalSearchModal({ isOpen, onClose }: GlobalSearchModal
                 ) : searchResults.length === 0 ? (
                   <div className="py-12 text-center">
                     <p className="font-display text-[19px] font-bold text-[#243239]">No results for &ldquo;{query}&rdquo;</p>
-                    <p className="mt-1.5 text-[15px] text-[#5B6A71]">Try another word, or browse from the menu.</p>
+                    <p className="mt-1.5 text-[16px] text-[#4B5A61]">Try another word, or browse from the menu.</p>
                   </div>
                 ) : (
                   <ul className="space-y-1" role="listbox" aria-label="Results">
@@ -374,9 +374,9 @@ export default function GlobalSearchModal({ isOpen, onClose }: GlobalSearchModal
                             <span className="relative flex-1 min-w-0">
                               <span className="flex items-center gap-2">
                                 <span className="font-display text-[16.5px] font-bold text-[#243239] truncate">{item.title}</span>
-                                <span className="shrink-0 rounded-full bg-[#33454E]/[0.06] px-2.5 py-0.5 text-[13.5px] font-bold text-[#5B6A71]">{item.category}</span>
+                                <span className="shrink-0 rounded-full bg-[#33454E]/[0.06] px-2.5 py-0.5 text-[13.5px] font-bold text-[#4B5A61]">{item.category}</span>
                               </span>
-                              {item.description && <span className="mt-0.5 block text-[14.5px] text-[#5B6A71] truncate">{item.description}</span>}
+                              {item.description && <span className="mt-0.5 block text-[15.5px] text-[#4B5A61] truncate">{item.description}</span>}
                             </span>
                             <span className={`relative shrink-0 transition-[opacity,transform] duration-300 ${on ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-1'}`}>
                               {on ? <CornerDownLeft size={17} className="text-[#9A7015]" /> : <ArrowUpRight size={17} />}
@@ -390,7 +390,7 @@ export default function GlobalSearchModal({ isOpen, onClose }: GlobalSearchModal
               </div>
 
               {/* key hints */}
-              <div className="hidden sm:flex items-center gap-5 px-6 py-3 border-t border-[#33454E]/10 bg-white/40 text-[13.5px] font-semibold text-[#5B6A71]">
+              <div className="hidden sm:flex items-center gap-5 px-6 py-3 border-t border-[#33454E]/10 bg-white/40 text-[13.5px] font-semibold text-[#4B5A61]">
                 {[['↑ ↓', 'move'], ['↵', 'open'], ['Tab', 'fill suggestion'], ['Esc', 'close']].map(([k, v]) => (
                   <span key={k} className="inline-flex items-center gap-2">
                     <kbd className="font-sans min-w-7 h-7 px-2 grid place-items-center rounded-lg bg-white border border-[#33454E]/12 text-[13.5px] font-bold text-[#243239] shadow-[0_1px_0_rgba(36,50,57,0.12)]">{k}</kbd>

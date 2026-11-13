@@ -37,7 +37,7 @@ export default function EventsPage() {
                     <span className="chip-photo absolute top-3 left-3 rounded-full px-3 py-1 text-[13.5px] font-bold text-white">{evt.category}</span>
                   </div>
                   <div className="p-6 sm:p-8">
-                    <div className="flex flex-wrap gap-x-6 gap-y-2 text-[15.5px] font-semibold text-[#46565E]">
+                    <div className="flex flex-wrap gap-x-6 gap-y-2 text-[15.5px] font-semibold text-[#3B4B53]">
                       {evt.date && (
                         <span className="flex items-center gap-2 text-[#9A7015] font-bold tabular-nums">
                           <CalendarDays size={17} /> {evt.date}
@@ -50,11 +50,11 @@ export default function EventsPage() {
                       )}
                     </div>
                     <h2 className="mt-3 font-display text-[24px] sm:text-[27px] font-extrabold text-[#243239] leading-tight">{evt.title}</h2>
-                    <p className="mt-3 text-[17.5px] text-[#46565E] leading-relaxed">{evt.description}</p>
+                    <p className="mt-3 text-[17.5px] text-[#3B4B53] leading-relaxed">{evt.description}</p>
                     {evt.highlights && evt.highlights.length > 0 && (
                       <ul className="mt-5 flex flex-wrap gap-2">
                         {evt.highlights.map((h) => (
-                          <li key={h} className="rounded-full bg-white border border-[#33454E]/10 px-3.5 py-1.5 text-[15px] font-semibold text-[#46565E]">
+                          <li key={h} className="rounded-full bg-white border border-[#33454E]/10 px-3.5 py-1.5 text-[16px] font-semibold text-[#3B4B53]">
                             {h}
                           </li>
                         ))}

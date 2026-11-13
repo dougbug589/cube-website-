@@ -31,7 +31,7 @@ export default function SectionHeading({
       <div className={center ? 'max-w-2xl' : 'max-w-3xl'}>
         {eyebrow && <p className="label-mono">{eyebrow}</p>}
         <h2 className="headline-light text-3xl sm:text-4xl lg:text-[2.6rem] text-[#243239] mt-3">{title}</h2>
-        {lead && <p className="mt-4 text-[17px] text-[#46565E] leading-relaxed">{lead}</p>}
+        {lead && <p className="mt-4 text-[19px] text-[#3B4B53] leading-relaxed">{lead}</p>}
       </div>
       {action && (
         <Link

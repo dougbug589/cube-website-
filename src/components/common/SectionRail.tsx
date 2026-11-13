@@ -48,7 +48,7 @@ export default function SectionRail({
             </span>
             <span
               className={`whitespace-nowrap text-[13.5px] transition-colors duration-300 ${
-                on ? 'font-bold text-[#243239]' : 'font-semibold text-[#7A888E] group-hover:text-[#243239]'
+                on ? 'font-bold text-[#243239]' : 'font-semibold text-[#66767D] group-hover:text-[#243239]'
               }`}
             >
               {s.label}

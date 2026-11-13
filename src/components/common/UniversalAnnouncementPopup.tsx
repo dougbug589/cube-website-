@@ -143,7 +143,7 @@ export default function UniversalAnnouncementPopup() {
 
               <button
                 onClick={() => dismiss(ann.id, ann.frequency)}
-                className="text-[#5B6A71] hover:text-[#2B3B44] p-2.5 -m-1 rounded-full hover:bg-[#F2F5F6] transition-colors cursor-pointer"
+                className="text-[#4B5A61] hover:text-[#2B3B44] p-2.5 -m-1 rounded-full hover:bg-[#F2F5F6] transition-colors cursor-pointer"
                 aria-label="Dismiss announcement"
               >
                 <X className="w-4 h-4" />
@@ -171,7 +171,7 @@ export default function UniversalAnnouncementPopup() {
                 </Link>
                 <button
                   onClick={() => dismiss(ann.id, ann.frequency)}
-                  className="text-[13.5px] font-semibold text-[#5B6A71] hover:text-[#2B3B44] uppercase tracking-wider cursor-pointer px-2 py-2.5 -my-2"
+                  className="text-[13.5px] font-semibold text-[#4B5A61] hover:text-[#2B3B44] uppercase tracking-wider cursor-pointer px-2 py-2.5 -my-2"
                 >
                   Dismiss
                 </button>

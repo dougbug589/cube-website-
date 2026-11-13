@@ -284,7 +284,7 @@ export default function Navbar() {
               className="hidden sm:flex xl:hidden min-[1440px]:flex flex-col leading-none"
             >
               <span className="font-display text-[19px] font-extrabold tracking-[0.08em] text-[#243239]">CUBE</span>
-              <span className="font-sans text-[11px] font-bold uppercase tracking-[0.12em] text-[#5B6A71] mt-1">
+              <span className="font-sans text-[11px] font-bold uppercase tracking-[0.12em] text-[#4B5A61] mt-1">
                 Centre of Excellence
               </span>
             </span>
@@ -331,7 +331,7 @@ export default function Navbar() {
                     openMega(mm ? item.title : null);
                   }}
                   className={`press relative flex items-center gap-1.5 h-11 px-4 2xl:px-5 rounded-full text-[15.5px] whitespace-nowrap transition-colors duration-300 ${
-                    active ? 'text-[#243239] font-bold' : 'text-[#46565E] font-semibold hover:text-[#243239]'
+                    active ? 'text-[#243239] font-bold' : 'text-[#3B4B53] font-semibold hover:text-[#243239]'
                   }`}
                 >
                   {active && (
@@ -356,7 +356,7 @@ export default function Navbar() {
                     <ChevronDown
                       size={14}
                       strokeWidth={2}
-                      className={`relative transition-transform duration-300 ${open ? 'rotate-180 text-[#9A7015]' : 'text-[#7A888E]'}`}
+                      className={`relative transition-transform duration-300 ${open ? 'rotate-180 text-[#9A7015]' : 'text-[#66767D]'}`}
                     />
                   )}
                 </Link>
@@ -371,10 +371,10 @@ export default function Navbar() {
               onClick={() => setSearchOpen(true)}
               aria-label="Search"
               title={`Search (${isMac ? '⌘K' : 'Ctrl+K'})`}
-              className="press jiggle h-10 w-10 2xl:w-auto 2xl:px-3.5 rounded-full grid 2xl:flex place-items-center items-center gap-2 text-[#46565E] hover:text-[#243239] hover:bg-white/80 transition-colors"
+              className="press jiggle h-10 w-10 2xl:w-auto 2xl:px-3.5 rounded-full grid 2xl:flex place-items-center items-center gap-2 text-[#3B4B53] hover:text-[#243239] hover:bg-white/80 transition-colors"
             >
               <Search size={18} strokeWidth={2} />
-              <kbd className="hidden 2xl:inline font-sans text-[10px] px-1.5 py-0.5 rounded-md bg-[#E6ECEF] text-[#5B6A71] border border-[#33454E]/10">
+              <kbd className="hidden 2xl:inline font-sans text-[10px] px-1.5 py-0.5 rounded-md bg-[#E6ECEF] text-[#4B5A61] border border-[#33454E]/10">
                 {isMac ? '⌘K' : 'Ctrl K'}
               </kbd>
             </button>
@@ -384,7 +384,7 @@ export default function Navbar() {
                 prefetch={false}
                 aria-label="Admin sign in"
                 title="Admin"
-                className="press jiggle hidden xl:grid h-10 w-10 rounded-full place-items-center text-[#5B6A71] hover:text-[#243239] hover:bg-white/80 transition-colors"
+                className="press jiggle hidden xl:grid h-10 w-10 rounded-full place-items-center text-[#4B5A61] hover:text-[#243239] hover:bg-white/80 transition-colors"
               >
                 <User size={18} strokeWidth={2} />
               </Link>
@@ -491,7 +491,7 @@ export default function Navbar() {
                           onClick={() => setExpanded((c) => (c === item.title ? null : item.title))}
                         >
                           {item.title}
-                          <ChevronDown size={16} strokeWidth={1.75} className={`transition-transform duration-300 ${isExpanded ? 'rotate-180 text-[#9A7015]' : 'text-[#7A888E]'}`} />
+                          <ChevronDown size={16} strokeWidth={1.75} className={`transition-transform duration-300 ${isExpanded ? 'rotate-180 text-[#9A7015]' : 'text-[#66767D]'}`} />
                         </button>
                       ) : (
                         <Link href={item.href} className={row} onClick={() => setDrawerOpen(false)}>
@@ -515,7 +515,7 @@ export default function Navbar() {
                                   key={sub.title}
                                   href={sub.href}
                                   onClick={() => setDrawerOpen(false)}
-                                  className="block px-3 py-2.5 rounded-xl text-[15.5px] font-semibold text-[#46565E] hover:text-[#243239] hover:bg-[#33454E]/[0.05] transition-colors"
+                                  className="block px-3 py-2.5 rounded-xl text-[15.5px] font-semibold text-[#3B4B53] hover:text-[#243239] hover:bg-[#33454E]/[0.05] transition-colors"
                                 >
                                   {sub.title}
                                 </Link>
@@ -543,7 +543,7 @@ export default function Navbar() {
                     prefetch={false}
                     onClick={() => setDrawerOpen(false)}
                     aria-label="Admin sign in"
-                    className="h-12 w-12 rounded-2xl grid place-items-center text-[#5B6A71] bg-white/60 border border-[#33454E]/10"
+                    className="h-12 w-12 rounded-2xl grid place-items-center text-[#4B5A61] bg-white/60 border border-[#33454E]/10"
                   >
                     <User size={18} strokeWidth={2} />
                   </Link>
@@ -641,7 +641,7 @@ function ListPreview({ item }: { item: Item }) {
                 onMouseEnter={() => setI(k)}
                 onFocus={() => setI(k)}
                 className={`press relative flex items-center justify-between gap-3 px-4 h-12 rounded-2xl text-[15.5px] transition-colors duration-200 ${
-                  on ? 'text-[#243239] font-bold' : 'text-[#46565E] font-semibold'
+                  on ? 'text-[#243239] font-bold' : 'text-[#3B4B53] font-semibold'
                 }`}
               >
                 {on && (
@@ -729,7 +729,7 @@ function MegaContent({ item, featured }: { item: Item; featured: any[] }) {
           <span className="label-mono">Portfolio</span>
           <span>
             <span className="block font-display text-[22px] font-extrabold text-[#243239] leading-tight">All projects</span>
-            <span className="mt-1 block text-[15.5px] text-[#5B6A71]">Search and filter the full record.</span>
+            <span className="mt-1 block text-[15.5px] text-[#4B5A61]">Search and filter the full record.</span>
           </span>
           <ArrowUpRight size={20} className="text-[#C4921B] transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
         </Link>

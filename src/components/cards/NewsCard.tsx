@@ -42,7 +42,7 @@ export default function NewsCard({ item, priority = false }: { item: NewsLike; p
       <div className="p-6 flex-1 flex flex-col">
         {item.category && <p className="text-[14.5px] font-bold text-[#9A7015]">{item.category}</p>}
         <h3 className="mt-1.5 font-display text-[19px] lg:text-[20px] font-bold text-[#243239] leading-snug line-clamp-3">{item.title}</h3>
-        {text && <p className="mt-2.5 text-[16px] text-[#5B6A71] leading-relaxed line-clamp-3">{text}</p>}
+        {text && <p className="mt-2.5 text-[17px] text-[#4B5A61] leading-relaxed line-clamp-3">{text}</p>}
         <span className="mt-auto pt-5 inline-flex items-center gap-1.5 text-[15.5px] font-bold text-[#243239] group-hover:text-[#9A7015] transition-colors">
           Read more <ArrowUpRight size={16} strokeWidth={2.25} />
         </span>

@@ -67,7 +67,7 @@ export default function TeamPage() {
                     type="button"
                     onClick={() => setDept(f.id)}
                     className={`press relative h-10 px-4 rounded-full text-[15px] whitespace-nowrap flex items-center gap-2 transition-colors duration-300 ${
-                      on ? 'text-[#243239] font-bold' : 'text-[#46565E] font-semibold hover:text-[#243239]'
+                      on ? 'text-[#243239] font-bold' : 'text-[#3B4B53] font-semibold hover:text-[#243239]'
                     }`}
                   >
                     {on && (
@@ -86,7 +86,7 @@ export default function TeamPage() {
               })}
             </div>
             <label className="relative flex-1 flex items-center xl:min-w-[280px]">
-              <Search size={17} className="absolute left-4 text-[#7A888E] pointer-events-none" />
+              <Search size={17} className="absolute left-4 text-[#66767D] pointer-events-none" />
               <input
                 type="search"
                 value={query}
@@ -96,7 +96,7 @@ export default function TeamPage() {
                 className="w-full h-10 pl-11 pr-10 rounded-full bg-white/80 border border-[#33454E]/10 text-[15.5px] text-[#243239] placeholder:text-[#8A979D] focus:outline-none focus:border-[#C4921B]/50 focus:ring-4 focus:ring-[#F0C468]/25 transition-[border-color,box-shadow]"
               />
               {query && (
-                <button type="button" onClick={() => setQuery('')} aria-label="Clear search" className="press absolute right-2 grid place-items-center w-7 h-7 rounded-full text-[#5B6A71] hover:bg-[#33454E]/[0.07]">
+                <button type="button" onClick={() => setQuery('')} aria-label="Clear search" className="press absolute right-2 grid place-items-center w-7 h-7 rounded-full text-[#4B5A61] hover:bg-[#33454E]/[0.07]">
                   <X size={15} />
                 </button>
               )}
@@ -124,7 +124,7 @@ export default function TeamPage() {
                 <h2 id={`dept-${id}`} className="font-display text-[24px] sm:text-[28px] font-extrabold text-[#243239]">
                   {title}
                 </h2>
-                <span className="rounded-full bg-[#33454E]/[0.07] px-3 py-1 text-[14.5px] font-extrabold text-[#46565E] tabular-nums">{grouped[id].length}</span>
+                <span className="rounded-full bg-[#33454E]/[0.07] px-3 py-1 text-[14.5px] font-extrabold text-[#3B4B53] tabular-nums">{grouped[id].length}</span>
               </div>
               <ul className="grid sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-3">
                 {grouped[id].map((m, i) => (

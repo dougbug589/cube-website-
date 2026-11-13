@@ -38,7 +38,7 @@ export default async function NewsPage() {
             <div className="lg:col-span-5 p-7 sm:p-10 flex flex-col">
               <p className="label-mono">Latest{lead.category ? ` · ${lead.category}` : ''}</p>
               <h2 className="mt-3 font-display text-[28px] sm:text-[32px] font-extrabold text-[#243239] leading-tight">{lead.title}</h2>
-              <p className="mt-4 text-[17.5px] text-[#46565E] leading-relaxed line-clamp-6">{lead.excerpt || lead.summary}</p>
+              <p className="mt-4 text-[17.5px] text-[#3B4B53] leading-relaxed line-clamp-6">{lead.excerpt || lead.summary}</p>
               <span className="mt-auto pt-8 inline-flex items-center gap-2 text-[16px] font-bold text-[#243239]">
                 Read the story
                 <span className="grid place-items-center w-10 h-10 rounded-full bg-white border border-[#33454E]/10 depth-1 transition-[transform,background-color] duration-500 group-hover:bg-[#F0C468] group-hover:translate-x-0.5 group-hover:-translate-y-0.5">

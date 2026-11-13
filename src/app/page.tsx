@@ -85,7 +85,7 @@ function Section({
           <div className="max-w-2xl">
             <p className="label-mono">{eyebrow}</p>
             <h2 className="headline-light text-3xl sm:text-4xl lg:text-[2.75rem] text-[#243239] mt-3">{title}</h2>
-            {lead && <p className="mt-4 text-[16px] text-[#46565E] leading-relaxed">{lead}</p>}
+            {lead && <p className="mt-4 text-[18px] text-[#3B4B53] leading-relaxed">{lead}</p>}
           </div>
           {action && (
             <Link
@@ -210,7 +210,7 @@ export default function HomePage() {
                 </span>
                 <span>
                   <span className="block font-display text-[19px] font-bold text-[#243239] leading-snug">{pt.k}</span>
-                  <span className="mt-1 block text-[16.5px] text-[#5B6A71] leading-relaxed">{pt.v}</span>
+                  <span className="mt-1 block text-[17.5px] text-[#4B5A61] leading-relaxed">{pt.v}</span>
                 </span>
               </li>
             ))}
@@ -240,7 +240,7 @@ export default function HomePage() {
           <h2 className="headline-light text-3xl lg:text-4xl mt-3">
             Projects across <span className="gold-keyword">Tamil Nadu</span> &amp; beyond
           </h2>
-          <p className="text-sm text-[#46565E] mt-3">Third-party quality assurance, PMC and proof checking for public infrastructure.</p>
+          <p className="text-sm text-[#3B4B53] mt-3">Third-party quality assurance, PMC and proof checking for public infrastructure.</p>
         </div>
         <div className="mt-6 reveal">
           <StackedProjectCarousel projects={projectList} />
