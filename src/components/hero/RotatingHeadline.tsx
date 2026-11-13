@@ -141,7 +141,7 @@ export default function RotatingHeadline({
           {prefix} {verbText}
           {caretOnVerb && <Caret steady={typing} />}
         </span>
-        <span className="block min-h-[2.12em] lg:min-h-0 lg:whitespace-nowrap text-[#D89F03]">
+        <span className="block min-h-[2.12em] lg:min-h-0 lg:whitespace-nowrap text-[#F6C22E]">
           {phraseText}
           {caretOnPhrase && <Caret steady={typing} />}
         </span>
@@ -154,7 +154,7 @@ export default function RotatingHeadline({
 function Caret({ steady }: { steady: boolean }) {
   return (
     <span
-      className={`relative top-[0.1em] inline-block align-baseline w-[0.07em] h-[0.8em] ml-[0.06em] rounded-full bg-[#D89F03] ${
+      className={`relative top-[0.1em] inline-block align-baseline w-[0.07em] h-[0.8em] ml-[0.06em] rounded-full bg-[#F6C22E] ${
         steady ? '' : 'animate-caret'
       }`}
     />
