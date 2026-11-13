@@ -39,6 +39,7 @@ Two lines of work run through this repository:
 - Etihad-inspired theme: slate and gold palette, scroll-reveal animations, gold scroll-progress bar. (`1977bf6`)
 
 #### Changed
+- Media sub-pages redesigned with larger text: News (lead story and photo cards), each news article (wide photo, comfortable reading size, "More news" below), Events (a timeline), Reports & Publications, and the Gallery (filters with counts, a photo mosaic and a smoother full-screen viewer). The made-up "CUBE Editorial" author line is gone. (`6c07c6a`)
 - About sub-pages redesigned with larger, easier-to-read text: Vision & Mission (the vision as one large statement, the mission as numbered points), Objectives, Core Values (each quote with its author), Our Team (department filters and search instead of collapsed lists), IIT Advisory Panel and Our Clients. Client logos now show in full colour in larger tiles, and people without a photo show their initials instead of a grey silhouette or a stock image. Made-up headings such as "Strategic Direction" and "Academic Rigor" were replaced with plain labels. (`49a5b40`)
 - Deployments on Vercel ask search engines not to index the site (robots.txt and a noindex header), so a redesign copy never competes with cubeiitm.org in search results; setting ALLOW_INDEXING=true lifts this. Self-hosted servers are unaffected. (`29d50f6`)
 - On very wide screens (1900 px and up) the About and Media section bars move into the empty left margin as a labelled guide, freeing reading space at the top; the home page guide now uses the same design. Narrower screens keep the bar at the top. (`bffed9b`)
@@ -79,6 +80,7 @@ Two lines of work run through this repository:
 - Slate rail sidebar on desktop, photo hero, and stacked project carousel (Etihad-style layout). Superseded the same day by the top bar. (`75f0d52`)
 
 #### Fixed
+- Gallery: portraits of board and advisory-panel members and stock pictures (a chess board, paper boats) no longer appear as gallery photos, and photos captioned with file names ("Slides Slide2", "About Cel1") now have real captions, including the project names from the original site's home page. (`6c07c6a`)
 - On the public read-only site (Vercel) the top bar no longer shows an admin sign-in icon that led to a "Not found" page. (`2c688f7`)
 - The home page section guide could overlap page content on screens between 1760 and 1900 px wide; it now only appears where it fits. (`bffed9b`)
 - After opening a search result, the search dialog could stay on the page invisibly and block every click until reload; it now always gets out of the way when it closes, and the search box always receives the cursor when it opens. (`8f30a4e`)
