@@ -40,6 +40,7 @@ Two lines of work run through this repository:
 - Etihad-inspired theme: slate and gold palette, scroll-reveal animations, gold scroll-progress bar. (`1977bf6`)
 
 #### Changed
+- Hover bounce on every selectable (top-bar tabs, filter pills, chips, icon buttons, menu rows, Back), same spring as the buttons; positioned controls keep their placement.
 - Home Inside CUBE: the Clients tile label and arrow now match the other tiles (dark glass chip instead of a gold tint).
 - Search dialog: no Try chips or key-hint footer; it is just the wide search bar until you type, then results appear below.
 - Selected tabs (top bar, phone menu, team/projects/gallery/careers/tenders filters, section nav) and the small icon squares are now solid light yellow with dark text instead of a dark-gold tint; top-bar hover pills lose their bright white border.
