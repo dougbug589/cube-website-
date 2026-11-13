@@ -40,6 +40,7 @@ Two lines of work run through this repository:
 - Etihad-inspired theme: slate and gold palette, scroll-reveal animations, gold scroll-progress bar. (`1977bf6`)
 
 #### Changed
+- Soft glow on everything yellow (like Canva's Glow effect): text, labels, icons, dots, progress rails and gold buttons.
 - One light yellow everywhere (#F6C22E): arrows, icons, labels, dots, rails, progress bars and filter pills now match the hero phrase and buttons.
 - Gold buttons (solid and tinted glass) now use the lighter amber #F6C22E, matching the hero phrase.
 - Hero headline: the rotating yellow phrase is a lighter amber (#F6C22E) so it reads brighter over the film.
