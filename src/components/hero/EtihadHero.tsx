@@ -120,8 +120,8 @@ export default function EtihadHero() {
   const slide = slides[idx % slides.length];
 
   return (
-    <section ref={sectionRef} className="relative px-3 sm:px-4 lg:px-6 pt-3">
-      <div className="relative isolate overflow-hidden rounded-[28px] lg:rounded-[36px] min-h-[620px] h-[calc(100svh-24px)] max-h-[900px] text-white shadow-[0_40px_100px_-50px_rgba(36,50,57,0.6)]">
+    <section ref={sectionRef} className="relative">
+      <div className="relative isolate overflow-hidden rounded-b-[32px] lg:rounded-b-[44px] min-h-[660px] h-[100svh] max-h-[1000px] text-white shadow-[0_40px_100px_-50px_rgba(36,50,57,0.6)]">
         {/* ── Media ── */}
         <div className="absolute inset-0 -z-10 bg-[#243239]">
           <AnimatePresence initial={false}>
@@ -161,7 +161,7 @@ export default function EtihadHero() {
         </div>
 
         {/* ── Copy ── */}
-        <div className="h-full flex flex-col justify-end px-6 sm:px-10 lg:px-16 pb-24 sm:pb-28 lg:pb-32 pt-28">
+        <div className="h-full shell flex flex-col justify-end pb-24 sm:pb-28 lg:pb-32 pt-32">
           <div className="max-w-5xl">
             <motion.p
               initial={{ opacity: 0, y: 12 }}
@@ -213,7 +213,8 @@ export default function EtihadHero() {
         </div>
 
         {/* ── Caption: project currently on screen ── */}
-        <div className="hidden sm:block absolute inset-x-10 lg:inset-x-16 bottom-8">
+        <div className="hidden sm:block absolute inset-x-0 bottom-9">
+          <div className="shell">
           <AnimatePresence mode="wait">
             <motion.div
               key={slide.id}
@@ -229,6 +230,7 @@ export default function EtihadHero() {
               </Link>
             </motion.div>
           </AnimatePresence>
+          </div>
         </div>
       </div>
     </section>
