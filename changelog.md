@@ -40,6 +40,9 @@ Two lines of work run through this repository:
 - Etihad-inspired theme: slate and gold palette, scroll-reveal animations, gold scroll-progress bar. (`1977bf6`)
 
 #### Changed
+- Footer: the logo is no longer squeezed into a small white box; it is shown large enough to read, next to the CUBE wordmark. (`7d4d49d`)
+- Home page figures: after counting up, they briefly scramble every five seconds and lock back onto the real values; screen readers always get the real figures. (`1d63adc`)
+- Home project carousel: no bounce any more; cards glide and fade smoothly. (`5c69e12`)
 - Supporting text across the site is larger and darker again, matching the About overview. (`6a82a41`)
 - The home page figures now count up when you reach them (not before you get there) and count again each time you come back to them. (`230221d`)
 - The home project carousel moves more smoothly (a gentler glide, and cards are no longer rebuilt mid-move) and fades out softly at both edges. (`2be44b3`)
