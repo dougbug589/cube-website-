@@ -442,7 +442,12 @@ export default function Navbar() {
                 <Image src={src} alt="" fill quality={85} sizes="440px" loading="eager" />
               </span>
             ))}
-            {warm > 1 && Array.from(new Set([...Object.values(MEGA_PREVIEW), '/images/cel/about_cel.jpg'])).map((src) => (
+            {warm > 1 && (
+              <span className="relative block w-px h-px">
+                <Image src="/images/cel/about_cel.jpg" alt="" fill quality={90} sizes="1200px" loading="eager" />
+              </span>
+            )}
+            {warm > 1 && Array.from(new Set(Object.values(MEGA_PREVIEW))).map((src) => (
               <span key={`p-${src}`} className="relative block w-px h-px">
                 <Image src={src} alt="" fill quality={85} sizes="400px" loading="eager" />
               </span>
@@ -720,8 +725,10 @@ function CelPanel() {
           src="/images/cel/about_cel.jpg"
           alt=""
           fill
-          quality={85}
-          sizes="400px"
+          quality={90}
+          // a 1920x450 strip cropped into a tall card: request the width the
+          // crop needs (card height x photo aspect), not the card width
+          sizes="1200px"
           loading="eager"
           className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.05]"
         />
