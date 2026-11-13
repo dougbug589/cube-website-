@@ -40,6 +40,7 @@ Two lines of work run through this repository:
 - Etihad-inspired theme: slate and gold palette, scroll-reveal animations, gold scroll-progress bar. (`1977bf6`)
 
 #### Changed
+- About page: Core Values and IIT Advisory Panel are auto-advancing focus carousels (middle card large, drag/swipe); Our Team and Our Clients are endless two-row marquees moving in opposite directions (pause on hover, drag to scrub).
 - About page: faded CUBE photos behind About CUBE (office), Vision & Mission (IIT Tirupati campus), Objectives (IIT Jammu campus project) and Core Values (the team); Objectives and Core Values are now separate sections.
 - Clickable cards (projects, news, gallery, Inside CUBE tiles, menu photo cards) get the same springy hover bounce as buttons, scaled for their size.
 - Governing board, Explore <vertical> and About the laboratory buttons now use the same solid light yellow as the other gold buttons (were a dull tint).
