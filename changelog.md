@@ -40,6 +40,7 @@ Two lines of work run through this repository:
 - Etihad-inspired theme: slate and gold palette, scroll-reveal animations, gold scroll-progress bar. (`1977bf6`)
 
 #### Changed
+- Home verticals: Smart Cities now shows CUBE's TIDEL Park (NEO) project instead of a stock skyline graphic.
 - All glass panels and cards now share the smoky black glass of the home verticals section (same tint, sheen, edge and dimmed blur).
 - CEL page: Water, Wastewater and Solid Waste cards are now clear glass over a faded photo of the CUBE lab.
 - Dark glass made clearer: cards, menus and the top bar use a lighter tint (32-55% instead of 70-86%) with a dimmed backdrop blur, so photos show through while text stays readable.
