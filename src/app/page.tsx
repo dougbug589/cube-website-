@@ -199,41 +199,36 @@ export default function HomePage() {
         title="Academic depth, delivered as public infrastructure."
         action={{ href: '/about', label: 'About the Centre' }}
       >
-        <div className="grid lg:grid-cols-12 gap-6 lg:gap-8 items-stretch">
-          <div className="lg:col-span-7 liquid-glass rounded-[28px] p-8 lg:p-10 flex flex-col reveal">
-            <p className="label-mono">Our vision</p>
-            <InkText
-              className="mt-4 font-display text-xl lg:text-[22px] 2xl:text-[27px] font-bold leading-snug text-[#243239]"
-              text="To be the most acclaimed and trustworthy provider of Applied Research, Technology, Engineering & Consultancy Services with National footprint, in association with IIT Madras, delivering effective and measurable value in built environment aiming at future equipped and sustainable human habitats."
-            />
-            <div className="mt-auto pt-8 flex flex-wrap gap-3">
-              <Link href="/about#governing-board" className="press btn-liquid-gold inline-flex items-center gap-2 h-12 px-6 rounded-full text-[16px] font-extrabold">
-                Governing board <ArrowUpRight size={16} strokeWidth={2.25} />
-              </Link>
-              <Link href="/about#our-team" className="press btn-liquid inline-flex items-center gap-2 h-12 px-6 rounded-full text-[16px] font-bold">
-                Our team
-              </Link>
-              <Link href="/about" className="press btn-liquid inline-flex items-center gap-2 h-12 px-6 rounded-full text-[16px] font-bold">
-                About the Centre <ArrowUpRight size={16} strokeWidth={2.25} />
-              </Link>
-            </div>
+        {/* the vision, centred; the three points in a row beneath it */}
+        <div className="max-w-5xl mx-auto liquid-glass rounded-[32px] p-8 sm:p-12 lg:p-14 text-center reveal">
+          <p className="label-mono">Our vision</p>
+          <InkText
+            className="mt-5 font-display text-[22px] sm:text-[26px] lg:text-[30px] font-bold leading-[1.4] text-[#243239]"
+            text="To be the most acclaimed and trustworthy provider of Applied Research, Technology, Engineering & Consultancy Services with National footprint, in association with IIT Madras, delivering effective and measurable value in built environment aiming at future equipped and sustainable human habitats."
+          />
+          <div className="mt-9 flex flex-wrap justify-center gap-3">
+            <Link href="/about#governing-board" className="press btn-liquid-gold inline-flex items-center gap-2 h-12 px-6 rounded-full text-[16px] font-extrabold">
+              Governing board <ArrowUpRight size={16} strokeWidth={2.25} />
+            </Link>
+            <Link href="/about#our-team" className="press btn-liquid inline-flex items-center gap-2 h-12 px-6 rounded-full text-[16px] font-bold">
+              Our team
+            </Link>
+            <Link href="/about" className="press btn-liquid inline-flex items-center gap-2 h-12 px-6 rounded-full text-[16px] font-bold">
+              About the Centre <ArrowUpRight size={16} strokeWidth={2.25} />
+            </Link>
           </div>
-
-          {/* compact rows stacked beside the vision card: no empty card bottoms */}
-          <ul className="lg:col-span-5 grid gap-4 lg:gap-5 content-between reveal-stagger">
-            {ABOUT_POINTS.map((pt) => (
-              <li key={pt.k} className="liquid-glass is-solid rounded-[24px] p-5 lg:p-6 flex items-start gap-4">
-                <span className="grid place-items-center w-12 h-12 rounded-2xl bg-[#F7EDD3] text-[#9A7015] depth-1 shrink-0">
-                  <pt.Icon size={21} strokeWidth={2} />
-                </span>
-                <span>
-                  <span className="block font-display text-[19px] font-bold text-[#243239] leading-snug">{pt.k}</span>
-                  <span className="mt-1 block text-[18.5px] text-[#3B4B53] leading-relaxed">{pt.v}</span>
-                </span>
-              </li>
-            ))}
-          </ul>
         </div>
+        <ul className="mt-6 lg:mt-8 grid md:grid-cols-3 gap-4 lg:gap-6 reveal-stagger">
+          {ABOUT_POINTS.map((pt) => (
+            <li key={pt.k} className="liquid-glass is-solid rounded-[26px] p-6 lg:p-7 flex flex-col">
+              <span className="grid place-items-center w-12 h-12 rounded-2xl bg-[#F7EDD3] text-[#9A7015] depth-1">
+                <pt.Icon size={21} strokeWidth={2} />
+              </span>
+              <span className="mt-4 block font-display text-[21px] font-bold text-[#243239] leading-snug">{pt.k}</span>
+              <span className="mt-1.5 block text-[18px] text-[#2B3A41] leading-relaxed">{pt.v}</span>
+            </li>
+          ))}
+        </ul>
       </Section>
 
       {/* 03b · TPQA expertise highlights (figures from cubeiitm.org) */}
