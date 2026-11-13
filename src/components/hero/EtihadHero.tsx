@@ -121,7 +121,7 @@ export default function EtihadHero() {
 
   return (
     <section ref={sectionRef} className="relative">
-      <div className="relative isolate overflow-hidden rounded-b-[32px] lg:rounded-b-[44px] min-h-[660px] h-[100svh] max-h-[1000px] text-white shadow-[0_40px_100px_-50px_rgba(36,50,57,0.6)]">
+      <div className="relative isolate overflow-hidden min-h-[660px] h-[100svh] max-h-[1000px] text-white shadow-[0_40px_100px_-50px_rgba(36,50,57,0.6)]">
         {/* ── Media ── */}
         <div className="absolute inset-0 -z-10 bg-[#243239]">
           <AnimatePresence initial={false}>
