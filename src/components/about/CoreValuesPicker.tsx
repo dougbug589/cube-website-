@@ -2,6 +2,7 @@
 
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
+import SmoothHeight from '@/components/common/SmoothHeight';
 import { Award, HeartHandshake, Lightbulb, Mountain, ShieldCheck, Target } from 'lucide-react';
 
 /**
@@ -129,11 +130,12 @@ export default function CoreValuesPicker({ values, interval = 1800 }: { values: 
       </div>
 
       {/* the quote, sliding up with the wheel */}
-      <div className="lg:col-span-7 liquid-glass rounded-[32px] p-7 sm:p-10 lg:p-12 min-h-[300px] grid items-center overflow-hidden">
-        <AnimatePresence initial={false}>
+      {/* SmoothHeight glides the card's height up and down; popLayout lifts the
+          outgoing quote out of the layout so the card sizes to the incoming one */}
+      <SmoothHeight className="lg:col-span-7 liquid-glass rounded-[32px]" innerClassName="p-7 sm:p-10 lg:p-12 min-h-[240px] flex flex-col justify-center">
+        <AnimatePresence initial={false} mode="popLayout">
           <motion.div
             key={v}
-            className="[grid-area:1/1]"
             initial={{ opacity: 0, y: reduced ? 0 : 50 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: reduced ? 0 : -50 }}
@@ -149,7 +151,7 @@ export default function CoreValuesPicker({ values, interval = 1800 }: { values: 
             {author && <p className="mt-5 text-[17px] font-bold text-[#F6C22E]">— {author}</p>}
           </motion.div>
         </AnimatePresence>
-      </div>
+      </SmoothHeight>
     </div>
   );
 }

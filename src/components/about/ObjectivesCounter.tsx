@@ -2,6 +2,7 @@
 
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
+import SmoothHeight from '@/components/common/SmoothHeight';
 
 /**
  * Objectives as a "counter" slideshow: a huge yellow number rolls up to the
@@ -111,10 +112,11 @@ export default function ObjectivesCounter({ items, interval = 2200 }: { items: s
         </div>
 
         {/* the objective */}
-        {/* old and new sentence share one grid cell and cross over at the same
-            moment the number rolls (no wait between them) */}
-        <div className="lg:col-span-8 liquid-glass rounded-[32px] p-7 sm:p-10 lg:p-12 min-h-[230px] sm:min-h-[260px] grid items-center overflow-hidden">
-          <AnimatePresence initial={false} custom={dir}>
+        {/* old and new sentence cross over at the same moment the number rolls
+            (popLayout: no wait, the outgoing one leaves the layout); SmoothHeight
+            glides the panel's height up and down to fit */}
+        <SmoothHeight className="lg:col-span-8 liquid-glass rounded-[32px]" innerClassName="p-7 sm:p-10 lg:p-12 min-h-[230px] sm:min-h-[260px] flex flex-col justify-center">
+          <AnimatePresence initial={false} custom={dir} mode="popLayout">
             <motion.p
               key={i}
               custom={dir}
@@ -122,12 +124,12 @@ export default function ObjectivesCounter({ items, interval = 2200 }: { items: s
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: reduced ? 0 : -40 * dir }}
               transition={{ duration: 0.5, ease: EASE }}
-              className="[grid-area:1/1] font-display text-[23px] sm:text-[28px] lg:text-[32px] font-bold leading-[1.35] text-[#F3F5F6]"
+              className="font-display text-[23px] sm:text-[28px] lg:text-[32px] font-bold leading-[1.35] text-[#F3F5F6]"
             >
               {items[i]}
             </motion.p>
           </AnimatePresence>
-        </div>
+        </SmoothHeight>
       </div>
 
       {/* every objective: jump to it */}
