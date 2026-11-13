@@ -67,7 +67,6 @@ export default function BoardDeck({ members, interval = 2200, label }: { members
   if (n === 0) return null;
   const m = members[top];
   const stack = Array.from({ length: Math.min(VISIBLE, n) }, (_, depth) => ({ depth, idx: (top + depth) % n }));
-  const upNext = members[(top + 1) % n];
 
   return (
     <div
@@ -155,7 +154,7 @@ export default function BoardDeck({ members, interval = 2200, label }: { members
       </div>
 
       {/* details of the top card */}
-      <div className="lg:col-span-7 liquid-glass rounded-[30px] p-7 sm:p-9 lg:p-11 min-h-[300px] flex flex-col">
+      <div className="lg:col-span-7 liquid-glass rounded-[30px] p-7 sm:p-9 lg:p-11 min-h-[260px] flex flex-col">
         <p className="font-display text-[15px] font-extrabold tabular-nums text-[#A7B2B8]">
           <span className="text-[#F6C22E]">{String(top + 1).padStart(2, '0')}</span> / {String(n).padStart(2, '0')}
         </p>
@@ -174,11 +173,6 @@ export default function BoardDeck({ members, interval = 2200, label }: { members
             </motion.div>
           </AnimatePresence>
         </div>
-        {n > 1 && (
-          <p className="mt-8 pt-5 border-t border-white/10 text-[16px] text-[#A7B2B8]">
-            Up next <span className="ml-1.5 font-bold text-[#F3F5F6]">{upNext.name}</span>
-          </p>
-        )}
       </div>
     </div>
   );
