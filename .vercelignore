@@ -1,6 +1,7 @@
 # Dependencies & Build artifacts (Vercel builds these on the cloud)
 node_modules
 .next
+.next-prod
 .git
 .vercel
 

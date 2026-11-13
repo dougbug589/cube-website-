@@ -33,7 +33,15 @@ const nextConfig = {
     };
   },
   async headers() {
+    // Vercel copies stay out of search results unless ALLOW_INDEXING=true
+    // (see src/app/robots.ts); robots.txt alone does not stop indexing of
+    // URLs found through links, so send the noindex header as well.
+    const noindex =
+      process.env.VERCEL && process.env.ALLOW_INDEXING !== 'true'
+        ? [{ source: '/(.*)', headers: [{ key: 'X-Robots-Tag', value: 'noindex, nofollow' }] }]
+        : [];
     return [
+      ...noindex,
       {
         source: '/(.*)',
         headers: [
