@@ -1,7 +1,7 @@
 import React from 'react';
 import PageHeader from '@/components/common/PageHeader';
 import SectionPhoto from '@/components/common/SectionPhoto';
-import CoreValuesFlip from '@/components/about/CoreValuesFlip';
+import CoreValuesPicker from '@/components/about/CoreValuesPicker';
 import { aboutContent } from '@/data/about';
 
 export const metadata = {
@@ -23,7 +23,7 @@ export default function CoreValuesPage() {
       <section className="relative py-16 lg:py-24 pb-28">
         <SectionPhoto src="/images/hero/slides_building-training-team.jpg" wash="bg-[#0B0D0E]/55" position="object-[50%_35%]" />
         <div className="relative shell">
-        <CoreValuesFlip values={aboutContent.coreValues} interval={1800} />
+        <CoreValuesPicker values={aboutContent.coreValues} interval={1800} />
         </div>
       </section>
     </div>

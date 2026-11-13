@@ -97,7 +97,7 @@ export default function ObjectivesCounter({ items, interval = 2200 }: { items: s
                     initial={{ y: `${dir * 100 * roll}%`, opacity: reduced ? 0 : 1 }}
                     animate={{ y: '0%', opacity: 1 }}
                     exit={{ y: `${-dir * 100 * roll}%`, opacity: reduced ? 0 : 1 }}
-                    transition={{ duration: 0.55, ease: EASE, delay: k === 0 ? 0 : 0.06 }}
+                    transition={{ duration: 0.5, ease: EASE }}
                   >
                     {digit}
                   </motion.span>
@@ -111,16 +111,18 @@ export default function ObjectivesCounter({ items, interval = 2200 }: { items: s
         </div>
 
         {/* the objective */}
-        <div className="lg:col-span-8 liquid-glass rounded-[32px] p-7 sm:p-10 lg:p-12 min-h-[230px] sm:min-h-[260px] flex flex-col justify-center overflow-hidden">
-          <AnimatePresence mode="wait" initial={false} custom={dir}>
+        {/* old and new sentence share one grid cell and cross over at the same
+            moment the number rolls (no wait between them) */}
+        <div className="lg:col-span-8 liquid-glass rounded-[32px] p-7 sm:p-10 lg:p-12 min-h-[230px] sm:min-h-[260px] grid items-center overflow-hidden">
+          <AnimatePresence initial={false} custom={dir}>
             <motion.p
               key={i}
               custom={dir}
-              initial={{ opacity: 0, y: reduced ? 0 : 26 * dir }}
+              initial={{ opacity: 0, y: reduced ? 0 : 40 * dir }}
               animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: reduced ? 0 : -18 * dir }}
-              transition={{ duration: 0.38, ease: EASE }}
-              className="font-display text-[23px] sm:text-[28px] lg:text-[32px] font-bold leading-[1.35] text-[#F3F5F6]"
+              exit={{ opacity: 0, y: reduced ? 0 : -40 * dir }}
+              transition={{ duration: 0.5, ease: EASE }}
+              className="[grid-area:1/1] font-display text-[23px] sm:text-[28px] lg:text-[32px] font-bold leading-[1.35] text-[#F3F5F6]"
             >
               {items[i]}
             </motion.p>
