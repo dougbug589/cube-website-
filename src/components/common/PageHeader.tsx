@@ -4,7 +4,7 @@ import React from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { ChevronRight, ArrowLeft } from 'lucide-react';
-import HeaderCube from '@/components/common/HeaderCube';
+import HeaderFacts from '@/components/common/HeaderFacts';
 
 interface PageHeaderProps {
   badge: string;
@@ -39,12 +39,10 @@ export default function PageHeader({ badge, title, description, breadcrumbs, bac
   };
 
   return (
-    <header className="relative pt-32 sm:pt-36 xl:pt-40 pb-12 sm:pb-16 overflow-hidden">
+    <header className="relative pt-32 sm:pt-36 xl:pt-40 pb-12 sm:pb-16 min-[1400px]:pb-20 overflow-hidden">
       {/* faint constellation + soft gold wash, both static */}
       <div aria-hidden className="absolute inset-0 constellation opacity-30 [mask-image:linear-gradient(to_bottom,black,transparent)]" />
       <div aria-hidden className="absolute -top-40 right-0 w-[520px] h-[520px] rounded-full bg-[#F6C22E]/10 blur-[120px] pointer-events-none" />
-      {/* fills the empty right side on wide screens */}
-      <HeaderCube />
 
       <div className="relative shell w-full">
         <div className="flex flex-wrap items-center justify-between gap-4 mb-10">
@@ -72,8 +70,9 @@ export default function PageHeader({ badge, title, description, breadcrumbs, bac
           </nav>
         </div>
 
-        {/* from 1400px the header cube sits on the right: keep the text clear of it */}
-        <div className="max-w-4xl min-[1400px]:max-w-[min(56rem,calc(100%-470px))] reveal-stagger revealed">
+        {/* from 1400px the facts card sits on the right: keep the text clear of it */}
+        <div className="relative">
+        <div className="max-w-4xl min-[1400px]:max-w-[min(56rem,calc(100%-430px))] reveal-stagger revealed">
           <p className="label-mono">{badge}</p>
           {/* long official titles (project pages) step down so they stay readable */}
           <h1
@@ -88,6 +87,8 @@ export default function PageHeader({ badge, title, description, breadcrumbs, bac
             {title}
           </h1>
           <p className="mt-5 text-[19.5px] sm:text-[19px] text-[#DDE3E6] leading-relaxed max-w-3xl">{description}</p>
+        </div>
+        <HeaderFacts />
         </div>
       </div>
 
