@@ -219,7 +219,7 @@ export default function MediaPage() {
       <section id="publications" className="scroll-mt-40 py-16 lg:py-20 pb-24">
         <div className="shell">
           <SectionHeading eyebrow="Reports" title="Reports & publications" action={{ href: '/media/publications', label: 'All reports' }} />
-          <ReportList reports={cubeReports} />
+          <ReportList reports={cubeReports} layout="slide" />
         </div>
       </section>
 
