@@ -40,6 +40,7 @@ Two lines of work run through this repository:
 - Etihad-inspired theme: slate and gold palette, scroll-reveal animations, gold scroll-progress bar. (`1977bf6`)
 
 #### Changed
+- Tenders page: Mahindra World City photo behind the tender register (faded, blurred, frosted cards).
 - Media page: Reports & publications shown as a sideways-scrolling row of cards (same scrolling as the events timeline).
 - Events timeline: no arrow buttons; scrolls sideways with the mouse wheel, mouse drag, touch or trackpad, with a position bar.
 - Events page: horizontal timeline (yellow rail with dated markers, cards scroll sideways with snap and prev/next buttons).
