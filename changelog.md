@@ -139,6 +139,7 @@ Two lines of work run through this repository:
 - Slate rail sidebar on desktop, photo hero, and stacked project carousel (Etihad-style layout). Superseded the same day by the top bar. (`75f0d52`)
 
 #### Fixed
+- News slideshow photos no longer shake or soften: no zoom, higher image quality, fixed stage height.
 - Projects: switching All / Buildings / Environment / Urban Planning while scrolled down no longer stalls or jerks; it returns to the top of the results and the grid cross-fades smoothly.
 - Home: news strip now evenly spaced between the hero and About, and the About/CEL section photos fade in at their edges (no hard band line under the strip).
 - The laboratory photo in the CEL dropdown was blurry (a small version stretched to fit); it now loads a sharp, larger version. (`4c7fc7c`)
