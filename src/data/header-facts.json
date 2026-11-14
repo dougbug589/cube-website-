@@ -184,10 +184,6 @@
       [
         "Events",
         "4"
-      ],
-      [
-        "Reports",
-        "3"
       ]
     ]
   },
@@ -223,19 +219,6 @@
       [
         "Categories",
         "Projects, Laboratory, Workplace, Events"
-      ]
-    ]
-  },
-  "/media/publications": {
-    "label": "Reports",
-    "rows": [
-      [
-        "Reports",
-        "3"
-      ],
-      [
-        "News stories",
-        "8"
       ]
     ]
   },

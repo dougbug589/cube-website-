@@ -28,7 +28,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     '/media/news',
     '/media/events',
     '/media/gallery',
-    '/media/publications',
     '/life-at-cube',
     '/verticals/building-construction',
     '/verticals/environment-sustainability',

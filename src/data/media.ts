@@ -15,14 +15,6 @@ export interface CubeEvent {
   highlights?: string[];
 }
 
-export interface CubeReport {
-  title: string;
-  category: string;
-  year: string;
-  authors: string;
-  description: string;
-}
-
 export const cubeEvents: CubeEvent[] = [
   {
     title: '7th Annual General Meeting',
@@ -61,30 +53,3 @@ export const cubeEvents: CubeEvent[] = [
   },
 ];
 
-export const cubeReports: CubeReport[] = [
-  {
-    title: 'Sustainable Mining Policy and Natural Resources Management Plan',
-    category: 'Policy',
-    year: '2023',
-    authors: 'CUBE for the Department of Geology and Mining, Government of Tamil Nadu',
-    description:
-      'Final draft presented to the Additional Chief Secretary to Government (FAC), Natural Resources Department, Government of Tamil Nadu on 3rd July 2023.',
-  },
-  {
-    title:
-      'Inception Report: Study on Impact of Urban Development on Coastal Aquifer and Measures for Protection (Kottivakkam to Mahabalipuram)',
-    category: 'Urban Planning',
-    year: '2023',
-    authors: 'CUBE for CMDA',
-    description:
-      'Presented to the Technical Committee presided by the Member Secretary, CMDA, for the villages between the Bay of Bengal and the Buckingham Canal.',
-  },
-  {
-    title: 'Report on Projects under the Namma School Namma Ooru Palli (NSNOP) Initiative',
-    category: 'CSR',
-    year: '2025',
-    authors: 'CUBE',
-    description:
-      'Classroom construction and furniture provisioning for government schools in Manojpatti and Poovathur under CSR initiatives; presented to the Hon\'ble Minister for School Education, Government of Tamil Nadu.',
-  },
-];

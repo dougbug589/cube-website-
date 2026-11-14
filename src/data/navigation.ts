@@ -51,7 +51,6 @@ export const navigationItems: NavigationItem[] = [
       { title: 'News', href: '/media/news' },
       { title: 'Gallery', href: '/media/gallery' },
       { title: 'Events', href: '/media/events' },
-      { title: 'Publications', href: '/media/publications' },
       { title: 'Life at CUBE', href: '/life-at-cube' },
     ],
   },

@@ -38,7 +38,6 @@ const countIn = (name) => {
   return m ? (m[1].match(/^\s{2}\{/gm) || []).length : 0;
 };
 const events = countIn('cubeEvents');
-const reports = countIn('cubeReports');
 
 const about = read('src/data/about.ts');
 const missionStr = (about.match(/mission:\s*"([^"]*)"/) || [])[1] || '';
@@ -71,11 +70,10 @@ const facts = {
   '/about/clients': { label: 'Clients', rows: [['Clients', n(clients)], ['Projects', PROJECTS_TOTAL], ['Verticals', n(verticals)]] },
   '/contact': { label: 'Reach CUBE', rows: [['Phone', phone], ['Email', email], ['Office', 'IIT Madras Research Park, Chennai']] },
   '/life-at-cube': { label: 'Life at CUBE', rows: [['Workplace', 'IIT Madras Research Park'], ['On site', 'CUBE Environmental Laboratory']] },
-  '/media': { label: 'Media centre', rows: [['News stories', n(news.length)], ['Events', n(events)], ['Reports', n(reports)]] },
+  '/media': { label: 'Media centre', rows: [['News stories', n(news.length)], ['Events', n(events)]] },
   '/media/news': { label: 'News', rows: [['Stories', n(news.length)], ...(latestNews ? [['Latest', latestNews]] : [])] },
   '/media/events': { label: 'Events', rows: [['Events', n(events)], ['News stories', n(news.length)]] },
   '/media/gallery': { label: 'Gallery', rows: [['Categories', 'Projects, Laboratory, Workplace, Events']] },
-  '/media/publications': { label: 'Reports', rows: [['Reports', n(reports)], ['News stories', n(news.length)]] },
   '/projects': { label: 'Portfolio', rows: [['Projects', PROJECTS_TOTAL], ['Listed here', n(projects.length)], ['Building & Construction', n(byCat('Building & Construction'))], ['Environment & Sustainability', n(byCat('Environment & Sustainability'))], ['Urban Planning & Transportation', n(byCat('Urban Planning & Transportation'))]] },
   '/verticals': { label: 'Verticals', rows: [['Verticals', n(verticals)], ['Projects', PROJECTS_TOTAL], ['Clients', n(clients)]] },
   '/tenders': { label: 'Tenders', rows: [['Tender notices', n(notices.length)], ['Corrigenda', n(tenders.length - notices.length)], ['Open now', n(openTenders)], ['Queries', email]] },

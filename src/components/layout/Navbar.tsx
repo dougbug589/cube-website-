@@ -62,7 +62,6 @@ const MEGA_PREVIEW: Record<string, string> = {
   '/media/news': '/images/media/news/original/newsnew.jpg',
   '/media/gallery': '/images/hero/slides_iit-tirupathi.jpg',
   '/media/events': '/images/media/news/original/newsnew3.jpg',
-  '/media/publications': '/images/media/news/images_newsnew2.jpg',
   '/life-at-cube': '/images/life-at-cube/about_life2.jpg',
 };
 

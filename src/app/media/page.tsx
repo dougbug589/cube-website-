@@ -8,17 +8,15 @@ import PageHeader from '@/components/common/PageHeader';
 import SectionHeading from '@/components/common/SectionHeading';
 import SectionNav from '@/components/common/SectionNav';
 import NewsCard from '@/components/cards/NewsCard';
-import ReportList from '@/components/cards/ReportList';
 import { newsItems as fallbackNewsItems } from '@/data/news';
 import { useLiveList } from '@/lib/live';
-import { cubeEvents, cubeReports } from '@/data/media';
+import { cubeEvents } from '@/data/media';
 
 const SECTIONS = [
   { id: 'news', label: 'News' },
   { id: 'events', label: 'Events' },
   { id: 'gallery', label: 'Gallery' },
   { id: 'life-at-cube', label: 'Life at CUBE' },
-  { id: 'publications', label: 'Reports' },
 ];
 
 // Captions match the project names on cubeiitm.org.
@@ -212,14 +210,6 @@ export default function MediaPage() {
               </div>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* 5 · Reports */}
-      <section id="publications" className="scroll-mt-40 py-16 lg:py-20 pb-24">
-        <div className="shell">
-          <SectionHeading eyebrow="Reports" title="Reports & publications" action={{ href: '/media/publications', label: 'All reports' }} />
-          <ReportList reports={cubeReports} layout="slide" />
         </div>
       </section>
 
