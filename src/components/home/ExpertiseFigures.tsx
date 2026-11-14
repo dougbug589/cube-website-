@@ -9,8 +9,10 @@ import { parseFigure, fmtFigure, type Figure } from '@/lib/figures';
 /**
  * "TPQA – Expertise Highlights" from the Building & Construction page of
  * cubeiitm.org, read from the vertical data (single source of truth) and
- * shown as a light ledger: big tabular figures that count up once when the
- * row comes into view, a gold rule that draws under each, and the source link.
+ * shown annual-report style: the project value as a large headline figure on
+ * a glass card, the other figures as a ledger beside it (label left, figure
+ * right). The figures count up when the block comes into view, then briefly
+ * scramble and relock every few seconds.
  * Text updates go straight to the DOM in rAF (no React re-render per frame).
  */
 
@@ -20,6 +22,8 @@ const FIGURES: Figure[] = ((TPQA?.items as string[]) || []).map(parseFigure).fil
 
 // eases out gently, so the climb stays visible right up to the final value
 const easeOutCubic = (k: number) => (k >= 1 ? 1 : 1 - Math.pow(1 - k, 3));
+// tidier unit wording for the ledger (the figures themselves are unchanged)
+const UNIT: Record<string, string> = { Acres: 'acres', 'Mil Sqft': 'Mn sq ft' };
 const D = 2200; // ms per figure
 const STAGGER = 160; // ms between figures
 // After the count, the figures briefly scramble through random values every
@@ -114,6 +118,24 @@ export default function ExpertiseFigures() {
 
   if (FIGURES.length === 0) return null;
 
+  // the money figure leads; the rest form the ledger beside it
+  const leadIdx = Math.max(0, FIGURES.findIndex((f) => f.prefix || /value/i.test(f.lead)));
+  const lead = FIGURES[leadIdx];
+  const rest = FIGURES.map((f, i) => ({ f, i })).filter((x) => x.i !== leadIdx);
+  const num = (f: Figure, i: number, cls: string) => (
+    <span
+      ref={(el) => {
+        numRefs.current[i] = el;
+      }}
+      aria-hidden
+      className={`font-display font-extrabold leading-none tabular-nums text-[#F3F5F6] ${cls}`}
+    >
+      {fmtFigure(f.value, f.decimals)}
+    </span>
+  );
+  // the visible digits count and scramble; assistive tech gets the real figure
+  const spoken = (f: Figure) => [f.lead, f.prefix, fmtFigure(f.value, f.decimals), f.unit].filter(Boolean).join(' ');
+
   return (
     <section id="expertise" aria-labelledby="expertise-title" className="relative pb-16 lg:pb-24">
       <div ref={rootRef} className="shell">
@@ -126,45 +148,51 @@ export default function ExpertiseFigures() {
           </div>
           <Link
             href="/verticals/building-construction"
-            className="group self-start md:self-auto inline-flex items-center gap-2 text-[16px] font-bold text-[#F3F5F6] border-b-2 border-[#F6C22E] pb-1 hover:text-[#F6C22E] transition-colors"
+            className="group self-start md:self-auto whitespace-nowrap inline-flex items-center gap-2 text-[16px] font-bold text-[#F3F5F6] border-b-2 border-[#F6C22E] pb-1 hover:text-[#F6C22E] transition-colors"
           >
             Building &amp; Construction
             <ArrowUpRight size={16} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
           </Link>
         </div>
 
-        <dl ref={rowRef} className="grid grid-cols-2 lg:grid-cols-4 border-y border-white/10">
-          {FIGURES.map((f, i) => (
-            <div
-              key={f.lead}
-              className={`relative py-8 lg:py-10 px-4 sm:px-6 lg:px-8 ${i % 2 === 1 ? 'border-l' : ''} ${i > 0 ? 'lg:border-l' : ''} ${i > 1 ? 'border-t lg:border-t-0' : ''} border-white/10`}
-            >
-              <dt className="text-[15px] font-semibold text-[#A7B2B8]">{f.lead}</dt>
-              <dd
-                className="mt-3 flex items-baseline gap-2 flex-wrap"
-                // the visible digits count and scramble; assistive tech gets the real figure
-                aria-label={[f.prefix, fmtFigure(f.value, f.decimals), f.unit].filter(Boolean).join(' ')}
-              >
-                {f.prefix && <span className="font-display text-[22px] sm:text-[26px] font-extrabold text-[#F6C22E]">{f.prefix}</span>}
-                <span
-                  ref={(el) => {
-                    numRefs.current[i] = el;
-                  }}
-                  aria-hidden
-                  className="font-display text-[44px] sm:text-[56px] xl:text-[64px] font-extrabold leading-none tracking-[-0.03em] text-[#F3F5F6] tabular-nums"
-                >
-                  {fmtFigure(f.value, f.decimals)}
-                </span>
-                <span className="font-display text-[18px] sm:text-[22px] font-extrabold text-[#F6C22E]">{f.unit}</span>
-              </dd>
-              {/* gold rule draws in under each figure (transform only) */}
+        <dl ref={rowRef} className="grid lg:grid-cols-12 gap-5 lg:gap-8 items-stretch">
+          {/* the headline figure */}
+          <div className="lg:col-span-5 liquid-glass rounded-[32px] p-7 sm:p-9 lg:p-10 flex flex-col justify-center">
+            <dt className="label-mono">Project value</dt>
+            <dd className="mt-5" aria-label={spoken(lead)}>
+              <span aria-hidden className="block text-[16px] font-semibold text-[#A7B2B8]">
+                {lead.lead.replace(/^value\s+of\s*/i, '') || 'over'}
+              </span>
+              <span className="mt-1 flex items-baseline gap-2 whitespace-nowrap">
+                {lead.prefix && <span aria-hidden className="font-display text-[40px] sm:text-[52px] lg:text-[44px] xl:text-[58px] font-extrabold leading-none text-[#F6C22E]">₹</span>}
+                {num(lead, leadIdx, 'text-[56px] sm:text-[76px] lg:text-[62px] xl:text-[84px] tracking-[-0.04em]')}
+                <span aria-hidden className="font-display text-[24px] sm:text-[30px] font-extrabold text-[#F6C22E]">{lead.unit}</span>
+              </span>
               <span
                 aria-hidden
-                className="absolute left-4 sm:left-6 lg:left-8 bottom-0 h-[3px] w-16 rounded-full bg-gradient-to-r from-[#F6C22E] to-[#F6C22E] origin-left transition-transform duration-[1200ms] ease-[cubic-bezier(0.22,1,0.36,1)]"
-                style={{ transform: shown ? 'scaleX(1)' : 'scaleX(0)', transitionDelay: `${i * 140 + 300}ms` }}
+                className="mt-6 block h-[3px] w-20 rounded-full bg-[#F6C22E] origin-left transition-transform duration-[1200ms] ease-[cubic-bezier(0.22,1,0.36,1)]"
+                style={{ transform: shown ? 'scaleX(1)' : 'scaleX(0)', transitionDelay: '300ms' }}
               />
-            </div>
-          ))}
+              <span aria-hidden className="mt-5 block text-[17px] text-[#C2CCD1] leading-relaxed">
+                Projects under CUBE&rsquo;s third-party quality assurance.
+              </span>
+            </dd>
+          </div>
+
+          {/* the ledger: label on the left, figure on the right */}
+          <div className="lg:col-span-7 flex flex-col justify-center border-y border-white/10 divide-y divide-white/10">
+            {rest.map(({ f, i }) => (
+              <div key={f.lead} className="py-6 lg:py-7 flex items-baseline justify-between gap-4 sm:gap-8">
+                <dt className="text-[16px] sm:text-[18px] font-semibold text-[#A7B2B8] leading-snug">{f.lead.replace(/\bArea\b/, 'area')}</dt>
+                <dd className="flex items-baseline gap-2 whitespace-nowrap" aria-label={spoken(f)}>
+                  {num(f, i, 'text-[38px] sm:text-[48px] xl:text-[54px] tracking-[-0.03em]')}
+                  <span aria-hidden className="font-display text-[17px] sm:text-[21px] font-extrabold text-[#F6C22E] [word-spacing:0.18em]">
+                    {UNIT[f.unit] || f.unit}
+                  </span>
+                </dd>
+              </div>
+            ))}
+          </div>
         </dl>
       </div>
     </section>
