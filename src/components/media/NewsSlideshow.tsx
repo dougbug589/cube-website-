@@ -5,11 +5,10 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { AnimatePresence, motion, useMotionValue, type MotionValue } from 'framer-motion';
 import { ArrowLeft, ArrowRight, ArrowUpRight } from 'lucide-react';
-import SmoothHeight from '@/components/common/SmoothHeight';
 
 /**
- * News as a "newsroom" slideshow: a stage with the story photo (slides in,
- * then drifts in a slow zoom) beside a glass panel with date, category,
+ * News as a "newsroom" slideshow: a stage with the story photo (cross-fades
+ * with a short slide, no zoom) beside a glass panel with date, category,
  * title, summary and the link to the story; under it a rail of every story
  * as a small thumbnail, each with a yellow bar that fills while its story is
  * on stage. Auto-advances (timer pauses, not restarts, on hover, focus, off
@@ -103,7 +102,6 @@ export default function NewsSlideshow({ stories, interval = 5000 }: { stories: S
 
   if (n === 0) return null;
   const s = stories[i];
-  const text = s.summary || s.excerpt;
 
   return (
     <div
@@ -123,9 +121,11 @@ export default function NewsSlideshow({ stories, interval = 5000 }: { stories: S
       className="focus:outline-none focus-visible:ring-4 focus-visible:ring-[#F6C22E]/40 rounded-[34px]"
     >
       {/* the stage */}
+      {/* the stage: its height never changes between stories (every story's
+          text sits in the same grid cell, so the tallest one sets the height) */}
       <div className="glass glass-edge rounded-[32px] overflow-hidden grid lg:grid-cols-12">
         <motion.div
-          className="relative lg:col-span-7 aspect-[16/10] lg:aspect-auto lg:min-h-[460px] overflow-hidden bg-[#1A1F22] cursor-grab active:cursor-grabbing"
+          className="relative lg:col-span-6 aspect-[16/10] lg:aspect-auto lg:min-h-[440px] overflow-hidden bg-[#1A1F22] cursor-grab active:cursor-grabbing"
           style={{ touchAction: 'pan-y' }}
           drag={n > 1 ? 'x' : false}
           dragConstraints={{ left: 0, right: 0 }}
@@ -134,33 +134,28 @@ export default function NewsSlideshow({ stories, interval = 5000 }: { stories: S
             if (Math.abs(info.offset.x) > 70 || Math.abs(info.velocity.x) > 450) go(info.offset.x < 0 ? i + 1 : i - 1, info.offset.x < 0 ? 1 : -1);
           }}
         >
+          {/* photos cross-fade with a short slide; no zoom (scaling a small
+              photo softens it and makes it shimmer) */}
           <AnimatePresence initial={false} custom={dir}>
             <motion.div
               key={i}
               custom={dir}
               className="absolute inset-0"
-              initial={reduced ? { opacity: 0 } : { opacity: 0, x: `${dir * 8}%`, scale: 1.08 }}
-              animate={{ opacity: 1, x: '0%', scale: 1 }}
-              exit={reduced ? { opacity: 0 } : { opacity: 0, x: `${-dir * 4}%`, scale: 1.02 }}
-              transition={{ duration: reduced ? 0.25 : 0.85, ease: EASE }}
+              initial={reduced ? { opacity: 0 } : { opacity: 0, x: `${dir * 6}%` }}
+              animate={{ opacity: 1, x: '0%' }}
+              exit={reduced ? { opacity: 0 } : { opacity: 0, x: `${-dir * 3}%` }}
+              transition={{ duration: reduced ? 0.25 : 0.7, ease: EASE }}
             >
-              {/* slow drift while the story is on stage */}
-              <motion.div
-                className="absolute inset-0"
-                initial={{ scale: 1 }}
-                animate={{ scale: reduced ? 1 : 1.06 }}
-                transition={{ duration: interval / 1000 + 1, ease: 'linear' }}
-              >
-                <Image
-                  src={s.image || FALLBACK}
-                  alt={s.title}
-                  fill
-                  priority={i === 0}
-                  sizes="(max-width: 1024px) 100vw, 58vw"
-                  className="object-cover pointer-events-none"
-                  draggable={false}
-                />
-              </motion.div>
+              <Image
+                src={s.image || FALLBACK}
+                alt={s.title}
+                fill
+                priority={i === 0}
+                quality={90}
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                className="object-cover pointer-events-none"
+                draggable={false}
+              />
             </motion.div>
           </AnimatePresence>
           <div aria-hidden className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/60 to-transparent pointer-events-none" />
@@ -171,39 +166,47 @@ export default function NewsSlideshow({ stories, interval = 5000 }: { stories: S
           </p>
         </motion.div>
 
-        <SmoothHeight className="lg:col-span-5" innerClassName="p-7 sm:p-9 lg:p-10 lg:min-h-[460px] flex flex-col">
-          <AnimatePresence initial={false} mode="popLayout" custom={dir}>
-            <motion.div
-              key={i}
-              className="flex-1 flex flex-col"
-              initial={{ opacity: 0, y: reduced ? 0 : 24 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: reduced ? 0 : -16 }}
-              transition={{ duration: 0.45, ease: EASE }}
-            >
-              <p className="label-mono">
-                {[i === 0 ? 'Latest' : null, s.category, s.date].filter(Boolean).join(' · ')}
-              </p>
-              <h2 className="mt-3 font-display text-[26px] sm:text-[30px] font-extrabold text-[#F3F5F6] leading-tight">{s.title}</h2>
-              {text && <p className="mt-4 text-[18.5px] text-[#DDE3E6] leading-relaxed line-clamp-6">{text}</p>}
-              <div className="mt-auto pt-8 flex items-center justify-between gap-3">
-                <Link href={href(s)} className="press btn-liquid-gold inline-flex items-center gap-2 h-12 px-5 sm:px-6 rounded-full text-[15.5px] sm:text-[16px] font-extrabold whitespace-nowrap">
-                  Read the story <ArrowUpRight size={16} strokeWidth={2.25} />
-                </Link>
-                {n > 1 && (
-                  <span className="flex gap-2 shrink-0">
-                    <button type="button" onClick={() => go(i - 1, -1)} aria-label="Previous story" className="press jiggle grid place-items-center w-11 h-11 sm:w-12 sm:h-12 rounded-full btn-soft">
-                      <ArrowLeft size={18} strokeWidth={2.25} />
-                    </button>
-                    <button type="button" onClick={() => go(i + 1, 1)} aria-label="Next story" className="press jiggle grid place-items-center w-11 h-11 sm:w-12 sm:h-12 rounded-full btn-soft">
-                      <ArrowRight size={18} strokeWidth={2.25} />
-                    </button>
-                  </span>
-                )}
-              </div>
-            </motion.div>
-          </AnimatePresence>
-        </SmoothHeight>
+        <div className="lg:col-span-6 p-7 sm:p-9 lg:p-10 flex flex-col">
+          <div className="grid flex-1">
+            {stories.map((st, k) => {
+              const on = k === i;
+              const t = st.summary || st.excerpt;
+              return (
+                <motion.div
+                  key={st.id || st.slug || k}
+                  aria-hidden={!on}
+                  className="[grid-area:1/1]"
+                  initial={false}
+                  animate={
+                    on
+                      ? { opacity: 1, y: 0, visibility: 'visible' as const }
+                      : { opacity: 0, y: reduced ? 0 : -12, transitionEnd: { visibility: 'hidden' as const, y: reduced ? 0 : 20 } }
+                  }
+                  transition={{ duration: on ? 0.45 : 0.25, delay: on ? 0.1 : 0, ease: EASE }}
+                >
+                  <p className="label-mono">{[k === 0 ? 'Latest' : null, st.category, st.date].filter(Boolean).join(' · ')}</p>
+                  <h2 className="mt-3 font-display text-[26px] sm:text-[30px] font-extrabold text-[#F3F5F6] leading-tight">{st.title}</h2>
+                  {t && <p className="mt-4 text-[18.5px] text-[#DDE3E6] leading-relaxed line-clamp-6">{t}</p>}
+                </motion.div>
+              );
+            })}
+          </div>
+          <div className="pt-8 flex items-center justify-between gap-3">
+            <Link href={href(s)} className="press btn-liquid-gold inline-flex items-center gap-2 h-12 px-5 sm:px-6 rounded-full text-[15.5px] sm:text-[16px] font-extrabold whitespace-nowrap">
+              Read the story <ArrowUpRight size={16} strokeWidth={2.25} />
+            </Link>
+            {n > 1 && (
+              <span className="flex gap-2 shrink-0">
+                <button type="button" onClick={() => go(i - 1, -1)} aria-label="Previous story" className="press jiggle grid place-items-center w-11 h-11 sm:w-12 sm:h-12 rounded-full btn-soft">
+                  <ArrowLeft size={18} strokeWidth={2.25} />
+                </button>
+                <button type="button" onClick={() => go(i + 1, 1)} aria-label="Next story" className="press jiggle grid place-items-center w-11 h-11 sm:w-12 sm:h-12 rounded-full btn-soft">
+                  <ArrowRight size={18} strokeWidth={2.25} />
+                </button>
+              </span>
+            )}
+          </div>
+        </div>
       </div>
 
       {/* the rail: every story; the bar on top fills while it is on stage */}
