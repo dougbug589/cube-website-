@@ -4,6 +4,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import PageHeader from '@/components/common/PageHeader';
+import SectionPhoto from '@/components/common/SectionPhoto';
 import SectionHeading from '@/components/common/SectionHeading';
 import ComboSelect from '@/components/admin/ComboSelect';
 import { FIELD, LABEL } from '@/components/common/formStyles';
@@ -384,8 +385,10 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
         </div>
       </div>
 
-      <section className="py-12 lg:py-16">
-        <div className="shell">
+      {/* the CUBE office (cubeiitm.org) behind openings and the application */}
+      <section className="relative py-12 lg:py-16">
+        <SectionPhoto src="/images/life-at-cube/cube-office.jpg" wash="bg-[#0B0D0E]/60" position="object-[50%_40%]" />
+        <div className="shell relative">
           <AnimatePresence mode="wait" initial={false}>
             {activeTab === 'openings' ? (
               <motion.div
@@ -758,10 +761,12 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
 
       {/* Benefits */}
       {c.benefits.items.length > 0 && (
-        <section className="pb-24">
-          <div className="shell">
+        // the CUBE team behind "Working at CUBE" (no reveal wrapper: it would break the cards' frosted glass)
+        <section className="relative pt-10 pb-28">
+          <SectionPhoto src="/images/hero/slides_building-training-team.jpg" wash="bg-[#0B0D0E]/60" />
+          <div className="shell relative">
             <SectionHeading eyebrow="Working at CUBE" title={c.benefits.heading} lead={c.benefits.subheading} />
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 reveal-stagger">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
               {c.benefits.items.map((item, i) => {
                 const Icon = BENEFIT_ICONS[item.icon] || Award;
                 return (
