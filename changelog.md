@@ -139,6 +139,7 @@ Two lines of work run through this repository:
 - Slate rail sidebar on desktop, photo hero, and stacked project carousel (Etihad-style layout). Superseded the same day by the top bar. (`75f0d52`)
 
 #### Fixed
+- Gallery no longer flickers on page load (real photo list rendered on the server) or when switching category (whole-grid fade, images reused).
 - Gallery mosaic fills every row at every width and filter; Life at CUBE no longer sits alone at the bottom.
 - News slideshow photos no longer shake or soften: no zoom, higher image quality, fixed stage height.
 - Projects: switching All / Buildings / Environment / Urban Planning while scrolled down no longer stalls or jerks; it returns to the top of the results and the grid cross-fades smoothly.
