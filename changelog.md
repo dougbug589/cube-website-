@@ -40,6 +40,7 @@ Two lines of work run through this repository:
 - Etihad-inspired theme: slate and gold palette, scroll-reveal animations, gold scroll-progress bar. (`1977bf6`)
 
 #### Changed
+- News page: stories shown as a slideshow (photo stage + story panel) with a thumbnail rail of every story and per-story progress bars.
 - CEL photos replaced with full-size originals from the CEL website (same shots); CEL page mosaic leads with the flask photo from cubeiitm.org.
 - Home TPQA figures: project value as a large headline figure on glass, the other three as a ledger beside it; units no longer wrap below the numbers.
 - Every yellow button, badge and icon tile is solid #F6C22E (card arrow buttons no longer turn a see-through gold on hover).
