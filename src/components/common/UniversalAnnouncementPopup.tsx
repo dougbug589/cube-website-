@@ -126,7 +126,7 @@ export default function UniversalAnnouncementPopup() {
                   fill
                   className="object-cover"
                 />
-                <div className="absolute top-2.5 left-2.5 px-3 py-1 rounded-full bg-[#F6C22E]/35 text-[#F3F5F6] text-[13.5px] font-bold tracking-wider shadow-sm flex items-center gap-1.5">
+                <div className="absolute top-2.5 left-2.5 px-3 py-1 rounded-full pill-yellow text-[#0B0D0E] text-[13.5px] font-bold tracking-wider shadow-sm flex items-center gap-1.5">
                   <span className="w-1.5 h-1.5 rounded-full bg-white/[0.06] animate-pulse" />
                   <span>{ann.badge || 'WE ARE HIRING'}</span>
                 </div>
@@ -135,7 +135,7 @@ export default function UniversalAnnouncementPopup() {
 
             <div className="flex items-start justify-between gap-3">
               <div className="flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-[#F6C22E]/35 animate-pulse" />
+                <span className="w-2 h-2 rounded-full bg-[#F6C22E] animate-pulse" />
                 <span className="text-[13.5px] font-bold uppercase tracking-wider text-[#E3E8EA] bg-white/[0.05] px-3 py-1 rounded-full border border-white/10">
                   {ann.badge || ann.type || 'Announcement'}
                 </span>

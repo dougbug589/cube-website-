@@ -66,7 +66,7 @@ export default function LifeAtCubePage() {
             <p className="mt-2 text-[19.5px] font-semibold text-[#DDE3E6]">people in the CUBE team</p>
           </div>
           <div className="glass glass-edge rounded-[26px] p-7 flex items-start gap-4">
-            <span className="grid place-items-center w-12 h-12 rounded-2xl bg-[#F6C22E]/15 text-[#F6C22E] depth-1 shrink-0">
+            <span className="grid place-items-center w-12 h-12 rounded-2xl pill-yellow text-[#0B0D0E] depth-1 shrink-0">
               <MapPin size={21} strokeWidth={2} />
             </span>
             <span>
@@ -96,7 +96,7 @@ export default function LifeAtCubePage() {
               <span className="mt-2 block font-display text-[26px] font-extrabold text-[#F3F5F6]">Meet the team</span>
               <span className="mt-1 block text-[18px] text-[#A7B2B8]">Staff across every vertical and administration.</span>
             </span>
-            <span className="grid place-items-center w-12 h-12 rounded-full bg-white/[0.06] border border-white/10 text-[#F3F5F6] depth-1 shrink-0 transition-[transform,background-color] duration-500 group-hover:bg-[#F6C22E]/35 group-hover:translate-x-1 group-hover:-translate-y-1">
+            <span className="grid place-items-center w-12 h-12 rounded-full bg-white/[0.06] border border-white/10 text-[#F3F5F6] depth-1 shrink-0 transition-[transform,background-color,border-color,color] duration-500 group-hover:bg-[#F6C22E] group-hover:border-[#F6C22E] group-hover:text-[#0B0D0E] group-hover:translate-x-1 group-hover:-translate-y-1">
               <ArrowUpRight size={20} strokeWidth={2.25} />
             </span>
           </Link>

@@ -68,11 +68,11 @@ export function GlassButton({
 
   const variantStyles = {
     solid:
-      'bg-[#F6C22E]/35 text-[#E3E8EA] border border-[#F6C22E] hover:bg-[#F6C22E] hover:shadow-[0_6px_20px_rgba(246, 194, 46,0.35)] hover:border-[#F6C22E]',
+      'pill-yellow text-[#0B0D0E] border border-[#F6C22E] hover:bg-[#F6C22E] hover:shadow-[0_6px_20px_rgba(246, 194, 46,0.35)] hover:border-[#F6C22E]',
     outline:
       'bg-transparent text-[#B9C5CA] border border-white/10 hover:bg-[#33454E]/80 hover:text-[#F3F5F6] hover:border-[#F6C22E]/50',
     pill:
-      'bg-[#33454E]/85 text-[#F6C22E] border border-[#F6C22E]/35 hover:bg-[#F6C22E]/30 hover:text-[#E3E8EA] hover:border-transparent',
+      'bg-[#33454E]/85 text-[#F6C22E] border border-[#F6C22E]/35 hover:bg-[#F6C22E] hover:text-[#0B0D0E] hover:border-[#F6C22E]',
     ghost:
       'bg-transparent text-[#8E9AA0] hover:text-[#F3F5F6] hover:bg-white/[0.06] border border-transparent',
   }[variant];

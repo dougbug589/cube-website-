@@ -191,7 +191,7 @@ export default function TenderRegister({ tenders }: { tenders: Tender[] }) {
                 className="glass glass-edge rounded-[28px] overflow-hidden"
               >
                 <div className="p-6 sm:p-8 grid md:grid-cols-[auto_1fr_auto] gap-5 md:gap-7 items-start">
-                  <span className="hidden md:grid place-items-center w-14 h-14 rounded-[18px] bg-[#F6C22E]/15 text-[#F6C22E] depth-1 font-display text-[18px] font-extrabold tabular-nums">
+                  <span className="hidden md:grid place-items-center w-14 h-14 rounded-[18px] pill-yellow text-[#0B0D0E] depth-1 font-display text-[18px] font-extrabold tabular-nums">
                     {String(i + 1).padStart(2, '0')}
                   </span>
                   <div className="min-w-0">

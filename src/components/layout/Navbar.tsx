@@ -745,7 +745,7 @@ function CelPanel() {
             <Link
               key={t.id}
               href="/cel#domains"
-              className="press rounded-full bg-white/[0.08] border border-white/10 px-3.5 py-1.5 text-[14.5px] font-bold text-[#F3F5F6] hover:bg-[#F6C22E]/15 transition-colors"
+              className="press rounded-full bg-white/[0.08] border border-white/10 px-3.5 py-1.5 text-[14.5px] font-bold text-[#F3F5F6] hover:bg-[#F6C22E] hover:text-[#0B0D0E] hover:border-[#F6C22E] transition-colors"
             >
               {t.title}
             </Link>

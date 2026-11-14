@@ -48,7 +48,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
         <h3 className="font-display text-[19px] lg:text-[20px] font-bold text-[#F3F5F6] leading-snug line-clamp-3">{p.title}</h3>
         <div className="mt-auto pt-4 flex items-end justify-between gap-3">
           <span className="text-[15.5px] font-medium text-[#A7B2B8] leading-snug line-clamp-2">{meta}</span>
-          <span className="grid place-items-center w-10 h-10 rounded-full bg-white/[0.06] border border-white/10 text-[#F3F5F6] depth-1 shrink-0 transition-[transform,background-color] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:bg-[#F6C22E]/35 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
+          <span className="grid place-items-center w-10 h-10 rounded-full bg-white/[0.06] border border-white/10 text-[#F3F5F6] depth-1 shrink-0 transition-[transform,background-color,border-color,color] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:bg-[#F6C22E] group-hover:border-[#F6C22E] group-hover:text-[#0B0D0E] group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
             <ArrowUpRight size={17} strokeWidth={2.25} />
           </span>
         </div>

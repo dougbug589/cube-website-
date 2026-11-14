@@ -213,7 +213,7 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
               <button
                 onClick={() => setDetailJob(null)}
                 aria-label="Close job details"
-                className="press jiggle absolute top-5 right-5 h-10 w-10 rounded-full bg-white/[0.06] border border-white/10 text-[#F3F5F6] depth-1 grid place-items-center hover:bg-[#F6C22E]/15 transition-colors"
+                className="press jiggle absolute top-5 right-5 h-10 w-10 rounded-full bg-white/[0.06] border border-white/10 text-[#F3F5F6] depth-1 grid place-items-center hover:bg-[#F6C22E] hover:text-[#0B0D0E] hover:border-[#F6C22E] transition-colors"
               >
                 <X size={18} strokeWidth={2.25} />
               </button>
@@ -225,7 +225,7 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
                   </span>
                 )}
                 {detailJob.employmentType && (
-                  <span className="rounded-full bg-[#F6C22E]/15 border border-[#F6C22E]/20 px-3 py-1 text-[13.5px] font-bold text-[#F6C22E]">
+                  <span className="rounded-full pill-yellow border px-3 py-1 text-[13.5px] font-bold text-[#0B0D0E]">
                     {detailJob.employmentType}
                   </span>
                 )}
@@ -280,12 +280,12 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
               )}
 
               {c.jobDetail.howToApplySteps.length > 0 && (
-                <div className="rounded-[22px] bg-[#F6C22E]/10 border border-[#F6C22E]/15 p-5 sm:p-6">
+                <div className="rounded-[22px] glass border border-[#F6C22E]/40 p-5 sm:p-6">
                   <p className="font-display text-[17px] font-bold text-[#F3F5F6]">{c.jobDetail.howToApplyTitle}</p>
                   <ol className="mt-3 space-y-2.5">
                     {c.jobDetail.howToApplySteps.map((step, i) => (
                       <li key={i} className="flex items-start gap-3 text-[18px] text-[#DDE3E6] leading-relaxed">
-                        <span className="grid place-items-center w-6 h-6 rounded-full bg-[#F6C22E]/35 text-[13.5px] font-extrabold text-[#F3F5F6] shrink-0 mt-0.5">{i + 1}</span>
+                        <span className="grid place-items-center w-6 h-6 rounded-full pill-yellow text-[13.5px] font-extrabold text-[#0B0D0E] shrink-0 mt-0.5">{i + 1}</span>
                         <span>{step}</span>
                       </li>
                     ))}
@@ -374,7 +374,7 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
               href={`mailto:${c.contactEmail}`}
               className="group self-start md:self-auto inline-flex items-center gap-3 rounded-full glass glass-edge pl-2 pr-5 h-12 text-[15px]"
             >
-              <span className="grid place-items-center w-9 h-9 rounded-full bg-[#F6C22E]/15 text-[#F6C22E]">
+              <span className="grid place-items-center w-9 h-9 rounded-full pill-yellow text-[#0B0D0E]">
                 <Mail size={16} strokeWidth={2.25} />
               </span>
               <span className="text-[#A7B2B8] font-semibold hidden sm:inline">{c.contactLabel}</span>
@@ -398,7 +398,7 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
               >
                 {initialCareers.length === 0 ? (
                   <div className="liquid-glass rounded-[30px] p-10 sm:p-14 text-center max-w-3xl mx-auto">
-                    <span className="grid place-items-center w-16 h-16 mx-auto rounded-[20px] bg-[#F6C22E]/15 text-[#F6C22E] depth-1">
+                    <span className="grid place-items-center w-16 h-16 mx-auto rounded-[20px] pill-yellow text-[#0B0D0E] depth-1">
                       <Briefcase size={28} strokeWidth={2} />
                     </span>
                     <h3 className="mt-6 font-display text-[26px] font-extrabold text-[#F3F5F6]">{c.emptyState.title}</h3>
@@ -444,7 +444,7 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
                                 <span className="rounded-full bg-white/[0.08] border border-white/10 px-3 py-1 text-[13.5px] font-bold text-[#C2CCD1]">{job.department}</span>
                               )}
                               {job.employmentType && (
-                                <span className="rounded-full bg-[#F6C22E]/15 border border-[#F6C22E]/20 px-3 py-1 text-[13.5px] font-bold text-[#F6C22E]">{job.employmentType}</span>
+                                <span className="rounded-full pill-yellow border px-3 py-1 text-[13.5px] font-bold text-[#0B0D0E]">{job.employmentType}</span>
                               )}
                             </div>
 
@@ -498,7 +498,7 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
                                   </li>
                                 ))}
                                 {!single && quals.length > 4 && (
-                                  <li className="rounded-full bg-[#F6C22E]/15 px-3 py-1.5 text-[14px] font-bold text-[#F6C22E]">+{quals.length - 4} more</li>
+                                  <li className="rounded-full pill-yellow px-3 py-1.5 text-[14px] font-bold text-[#0B0D0E]">+{quals.length - 4} more</li>
                                 )}
                               </ul>
                             </div>
@@ -510,7 +510,7 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
                 )}
 
                 {/* Talent network callout */}
-                <div className="rounded-[30px] bg-gradient-to-b from-[#F6C22E]/20 to-[#F6C22E]/5 border border-[#F6C22E]/20 depth-1 p-7 sm:p-10 flex flex-col lg:flex-row lg:items-center justify-between gap-7">
+                <div className="rounded-[30px] liquid-glass border border-[#F6C22E]/40 depth-1 p-7 sm:p-10 flex flex-col lg:flex-row lg:items-center justify-between gap-7">
                   <div className="flex items-start gap-5 max-w-3xl">
                     <span className="hidden sm:grid place-items-center w-14 h-14 rounded-[18px] bg-white/[0.08] text-[#F6C22E] depth-1 shrink-0">
                       <Users size={24} strokeWidth={2} />
@@ -574,7 +574,7 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
                       <ol className="mt-4 space-y-3">
                         {c.jobDetail.howToApplySteps.map((step, i) => (
                           <li key={i} className="flex items-start gap-3 text-[17.5px] text-[#DDE3E6] leading-relaxed">
-                            <span className="grid place-items-center w-6 h-6 rounded-full bg-[#F6C22E]/15 text-[13.5px] font-extrabold text-[#F6C22E] shrink-0 mt-0.5">{i + 1}</span>
+                            <span className="grid place-items-center w-6 h-6 rounded-full pill-yellow text-[13.5px] font-extrabold text-[#0B0D0E] shrink-0 mt-0.5">{i + 1}</span>
                             <span>{step}</span>
                           </li>
                         ))}
@@ -691,9 +691,9 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
                             onDrop={(e) => { e.preventDefault(); setDragging(false); acceptFile(e.dataTransfer.files?.[0]); }}
                             className={`relative block rounded-[22px] border-2 border-dashed p-7 text-center cursor-pointer transition-[background-color,border-color,transform] duration-300 ${
                               dragging
-                                ? 'border-[#F6C22E] bg-[#F6C22E]/15 scale-[1.01]'
+                                ? 'border-[#F6C22E] bg-white/[0.08] scale-[1.01]'
                                 : resumeFile
-                                  ? 'border-[#F6C22E]/50 bg-[#F6C22E]/10'
+                                  ? 'border-[#F6C22E]/50 bg-white/[0.06]'
                                   : 'border-white/20 bg-white/[0.06] hover:bg-white/[0.06] hover:border-[#F6C22E]/40'
                             }`}
                           >
@@ -704,7 +704,7 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
                               onChange={handleFileChange}
                               className="sr-only"
                             />
-                            <span className={`grid place-items-center w-12 h-12 mx-auto rounded-2xl depth-1 ${resumeFile ? 'bg-[#F6C22E]/35 text-[#F3F5F6]' : 'bg-[#F6C22E]/15 text-[#F6C22E]'}`}>
+                            <span className={`grid place-items-center w-12 h-12 mx-auto rounded-2xl depth-1 ${resumeFile ? 'pill-yellow text-[#0B0D0E]' : 'pill-yellow text-[#0B0D0E]'}`}>
                               {resumeFile ? <FileText size={22} strokeWidth={2} /> : <Upload size={22} strokeWidth={2} />}
                             </span>
                             <span className="mt-3 block text-[16px] font-bold text-[#F3F5F6] break-all">

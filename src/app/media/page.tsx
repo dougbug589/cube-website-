@@ -101,7 +101,7 @@ export default function MediaPage() {
                 </p>
                 <span className="mt-auto pt-8 inline-flex items-center gap-2 text-[16px] font-bold text-[#F3F5F6]">
                   Read the story
-                  <span className="grid place-items-center w-10 h-10 rounded-full bg-white/[0.06] border border-white/10 depth-1 transition-[transform,background-color] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:bg-[#F6C22E]/35 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
+                  <span className="grid place-items-center w-10 h-10 rounded-full bg-white/[0.06] border border-white/10 depth-1 transition-[transform,background-color,border-color,color] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:bg-[#F6C22E] group-hover:border-[#F6C22E] group-hover:text-[#0B0D0E] group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
                     <ArrowUpRight size={17} strokeWidth={2.25} />
                   </span>
                 </span>
@@ -185,7 +185,7 @@ export default function MediaPage() {
             </p>
             <div className="mt-7 space-y-3">
               <div className="glass glass-edge rounded-[20px] p-5 flex items-start gap-4">
-                <span className="grid place-items-center w-11 h-11 rounded-2xl bg-[#F6C22E]/15 text-[#F6C22E] depth-1 shrink-0">
+                <span className="grid place-items-center w-11 h-11 rounded-2xl pill-yellow text-[#0B0D0E] depth-1 shrink-0">
                   <MapPin size={19} strokeWidth={2} />
                 </span>
                 <span>

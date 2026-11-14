@@ -101,7 +101,7 @@ export default function DocumentRequestModal({
 
         {submitted ? (
           <div className="text-center py-6">
-            <div className="w-14 h-14 bg-[#F6C22E]/15 text-[#F6C22E] rounded-full flex items-center justify-center mx-auto mb-4 border border-[#F6C22E]/30">
+            <div className="w-14 h-14 pill-yellow text-[#0B0D0E] rounded-full flex items-center justify-center mx-auto mb-4 border border-[#F6C22E]/30">
               <CheckCircle2 className="w-8 h-8" />
             </div>
             <h3 className="text-xl font-bold font-display text-[#E3E8EA] mb-2">

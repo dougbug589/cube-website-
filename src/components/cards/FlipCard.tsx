@@ -92,7 +92,7 @@ export default function FlipCard({
                 </span>
               )}
               {badge && (
-                <span className="text-[13.5px] font-bold px-2.5 py-0.5 bg-[#F6C22E]/35 text-[#F3F5F6] rounded-full shadow-sm">
+                <span className="text-[13.5px] font-bold px-2.5 py-0.5 pill-yellow text-[#0B0D0E] rounded-full shadow-sm">
                   {badge}
                 </span>
               )}
@@ -185,7 +185,7 @@ export default function FlipCard({
           <div className="pt-4 border-t border-white/15" onClick={(e) => e.stopPropagation()}>
             <Link
               href={href}
-              className="w-full flex items-center justify-center py-2.5 px-4 rounded-full text-xs font-semibold text-[#E3E8EA] bg-white/[0.05] border border-white/15 hover:bg-[#F6C22E]/30 hover:text-[#F3F5F6] transition shadow-md group/btn"
+              className="w-full flex items-center justify-center py-2.5 px-4 rounded-full text-xs font-semibold text-[#E3E8EA] bg-white/[0.05] border border-white/15 hover:bg-[#F6C22E] hover:text-[#0B0D0E] hover:border-[#F6C22E] transition shadow-md group/btn"
             >
               <span>{ctaText}</span>
               <ArrowUpRight className="w-4 h-4 ml-2 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform" />

@@ -340,7 +340,7 @@ export default function ContactPage() {
               referrerPolicy="no-referrer-when-downgrade"
             />
             <div className="absolute left-4 right-4 bottom-4 liquid-glass is-solid rounded-[22px] p-4 flex items-center gap-4">
-              <span className="grid place-items-center w-11 h-11 rounded-2xl bg-[#F6C22E]/15 text-[#F6C22E] shrink-0">
+              <span className="grid place-items-center w-11 h-11 rounded-2xl pill-yellow text-[#0B0D0E] shrink-0">
                 <MapPin size={19} strokeWidth={2} />
               </span>
               <span className="min-w-0">

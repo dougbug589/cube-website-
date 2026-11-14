@@ -233,7 +233,7 @@ export default function HomePage() {
         <ul className="mt-6 lg:mt-8 grid md:grid-cols-3 gap-4 lg:gap-6 reveal-stagger">
           {ABOUT_POINTS.map((pt) => (
             <li key={pt.k} className="liquid-glass rounded-[26px] p-6 lg:p-7 flex flex-col">
-              <span className="grid place-items-center w-12 h-12 rounded-2xl bg-[#F6C22E]/15 text-[#F6C22E] depth-1">
+              <span className="grid place-items-center w-12 h-12 rounded-2xl pill-yellow text-[#0B0D0E] depth-1">
                 <pt.Icon size={21} strokeWidth={2} />
               </span>
               <span className="mt-4 block font-display text-[21px] font-bold text-[#F3F5F6] leading-snug">{pt.k}</span>
@@ -310,7 +310,7 @@ export default function HomePage() {
           <ul className="lg:col-span-5 grid gap-4 lg:gap-5 content-between reveal-stagger">
             {celServiceList.slice(0, 3).map((sv) => (
               <li key={sv.id || sv.title} className="liquid-glass is-solid rounded-[24px] p-5 lg:p-6 flex items-start gap-4">
-                <span className="grid place-items-center w-12 h-12 rounded-2xl bg-[#F6C22E]/15 text-[#F6C22E] depth-1 shrink-0">
+                <span className="grid place-items-center w-12 h-12 rounded-2xl pill-yellow text-[#0B0D0E] depth-1 shrink-0">
                   <FlaskConical size={21} strokeWidth={2} />
                 </span>
                 <span>

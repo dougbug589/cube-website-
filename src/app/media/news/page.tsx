@@ -41,7 +41,7 @@ export default async function NewsPage() {
               <p className="mt-4 text-[19px] text-[#DDE3E6] leading-relaxed line-clamp-6">{lead.excerpt || lead.summary}</p>
               <span className="mt-auto pt-8 inline-flex items-center gap-2 text-[16px] font-bold text-[#F3F5F6]">
                 Read the story
-                <span className="grid place-items-center w-10 h-10 rounded-full bg-white/[0.06] border border-white/10 depth-1 transition-[transform,background-color] duration-500 group-hover:bg-[#F6C22E]/35 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
+                <span className="grid place-items-center w-10 h-10 rounded-full bg-white/[0.06] border border-white/10 depth-1 transition-[transform,background-color,border-color,color] duration-500 group-hover:bg-[#F6C22E] group-hover:border-[#F6C22E] group-hover:text-[#0B0D0E] group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
                   <ArrowUpRight size={17} strokeWidth={2.25} />
                 </span>
               </span>
