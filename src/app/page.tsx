@@ -82,7 +82,17 @@ function Section({
   return (
     <section id={id} className={`relative py-20 lg:py-28 ${band ? 'band-mist' : ''} ${bgImage ? 'overflow-hidden' : ''}`}>
       {bgImage && (
-        <div aria-hidden data-section-photo className="absolute inset-0 -z-0 pointer-events-none">
+        // the whole photo layer fades in/out at its top and bottom edges (mask), so it
+        // melts into the page canvas: no hard band edge under the news strip
+        <div
+          aria-hidden
+          data-section-photo
+          className="absolute inset-0 -z-0 pointer-events-none"
+          style={{
+            WebkitMaskImage: 'linear-gradient(to bottom, transparent 0, #000 140px, #000 calc(100% - 140px), transparent 100%)',
+            maskImage: 'linear-gradient(to bottom, transparent 0, #000 140px, #000 calc(100% - 140px), transparent 100%)',
+          }}
+        >
           <Image src={bgImage} alt="" fill sizes="100vw" quality={70} className="object-cover scale-[1.03]" />
           {/* wash: strong behind the heading, lighter in the middle so the photo shows through the glass */}
           <div className="absolute inset-0 bg-gradient-to-b from-[#0B0D0E]/80 via-[#0B0D0E]/30 to-[#0B0D0E]/65" />

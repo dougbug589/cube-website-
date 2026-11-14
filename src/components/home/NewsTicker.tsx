@@ -19,7 +19,7 @@ export default function NewsTicker({ items }: { items: NewsLike[] }) {
   const loop = [...list, ...list];
 
   return (
-    <div className="relative shell mt-5">
+    <div className="relative shell my-5">
       <div className="liquid-glass is-solid depth-1 rounded-[22px] h-14 flex items-center overflow-hidden">
         <Link
           href="/media/news"
