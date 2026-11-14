@@ -1,0 +1,124 @@
+'use client';
+
+import React, { useCallback, useEffect, useRef, useState } from 'react';
+import Image from 'next/image';
+import { ArrowLeft, ArrowRight, MapPin } from 'lucide-react';
+import type { CubeEvent } from '@/data/media';
+
+/**
+ * Events as a horizontal timeline: a yellow rail runs left to right with a
+ * dated marker over each event card. The track scrolls sideways (snaps card
+ * by card; swipe, trackpad, shift+wheel, arrow keys when focused, or the
+ * arrow buttons). The edges fade only on the side that has more to show.
+ * Newest first, so the rail reads "latest" on the left.
+ */
+export default function EventsTimeline({ events }: { events: CubeEvent[] }) {
+  const trackRef = useRef<HTMLOListElement>(null);
+  const [edge, setEdge] = useState({ start: true, end: false });
+
+  const measure = useCallback(() => {
+    const t = trackRef.current;
+    if (!t) return;
+    const max = t.scrollWidth - t.clientWidth;
+    setEdge({ start: t.scrollLeft <= 4, end: t.scrollLeft >= max - 4 });
+  }, []);
+
+  useEffect(() => {
+    const t = trackRef.current;
+    if (!t) return;
+    measure();
+    t.addEventListener('scroll', measure, { passive: true });
+    const ro = new ResizeObserver(measure);
+    ro.observe(t);
+    return () => {
+      t.removeEventListener('scroll', measure);
+      ro.disconnect();
+    };
+  }, [measure]);
+
+  const step = (d: number) => {
+    const t = trackRef.current;
+    const card = t?.querySelector('li') as HTMLElement | null;
+    if (!t || !card) return;
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    t.scrollBy({ left: d * (card.offsetWidth + 24), behavior: reduce ? 'auto' : 'smooth' });
+  };
+
+  const scrollable = !(edge.start && edge.end);
+  const fade = `linear-gradient(to right, ${edge.start ? '#000' : 'transparent'} 0, #000 ${edge.start ? '0' : '48px'}, #000 calc(100% - ${edge.end ? '0px' : '72px'}), ${edge.end ? '#000' : 'transparent'} 100%)`;
+
+  return (
+    <div>
+      <div className="flex items-center justify-between gap-4 mb-6">
+        <p className="label-mono">
+          {events.length} events · newest first
+        </p>
+        {scrollable && (
+          <div className="flex gap-2">
+            <button type="button" onClick={() => step(-1)} disabled={edge.start} aria-label="Earlier in the list" className="press jiggle grid place-items-center w-12 h-12 rounded-full btn-soft disabled:opacity-35 disabled:pointer-events-none">
+              <ArrowLeft size={18} strokeWidth={2.25} />
+            </button>
+            <button type="button" onClick={() => step(1)} disabled={edge.end} aria-label="Later in the list" className="press jiggle grid place-items-center w-12 h-12 rounded-full btn-soft disabled:opacity-35 disabled:pointer-events-none">
+              <ArrowRight size={18} strokeWidth={2.25} />
+            </button>
+          </div>
+        )}
+      </div>
+
+      <ol
+        ref={trackRef}
+        tabIndex={0}
+        aria-label="Events timeline"
+        className="flex gap-6 overflow-x-auto snap-x snap-mandatory scroll-px-1 pb-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden focus:outline-none focus-visible:ring-4 focus-visible:ring-[#F6C22E]/40 rounded-[30px]"
+        style={{ WebkitMaskImage: fade, maskImage: fade }}
+      >
+        {events.map((evt, i) => {
+          const last = i === events.length - 1;
+          return (
+            <li key={evt.title} className="snap-start shrink-0 w-[78vw] sm:w-[420px] flex flex-col">
+              {/* the rail: this card's stretch of it, its marker and date */}
+              <div aria-hidden className="relative h-16">
+                <span
+                  className={`absolute left-5 top-5 h-[3px] rounded-full ${
+                    last ? 'right-0 bg-gradient-to-r from-[#F6C22E] to-transparent' : '-right-6 bg-[#F6C22E]'
+                  }`}
+                />
+                <span className="absolute left-0 top-0 grid place-items-center w-10 h-10 rounded-full bg-[#0B0D0E] border-[3px] border-[#F6C22E] shadow-[0_0_16px_-2px_rgba(246,194,46,0.55)]">
+                  <span className="w-3 h-3 rounded-full bg-[#F6C22E]" />
+                </span>
+              </div>
+              <p className="-mt-3 mb-4 font-display text-[18px] font-extrabold tabular-nums text-[#F6C22E]">
+                {evt.date ? evt.date : i === 0 ? 'Latest' : <span className="text-[#A7B2B8]">Date not stated</span>}
+              </p>
+
+              <article className="flex-1 glass glass-edge rounded-[28px] overflow-hidden flex flex-col">
+                <div className="relative aspect-[16/10] bg-[#1A1F22]">
+                  <Image src={evt.image} alt={evt.title} fill sizes="(max-width: 640px) 78vw, 420px" quality={90} className="object-cover" />
+                  <span className="chip-photo absolute top-3 left-3 rounded-full px-3 py-1 text-[13.5px] font-bold text-white">{evt.category}</span>
+                </div>
+                <div className="p-6 sm:p-7 flex-1 flex flex-col">
+                  {evt.location && (
+                    <p className="flex items-center gap-2 text-[15.5px] font-semibold text-[#C2CCD1]">
+                      <MapPin size={17} className="text-[#F6C22E] shrink-0" /> {evt.location}
+                    </p>
+                  )}
+                  <h2 className="mt-2 font-display text-[22px] sm:text-[24px] font-extrabold text-[#F3F5F6] leading-tight">{evt.title}</h2>
+                  <p className="mt-3 text-[17.5px] text-[#DDE3E6] leading-relaxed">{evt.description}</p>
+                  {evt.highlights && evt.highlights.length > 0 && (
+                    <ul className="mt-auto pt-5 flex flex-wrap gap-2">
+                      {evt.highlights.map((h) => (
+                        <li key={h} className="rounded-full bg-white/[0.06] border border-white/10 px-3.5 py-1.5 text-[15.5px] font-semibold text-[#DDE3E6]">
+                          {h}
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </div>
+              </article>
+            </li>
+          );
+        })}
+      </ol>
+    </div>
+  );
+}
