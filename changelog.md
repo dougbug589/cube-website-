@@ -144,6 +144,7 @@ Two lines of work run through this repository:
 - Slate rail sidebar on desktop, photo hero, and stacked project carousel (Etihad-style layout). Superseded the same day by the top bar. (`75f0d52`)
 
 #### Fixed
+- Full content audit against cubeiitm.org (14 Nov): invented taglines, captions, counts and careers copy replaced with original wording; missing project text, facts and photos added; board bios shown; team/client order as on the original.
 - Gallery no longer flickers on page load (real photo list rendered on the server) or when switching category (whole-grid fade, images reused).
 - Gallery mosaic fills every row at every width and filter; Life at CUBE no longer sits alone at the bottom.
 - News slideshow photos no longer shake or soften: no zoom, higher image quality, fixed stage height.
