@@ -1,6 +1,6 @@
 'use client';
 
-import React, { Suspense, useEffect, useState, useMemo } from 'react';
+import React, { Suspense, useCallback, useEffect, useRef, useState, useMemo } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { useLiveList } from '@/lib/live';
 import { isHydrated } from '@/lib/hydration';
@@ -87,6 +87,25 @@ function ProjectsPageInner() {
   // Only verticals that actually have projects get a filter.
   const filters = categories.filter((c) => c === 'All' || counts[c]);
 
+  // Picking a filter while scrolled down the grid: first bring the top of the
+  // results up under the sticky toolbar (instant: the content is about to
+  // change anyway), then switch. Otherwise the page shrinks under the reader,
+  // the browser clamps the scroll position and the jump looks like a stall.
+  const resultsRef = useRef<HTMLDivElement>(null);
+  const toolbarRef = useRef<HTMLDivElement>(null);
+  const pickCategory = useCallback((cat: string) => {
+    const el = resultsRef.current;
+    if (el) {
+      const nav = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--nav-offset')) || 93;
+      const bar = toolbarRef.current?.offsetHeight || 64;
+      const top = el.getBoundingClientRect().top + window.scrollY - nav - bar - 12;
+      if (window.scrollY > top) window.scrollTo({ top, behavior: 'instant' as ScrollBehavior });
+    }
+    // mount the first 12 cards in the switch frame, the rest right after
+    setLimit(12);
+    setSelectedCategory(cat);
+  }, []);
+
   return (
     <div className="text-[#F3F5F6] min-h-screen">
       <Suspense fallback={null}>
@@ -105,7 +124,7 @@ function ProjectsPageInner() {
       />
 
       {/* Toolbar: glass capsule with a springing filter pill and search */}
-      <div className="sticky top-[var(--nav-offset,93px)] z-40 px-4 sm:px-6 py-3">
+      <div ref={toolbarRef} className="sticky top-[var(--nav-offset,93px)] z-40 px-4 sm:px-6 py-3">
         <div className="liquid-glass is-solid mx-auto max-w-5xl rounded-[26px] sm:rounded-full p-1.5 flex flex-col sm:flex-row gap-1.5 sm:items-center">
           <div className="flex items-center gap-0.5 overflow-x-auto no-scrollbar">
             {filters.map((cat) => {
@@ -114,7 +133,7 @@ function ProjectsPageInner() {
                 <button
                   key={cat}
                   type="button"
-                  onClick={() => setSelectedCategory(cat)}
+                  onClick={() => pickCategory(cat)}
                   aria-pressed={on}
                   className={`press relative h-10 px-4 rounded-full text-[14.5px] whitespace-nowrap transition-colors duration-300 ${
                     on ? 'text-[#0B0D0E] font-bold' : 'text-[#C2CCD1] font-semibold hover:text-[#F3F5F6]'
@@ -148,30 +167,31 @@ function ProjectsPageInner() {
       </div>
 
       <section className="py-10 lg:py-14">
-        <div className="shell">
+        <div ref={resultsRef} className="shell">
           <p className="mb-6 text-[17.5px] text-[#C2CCD1]">
             <span className="font-bold text-[#F3F5F6]">{filteredProjects.length}</span> {filteredProjects.length === 1 ? 'project' : 'projects'}
             {selectedCategory !== 'All' && <> in {selectedCategory}</>}
             {searchQuery.trim() && <> matching &ldquo;{searchQuery.trim()}&rdquo;</>}
           </p>
 
-          {/* cards reflow smoothly when the filter or search changes */}
-          <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6">
-            <AnimatePresence mode="popLayout" initial={false}>
+          {/* switching vertical cross-fades the whole grid in one go (one
+              animated element, not dozens of per-card layout animations that
+              stutter while the page height changes); search updates in place */}
+          <AnimatePresence mode="wait" initial={false}>
+            <motion.div
+              key={selectedCategory}
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6"
+              initial={{ opacity: 0, y: 14 }}
+              animate={{ opacity: 1, y: 0, transition: { duration: 0.32, ease: [0.22, 1, 0.36, 1] } }}
+              exit={{ opacity: 0, transition: { duration: 0.14 } }}
+            >
               {filteredProjects.slice(0, limit).map((project) => (
-                <motion.div
-                  key={project.slug || project.id}
-                  layout="position"
-                  initial={{ opacity: 0, scale: 0.96 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.96 }}
-                  transition={{ type: 'spring', stiffness: 380, damping: 32, mass: 0.8 }}
-                >
+                <div key={project.slug || project.id}>
                   <ProjectCard project={project} />
-                </motion.div>
+                </div>
               ))}
-            </AnimatePresence>
-          </motion.div>
+            </motion.div>
+          </AnimatePresence>
 
           {filteredProjects.length === 0 && (
             <div className="glass rounded-[26px] p-10 text-center">
