@@ -2,6 +2,7 @@ import React from 'react';
 import { FileText, Mail } from 'lucide-react';
 import PageHeader from '@/components/common/PageHeader';
 import TenderRegister from '@/components/tenders/TenderRegister';
+import SectionPhoto from '@/components/common/SectionPhoto';
 import { getCMSStore } from '@/lib/db/store';
 
 export const dynamic = 'force-dynamic';
@@ -26,8 +27,10 @@ export default async function TendersPage() {
         breadcrumbs={[{ label: 'Tenders' }]}
       />
 
-      <section className="pb-24">
-        <div className="shell">
+      {/* Mahindra World City (a CUBE project, cubeiitm.org) behind the register, faded in and out at the edges */}
+      <section className="relative pt-6 pb-28">
+        <SectionPhoto src="/images/hero/slides_mahindra.jpg" wash="bg-[#0B0D0E]/60" />
+        <div className="shell relative">
           {activeTenders.length > 0 ? (
             <TenderRegister tenders={activeTenders} />
           ) : (
