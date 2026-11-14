@@ -30,7 +30,7 @@ export const projects: Project[] = [
     "startDate": "10/06/2020",
     "endDate": "Ongoing",
     "highlights": [
-      "Total Builtup Area.: 1,31,537 Sqm. Total Buildings (Blocks) - 27 Nos. Residential - 15 No. Academic - 12 No. Road - Roads for Type-A, B, C (a)Base Course-Cement Treated Base (b)Over Base Course- Stress Absorbing Member Inter Layer SAMI (c)Over SAMI layer --- Bituminous concrete External Developments - Storm water, drainage and water supply Swale arrangements Ponds - 2 No. Construction Technologies Adopted Fair Faced Concrete Waffle Slab Polished Flooring"
+      "Total Built-up Area.: 1,31,537 Sqm. Total Buildings (Blocks) - 27 Nos. Residential - 15 No. Academic - 12 No. Road - Roads for Type-A, B, C (a)Base Course-Cement Treated Base (b)Over Base Course- Stress Absorbing Member Inter Layer SAMI (c)Over SAMI layer --- Bituminous concrete External Developments - Storm water, drainage and water supply Swale arrangements Ponds - 2 No. Construction Technologies Adopted Fair Faced Concrete Waffle Slab Polished Flooring"
     ],
     "services": [],
     "featured": true
@@ -69,7 +69,7 @@ export const projects: Project[] = [
     "startDate": "10/11/2020",
     "endDate": "Ongoing",
     "highlights": [
-      "Total Builtup Area.:1,31,537 Sqm. Total Buildings 30 No. Residential - 14 No. Academic - 16 No. External Developments - Roads, Storm water, drainage and water supply Ponds - 2 No. Construction Technologies Adopted Fair Faced Concrete Waffle Slab Polished Flooring"
+      "Total Built-up Area.:1,31,537 Sqm. Total Buildings 30 No. Residential - 14 No. Academic - 16 No. External Developments - Roads, Storm water, drainage and water supply Ponds - 2 No. Construction Technologies Adopted Fair Faced Concrete Waffle Slab Polished Flooring"
     ],
     "services": [],
     "featured": false
@@ -102,7 +102,7 @@ export const projects: Project[] = [
     "slug": "lhp",
     "title": "Third Party Quality Assurance for Light House Project at Agartala",
     "category": "Building & Construction",
-    "description": "Ministry of Housing and Urban Affairs(MoHUA) initiated a Global Housing Technology Challenge to identify the best available construction technologies from across the globe. Out of the identified 54 technologies, Six Light House Projects using six distinct technologies were finalised. The Honble Prime Minister laid the foundation stone of Six Light House Projects on 1st January 2021. Through a competitive bidding process, IIT Madras has been appointed by the Ministry of Housing & Urban Affairs to provide Third Party Quality Assurance Services for their flagship project of constructing affordable housing using innovating and new technologies approved by Building Materials And Technology Promotion Council [BMTPC]. The following six projects with different technologies at each project site are being undertaken: 1. Indore, Madhya Pradesh1,024 (S+8) - Prefabricated Sandwich Panel System 2. Rajkot, Gujarat1,144 (S+13) - Monolithic Concrete Construction using Tunnel Formwork 3. Chennai, Tamil Nadu1,152 (G+5) - Precast Concrete Construction System Precast Components Assembled at Site 4. Ranchi, Jharkhand1,008 (G+8) - Precast Concrete Construction System 3D Volumetric 5. Agartala, Tripura1,000 (G+6) - Light Gauge Steel Structural System & Pre-engineered Steel Structural System 6. Lucknow, Uttar Pradesh1,040 (S+13) - PVC Stay In Place Formwork System",
+    "description": "Ministry of Housing and Urban Affairs(MoHUA) initiated a Global Housing Technology Challenge to identify the best available construction technologies from across the globe. Out of the identified 54 technologies, Six Light House Projects using six distinct technologies were finalised. The Hon’ble Prime Minister laid the foundation stone of Six Light House Projects on 1st January 2021. Through a competitive bidding process, IIT Madras has been appointed by the Ministry of Housing & Urban Affairs to provide Third Party Quality Assurance Services for their flagship project of constructing affordable housing using innovating and new technologies approved by Building Materials And Technology Promotion Council [BMTPC]. The following six projects with different technologies at each project site are being undertaken: 1. Indore, Madhya Pradesh1,024 (S+8) - Prefabricated Sandwich Panel System 2. Rajkot, Gujarat1,144 (S+13) - Monolithic Concrete Construction using Tunnel Formwork 3. Chennai, Tamil Nadu1,152 (G+5) - Precast Concrete Construction System Precast Components Assembled at Site 4. Ranchi, Jharkhand1,008 (G+8) - Precast Concrete Construction System 3D Volumetric 5. Agartala, Tripura1,000 (G+6) - Light Gauge Steel Structural System & Pre-engineered Steel Structural System 6. Lucknow, Uttar Pradesh1,040 (S+13) - PVC Stay In Place Formwork System",
     "heroImage": "/images/projects/building-construction/lhp_agartala_04.jpg",
     "galleryImages": [
       "/images/projects/building-construction/lhp_agartala_01.jpg",
@@ -137,7 +137,7 @@ export const projects: Project[] = [
     "startDate": "02/02/2021",
     "endDate": "Ongoing",
     "highlights": [
-      "Total Builtup Area - 3Lakh Sqft. Total Dwelling Units - 7000 DUs Total Project Cost - 790 Crores"
+      "Total Built-up Area - 3Lakh Sqft. Total Dwelling Units - 7000 DUs Total Project Cost - 790 Crores"
     ],
     "services": [],
     "featured": false
@@ -146,7 +146,7 @@ export const projects: Project[] = [
     "slug": "lhp-ranchi",
     "title": "Third Party Quality Assurance for Light House Project at Ranchi",
     "category": "Building & Construction",
-    "description": "Ministry of Housing and Urban Affairs(MoHUA) initiated a Global Housing Technology Challenge to identify the best available construction technologies from across the globe. Out of the identified 54 technologies, Six Light House Projects using six distinct technologies were finalised. The Honble Prime Minister laid the foundation stone of Six Light House Projects on 1st January 2021. Through a competitive bidding process, IIT Madras has been appointed by the Ministry of Housing & Urban Affairs to provide Third Party Quality Assurance Services for their flagship project of constructing affordable housing using innovating and new technologies approved by Building Materials And Technology Promotion Council [BMTPC]. The following six projects with different technologies at each project site are being undertaken: 1. Indore, Madhya Pradesh1,024 (S+8) - Prefabricated Sandwich Panel System 2. Rajkot, Gujarat1,144 (S+13) - Monolithic Concrete Construction using Tunnel Formwork 3. Chennai, Tamil Nadu1,152 (G+5) - Precast Concrete Construction System Precast Components Assembled at Site 4. Ranchi, Jharkhand1,008 (G+8) - Precast Concrete Construction System 3D Volumetric 5. Agartala, Tripura1,000 (G+6) - Light Gauge Steel Structural System & Pre-engineered Steel Structural System 6. Lucknow, Uttar Pradesh1,040 (S+13) - PVC Stay In Place Formwork System",
+    "description": "Ministry of Housing and Urban Affairs(MoHUA) initiated a Global Housing Technology Challenge to identify the best available construction technologies from across the globe. Out of the identified 54 technologies, Six Light House Projects using six distinct technologies were finalised. The Hon’ble Prime Minister laid the foundation stone of Six Light House Projects on 1st January 2021. Through a competitive bidding process, IIT Madras has been appointed by the Ministry of Housing & Urban Affairs to provide Third Party Quality Assurance Services for their flagship project of constructing affordable housing using innovating and new technologies approved by Building Materials And Technology Promotion Council [BMTPC]. The following six projects with different technologies at each project site are being undertaken: 1. Indore, Madhya Pradesh1,024 (S+8) - Prefabricated Sandwich Panel System 2. Rajkot, Gujarat1,144 (S+13) - Monolithic Concrete Construction using Tunnel Formwork 3. Chennai, Tamil Nadu1,152 (G+5) - Precast Concrete Construction System Precast Components Assembled at Site 4. Ranchi, Jharkhand1,008 (G+8) - Precast Concrete Construction System 3D Volumetric 5. Agartala, Tripura1,000 (G+6) - Light Gauge Steel Structural System & Pre-engineered Steel Structural System 6. Lucknow, Uttar Pradesh1,040 (S+13) - PVC Stay In Place Formwork System",
     "heroImage": "/images/projects/building-construction/lhp_ranchi_02.jpg",
     "galleryImages": [
       "/images/projects/building-construction/lhp_ranchi_01.jpg",
@@ -162,7 +162,7 @@ export const projects: Project[] = [
     "startDate": "02/02/2021",
     "endDate": "Ongoing",
     "highlights": [
-      "Total Builtup Area - 3Lakh Sqft. Total Dwelling Units - 7000 DUs Total Project Cost - 790 Crores"
+      "Total Built-up Area - 3Lakh Sqft. Total Dwelling Units - 7000 DUs Total Project Cost - 790 Crores"
     ],
     "services": [],
     "featured": false
@@ -171,7 +171,7 @@ export const projects: Project[] = [
     "slug": "lhp-indore",
     "title": "Third Party Quality Assurance for Light House Project at Indore",
     "category": "Building & Construction",
-    "description": "Ministry of Housing and Urban Affairs(MoHUA) initiated a Global Housing Technology Challenge to identify the best available construction technologies from across the globe. Out of the identified 54 technologies, Six Light House Projects using six distinct technologies were finalised. The Honble Prime Minister laid the foundation stone of Six Light House Projects on 1st January 2021. Through a competitive bidding process, IIT Madras has been appointed by the Ministry of Housing & Urban Affairs to provide Third Party Quality Assurance Services for their flagship project of constructing affordable housing using innovating and new technologies approved by Building Materials And Technology Promotion Council [BMTPC]. The following six projects with different technologies at each project site are being undertaken: 1. Indore, Madhya Pradesh1,024 (S+8) - Prefabricated Sandwich Panel System 2. Rajkot, Gujarat1,144 (S+13) - Monolithic Concrete Construction using Tunnel Formwork 3. Chennai, Tamil Nadu1,152 (G+5) - Precast Concrete Construction System Precast Components Assembled at Site 4. Ranchi, Jharkhand1,008 (G+8) - Precast Concrete Construction System 3D Volumetric 5. Agartala, Tripura1,000 (G+6) - Light Gauge Steel Structural System & Pre-engineered Steel Structural System 6. Lucknow, Uttar Pradesh1,040 (S+13) - PVC Stay In Place Formwork System",
+    "description": "Ministry of Housing and Urban Affairs(MoHUA) initiated a Global Housing Technology Challenge to identify the best available construction technologies from across the globe. Out of the identified 54 technologies, Six Light House Projects using six distinct technologies were finalised. The Hon’ble Prime Minister laid the foundation stone of Six Light House Projects on 1st January 2021. Through a competitive bidding process, IIT Madras has been appointed by the Ministry of Housing & Urban Affairs to provide Third Party Quality Assurance Services for their flagship project of constructing affordable housing using innovating and new technologies approved by Building Materials And Technology Promotion Council [BMTPC]. The following six projects with different technologies at each project site are being undertaken: 1. Indore, Madhya Pradesh1,024 (S+8) - Prefabricated Sandwich Panel System 2. Rajkot, Gujarat1,144 (S+13) - Monolithic Concrete Construction using Tunnel Formwork 3. Chennai, Tamil Nadu1,152 (G+5) - Precast Concrete Construction System Precast Components Assembled at Site 4. Ranchi, Jharkhand1,008 (G+8) - Precast Concrete Construction System 3D Volumetric 5. Agartala, Tripura1,000 (G+6) - Light Gauge Steel Structural System & Pre-engineered Steel Structural System 6. Lucknow, Uttar Pradesh1,040 (S+13) - PVC Stay In Place Formwork System",
     "heroImage": "/images/projects/building-construction/lhp_indore_01.jpg",
     "galleryImages": [
       "/images/projects/building-construction/lhp_indore_02.jpg",
@@ -187,7 +187,7 @@ export const projects: Project[] = [
     "startDate": "02/02/2021",
     "endDate": "Ongoing",
     "highlights": [
-      "Total Builtup Area - 3Lakh Sqft. Total Dwelling Units - 7000 DUs Total Project Cost - 790 Crores"
+      "Total Built-up Area - 3Lakh Sqft. Total Dwelling Units - 7000 DUs Total Project Cost - 790 Crores"
     ],
     "services": [],
     "featured": false
@@ -196,7 +196,7 @@ export const projects: Project[] = [
     "slug": "lhp-luknow",
     "title": "Third Party Quality Assurance for Light House Project at Lucknow",
     "category": "Building & Construction",
-    "description": "Ministry of Housing and Urban Affairs(MoHUA) initiated a Global Housing Technology Challenge to identify the best available construction technologies from across the globe. Out of the identified 54 technologies, Six Light House Projects using six distinct technologies were finalised. The Honble Prime Minister laid the foundation stone of Six Light House Projects on 1st January 2021. Through a competitive bidding process, IIT Madras has been appointed by the Ministry of Housing & Urban Affairs to provide Third Party Quality Assurance Services for their flagship project of constructing affordable housing using innovating and new technologies approved by Building Materials And Technology Promotion Council [BMTPC]. The following six projects with different technologies at each project site are being undertaken: 1. Indore, Madhya Pradesh1,024 (S+8) - Prefabricated Sandwich Panel System 2. Rajkot, Gujarat1,144 (S+13) - Monolithic Concrete Construction using Tunnel Formwork 3. Chennai, Tamil Nadu1,152 (G+5) - Precast Concrete Construction System Precast Components Assembled at Site 4. Ranchi, Jharkhand1,008 (G+8) - Precast Concrete Construction System 3D Volumetric 5. Agartala, Tripura1,000 (G+6) - Light Gauge Steel Structural System & Pre-engineered Steel Structural System 6. Lucknow, Uttar Pradesh1,040 (S+13) - PVC Stay In Place Formwork System",
+    "description": "Ministry of Housing and Urban Affairs(MoHUA) initiated a Global Housing Technology Challenge to identify the best available construction technologies from across the globe. Out of the identified 54 technologies, Six Light House Projects using six distinct technologies were finalised. The Hon’ble Prime Minister laid the foundation stone of Six Light House Projects on 1st January 2021. Through a competitive bidding process, IIT Madras has been appointed by the Ministry of Housing & Urban Affairs to provide Third Party Quality Assurance Services for their flagship project of constructing affordable housing using innovating and new technologies approved by Building Materials And Technology Promotion Council [BMTPC]. The following six projects with different technologies at each project site are being undertaken: 1. Indore, Madhya Pradesh1,024 (S+8) - Prefabricated Sandwich Panel System 2. Rajkot, Gujarat1,144 (S+13) - Monolithic Concrete Construction using Tunnel Formwork 3. Chennai, Tamil Nadu1,152 (G+5) - Precast Concrete Construction System Precast Components Assembled at Site 4. Ranchi, Jharkhand1,008 (G+8) - Precast Concrete Construction System 3D Volumetric 5. Agartala, Tripura1,000 (G+6) - Light Gauge Steel Structural System & Pre-engineered Steel Structural System 6. Lucknow, Uttar Pradesh1,040 (S+13) - PVC Stay In Place Formwork System",
     "heroImage": "/images/projects/building-construction/lhp_luknow_02.jpg",
     "galleryImages": [
       "/images/projects/building-construction/lhp_luknow_01.jpg",
@@ -213,7 +213,7 @@ export const projects: Project[] = [
     "startDate": "02/02/2021",
     "endDate": "Ongoing",
     "highlights": [
-      "Total Builtup Area - 3Lakh Sqft. Total Dwelling Units - 7000 DUs Total Project Cost - 790 Crores"
+      "Total Built-up Area - 3Lakh Sqft. Total Dwelling Units - 7000 DUs Total Project Cost - 790 Crores"
     ],
     "services": [],
     "featured": false
@@ -222,7 +222,7 @@ export const projects: Project[] = [
     "slug": "lhp-rajkot",
     "title": "Third Party Quality Assurance for Light House Project at Rajkot",
     "category": "Building & Construction",
-    "description": "Ministry of Housing and Urban Affairs(MoHUA) initiated a Global Housing Technology Challenge to identify the best available construction technologies from across the globe. Out of the identified 54 technologies, Six Light House Projects using six distinct technologies were finalised. The Honble Prime Minister laid the foundation stone of Six Light House Projects on 1st January 2021. Through a competitive bidding process, IIT Madras has been appointed by the Ministry of Housing & Urban Affairs to provide Third Party Quality Assurance Services for their flagship project of constructing affordable housing using innovating and new technologies approved by Building Materials And Technology Promotion Council [BMTPC]. The following six projects with different technologies at each project site are being undertaken: 1. Indore, Madhya Pradesh1,024 (S+8) - Prefabricated Sandwich Panel System 2. Rajkot, Gujarat1,144 (S+13) - Monolithic Concrete Construction using Tunnel Formwork 3. Chennai, Tamil Nadu1,152 (G+5) - Precast Concrete Construction System Precast Components Assembled at Site 4. Ranchi, Jharkhand1,008 (G+8) - Precast Concrete Construction System 3D Volumetric 5. Agartala, Tripura1,000 (G+6) - Light Gauge Steel Structural System & Pre-engineered Steel Structural System 6. Lucknow, Uttar Pradesh1,040 (S+13) - PVC Stay In Place Formwork System",
+    "description": "Ministry of Housing and Urban Affairs(MoHUA) initiated a Global Housing Technology Challenge to identify the best available construction technologies from across the globe. Out of the identified 54 technologies, Six Light House Projects using six distinct technologies were finalised. The Hon’ble Prime Minister laid the foundation stone of Six Light House Projects on 1st January 2021. Through a competitive bidding process, IIT Madras has been appointed by the Ministry of Housing & Urban Affairs to provide Third Party Quality Assurance Services for their flagship project of constructing affordable housing using innovating and new technologies approved by Building Materials And Technology Promotion Council [BMTPC]. The following six projects with different technologies at each project site are being undertaken: 1. Indore, Madhya Pradesh1,024 (S+8) - Prefabricated Sandwich Panel System 2. Rajkot, Gujarat1,144 (S+13) - Monolithic Concrete Construction using Tunnel Formwork 3. Chennai, Tamil Nadu1,152 (G+5) - Precast Concrete Construction System Precast Components Assembled at Site 4. Ranchi, Jharkhand1,008 (G+8) - Precast Concrete Construction System 3D Volumetric 5. Agartala, Tripura1,000 (G+6) - Light Gauge Steel Structural System & Pre-engineered Steel Structural System 6. Lucknow, Uttar Pradesh1,040 (S+13) - PVC Stay In Place Formwork System",
     "heroImage": "/images/projects/building-construction/lhp_rajkot_01.jpg",
     "galleryImages": [
       "/images/projects/building-construction/lhp_rajkot_02.jpg",
@@ -238,7 +238,7 @@ export const projects: Project[] = [
     "startDate": "02/02/2021",
     "endDate": "Completed",
     "highlights": [
-      "Total Builtup Area - 3Lakh Sqft. Total Dwelling Units - 7000 DUs Total Project Cost - 790 Crores"
+      "Total Built-up Area - 3Lakh Sqft. Total Dwelling Units - 7000 DUs Total Project Cost - 790 Crores"
     ],
     "services": [],
     "featured": false
@@ -247,7 +247,7 @@ export const projects: Project[] = [
     "slug": "lhp-chennai",
     "title": "Third Party Quality Assurance for Light House Project at Chennai",
     "category": "Building & Construction",
-    "description": "Ministry of Housing and Urban Affairs(MoHUA) initiated a Global Housing Technology Challenge to identify the best available construction technologies from across the globe. Out of the identified 54 technologies, Six Light House Projects using six distinct technologies were finalised. The Honble Prime Minister laid the foundation stone of Six Light House Projects on 1st January 2021. Through a competitive bidding process, IIT Madras has been appointed by the Ministry of Housing & Urban Affairs to provide Third Party Quality Assurance Services for their flagship project of constructing affordable housing using innovating and new technologies approved by Building Materials And Technology Promotion Council [BMTPC]. The following six projects with different technologies at each project site are being undertaken: 1. Indore, Madhya Pradesh1,024 (S+8) - Prefabricated Sandwich Panel System 2. Rajkot, Gujarat1,144 (S+13) - Monolithic Concrete Construction using Tunnel Formwork 3. Chennai, Tamil Nadu1,152 (G+5) - Precast Concrete Construction System Precast Components Assembled at Site 4. Ranchi, Jharkhand1,008 (G+8) - Precast Concrete Construction System 3D Volumetric 5. Agartala, Tripura1,000 (G+6) - Light Gauge Steel Structural System & Pre-engineered Steel Structural System 6. Lucknow, Uttar Pradesh1,040 (S+13) - PVC Stay In Place Formwork System",
+    "description": "Ministry of Housing and Urban Affairs(MoHUA) initiated a Global Housing Technology Challenge to identify the best available construction technologies from across the globe. Out of the identified 54 technologies, Six Light House Projects using six distinct technologies were finalised. The Hon’ble Prime Minister laid the foundation stone of Six Light House Projects on 1st January 2021. Through a competitive bidding process, IIT Madras has been appointed by the Ministry of Housing & Urban Affairs to provide Third Party Quality Assurance Services for their flagship project of constructing affordable housing using innovating and new technologies approved by Building Materials And Technology Promotion Council [BMTPC]. The following six projects with different technologies at each project site are being undertaken: 1. Indore, Madhya Pradesh1,024 (S+8) - Prefabricated Sandwich Panel System 2. Rajkot, Gujarat1,144 (S+13) - Monolithic Concrete Construction using Tunnel Formwork 3. Chennai, Tamil Nadu1,152 (G+5) - Precast Concrete Construction System Precast Components Assembled at Site 4. Ranchi, Jharkhand1,008 (G+8) - Precast Concrete Construction System 3D Volumetric 5. Agartala, Tripura1,000 (G+6) - Light Gauge Steel Structural System & Pre-engineered Steel Structural System 6. Lucknow, Uttar Pradesh1,040 (S+13) - PVC Stay In Place Formwork System",
     "heroImage": "/images/projects/building-construction/lhp_chennai_01.jpg",
     "galleryImages": [
       "/images/projects/building-construction/lhp_chennai_02.jpg",
@@ -265,7 +265,7 @@ export const projects: Project[] = [
     "startDate": "02/02/2021",
     "endDate": "Completed",
     "highlights": [
-      "Total Builtup Area - 3Lakh Sqft. Total Dwelling Units - 7000 DUs Total Project Cost - 790 Crores"
+      "Total Built-up Area - 3Lakh Sqft. Total Dwelling Units - 7000 DUs Total Project Cost - 790 Crores"
     ],
     "services": [],
     "featured": false
@@ -274,7 +274,7 @@ export const projects: Project[] = [
     "slug": "cpcl-nagapattinam",
     "title": "Environmental Upgradation of Three Villages in Nagapattinam",
     "category": "Building & Construction",
-    "description": "CPCL has planned to extend their corporate social responsiblity for welfare of migrant villagers Three villages i.e., Panangudi, Gopurajpuram, Vellapakkam at Nagapattinam, TN adopted by CPCL in vicinity of their Cauvery Basin Refinery.. CUBE has been entrusted for providing under-mentioned scope of work:\nWater & waste water treatment by constructing Drain fields & soak pit.\nCompost yards by constructing Organic waste treatment plant & Recycling of Inorganic waste.\nSchool & anganwadi infrastructure by cnstructing classrooms, Public health facilities, renovation of old buildings & fancing adjucent waterbodies for puples safety.\nDevelopment of community halls by constructing community hall, Public health facilities & skill development centre.\nHousehold level toilet blocks by constructing Precast household toilets, water tank, septic tank, Inspection chamber.\nRejuvenation of water bodies by desilting, Bund stabilization, Concrete slab pitching, Bathing Ghat, Cattle Ramp, Rcharge well.\nDinking water distribution chain to households by providing Deep bore holes, Water supply to over head tank, Supply of water to households.",
+    "description": "CPCL has planned to extend their corporate social responsibility for welfare of migrant villagers Three villages i.e., Panangudi, Gopurajpuram, Vellapakkam at Nagapattinam, TN adopted by CPCL in vicinity of their Cauvery Basin Refinery.. CUBE has been entrusted for providing under-mentioned scope of work:\nWater & waste water treatment by constructing Drain fields & soak pit.\nCompost yards by constructing Organic waste treatment plant & Recycling of Inorganic waste.\nSchool & anganwadi infrastructure by constructing classrooms, Public health facilities, renovation of old buildings & fencing adjacent waterbodies for pupils’ safety.\nDevelopment of community halls by constructing community hall, Public health facilities & skill development centre.\nHousehold level toilet blocks by constructing Precast household toilets, water tank, septic tank, Inspection chamber.\nRejuvenation of water bodies by desilting, Bund stabilization, Concrete slab pitching, Bathing Ghat, Cattle Ramp, Recharge well.\nDrinking water distribution chain to households by providing Deep bore holes, Water supply to over head tank, Supply of water to households.",
     "heroImage": "/images/projects/building-construction/cpcl_nagapatinam_04.jpg",
     "galleryImages": [
       "/images/projects/building-construction/cpcl_nagapatinam_01.jpg",
@@ -298,7 +298,7 @@ export const projects: Project[] = [
   },
   {
     "slug": "hfapmay",
-    "title": "Reconstruction of Several Tenemental scheme under Housing For All/Pradhan Mantry Awas Yojana(HFA/PMAY)= 40+ scheme",
+    "title": "Reconstruction of Several Tenemental scheme under Housing For All/Pradhan Mantri Awas Yojana(HFA/PMAY)= 40+ scheme",
     "category": "Building & Construction",
     "description": "",
     "heroImage": "/images/projects/building-construction/hfapmay_06.jpg",
@@ -388,7 +388,7 @@ export const projects: Project[] = [
       "/images/projects/kp_park_04.jpg"
     ],
     "scopeOfWork": [
-      "Quality Assesment works"
+      "Quality Assessment works"
     ],
     "client": "TNUHDB",
     "location": "Chennai",
@@ -399,7 +399,7 @@ export const projects: Project[] = [
       "An Highly Visible and Major Breakthrough Project in TN Govt Sector Carried out Independent Quality Assessment of the completed four towers of 864 No. of EWS tenements of Stilt + 9 floors in KP Park in respect of the following:",
       "1.1. Quality of concrete in structural elements namely columns, beams and floor slabs through conduct of appropriate Non-Destructive [NDT] and Partial Destructive [PDT] tests.",
       "1.2. Quality of non-structural and fit-out materials.",
-      "1.3. Quality of workmanship. Recommended the areas of Improvents for safe occupation of the buildings Executed under intense public resistane, media coverage and peer pressure. CUBE extend its all out efforts to help TNUHDB out of the predicament of public outrage. Conducted an in depth and comprehensive Quality Assessment works of the constructed buildings through extensive investigation and testing to ascertain their structural soundness as well as the functionality status and provide recommendations for improvement. Completed the project with best in class industry standards and well received report specially appreciated by Chief Sceretary snd Principal Secratary to the GoTN. CUBE's Quality Assessment report has been published in the TNUHDB's website for public knowledge stands as a testament to the exemplary achievement by the technical team."
+      "1.3. Quality of workmanship. Recommended the areas of Improvements for safe occupation of the buildings Executed under intense public resistance, media coverage and peer pressure. CUBE extend its all out efforts to help TNUHDB out of the predicament of public outrage. Conducted an in depth and comprehensive Quality Assessment works of the constructed buildings through extensive investigation and testing to ascertain their structural soundness as well as the functionality status and provide recommendations for improvement. Completed the project with best in class industry standards and well received report specially appreciated by Chief Secretary and Principal Secretary to the GoTN. CUBE's Quality Assessment report has been published in the TNUHDB's website for public knowledge stands as a testament to the exemplary achievement by the technical team."
     ],
     "services": [],
     "featured": false,
@@ -511,7 +511,7 @@ export const projects: Project[] = [
     "startDate": "11/06/2020",
     "endDate": "24 Months",
     "highlights": [
-      "Total Plinth Area - 38,105 Sqm. Total Buildings - 14 Nos. Resedential - 7 Nos Academic - 7 Nos. Total Project Cost - 171,96,60,120/- Technology used - Conventional and Mivan Additional Works: PIT(Pile Integrity Test) - 1967 Piles"
+      "Total Plinth Area - 38,105 Sqm. Total Buildings - 14 Nos. Residential - 7 Nos Academic - 7 Nos. Total Project Cost - 171,96,60,120/- Technology used - Conventional and Mivan Additional Works: PIT(Pile Integrity Test) - 1967 Piles"
     ],
     "services": [],
     "featured": false
@@ -539,7 +539,7 @@ export const projects: Project[] = [
   },
   {
     "slug": "arungulam",
-    "title": "TNUHDB Tirutteni_ Providing Consultancy & Supervision to retrofit the defective structural elements identified by CUBE in their Quality Assessment Report at Arunghulam site",
+    "title": "TNUHDB Tirutteni – Providing Consultancy & Supervision to retrofit the defective structural elements identified by CUBE in their Quality Assessment Report at Arunghulam site",
     "category": "Building & Construction",
     "description": "This project is very special as CUBE has to advice the retrofitting/repair (R&R) measure to be adopt for the Tirutteni Arunghulam site belongs to Kancheepuram division, which CUBE only audited as a TPQMA agency, & validated the Quality deflecting parameters adopted by the execution agency then. Tamil Nadu Urban Habitat Development Board [TNUHDB] vide Letter No. TNUHDB/SQC/2417/2022 dated 28 February 2022, has entrusted Centre for Urbanization, Buildings & Environment [CUBE] with the quality assessment of the ongoing Arungulam Scheme Phase I - in Thiruttani at Thiruvallur District. During CUBE inspection of the project site on 02, 03 March & 19 April 2022, the quality of construction in terms of documentation maintenance, material and workmanship aspects were checked and the detailed outcome of the inspection was submitted as a â€œQuality Assessment Report on 31 May 2022. Based on the above Report, TNUHDB requested CUBE for Quantification of defects, Rectification Methodology and Supervision of the Rectification, etc as per Letter No. TNUHDB letter No.889/DB/TVL DIV/TNUHDB/2020, dated 25 June 2022.",
     "heroImage": "/images/projects/arungulam_1.jpg",
@@ -615,7 +615,7 @@ export const projects: Project[] = [
     "heroImage": "/images/projects/building-construction/sidco_1.jpg",
     "galleryImages": [],
     "scopeOfWork": [
-      "Third party Quality Monitoring Serivices (TPQMA)"
+      "Third party Quality Monitoring Services (TPQMA)"
     ],
     "client": "TANSIDCO",
     "location": "Chennai",
@@ -639,7 +639,7 @@ export const projects: Project[] = [
     "heroImage": "/images/projects/building-construction/sidco_amb_1.jpg",
     "galleryImages": [],
     "scopeOfWork": [
-      "Third party Quality Monitoring Serivices (TPQMA)"
+      "Third party Quality Monitoring Services (TPQMA)"
     ],
     "client": "TANSIDCO",
     "location": "Chennai",
@@ -666,7 +666,7 @@ export const projects: Project[] = [
       "/images/projects/keerapakkam_3.jpg"
     ],
     "scopeOfWork": [
-      "Quality Assesment works"
+      "Quality Assessment works"
     ],
     "client": "TNUHDB",
     "location": "Chengalpattu",
@@ -674,7 +674,7 @@ export const projects: Project[] = [
     "startDate": "28.10.2021",
     "endDate": "3 Months",
     "highlights": [
-      "In Continuation to the exemplary work done, CUBE was awarded with more such asignments for: - TNHB 384 LIG Flats Of Three Towers (STILT + 8) IN Ramapuram 561 Multi Storeyed Flats - Brindavan Towers, K.K Nagar CMDA CMDA and TNHB Headquarters - Multi Storied Office Complex Building at Koyambedu New Mofussil Bus Terminus at Kuthambakkam & Kilambakkam - Mega Infrastructure Projects Community Centre & Night Shelter & Restaurant of CMDA. TNUHDB 1260 (G+5 & G+2) Tenements at Murugamangalam. 1760 (G+5 & G+3) Tenements at Keerapakkam. 432 No (G+5) Tenements In Thiruttani. Miscallaneous SBIOA Unity Enclave, Mambakkam, Chennai Reserve Bank of India building Jeevan Bheema Nagar at Padi"
+      "In Continuation to the exemplary work done, CUBE was awarded with more such assignments for: - TNHB 384 LIG Flats Of Three Towers (STILT + 8) IN Ramapuram 561 Multi Storeyed Flats - Brindavan Towers, K.K Nagar CMDA CMDA and TNHB Headquarters - Multi Storied Office Complex Building at Koyambedu New Mofussil Bus Terminus at Kuthambakkam & Kilambakkam - Mega Infrastructure Projects Community Centre & Night Shelter & Restaurant of CMDA. TNUHDB 1260 (G+5 & G+2) Tenements at Murugamangalam. 1760 (G+5 & G+3) Tenements at Keerapakkam. 432 No (G+5) Tenements In Thiruttani. Miscellaneous SBIOA Unity Enclave, Mambakkam, Chennai Reserve Bank of India building Jeevan Bheema Nagar at Padi"
     ],
     "services": [],
     "featured": false
@@ -726,8 +726,8 @@ export const projects: Project[] = [
     "startDate": "2023",
     "endDate": "May 2023 - ongoing",
     "highlights": [
-      "Impact Assesment -Conducting Traffic Impact Assessment considering road connectivity, traffic patterns, NMT and parking availability while adhering to transportation policies.",
-      "Effective Traffic Management -Assesing the Traffic projection, proposing smooth flow measures during construction and operation with safe user accessibility.",
+      "Impact Assessment -Conducting Traffic Impact Assessment considering road connectivity, traffic patterns, NMT and parking availability while adhering to transportation policies.",
+      "Effective Traffic Management -Assessing the Traffic projection, proposing smooth flow measures during construction and operation with safe user accessibility.",
       "Urban Mobility Enhancement -Alignment with transportation standards, collaboration with stakeholders, and urban development focus for optimized traffic management around the court complex."
     ],
     "services": [
@@ -766,9 +766,9 @@ export const projects: Project[] = [
       "Tourism and Socioeconomic Boost: Enhancing the cave complex for tourism potential, contributing to local economic growth and preserving socio-cultural heritage."
     ],
     "services": [
-      "Distress assesssment to identify structural vulnerabilities.",
+      "Distress assessment to identify structural vulnerabilities.",
       "Geological assessment of rock strata and Geological tests to understand composition and characteristics.",
-      "Implementation of Cave conservation through strengthenening,Protection and tourism Developement.",
+      "Implementation of Cave conservation through strengthening,Protection and tourism Development.",
       "Architectural and design interventions.",
       "Bill of Quantities"
     ],
@@ -812,7 +812,7 @@ export const projects: Project[] = [
     "slug": "upt4",
     "title": "Documentation & Preparation of Assessment Reports of Heritage Buildings",
     "category": "Urban Planning & Transportation",
-    "description": "CUBE has documented heritage buildings in the Chennai Metropolitan Area and prepared the assessment reports to be used as benchmark documentation by CMDA. The project involved documentation of heritage.\nBuildings iunder four themes – Building Records, Historical Details, Architectural Significance and Cultural Relevance of the Buildings including location, photographic documentation (both interior & exterior), time of construction, trends in terms of ownership, usage of the building and chronological events that are of historical & cultural value.",
+    "description": "CUBE has documented heritage buildings in the Chennai Metropolitan Area and prepared the assessment reports to be used as benchmark documentation by CMDA. The project involved documentation of heritage.\nBuildings under four themes – Building Records, Historical Details, Architectural Significance and Cultural Relevance of the Buildings including location, photographic documentation (both interior & exterior), time of construction, trends in terms of ownership, usage of the building and chronological events that are of historical & cultural value.",
     "heroImage": "/images/projects/urban-planning/upt4_1.jpg",
     "galleryImages": [
       "/images/projects/urban-planning/upt4_2.jpg",
@@ -853,7 +853,7 @@ export const projects: Project[] = [
       "/images/projects/urban-planning/upt5_6.jpg"
     ],
     "scopeOfWork": [],
-    "client": "Greater Chennai Coorporation",
+    "client": "Greater Chennai Corporation",
     "location": "Chennai",
     "projectStatus": "Ongoing",
     "startDate": "2020",
@@ -910,7 +910,7 @@ export const projects: Project[] = [
   },
   {
     "slug": "upt7",
-    "title": "Tamil Nadu State Industrial Water Poilcy",
+    "title": "Tamil Nadu State Industrial Water Policy",
     "category": "Urban Planning & Transportation",
     "description": "The growing recognition that “Water” is a finite and precious resource with clear linkage to all the three development dimensions: Environmental, Economic, and Social, has caught the attention of policy makers over the last decade. Considering the significant role water plays in the Industrial development, GoTN has assigned CUBE to frame the State Industrial Water Policy. The Policy shall be drafted through research and feedback-based methodology. Workshops and interactions at different stages have been planned to be held with the stakeholders.\nThe policy aims to encompass the following themes:\nTheme 1: Source Management\nTheme 2: Sustainable Integrated Industrial Water Management\nTheme 3: Monitoring Framework\nTheme 4: Financial Mechanisms\nTheme 5: Innovation, Capacity Building & Knowledge Dissemination\nTheme 6: Data & Information Management\nTheme 7: Enabling Frameworks",
     "heroImage": "/images/projects/urban-planning/upt7_1.jpg",
@@ -933,7 +933,7 @@ export const projects: Project[] = [
       "Conducting workshops and interactions to capture diverse insights and perspectives of stakeholder departments/Organisations.",
       "Embedding Sustainable Development Goals and climate change considerations for future-resilient strategies.",
       "Evidence based recommendations derived from thorough policy diagnostics and research, ensuring effective outcomes.",
-      "Developement of enabling frameworks by establishing coordination and preparation mechanisms for a holistic and impactful policy."
+      "Development of enabling frameworks by establishing coordination and preparation mechanisms for a holistic and impactful policy."
     ],
     "featured": false
   },
@@ -956,14 +956,14 @@ export const projects: Project[] = [
     "highlights": [
       "Distress Mapping and Analysis: Uncovering distress patterns and connections, discerning causes and generating a detailed report for targeted interventions.",
       "Urban Development Impact Assessment: Evaluating neighboring urban development's influence on temple distress, identifying correlations and effects.",
-      "Stratergic conservation: Crafting a detailed project report to guide preservation efforts, prioritizing key areas based on distress analysis."
+      "Strategic conservation: Crafting a detailed project report to guide preservation efforts, prioritizing key areas based on distress analysis."
     ],
     "services": [
       "Distress mapping and analysis.",
       "Assessment of the impact of adjacent urban development on temple distress.",
       "Identification of root causes and issues contributing to distress.",
       "Preparation of a detailed project report outlining key intervention areas for effective conservation planning.",
-      "Methdolody and material specification for interventions and repairs."
+      "Methodology and material specification for interventions and repairs."
     ],
     "featured": false
   },
@@ -989,7 +989,7 @@ export const projects: Project[] = [
     "highlights": [
       "Empowering Heritage: Utilizing CSR funding to support a comprehensive conservation plan, preserving cultural and historical significance.",
       "Distress Mapping and Analysis: Uncovering distress patterns and connections, discerning causes and generating a detailed report for targeted interventions.",
-      "Stratergic conservation : Crafting a detailed project report to guide preservation efforts, prioritizing key areas based on distress analysis."
+      "Strategic conservation : Crafting a detailed project report to guide preservation efforts, prioritizing key areas based on distress analysis."
     ],
     "services": [
       "Distress mapping and analysis.",
@@ -1004,7 +1004,7 @@ export const projects: Project[] = [
     "slug": "upt10",
     "title": "Preparation of flood inundation maps for a site area of 645 acres falling in villages of Manapakkam, Gerugambakkam, Kulapakkam and Tharapakkam located along the Adyar River",
     "category": "Urban Planning & Transportation",
-    "description": "Unprecedented flooding in the Adyar river in 2015 caused severe inundation in many areas on the both sides of the river. Taking congnisance of the high inundation levels in the study area, Chennai Metropolitian Development Authority (CMDA) had appointed CUBE to carry out a study to prepare flood inundation maps for the study area to assist them in assigning appropriate land use and suggesting suitable site measures and regulations.",
+    "description": "Unprecedented flooding in the Adyar river in 2015 caused severe inundation in many areas on the both sides of the river. Taking cognisance of the high inundation levels in the study area, Chennai Metropolitan Development Authority (CMDA) had appointed CUBE to carry out a study to prepare flood inundation maps for the study area to assist them in assigning appropriate land use and suggesting suitable site measures and regulations.",
     "heroImage": "/images/projects/urban-planning/upt10_1.jpg",
     "galleryImages": [
       "/images/projects/urban-planning/upt10_2.jpg",
@@ -1019,8 +1019,8 @@ export const projects: Project[] = [
     "startDate": "2021",
     "endDate": "Jan 2021 - Dec 2021",
     "highlights": [
-      "Flood Risk Management: Project creates precise flood vulnerable maps for a 645-acre area in adjacent Adyar River's villages for the critical years 2005,2015,2017& 2020.In addition to this vulverable maps were generated for five year and 10 year return period peak rainfall intensities. This aids CMDA in effective flood mitigation measures.",
-      "Smart Urban Planning: CUBE' s findings and recomendations guides in allocating appropiate land use, regulations, and site measures, promoting safer urban growth.",
+      "Flood Risk Management: Project creates precise flood vulnerable maps for a 645-acre area in adjacent Adyar River's villages for the critical years 2005,2015,2017& 2020.In addition to this vulnerable maps were generated for five year and 10 year return period peak rainfall intensities. This aids CMDA in effective flood mitigation measures.",
+      "Smart Urban Planning: CUBE' s findings and recommendations guides in allocating appropriate land use, regulations, and site measures, promoting safer urban growth.",
       "Enhanced Safety: Study's flood predictions improve community safety by guiding CMDA in measures that safeguard vulnerable residents."
     ],
     "services": [
@@ -1063,7 +1063,7 @@ export const projects: Project[] = [
   },
   {
     "slug": "upt12",
-    "title": "Consultancy Services for Evolving Crowd Management Plan, Emergency Evacuation Plan,Road Connectivity Studies, and Detailed Traffic Management Report for the Proposed Construction of Muthamizh Arignar Dr.Kalaigner Pen Monument, Chennai.",
+    "title": "Consultancy Services for Evolving Crowd Management Plan, Emergency Evacuation Plan,Road Connectivity Studies, and Detailed Traffic Management Report for the Proposed Construction of Muthamizh Arignar Dr.Kalaignar Pen Monument, Chennai.",
     "category": "Urban Planning & Transportation",
     "description": "The aims to develop comprehensive management plans for the upcoming Pen monument in honor of former Chief Minister M. Karunanidhi in Chennai. The project's focus areas encompass crowd management, emergency evacuation procedures, road connectivity assessments, and detailed traffic management strategies. Anticipating a daily footfall of around 10,000 visitors, the project aims to establish suitable parameters and guidelines for each aspect by analyzing regulations, best practices, and relevant studies. Through thorough investigations, the project seeks to formulate effective strategies and recommendations to address specific mobility challenges associated with the Pen monument. Customized crowd management and traffic management plans are formulated to accommodate the monument's distinct characteristics, ensuring secure emergency protocols and efficient traffic flow.",
     "heroImage": "/images/projects/urban-planning/upt12_1.jpg",
@@ -1088,7 +1088,7 @@ export const projects: Project[] = [
       "In-depth analysis of crowd patterns, behavior, and dynamics to create a robust crowd management plan.",
       "Development of an emergency evacuation plan to ensure visitor safety during critical situations.",
       "Comprehensive road connectivity studies to assess optimal routes and access points for visitors.",
-      "Traffic Impact assesment and formulation of management plan recommendations with strategies to handle vehicular movement, parking, and traffic flow around the monument."
+      "Traffic Impact assessment and formulation of management plan recommendations with strategies to handle vehicular movement, parking, and traffic flow around the monument."
     ],
     "featured": false
   },
@@ -1171,7 +1171,7 @@ export const projects: Project[] = [
     "startDate": "06-Jan-23",
     "endDate": "3 Months",
     "highlights": [
-      "Adequacy check for exixting drains and proposed stormwater drains networks and micro water body."
+      "Adequacy check for existing drains and proposed stormwater drains networks and micro water body."
     ],
     "services": [],
     "featured": true,
@@ -1197,7 +1197,7 @@ export const projects: Project[] = [
     "startDate": "20-Jan-23",
     "endDate": "5 Months",
     "highlights": [
-      "Alternate location for Parayan Kuttai water body and its surplus arrangement. Adequacy check for exixting drains and proposed stormwater drains networks."
+      "Alternate location for Parayan Kuttai water body and its surplus arrangement. Adequacy check for existing drains and proposed stormwater drains networks."
     ],
     "services": [],
     "featured": true,
@@ -1224,7 +1224,7 @@ export const projects: Project[] = [
     "startDate": "09-Apr-21",
     "endDate": "",
     "highlights": [
-      "Assessment of the realtime impact of Climate Change on the Croping Pattern"
+      "Assessment of the realtime impact of Climate Change on the Cropping Pattern"
     ],
     "services": [],
     "featured": false,
@@ -1270,7 +1270,7 @@ export const projects: Project[] = [
       "/images/projects/hyundai_03.jpg"
     ],
     "scopeOfWork": [
-      "Subsurface and Surface Water Mmanagement Study"
+      "Subsurface and Surface Water Management Study"
     ],
     "client": "Hyundai Motor India Ltd",
     "location": "Kanchipuram, Tamil Nadu",
@@ -1290,7 +1290,7 @@ export const projects: Project[] = [
     "slug": "iit-jammu",
     "title": "Topographical Survey using Aerial Drones, Surface Water Risk Assessment & Water Resources Modelling for IIT Jammu Campus",
     "category": "Environment & Sustainability",
-    "description": "Arrive at the maximum Surface Water Potential of the Campus and its immediate adjoining areas wherever applicable, that can be technically contained, conserved and utilized within the Campus.\nAssessment on adequacy of the existing / planned Storm Water Drain network for the entire IIT Jammu Campus to support the arrived SWM Plan and propose new Storm Drain network for the same, if required.\nPreparation of inundation maps for various rainfall return periods and identify the vulnerable locations within the IIT Jammu Campus.\nRecommend suitable interventions and on-site measures to ameliorate inundation in the study area (wherever applicable).\nPreparation of Surface Water Management Plan incorporating the above metioned interventions.",
+    "description": "Arrive at the maximum Surface Water Potential of the Campus and its immediate adjoining areas wherever applicable, that can be technically contained, conserved and utilized within the Campus.\nAssessment on adequacy of the existing / planned Storm Water Drain network for the entire IIT Jammu Campus to support the arrived SWM Plan and propose new Storm Drain network for the same, if required.\nPreparation of inundation maps for various rainfall return periods and identify the vulnerable locations within the IIT Jammu Campus.\nRecommend suitable interventions and on-site measures to ameliorate inundation in the study area (wherever applicable).\nPreparation of Surface Water Management Plan incorporating the above mentioned interventions.",
     "heroImage": "/images/projects/images_01.jpg",
     "galleryImages": [],
     "scopeOfWork": [
@@ -1318,7 +1318,7 @@ export const projects: Project[] = [
     "heroImage": "/images/projects/images_kilambakkam1.jpg",
     "galleryImages": [],
     "scopeOfWork": [
-      "Preparation of DPR Assessment of power consumption and to pepare solar panel layout"
+      "Preparation of DPR Assessment of power consumption and to prepare solar panel layout"
     ],
     "client": "CMDA",
     "location": "Chennai,Tamil Nadu",
@@ -1336,9 +1336,9 @@ export const projects: Project[] = [
   },
   {
     "slug": "klipstp",
-    "title": "Detailed Project Report for Estabilishing a Common STP Cum ETP at Life Sciences Park, Thonnakkal, Thoruvananthapuram District Kerala",
+    "title": "Detailed Project Report for Establishing a Common STP Cum ETP at Life Sciences Park, Thonnakkal, Thiruvananthapuram District Kerala",
     "category": "Environment & Sustainability",
-    "description": "DPR preparation for constructing a common STP cum ETP to handle the wastewater generated from the industries present in the bio 360 life science park which involves projected assessment of wastewater generation in the target year of 2032 and suggesting a better and implementable technolgy which follows the KPCB norms with a detailed design and O&M projection data.",
+    "description": "DPR preparation for constructing a common STP cum ETP to handle the wastewater generated from the industries present in the bio 360 life science park which involves projected assessment of wastewater generation in the target year of 2032 and suggesting a better and implementable technology which follows the KPCB norms with a detailed design and O&M projection data.",
     "heroImage": "/images/projects/KLIPSTP_01.jpg",
     "galleryImages": [
       "/images/projects/KLIPSTP_02.jpg"
@@ -1362,7 +1362,7 @@ export const projects: Project[] = [
   },
   {
     "slug": "kmrl-es",
-    "title": "Selection Of Proof Checking (Design Vetting) Consultants For The Sewage Treatment Plant And The Sewer Network Design As Part Of Iurwts Project",
+    "title": "Selection Of Proof Checking (Design Vetting) Consultants For The Sewage Treatment Plant And The Sewer Network Design As Part Of IURWTS Project",
     "category": "Environment & Sustainability",
     "description": "To renew the major canals in the Kochi City by preventing sewage discharge in to canals.\nTo facilitate the sewage flow from household communities to dedicated treatment plants for reuse and recycling, making the city pollution-free.\nTo develop the canal network fit for inland navigation, tourism and recreational purpose.",
     "heroImage": "/images/projects/building-construction/kmrl_es_01.jpg",
@@ -1396,7 +1396,7 @@ export const projects: Project[] = [
       "/images/projects/Kuthambakkam_02.jpg"
     ],
     "scopeOfWork": [
-      "Preparation of DPR Assessment of power consumption and to pepare solar panel layout"
+      "Preparation of DPR Assessment of power consumption and to prepare solar panel layout"
     ],
     "client": "CMDA",
     "location": "Chennai, Tamil Nadu",
@@ -1422,7 +1422,7 @@ export const projects: Project[] = [
       "/images/projects/Madhavaram_02.jpg"
     ],
     "scopeOfWork": [
-      "Preparation of DPR Assessment of power consumption and to pepare solar panel layout"
+      "Preparation of DPR Assessment of power consumption and to prepare solar panel layout"
     ],
     "client": "CMDA",
     "location": "Chennai, Tamil Nadu",
@@ -1506,7 +1506,7 @@ export const projects: Project[] = [
     "startDate": "02-Nov-22",
     "endDate": "3 Months",
     "highlights": [
-      "A strategic approch to help tackle the inundation caused in the Nappan lake was studied."
+      "A strategic approach to help tackle the inundation caused in the Nappan lake was studied."
     ],
     "services": [],
     "featured": false,

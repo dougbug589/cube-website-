@@ -44,7 +44,7 @@ export const newsItems: NewsItem[] = [
     summary: "CUBE recently presented a report on the impactful projects completed under the Namma School Namma Ooru Palli (NSNOP) initiative of the Government of Tamil Nadu at the Regional Conclave of NSNOP.",
     image: "/images/media/news/original/newsnew.jpg",
     content: [
-      "CUBE recently presented a report on the impactful projects completed under the Namma School Namma Ooru Palli (NSNOP) initiative of the Government of Tamil Nadu at the Regional Conclave of NSNOP. The report was formally presented to Thiru Anbil Mahesh Poyyamozhi, Hon'ble Minister for School Education, Government of Tamil Nadu, by Mr. John joseph, Senior Manager, CUBE.",
+      "CUBE recently presented a report on the impactful projects completed under the Namma School Namma Ooru Palli (NSNOP) initiative of the Government of Tamil Nadu at the Regional Conclave of NSNOP. The report was formally presented to Thiru Anbil Mahesh Poyyamozhi, Hon'ble Minister for School Education, Government of Tamil Nadu, by Mr. John Joseph, Senior Manager, CUBE.",
       "The report highlights the successful implementation of classroom construction and furniture provisioning for government schools in Manojpatti and Poovathur, carried out under Corporate Social Responsibility (CSR) initiatives. Through its collaborative efforts with NSNOP, CUBE continues to contribute to the State's vision of empowering government schools and improving the quality of education for children across Tamil Nadu."
     ]
   },
