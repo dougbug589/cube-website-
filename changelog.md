@@ -40,6 +40,7 @@ Two lines of work run through this repository:
 - Etihad-inspired theme: slate and gold palette, scroll-reveal animations, gold scroll-progress bar. (`1977bf6`)
 
 #### Changed
+- Events timeline: no arrow buttons; scrolls sideways with the mouse wheel, mouse drag, touch or trackpad, with a position bar.
 - Events page: horizontal timeline (yellow rail with dated markers, cards scroll sideways with snap and prev/next buttons).
 - News page: stories shown as a slideshow (photo stage + story panel) with a thumbnail rail of every story and per-story progress bars.
 - CEL photos replaced with full-size originals from the CEL website (same shots); CEL page mosaic leads with the flask photo from cubeiitm.org.
