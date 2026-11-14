@@ -58,6 +58,52 @@ function mapGalleryCategory(category: string): GalleryItem['category'] {
 
 const SPRING = { type: 'spring' as const, stiffness: 420, damping: 34, mass: 0.8 };
 
+/*
+ * Mosaic plan: which tiles are large (2x2) or wide (2x1) at each column count,
+ * so every row is filled and nothing is left alone at the bottom. Rows go
+ * block (one large tile + smalls, alternating left/right), plain row, block,
+ * ...; the last few photos are stretched to close the final row.
+ */
+type Span = 's' | 'w' | 'b';
+const BLOCK: Record<number, [Span[], Span[]]> = {
+  2: [['b'], ['b']],
+  3: [['b', 's', 's'], ['s', 'b', 's']],
+  4: [['b', 's', 's', 's', 's'], ['s', 's', 'b', 's', 's']],
+};
+// tails by item count (null: merge with the unit before it first)
+const TAIL: Record<number, Record<number, Span[] | null>> = {
+  2: { 1: ['w'] },
+  3: { 1: null, 2: ['w', 's'], 4: ['w', 's', 's', 'w'] },
+  4: { 1: null, 2: ['w', 'w'], 3: ['w', 's', 's'], 4: ['s', 's', 's', 's'], 5: ['b', 's', 's', 's', 's'], 6: ['w', 's', 's', 'w', 's', 's'] },
+};
+function plan(n: number, cols: number): Span[] {
+  if (n === 1) return ['b'];
+  const units: Span[][] = [];
+  let used = 0;
+  for (let k = 0; ; k++) {
+    const u = k % 2 === 0 ? BLOCK[cols][(k / 2) % 2] : (Array(cols).fill('s') as Span[]);
+    if (n - used < u.length) break;
+    units.push(u);
+    used += u.length;
+  }
+  let r = n - used;
+  if (r > 0) {
+    let tail = TAIL[cols][r];
+    if (!tail && units.length) {
+      r += units.pop()!.length;
+      tail = TAIL[cols][r];
+    }
+    units.push(tail || (Array(r).fill('s') as Span[]));
+  }
+  return units.flat();
+}
+// literal class names per breakpoint (sm: 2 columns, lg: 3, xl: 4)
+const SPAN_CLS: Record<'sm' | 'lg' | 'xl', Record<Span, string>> = {
+  sm: { s: 'sm:col-span-1 sm:row-span-1', w: 'sm:col-span-2 sm:row-span-1', b: 'sm:col-span-2 sm:row-span-2' },
+  lg: { s: 'lg:col-span-1 lg:row-span-1', w: 'lg:col-span-2 lg:row-span-1', b: 'lg:col-span-2 lg:row-span-2' },
+  xl: { s: 'xl:col-span-1 xl:row-span-1', w: 'xl:col-span-2 xl:row-span-1', b: 'xl:col-span-2 xl:row-span-2' },
+};
+
 export default function GalleryPage() {
   const [selectedCategory, setSelectedCategory] = useState<string>('All');
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
@@ -99,6 +145,14 @@ export default function GalleryPage() {
   }, [items]);
   const categories = ['All', ...(['Projects', 'Laboratory', 'Workplace', 'Events'] as const).filter((c) => counts[c])];
   const filteredItems = selectedCategory === 'All' ? items : items.filter((item) => item.category === selectedCategory);
+  const spans = useMemo(() => {
+    const n = filteredItems.length;
+    const [p2, p3, p4] = [plan(n, 2), plan(n, 3), plan(n, 4)];
+    return filteredItems.map((_, k) => ({
+      cls: `${SPAN_CLS.sm[p2[k]]} ${SPAN_CLS.lg[p3[k]]} ${SPAN_CLS.xl[p4[k]]}`,
+      big: p4[k] !== 's' || p3[k] !== 's',
+    }));
+  }, [filteredItems]);
 
   const closeLightbox = useCallback(() => setLightboxIndex(null), []);
   const nextLightbox = useCallback(() => {
@@ -179,7 +233,7 @@ export default function GalleryPage() {
         </div>
       </div>
 
-      {/* mosaic: every sixth photo large */}
+      {/* mosaic: planned per column count (see plan()), no holes, no orphans */}
       <section className="shell pt-6 pb-24">
         <motion.div layout className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 auto-rows-[240px] grid-flow-dense gap-4">
           <AnimatePresence mode="popLayout" initial={false}>
@@ -198,14 +252,14 @@ export default function GalleryPage() {
                 }}
                 aria-label={`Open photo: ${item.title}`}
                 className={`group relative rounded-[24px] overflow-hidden bg-[#1A1F22] depth-1 text-left focus:outline-none focus-visible:ring-4 focus-visible:ring-[#F6C22E]/60 ${
-                  idx % 6 === 0 ? 'sm:col-span-2 sm:row-span-2' : ''
+                  spans[idx]?.cls || ''
                 }`}
               >
                 <Image
                   src={item.src}
                   alt={item.title}
                   fill
-                  sizes={idx % 6 === 0 ? '(max-width: 640px) 100vw, 50vw' : '(max-width: 640px) 100vw, (max-width: 1280px) 33vw, 25vw'}
+                  sizes={spans[idx]?.big ? '(max-width: 640px) 100vw, 50vw' : '(max-width: 640px) 100vw, (max-width: 1280px) 33vw, 25vw'}
                   className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.05]"
                 />
                 <span aria-hidden className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/0 to-transparent" />
