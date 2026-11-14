@@ -11,7 +11,13 @@ import { submitEnquiryAction } from '@/app/actions/enquiries';
 import { useLiveList } from '@/lib/live';
 import { FIELD, LABEL } from '@/components/common/formStyles';
 
-const PHOTOS = ['/images/cel/about_cel.jpg', '/images/cel/about_cel1.jpg', '/images/cel/about_cel2.jpg'];
+// tall cell first: the flask (portrait); then the lab and the CEL-labelled reagent bottles
+// (the bottles shot has a shallow focus: show its sharp, CEL-labelled right side)
+const PHOTOS = [
+  { src: '/images/cel/cel_flask.jpg', pos: '50% 50%' },
+  { src: '/images/cel/about_cel.jpg', pos: '50% 50%' },
+  { src: '/images/cel/about_cel1.jpg', pos: '88% 55%' },
+];
 const ICON: Record<string, React.ElementType> = { water: Droplets, wastewater: Waves, 'solid-waste': Recycle };
 
 export default function CELPage() {
@@ -68,9 +74,9 @@ Parameters / Notes: ${formData.parametersNeeded || 'Standard Matrix Parameters'}
             </div>
           </div>
           <div className="lg:col-span-7 grid grid-cols-2 grid-rows-2 gap-4 min-h-[420px] lg:min-h-[520px] reveal-stagger">
-            {PHOTOS.map((src, i) => (
+            {PHOTOS.map(({ src, pos }, i) => (
               <div key={src} className={`relative rounded-[26px] overflow-hidden depth-1 bg-[#1A1F22] ${i === 0 ? 'row-span-2' : ''}`}>
-                <Image src={src} alt="CUBE Environmental Laboratory" fill sizes="(max-width: 1024px) 50vw, 30vw" className="object-cover" priority={i === 0} />
+                <Image src={src} alt="CUBE Environmental Laboratory" fill sizes="(max-width: 1024px) 50vw, 30vw" className="object-cover" style={{ objectPosition: pos }} priority={i === 0} />
               </div>
             ))}
           </div>
