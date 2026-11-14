@@ -60,6 +60,17 @@ export default async function NewsDetailPage({ params }: { params: Promise<{ slu
           />
         </div>
 
+        {/* the post's other photos, as on cubeiitm.org */}
+        {Array.isArray((item as any).gallery) && (item as any).gallery.length > 0 && (
+          <div className={`mt-4 grid gap-4 grid-cols-2 ${(item as any).gallery.length > 2 ? 'lg:grid-cols-3' : ''}`}>
+            {(item as any).gallery.map((src: string) => (
+              <div key={src} className="relative aspect-[16/10] rounded-[24px] overflow-hidden bg-[#1A1F22]">
+                <Image src={src} alt={item.title} fill sizes="(max-width: 1024px) 50vw, 33vw" className="object-cover" />
+              </div>
+            ))}
+          </div>
+        )}
+
         <div className="mt-10 lg:mt-14 grid lg:grid-cols-12 gap-10 lg:gap-14">
           <div className="lg:col-span-8 xl:col-span-7 space-y-6 text-[18px] sm:text-[19px] leading-[1.8] text-[#F3F5F6] reveal">
             {(paragraphs.length > 0 ? paragraphs : [item.excerpt]).map((p, i) => (

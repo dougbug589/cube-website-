@@ -12,11 +12,11 @@
       ],
       [
         "Projects",
-        "55"
+        "276+"
       ],
       [
-        "Team",
-        "82"
+        "Departments",
+        "4"
       ]
     ]
   },
@@ -83,8 +83,8 @@
         "Director, IIT Madras"
       ],
       [
-        "Governing Body",
-        "12 members"
+        "Board members",
+        "12"
       ]
     ]
   },
@@ -98,10 +98,6 @@
       [
         "Service",
         "Major General (Retd.)"
-      ],
-      [
-        "Team",
-        "82 members"
       ]
     ]
   },
@@ -122,10 +118,6 @@
     "label": "Our team",
     "rows": [
       [
-        "Members",
-        "82"
-      ],
-      [
         "Departments",
         "4"
       ],
@@ -144,7 +136,7 @@
       ],
       [
         "Projects",
-        "55"
+        "276+"
       ],
       [
         "Verticals",
@@ -172,10 +164,6 @@
   "/life-at-cube": {
     "label": "Life at CUBE",
     "rows": [
-      [
-        "Team",
-        "82 members"
-      ],
       [
         "Workplace",
         "IIT Madras Research Park"
@@ -233,12 +221,8 @@
     "label": "Gallery",
     "rows": [
       [
-        "Albums",
-        "Projects, Laboratory, Workplace"
-      ],
-      [
-        "Projects",
-        "55"
+        "Categories",
+        "Projects, Laboratory, Workplace, Events"
       ]
     ]
   },
@@ -260,6 +244,10 @@
     "rows": [
       [
         "Projects",
+        "276+"
+      ],
+      [
+        "Listed here",
         "55"
       ],
       [
@@ -285,7 +273,7 @@
       ],
       [
         "Projects",
-        "55"
+        "276+"
       ],
       [
         "Clients",

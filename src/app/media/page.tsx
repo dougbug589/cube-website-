@@ -27,7 +27,7 @@ const GALLERY = [
   { src: '/images/hero/slides_cpcl-arc.jpg', title: 'PMC for Construction of ARHC, Manali' },
   { src: '/images/hero/slides_ashiana.jpg', title: 'Surface Water Management and Flood Inundation Study, Ashiana Shubham' },
   { src: '/images/hero/slides_design-engineering-consultancy.jpg', title: 'Design, Engineering & Consultancy for 40+ Housing for All schemes' },
-  { src: '/images/hero/slides_building-training-team.jpg', title: 'CUBE Team' },
+  { src: '/images/hero/slides_building-training-team.jpg', title: 'Capacity Building Training Program in Best Construction Practices for High Rise Buildings for Engineers' },
   { src: '/images/hero/slides_07-cat.jpg', title: 'Parayan Kuttai water body study, Caterpillar India' },
 ];
 // Bento spans for the six gallery photos: one large, one tall, then two wide

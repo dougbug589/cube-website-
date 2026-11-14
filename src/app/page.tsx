@@ -47,8 +47,8 @@ const SPINE = [
 ];
 
 const ABOUT_POINTS = [
-  { Icon: Landmark, k: 'Est. 2017', v: 'Centre of Excellence of the Government of Tamil Nadu, with IIT Madras.' },
-  { Icon: ShieldCheck, k: 'Independent', v: 'Governing body chaired by the IIT Madras Director, with state and industry members.' },
+  { Icon: Landmark, k: 'Est. May 2017', v: 'A Centre of Excellence of Government of Tamil Nadu in collaboration with IIT Madras.' },
+  { Icon: ShieldCheck, k: 'Governing Body', v: 'Headed by the Director, IITM, with nominees from four Tamil Nadu Government departments, four IITM faculty members and four members from industry.' },
   { Icon: FlaskConical, k: 'Applied', v: 'Applied research, technology and consultancy, with its own environment laboratory (CEL).' },
 ];
 
@@ -208,7 +208,7 @@ export default function HomePage() {
         id="about"
         bgImage="/images/hero/slides_building-training-team.jpg"
         eyebrow="About CUBE"
-        title="Academic depth, delivered as public infrastructure."
+        title="An enabler to tackle any multifaceted challenges facing the built environment."
         action={{ href: '/about', label: 'About the Centre' }}
       >
         {/* the vision, centred; the three points in a row beneath it */}
@@ -265,7 +265,7 @@ export default function HomePage() {
           <h2 className="headline-light text-3xl lg:text-4xl mt-3">
             Projects across <span className="gold-keyword">Tamil Nadu</span> &amp; beyond
           </h2>
-          <p className="text-sm text-[#C2CCD1] mt-3">Third-party quality assurance, PMC and proof checking for public infrastructure.</p>
+          <p className="text-sm text-[#C2CCD1] mt-3">CUBE extends its services under four verticals, namely, Building &amp; Construction, Environment &amp; Sustainability, Smart Cities and Urban Planning &amp; Transportation.</p>
         </div>
         <div className="mt-6 reveal">
           <StackedProjectCarousel projects={projectList} />

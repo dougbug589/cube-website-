@@ -1,8 +1,10 @@
 'use client';
 
 import React, { useCallback, useEffect, useRef, useState } from 'react';
+import { createPortal } from 'react-dom';
 import Image from 'next/image';
 import { AnimatePresence, motion } from 'framer-motion';
+import { ArrowUpRight, X } from 'lucide-react';
 import { Monogram } from '@/components/common/PersonCard';
 
 /**
@@ -13,9 +15,11 @@ import { Monogram } from '@/components/common/PersonCard';
  * deck. Auto-advances; swipe/drag the top card (either way) or use the arrow
  * keys; pauses on hover, focus, off screen and in background tabs; reduced
  * motion = no auto-advance and simple fades. Transform/opacity only.
+ * Members with a bio (as on their cubeiitm.org profile page) get a "Read
+ * profile" button that opens it in a dialog.
  */
 
-type Member = { name: string; role?: string; organization?: string; image?: string };
+type Member = { name: string; role?: string; organization?: string; image?: string; bio?: string };
 
 const VISIBLE = 4; // cards drawn in the stack (the 4th fades in at the back)
 const SPRING = { type: 'spring' as const, stiffness: 260, damping: 26, mass: 0.9 };
@@ -30,6 +34,24 @@ export default function BoardDeck({ members, interval = 2200, label }: { members
   const inView = useRef(false);
   const lastMove = useRef(0);
   const [reduced, setReduced] = useState(false);
+  const [profile, setProfile] = useState<Member | null>(null);
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
+
+  // profile dialog: Escape closes, page scroll locked, deck paused while open
+  useEffect(() => {
+    if (!profile) return;
+    paused.current = true;
+    const onKey = (e: KeyboardEvent) => e.key === 'Escape' && setProfile(null);
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    window.addEventListener('keydown', onKey);
+    return () => {
+      document.body.style.overflow = prev;
+      window.removeEventListener('keydown', onKey);
+      paused.current = false;
+    };
+  }, [profile]);
 
   useEffect(() => {
     setReduced(window.matchMedia('(prefers-reduced-motion: reduce)').matches);
@@ -170,10 +192,80 @@ export default function BoardDeck({ members, interval = 2200, label }: { members
               <p className="label-mono">{m.role || 'Board Member'}</p>
               <h3 className="mt-3 font-display text-[30px] sm:text-[40px] font-extrabold text-[#F3F5F6] leading-tight">{m.name}</h3>
               {m.organization && <p className="mt-3 text-[18px] sm:text-[19px] text-[#DDE3E6] leading-relaxed max-w-2xl">{m.organization}</p>}
+              {m.bio && (
+                <button
+                  type="button"
+                  onClick={() => setProfile(m)}
+                  className="press btn-soft mt-6 inline-flex items-center gap-2 h-12 px-6 rounded-full text-[15.5px] font-bold"
+                >
+                  Read profile <ArrowUpRight size={16} strokeWidth={2.25} />
+                </button>
+              )}
             </motion.div>
           </AnimatePresence>
         </div>
       </div>
+
+      {mounted &&
+        createPortal(
+          <AnimatePresence>
+            {profile && (
+              <motion.div
+                key="profile"
+                className="fixed inset-0 z-[120] grid place-items-center p-4 sm:p-8 bg-black/70 backdrop-blur-md"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.2 }}
+                onClick={() => setProfile(null)}
+              >
+                <motion.div
+                  role="dialog"
+                  aria-modal="true"
+                  aria-label={profile.name}
+                  className="relative w-full max-w-3xl max-h-[86vh] overflow-y-auto liquid-glass is-solid rounded-[30px] p-6 sm:p-10"
+                  initial={{ opacity: 0, y: reduced ? 0 : 24, scale: reduced ? 1 : 0.98 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  exit={{ opacity: 0, y: reduced ? 0 : 12 }}
+                  transition={{ duration: 0.3, ease: EASE }}
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  <button
+                    type="button"
+                    onClick={() => setProfile(null)}
+                    aria-label="Close profile"
+                    autoFocus
+                    className="press absolute top-4 right-4 grid place-items-center w-11 h-11 rounded-full btn-soft"
+                  >
+                    <X size={18} strokeWidth={2.25} />
+                  </button>
+                  <div className="flex items-center gap-5 pr-12">
+                    <span className="relative w-24 h-24 sm:w-28 sm:h-28 shrink-0 rounded-[22px] overflow-hidden bg-[#1A1F22]">
+                      {profile.image ? (
+                        <Image src={profile.image} alt={profile.name} fill sizes="112px" className="object-cover object-[50%_22%]" />
+                      ) : (
+                        <Monogram name={profile.name} className="absolute inset-0" />
+                      )}
+                    </span>
+                    <div>
+                      <p className="label-mono">{profile.role || 'Board Member'}</p>
+                      <h3 className="mt-2 font-display text-[26px] sm:text-[32px] font-extrabold text-[#F3F5F6] leading-tight">{profile.name}</h3>
+                      {profile.organization && <p className="mt-1.5 text-[16.5px] text-[#C2CCD1] leading-snug">{profile.organization}</p>}
+                    </div>
+                  </div>
+                  <div className="mt-7 space-y-4">
+                    {(profile.bio || '').split(/\n\n+/).map((para, k) => (
+                      <p key={k} className="text-[18px] text-[#DDE3E6] leading-relaxed">
+                        {para}
+                      </p>
+                    ))}
+                  </div>
+                </motion.div>
+              </motion.div>
+            )}
+          </AnimatePresence>,
+          document.body
+        )}
     </div>
   );
 }

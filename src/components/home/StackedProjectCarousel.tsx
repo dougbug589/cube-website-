@@ -35,10 +35,10 @@ type AnyProject = {
 };
 
 const SHORT_CATEGORY: Record<string, string> = {
-  'Building & Construction': 'Buildings · TPQA',
-  'Environment & Sustainability': 'Environment · Hydrology',
-  'Smart Cities': 'Smart Cities · Digital',
-  'Urban Planning & Transportation': 'Urban · Transport',
+  'Building & Construction': 'Building & Construction',
+  'Environment & Sustainability': 'Environment & Sustainability',
+  'Smart Cities': 'Smart Cities',
+  'Urban Planning & Transportation': 'Urban Planning & Transportation',
 };
 
 const AUTO_MS = 1500;

@@ -6,6 +6,38 @@ export const clients: ClientPartner[] = [
     "logo": "/images/clients/client_1.png"
   },
   {
+    "name": "2",
+    "logo": "/images/clients/client_2.png"
+  },
+  {
+    "name": "3",
+    "logo": "/images/clients/client_3.png"
+  },
+  {
+    "name": "4",
+    "logo": "/images/clients/client_4.png"
+  },
+  {
+    "name": "5",
+    "logo": "/images/clients/client_5.png"
+  },
+  {
+    "name": "6",
+    "logo": "/images/clients/client_6.png"
+  },
+  {
+    "name": "7",
+    "logo": "/images/clients/client_7.png"
+  },
+  {
+    "name": "8",
+    "logo": "/images/clients/client_8.png"
+  },
+  {
+    "name": "9",
+    "logo": "/images/clients/client_9.png"
+  },
+  {
     "name": "10",
     "logo": "/images/clients/client_10.png"
   },
@@ -44,10 +76,6 @@ export const clients: ClientPartner[] = [
   {
     "name": "19",
     "logo": "/images/clients/client_19.png"
-  },
-  {
-    "name": "2",
-    "logo": "/images/clients/client_2.png"
   },
   {
     "name": "20",
@@ -90,10 +118,6 @@ export const clients: ClientPartner[] = [
     "logo": "/images/clients/client_29.png"
   },
   {
-    "name": "3",
-    "logo": "/images/clients/client_3.png"
-  },
-  {
     "name": "30",
     "logo": "/images/clients/client_30.png"
   },
@@ -128,10 +152,6 @@ export const clients: ClientPartner[] = [
   {
     "name": "39",
     "logo": "/images/clients/client_39.png"
-  },
-  {
-    "name": "4",
-    "logo": "/images/clients/client_4.png"
   },
   {
     "name": "40",
@@ -170,10 +190,6 @@ export const clients: ClientPartner[] = [
     "logo": "/images/clients/client_49.png"
   },
   {
-    "name": "5",
-    "logo": "/images/clients/client_5.png"
-  },
-  {
     "name": "50",
     "logo": "/images/clients/client_50.png"
   },
@@ -208,21 +224,5 @@ export const clients: ClientPartner[] = [
   {
     "name": "58",
     "logo": "/images/clients/client_58.png"
-  },
-  {
-    "name": "6",
-    "logo": "/images/clients/client_6.png"
-  },
-  {
-    "name": "7",
-    "logo": "/images/clients/client_7.png"
-  },
-  {
-    "name": "8",
-    "logo": "/images/clients/client_8.png"
-  },
-  {
-    "name": "9",
-    "logo": "/images/clients/client_9.png"
   }
 ];

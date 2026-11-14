@@ -47,7 +47,7 @@ export const verticals: Vertical[] = [
       },
       {
         "title": "Design & Engineering",
-        "description": "Domains: soil investigation (10), architectural design (15), structural design (40), MEP design (15) and structural vetting (50).",
+        "description": "Domains: soil investigation (10), architectural design (15), structural design (40), MEP design (15) and structural vetting (50). Construction technologies: conventional RCC framed structure, steel & composite structures, MIVAN construction, tunnel form technology and precast prefab concrete construction system.",
         "items": [
           "Master Planning for over 2000 Acres",
           "Built-up Area of over 20 Mil Sqft",
@@ -57,7 +57,7 @@ export const verticals: Vertical[] = [
       },
       {
         "title": "Project Management Consultancy",
-        "description": "Domains: residential, industrial, institutional and infrastructure projects.",
+        "description": "Domains: residential, industrial, institutional and infrastructure projects. Construction technologies: conventional RCC framed structure, steel & composite structures and MIVAN construction.",
         "items": [
           "Built-up Area of over 1.5 Mil Sqft",
           "5000 dwelling units",

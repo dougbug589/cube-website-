@@ -130,10 +130,6 @@ export default function HomeBento({
         )}
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
         <TileHead label="Life at CUBE" />
-        <div className="absolute left-6 right-6 bottom-6 text-white">
-          <p className="font-display text-2xl lg:text-[28px] font-extrabold leading-tight">Engineers, researchers and faculty, one team.</p>
-          <p className="mt-1.5 text-[16.5px] text-white/80">Training, site work and campus life at IIT Madras Research Park.</p>
-        </div>
       </Link>
 
       {/* Leadership — tall */}

@@ -32,10 +32,21 @@ function Block({ title, children }: { title: string; children: React.ReactNode }
 // Long single paragraphs of facts ("Total Builtup Area: ... Total Buildings
 // (Blocks) - 27 Nos. ...") read better one fact per line. Split only at a
 // full stop followed by a capital letter; short text is left as it is.
-const asLines = (items: string[]) =>
-  items.length === 1 && items[0].length > 160
-    ? items[0].split(/(?<=\.)\s+(?=[A-Z])/).map((x) => x.trim()).filter(Boolean)
-    : items;
+// One long paragraph reads better as one bullet per sentence. A full stop
+// after an initial or a short abbreviation ("K.P. Park", "Dr.", "Rs.",
+// "No.") does not end the sentence, so those pieces are joined back.
+const ABBREV = /(?:\b[A-Z]|\b(?:Dr|Mr|Mrs|Ms|Prof|No|Nos|Rs|St|Govt|Dept|Ltd|Pvt|Co|vs|etc|i\.e|e\.g))\.$/;
+const sentences = (text: string) =>
+  text
+    .split(/(?<=\.)\s+(?=[A-Z])/)
+    .reduce<string[]>((out, piece) => {
+      if (out.length && ABBREV.test(out[out.length - 1])) out[out.length - 1] += ' ' + piece;
+      else out.push(piece);
+      return out;
+    }, [])
+    .map((x) => x.trim())
+    .filter(Boolean);
+const asLines = (items: string[]) => (items.length === 1 && items[0].length > 160 ? sentences(items[0]) : items);
 
 function Bullets({ items }: { items: string[] }) {
   return (
@@ -63,15 +74,18 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
   const services: string[] = Array.isArray(p.services) ? p.services : [];
   const highlights: string[] = Array.isArray(p.highlights) ? p.highlights : [];
   const gallery: string[] = (Array.isArray(p.galleryImages) ? p.galleryImages : []).filter((g: string) => g && g !== p.heroImage);
+  // labels as on the project's cubeiitm.org page (a few use Services / Start Year / Project Duration)
+  const L = (p.factLabels || {}) as { scopeOfWork?: string; startDate?: string; endDate?: string };
   const facts: [string, string][] = (
     [
       ['Vertical', p.category],
       ['Client', p.client],
       ['Status', p.projectStatus],
-      ['Start date', p.startDate],
-      ['End date', p.endDate],
+      [L.startDate || 'Start date', p.startDate],
+      [L.endDate || 'End date', p.endDate],
       ['Location', p.location],
-      ['Scope of work', Array.isArray(p.scopeOfWork) ? p.scopeOfWork.join('\n') : ''],
+      [L.scopeOfWork || 'Scope of work', Array.isArray(p.scopeOfWork) ? p.scopeOfWork.join('\n') : ''],
+      ['Partners & Associates', p.partners],
     ] as [string, string | undefined][]
   ).filter((f): f is [string, string] => Boolean(f[1] && String(f[1]).trim()));
 

@@ -16,7 +16,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
   { id: 5, src: '/images/life-at-cube/about_life.jpg', title: 'Life at CUBE', category: 'Workplace' },
   { id: 6, src: '/images/life-at-cube/about_life1.jpg', title: 'Life at CUBE', category: 'Workplace' },
   { id: 7, src: '/images/life-at-cube/about_life2.jpg', title: 'Life at CUBE', category: 'Workplace' },
-  { id: 8, src: '/images/hero/slides_building-training-team.jpg', title: 'Capacity Building Training Programme', category: 'Events' },
+  { id: 8, src: '/images/hero/slides_building-training-team.jpg', title: 'Capacity Building Training Program in Best Construction Practices for High Rise Buildings for Engineers', category: 'Events' },
   { id: 9, src: '/images/hero/slides_ashiana.jpg', title: 'Surface Water Management and Flood Inundation Study, Ashiana Shubham', category: 'Projects' },
   { id: 10, src: '/images/hero/slides_mahindra.jpg', title: 'Mahindra World City', category: 'Projects' },
 ];
@@ -30,6 +30,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
  */
 const HIDE = [/\/images\/leadership\//, /images_about-bg\.jpg$/, /images_excellence\.jpg$/];
 const FIX: Record<string, { title: string; category: GalleryItem['category'] }> = {
+  '/images/hero/slides_building-training-team.jpg': { title: 'Capacity Building Training Program in Best Construction Practices for High Rise Buildings for Engineers', category: 'Events' },
   '/images/hero/slides_slide2.jpg': { title: 'Surface Water Management Plan for IIT Jammu Campus', category: 'Projects' },
   '/images/hero/slides_slide3.jpg': {
     title: 'Engineering, Structural Assessment and Mitigation Strategies for Protection and Development of Naida Caves, Diu',

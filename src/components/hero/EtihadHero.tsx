@@ -170,7 +170,7 @@ export default function EtihadHero() {
               className="inline-flex items-center gap-2 text-[16px] font-bold tracking-wide text-[#F3F5F6]/90"
             >
               <span className="w-1.5 h-1.5 rounded-full bg-[#F6C22E] shadow-[0_0_10px_#F6C22E]" />
-              Centre of Excellence · IIT Madras × Govt of Tamil Nadu
+              Centre of Excellence · Govt of Tamil Nadu with IIT Madras
             </motion.p>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -179,7 +179,7 @@ export default function EtihadHero() {
             >
               <RotatingHeadline
                 paused={paused}
-                className="mt-4 font-display font-extrabold tracking-[-0.02em] leading-[1.06] text-[clamp(2.6rem,4.8vw,4.5rem)] text-white"
+                className="mt-4 font-display font-extrabold tracking-[-0.02em] leading-[1.06] text-[clamp(2.2rem,4.8vw,4.5rem)] text-white"
               />
             </motion.div>
             <motion.p
@@ -188,7 +188,7 @@ export default function EtihadHero() {
               transition={{ duration: 0.8, delay: 0.14, ease: [0.16, 1, 0.3, 1] }}
               className="mt-5 text-[18px] sm:text-[19px] font-semibold text-[#F3F5F6]/90 leading-relaxed max-w-xl"
             >
-              Applied research, technology and consultancy, from a Centre of Excellence of IIT Madras and the Government of Tamil Nadu.
+              An Applied Research, Technology and Consultancy Centre: a Centre of Excellence of Government of Tamil Nadu in collaboration with IIT Madras.
             </motion.p>
             <motion.div
               initial={{ opacity: 0, y: 12 }}

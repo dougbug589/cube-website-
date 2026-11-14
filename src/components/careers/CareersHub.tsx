@@ -243,10 +243,12 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
                     {detailJob.location}
                   </span>
                 )}
-                <span className="flex items-center gap-2">
-                  <CalendarDays size={16} className="text-[#F6C22E]" />
-                  {detailJob.closingDate ? `Apply by ${formatDate(detailJob.closingDate)}` : 'Open until filled'}
-                </span>
+                {detailJob.closingDate && (
+                  <span className="flex items-center gap-2">
+                    <CalendarDays size={16} className="text-[#F6C22E]" />
+                    Apply by {formatDate(detailJob.closingDate)}
+                  </span>
+                )}
               </div>
             </div>
 
@@ -765,8 +767,8 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
         <section className="relative pt-10 pb-28">
           <SectionPhoto src="/images/hero/slides_building-training-team.jpg" wash="bg-[#0B0D0E]/60" />
           <div className="shell relative">
-            <SectionHeading eyebrow="Working at CUBE" title={c.benefits.heading} lead={c.benefits.subheading} />
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            <SectionHeading eyebrow="Careers" title={c.benefits.heading} lead={c.benefits.subheading || undefined} />
+            <div className={`grid grid-cols-1 sm:grid-cols-2 gap-5 ${c.benefits.items.length > 2 ? 'lg:grid-cols-3' : ''}`}>
               {c.benefits.items.map((item, i) => {
                 const Icon = BENEFIT_ICONS[item.icon] || Award;
                 return (

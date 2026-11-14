@@ -5,8 +5,8 @@ import { getPublishedCareers, getCareersPageContent } from '@/lib/db/queries';
 export const dynamic = 'force-dynamic';
 
 export const metadata = {
-  title: 'Careers & Talent Network | CUBE IIT Madras',
-  description: 'Explore active civil, structural, environmental, and urban planning career opportunities or submit your resume to the CUBE Talent Network.',
+  title: 'Careers | CUBE IIT Madras',
+  description: 'Careers at CUBE – Centre for Urbanization, Buildings & Environment.',
 };
 
 export default async function CareersPage() {

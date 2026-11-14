@@ -20,7 +20,10 @@
     "excerpt": "The 7th Annual General Meeting at CUBE marked a significant milestone, with board members recognizing the team’s exceptional dedication and impact.",
     "status": "published",
     "createdAt": "2026-11-12T05:32:26.414Z",
-    "updatedAt": "2026-11-12T05:32:26.414Z"
+    "updatedAt": "2026-11-12T05:32:26.414Z",
+    "gallery": [
+     "/images/media/news/original/newsnew4-2.jpg"
+    ]
    },
    {
     "id": "news-jigani-bhoomi-pooja",
@@ -36,7 +39,12 @@
     "excerpt": "CUBE is delighted to announce the successful Bhoomi Pooja for a new residential complex in Jigani Village, Bangalore in association with UDPL.",
     "status": "published",
     "createdAt": "2026-11-12T05:32:26.414Z",
-    "updatedAt": "2026-11-12T05:32:26.414Z"
+    "updatedAt": "2026-11-12T05:32:26.414Z",
+    "gallery": [
+     "/images/media/news/original/newsnew3-2.jpg",
+     "/images/media/news/original/newsnew3-3.jpg",
+     "/images/media/news/original/newsnew3-4.jpg"
+    ]
    },
    {
     "id": "news-udpl-mou",
@@ -52,7 +60,12 @@
     "excerpt": "CUBE is pleased to announce the signing of a Memorandum of Understanding (MoU) with Uppuluri Developers Private Limited (UDPL) on February 4, 2025, development of residential complex in Bangalore.",
     "status": "published",
     "createdAt": "2026-11-12T05:32:26.414Z",
-    "updatedAt": "2026-11-12T05:32:26.414Z"
+    "updatedAt": "2026-11-12T05:32:26.414Z",
+    "gallery": [
+     "/images/media/news/original/newsnew2-2.jpg",
+     "/images/media/news/original/newsnew2-3.jpg",
+     "/images/media/news/original/newsnew2-4.jpg"
+    ]
    },
    {
     "id": "news-nsnop-report",
@@ -122,7 +135,7 @@
    {
     "id": "news-1",
     "title": "CUBE Entrusted to Formulate the “Sustainable Mining Policy”",
-    "date": "03/07/2023",
+    "date": "07/2023",
     "category": "Policy & Environment",
     "summary": "CUBE has been entrusted to formulate the “Sustainable Mining Policy” and “Natural Resources Management Plan” by the Department of Geology and Mining, Government of Tamil Nadu.",
     "image": "/images/media/news/original/news-1.jpg",
@@ -190,7 +203,12 @@
      "/images/projects/building-construction/iiser_10.jpg",
      "/images/projects/building-construction/iiser_11.jpg",
      "/images/projects/building-construction/iiser_12.jpg",
-     "/images/projects/building-construction/iiser_13.jpg"
+     "/images/projects/building-construction/iiser_13.jpg",
+     "/images/projects/building-construction/iiser_14.jpg",
+     "/images/projects/building-construction/iiser_15.jpg",
+     "/images/projects/building-construction/iiser_16.jpg",
+     "/images/projects/building-construction/iiser_17.jpg",
+     "/images/projects/building-construction/iiser_18.jpg"
     ],
     "scopeOfWork": [
      "Third party Quality Monitoring"
@@ -254,7 +272,17 @@
      "/images/projects/building-construction/lhp_agartala_10.jpg",
      "/images/projects/building-construction/lhp_agartala_11.jpg",
      "/images/projects/building-construction/lhp_agartala_12.jpg",
-     "/images/projects/building-construction/lhp_agartala_13.jpg"
+     "/images/projects/building-construction/lhp_agartala_13.jpg",
+     "/images/projects/building-construction/lhp_agartala_14.jpg",
+     "/images/projects/building-construction/lhp_agartala_15.jpg",
+     "/images/projects/building-construction/lhp_agartala_16.jpg",
+     "/images/projects/building-construction/lhp_agartala_17.jpg",
+     "/images/projects/building-construction/lhp_agartala_18.jpg",
+     "/images/projects/building-construction/lhp_agartala_19.jpg",
+     "/images/projects/building-construction/lhp_agartala_20.jpg",
+     "/images/projects/building-construction/lhp_agartala_21.jpg",
+     "/images/projects/building-construction/lhp_agartala_22.jpg",
+     "/images/projects/building-construction/lhp_agartala_23.jpg"
     ],
     "scopeOfWork": [
      "Third Party Quality Assurance (TPQA) Service"
@@ -420,7 +448,7 @@
     "slug": "cpcl-nagapattinam",
     "title": "Environmental Upgradation of Three Villages in Nagapattinam",
     "category": "Building & Construction",
-    "description": "Water & waste water treatment by constructing Drain fields & soak pit.\nCompost yards by constructing Organic waste treatment plant & Recycling of Inorganic waste.\nSchool & anganwadi infrastructure by cnstructing classrooms, Public health facilities, renovation of old buildings & fancing adjucent waterbodies for puples safety.\nDevelopment of community halls by constructing community hall, Public health facilities & skill development centre.\nHousehold level toilet blocks by constructing Precast household toilets, water tank, septic tank, Inspection chamber.\nRejuvenation of water bodies by desilting, Bund stabilization, Concrete slab pitching, Bathing Ghat, Cattle Ramp, Rcharge well.\nDinking water distribution chain to households by providing Deep bore holes, Water supply to over head tank, Supply of water to households.",
+    "description": "CPCL has planned to extend their corporate social responsiblity for welfare of migrant villagers Three villages i.e., Panangudi, Gopurajpuram, Vellapakkam at Nagapattinam, TN adopted by CPCL in vicinity of their Cauvery Basin Refinery.. CUBE has been entrusted for providing under-mentioned scope of work:\nWater & waste water treatment by constructing Drain fields & soak pit.\nCompost yards by constructing Organic waste treatment plant & Recycling of Inorganic waste.\nSchool & anganwadi infrastructure by cnstructing classrooms, Public health facilities, renovation of old buildings & fancing adjucent waterbodies for puples safety.\nDevelopment of community halls by constructing community hall, Public health facilities & skill development centre.\nHousehold level toilet blocks by constructing Precast household toilets, water tank, septic tank, Inspection chamber.\nRejuvenation of water bodies by desilting, Bund stabilization, Concrete slab pitching, Bathing Ghat, Cattle Ramp, Rcharge well.\nDinking water distribution chain to households by providing Deep bore holes, Water supply to over head tank, Supply of water to households.",
     "heroImage": "/images/projects/building-construction/cpcl_nagapatinam_04.jpg",
     "galleryImages": [
      "/images/projects/building-construction/cpcl_nagapatinam_01.jpg",
@@ -479,7 +507,7 @@
     "slug": "reevaluation-scheme",
     "title": "Structural Assessment & Re-evaluation of several tenemental schemes (Phase I, II & III) - 33 Schemes",
     "category": "Building & Construction",
-    "description": "Carry out a detailed condition survey of interior and exterior of the buildings / structures to assess the following:\n(a) External damages, distress, deformities, deteriorations, deficiencies, discontinuities in the critical structural elements.\n(b) Physical condition of the non-structural elements for its intended functional effectiveness and efficacy.\n(c) Present status of the building services for its functional effectiveness and efficacy.\n(d) Determine the necessity and carryout appropriate Non-destructive / Partial destructive tests at structural elements as dictated by the site condition.\nCarryout an indicative Cost Benefit Comparison of the repair / refurbishment vs reconstruction of the structures to evaluate the cost-effectiveness of retention option.\nAnalyse the findings from the above to cumulatively assess the overall adequacy of the scheme and arrive at the conclusion either to be Repaired / Refurbished or Reconstructed.",
+    "description": "Evaluation / Validation of Recommendations given by committees of TNUHDB\nCarry out a detailed condition survey of interior and exterior of the buildings / structures to assess the following: (a) External damages, distress, deformities, deteriorations, deficiencies, discontinuities in the critical structural elements. (b) Physical condition of the non-structural elements for its intended functional effectiveness and efficacy. (c) Present status of the building services for its functional effectiveness and efficacy. (d) Determine the necessity and carryout appropriate Non-destructive / Partial destructive tests at structural elements as dictated by the site condition.\nCarryout an indicative Cost Benefit Comparison of the repair / refurbishment vs reconstruction of the structures to evaluate the cost-effectiveness of retention option.\nAnalyse the findings from the above to cumulatively assess the overall adequacy of the scheme and arrive at the conclusion either to be Repaired / Refurbished or Reconstructed.",
     "heroImage": "/images/projects/reevalution_02.jpg",
     "galleryImages": [
      "/images/projects/reevalution_01.jpg",
@@ -514,18 +542,25 @@
      "/images/projects/building-construction/capacity_building_training_program_04.jpg",
      "/images/projects/building-construction/capacity_building_training_program_05.jpg"
     ],
-    "scopeOfWork": [],
+    "scopeOfWork": [
+     "Training Programme"
+    ],
     "client": "TNUHDB",
     "location": "Chennai",
     "projectStatus": "Completed",
-    "startDate": "",
-    "endDate": "",
+    "startDate": "11.02.2022 - 16.02.2022",
+    "endDate": "1 Month",
     "highlights": [],
     "services": [],
     "featured": true,
     "status": "published",
     "createdAt": "2026-11-12T15:17:22.000Z",
-    "updatedAt": "2026-11-12T15:17:22.000Z"
+    "updatedAt": "2026-11-12T15:17:22.000Z",
+    "factLabels": {
+     "scopeOfWork": "Services",
+     "startDate": "Start Year",
+     "endDate": "Project Duration"
+    }
    },
    {
     "slug": "kp-park",
@@ -538,12 +573,14 @@
      "/images/projects/kp_park_03.jpg",
      "/images/projects/kp_park_04.jpg"
     ],
-    "scopeOfWork": [],
+    "scopeOfWork": [
+     "Quality Assesment works"
+    ],
     "client": "TNUHDB",
     "location": "Chennai",
     "projectStatus": "Completed",
-    "startDate": "",
-    "endDate": "",
+    "startDate": "2021",
+    "endDate": "3 Months",
     "highlights": [
      "An Highly Visible and Major Breakthrough Project in TN Govt Sector Carried out Independent Quality Assessment of the completed four towers of 864 No. of EWS tenements of Stilt + 9 floors in KP Park in respect of the following:",
      "1.1. Quality of concrete in structural elements namely columns, beams and floor slabs through conduct of appropriate Non-Destructive [NDT] and Partial Destructive [PDT] tests.",
@@ -554,7 +591,12 @@
     "featured": false,
     "status": "published",
     "createdAt": "2026-11-12T15:17:22.000Z",
-    "updatedAt": "2026-11-12T15:17:22.000Z"
+    "updatedAt": "2026-11-12T15:17:22.000Z",
+    "factLabels": {
+     "scopeOfWork": "Services",
+     "startDate": "Start Year",
+     "endDate": "Project Duration"
+    }
    },
    {
     "slug": "kmrl",
@@ -623,13 +665,16 @@
     "galleryImages": [
      "/images/projects/smart-cities/tidel_park_02.jpg"
     ],
-    "scopeOfWork": [],
+    "scopeOfWork": [
+     "Geo technical investigation"
+    ],
     "client": "TANSIDCO",
     "location": "Chennai",
     "projectStatus": "Ongoing",
-    "startDate": "",
-    "endDate": "",
+    "startDate": "01/12/2022",
+    "endDate": "Stage-wise Inspection",
     "highlights": [
+     "The scope of the project includes:",
      "Inspection of ongoing construction works through visit-based site inspection.",
      "Site Visit will be for four full days overseeing major aspects of quality.",
      "Submission of report highlighting the major observations noticed during the site inspection.",
@@ -639,7 +684,12 @@
     "featured": false,
     "status": "published",
     "createdAt": "2026-11-03T10:20:20.463Z",
-    "updatedAt": "2026-11-12T15:17:22.000Z"
+    "updatedAt": "2026-11-12T15:17:22.000Z",
+    "factLabels": {
+     "scopeOfWork": "Services",
+     "startDate": "Start Year",
+     "endDate": "Project Duration"
+    }
    },
    {
     "slug": "jipmer",
@@ -775,7 +825,7 @@
     "title": "TPQMA for C/o of Plug And Play Flatted Factory Modules for Micro Units(S+4) at TANSIDCO Industrial Estate, Ambattur, Chennai",
     "category": "Building & Construction",
     "description": "Tamil Nadu Small Industries Development Corporation [TANSIDCO] has entrusted CUBE for third party quality monitoring services(TPQMA) to the ongoing construction of plug and play factory and Workers Hostel at TANSIDCO industrial estate in Guindy & Ambattur, Chennai.",
-    "heroImage": "/images/projects/building-construction/sidco_amb_1.jpg",
+    "heroImage": "/images/projects/building-construction/sidco_1.jpg",
     "galleryImages": [],
     "scopeOfWork": [
      "Third party Quality Monitoring Serivices (TPQMA)"
@@ -785,7 +835,12 @@
     "projectStatus": "Completed",
     "startDate": "2022",
     "endDate": "Stage-wise Inspection",
-    "highlights": [],
+    "highlights": [
+     "Inspection of ongoing construction works through visit-based site inspection.",
+     "Site visit will be for four full days overseeing major aspects of quality.",
+     "Submission of report highlighting the major observations noticed during the site inspection.",
+     "Carrying out NDT tests on required basis."
+    ],
     "services": [],
     "featured": false,
     "status": "published",
@@ -797,7 +852,7 @@
     "title": "TPQMA for C/o of Workers Hostel (S+5) at TANSIDCO Industrial Estate, Ambattur, Chennai",
     "category": "Building & Construction",
     "description": "Tamil Nadu Small Industries Development Corporation [TANSIDCO] has entrusted CUBE for third party quality monitoring services(TPQMA) to the ongoing construction of plug and play factory and Workers Hostel at TANSIDCO industrial estate in Guindy & Ambattur, Chennai.",
-    "heroImage": "/images/projects/building-construction/sidco_1.jpg",
+    "heroImage": "/images/projects/building-construction/sidco_amb_1.jpg",
     "galleryImages": [],
     "scopeOfWork": [
      "Third party Quality Monitoring Serivices (TPQMA)"
@@ -807,7 +862,12 @@
     "projectStatus": "Completed",
     "startDate": "2022",
     "endDate": "Stage-wise Inspection",
-    "highlights": [],
+    "highlights": [
+     "Inspection of ongoing construction works through visit-based site inspection.",
+     "Site visit will be for four full days overseeing major aspects of quality.",
+     "Submission of report highlighting the major observations noticed during the site inspection.",
+     "Carrying out NDT tests on required basis."
+    ],
     "services": [],
     "featured": false,
     "status": "published",
@@ -949,7 +1009,7 @@
     "slug": "upt3",
     "title": "Preparation of DPR for Restoration and Refurbishment of Gokhale Hall, Chennai for Proposed Museum of Freedom Movement",
     "category": "Urban Planning & Transportation",
-    "description": "The project, undertaken in collaboration with NCSHS IITM , aims to resurrect historical significance and reimagine Gokhale Hall into a museum that commemorates India's cherished struggle for independence which unfolds through three pivotal phases..\nPhase 1 involves comprehensive desk research, urban context studies, and field surveys, guiding the hall's rehabilitation. Phase 2 focuses on crafting a Detailed Project Report, encompassing architectural designs, structural modifications, and site service layouts. In Phase 3, Project Management Consultancy oversees flawless execution, ensuring adherence to historical preservation standards. This endeavor marries historical reverence with innovation, as Gokhale Hall evolves into a symbol of India's freedom struggle. Witness the transformation as history intertwines with contemporary restoration, epitomizing our nation's indomitable spirit.Phase 1 involves comprehensive desk research, urban context studies, and field surveys, guiding the hall's rehabilitation. Phase 2 focuses on crafting a Detailed Project Report, encompassing architectural designs, structural modifications, and site service layouts. In Phase 3, Project Management Consultancy oversees flawless execution, ensuring adherence to historical preservation standards. This endeavor marries historical reverence with innovation, as Gokhale Hall evolves into a symbol of India's freedom struggle. Witness the transformation as history intertwines with contemporary restoration, epitomizing our nation's indomitable spirit.",
+    "description": "The project, undertaken in collaboration with NCSHS IITM , aims to resurrect historical significance and reimagine Gokhale Hall into a museum that commemorates India's cherished struggle for independence which unfolds through three pivotal phases.. Phase 1 involves comprehensive desk research, urban context studies, and field surveys, guiding the hall's rehabilitation. Phase 2 focuses on crafting a Detailed Project Report, encompassing architectural designs, structural modifications, and site service layouts. In Phase 3, Project Management Consultancy oversees flawless execution, ensuring adherence to historical preservation standards. This endeavor marries historical reverence with innovation, as Gokhale Hall evolves into a symbol of India's freedom struggle. Witness the transformation as history intertwines with contemporary restoration, epitomizing our nation's indomitable spirit.Phase 1 involves comprehensive desk research, urban context studies, and field surveys, guiding the hall's rehabilitation. Phase 2 focuses on crafting a Detailed Project Report, encompassing architectural designs, structural modifications, and site service layouts. In Phase 3, Project Management Consultancy oversees flawless execution, ensuring adherence to historical preservation standards. This endeavor marries historical reverence with innovation, as Gokhale Hall evolves into a symbol of India's freedom struggle. Witness the transformation as history intertwines with contemporary restoration, epitomizing our nation's indomitable spirit.",
     "heroImage": "/images/projects/urban-planning/upt3_1.jpg",
     "galleryImages": [
      "/images/projects/urban-planning/upt3_2.jpg",
@@ -960,7 +1020,7 @@
      "/images/projects/urban-planning/upt3_7.jpg"
     ],
     "scopeOfWork": [],
-    "client": "National Council of Science Museums (NCSM), Ministry of Culture, Government of India.\n& YMIA , chennai",
+    "client": "National Council of Science Museums (NCSM), Ministry of Culture, Government of India. & YMIA , chennai",
     "location": "Chennai",
     "projectStatus": "Ongoing",
     "startDate": "2022",
@@ -998,7 +1058,7 @@
      "/images/projects/urban-planning/upt4_8.jpg"
     ],
     "scopeOfWork": [],
-    "client": "Chennai\nMetropolitan\nDevelopment Authority",
+    "client": "Chennai Metropolitan Development Authority",
     "location": "Chennai",
     "projectStatus": "Ongoing",
     "startDate": "2018",
@@ -1021,7 +1081,7 @@
     "slug": "upt5",
     "title": "Mega Streets Project - Package 5",
     "category": "Urban Planning & Transportation",
-    "description": "Mega Streets Project of Greater Chennai Corporation focuses on detailed street network plan and detailed design for a total length of around 110 km of streets in various packages in Chennai. CUBE along with IBI\nGroup has been awarded the Velachery Package comprising of a road length of 15.29 Km.\nProject involves designing of complete streets - inclusive for all road users by incorporating three aspects of design,\n• Livability - Above ground features such as streetscape elements that improve visual and sensual perception.\n• Mobility - Design that incorporates all road users and shifting the scales toward public and Non-Motorized Transportation\nUtility - Efficient design of underground utility infrastructure [water supply, storm water drain, sewer connection, electricity, telecommunication, and gas lines] and Sustainable urban Drainage Systems as a climate resilient strategy",
+    "description": "Mega Streets Project of Greater Chennai Corporation focuses on detailed street network plan and detailed design for a total length of around 110 km of streets in various packages in Chennai. CUBE along with IBI Group has been awarded the Velachery Package comprising of a road length of 15.29 Km.\nProject involves designing of complete streets - inclusive for all road users by incorporating three aspects of design,\n• Livability - Above ground features such as streetscape elements that improve visual and sensual perception.\n• Mobility - Design that incorporates all road users and shifting the scales toward public and Non-Motorized Transportation\nUtility - Efficient design of underground utility infrastructure [water supply, storm water drain, sewer connection, electricity, telecommunication, and gas lines] and Sustainable urban Drainage Systems as a climate resilient strategy",
     "heroImage": "/images/projects/urban-planning/upt5_1.jpg",
     "galleryImages": [
      "/images/projects/urban-planning/upt5_2.jpg",
@@ -1050,7 +1110,8 @@
     "featured": false,
     "status": "published",
     "createdAt": "2026-11-03T10:20:20.464Z",
-    "updatedAt": "2026-11-12T15:17:22.000Z"
+    "updatedAt": "2026-11-12T15:17:22.000Z",
+    "partners": "Arcadis IBI"
    },
    {
     "slug": "upt6",
@@ -1204,7 +1265,7 @@
      "/images/projects/urban-planning/upt10_5.jpg"
     ],
     "scopeOfWork": [],
-    "client": "Chennai\nMetropolitan\nDevelopment Authority",
+    "client": "Chennai Metropolitan Development Authority",
     "location": "Chennai",
     "projectStatus": "completed",
     "startDate": "2021",
@@ -1237,7 +1298,7 @@
      "/images/projects/urban-planning/upt11_3.jpg"
     ],
     "scopeOfWork": [],
-    "client": "Chennai Unified Metropolitan\nTransport Authority (CUMTA)",
+    "client": "Chennai Unified Metropolitan Transport Authority (CUMTA)",
     "location": "Chennai",
     "projectStatus": "Ongoing",
     "startDate": "2023+I12",
@@ -1335,7 +1396,7 @@
      "/images/projects/urban-planning/upt14_2.jpg"
     ],
     "scopeOfWork": [],
-    "client": "Chennai Petroleum Corporation\nLimited (CPCL)",
+    "client": "Chennai Petroleum Corporation Limited (CPCL)",
     "location": "Chennai",
     "projectStatus": "Completed",
     "startDate": "2023",
@@ -1368,7 +1429,9 @@
     "galleryImages": [
      "/images/projects/asiana_02.jpg"
     ],
-    "scopeOfWork": [],
+    "scopeOfWork": [
+     "Surface Water Management and Inundation Study"
+    ],
     "client": "Ashiana Housing Ltd.",
     "location": "Chengalpattu, Tamil Nadu",
     "projectStatus": "",
@@ -1381,7 +1444,10 @@
     "featured": true,
     "status": "published",
     "createdAt": "2026-11-03T10:20:20.462Z",
-    "updatedAt": "2026-11-12T15:17:22.000Z"
+    "updatedAt": "2026-11-12T15:17:22.000Z",
+    "factLabels": {
+     "scopeOfWork": "Services"
+    }
    },
    {
     "slug": "caterpillar",
@@ -1392,7 +1458,9 @@
     "galleryImages": [
      "/images/projects/caterpillar_02.jpg"
     ],
-    "scopeOfWork": [],
+    "scopeOfWork": [
+     "Identification of Alternate Location for Parayan Kuttai Water Body & Surface Water Optimization Plan"
+    ],
     "client": "CATERPILLAR INDIA PRIVATE LIMITED",
     "location": "Thiruvallur, Tamil Nadu",
     "projectStatus": "",
@@ -1405,7 +1473,10 @@
     "featured": true,
     "status": "published",
     "createdAt": "2026-11-03T10:20:20.462Z",
-    "updatedAt": "2026-11-12T15:17:22.000Z"
+    "updatedAt": "2026-11-12T15:17:22.000Z",
+    "factLabels": {
+     "scopeOfWork": "Services"
+    }
    },
    {
     "slug": "cauvery",
@@ -1417,7 +1488,9 @@
      "/images/projects/environment-sustainability/cauvery_02.jpg",
      "/images/projects/environment-sustainability/cauvery_03.jpg"
     ],
-    "scopeOfWork": [],
+    "scopeOfWork": [
+     "Questionnaire survey & Analytical Study"
+    ],
     "client": "IIT Madras",
     "location": "Tanjore, Tamil Nadu",
     "projectStatus": "",
@@ -1430,7 +1503,10 @@
     "featured": false,
     "status": "published",
     "createdAt": "2026-11-03T10:20:20.462Z",
-    "updatedAt": "2026-11-12T15:17:22.000Z"
+    "updatedAt": "2026-11-12T15:17:22.000Z",
+    "factLabels": {
+     "scopeOfWork": "Services"
+    }
    },
    {
     "slug": "cmwssb",
@@ -1442,7 +1518,9 @@
      "/images/projects/environment-sustainability/cmwssb_02.jpg",
      "/images/projects/environment-sustainability/cmwssb_03.jpg"
     ],
-    "scopeOfWork": [],
+    "scopeOfWork": [
+     "Detailed Project Report Vetting"
+    ],
     "client": "CMWSSB",
     "location": "Chennai,Tamil Nadu",
     "projectStatus": "",
@@ -1455,7 +1533,10 @@
     "featured": false,
     "status": "published",
     "createdAt": "2026-11-03T10:20:20.462Z",
-    "updatedAt": "2026-11-12T15:17:22.000Z"
+    "updatedAt": "2026-11-12T15:17:22.000Z",
+    "factLabels": {
+     "scopeOfWork": "Services"
+    }
    },
    {
     "slug": "hyundai",
@@ -1467,7 +1548,9 @@
      "/images/projects/hyundai_02.jpg",
      "/images/projects/hyundai_03.jpg"
     ],
-    "scopeOfWork": [],
+    "scopeOfWork": [
+     "Subsurface and Surface Water Mmanagement Study"
+    ],
     "client": "Hyundai Motor India Ltd",
     "location": "Kanchipuram, Tamil Nadu",
     "projectStatus": "",
@@ -1480,7 +1563,10 @@
     "featured": false,
     "status": "published",
     "createdAt": "2026-11-03T10:20:20.462Z",
-    "updatedAt": "2026-11-12T15:17:22.000Z"
+    "updatedAt": "2026-11-12T15:17:22.000Z",
+    "factLabels": {
+     "scopeOfWork": "Services"
+    }
    },
    {
     "slug": "iit-jammu",
@@ -1489,20 +1575,25 @@
     "description": "Arrive at the maximum Surface Water Potential of the Campus and its immediate adjoining areas wherever applicable, that can be technically contained, conserved and utilized within the Campus.\nAssessment on adequacy of the existing / planned Storm Water Drain network for the entire IIT Jammu Campus to support the arrived SWM Plan and propose new Storm Drain network for the same, if required.\nPreparation of inundation maps for various rainfall return periods and identify the vulnerable locations within the IIT Jammu Campus.\nRecommend suitable interventions and on-site measures to ameliorate inundation in the study area (wherever applicable).\nPreparation of Surface Water Management Plan incorporating the above metioned interventions.",
     "heroImage": "/images/projects/images_01.jpg",
     "galleryImages": [],
-    "scopeOfWork": [],
+    "scopeOfWork": [
+     "Inundation Study and Surface Water Management Plan"
+    ],
     "client": "IIT Jammu",
     "location": "Jammu and Kashmir",
     "projectStatus": "",
     "startDate": "16-Jun-21",
     "endDate": "2 Months",
     "highlights": [
-     "Inundation Study for the entire Campus for Various Rainfall Return Periods.\nAdequacy check of the storm water infrastructure planned within the campus and recommend appropriate storm water infrastructure where required, for effective Storm Water Management.\nMaximize the water conservation measures to supplement the resources planned to meet the water demand for IIT Jammu campus"
+     "Inundation Study for the entire Campus for Various Rainfall Return Periods. Adequacy check of the storm water infrastructure planned within the campus and recommend appropriate storm water infrastructure where required, for effective Storm Water Management. Maximize the water conservation measures to supplement the resources planned to meet the water demand for IIT Jammu campus"
     ],
     "services": [],
     "featured": true,
     "status": "published",
     "createdAt": "2026-11-03T10:20:20.462Z",
-    "updatedAt": "2026-11-12T15:17:22.000Z"
+    "updatedAt": "2026-11-12T15:17:22.000Z",
+    "factLabels": {
+     "scopeOfWork": "Services"
+    }
    },
    {
     "slug": "kilambakkam",
@@ -1511,7 +1602,9 @@
     "description": "The study is to achieve the “Net Zero Carbon Emission Status” for Kilambakkam bus terminus facility by offsetting the carbon emissions thro’ a renewable “On-grid Solar Power plant system”. The study / report aims to synergize the energy conservation opportunities, efficiency enhancement of the existing systems through on-grid solar power production to migrate towards “net zero carbon” status of the Kilambakkam facility",
     "heroImage": "/images/projects/images_kilambakkam1.jpg",
     "galleryImages": [],
-    "scopeOfWork": [],
+    "scopeOfWork": [
+     "Preparation of DPR Assessment of power consumption and to pepare solar panel layout"
+    ],
     "client": "CMDA",
     "location": "Chennai,Tamil Nadu",
     "projectStatus": "",
@@ -1524,7 +1617,10 @@
     "featured": false,
     "status": "published",
     "createdAt": "2026-11-03T10:20:20.462Z",
-    "updatedAt": "2026-11-12T15:17:22.000Z"
+    "updatedAt": "2026-11-12T15:17:22.000Z",
+    "factLabels": {
+     "scopeOfWork": "Services"
+    }
    },
    {
     "slug": "klipstp",
@@ -1535,7 +1631,9 @@
     "galleryImages": [
      "/images/projects/KLIPSTP_02.jpg"
     ],
-    "scopeOfWork": [],
+    "scopeOfWork": [
+     "Detailed Project Report"
+    ],
     "client": "Kerala Lifesciences Industries Parks Pvt. Ltd.",
     "location": "Thonnakal, Kerala",
     "projectStatus": "",
@@ -1548,7 +1646,10 @@
     "featured": false,
     "status": "published",
     "createdAt": "2026-11-03T10:20:20.462Z",
-    "updatedAt": "2026-11-12T15:17:22.000Z"
+    "updatedAt": "2026-11-12T15:17:22.000Z",
+    "factLabels": {
+     "scopeOfWork": "Services"
+    }
    },
    {
     "slug": "kmrl-es",
@@ -1559,7 +1660,9 @@
     "galleryImages": [
      "/images/projects/building-construction/kmrl_es_02.jpg"
     ],
-    "scopeOfWork": [],
+    "scopeOfWork": [
+     "Vetting the Design of conveyance system and STP plant"
+    ],
     "client": "KMRL",
     "location": "Kochi , Kerala",
     "projectStatus": "",
@@ -1572,7 +1675,10 @@
     "featured": false,
     "status": "published",
     "createdAt": "2026-11-03T10:20:20.462Z",
-    "updatedAt": "2026-11-12T15:17:22.000Z"
+    "updatedAt": "2026-11-12T15:17:22.000Z",
+    "factLabels": {
+     "scopeOfWork": "Services"
+    }
    },
    {
     "slug": "kuthambakkam",
@@ -1583,7 +1689,9 @@
     "galleryImages": [
      "/images/projects/Kuthambakkam_02.jpg"
     ],
-    "scopeOfWork": [],
+    "scopeOfWork": [
+     "Preparation of DPR Assessment of power consumption and to pepare solar panel layout"
+    ],
     "client": "CMDA",
     "location": "Chennai, Tamil Nadu",
     "projectStatus": "",
@@ -1596,7 +1704,10 @@
     "featured": false,
     "status": "published",
     "createdAt": "2026-11-03T10:20:20.462Z",
-    "updatedAt": "2026-11-12T15:17:22.000Z"
+    "updatedAt": "2026-11-12T15:17:22.000Z",
+    "factLabels": {
+     "scopeOfWork": "Services"
+    }
    },
    {
     "slug": "madhavaram",
@@ -1607,7 +1718,9 @@
     "galleryImages": [
      "/images/projects/Madhavaram_02.jpg"
     ],
-    "scopeOfWork": [],
+    "scopeOfWork": [
+     "Preparation of DPR Assessment of power consumption and to pepare solar panel layout"
+    ],
     "client": "CMDA",
     "location": "Chennai, Tamil Nadu",
     "projectStatus": "",
@@ -1620,7 +1733,10 @@
     "featured": false,
     "status": "published",
     "createdAt": "2026-11-03T10:20:20.462Z",
-    "updatedAt": "2026-11-12T15:17:22.000Z"
+    "updatedAt": "2026-11-12T15:17:22.000Z",
+    "factLabels": {
+     "scopeOfWork": "Services"
+    }
    },
    {
     "slug": "mahindara",
@@ -1629,7 +1745,9 @@
     "description": "Feasibility study on catchment analysis of two waterbodies needs to be relocated within Mahindra industrial cluster without affecting its ecology and natural drainage system.\nEfficient and effective management of Surface Water in order to optimize fresh water resource within the premises.",
     "heroImage": "/images/projects/images_mahindara.jpg",
     "galleryImages": [],
-    "scopeOfWork": [],
+    "scopeOfWork": [
+     "Relocation of Existing defunct waterbodies to an appropriate location"
+    ],
     "client": "Mahindra Industrial Park Chennai Ltd.",
     "location": "Thiruvallur, Tamil Nadu",
     "projectStatus": "",
@@ -1642,7 +1760,10 @@
     "featured": true,
     "status": "published",
     "createdAt": "2026-11-03T10:20:20.463Z",
-    "updatedAt": "2026-11-12T15:17:22.000Z"
+    "updatedAt": "2026-11-12T15:17:22.000Z",
+    "factLabels": {
+     "scopeOfWork": "Services"
+    }
    },
    {
     "slug": "rajapalayam",
@@ -1653,20 +1774,25 @@
     "galleryImages": [
      "/images/projects/rajapalayam_02.jpg"
     ],
-    "scopeOfWork": [],
+    "scopeOfWork": [
+     "Detailed Project Report"
+    ],
     "client": "Sri Ramanalayam Trust",
     "location": "Viruthunagar,Tamil Nadu",
     "projectStatus": "",
     "startDate": "28-May-22",
     "endDate": "6 Months",
     "highlights": [
-     "Efficiency and Efficacy of the intake structure were improved to tap the water from River Mudangiyar to the 6th mile reservoir.\nMoreover additional catchments were tapped to improve the overall water supply to Rajapalayam Municipality."
+     "Efficiency and Efficacy of the intake structure were improved to tap the water from River Mudangiyar to the 6th mile reservoir. Moreover additional catchments were tapped to improve the overall water supply to Rajapalayam Municipality."
     ],
     "services": [],
     "featured": false,
     "status": "published",
     "createdAt": "2026-11-03T10:20:20.463Z",
-    "updatedAt": "2026-11-12T15:17:22.000Z"
+    "updatedAt": "2026-11-12T15:17:22.000Z",
+    "factLabels": {
+     "scopeOfWork": "Services"
+    }
    },
    {
     "slug": "royal",
@@ -1677,7 +1803,9 @@
     "galleryImages": [
      "/images/projects/royal_02.jpg"
     ],
-    "scopeOfWork": [],
+    "scopeOfWork": [
+     "Providing Technical solution"
+    ],
     "client": "S.N. Pingle Consultants",
     "location": "Thiruvannamalai , Tamil Nadu",
     "projectStatus": "",
@@ -1690,20 +1818,24 @@
     "featured": false,
     "status": "published",
     "createdAt": "2026-11-03T10:20:20.463Z",
-    "updatedAt": "2026-11-12T15:17:22.000Z"
+    "updatedAt": "2026-11-12T15:17:22.000Z",
+    "factLabels": {
+     "scopeOfWork": "Services"
+    }
    },
    {
     "slug": "vellore",
-    "title": "Detailed Project Report (DPR) – Rejuvenation of Thuthipet\nTank in Vellore District",
+    "title": "Detailed Project Report (DPR) – Rejuvenation of Thuthipet Tank in Vellore District",
     "category": "Environment & Sustainability",
-    "description": "Comprehensive assessment of the existing storage capacity of the tank\nQuantification of additional storage in Thuthipet tank in accordance with potential\nsurface runoff from the catchment.\nRecommend necessary measures to prevent or treat the sewage / sullage / polluted water\nbefore discharging it into the Thuthipet tank.",
-    "heroImage": "/images/projects/images_vellore.jpg",
+    "description": "Comprehensive assessment of the existing storage capacity of the tank\nQuantification of additional storage in Thuthipet tank in accordance with potential surface runoff from the catchment. Recommend necessary measures to prevent or treat the sewage / sullage / polluted water before discharging it into the Thuthipet tank.",
+    "heroImage": "/images/projects/vellore_01.jpg",
     "galleryImages": [
-     "/images/projects/vellore_01.jpg",
      "/images/projects/vellore_02.jpg",
      "/images/projects/vellore_03.jpg"
     ],
-    "scopeOfWork": [],
+    "scopeOfWork": [
+     "Rejuvenation of Thuthipet Lake were defunct due to Urbanization"
+    ],
     "client": "IIT Madras",
     "location": "Vellore, Tamil Nadu",
     "projectStatus": "",
@@ -1716,7 +1848,10 @@
     "featured": false,
     "status": "published",
     "createdAt": "2026-11-03T10:20:20.464Z",
-    "updatedAt": "2026-11-12T15:17:22.000Z"
+    "updatedAt": "2026-11-12T15:17:22.000Z",
+    "factLabels": {
+     "scopeOfWork": "Services"
+    }
    }
   ],
   "verticals": [
@@ -1764,7 +1899,7 @@
      },
      {
       "title": "Design & Engineering",
-      "description": "Domains: soil investigation (10), architectural design (15), structural design (40), MEP design (15) and structural vetting (50).",
+      "description": "Domains: soil investigation (10), architectural design (15), structural design (40), MEP design (15) and structural vetting (50). Construction technologies: conventional RCC framed structure, steel & composite structures, MIVAN construction, tunnel form technology and precast prefab concrete construction system.",
       "items": [
        "Master Planning for over 2000 Acres",
        "Built-up Area of over 20 Mil Sqft",
@@ -1774,7 +1909,7 @@
      },
      {
       "title": "Project Management Consultancy",
-      "description": "Domains: residential, industrial, institutional and infrastructure projects.",
+      "description": "Domains: residential, industrial, institutional and infrastructure projects. Construction technologies: conventional RCC framed structure, steel & composite structures and MIVAN construction.",
       "items": [
        "Built-up Area of over 1.5 Mil Sqft",
        "5000 dwelling units",
@@ -1883,7 +2018,7 @@
     "employmentType": "",
     "experience": "15+ Years of experience in related discipline. Professional Engineer or Chartered Engineer preferable.",
     "location": "Taramani, Chennai",
-    "description": "Qualification: M.E/M.Tech. Structures from a reputed institution. Lead structural design and analysis, project management, quality assurance and control, and client engagement for building and infrastructure projects. Mandatory software: STAAD, RCDE, ETABS, SAFE, AUTOCAD; preferable: TEKLA Structures.",
+    "description": "Qualification: M.E/M.Tech. Structures from Reputed Institution. Softwares – Mandatory: STAAD, RCDE, ETABS, SAFE, AUTOCAD; Preferable: TEKLA STRUCTURES.",
     "qualifications": [
      "Leadership and Team Management",
      "Project Management",
@@ -1907,7 +2042,7 @@
     "title": "Construction of Classroom Block for Government High School at Poovathur, Thanjavur, Tamil Nadu",
     "description": "Construction of classroom block for Government High School at Poovathur, Thanjavur, Tamil Nadu.",
     "documentUrl": "/tenders/NIT_CSR_Poovathur_Final.pdf",
-    "publishedDate": "2024-25",
+    "publishedDate": "",
     "closingDate": "Refer document",
     "status": "Closed"
    },
@@ -1917,7 +2052,7 @@
     "title": "Comprehensive Design & Engineering Services for a 500-Unit Residential Apartment Complex in Jigani, Bangalore",
     "description": "Comprehensive design and engineering services for a 500-unit residential apartment complex in Jigani, Bangalore.",
     "documentUrl": "/tenders/RFQ_JIGANI_DE_2_1_Revised.pdf",
-    "publishedDate": "2024-25",
+    "publishedDate": "",
     "closingDate": "Refer document",
     "status": "Closed"
    },
@@ -1927,7 +2062,7 @@
     "title": "Corrigendum",
     "description": "Corrigendum for Tender ID CUBEADMRFPB&C0232024-25.",
     "documentUrl": "/tenders/CORRIGENDUM_CUBEADMRFPBC0232024-25.pdf",
-    "publishedDate": "2024-25",
+    "publishedDate": "",
     "closingDate": "Refer document",
     "status": "Closed"
    },
@@ -1937,7 +2072,7 @@
     "title": "Corrigendum - Comprehensive Design & Engineering Services for a 500-Unit Residential Apartment Complex in Jigani, Bangalore",
     "description": "Corrigendum extension of time for the comprehensive design and engineering services tender for the 500-unit residential apartment complex in Jigani, Bangalore.",
     "documentUrl": "/tenders/Corrigendum_Tender_EoT.pdf",
-    "publishedDate": "2024-25",
+    "publishedDate": "",
     "closingDate": "Refer document",
     "status": "Closed"
    }
@@ -3015,6 +3150,26 @@
     "createdAt": "2026-11-04T12:00:00.000Z"
    },
    {
+    "id": "staff_cf4f72",
+    "name": "Abishek S",
+    "designation": "Executive",
+    "department": "Environment & Sustainability",
+    "category": "Environment & Sustainability",
+    "image": "/images/team/team_unknown.png",
+    "status": "published",
+    "createdAt": "2026-11-04T12:00:00.000Z"
+   },
+   {
+    "id": "staff_4dc7ba",
+    "name": "Amita Gupta",
+    "designation": "Senior Consultant (E&S, UPT & CEL)",
+    "department": "Urban Planning & Transportation",
+    "category": "Urban Planning & Transportation",
+    "image": "/images/team/team_amitha.jpg",
+    "status": "published",
+    "createdAt": "2026-11-04T12:00:00.000Z"
+   },
+   {
     "id": "staff_118838",
     "name": "Anis Rathnam M",
     "designation": "Senior Executive",
@@ -3143,26 +3298,6 @@
     "image": "/images/team/team_marudhu.jpg",
     "status": "published",
     "createdAt": "2026-11-04T12:00:00.000Z"
-   },
-   {
-    "id": "staff_cf4f72",
-    "name": "Abishek S",
-    "designation": "Executive",
-    "department": "Environment & Sustainability",
-    "category": "Environment & Sustainability",
-    "image": "/images/team/team_unknown.png",
-    "status": "published",
-    "createdAt": "2026-11-04T12:00:00.000Z"
-   },
-   {
-    "id": "staff_4dc7ba",
-    "name": "Amita Gupta",
-    "designation": "Senior Consultant (E&S, UPT & CEL)",
-    "department": "Urban Planning & Transportation",
-    "category": "Urban Planning & Transportation",
-    "image": "/images/team/team_amitha.jpg",
-    "status": "published",
-    "createdAt": "2026-11-04T12:00:00.000Z"
    }
   ],
   "clients": [
@@ -3171,6 +3306,78 @@
     "name": "1",
     "type": "client",
     "logoUrl": "/images/clients/client_1.png",
+    "websiteUrl": "#",
+    "isActive": true,
+    "displayOrder": 0
+   },
+   {
+    "id": "client_20",
+    "name": "2",
+    "type": "client",
+    "logoUrl": "/images/clients/client_2.png",
+    "websiteUrl": "#",
+    "isActive": true,
+    "displayOrder": 1
+   },
+   {
+    "id": "client_31",
+    "name": "3",
+    "type": "client",
+    "logoUrl": "/images/clients/client_3.png",
+    "websiteUrl": "#",
+    "isActive": true,
+    "displayOrder": 2
+   },
+   {
+    "id": "client_41",
+    "name": "4",
+    "type": "client",
+    "logoUrl": "/images/clients/client_4.png",
+    "websiteUrl": "#",
+    "isActive": true,
+    "displayOrder": 3
+   },
+   {
+    "id": "client_51",
+    "name": "5",
+    "type": "client",
+    "logoUrl": "/images/clients/client_5.png",
+    "websiteUrl": "#",
+    "isActive": true,
+    "displayOrder": 4
+   },
+   {
+    "id": "client_61",
+    "name": "6",
+    "type": "client",
+    "logoUrl": "/images/clients/client_6.png",
+    "websiteUrl": "#",
+    "isActive": true,
+    "displayOrder": 5
+   },
+   {
+    "id": "client_62",
+    "name": "7",
+    "type": "client",
+    "logoUrl": "/images/clients/client_7.png",
+    "websiteUrl": "#",
+    "isActive": true,
+    "displayOrder": 6
+   },
+   {
+    "id": "client_63",
+    "name": "8",
+    "type": "client",
+    "logoUrl": "/images/clients/client_8.png",
+    "websiteUrl": "#",
+    "isActive": true,
+    "displayOrder": 7
+   },
+   {
+    "id": "client_64",
+    "name": "9",
+    "type": "client",
+    "logoUrl": "/images/clients/client_9.png",
     "websiteUrl": "#",
     "isActive": true,
     "displayOrder": 8
@@ -3266,22 +3473,13 @@
     "displayOrder": 18
    },
    {
-    "id": "client_20",
-    "name": "2",
-    "type": "client",
-    "logoUrl": "/images/clients/client_2.png",
-    "websiteUrl": "#",
-    "isActive": true,
-    "displayOrder": 19
-   },
-   {
     "id": "client_21",
     "name": "20",
     "type": "client",
     "logoUrl": "/images/clients/client_20.png",
     "websiteUrl": "#",
     "isActive": true,
-    "displayOrder": 20
+    "displayOrder": 19
    },
    {
     "id": "client_22",
@@ -3290,7 +3488,7 @@
     "logoUrl": "/images/clients/client_21.png",
     "websiteUrl": "#",
     "isActive": true,
-    "displayOrder": 21
+    "displayOrder": 20
    },
    {
     "id": "client_23",
@@ -3299,7 +3497,7 @@
     "logoUrl": "/images/clients/client_22.png",
     "websiteUrl": "#",
     "isActive": true,
-    "displayOrder": 22
+    "displayOrder": 21
    },
    {
     "id": "client_24",
@@ -3308,7 +3506,7 @@
     "logoUrl": "/images/clients/client_23.png",
     "websiteUrl": "#",
     "isActive": true,
-    "displayOrder": 23
+    "displayOrder": 22
    },
    {
     "id": "client_25",
@@ -3317,7 +3515,7 @@
     "logoUrl": "/images/clients/client_24.png",
     "websiteUrl": "#",
     "isActive": true,
-    "displayOrder": 24
+    "displayOrder": 23
    },
    {
     "id": "client_26",
@@ -3326,7 +3524,7 @@
     "logoUrl": "/images/clients/client_25.png",
     "websiteUrl": "#",
     "isActive": true,
-    "displayOrder": 25
+    "displayOrder": 24
    },
    {
     "id": "client_27",
@@ -3335,7 +3533,7 @@
     "logoUrl": "/images/clients/client_26.png",
     "websiteUrl": "#",
     "isActive": true,
-    "displayOrder": 26
+    "displayOrder": 25
    },
    {
     "id": "client_28",
@@ -3344,7 +3542,7 @@
     "logoUrl": "/images/clients/client_27.png",
     "websiteUrl": "#",
     "isActive": true,
-    "displayOrder": 27
+    "displayOrder": 26
    },
    {
     "id": "client_29",
@@ -3353,7 +3551,7 @@
     "logoUrl": "/images/clients/client_28.png",
     "websiteUrl": "#",
     "isActive": true,
-    "displayOrder": 28
+    "displayOrder": 27
    },
    {
     "id": "client_30",
@@ -3362,16 +3560,7 @@
     "logoUrl": "/images/clients/client_29.png",
     "websiteUrl": "#",
     "isActive": true,
-    "displayOrder": 29
-   },
-   {
-    "id": "client_31",
-    "name": "3",
-    "type": "client",
-    "logoUrl": "/images/clients/client_3.png",
-    "websiteUrl": "#",
-    "isActive": true,
-    "displayOrder": 30
+    "displayOrder": 28
    },
    {
     "id": "client_32",
@@ -3380,7 +3569,7 @@
     "logoUrl": "/images/clients/client_30.png",
     "websiteUrl": "#",
     "isActive": true,
-    "displayOrder": 31
+    "displayOrder": 29
    },
    {
     "id": "client_33",
@@ -3389,7 +3578,7 @@
     "logoUrl": "/images/clients/client_31.png",
     "websiteUrl": "#",
     "isActive": true,
-    "displayOrder": 32
+    "displayOrder": 30
    },
    {
     "id": "client_34",
@@ -3398,7 +3587,7 @@
     "logoUrl": "/images/clients/client_33.png",
     "websiteUrl": "#",
     "isActive": true,
-    "displayOrder": 33
+    "displayOrder": 31
    },
    {
     "id": "client_35",
@@ -3407,7 +3596,7 @@
     "logoUrl": "/images/clients/client_34.png",
     "websiteUrl": "#",
     "isActive": true,
-    "displayOrder": 34
+    "displayOrder": 32
    },
    {
     "id": "client_36",
@@ -3416,7 +3605,7 @@
     "logoUrl": "/images/clients/client_35.png",
     "websiteUrl": "#",
     "isActive": true,
-    "displayOrder": 35
+    "displayOrder": 33
    },
    {
     "id": "client_37",
@@ -3425,7 +3614,7 @@
     "logoUrl": "/images/clients/client_36.png",
     "websiteUrl": "#",
     "isActive": true,
-    "displayOrder": 36
+    "displayOrder": 34
    },
    {
     "id": "client_38",
@@ -3434,7 +3623,7 @@
     "logoUrl": "/images/clients/client_37.png",
     "websiteUrl": "#",
     "isActive": true,
-    "displayOrder": 37
+    "displayOrder": 35
    },
    {
     "id": "client_39",
@@ -3443,7 +3632,7 @@
     "logoUrl": "/images/clients/client_38.png",
     "websiteUrl": "#",
     "isActive": true,
-    "displayOrder": 38
+    "displayOrder": 36
    },
    {
     "id": "client_40",
@@ -3452,16 +3641,7 @@
     "logoUrl": "/images/clients/client_39.png",
     "websiteUrl": "#",
     "isActive": true,
-    "displayOrder": 39
-   },
-   {
-    "id": "client_41",
-    "name": "4",
-    "type": "client",
-    "logoUrl": "/images/clients/client_4.png",
-    "websiteUrl": "#",
-    "isActive": true,
-    "displayOrder": 40
+    "displayOrder": 37
    },
    {
     "id": "client_42",
@@ -3470,7 +3650,7 @@
     "logoUrl": "/images/clients/client_40.png",
     "websiteUrl": "#",
     "isActive": true,
-    "displayOrder": 41
+    "displayOrder": 38
    },
    {
     "id": "client_43",
@@ -3479,7 +3659,7 @@
     "logoUrl": "/images/clients/client_41.png",
     "websiteUrl": "#",
     "isActive": true,
-    "displayOrder": 42
+    "displayOrder": 39
    },
    {
     "id": "client_44",
@@ -3488,7 +3668,7 @@
     "logoUrl": "/images/clients/client_42.png",
     "websiteUrl": "#",
     "isActive": true,
-    "displayOrder": 43
+    "displayOrder": 40
    },
    {
     "id": "client_45",
@@ -3497,7 +3677,7 @@
     "logoUrl": "/images/clients/client_43.png",
     "websiteUrl": "#",
     "isActive": true,
-    "displayOrder": 44
+    "displayOrder": 41
    },
    {
     "id": "client_46",
@@ -3506,7 +3686,7 @@
     "logoUrl": "/images/clients/client_44.png",
     "websiteUrl": "#",
     "isActive": true,
-    "displayOrder": 45
+    "displayOrder": 42
    },
    {
     "id": "client_47",
@@ -3515,7 +3695,7 @@
     "logoUrl": "/images/clients/client_45.png",
     "websiteUrl": "#",
     "isActive": true,
-    "displayOrder": 46
+    "displayOrder": 43
    },
    {
     "id": "client_48",
@@ -3524,7 +3704,7 @@
     "logoUrl": "/images/clients/client_46.png",
     "websiteUrl": "#",
     "isActive": true,
-    "displayOrder": 47
+    "displayOrder": 44
    },
    {
     "id": "client_49",
@@ -3533,7 +3713,7 @@
     "logoUrl": "/images/clients/client_48.png",
     "websiteUrl": "#",
     "isActive": true,
-    "displayOrder": 48
+    "displayOrder": 45
    },
    {
     "id": "client_50",
@@ -3542,16 +3722,7 @@
     "logoUrl": "/images/clients/client_49.png",
     "websiteUrl": "#",
     "isActive": true,
-    "displayOrder": 49
-   },
-   {
-    "id": "client_51",
-    "name": "5",
-    "type": "client",
-    "logoUrl": "/images/clients/client_5.png",
-    "websiteUrl": "#",
-    "isActive": true,
-    "displayOrder": 50
+    "displayOrder": 46
    },
    {
     "id": "client_52",
@@ -3560,7 +3731,7 @@
     "logoUrl": "/images/clients/client_50.png",
     "websiteUrl": "#",
     "isActive": true,
-    "displayOrder": 51
+    "displayOrder": 47
    },
    {
     "id": "client_53",
@@ -3569,7 +3740,7 @@
     "logoUrl": "/images/clients/client_51.png",
     "websiteUrl": "#",
     "isActive": true,
-    "displayOrder": 52
+    "displayOrder": 48
    },
    {
     "id": "client_54",
@@ -3578,7 +3749,7 @@
     "logoUrl": "/images/clients/client_52.png",
     "websiteUrl": "#",
     "isActive": true,
-    "displayOrder": 53
+    "displayOrder": 49
    },
    {
     "id": "client_55",
@@ -3587,7 +3758,7 @@
     "logoUrl": "/images/clients/client_53.png",
     "websiteUrl": "#",
     "isActive": true,
-    "displayOrder": 54
+    "displayOrder": 50
    },
    {
     "id": "client_56",
@@ -3596,7 +3767,7 @@
     "logoUrl": "/images/clients/client_54.png",
     "websiteUrl": "#",
     "isActive": true,
-    "displayOrder": 55
+    "displayOrder": 51
    },
    {
     "id": "client_57",
@@ -3605,7 +3776,7 @@
     "logoUrl": "/images/clients/client_55.png",
     "websiteUrl": "#",
     "isActive": true,
-    "displayOrder": 56
+    "displayOrder": 52
    },
    {
     "id": "client_58",
@@ -3614,7 +3785,7 @@
     "logoUrl": "/images/clients/client_56.png",
     "websiteUrl": "#",
     "isActive": true,
-    "displayOrder": 57
+    "displayOrder": 53
    },
    {
     "id": "client_59",
@@ -3623,7 +3794,7 @@
     "logoUrl": "/images/clients/client_57.png",
     "websiteUrl": "#",
     "isActive": true,
-    "displayOrder": 58
+    "displayOrder": 54
    },
    {
     "id": "client_60",
@@ -3632,43 +3803,7 @@
     "logoUrl": "/images/clients/client_58.png",
     "websiteUrl": "#",
     "isActive": true,
-    "displayOrder": 59
-   },
-   {
-    "id": "client_61",
-    "name": "6",
-    "type": "client",
-    "logoUrl": "/images/clients/client_6.png",
-    "websiteUrl": "#",
-    "isActive": true,
-    "displayOrder": 60
-   },
-   {
-    "id": "client_62",
-    "name": "7",
-    "type": "client",
-    "logoUrl": "/images/clients/client_7.png",
-    "websiteUrl": "#",
-    "isActive": true,
-    "displayOrder": 61
-   },
-   {
-    "id": "client_63",
-    "name": "8",
-    "type": "client",
-    "logoUrl": "/images/clients/client_8.png",
-    "websiteUrl": "#",
-    "isActive": true,
-    "displayOrder": 62
-   },
-   {
-    "id": "client_64",
-    "name": "9",
-    "type": "client",
-    "logoUrl": "/images/clients/client_9.png",
-    "websiteUrl": "#",
-    "isActive": true,
-    "displayOrder": 63
+    "displayOrder": 55
    }
   ],
   "gallery": [
@@ -3681,8 +3816,8 @@
    },
    {
     "id": "gal_2",
-    "title": "Capacity Building Training Programme",
-    "category": "Team",
+    "title": "Capacity Building Training Program in Best Construction Practices for High Rise Buildings for Engineers",
+    "category": "Events",
     "imageUrl": "/images/hero/slides_building-training-team.jpg",
     "status": "published"
    },

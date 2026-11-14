@@ -193,7 +193,7 @@ function buildInitialStore(): CMSStore {
         employmentType: 'Full-Time',
         experience: '15+ Years of experience in related discipline. Professional Engineer or Chartered Engineer preferable.',
         location: 'Taramani, Chennai',
-        description: 'Qualification: M.E/M.Tech. Structures from a reputed institution. Lead structural design and analysis, project management, quality assurance and control, and client engagement for building and infrastructure projects. Mandatory software: STAAD, RCDE, ETABS, SAFE, AUTOCAD; preferable: TEKLA Structures.',
+        description: 'Qualification: M.E/M.Tech. Structures from Reputed Institution. Softwares – Mandatory: STAAD, RCDE, ETABS, SAFE, AUTOCAD; Preferable: TEKLA STRUCTURES.',
         qualifications: [
           'Leadership and Team Management',
           'Project Management',

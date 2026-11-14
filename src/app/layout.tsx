@@ -17,7 +17,7 @@ const jakarta = Plus_Jakarta_Sans({
 export const metadata: Metadata = {
   metadataBase: new URL('https://cubeiitm.org'),
   title: 'CUBE | Centre for Urbanization, Buildings & Environment (IIT Madras & Govt of TN)',
-  description: 'Centre of Excellence established jointly by the Government of Tamil Nadu and IIT Madras. Leading applied research, engineering consultancy, third-party quality assurance, environmental testing (CEL), and sustainable urban mobility.',
+  description: 'Centre for Urbanization, Buildings & Environment (CUBE) has been raised by IIT Madras and Government of Tamil Nadu as an Applied Research, Technology and Consultancy Centre.',
   keywords: [
     'CUBE IIT Madras',
     'Centre for Urbanization Buildings and Environment',
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
   authors: [{ name: 'CUBE IIT Madras' }],
   openGraph: {
     title: 'CUBE - Centre for Urbanization, Buildings & Environment',
-    description: 'Centre of Excellence of the Government of Tamil Nadu and IIT Madras for applied engineering, sustainable infrastructure, and smart urbanization.',
+    description: 'Established in May 2017 as a Centre of Excellence of Government of Tamil Nadu in collaboration with IIT Madras, CUBE is an Applied Research, Technology and Consultancy Centre with its own Environment Laboratory (CEL).',
     url: 'https://cubeiitm.org',
     siteName: 'CUBE Digital Experience 2.0',
     images: [

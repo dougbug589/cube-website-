@@ -49,7 +49,7 @@ export default function ClientsPage() {
       {partnerLogos.length > 0 && (
         <section className="band-mist py-16 lg:py-20 pb-24">
           <div className="shell">
-            <SectionHeading eyebrow="Partners" title="Partners and collaborators." />
+            <SectionHeading eyebrow="Partners" title="Partners" />
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-5 reveal-stagger">
               {partnerLogos.map((p) => (
                 <div key={p.logo} className="h-52 rounded-[24px] bg-white border border-white/[0.09] depth-1 grid place-items-center p-4">

@@ -29,11 +29,13 @@ type Vertical = {
   capabilities?: string[];
 };
 
-// Larger photos (1920px) of each vertical's own projects for the big frame.
+// Larger photos (1920px) for the big frame: a project of that vertical, or
+// (Smart Cities, which has no projects on cubeiitm.org) the original site's
+// own Smart Cities banner.
 const BIG: Record<string, string> = {
   'building-construction': '/images/hero/slides_design-engineering-consultancy.jpg',
   'environment-sustainability': '/images/hero/slides_ashiana.jpg',
-  'smart-cities': '/images/projects/smart-cities/tidel_park_02.jpg', // TIDEL Park (NEO), Tiruppur
+  'smart-cities': '/images/projects/smart-cities/images_smartcity.jpg', // cubeiitm.org smart-cities.html banner
   'urban-planning-transportation': '/images/hero/slides_niche.jpg',
 };
 const STEP_VH = 85; // scroll distance per vertical

@@ -130,10 +130,10 @@ Parameters / Notes: ${formData.parametersNeeded || 'Standard Matrix Parameters'}
             </div>
             <div className="glass glass-edge rounded-[26px] p-7 space-y-3">
               <a href={`mailto:${contactInfo.email}`} className="flex items-center gap-3 text-[17px] font-bold text-[#F3F5F6] hover:text-[#F6C22E] transition-colors">
-                <Mail size={19} className="text-[#F6C22E]" /> {contactInfo.email}
+                <Mail size={19} className="text-[#F6C22E]" /> <span className="text-[#A7B2B8] font-semibold">Laboratory:</span> {contactInfo.email}
               </a>
               <a href={`tel:${contactInfo.phoneTel}`} className="flex items-center gap-3 text-[17px] font-bold text-[#F3F5F6] hover:text-[#F6C22E] transition-colors">
-                <Phone size={19} className="text-[#F6C22E]" /> {contactInfo.phone}
+                <Phone size={19} className="text-[#F6C22E]" /> <span className="text-[#A7B2B8] font-semibold">CUBE:</span> {contactInfo.phone}
               </a>
             </div>
           </aside>

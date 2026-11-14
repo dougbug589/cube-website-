@@ -3,9 +3,9 @@
 import React, { useEffect, useRef, useState } from 'react';
 
 /**
- * "We ___ / ___" typewriter headline.
- *
- * "We" stays put. The verb types, then the gold phrase, then a short hold,
+ * Two-line typewriter headline (the slide headlines from cubeiitm.org's home
+ * page, split at the comma; an optional fixed prefix such as "We" is
+ * supported). The first part types, then the gold phrase, then a short hold,
  * a quick backspace, and the next pair. One timer drives a small state
  * machine; each step is a single text update, so the only paint per
  * keystroke is the changed glyphs. The caret blinks with a CSS opacity
@@ -21,12 +21,12 @@ import React, { useEffect, useRef, useState } from 'react';
 
 export type HeadlinePair = { verb: string; phrase: string };
 
+// Slide headlines from cubeiitm.org's home page, word for word, split at the comma.
 export const CUBE_PAIRS: HeadlinePair[] = [
-  { verb: 'engineer', phrase: 'campuses that endure.' },
-  { verb: 'assure', phrase: 'housing India can trust.' },
-  { verb: 'test', phrase: 'the water cities drink.' },
-  { verb: 'plan', phrase: 'cities that move.' },
-  { verb: 'are', phrase: 'a Centre of Excellence.' },
+  { verb: 'Empowering Urban Housing,', phrase: 'Enhancing Quality of Life' },
+  { verb: 'Housing for All,', phrase: 'Building a Brighter Future' },
+  { verb: 'Designing with Nature,', phrase: 'Building for Sustainability' },
+  { verb: 'Honoring Legacy,', phrase: 'Sustaining Cultural Treasures' },
 ];
 
 type Phase = 'typeVerb' | 'typePhrase' | 'hold' | 'deletePhrase' | 'deleteVerb' | 'gap';
@@ -38,7 +38,7 @@ const GAP_MS = 260;
 
 export default function RotatingHeadline({
   pairs = CUBE_PAIRS,
-  prefix = 'We',
+  prefix = '',
   paused = false,
   className = '',
 }: {
@@ -131,14 +131,17 @@ export default function RotatingHeadline({
   const caretOnPhrase = !reduced && !caretOnVerb;
   const typing = phase === 'typeVerb' || phase === 'typePhrase' || phase === 'deletePhrase' || phase === 'deleteVerb';
 
-  const srText = `${prefix} ${pairs.map((p) => p.verb).join(', ')}: ${pairs.map((p) => p.phrase.replace(/\.$/, '')).join('; ')}.`;
+  const srText = prefix
+    ? `${prefix} ${pairs.map((p) => p.verb).join(', ')}: ${pairs.map((p) => p.phrase.replace(/\.$/, '')).join('; ')}.`
+    : pairs.map((p) => `${p.verb} ${p.phrase}`).join('. ') + '.';
 
   return (
     <h1 className={className}>
       <span className="sr-only">{srText}</span>
       <span aria-hidden className="block">
-        <span className="block whitespace-nowrap">
-          {prefix} {verbText}
+        {/* below lg both lines may wrap; each reserves two lines so nothing jumps while typing */}
+        <span className="block min-h-[2.12em] lg:min-h-0 lg:whitespace-nowrap">
+          {prefix ? `${prefix} ` : ''}{verbText}
           {caretOnVerb && <Caret steady={typing} />}
         </span>
         <span className="block min-h-[2.12em] lg:min-h-0 lg:whitespace-nowrap text-[#F6C22E]">

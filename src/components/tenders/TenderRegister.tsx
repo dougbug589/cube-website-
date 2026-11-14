@@ -211,10 +211,10 @@ export default function TenderRegister({ tenders }: { tenders: Tender[] }) {
                       <p className="mt-2 text-[18px] text-[#C2CCD1] leading-relaxed">{t.description}</p>
                     )}
                     <dl className="mt-4 flex flex-wrap gap-x-7 gap-y-2 text-[14.5px]">
-                      {(t.publishedDate || t.createdAt) && (
+                      {t.publishedDate && (
                         <div className="flex gap-1.5">
                           <dt className="text-[#8E9AA0] font-semibold">Published</dt>
-                          <dd className="text-[#F3F5F6] font-bold">{t.publishedDate || t.createdAt?.split('T')[0]}</dd>
+                          <dd className="text-[#F3F5F6] font-bold">{t.publishedDate}</dd>
                         </div>
                       )}
                       {t.closingDate && (

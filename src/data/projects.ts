@@ -53,7 +53,12 @@ export const projects: Project[] = [
       "/images/projects/building-construction/iiser_10.jpg",
       "/images/projects/building-construction/iiser_11.jpg",
       "/images/projects/building-construction/iiser_12.jpg",
-      "/images/projects/building-construction/iiser_13.jpg"
+      "/images/projects/building-construction/iiser_13.jpg",
+      "/images/projects/building-construction/iiser_14.jpg",
+      "/images/projects/building-construction/iiser_15.jpg",
+      "/images/projects/building-construction/iiser_16.jpg",
+      "/images/projects/building-construction/iiser_17.jpg",
+      "/images/projects/building-construction/iiser_18.jpg"
     ],
     "scopeOfWork": [
       "Third party Quality Monitoring"
@@ -111,7 +116,17 @@ export const projects: Project[] = [
       "/images/projects/building-construction/lhp_agartala_10.jpg",
       "/images/projects/building-construction/lhp_agartala_11.jpg",
       "/images/projects/building-construction/lhp_agartala_12.jpg",
-      "/images/projects/building-construction/lhp_agartala_13.jpg"
+      "/images/projects/building-construction/lhp_agartala_13.jpg",
+      "/images/projects/building-construction/lhp_agartala_14.jpg",
+      "/images/projects/building-construction/lhp_agartala_15.jpg",
+      "/images/projects/building-construction/lhp_agartala_16.jpg",
+      "/images/projects/building-construction/lhp_agartala_17.jpg",
+      "/images/projects/building-construction/lhp_agartala_18.jpg",
+      "/images/projects/building-construction/lhp_agartala_19.jpg",
+      "/images/projects/building-construction/lhp_agartala_20.jpg",
+      "/images/projects/building-construction/lhp_agartala_21.jpg",
+      "/images/projects/building-construction/lhp_agartala_22.jpg",
+      "/images/projects/building-construction/lhp_agartala_23.jpg"
     ],
     "scopeOfWork": [
       "Third Party Quality Assurance (TPQA) Service"
@@ -259,7 +274,7 @@ export const projects: Project[] = [
     "slug": "cpcl-nagapattinam",
     "title": "Environmental Upgradation of Three Villages in Nagapattinam",
     "category": "Building & Construction",
-    "description": "Water & waste water treatment by constructing Drain fields & soak pit.\nCompost yards by constructing Organic waste treatment plant & Recycling of Inorganic waste.\nSchool & anganwadi infrastructure by cnstructing classrooms, Public health facilities, renovation of old buildings & fancing adjucent waterbodies for puples safety.\nDevelopment of community halls by constructing community hall, Public health facilities & skill development centre.\nHousehold level toilet blocks by constructing Precast household toilets, water tank, septic tank, Inspection chamber.\nRejuvenation of water bodies by desilting, Bund stabilization, Concrete slab pitching, Bathing Ghat, Cattle Ramp, Rcharge well.\nDinking water distribution chain to households by providing Deep bore holes, Water supply to over head tank, Supply of water to households.",
+    "description": "CPCL has planned to extend their corporate social responsiblity for welfare of migrant villagers Three villages i.e., Panangudi, Gopurajpuram, Vellapakkam at Nagapattinam, TN adopted by CPCL in vicinity of their Cauvery Basin Refinery.. CUBE has been entrusted for providing under-mentioned scope of work:\nWater & waste water treatment by constructing Drain fields & soak pit.\nCompost yards by constructing Organic waste treatment plant & Recycling of Inorganic waste.\nSchool & anganwadi infrastructure by cnstructing classrooms, Public health facilities, renovation of old buildings & fancing adjucent waterbodies for puples safety.\nDevelopment of community halls by constructing community hall, Public health facilities & skill development centre.\nHousehold level toilet blocks by constructing Precast household toilets, water tank, septic tank, Inspection chamber.\nRejuvenation of water bodies by desilting, Bund stabilization, Concrete slab pitching, Bathing Ghat, Cattle Ramp, Rcharge well.\nDinking water distribution chain to households by providing Deep bore holes, Water supply to over head tank, Supply of water to households.",
     "heroImage": "/images/projects/building-construction/cpcl_nagapatinam_04.jpg",
     "galleryImages": [
       "/images/projects/building-construction/cpcl_nagapatinam_01.jpg",
@@ -312,7 +327,7 @@ export const projects: Project[] = [
     "slug": "reevaluation-scheme",
     "title": "Structural Assessment & Re-evaluation of several tenemental schemes (Phase I, II & III) - 33 Schemes",
     "category": "Building & Construction",
-    "description": "Carry out a detailed condition survey of interior and exterior of the buildings / structures to assess the following:\n(a) External damages, distress, deformities, deteriorations, deficiencies, discontinuities in the critical structural elements.\n(b) Physical condition of the non-structural elements for its intended functional effectiveness and efficacy.\n(c) Present status of the building services for its functional effectiveness and efficacy.\n(d) Determine the necessity and carryout appropriate Non-destructive / Partial destructive tests at structural elements as dictated by the site condition.\nCarryout an indicative Cost Benefit Comparison of the repair / refurbishment vs reconstruction of the structures to evaluate the cost-effectiveness of retention option.\nAnalyse the findings from the above to cumulatively assess the overall adequacy of the scheme and arrive at the conclusion either to be Repaired / Refurbished or Reconstructed.",
+    "description": "Evaluation / Validation of Recommendations given by committees of TNUHDB\nCarry out a detailed condition survey of interior and exterior of the buildings / structures to assess the following: (a) External damages, distress, deformities, deteriorations, deficiencies, discontinuities in the critical structural elements. (b) Physical condition of the non-structural elements for its intended functional effectiveness and efficacy. (c) Present status of the building services for its functional effectiveness and efficacy. (d) Determine the necessity and carryout appropriate Non-destructive / Partial destructive tests at structural elements as dictated by the site condition.\nCarryout an indicative Cost Benefit Comparison of the repair / refurbishment vs reconstruction of the structures to evaluate the cost-effectiveness of retention option.\nAnalyse the findings from the above to cumulatively assess the overall adequacy of the scheme and arrive at the conclusion either to be Repaired / Refurbished or Reconstructed.",
     "heroImage": "/images/projects/reevalution_02.jpg",
     "galleryImages": [
       "/images/projects/reevalution_01.jpg",
@@ -344,15 +359,22 @@ export const projects: Project[] = [
       "/images/projects/building-construction/capacity_building_training_program_04.jpg",
       "/images/projects/building-construction/capacity_building_training_program_05.jpg"
     ],
-    "scopeOfWork": [],
+    "scopeOfWork": [
+      "Training Programme"
+    ],
     "client": "TNUHDB",
     "location": "Chennai",
     "projectStatus": "Completed",
-    "startDate": "",
-    "endDate": "",
+    "startDate": "11.02.2022 - 16.02.2022",
+    "endDate": "1 Month",
     "highlights": [],
     "services": [],
-    "featured": true
+    "featured": true,
+    "factLabels": {
+      "scopeOfWork": "Services",
+      "startDate": "Start Year",
+      "endDate": "Project Duration"
+    }
   },
   {
     "slug": "kp-park",
@@ -365,12 +387,14 @@ export const projects: Project[] = [
       "/images/projects/kp_park_03.jpg",
       "/images/projects/kp_park_04.jpg"
     ],
-    "scopeOfWork": [],
+    "scopeOfWork": [
+      "Quality Assesment works"
+    ],
     "client": "TNUHDB",
     "location": "Chennai",
     "projectStatus": "Completed",
-    "startDate": "",
-    "endDate": "",
+    "startDate": "2021",
+    "endDate": "3 Months",
     "highlights": [
       "An Highly Visible and Major Breakthrough Project in TN Govt Sector Carried out Independent Quality Assessment of the completed four towers of 864 No. of EWS tenements of Stilt + 9 floors in KP Park in respect of the following:",
       "1.1. Quality of concrete in structural elements namely columns, beams and floor slabs through conduct of appropriate Non-Destructive [NDT] and Partial Destructive [PDT] tests.",
@@ -378,7 +402,12 @@ export const projects: Project[] = [
       "1.3. Quality of workmanship. Recommended the areas of Improvents for safe occupation of the buildings Executed under intense public resistane, media coverage and peer pressure. CUBE extend its all out efforts to help TNUHDB out of the predicament of public outrage. Conducted an in depth and comprehensive Quality Assessment works of the constructed buildings through extensive investigation and testing to ascertain their structural soundness as well as the functionality status and provide recommendations for improvement. Completed the project with best in class industry standards and well received report specially appreciated by Chief Sceretary snd Principal Secratary to the GoTN. CUBE's Quality Assessment report has been published in the TNUHDB's website for public knowledge stands as a testament to the exemplary achievement by the technical team."
     ],
     "services": [],
-    "featured": false
+    "featured": false,
+    "factLabels": {
+      "scopeOfWork": "Services",
+      "startDate": "Start Year",
+      "endDate": "Project Duration"
+    }
   },
   {
     "slug": "kmrl",
@@ -441,20 +470,28 @@ export const projects: Project[] = [
     "galleryImages": [
       "/images/projects/smart-cities/tidel_park_02.jpg"
     ],
-    "scopeOfWork": [],
+    "scopeOfWork": [
+      "Geo technical investigation"
+    ],
     "client": "TANSIDCO",
     "location": "Chennai",
     "projectStatus": "Ongoing",
-    "startDate": "",
-    "endDate": "",
+    "startDate": "01/12/2022",
+    "endDate": "Stage-wise Inspection",
     "highlights": [
+      "The scope of the project includes:",
       "Inspection of ongoing construction works through visit-based site inspection.",
       "Site Visit will be for four full days overseeing major aspects of quality.",
       "Submission of report highlighting the major observations noticed during the site inspection.",
       "Carrying out NDT tests on required basis."
     ],
     "services": [],
-    "featured": false
+    "featured": false,
+    "factLabels": {
+      "scopeOfWork": "Services",
+      "startDate": "Start Year",
+      "endDate": "Project Duration"
+    }
   },
   {
     "slug": "jipmer",
@@ -575,25 +612,6 @@ export const projects: Project[] = [
     "title": "TPQMA for C/o of Plug And Play Flatted Factory Modules for Micro Units(S+4) at TANSIDCO Industrial Estate, Ambattur, Chennai",
     "category": "Building & Construction",
     "description": "Tamil Nadu Small Industries Development Corporation [TANSIDCO] has entrusted CUBE for third party quality monitoring services(TPQMA) to the ongoing construction of plug and play factory and Workers Hostel at TANSIDCO industrial estate in Guindy & Ambattur, Chennai.",
-    "heroImage": "/images/projects/building-construction/sidco_amb_1.jpg",
-    "galleryImages": [],
-    "scopeOfWork": [
-      "Third party Quality Monitoring Serivices (TPQMA)"
-    ],
-    "client": "TANSIDCO",
-    "location": "Chennai",
-    "projectStatus": "Completed",
-    "startDate": "2022",
-    "endDate": "Stage-wise Inspection",
-    "highlights": [],
-    "services": [],
-    "featured": false
-  },
-  {
-    "slug": "sidco-amb",
-    "title": "TPQMA for C/o of Workers Hostel (S+5) at TANSIDCO Industrial Estate, Ambattur, Chennai",
-    "category": "Building & Construction",
-    "description": "Tamil Nadu Small Industries Development Corporation [TANSIDCO] has entrusted CUBE for third party quality monitoring services(TPQMA) to the ongoing construction of plug and play factory and Workers Hostel at TANSIDCO industrial estate in Guindy & Ambattur, Chennai.",
     "heroImage": "/images/projects/building-construction/sidco_1.jpg",
     "galleryImages": [],
     "scopeOfWork": [
@@ -604,7 +622,36 @@ export const projects: Project[] = [
     "projectStatus": "Completed",
     "startDate": "2022",
     "endDate": "Stage-wise Inspection",
-    "highlights": [],
+    "highlights": [
+      "Inspection of ongoing construction works through visit-based site inspection.",
+      "Site visit will be for four full days overseeing major aspects of quality.",
+      "Submission of report highlighting the major observations noticed during the site inspection.",
+      "Carrying out NDT tests on required basis."
+    ],
+    "services": [],
+    "featured": false
+  },
+  {
+    "slug": "sidco-amb",
+    "title": "TPQMA for C/o of Workers Hostel (S+5) at TANSIDCO Industrial Estate, Ambattur, Chennai",
+    "category": "Building & Construction",
+    "description": "Tamil Nadu Small Industries Development Corporation [TANSIDCO] has entrusted CUBE for third party quality monitoring services(TPQMA) to the ongoing construction of plug and play factory and Workers Hostel at TANSIDCO industrial estate in Guindy & Ambattur, Chennai.",
+    "heroImage": "/images/projects/building-construction/sidco_amb_1.jpg",
+    "galleryImages": [],
+    "scopeOfWork": [
+      "Third party Quality Monitoring Serivices (TPQMA)"
+    ],
+    "client": "TANSIDCO",
+    "location": "Chennai",
+    "projectStatus": "Completed",
+    "startDate": "2022",
+    "endDate": "Stage-wise Inspection",
+    "highlights": [
+      "Inspection of ongoing construction works through visit-based site inspection.",
+      "Site visit will be for four full days overseeing major aspects of quality.",
+      "Submission of report highlighting the major observations noticed during the site inspection.",
+      "Carrying out NDT tests on required basis."
+    ],
     "services": [],
     "featured": false
   },
@@ -731,7 +778,7 @@ export const projects: Project[] = [
     "slug": "upt3",
     "title": "Preparation of DPR for Restoration and Refurbishment of Gokhale Hall, Chennai for Proposed Museum of Freedom Movement",
     "category": "Urban Planning & Transportation",
-    "description": "The project, undertaken in collaboration with NCSHS IITM , aims to resurrect historical significance and reimagine Gokhale Hall into a museum that commemorates India's cherished struggle for independence which unfolds through three pivotal phases..\nPhase 1 involves comprehensive desk research, urban context studies, and field surveys, guiding the hall's rehabilitation. Phase 2 focuses on crafting a Detailed Project Report, encompassing architectural designs, structural modifications, and site service layouts. In Phase 3, Project Management Consultancy oversees flawless execution, ensuring adherence to historical preservation standards. This endeavor marries historical reverence with innovation, as Gokhale Hall evolves into a symbol of India's freedom struggle. Witness the transformation as history intertwines with contemporary restoration, epitomizing our nation's indomitable spirit.Phase 1 involves comprehensive desk research, urban context studies, and field surveys, guiding the hall's rehabilitation. Phase 2 focuses on crafting a Detailed Project Report, encompassing architectural designs, structural modifications, and site service layouts. In Phase 3, Project Management Consultancy oversees flawless execution, ensuring adherence to historical preservation standards. This endeavor marries historical reverence with innovation, as Gokhale Hall evolves into a symbol of India's freedom struggle. Witness the transformation as history intertwines with contemporary restoration, epitomizing our nation's indomitable spirit.",
+    "description": "The project, undertaken in collaboration with NCSHS IITM , aims to resurrect historical significance and reimagine Gokhale Hall into a museum that commemorates India's cherished struggle for independence which unfolds through three pivotal phases.. Phase 1 involves comprehensive desk research, urban context studies, and field surveys, guiding the hall's rehabilitation. Phase 2 focuses on crafting a Detailed Project Report, encompassing architectural designs, structural modifications, and site service layouts. In Phase 3, Project Management Consultancy oversees flawless execution, ensuring adherence to historical preservation standards. This endeavor marries historical reverence with innovation, as Gokhale Hall evolves into a symbol of India's freedom struggle. Witness the transformation as history intertwines with contemporary restoration, epitomizing our nation's indomitable spirit.Phase 1 involves comprehensive desk research, urban context studies, and field surveys, guiding the hall's rehabilitation. Phase 2 focuses on crafting a Detailed Project Report, encompassing architectural designs, structural modifications, and site service layouts. In Phase 3, Project Management Consultancy oversees flawless execution, ensuring adherence to historical preservation standards. This endeavor marries historical reverence with innovation, as Gokhale Hall evolves into a symbol of India's freedom struggle. Witness the transformation as history intertwines with contemporary restoration, epitomizing our nation's indomitable spirit.",
     "heroImage": "/images/projects/urban-planning/upt3_1.jpg",
     "galleryImages": [
       "/images/projects/urban-planning/upt3_2.jpg",
@@ -742,7 +789,7 @@ export const projects: Project[] = [
       "/images/projects/urban-planning/upt3_7.jpg"
     ],
     "scopeOfWork": [],
-    "client": "National Council of Science Museums (NCSM), Ministry of Culture, Government of India.\n& YMIA , chennai",
+    "client": "National Council of Science Museums (NCSM), Ministry of Culture, Government of India. & YMIA , chennai",
     "location": "Chennai",
     "projectStatus": "Ongoing",
     "startDate": "2022",
@@ -777,7 +824,7 @@ export const projects: Project[] = [
       "/images/projects/urban-planning/upt4_8.jpg"
     ],
     "scopeOfWork": [],
-    "client": "Chennai\nMetropolitan\nDevelopment Authority",
+    "client": "Chennai Metropolitan Development Authority",
     "location": "Chennai",
     "projectStatus": "Ongoing",
     "startDate": "2018",
@@ -797,7 +844,7 @@ export const projects: Project[] = [
     "slug": "upt5",
     "title": "Mega Streets Project - Package 5",
     "category": "Urban Planning & Transportation",
-    "description": "Mega Streets Project of Greater Chennai Corporation focuses on detailed street network plan and detailed design for a total length of around 110 km of streets in various packages in Chennai. CUBE along with IBI\nGroup has been awarded the Velachery Package comprising of a road length of 15.29 Km.\nProject involves designing of complete streets - inclusive for all road users by incorporating three aspects of design,\n• Livability - Above ground features such as streetscape elements that improve visual and sensual perception.\n• Mobility - Design that incorporates all road users and shifting the scales toward public and Non-Motorized Transportation\nUtility - Efficient design of underground utility infrastructure [water supply, storm water drain, sewer connection, electricity, telecommunication, and gas lines] and Sustainable urban Drainage Systems as a climate resilient strategy",
+    "description": "Mega Streets Project of Greater Chennai Corporation focuses on detailed street network plan and detailed design for a total length of around 110 km of streets in various packages in Chennai. CUBE along with IBI Group has been awarded the Velachery Package comprising of a road length of 15.29 Km.\nProject involves designing of complete streets - inclusive for all road users by incorporating three aspects of design,\n• Livability - Above ground features such as streetscape elements that improve visual and sensual perception.\n• Mobility - Design that incorporates all road users and shifting the scales toward public and Non-Motorized Transportation\nUtility - Efficient design of underground utility infrastructure [water supply, storm water drain, sewer connection, electricity, telecommunication, and gas lines] and Sustainable urban Drainage Systems as a climate resilient strategy",
     "heroImage": "/images/projects/urban-planning/upt5_1.jpg",
     "galleryImages": [
       "/images/projects/urban-planning/upt5_2.jpg",
@@ -823,7 +870,8 @@ export const projects: Project[] = [
       "Aid in Bid Preparation",
       "Design validation during project implementation"
     ],
-    "featured": false
+    "featured": false,
+    "partners": "Arcadis IBI"
   },
   {
     "slug": "upt6",
@@ -965,7 +1013,7 @@ export const projects: Project[] = [
       "/images/projects/urban-planning/upt10_5.jpg"
     ],
     "scopeOfWork": [],
-    "client": "Chennai\nMetropolitan\nDevelopment Authority",
+    "client": "Chennai Metropolitan Development Authority",
     "location": "Chennai",
     "projectStatus": "completed",
     "startDate": "2021",
@@ -995,7 +1043,7 @@ export const projects: Project[] = [
       "/images/projects/urban-planning/upt11_3.jpg"
     ],
     "scopeOfWork": [],
-    "client": "Chennai Unified Metropolitan\nTransport Authority (CUMTA)",
+    "client": "Chennai Unified Metropolitan Transport Authority (CUMTA)",
     "location": "Chennai",
     "projectStatus": "Ongoing",
     "startDate": "2023+I12",
@@ -1084,7 +1132,7 @@ export const projects: Project[] = [
       "/images/projects/urban-planning/upt14_2.jpg"
     ],
     "scopeOfWork": [],
-    "client": "Chennai Petroleum Corporation\nLimited (CPCL)",
+    "client": "Chennai Petroleum Corporation Limited (CPCL)",
     "location": "Chennai",
     "projectStatus": "Completed",
     "startDate": "2023",
@@ -1114,7 +1162,9 @@ export const projects: Project[] = [
     "galleryImages": [
       "/images/projects/asiana_02.jpg"
     ],
-    "scopeOfWork": [],
+    "scopeOfWork": [
+      "Surface Water Management and Inundation Study"
+    ],
     "client": "Ashiana Housing Ltd.",
     "location": "Chengalpattu, Tamil Nadu",
     "projectStatus": "",
@@ -1124,7 +1174,10 @@ export const projects: Project[] = [
       "Adequacy check for exixting drains and proposed stormwater drains networks and micro water body."
     ],
     "services": [],
-    "featured": true
+    "featured": true,
+    "factLabels": {
+      "scopeOfWork": "Services"
+    }
   },
   {
     "slug": "caterpillar",
@@ -1135,7 +1188,9 @@ export const projects: Project[] = [
     "galleryImages": [
       "/images/projects/caterpillar_02.jpg"
     ],
-    "scopeOfWork": [],
+    "scopeOfWork": [
+      "Identification of Alternate Location for Parayan Kuttai Water Body & Surface Water Optimization Plan"
+    ],
     "client": "CATERPILLAR INDIA PRIVATE LIMITED",
     "location": "Thiruvallur, Tamil Nadu",
     "projectStatus": "",
@@ -1145,7 +1200,10 @@ export const projects: Project[] = [
       "Alternate location for Parayan Kuttai water body and its surplus arrangement. Adequacy check for exixting drains and proposed stormwater drains networks."
     ],
     "services": [],
-    "featured": true
+    "featured": true,
+    "factLabels": {
+      "scopeOfWork": "Services"
+    }
   },
   {
     "slug": "cauvery",
@@ -1157,7 +1215,9 @@ export const projects: Project[] = [
       "/images/projects/environment-sustainability/cauvery_02.jpg",
       "/images/projects/environment-sustainability/cauvery_03.jpg"
     ],
-    "scopeOfWork": [],
+    "scopeOfWork": [
+      "Questionnaire survey & Analytical Study"
+    ],
     "client": "IIT Madras",
     "location": "Tanjore, Tamil Nadu",
     "projectStatus": "",
@@ -1167,7 +1227,10 @@ export const projects: Project[] = [
       "Assessment of the realtime impact of Climate Change on the Croping Pattern"
     ],
     "services": [],
-    "featured": false
+    "featured": false,
+    "factLabels": {
+      "scopeOfWork": "Services"
+    }
   },
   {
     "slug": "cmwssb",
@@ -1179,7 +1242,9 @@ export const projects: Project[] = [
       "/images/projects/environment-sustainability/cmwssb_02.jpg",
       "/images/projects/environment-sustainability/cmwssb_03.jpg"
     ],
-    "scopeOfWork": [],
+    "scopeOfWork": [
+      "Detailed Project Report Vetting"
+    ],
     "client": "CMWSSB",
     "location": "Chennai,Tamil Nadu",
     "projectStatus": "",
@@ -1189,7 +1254,10 @@ export const projects: Project[] = [
       "Around 518 locations across the chennai city were visited and the feasibility of installing flowmeters was studied."
     ],
     "services": [],
-    "featured": false
+    "featured": false,
+    "factLabels": {
+      "scopeOfWork": "Services"
+    }
   },
   {
     "slug": "hyundai",
@@ -1201,7 +1269,9 @@ export const projects: Project[] = [
       "/images/projects/hyundai_02.jpg",
       "/images/projects/hyundai_03.jpg"
     ],
-    "scopeOfWork": [],
+    "scopeOfWork": [
+      "Subsurface and Surface Water Mmanagement Study"
+    ],
     "client": "Hyundai Motor India Ltd",
     "location": "Kanchipuram, Tamil Nadu",
     "projectStatus": "",
@@ -1211,7 +1281,10 @@ export const projects: Project[] = [
       "Creation of Micro waterbody, propose stormwater network and identification of feasible location for groundwater recharge"
     ],
     "services": [],
-    "featured": false
+    "featured": false,
+    "factLabels": {
+      "scopeOfWork": "Services"
+    }
   },
   {
     "slug": "iit-jammu",
@@ -1220,17 +1293,22 @@ export const projects: Project[] = [
     "description": "Arrive at the maximum Surface Water Potential of the Campus and its immediate adjoining areas wherever applicable, that can be technically contained, conserved and utilized within the Campus.\nAssessment on adequacy of the existing / planned Storm Water Drain network for the entire IIT Jammu Campus to support the arrived SWM Plan and propose new Storm Drain network for the same, if required.\nPreparation of inundation maps for various rainfall return periods and identify the vulnerable locations within the IIT Jammu Campus.\nRecommend suitable interventions and on-site measures to ameliorate inundation in the study area (wherever applicable).\nPreparation of Surface Water Management Plan incorporating the above metioned interventions.",
     "heroImage": "/images/projects/images_01.jpg",
     "galleryImages": [],
-    "scopeOfWork": [],
+    "scopeOfWork": [
+      "Inundation Study and Surface Water Management Plan"
+    ],
     "client": "IIT Jammu",
     "location": "Jammu and Kashmir",
     "projectStatus": "",
     "startDate": "16-Jun-21",
     "endDate": "2 Months",
     "highlights": [
-      "Inundation Study for the entire Campus for Various Rainfall Return Periods.\nAdequacy check of the storm water infrastructure planned within the campus and recommend appropriate storm water infrastructure where required, for effective Storm Water Management.\nMaximize the water conservation measures to supplement the resources planned to meet the water demand for IIT Jammu campus"
+      "Inundation Study for the entire Campus for Various Rainfall Return Periods. Adequacy check of the storm water infrastructure planned within the campus and recommend appropriate storm water infrastructure where required, for effective Storm Water Management. Maximize the water conservation measures to supplement the resources planned to meet the water demand for IIT Jammu campus"
     ],
     "services": [],
-    "featured": true
+    "featured": true,
+    "factLabels": {
+      "scopeOfWork": "Services"
+    }
   },
   {
     "slug": "kilambakkam",
@@ -1239,7 +1317,9 @@ export const projects: Project[] = [
     "description": "The study is to achieve the “Net Zero Carbon Emission Status” for Kilambakkam bus terminus facility by offsetting the carbon emissions thro’ a renewable “On-grid Solar Power plant system”. The study / report aims to synergize the energy conservation opportunities, efficiency enhancement of the existing systems through on-grid solar power production to migrate towards “net zero carbon” status of the Kilambakkam facility",
     "heroImage": "/images/projects/images_kilambakkam1.jpg",
     "galleryImages": [],
-    "scopeOfWork": [],
+    "scopeOfWork": [
+      "Preparation of DPR Assessment of power consumption and to pepare solar panel layout"
+    ],
     "client": "CMDA",
     "location": "Chennai,Tamil Nadu",
     "projectStatus": "",
@@ -1249,7 +1329,10 @@ export const projects: Project[] = [
       "This study would assist the bus stand to achieve Net Zero status by the end of execution phase."
     ],
     "services": [],
-    "featured": false
+    "featured": false,
+    "factLabels": {
+      "scopeOfWork": "Services"
+    }
   },
   {
     "slug": "klipstp",
@@ -1260,7 +1343,9 @@ export const projects: Project[] = [
     "galleryImages": [
       "/images/projects/KLIPSTP_02.jpg"
     ],
-    "scopeOfWork": [],
+    "scopeOfWork": [
+      "Detailed Project Report"
+    ],
     "client": "Kerala Lifesciences Industries Parks Pvt. Ltd.",
     "location": "Thonnakal, Kerala",
     "projectStatus": "",
@@ -1270,7 +1355,10 @@ export const projects: Project[] = [
       "Cost and Technology effective treatment system to handle the wastewater generated by the current and future industries of the bio 360 industrial park, Kerala."
     ],
     "services": [],
-    "featured": false
+    "featured": false,
+    "factLabels": {
+      "scopeOfWork": "Services"
+    }
   },
   {
     "slug": "kmrl-es",
@@ -1281,7 +1369,9 @@ export const projects: Project[] = [
     "galleryImages": [
       "/images/projects/building-construction/kmrl_es_02.jpg"
     ],
-    "scopeOfWork": [],
+    "scopeOfWork": [
+      "Vetting the Design of conveyance system and STP plant"
+    ],
     "client": "KMRL",
     "location": "Kochi , Kerala",
     "projectStatus": "",
@@ -1291,7 +1381,10 @@ export const projects: Project[] = [
       "The original sewerage system designed by M/s Antea was vetted by CUBE. The total project cost was reduced by about Rs. 50 crores."
     ],
     "services": [],
-    "featured": false
+    "featured": false,
+    "factLabels": {
+      "scopeOfWork": "Services"
+    }
   },
   {
     "slug": "kuthambakkam",
@@ -1302,7 +1395,9 @@ export const projects: Project[] = [
     "galleryImages": [
       "/images/projects/Kuthambakkam_02.jpg"
     ],
-    "scopeOfWork": [],
+    "scopeOfWork": [
+      "Preparation of DPR Assessment of power consumption and to pepare solar panel layout"
+    ],
     "client": "CMDA",
     "location": "Chennai, Tamil Nadu",
     "projectStatus": "",
@@ -1312,7 +1407,10 @@ export const projects: Project[] = [
       "This study would assist the bus stand to achieve Net Zero status by the end of execution phase."
     ],
     "services": [],
-    "featured": false
+    "featured": false,
+    "factLabels": {
+      "scopeOfWork": "Services"
+    }
   },
   {
     "slug": "madhavaram",
@@ -1323,7 +1421,9 @@ export const projects: Project[] = [
     "galleryImages": [
       "/images/projects/Madhavaram_02.jpg"
     ],
-    "scopeOfWork": [],
+    "scopeOfWork": [
+      "Preparation of DPR Assessment of power consumption and to pepare solar panel layout"
+    ],
     "client": "CMDA",
     "location": "Chennai, Tamil Nadu",
     "projectStatus": "",
@@ -1333,7 +1433,10 @@ export const projects: Project[] = [
       "This study would assist the bus stand to achieve Net Zero status by the end of execution phase."
     ],
     "services": [],
-    "featured": false
+    "featured": false,
+    "factLabels": {
+      "scopeOfWork": "Services"
+    }
   },
   {
     "slug": "mahindara",
@@ -1342,7 +1445,9 @@ export const projects: Project[] = [
     "description": "Feasibility study on catchment analysis of two waterbodies needs to be relocated within Mahindra industrial cluster without affecting its ecology and natural drainage system.\nEfficient and effective management of Surface Water in order to optimize fresh water resource within the premises.",
     "heroImage": "/images/projects/images_mahindara.jpg",
     "galleryImages": [],
-    "scopeOfWork": [],
+    "scopeOfWork": [
+      "Relocation of Existing defunct waterbodies to an appropriate location"
+    ],
     "client": "Mahindra Industrial Park Chennai Ltd.",
     "location": "Thiruvallur, Tamil Nadu",
     "projectStatus": "",
@@ -1352,7 +1457,10 @@ export const projects: Project[] = [
       "Defunct status of the existing waterbodies will be proved and to suggest alternate location for shifting the waterbody to perform the similar role which was played the defunct waterbody."
     ],
     "services": [],
-    "featured": true
+    "featured": true,
+    "factLabels": {
+      "scopeOfWork": "Services"
+    }
   },
   {
     "slug": "rajapalayam",
@@ -1363,17 +1471,22 @@ export const projects: Project[] = [
     "galleryImages": [
       "/images/projects/rajapalayam_02.jpg"
     ],
-    "scopeOfWork": [],
+    "scopeOfWork": [
+      "Detailed Project Report"
+    ],
     "client": "Sri Ramanalayam Trust",
     "location": "Viruthunagar,Tamil Nadu",
     "projectStatus": "",
     "startDate": "28-May-22",
     "endDate": "6 Months",
     "highlights": [
-      "Efficiency and Efficacy of the intake structure were improved to tap the water from River Mudangiyar to the 6th mile reservoir.\nMoreover additional catchments were tapped to improve the overall water supply to Rajapalayam Municipality."
+      "Efficiency and Efficacy of the intake structure were improved to tap the water from River Mudangiyar to the 6th mile reservoir. Moreover additional catchments were tapped to improve the overall water supply to Rajapalayam Municipality."
     ],
     "services": [],
-    "featured": false
+    "featured": false,
+    "factLabels": {
+      "scopeOfWork": "Services"
+    }
   },
   {
     "slug": "royal",
@@ -1384,7 +1497,9 @@ export const projects: Project[] = [
     "galleryImages": [
       "/images/projects/royal_02.jpg"
     ],
-    "scopeOfWork": [],
+    "scopeOfWork": [
+      "Providing Technical solution"
+    ],
     "client": "S.N. Pingle Consultants",
     "location": "Thiruvannamalai , Tamil Nadu",
     "projectStatus": "",
@@ -1394,20 +1509,24 @@ export const projects: Project[] = [
       "A strategic approch to help tackle the inundation caused in the Nappan lake was studied."
     ],
     "services": [],
-    "featured": false
+    "featured": false,
+    "factLabels": {
+      "scopeOfWork": "Services"
+    }
   },
   {
     "slug": "vellore",
-    "title": "Detailed Project Report (DPR) – Rejuvenation of Thuthipet\nTank in Vellore District",
+    "title": "Detailed Project Report (DPR) – Rejuvenation of Thuthipet Tank in Vellore District",
     "category": "Environment & Sustainability",
-    "description": "Comprehensive assessment of the existing storage capacity of the tank\nQuantification of additional storage in Thuthipet tank in accordance with potential\nsurface runoff from the catchment.\nRecommend necessary measures to prevent or treat the sewage / sullage / polluted water\nbefore discharging it into the Thuthipet tank.",
-    "heroImage": "/images/projects/images_vellore.jpg",
+    "description": "Comprehensive assessment of the existing storage capacity of the tank\nQuantification of additional storage in Thuthipet tank in accordance with potential surface runoff from the catchment. Recommend necessary measures to prevent or treat the sewage / sullage / polluted water before discharging it into the Thuthipet tank.",
+    "heroImage": "/images/projects/vellore_01.jpg",
     "galleryImages": [
-      "/images/projects/vellore_01.jpg",
       "/images/projects/vellore_02.jpg",
       "/images/projects/vellore_03.jpg"
     ],
-    "scopeOfWork": [],
+    "scopeOfWork": [
+      "Rejuvenation of Thuthipet Lake were defunct due to Urbanization"
+    ],
     "client": "IIT Madras",
     "location": "Vellore, Tamil Nadu",
     "projectStatus": "",
@@ -1417,6 +1536,9 @@ export const projects: Project[] = [
       "Reviving Thuthipet Lake amidst urbanization challenges."
     ],
     "services": [],
-    "featured": false
+    "featured": false,
+    "factLabels": {
+      "scopeOfWork": "Services"
+    }
   }
 ];

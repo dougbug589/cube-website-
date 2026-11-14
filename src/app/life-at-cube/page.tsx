@@ -3,7 +3,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowUpRight, MapPin, Quote } from 'lucide-react';
 import PageHeader from '@/components/common/PageHeader';
-import { teamMembers } from '@/data/team';
 
 export const metadata = {
   title: 'Life at CUBE | CUBE IIT Madras',
@@ -12,7 +11,7 @@ export const metadata = {
 
 // CUBE's own photos of its office and team.
 const PHOTOS = [
-  { src: '/images/hero/slides_building-training-team.jpg', alt: 'The CUBE team' },
+  { src: '/images/hero/slides_building-training-team.jpg', alt: 'Capacity Building Training Program in Best Construction Practices for High Rise Buildings for Engineers' },
   { src: '/images/life-at-cube/about_life.jpg', alt: 'The CUBE office' },
   { src: '/images/life-at-cube/about_life1.jpg', alt: 'A meeting at CUBE' },
   { src: '/images/life-at-cube/about_life2.jpg', alt: 'The CUBE office' },
@@ -25,7 +24,6 @@ const ABOUT_TEAM =
   'What sets us apart is what brings us together – a shared passion for solving business challenges through strategy, design, and engineering. We are the sum total of our team, their unique perspectives, capabilities, and our ability to collaborate from ideation to deployment.';
 
 export default function LifeAtCubePage() {
-  const staff = teamMembers.filter((m: any) => !['leadership', 'board', 'advisory'].includes((m as any).category)).length;
 
   return (
     <div className="text-[#F3F5F6] min-h-screen">
@@ -61,10 +59,6 @@ export default function LifeAtCubePage() {
           <p className="mt-5 font-display text-[22px] sm:text-[27px] font-bold leading-[1.45] text-[#F3F5F6]">{ABOUT_TEAM}</p>
         </blockquote>
         <div className="lg:col-span-4 grid gap-4 reveal-stagger">
-          <div className="glass glass-edge rounded-[26px] p-7">
-            <p className="font-display text-[56px] font-extrabold leading-none text-[#F3F5F6] tabular-nums">{staff}</p>
-            <p className="mt-2 text-[19.5px] font-semibold text-[#DDE3E6]">people in the CUBE team</p>
-          </div>
           <div className="glass glass-edge rounded-[26px] p-7 flex items-start gap-4">
             <span className="grid place-items-center w-12 h-12 rounded-2xl pill-yellow text-[#0B0D0E] depth-1 shrink-0">
               <MapPin size={21} strokeWidth={2} />
@@ -94,7 +88,7 @@ export default function LifeAtCubePage() {
             <span>
               <span className="label-mono">Our Team</span>
               <span className="mt-2 block font-display text-[26px] font-extrabold text-[#F3F5F6]">Meet the team</span>
-              <span className="mt-1 block text-[18px] text-[#A7B2B8]">Staff across every vertical and administration.</span>
+              <span className="mt-1 block text-[18px] text-[#A7B2B8]">Staff across Building & Construction, Environment & Sustainability, Urban Planning & Transportation and Admin.</span>
             </span>
             <span className="grid place-items-center w-12 h-12 rounded-full bg-white/[0.06] border border-white/10 text-[#F3F5F6] depth-1 shrink-0 transition-[transform,background-color,border-color,color] duration-500 group-hover:bg-[#F6C22E] group-hover:border-[#F6C22E] group-hover:text-[#0B0D0E] group-hover:translate-x-1 group-hover:-translate-y-1">
               <ArrowUpRight size={20} strokeWidth={2.25} />

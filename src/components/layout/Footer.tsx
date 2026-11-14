@@ -60,7 +60,7 @@ export default function Footer() {
               </span>
             </Link>
             <p className="mt-5 text-[16.5px] leading-relaxed max-w-sm">
-              Centre for Urbanization, Buildings &amp; Environment. A Centre of Excellence of the Government of Tamil Nadu and IIT Madras.
+              Centre for Urbanization, Buildings &amp; Environment. A Centre of Excellence of Government of Tamil Nadu in collaboration with IIT Madras.
             </p>
             <div className="mt-6 flex items-center gap-2">
               {SOCIAL.map(({ label, href, Icon, bg, glow }) => (

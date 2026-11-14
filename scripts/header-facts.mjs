@@ -14,6 +14,8 @@ const live = (k) => (store[k] || []).filter((x) => !x.status || !/draft|archiv|h
 
 const projects = live('projects');
 const byCat = (c) => projects.filter((p) => p.category === c).length;
+// cubeiitm.org projects page: "276+ Projects" (the site lists 55 of them)
+const PROJECTS_TOTAL = '276+';
 const people = live('teamMembers');
 const LEADER = new Set(['leadership', 'board', 'advisory']);
 const team = people.filter((m) => !LEADER.has(m.category));
@@ -58,24 +60,24 @@ const latestNews = Number.isFinite(latestT) ? new Date(latestT).toLocaleDateStri
 
 const n = (x) => String(x);
 const facts = {
-  '/about': { label: 'CUBE at a glance', rows: [['Established', 'May 2017'], ['Verticals', n(verticals)], ['Projects', n(projects.length)], ['Team', n(team.length)]] },
+  '/about': { label: 'CUBE at a glance', rows: [['Established', 'May 2017'], ['Verticals', n(verticals)], ['Projects', PROJECTS_TOTAL], ['Departments', n(teamDepts)]] },
   '/about/vision-mission': { label: 'Guiding statements', rows: [['Mission goals', n(missionPoints)], ['Objectives', n(objectives)], ['Core values', n(coreValues)]] },
   '/about/objectives': { label: 'Objectives', rows: [['Objectives', n(objectives)], ['Verticals', n(verticals)], ['Established', 'May 2017']] },
   '/about/core-values': { label: 'Core values', rows: [['Values', n(coreValues)], ['Mission goals', n(missionPoints)], ['Objectives', n(objectives)]] },
-  '/about/chairman-message': { label: 'Chairman', rows: [['Name', 'Prof. V Kamakoti'], ['Role', 'Director, IIT Madras'], ['Governing Body', `${board} members`]] },
-  '/about/ceo-message': { label: 'Chief Executive Officer', rows: [['Name', 'L. Padmanaban'], ['Service', 'Major General (Retd.)'], ['Team', `${team.length} members`]] },
+  '/about/chairman-message': { label: 'Chairman', rows: [['Name', 'Prof. V Kamakoti'], ['Role', 'Director, IIT Madras'], ['Board members', n(board)]] },
+  '/about/ceo-message': { label: 'Chief Executive Officer', rows: [['Name', 'L. Padmanaban'], ['Service', 'Major General (Retd.)']] },
   '/about/advisory-panel': { label: 'IIT Madras advisory panel', rows: [['Faculty', n(advisory)], ['Departments', 'Civil, Mechanical, Aerospace, Chemical']] },
-  '/about/team': { label: 'Our team', rows: [['Members', n(team.length)], ['Departments', n(teamDepts)], ['Building & Construction', n(team.filter((m) => m.category === 'Building & Construction').length)]] },
-  '/about/clients': { label: 'Clients', rows: [['Clients', n(clients)], ['Projects', n(projects.length)], ['Verticals', n(verticals)]] },
+  '/about/team': { label: 'Our team', rows: [['Departments', n(teamDepts)], ['Building & Construction', n(team.filter((m) => m.category === 'Building & Construction').length)]] },
+  '/about/clients': { label: 'Clients', rows: [['Clients', n(clients)], ['Projects', PROJECTS_TOTAL], ['Verticals', n(verticals)]] },
   '/contact': { label: 'Reach CUBE', rows: [['Phone', phone], ['Email', email], ['Office', 'IIT Madras Research Park, Chennai']] },
-  '/life-at-cube': { label: 'Life at CUBE', rows: [['Team', `${team.length} members`], ['Workplace', 'IIT Madras Research Park'], ['On site', 'CUBE Environmental Laboratory']] },
+  '/life-at-cube': { label: 'Life at CUBE', rows: [['Workplace', 'IIT Madras Research Park'], ['On site', 'CUBE Environmental Laboratory']] },
   '/media': { label: 'Media centre', rows: [['News stories', n(news.length)], ['Events', n(events)], ['Reports', n(reports)]] },
   '/media/news': { label: 'News', rows: [['Stories', n(news.length)], ...(latestNews ? [['Latest', latestNews]] : [])] },
   '/media/events': { label: 'Events', rows: [['Events', n(events)], ['News stories', n(news.length)]] },
-  '/media/gallery': { label: 'Gallery', rows: [['Albums', 'Projects, Laboratory, Workplace'], ['Projects', n(projects.length)]] },
+  '/media/gallery': { label: 'Gallery', rows: [['Categories', 'Projects, Laboratory, Workplace, Events']] },
   '/media/publications': { label: 'Reports', rows: [['Reports', n(reports)], ['News stories', n(news.length)]] },
-  '/projects': { label: 'Portfolio', rows: [['Projects', n(projects.length)], ['Building & Construction', n(byCat('Building & Construction'))], ['Environment & Sustainability', n(byCat('Environment & Sustainability'))], ['Urban Planning & Transportation', n(byCat('Urban Planning & Transportation'))]] },
-  '/verticals': { label: 'Verticals', rows: [['Verticals', n(verticals)], ['Projects', n(projects.length)], ['Clients', n(clients)]] },
+  '/projects': { label: 'Portfolio', rows: [['Projects', PROJECTS_TOTAL], ['Listed here', n(projects.length)], ['Building & Construction', n(byCat('Building & Construction'))], ['Environment & Sustainability', n(byCat('Environment & Sustainability'))], ['Urban Planning & Transportation', n(byCat('Urban Planning & Transportation'))]] },
+  '/verticals': { label: 'Verticals', rows: [['Verticals', n(verticals)], ['Projects', PROJECTS_TOTAL], ['Clients', n(clients)]] },
   '/tenders': { label: 'Tenders', rows: [['Tender notices', n(notices.length)], ['Corrigenda', n(tenders.length - notices.length)], ['Open now', n(openTenders)], ['Queries', email]] },
   '/cel': { label: 'CUBE Environmental Laboratory', rows: [['Testing', celServices.join(', ') || 'Water, Wastewater, Solid Waste'], ['Located at', 'CUBE office, IIT Madras Research Park']] },
 };

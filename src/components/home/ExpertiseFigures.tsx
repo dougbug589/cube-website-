@@ -158,7 +158,7 @@ export default function ExpertiseFigures() {
         <dl ref={rowRef} className="grid lg:grid-cols-12 gap-5 lg:gap-8 items-stretch">
           {/* the headline figure */}
           <div className="lg:col-span-5 liquid-glass rounded-[32px] p-7 sm:p-9 lg:p-10 flex flex-col justify-center">
-            <dt className="label-mono">Project value</dt>
+            <dt className="label-mono">Value</dt>
             <dd className="mt-5" aria-label={spoken(lead)}>
               <span aria-hidden className="block text-[16px] font-semibold text-[#A7B2B8]">
                 {lead.lead.replace(/^value\s+of\s*/i, '') || 'over'}
@@ -173,9 +173,6 @@ export default function ExpertiseFigures() {
                 className="mt-6 block h-[3px] w-20 rounded-full bg-[#F6C22E] origin-left transition-transform duration-[1200ms] ease-[cubic-bezier(0.22,1,0.36,1)]"
                 style={{ transform: shown ? 'scaleX(1)' : 'scaleX(0)', transitionDelay: '300ms' }}
               />
-              <span aria-hidden className="mt-5 block text-[17px] text-[#C2CCD1] leading-relaxed">
-                Projects under CUBE&rsquo;s third-party quality assurance.
-              </span>
             </dd>
           </div>
 

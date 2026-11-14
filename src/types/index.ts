@@ -49,6 +49,10 @@ export interface Project {
   heroImage: string;
   galleryImages: string[];
   scopeOfWork?: string[];
+  /** fact labels where the cubeiitm.org page uses other wording (e.g. 'Services', 'Start Year', 'Project Duration') */
+  factLabels?: { scopeOfWork?: string; startDate?: string; endDate?: string };
+  /** 'Partners & Associates' from the cubeiitm.org page, when not NA */
+  partners?: string;
   objectives?: string[];
   methodology?: string[];
   outcomes?: string[];

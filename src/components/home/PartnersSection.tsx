@@ -26,7 +26,7 @@ export default function PartnersSection({ clientCount }: { clientCount: number }
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 reveal">
           <div className="max-w-2xl">
             <p className="label-mono">Partners</p>
-            <h2 className="headline-light text-3xl sm:text-4xl lg:text-[2.75rem] text-[#F3F5F6] mt-3">Partners and collaborators.</h2>
+            <h2 className="headline-light text-3xl sm:text-4xl lg:text-[2.75rem] text-[#F3F5F6] mt-3">Partners</h2>
           </div>
           <Link
             href="/about/clients"

@@ -258,8 +258,8 @@ export default function AboutPage() {
         <div className="shell">
           <SectionHeading
             eyebrow="Our Team"
-            title={<>Our team <span className="text-[#F6C22E]">({teamMembers.length})</span></>}
-            lead="Staff across Building & Construction, Environment & Sustainability, Urban Planning & Transportation and Administration."
+            title="Our team"
+            lead="Staff across Building & Construction, Environment & Sustainability, Urban Planning & Transportation and Admin."
             action={{ href: '/about/team', label: 'Team by department' }}
           />
           <div className="reveal">

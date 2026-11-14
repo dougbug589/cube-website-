@@ -67,13 +67,14 @@ export interface CareersPageContent {
 
 export const DEFAULT_CAREERS_PAGE: CareersPageContent = {
   header: {
-    badge: 'Careers & Professional Development',
-    title: 'Engineering Careers & Talent Portal',
+    // cubeiitm.org career.html, word for word
+    badge: 'Future Community Honor',
+    title: 'Career',
     description:
-      'Explore marquee state engineering openings or upload your CV to the CUBE Talent Network for direct IIT Madras faculty and project advisory consideration.',
+      'What sets us apart is what brings us together – a shared passion for solving business challenges through strategy, design, and engineering. We are the sum total of our team, their unique perspectives, capabilities, and our ability to collaborate from ideation to deployment.',
   },
   contactEmail: 'office@cubeiitm.org',
-  contactLabel: 'Direct Recruitment Liaison',
+  contactLabel: 'Email',
   tabs: {
     openingsLabel: 'Active Openings',
     portalLabel: 'Upload Resume & Talent Network',
@@ -88,7 +89,7 @@ export const DEFAULT_CAREERS_PAGE: CareersPageContent = {
     badge: 'Join CUBE Talent Network',
     heading: "Didn't find a matching job role? Drop your resume.",
     description:
-      'We keep CVs on file and contact candidates when a matching role opens.',
+      'Upload your resume through the application form.',
     buttonLabel: 'Upload Your Resume Now',
   },
   jobDetail: {
@@ -96,7 +97,6 @@ export const DEFAULT_CAREERS_PAGE: CareersPageContent = {
     howToApplySteps: [
       'Click "Apply & Upload CV" below to open the application form.',
       'Fill in your details and upload your resume (PDF or DOCX, max 10MB).',
-      'Our team will review your profile and contact shortlisted candidates.',
     ],
   },
   applicationForm: {
@@ -110,11 +110,12 @@ export const DEFAULT_CAREERS_PAGE: CareersPageContent = {
       '10+ Years (Principal / Project Director)',
     ],
     domainOptions: [
-      'Building & Structural Engineering (PMC / TPQA)',
-      'Environment & Sustainable Hydrology (CEL)',
-      'Smart Cities & Urban IoT Telemetry',
-      'Urban Planning & Multimodal Mobility',
-      'CEL Testing & Chemical Diagnostics',
+      'Building & Construction',
+      'Environment & Sustainability',
+      'Smart Cities',
+      'Urban Planning & Transportation',
+      'CUBE Environmental Laboratory (CEL)',
+      'Admin',
     ],
     coverNotePlaceholder:
       'Highlight your key achievements, state project experience, and software skills (e.g. ETABS, STAAD.Pro, Arc-GIS, HEC-RAS)...',
@@ -124,19 +125,12 @@ export const DEFAULT_CAREERS_PAGE: CareersPageContent = {
       'Thank you for submitting your profile to CUBE. Our team will review your application.',
   },
   benefits: {
-    heading: 'Career Growth & Institutional Mentorship',
-    subheading:
-      "Join Tamil Nadu's apex Centre of Excellence bridging academia and state infrastructure delivery.",
+    heading: 'Working at CUBE',
+    subheading: '',
     items: [
       {
-        icon: 'award',
-        title: 'IIT Madras Faculty Direct Access',
-        description:
-          'Work closely with distinguished professors on state proof checking and applied research methodologies.',
-      },
-      {
         icon: 'building',
-        title: 'Marquee State Projects',
+        title: 'CUBE Projects',
         description:
           'Work on CUBE projects across Building & Construction, Environment & Sustainability and Urban Planning & Transportation.',
       },
@@ -153,7 +147,7 @@ export const DEFAULT_CAREERS_PAGE: CareersPageContent = {
 // Non-vertical units that also hire (CEL lab, administration).
 export const EXTRA_CAREER_DEPARTMENTS = [
   'CUBE Environmental Laboratory (CEL)',
-  'Admin & Operations',
+  'Admin',
 ];
 
 export const DEFAULT_EMPLOYMENT_TYPES = [

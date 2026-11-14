@@ -13,7 +13,7 @@ const DEPARTMENTS = [
   { id: 'Building & Construction', title: 'Building & Construction', Icon: Building2 },
   { id: 'Environment & Sustainability', title: 'Environment & Sustainability', Icon: Trees },
   { id: 'Urban Planning & Transportation', title: 'Urban Planning & Transportation', Icon: NavigationIcon },
-  { id: 'Admin', title: 'Admin & Operations', Icon: Briefcase },
+  { id: 'Admin', title: 'Admin', Icon: Briefcase },
 ] as const;
 
 const SPRING = { type: 'spring' as const, stiffness: 420, damping: 34, mass: 0.8 };

@@ -64,7 +64,7 @@ export const newsItems: NewsItem[] = [
     title: "CUBE Expert Team Visits Villupuram Govt. Medical College Hospital",
     date: "12/05/2023",
     category: "Environment & Sustainability",
-    summary: "CUBE's expert team visits Villupuram Govt. Medical College Hospital to kickstart the project \"Conducting adequacy audit of existing liquid waste management facilities at 6 healthcare facilities in Tamil Nadu\"…",
+    summary: "CUBE's expert team visits Villupuram Govt. Medical College Hospital to kickstart the prestigious project \"Conducting adequacy audit of existing liquid waste management facilities at 6 healthcare facilities in Tamil Nadu\"…",
     image: "/images/media/news/original/2-.jpg",
     content: [
       "CUBE's expert team visits Villupuram Govt. Medical College Hospital to kickstart the prestigious project \"Conducting adequacy audit of existing liquid waste management facilities at 6 healthcare facilities in Tamil Nadu\" which was awarded by TNHSRP, a World Bank supported project implemented by Department of Health and Family Welfare of Tamil Nadu Government."
@@ -84,7 +84,7 @@ export const newsItems: NewsItem[] = [
   {
     id: "news-1",
     title: "CUBE Entrusted to Formulate the “Sustainable Mining Policy”",
-    date: "03/07/2023",
+    date: "07/2023",
     category: "Policy & Environment",
     summary: "CUBE has been entrusted to formulate the “Sustainable Mining Policy” and “Natural Resources Management Plan” by the Department of Geology and Mining, Government of Tamil Nadu.",
     image: "/images/media/news/original/news-1.jpg",
