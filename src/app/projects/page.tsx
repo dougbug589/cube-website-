@@ -36,14 +36,26 @@ function SearchParamsSync({ onChange }: { onChange: (category: string, q: string
 function ProjectsPageInner() {
   // Live CMS data: updates instantly when an admin edits/archives a project.
   const projectList = useLiveList<any>('/api/public/projects', fallbackProjects);
+  // `selectedCategory` drives the filter pill (moves at once on click);
+  // `shownCategory` drives the grid (switches once the page is back at the top)
   const [selectedCategory, setSelectedCategory] = useState<string>('All');
+  const [shownCategory, setShownCategory] = useState<string>('All');
   const [searchQuery, setSearchQuery] = useState<string>('');
   // In-app navigation: mount the first 12 cards for a fast first frame, the
   // rest right after it paints. A full page load renders all of them (the
   // server HTML must match, and crawlers see every project).
   const [limit, setLimit] = useState<number>(() => (isHydrated() ? 12 : Infinity));
+  // after a filter switch the rest waits until the grid's fade-in is done
+  // (so the fade only animates the first 12 cards); on navigation it follows
+  // the first paint
+  const restDelay = useRef(0);
   useEffect(() => {
     if (limit === Infinity) return;
+    if (restDelay.current > 0) {
+      const t = setTimeout(() => setLimit(Infinity), restDelay.current);
+      restDelay.current = 0;
+      return () => clearTimeout(t);
+    }
     let id = requestAnimationFrame(() => {
       id = requestAnimationFrame(() => setLimit(Infinity));
     });
@@ -63,7 +75,7 @@ function ProjectsPageInner() {
       // Exclude archived projects strictly
       if (p.status === 'archived') return false;
 
-      const matchesCategory = selectedCategory === 'All' || p.category === selectedCategory;
+      const matchesCategory = shownCategory === 'All' || p.category === shownCategory;
       const matchesSearch =
         !searchQuery.trim() ||
         (p.title && p.title.toLowerCase().includes(searchQuery.toLowerCase())) ||
@@ -73,7 +85,7 @@ function ProjectsPageInner() {
         (p.location && String(p.location).toLowerCase().includes(searchQuery.toLowerCase()));
       return matchesCategory && matchesSearch;
     });
-  }, [projectList, selectedCategory, searchQuery]);
+  }, [projectList, shownCategory, searchQuery]);
 
   const counts = useMemo(() => {
     const c: Record<string, number> = { All: 0 };
@@ -87,24 +99,75 @@ function ProjectsPageInner() {
   // Only verticals that actually have projects get a filter.
   const filters = categories.filter((c) => c === 'All' || counts[c]);
 
-  // Picking a filter while scrolled down the grid: first bring the top of the
-  // results up under the sticky toolbar (instant: the content is about to
-  // change anyway), then switch. Otherwise the page shrinks under the reader,
-  // the browser clamps the scroll position and the jump looks like a stall.
+  // Picking a filter while scrolled down the grid: the pill moves at once,
+  // the page glides back to the top of the results (rAF, ease-in-out; from
+  // far down it first skips to ~1.2 screens above the target so the glide
+  // stays short), and only then the grid cross-fades to the new vertical.
+  // Scrolling by hand during the glide cancels it and switches at once.
+  // Reduced motion: instant jump.
   const resultsRef = useRef<HTMLDivElement>(null);
   const toolbarRef = useRef<HTMLDivElement>(null);
-  const pickCategory = useCallback((cat: string) => {
-    const el = resultsRef.current;
-    if (el) {
+  const glide = useRef<{ raf: number; token: number }>({ raf: 0, token: 0 });
+  const show = useCallback((cat: string) => {
+    // first 12 cards fade in; the rest mount once the fade is done
+    restDelay.current = 600; // old grid fade-out 0.14 s + new fade-in 0.32 s + margin
+    setLimit(12);
+    setShownCategory(cat);
+  }, []);
+  const pickCategory = useCallback(
+    (cat: string) => {
+      setSelectedCategory(cat);
+      cancelAnimationFrame(glide.current.raf);
+      const token = ++glide.current.token;
+      const el = resultsRef.current;
+      if (!el) return show(cat);
       const nav = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--nav-offset')) || 93;
       const bar = toolbarRef.current?.offsetHeight || 64;
-      const top = el.getBoundingClientRect().top + window.scrollY - nav - bar - 12;
-      if (window.scrollY > top) window.scrollTo({ top, behavior: 'instant' as ScrollBehavior });
-    }
-    // mount the first 12 cards in the switch frame, the rest right after
-    setLimit(12);
-    setSelectedCategory(cat);
-  }, []);
+      const target = Math.max(0, el.getBoundingClientRect().top + window.scrollY - nav - bar - 12);
+      if (window.scrollY <= target + 2) return show(cat);
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        window.scrollTo({ top: target, behavior: 'instant' as ScrollBehavior });
+        return show(cat);
+      }
+      // skip most of a very long way, then glide the last stretch
+      const skipTo = target + window.innerHeight * 1.2;
+      if (window.scrollY > skipTo) window.scrollTo({ top: skipTo, behavior: 'instant' as ScrollBehavior });
+      const from = window.scrollY;
+      const dist = from - target;
+      const duration = Math.min(650, Math.max(320, dist * 0.45));
+      const ease = (k: number) => (k < 0.5 ? 4 * k * k * k : 1 - Math.pow(-2 * k + 2, 3) / 2);
+      let t0 = 0;
+      let cancelled = false;
+      const stop = () => {
+        cancelled = true;
+        cancelAnimationFrame(glide.current.raf);
+        cleanup();
+        if (glide.current.token === token) show(cat);
+      };
+      const cleanup = () => {
+        window.removeEventListener('wheel', stop);
+        window.removeEventListener('touchstart', stop);
+        window.removeEventListener('keydown', stop);
+      };
+      window.addEventListener('wheel', stop, { passive: true, once: true });
+      window.addEventListener('touchstart', stop, { passive: true, once: true });
+      window.addEventListener('keydown', stop, { once: true });
+      const step = (t: number) => {
+        if (cancelled || glide.current.token !== token) return cleanup();
+        if (!t0) t0 = t;
+        const k = Math.min(1, (t - t0) / duration);
+        window.scrollTo({ top: from - dist * ease(k), behavior: 'instant' as ScrollBehavior });
+        if (k < 1) glide.current.raf = requestAnimationFrame(step);
+        else {
+          cleanup();
+          show(cat);
+        }
+      };
+      glide.current.raf = requestAnimationFrame(step);
+    },
+    [show]
+  );
+  useEffect(() => () => cancelAnimationFrame(glide.current.raf), []);
 
   return (
     <div className="text-[#F3F5F6] min-h-screen">
@@ -112,6 +175,7 @@ function ProjectsPageInner() {
         <SearchParamsSync
           onChange={(category, q) => {
             setSelectedCategory(category);
+            setShownCategory(category);
             setSearchQuery(q);
           }}
         />
@@ -170,7 +234,7 @@ function ProjectsPageInner() {
         <div ref={resultsRef} className="shell">
           <p className="mb-6 text-[17.5px] text-[#C2CCD1]">
             <span className="font-bold text-[#F3F5F6]">{filteredProjects.length}</span> {filteredProjects.length === 1 ? 'project' : 'projects'}
-            {selectedCategory !== 'All' && <> in {selectedCategory}</>}
+            {shownCategory !== 'All' && <> in {shownCategory}</>}
             {searchQuery.trim() && <> matching &ldquo;{searchQuery.trim()}&rdquo;</>}
           </p>
 
@@ -179,7 +243,7 @@ function ProjectsPageInner() {
               stutter while the page height changes); search updates in place */}
           <AnimatePresence mode="wait" initial={false}>
             <motion.div
-              key={selectedCategory}
+              key={shownCategory}
               className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6"
               initial={{ opacity: 0, y: 14 }}
               animate={{ opacity: 1, y: 0, transition: { duration: 0.32, ease: [0.22, 1, 0.36, 1] } }}
@@ -200,6 +264,7 @@ function ProjectsPageInner() {
                 type="button"
                 onClick={() => {
                   setSelectedCategory('All');
+                  setShownCategory('All');
                   setSearchQuery('');
                 }}
                 className="press btn-soft mt-5 inline-flex items-center h-11 px-5 rounded-full text-[15.5px] font-bold"
